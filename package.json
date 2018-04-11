@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nuxt",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "nuxt build",
+    "start": "nuxt start"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   },
   "homepage": "https://github.com/naokazuterada/podhub#readme",
   "dependencies": {
-    "nuxt": "^1.4.0"
+    "axios": "^0.18.0",
+    "element-ui": "^2.3.3",
+    "nuxt": "^1.4.0",
+    "xml2js": "^0.4.19"
   }
 }
