@@ -1,0 +1,26 @@
+{
+  "name": "podhub",
+  "version": "0.0.1",
+  "description": "Podcast Hub",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naokazuterada/podhub.git"
+  },
+  "keywords": [
+    "Podcast"
+  ],
+  "author": "naokazuterada <naokazu.terada@gmail.com> (http://karappo.net)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naokazuterada/podhub/issues"
+  },
+  "homepage": "https://github.com/naokazuterada/podhub#readme",
+  "dependencies": {
+    "nuxt": "^1.4.0"
+  }
+}
