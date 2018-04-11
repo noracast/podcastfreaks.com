@@ -23,6 +23,8 @@
   "homepage": "https://github.com/naokazuterada/podhub#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "cal-heatmap": "^3.6.2",
+    "d3": "^5.0.0",
     "element-ui": "^2.3.3",
     "nuxt": "^1.4.0",
     "xml2js": "^0.4.19"
