@@ -1,14 +1,7 @@
-<template>
-<div>
-  <div id="cal-heatmap"></div>
-  <ul>
-    <li v-for="item in data">
-      <a v-bind:href="item.link">
-        {{item.title}}
-      </a>
-    </li>
-  </ul>
-</div>
+<template lang="pug">
+div
+  h1 {{ title }}
+  #heatmap
 </template>
 
 <style>
@@ -24,18 +17,43 @@ import CalHeatMap from 'cal-heatmap'
 export default {
   mounted () {
     var cal = new CalHeatMap()
-    cal.init({})
+    var now = new Date().getTime() / 1000
+    var startDate = new Date()
+    startDate.setMonth(startDate.getMonth() - 5)
+    var data = {}
+    this.episodes.forEach(function(ep, index) {
+      var date = new Date(ep.pubDate).getTime() / 1000
+      data[date] = 1
+    })
+    cal.init({
+      itemSelector: '#heatmap',
+      data: data,
+      // afterLoadData: parser,
+      // cellSize: 7,
+      domain: 'month',
+      subDomain: 'day',
+      range: 6,
+      tooltip: true,
+      start: startDate,
+      legendColors: ['white','green'],
+      domainLabelFormat: '%b',
+      legend: [1]
+     })
   },
   asyncData ({params}, callback) {
-    axios.get(`http://feeds.rebuild.fm/rebuildfm`)
+    axios.get('http://feeds.rebuild.fm/rebuildfm')
       .then((res) => {
         var xml = res.data
         xml2js.parseString(xml, (message, xmlres) => {
-          callback(null, {data: xmlres.rss.channel[0].item})
+          var channel = xmlres.rss.channel[0];
+          callback(null, {
+            title: channel.title[0],
+            episodes: channel.item
+          })
         })
       })
       .catch((e) => {
-        callback({ statusCode: 404, message: 'ページが見つかりません' })
+        callback({ statusCode: 404, message: 'Error: Not found.' })
       })
   }
 }
