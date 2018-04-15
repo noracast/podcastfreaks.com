@@ -44,34 +44,11 @@ export default {
   },
   async asyncData ({ params }) {
     let xml = await axios.get('http://feeds.rebuild.fm/rebuildfm')
-    // console.log(xml)
-
-    let json = await xml2js(xml.data)
-    console.log(json.rss.channel[0])
-
+    let json = await xml2js(xml.data, {explicitArray: false})
     return {
-      // title: 'hoge',
-      // episodes: []
-      title: json.rss.channel[0].title[0],
+      title: json.rss.channel.title,
       episodes: json.rss.channel.item
     }
-  },
-  // asyncData ({params}, callback) {
-
-  //   axios.get('http://feeds.rebuild.fm/rebuildfm')
-  //     .then((res) => {
-  //       var xml = res.data
-  //       xml2js.parseString(xml, (message, xmlres) => {
-  //         var channel = xmlres.rss.channel[0];
-  //         callback(null, {
-  //           title: channel.title[0],
-  //           episodes: channel.item
-  //         })
-  //       })
-  //     })
-  //     .catch((e) => {
-  //       callback({ statusCode: 404, message: 'Error: Not found.' })
-  //     })
-  // }
+  }
 }
 </script>
