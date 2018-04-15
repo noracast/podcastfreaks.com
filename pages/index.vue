@@ -10,9 +10,9 @@ div
 
 <script>
 import axios from 'axios'
-import xml2js from '~/lib/xml2js-promise'
-import d3 from 'd3'
 import CalHeatMap from 'cal-heatmap'
+import d3 from 'd3'
+import xml2js from '~/lib/xml2js-promise'
 
 export default {
   mounted () {
