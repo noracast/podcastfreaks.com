@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    this.loadRSS(`http://rssproxy.karappo.net/?url=${this.feed}`)
+    this.loadRSS(`https://rssproxy.karappo.net/?url=${this.feed}`)
     .then(res => {
 
       this.title = res.title
