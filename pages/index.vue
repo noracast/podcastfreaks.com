@@ -11,17 +11,14 @@ div
 <script>
 import axios from 'axios'
 import xml2js from '~/lib/xml2js-promise'
-// import rss from '~/data/rss.json'
+import rss from '~/data/rss.json'
 
 export default {
   components: {
     'podcast': require('./podcast.vue').default
   },
   data: function(){
-    let rss = require('../data/rss.json')
-    return {
-      feeds: rss.feeds
-    }
+    return rss
   }
 }
 </script>
