@@ -1,6 +1,7 @@
 <template lang="pug">
 div
-  h1 {{ title }}
+  h3 {{ title }}
+  a(href="feed") {{ feed }}
   .heatmap
 </template>
 

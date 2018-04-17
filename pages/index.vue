@@ -1,8 +1,7 @@
 <template lang="pug">
 div
+  h1 Podcast Activities
   podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
-  //- podcast(feed='http://feeds.rebuild.fm/rebuildfm')
-  //- podcast(feed='https://feeds.feedwrench.com/JavaScriptJabber.rss')
 </template>
 
 <style>
