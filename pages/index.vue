@@ -1,66 +1,26 @@
 <template lang="pug">
 div
-  h1 {{ title }}
-  #heatmap
+  podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
+  //- podcast(feed='http://feeds.rebuild.fm/rebuildfm')
+  //- podcast(feed='https://feeds.feedwrench.com/JavaScriptJabber.rss')
 </template>
 
 <style>
-@import '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css';
 </style>
 
 <script>
 import axios from 'axios'
-import CalHeatMap from 'cal-heatmap'
-import d3 from 'd3'
 import xml2js from '~/lib/xml2js-promise'
+// import rss from '~/data/rss.json'
 
 export default {
-  mounted () {
-    var rss = this.loadRSS('http://rssproxy.karappo.net/?url=http://feeds.rebuild.fm/rebuildfm')
-    console.log('rss',rss)
-
-    var cal = new CalHeatMap()
-    var now = new Date().getTime() / 1000
-    var startDate = new Date()
-    startDate.setMonth(startDate.getMonth() - 5)
-    var data = {}
-    if(this.episodes){
-      this.episodes.forEach(function(ep, index) {
-        var date = new Date(ep.pubDate).getTime() / 1000
-        data[date] = 1
-      })
-      cal.init({
-        itemSelector: '#heatmap',
-        data: data,
-        // afterLoadData: parser,
-        // cellSize: 7,
-        domain: 'month',
-        subDomain: 'day',
-        range: 6,
-        tooltip: true,
-        start: startDate,
-        legendColors: ['white','green'],
-        domainLabelFormat: '%b',
-        legend: [1]
-       })
-    }
+  components: {
+    'podcast': require('./podcast.vue').default
   },
-  methods: {
-    async loadRSS (url) {
-      let xml = await axios.get(url)
-      let json = await xml2js(xml.data, {explicitArray: false})
-      return {
-        title: json.rss.channel.title,
-        episodes: json.rss.channel.item
-      }
-    }
-  },
-  async asyncData ({ params }) {
-    let xml = await axios.get('http://feeds.rebuild.fm/rebuildfm')
-    let json = await xml2js(xml.data, {explicitArray: false})
+  data: function(){
+    let rss = require('../data/rss.json')
     return {
-      title: json.rss.channel.title,
-      episodes: json.rss.channel.item
+      feeds: rss.feeds
     }
   }
 }
