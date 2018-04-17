@@ -16,6 +16,9 @@ import xml2js from '~/lib/xml2js-promise'
 
 export default {
   mounted () {
+    var rss = this.loadRSS('http://rssproxy.karappo.net/?url=http://feeds.rebuild.fm/rebuildfm')
+    console.log('rss',rss)
+
     var cal = new CalHeatMap()
     var now = new Date().getTime() / 1000
     var startDate = new Date()
@@ -40,6 +43,16 @@ export default {
         domainLabelFormat: '%b',
         legend: [1]
        })
+    }
+  },
+  methods: {
+    async loadRSS (url) {
+      let xml = await axios.get(url)
+      let json = await xml2js(xml.data, {explicitArray: false})
+      return {
+        title: json.rss.channel.title,
+        episodes: json.rss.channel.item
+      }
     }
   },
   async asyncData ({ params }) {
