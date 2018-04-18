@@ -2,13 +2,30 @@
 div
   h3 {{ title }}
   a(:href="feed") RSS
-  | |
   a(:href="link" v-if="link") Web
+  br
+  button.btn.prev
+    i.icon.icon-chevron-left
+  button.btn.next
+    i.icon.icon-chevron-right
   .heatmap
 </template>
 
-<style>
-@import '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css';
+<style lang="sass?indentedSyntax">
+h3
+  display: inline-block
+  margin-top: 20px
+  margin-right: 20px
+div
+  >a
+    margin-right: 10px
+.btn
+  margin-right: 5px
+  &:focus,
+  &:active
+    outline: 0
+.heatmap
+  margin-top: 10px
 </style>
 
 <script>
@@ -56,7 +73,9 @@ export default {
           legendColors: ['white','#c068ff'],
           domainLabelFormat: '%b',
           legend: [1],
-          displayLegend: false
+          displayLegend: false,
+          previousSelector: this.$el.querySelector('.prev'),
+          nextSelector: this.$el.querySelector('.next'),
          })
       }
     })

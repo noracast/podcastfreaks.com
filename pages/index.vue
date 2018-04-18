@@ -5,6 +5,8 @@ div
 </template>
 
 <style>
+@import '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css';
+@import '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css';
 </style>
 
 <script>
