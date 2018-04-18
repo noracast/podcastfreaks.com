@@ -1,7 +1,9 @@
 <template lang="pug">
 div
   h3 {{ title }}
-  a(href="feed") {{ feed }}
+  a(:href="feed") RSS
+  | |
+  a(:href="link" v-if="link") Web
   .heatmap
 </template>
 
@@ -20,6 +22,7 @@ export default {
   data: function(){
     return {
       title: null,
+      link: null,
       episodes: []
     }
   },
@@ -28,16 +31,17 @@ export default {
     .then(res => {
 
       this.title = res.title
+      this.link = res.link
       this.episodes = res.episodes
 
-      var cal = new CalHeatMap()
-      var now = new Date().getTime() / 1000
-      var startDate = new Date()
-      startDate.setMonth(startDate.getMonth() - 5)
+      let cal = new CalHeatMap()
+      let now = new Date().getTime() / 1000
+      let startDate = new Date()
+      startDate.setMonth(startDate.getMonth() - 11)
       var data = {}
       if(this.episodes){
         this.episodes.forEach(function(ep, index) {
-          var date = new Date(ep.pubDate).getTime() / 1000
+          let date = new Date(ep.pubDate).getTime() / 1000
           data[date] = 1
         })
         cal.init({
@@ -47,12 +51,12 @@ export default {
           // cellSize: 7,
           domain: 'month',
           subDomain: 'day',
-          range: 6,
           tooltip: true,
           start: startDate,
-          legendColors: ['white','green'],
+          legendColors: ['white','#c068ff'],
           domainLabelFormat: '%b',
-          legend: [1]
+          legend: [1],
+          displayLegend: false
          })
       }
     })
@@ -62,9 +66,11 @@ export default {
     async loadRSS (url) {
       let xml = await axios.get(url)
       let json = await xml2js(xml.data, {explicitArray: false})
+      let channel = json.rss.channel
       return {
-        title: json.rss.channel.title,
-        episodes: json.rss.channel.item
+        title: channel.title,
+        link: channel.link,
+        episodes: channel.item
       }
     }
   }
