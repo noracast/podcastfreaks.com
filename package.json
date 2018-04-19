@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nuxt",
+    "prebuild": "node _assets/download-rss.js",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -29,6 +30,8 @@
     "d3": "^5.0.0",
     "element-ui": "^2.3.3",
     "nuxt": "^1.4.0",
+    "shelljs": "^0.8.1",
+    "wget-improved": "^1.5.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
@@ -38,4 +41,3 @@
     "sass-loader": "^7.0.1"
   }
 }
-
