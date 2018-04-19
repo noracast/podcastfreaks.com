@@ -16,7 +16,7 @@ import rss from '~/data/rss.json'
 
 export default {
   components: {
-    'podcast': require('./podcast.vue').default
+    'podcast': require('~/components/podcast.vue').default
   },
   data: function(){
     return rss
