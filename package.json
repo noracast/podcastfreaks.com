@@ -6,8 +6,7 @@
   "scripts": {
     "predev": "node _assets/download-rss.js",
     "dev": "nuxt",
-    "prebuild": "node _assets/download-rss.js",
-    "build": "nuxt build",
+    "pregenerate": "node _assets/download-rss.js",
     "generate": "nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
