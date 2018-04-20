@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0"><channel><description>A podcast for Android developers</description><title>dex.fm</title><generator>Tumblr (3.0; @dexfm)</generator><link>http://dex.fm/</link><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/dexfm" /><feedburner:info uri="dexfm" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><media:copyright>© 2016 Shintaro Katafuchi &amp; Hiroshi Kurokawa</media:copyright><media:thumbnail url="http://dexfm.github.io/img/icon_itunes.png" /><media:keywords>Android,tech</media:keywords><media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology</media:category><media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category><media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Podcasting</media:category><media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Gadgets</media:category><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:explicit>no</itunes:explicit><itunes:image href="http://dexfm.github.io/img/icon_itunes.png" /><itunes:keywords>Android,tech</itunes:keywords><itunes:subtitle>A Japanese podcast about Android.</itunes:subtitle><itunes:summary>A Japanese podcast about Android.</itunes:summary><itunes:category text="Technology" /><itunes:category text="Technology"><itunes:category text="Tech News" /></itunes:category><itunes:category text="Technology"><itunes:category text="Podcasting" /></itunes:category><itunes:category text="Technology"><itunes:category text="Gadgets" /></itunes:category><image><link>https://dexfm.tumblr.com/</link><url>http://dexfm.github.io/img/icon_rss2.png</url><title>Icon for dex.fm</title></image><item><title>048: Android Team at Startup</title><description>&lt;p&gt;引き続き&lt;a href="https://twitter.com/_yshrsmz" target="_blank"&gt;@_yshrsmz&lt;/a&gt;さんをゲストに迎えて、趣味で作ったアプリの話、新規Androidプロジェクトの設計、1人しかAndroidエンジニアがいないときどうするか、自作キーボードなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep048-android-team-at-startup.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep048-android-team-at-startup.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://chrome.google.com/webstore/detail/omnitweety/jkghejckpigfbolkdkplfokccgpjjilb" target="_blank"&gt;Omnitweety - Chrome Web Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://play.google.com/store/apps/details?id=net.yslibrary.omnitweety" target="_blank"&gt;Omnitweety - Google Play&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://play.google.com/store/apps/details?id=net.yslibrary.monotweety" target="_blank"&gt;Monotweety - Google Play&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://99designs.jp/" target="_blank"&gt;99designs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://martinfowler.com/bliki/CQRS.html" target="_blank"&gt;CQRS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/square/tape" target="_blank"&gt;square/tape&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/danger/danger" target="_blank"&gt;danger/danger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/androiddev/comments/82djbu/what_is_the_ideal_size_of_android_team/" target="_blank"&gt;What is the ideal size of Android team?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/androiddev/comments/84i4qz/what_makes_a_good_lead_android_engineer/" target="_blank"&gt;What makes a good lead android engineer?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.kinesis-ergo.com/shop/advantage2/" target="_blank"&gt;Advantage2 (PC &amp;amp; Mac) - Kinesis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ergodox-ez.com/" target="_blank"&gt;ErgoDox EZ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/adereth/dactyl-keyboard" target="_blank"&gt;adereth/dactyl-keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.yslibrary.net/2017/08/29/letssplit-buildlog/" target="_blank"&gt;Let’s Splitを作った話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.yslibrary.net/2017/10/03/dactyl-keyboard-buildlog/" target="_blank"&gt;Kinesis Advantageの左右分離版みたいなキーボード、Dactylを作った話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://yushakobo.jp/shop/helix-keyboard-kit/" target="_blank"&gt;Helix キーボードキット&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;訂正&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;エピソード中で「自作キーボードはラズパイ等を使う」という発言がありますが、実際はArduino互換ボードがおおいようです。謹んで訂正いたします。&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/_yshrsmz" target="_blank"&gt;@_yshrsmz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/e82XkAA8a8A" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/e82XkAA8a8A/172889424458</link><guid isPermaLink="false">http://dex.fm/post/172889424458</guid><pubDate>Fri, 13 Apr 2018 19:27:14 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/AGT5inhpTWk/dexfm-ep048-android-team-at-startup.mp3" fileSize="34148019" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> 引き続き@_yshrsmzさんをゲストに迎えて、趣味で作ったアプリの話、新規Androidプロジェクトの設計、1人しかAndroidエンジニアがいないときどうするか、自作キーボードなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Omnitweety - Chrome Web Store Omnitweety - Google Play Monotweety - Google Play 99designs CQRS square/tape </itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> 引き続き@_yshrsmzさんをゲストに迎えて、趣味で作ったアプリの話、新規Androidプロジェクトの設計、1人しかAndroidエンジニアがいないときどうするか、自作キーボードなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Omnitweety - Chrome Web Store Omnitweety - Google Play Monotweety - Google Play 99designs CQRS square/tape danger/danger What is the ideal size of Android team? What makes a good lead android engineer? Advantage2 (PC &amp;amp; Mac) - Kinesis ErgoDox EZ adereth/dactyl-keyboard Let’s Splitを作った話 Kinesis Advantageの左右分離版みたいなキーボード、Dactylを作った話 Helix キーボードキット 訂正 エピソード中で「自作キーボードはラズパイ等を使う」という発言がありますが、実際はArduino互換ボードがおおいようです。謹んで訂正いたします。 Contact: @dexfmpodcast @hydrakecat @_yshrsmz </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/172889424458</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/AGT5inhpTWk/dexfm-ep048-android-team-at-startup.mp3" length="34148019" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep048-android-team-at-startup.mp3</feedburner:origEnclosureLink></item><item><title>047: Android Dagashi</title><description>&lt;p&gt;せーい（&lt;a href="https://twitter.com/_yshrsmz" target="_blank"&gt;@_yshrsmz&lt;/a&gt;）さんをゲストに迎えて&lt;a href="https://androiddagashi.github.io/" target="_blank"&gt;Android Dagashi&lt;/a&gt;や普段の情報収集、さいきん気になったAndroid関連のニュースについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep047-android-dagashi.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep047-android-dagashi.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/AndroidDagashi" target="_blank"&gt;@AndroidDagashi - Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://androiddagashi.github.io/" target="_blank"&gt;Android Dagashi - ウェブ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://paper.dropbox.com/doc/1_About-cwuo1diqjMXlaI7vRM7Vw" target="_blank"&gt;Android Dagashi – Dropbox Paper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://androidsnacks.com/" target="_blank"&gt;Android Snacks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/androiddev/" target="_blank"&gt;/r/androiddev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://androidweekly.net/" target="_blank"&gt;Android Weekly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.androidauthority.com/newsletter/" target="_blank"&gt;Android Authority Newsletters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.kotlinweekly.net/" target="_blank"&gt;Kotlin Weekly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/square-corner-blog" target="_blank"&gt;Square Corner Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://commonsware.com/blog/" target="_blank"&gt;The CommonsBlog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.androiddevdigest.com/" target="_blank"&gt;#AndroidDev Digest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://nuzzel.com/" target="_blank"&gt;Nuzzel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fragmentedpodcast.com/" target="_blank"&gt;Fragmented&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://androidbackstage.blogspot.jp/" target="_blank"&gt;Android Developers Backstage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/artem-zinnatullin/TheContext-Podcast" target="_blank"&gt;artem-zinnatullin/TheContext-Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/user/JakeWharton/" target="_blank"&gt;JakeWharton (u/JakeWharton) - Reddit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.danlew.net/" target="_blank"&gt;Dan Lew Codes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://chris.banes.me/" target="_blank"&gt;Chris Banes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/yshrsmz@github/items/7a35d49b3805a76641f2" target="_blank"&gt;Android関連の最新情報にキャッチアップしていくためのリンク集(2017版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/miyaoka/items/1922d5d8528fe31016b9" target="_blank"&gt;GitHub Issuesでブログを作る&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/AndroidDagashi/AndroidDagashi/issues/45" target="_blank"&gt;数年前の「状態をシングルトンで持つべきかApplicationクラスに持つべきか」という議論を元に、今だったらどうだろう？というスレッド&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/AndroidDagashi/AndroidDagashi/issues/87" target="_blank"&gt;元GooglerによるGoogle Androidプラットフォーム批判&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/_yshrsmz" target="_blank"&gt;@_yshrsmz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/Chn6WxtMJZ4" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/Chn6WxtMJZ4/172759592253</link><guid isPermaLink="false">http://dex.fm/post/172759592253</guid><pubDate>Mon, 09 Apr 2018 23:26:22 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/RIzGLUX-BPk/dexfm-ep047-android-dagashi.mp3" fileSize="33625152" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> せーい（@_yshrsmz）さんをゲストに迎えてAndroid Dagashiや普段の情報収集、さいきん気になったAndroid関連のニュースについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: @AndroidDagashi - Twitter Android Dagashi - ウェブ Android Dagashi – Dropbox Paper Android Snacks /r/androiddev Android Weekly Andr</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> せーい（@_yshrsmz）さんをゲストに迎えてAndroid Dagashiや普段の情報収集、さいきん気になったAndroid関連のニュースについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: @AndroidDagashi - Twitter Android Dagashi - ウェブ Android Dagashi – Dropbox Paper Android Snacks /r/androiddev Android Weekly Android Authority Newsletters Kotlin Weekly Square Corner Blog The CommonsBlog #AndroidDev Digest Nuzzel Fragmented Android Developers Backstage artem-zinnatullin/TheContext-Podcast JakeWharton (u/JakeWharton) - Reddit Dan Lew Codes Chris Banes Android関連の最新情報にキャッチアップしていくためのリンク集(2017版) GitHub Issuesでブログを作る 数年前の「状態をシングルトンで持つべきかApplicationクラスに持つべきか」という議論を元に、今だったらどうだろう？というスレッド 元GooglerによるGoogle Androidプラットフォーム批判 Contact: @dexfmpodcast @hydrakecat @_yshrsmz </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/172759592253</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/RIzGLUX-BPk/dexfm-ep047-android-dagashi.mp3" length="33625152" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep047-android-dagashi.mp3</feedburner:origEnclosureLink></item><item><title>046: Flutter</title><description>&lt;p&gt;&lt;a href="https://twitter.com/new_runnable" target="_blank"&gt;@takahirom&lt;/a&gt;さんと&lt;a href="https://twitter.com/konifar" target="_blank"&gt;@konifar&lt;/a&gt;さんをゲストに迎えてFlutterについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep046-flutter.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep046-flutter.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://flutter.io" target="_blank"&gt;Flutter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.dartlang.org" target="_blank"&gt;Dart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutter.io/flutter-for-react-native" target="_blank"&gt;Flutter for React Native Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutter.io/hot-reload" target="_blank"&gt;Using Hot Reload&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/konifar/droidkaigi2018-flutter" target="_blank"&gt;konifar/droidkaigi2018-flutter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://konifar.hatenablog.com/entry/2018/02/11/081031" target="_blank"&gt;DroidKaigi2018で発表したFlutterアプリの話のスライド補足&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/flutter/plugins" target="_blank"&gt;flutter/plugins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://techbookfest.org/event/tbf04" target="_blank"&gt;技術書典4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Flutterのキャッチアップに役立つリンク
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://flutter.institute" target="_blank"&gt;Flutter Institute&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://startflutter.com" target="_blank"&gt;Start Flutter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutter.rocks" target="_blank"&gt;Flutter Rocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flutterweekly.net" target="_blank"&gt;Flutter Weekly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/new_runnable" target="_blank"&gt;@takahirom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/konifar" target="_blank"&gt;@konifar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/orVEc0a4jvE" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/orVEc0a4jvE/171777458183</link><guid isPermaLink="false">http://dex.fm/post/171777458183</guid><pubDate>Mon, 12 Mar 2018 09:27:24 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/hpav3i-rlI0/dexfm-ep046-flutter.mp3" fileSize="29445142" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @takahiromさんと@konifarさんをゲストに迎えてFlutterについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Flutter Dart Flutter for React Native Developers Using Hot Reload konifar/droidkaigi2018-flutter DroidKaigi2018で発表したFlutterアプリの話のスライド補足 flutter/plugins 技術書典4 Flu</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @takahiromさんと@konifarさんをゲストに迎えてFlutterについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Flutter Dart Flutter for React Native Developers Using Hot Reload konifar/droidkaigi2018-flutter DroidKaigi2018で発表したFlutterアプリの話のスライド補足 flutter/plugins 技術書典4 Flutterのキャッチアップに役立つリンク Flutter Institute Start Flutter Flutter Rocks Flutter Weekly Contact: @dexfmpodcast @hotchemi @takahirom @konifar </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/171777458183</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/hpav3i-rlI0/dexfm-ep046-flutter.mp3" length="29445142" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep046-flutter.mp3</feedburner:origEnclosureLink></item><item><title>045: DroidKaigi 2018 App</title><description>&lt;p&gt;&lt;a href="https://twitter.com/new_runnable" target="_blank"&gt;@takahirom&lt;/a&gt;さんと&lt;a href="https://twitter.com/konifar" target="_blank"&gt;@konifar&lt;/a&gt;さんをゲストに迎えてDroidKaigi2018アプリ開発について話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep045-droidkaigi2018-app.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep045-droidkaigi2018-app.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018" target="_blank"&gt;DroidKaigi/conference-app-2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://konifar.hatenablog.com/entry/2017/11/23/002905" target="_blank"&gt;DroidKaigi2018公式アプリのAuthorが変わります。リポジトリ公開は1月中旬予定です&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://scene.zeplin.io/project/5a327a64f0b20176887c556c" target="_blank"&gt;DroidKaigiのZeplin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://speakerdeck.com/takahirom/droidkaigi-2018-app-architecture" target="_blank"&gt;DroidKaigi 2018 App Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/tree/simplify" target="_blank"&gt;conference-app-2018/simplify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/tree/simplify-flux" target="_blank"&gt;conference-app-2018/simplify-flux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/issues?q=label%3Aawesome+is%3Aclosed" target="_blank"&gt;awesome pull requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/pull/660" target="_blank"&gt;Share RecycledViewPool between view pager content fragments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/pull/318" target="_blank"&gt;Implement sticky label for SearchSpeakersFragment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2018/pull/561" target="_blank"&gt;fix issue #110 kotlin-dsl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/new_runnable" target="_blank"&gt;@takahirom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/konifar" target="_blank"&gt;@konifar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/6Kt5L9jHuFk" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/6Kt5L9jHuFk/171575346118</link><guid isPermaLink="false">http://dex.fm/post/171575346118</guid><pubDate>Tue, 06 Mar 2018 11:08:13 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/HL3cukT2j2s/dexfm-ep045-droidkaigi2018-app.mp3" fileSize="28805247" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @takahiromさんと@konifarさんをゲストに迎えてDroidKaigi2018アプリ開発について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: DroidKaigi/conference-app-2018 DroidKaigi2018公式アプリのAuthorが変わります。リポジトリ公開は1月中旬予定です DroidKaigiのZeplin DroidKaigi 2018 App Architecture conference-app-20</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @takahiromさんと@konifarさんをゲストに迎えてDroidKaigi2018アプリ開発について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: DroidKaigi/conference-app-2018 DroidKaigi2018公式アプリのAuthorが変わります。リポジトリ公開は1月中旬予定です DroidKaigiのZeplin DroidKaigi 2018 App Architecture conference-app-2018/simplify conference-app-2018/simplify-flux awesome pull requests Share RecycledViewPool between view pager content fragments Implement sticky label for SearchSpeakersFragment fix issue #110 kotlin-dsl Contact: @dexfmpodcast @hotchemi @takahirom @konifar </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/171575346118</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/HL3cukT2j2s/dexfm-ep045-droidkaigi2018-app.mp3" length="28805247" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep045-droidkaigi2018-app.mp3</feedburner:origEnclosureLink></item><item><title>044: How I became a test engineer</title><description>&lt;p&gt;&lt;a href="https://twitter.com/vbanthia_" target="_blank"&gt;@vbanthia_&lt;/a&gt; joins us to talk about React Native, Gray box testing and how he became a test engineer.&lt;/p&gt;
+
+&lt;p&gt;This episode is sponsored by yappli inc. Please visit &lt;a href="https://recruit.jobcan.jp/yappli/list" target="_blank"&gt;https://recruit.jobcan.jp/yappli/list&lt;/a&gt; if you&amp;rsquo;re interested in!&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep044-how-i-became-a-test-engineer.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;Subscribe a &lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt; or download a mp3 file from &lt;a href="http://dexfm.github.io/mp3/dexfm-ep044-how-i-became-a-test-engineer.mp3" rel="enclosure" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.slideshare.net/VishalBanthia1/android-reactnative-uitesting" target="_blank"&gt;Android ReactNative UITesting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://facebook.github.io/react-native/docs/view.html#testid" target="_blank"&gt;React Native - testID&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://appium.io" target="_blank"&gt;appium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Gray_box_testing" target="_blank"&gt;Gray box testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/EarlGrey" target="_blank"&gt;google/EarlGrey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/wix/detox" target="_blank"&gt;wix/detox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/protobuf" target="_blank"&gt;google/protobuf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/vbanthia_" target="_blank"&gt;@vbanthia_&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/uqxbkQ2Q5HU" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/uqxbkQ2Q5HU/170815262773</link><guid isPermaLink="false">http://dex.fm/post/170815262773</guid><pubDate>Tue, 13 Feb 2018 09:44:26 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/SUxq1oNENKM/dexfm-ep044-how-i-became-a-test-engineer.mp3" fileSize="28388959" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @vbanthia_ joins us to talk about React Native, Gray box testing and how he became a test engineer. This episode is sponsored by yappli inc. Please visit https://recruit.jobcan.jp/yappli/list if you&amp;rsquo;re interested in! Subscribe a podcast feed or dow</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @vbanthia_ joins us to talk about React Native, Gray box testing and how he became a test engineer. This episode is sponsored by yappli inc. Please visit https://recruit.jobcan.jp/yappli/list if you&amp;rsquo;re interested in! Subscribe a podcast feed or download a mp3 file from here. Show Notes: Android ReactNative UITesting React Native - testID appium Gray box testing google/EarlGrey wix/detox google/protobuf Contact: @dexfmpodcast @hydrakecat @vbanthia_ </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/170815262773</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/SUxq1oNENKM/dexfm-ep044-how-i-became-a-test-engineer.mp3" length="28388959" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep044-how-i-became-a-test-engineer.mp3</feedburner:origEnclosureLink></item><item><title>043: Reliable Mobile Test Automation</title><description>&lt;p&gt;OpenSTFのコアメンバーでもある &lt;a href="https://twitter.com/vbanthia_" target="_blank"&gt;@vbanthia_&lt;/a&gt; さんをゲストに迎えて、OpenSTF、メルカリでのテスト自動化、E2Eのテストの安定性について話しました。&lt;/p&gt;
+
+&lt;p&gt;このエピソードはyappli様にスポンサーされています。興味を持った方は &lt;a href="https://recruit.jobcan.jp/yappli/list" target="_blank"&gt;https://recruit.jobcan.jp/yappli/list&lt;/a&gt; を訪れてみてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep043-reliable-test.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep043-reliable-test.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://github.com/openstf/stf" target="_blank"&gt;openstf/stf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/jp/device-farm/" target="_blank"&gt;AWS Device Farm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/openstf/minicap" target="_blank"&gt;openstf/minicap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.browserstack.com/" target="_blank"&gt;BrowserStack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://testobject.com/" target="_blank"&gt;TestObject&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://zeromq.org/" target="_blank"&gt;zeromq&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/protobuf" target="_blank"&gt;google/protobuf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tech.mercari.com/entry/2017/10/27/125637" target="_blank"&gt;Android Device Farm at Mercari&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.slideshare.net/VishalBanthia1/reliable-mobile-test-automation" target="_blank"&gt;Reliable mobile test automation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vbanthia/rspec_html_reporter" target="_blank"&gt;vbanthia/rspec_html_reporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tech.mercari.com/entry/2017/12/12/103741" target="_blank"&gt;About RSpec HTML Reporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.slideshare.net/VishalBanthia1/android-e2e-testing-at-mercari" target="_blank"&gt;Android e2e testing at mercari&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://appium.io/" target="_blank"&gt;Appium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tech.mercari.com/entry/2017/10/03/093955" target="_blank"&gt;メルカリQA-SETチームが進めているテスト自動化についての質問まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/vbanthia_" target="_blank"&gt;@vbanthia_&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/erR1_k00uGg" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/erR1_k00uGg/170380192353</link><guid isPermaLink="false">http://dex.fm/post/170380192353</guid><pubDate>Thu, 01 Feb 2018 22:55:52 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/iamQnkFt4oI/dexfm-ep043-reliable-test.mp3" fileSize="34385838" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> OpenSTFのコアメンバーでもある @vbanthia_ さんをゲストに迎えて、OpenSTF、メルカリでのテスト自動化、E2Eのテストの安定性について話しました。 このエピソードはyappli様にスポンサーされています。興味を持った方は https://recruit.jobcan.jp/yappli/list を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: openstf/stf AWS Device Farm openstf/min</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> OpenSTFのコアメンバーでもある @vbanthia_ さんをゲストに迎えて、OpenSTF、メルカリでのテスト自動化、E2Eのテストの安定性について話しました。 このエピソードはyappli様にスポンサーされています。興味を持った方は https://recruit.jobcan.jp/yappli/list を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: openstf/stf AWS Device Farm openstf/minicap BrowserStack TestObject zeromq google/protobuf Android Device Farm at Mercari Reliable mobile test automation vbanthia/rspec_html_reporter About RSpec HTML Reporter Android e2e testing at mercari Appium メルカリQA-SETチームが進めているテスト自動化についての質問まとめ Contact: @dexfmpodcast @hydrakecat @vbanthia_ </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/170380192353</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/iamQnkFt4oI/dexfm-ep043-reliable-test.mp3" length="34385838" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep043-reliable-test.mp3</feedburner:origEnclosureLink></item><item><title>042: Relocating to Silicon Valley</title><description>&lt;p&gt;引き続き&lt;a href="https://twitter.com/fushiroyama" target="_blank"&gt;@fushiroyama&lt;/a&gt;さんをゲストに迎えて、シリコンバレーへの赴任、コードレビューの負担、筋トレなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は &lt;a href="https://s.nikkei.com/android" target="_blank"&gt;https://s.nikkei.com/android&lt;/a&gt; を訪れてみてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep042-relocating-to-silicon-valley.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep042-relocating-to-silicon-valley.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://fushiroyama.hatenablog.com/entry/2017/12/27/075332" target="_blank"&gt;現職のままシリコンバレーに赴任する - 怠惰を求めて勤勉に行き着く&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fushiroyama.hatenablog.com/entry/2017/12/13/150553" target="_blank"&gt;エンジニアの英語力 - 怠惰を求めて勤勉に行き着く&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fushiroyama.hatenablog.com/entry/2017/12/17/225544" target="_blank"&gt;アメリカ就職に失敗したはなし - 怠惰を求めて勤勉に行き着く&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://in.fablic.co.jp/entry/2017/10/05/090000" target="_blank"&gt;レビューしてもらいやすいPRの書き方 - inFablic | Fablic, inc. Developer&amp;rsquo;s Blog.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://robots.thoughtbot.com/autosquashing-git-commits" target="_blank"&gt;Auto-squashing Git Commits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://speakerdeck.com/operando/merukari-kaurufalsekai-fa-qi-ninaru-narahua-sou?slide=17" target="_blank"&gt;メルカリ カウルの開発気になる？なら話そう！ // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://employment.en-japan.com/engineerhub/entry/2017/03/31/110000" target="_blank"&gt;体型を支える技術 ──35歳になっても現役で戦い続けるプログラマの体づくり - エンジニアHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/fushiroyama" target="_blank"&gt;@fushiroyama&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/pyD11sdcMV0" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/pyD11sdcMV0/169182996463</link><guid isPermaLink="false">http://dex.fm/post/169182996463</guid><pubDate>Mon, 01 Jan 2018 21:51:09 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/eyOy_Fwd98g/dexfm-ep042-relocating-to-silicon-valley.mp3" fileSize="34219490" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> 引き続き@fushiroyamaさんをゲストに迎えて、シリコンバレーへの赴任、コードレビューの負担、筋トレなどについて話しました。 このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は https://s.nikkei.com/android を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: 現職のままシリコンバレーに赴任する - 怠惰を求めて勤勉に行き着く エンジニアの英語力 - 怠惰を求めて勤勉に行き着く アメリカ就</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> 引き続き@fushiroyamaさんをゲストに迎えて、シリコンバレーへの赴任、コードレビューの負担、筋トレなどについて話しました。 このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は https://s.nikkei.com/android を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: 現職のままシリコンバレーに赴任する - 怠惰を求めて勤勉に行き着く エンジニアの英語力 - 怠惰を求めて勤勉に行き着く アメリカ就職に失敗したはなし - 怠惰を求めて勤勉に行き着く レビューしてもらいやすいPRの書き方 - inFablic | Fablic, inc. Developer&amp;rsquo;s Blog. Auto-squashing Git Commits メルカリ カウルの開発気になる？なら話そう！ // Speaker Deck 体型を支える技術 ──35歳になっても現役で戦い続けるプログラマの体づくり - エンジニアHub Contact: @dexfmpodcast @hydrakecat @hotchemi @fushiroyama </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/169182996463</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/eyOy_Fwd98g/dexfm-ep042-relocating-to-silicon-valley.mp3" length="34219490" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep042-relocating-to-silicon-valley.mp3</feedburner:origEnclosureLink></item><item><title>041: Refactoring Legacy Code with Test</title><description>&lt;p&gt;&lt;a href="https://twitter.com/fushiroyama" target="_blank"&gt;@fushiroyama&lt;/a&gt;さんをゲストに迎えて、日経新聞社におけるチーム開発、Android Testing Bootcamp、Androidにおけるテストなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は &lt;a href="https://s.nikkei.com/android" target="_blank"&gt;https://s.nikkei.com/android&lt;/a&gt; を訪れてみてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep041-development-at-nikkei-shinbun.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep041-development-at-nikkei-shinbun.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://speakerdeck.com/taishiblue/ri-jing-dian-zi-ban-apuri-xue-falseaitabaketukai-fa" target="_blank"&gt;日経電子版アプリ 穴のあいたバケツ開発 // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://android-testing-bootcamp.connpass.com/" target="_blank"&gt;Android Testing Bootcamp - connpass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://droidkaigi.jp/2018/accepted/" target="_blank"&gt;採択されたセッション一覧 | DroidKaigi 2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA" target="_blank"&gt;テスト駆動開発 - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://speakerdeck.com/srym/clean-architecture-and-tdd" target="_blank"&gt;Clean Architecture &amp;amp; TDD // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/powermock/powermock" target="_blank"&gt;powermock/powermock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://robolectric.org/" target="_blank"&gt;Robolectric&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.slideshare.net/dpreussler/unit-testing-without-robolectric-droidcon-berlin-2016" target="_blank"&gt;Unit testing without Robolectric, Droidcon Berlin 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://speakerdeck.com/srym/mock-partially-using-dagger" target="_blank"&gt;Mock Partially using Dagger // Speaker Deck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gojuno/mainframer" target="_blank"&gt;gojuno/mainframer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://sys1yagi.hatenablog.com/entry/2016/12/21/032857" target="_blank"&gt;Androidアプリケーションのビルド体験を改善するリモートビルドサービス Cyborg-Build を作りました - visible true&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://circleci.com/" target="_blank"&gt;Continuous Integration and Delivery - CircleCI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wercker.com/" target="_blank"&gt;Wercker Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://s.nikkei.com/android" target="_blank"&gt;会員数350万!! 日経電子版のAndroidエンジニア募集 - Mobile Engineer jobs at 日本経済新聞社 - Wantedly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/fushiroyama" target="_blank"&gt;@fushiroyama&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/BG2hOQVBZAQ" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/BG2hOQVBZAQ/169107364808</link><guid isPermaLink="false">http://dex.fm/post/169107364808</guid><pubDate>Sat, 30 Dec 2017 19:38:31 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/65Bwe8K9O6g/dexfm-ep041-development-at-nikkei-shinbun.mp3" fileSize="33149097" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @fushiroyamaさんをゲストに迎えて、日経新聞社におけるチーム開発、Android Testing Bootcamp、Androidにおけるテストなどについて話しました。 このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は https://s.nikkei.com/android を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: 日経電子版アプリ 穴のあいたバケツ開発 // Speaker Deck Andro</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @fushiroyamaさんをゲストに迎えて、日経新聞社におけるチーム開発、Android Testing Bootcamp、Androidにおけるテストなどについて話しました。 このエピソードは日本経済新聞社様にスポンサーされています。興味を持った方は https://s.nikkei.com/android を訪れてみてください。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: 日経電子版アプリ 穴のあいたバケツ開発 // Speaker Deck Android Testing Bootcamp - connpass 採択されたセッション一覧 | DroidKaigi 2018 テスト駆動開発 - Wikipedia Clean Architecture &amp;amp; TDD // Speaker Deck powermock/powermock Robolectric Unit testing without Robolectric, Droidcon Berlin 2016 Mock Partially using Dagger // Speaker Deck gojuno/mainframer Androidアプリケーションのビルド体験を改善するリモートビルドサービス Cyborg-Build を作りました - visible true Continuous Integration and Delivery - CircleCI Wercker Home 会員数350万!! 日経電子版のAndroidエンジニア募集 - Mobile Engineer jobs at 日本経済新聞社 - Wantedly Contact: @dexfmpodcast @hotchemi @hydrakecat @fushiroyama </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/169107364808</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/65Bwe8K9O6g/dexfm-ep041-development-at-nikkei-shinbun.mp3" length="33149097" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep041-development-at-nikkei-shinbun.mp3</feedburner:origEnclosureLink></item><item><title>040: React Native (cont’d)</title><description>&lt;p&gt;前回に引き続き&lt;a href="https://twitter.com/Nkzn" target="_blank"&gt;@Nkzn&lt;/a&gt;さんをゲストに迎えて、ReactiNativeで使うアーキテクチャ、ライブラリ、CodePush、運用などについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep040-react-native-contd.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep040-react-native-contd.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://redux.js.org/" target="_blank"&gt;Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://mobx.js.org/" target="_blank"&gt;MobX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://almin.js.org/" target="_blank"&gt;Almin.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html" target="_blank"&gt;PresentationDomainSeparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gaearon/redux-devtools" target="_blank"&gt;gaearon/redux-devtools: DevTools for Redux with hot reloading, action replay, and customizable UI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://lodash.com/" target="_blank"&gt;Lodash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://momentjs.com/" target="_blank"&gt;Moment.js | Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/AlexanderZaytsev/react-native-i18n" target="_blank"&gt;AlexanderZaytsev/react-native-i18n: React Native + i18n.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/luggit/react-native-config" target="_blank"&gt;luggit/react-native-config: Bring some 12 factor love to your mobile apps!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/evollu/react-native-fcm" target="_blank"&gt;evollu/react-native-fcm: react native module for firebase cloud messaging and local notification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://nativebase.io/" target="_blank"&gt;NativeBase | Essential cross-platform UI components for React Native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/react-native-training/react-native-elements" target="_blank"&gt;react-native-training/react-native-elements: Cross Platform React Native UI Toolkit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ionicframework.com/" target="_blank"&gt;Ionic Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://onsen.io/" target="_blank"&gt;Onsen UI 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/necolas/react-native-web" target="_blank"&gt;necolas/react-native-web: React Native for Web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://facebook.github.io/jest/" target="_blank"&gt;Jest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://mochajs.org/" target="_blank"&gt;Mocha&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/facebook/react-native/releases" target="_blank"&gt;Releases · facebook/react-native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://facebook.github.io/react-native/docs/upgrading.html" target="_blank"&gt;Upgrading to new React Native versions · React Native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pt.slideshare.net/Nkzn/react-native8-80596018" target="_blank"&gt;React Nativeアプリをリリースし続けるために、最初に行う8つの取り組み&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://microsoft.github.io/code-push/" target="_blank"&gt;CodePush&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://water-cell.jp/" target="_blank"&gt;ウォーターセル株式会社&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/Nkzn" target="_blank"&gt;@Nkzn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/6FElN8lHWgc" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/6FElN8lHWgc/168599101553</link><guid isPermaLink="false">http://dex.fm/post/168599101553</guid><pubDate>Sat, 16 Dec 2017 16:57:42 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/GoMmSvPRqyA/dexfm-ep040-react-native-contd.mp3" fileSize="30557332" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> 前回に引き続き@Nkznさんをゲストに迎えて、ReactiNativeで使うアーキテクチャ、ライブラリ、CodePush、運用などについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Redux MobX Almin.js PresentationDomainSeparation gaearon/redux-devtools: DevTools for Redux with hot reloading, action replay, and cus</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> 前回に引き続き@Nkznさんをゲストに迎えて、ReactiNativeで使うアーキテクチャ、ライブラリ、CodePush、運用などについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Redux MobX Almin.js PresentationDomainSeparation gaearon/redux-devtools: DevTools for Redux with hot reloading, action replay, and customizable UI Lodash Moment.js | Home AlexanderZaytsev/react-native-i18n: React Native + i18n.js luggit/react-native-config: Bring some 12 factor love to your mobile apps! evollu/react-native-fcm: react native module for firebase cloud messaging and local notification NativeBase | Essential cross-platform UI components for React Native react-native-training/react-native-elements: Cross Platform React Native UI Toolkit Ionic Framework Onsen UI 2 necolas/react-native-web: React Native for Web Jest Mocha Releases · facebook/react-native Upgrading to new React Native versions · React Native React Nativeアプリをリリースし続けるために、最初に行う8つの取り組み CodePush ウォーターセル株式会社 Contact: @dexfmpodcast @hydrakecat @hotchemi @Nkzn </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/168599101553</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/GoMmSvPRqyA/dexfm-ep040-react-native-contd.mp3" length="30557332" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep040-react-native-contd.mp3</feedburner:origEnclosureLink></item><item><title>039: React Native</title><description>&lt;p&gt;&lt;a href="https://twitter.com/Nkzn" target="_blank"&gt;@Nkzn&lt;/a&gt;さんをゲストに迎えて、ReactiNativeの画面遷移、TypeScriptとFlow、IDEについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep039-react-native.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep039-react-native.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://pt.slideshare.net/Nkzn/react-native-72974450" target="_blank"&gt;React Nativeはクロスプラットフォームモバイルアプリ開発の夢を見るか #DroidKaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://quipper.hatenablog.com/entry/2017/12/05/114014" target="_blank"&gt;QuipperにおけるReact Native活用事例 - Quipper プロダクトチームのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/wix/react-native-navigation" target="_blank"&gt;wix/react-native-navigation: A complete native navigation solution for React Native&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/react-community/react-navigation" target="_blank"&gt;react-community/react-navigation: Learn once, navigate anywhere&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/aksonov/react-native-router-flux" target="_blank"&gt;aksonov/react-native-router-flux: The first declarative React Native router&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.typescriptlang.org/" target="_blank"&gt;TypeScript - JavaScript that scales.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flow.org/" target="_blank"&gt;Flow: A Static Type Checker for JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://javascript.tumblr.com/post/165082071937/flow-and-typescript" target="_blank"&gt;JavaScript at Tumblr — Flow and TypeScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://eng.lyft.com/typescript-at-lyft-64f0702346ea" target="_blank"&gt;TypeScript at Lyft – Lyft Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gfx.hatenablog.com/entry/2017/05/24/094253" target="_blank"&gt;なぜTypeScript推しなのか - Islands in the byte stream&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.jetbrains.com/webstorm/" target="_blank"&gt;WebStorm: The Smartest JavaScript IDE by JetBrains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://code.visualstudio.com/" target="_blank"&gt;Visual Studio Code - Code Editing. Redefined&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://nuclide.io/" target="_blank"&gt;Nuclide | Nuclide is built as a single package on top of Atom to provide hackability and the support of an active community&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.decoide.org/" target="_blank"&gt;Deco - React Native IDE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://techcrunch.com/2017/05/02/airbnb-has-acquired-partner-deco-software-deco-ide-is/" target="_blank"&gt;Airbnb acquired its React Native partner Deco Software, Deco IDE goes open source | TechCrunch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/Nkzn" target="_blank"&gt;@Nkzn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/F_FK1uIZR2o" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/F_FK1uIZR2o/168428525728</link><guid isPermaLink="false">http://dex.fm/post/168428525728</guid><pubDate>Mon, 11 Dec 2017 22:35:25 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/AcIn8wcgdXM/dexfm-ep039-react-native.mp3" fileSize="28202550" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @Nkznさんをゲストに迎えて、ReactiNativeの画面遷移、TypeScriptとFlow、IDEについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: React Nativeはクロスプラットフォームモバイルアプリ開発の夢を見るか #DroidKaigi QuipperにおけるReact Native活用事例 - Quipper プロダクトチームのブログ wix/react-native-navigation: A complete nat</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @Nkznさんをゲストに迎えて、ReactiNativeの画面遷移、TypeScriptとFlow、IDEについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: React Nativeはクロスプラットフォームモバイルアプリ開発の夢を見るか #DroidKaigi QuipperにおけるReact Native活用事例 - Quipper プロダクトチームのブログ wix/react-native-navigation: A complete native navigation solution for React Native react-community/react-navigation: Learn once, navigate anywhere aksonov/react-native-router-flux: The first declarative React Native router TypeScript - JavaScript that scales. Flow: A Static Type Checker for JavaScript JavaScript at Tumblr — Flow and TypeScript TypeScript at Lyft – Lyft Engineering なぜTypeScript推しなのか - Islands in the byte stream WebStorm: The Smartest JavaScript IDE by JetBrains Visual Studio Code - Code Editing. Redefined Nuclide | Nuclide is built as a single package on top of Atom to provide hackability and the support of an active community Deco - React Native IDE Airbnb acquired its React Native partner Deco Software, Deco IDE goes open source | TechCrunch Contact: @dexfmpodcast @hydrakecat @hotchemi @Nkzn </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/168428525728</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/AcIn8wcgdXM/dexfm-ep039-react-native.mp3" length="28202550" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep039-react-native.mp3</feedburner:origEnclosureLink></item><item><title>038: 8000 yengineer</title><description>&lt;p&gt;&lt;a href="https://twitter.com/shiraj_i" target="_blank"&gt;@shiraj_i&lt;/a&gt;さんをゲストに迎えてIntelliJ plugin開発やプルリク駆動勉強について話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="https://dexfm.github.io/mp3/dexfm-ep038-8000-yengineer.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="https://dexfm.github.io/mp3/dexfm-ep038-8000-yengineer.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://runkeeper.com" target="_blank"&gt;Runkeeper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shiraji/databinding-support" target="_blank"&gt;shiraji/databinding-support&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/permissions-dispatcher/permissions-dispatcher-plugin" target="_blank"&gt;permissions-dispatcher/permissions-dispatcher-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shiraji/GradleConfirmation/" target="_blank"&gt;shiraji/GradleConfirmation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.jetbrains.com/help/idea/plugin-development-guidelines.html" target="_blank"&gt;Plugin Development Guidelines - IntelliJ IDEA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://shiraji.github.io/blog/2016/01/10/pull_req_study/" target="_blank"&gt;プルリク駆動勉強&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/asics-digital/aws-lambda-kotlin-redirector-4d666d49b603" target="_blank"&gt;AWS Lambda + Kotlin -&amp;gt; Redirector - ASICS Digital&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/shiraj_i" target="_blank"&gt;@shiraj_i&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/LfiJcVG7AbQ" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/LfiJcVG7AbQ/168346694213</link><guid isPermaLink="false">http://dex.fm/post/168346694213</guid><pubDate>Sat, 09 Dec 2017 14:06:24 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/NXtv8lBsL5w/dexfm-ep038-8000-yengineer.mp3" fileSize="27124633" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @shiraj_iさんをゲストに迎えてIntelliJ plugin開発やプルリク駆動勉強について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Runkeeper shiraji/databinding-support permissions-dispatcher/permissions-dispatcher-plugin shiraji/GradleConfirmation Plugin Development Guidelines - Inte</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @shiraj_iさんをゲストに迎えてIntelliJ plugin開発やプルリク駆動勉強について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Runkeeper shiraji/databinding-support permissions-dispatcher/permissions-dispatcher-plugin shiraji/GradleConfirmation Plugin Development Guidelines - IntelliJ IDEA プルリク駆動勉強 AWS Lambda + Kotlin -&amp;gt; Redirector - ASICS Digital Contact: @dexfmpodcast @hotchemi @shiraj_i </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/168346694213</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/NXtv8lBsL5w/dexfm-ep038-8000-yengineer.mp3" length="27124633" type="audio/mp3" /><feedburner:origEnclosureLink>https://dexfm.github.io/mp3/dexfm-ep038-8000-yengineer.mp3</feedburner:origEnclosureLink></item><item><title>037: How to Kontribute</title><description>&lt;p&gt;&lt;a href="https://twitter.com/shiraj_i" target="_blank"&gt;@shiraj_i&lt;/a&gt;さんをゲストに迎えてKotlinConfやKotlinへのコントリビュートについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep037-how-to-kontribute.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep037-how-to-kontribute.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.kotlinconf.com" target="_blank"&gt;KotlinConf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=-y2vW94mBDE&amp;amp;feature=youtu.be" target="_blank"&gt;KotlinConf 2017 - How to Kontribute by Yoshinori Isogai&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/JetBrains/kotlinconf-app" target="_blank"&gt;JetBrains/kotlinconf-app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.jetbrains.com/kotlin/2017/11/kotlinconf-keynote-recap/" target="_blank"&gt;KotlinConf Keynote Recap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://shiraji.github.io/blog/2016/07/14/how-to-kontribute/" target="_blank"&gt;How to Kontribute (for Japanese)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://shiraji.github.io/blog/2016/01/10/pull_req_study/" target="_blank"&gt;プルリク駆動勉強&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Kotlin/KEEP" target="_blank"&gt;Kotlin/KEEP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/shiraj_i" target="_blank"&gt;@shiraj_i&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/YnHn884NaGA" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/YnHn884NaGA/168154381478</link><guid isPermaLink="false">http://dex.fm/post/168154381478</guid><pubDate>Mon, 04 Dec 2017 03:23:55 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/eIm4cLR1jMA/dexfm-ep037-how-to-kontribute.mp3" fileSize="33348881" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @shiraj_iさんをゲストに迎えてKotlinConfやKotlinへのコントリビュートについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: KotlinConf KotlinConf 2017 - How to Kontribute by Yoshinori Isogai JetBrains/kotlinconf-app KotlinConf Keynote Recap How to Kontribute (for Japanese) プルリ</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @shiraj_iさんをゲストに迎えてKotlinConfやKotlinへのコントリビュートについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: KotlinConf KotlinConf 2017 - How to Kontribute by Yoshinori Isogai JetBrains/kotlinconf-app KotlinConf Keynote Recap How to Kontribute (for Japanese) プルリク駆動勉強 Kotlin/KEEP Contact: @dexfmpodcast @hotchemi @shiraj_i </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/168154381478</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/eIm4cLR1jMA/dexfm-ep037-how-to-kontribute.mp3" length="33348881" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep037-how-to-kontribute.mp3</feedburner:origEnclosureLink></item><item><title>036: Redux approach at Retty</title><description>&lt;p&gt;&lt;a href="https://twitter.com/muumuumuumuu" target="_blank"&gt;@muumuumuumuu&lt;/a&gt;さんをゲストに迎えてReduxやRettyでの導入事例について話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep036-redux-approach-at-retty.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep036-redux-approach-at-retty.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://redux.js.org/" target="_blank"&gt;Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://muumuutech.hatenablog.com/entry/2017/09/04/074557" target="_blank"&gt;KotlinとReduxをAndroidアプリに導入した話をしました&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/RettyEng/redux-kt" target="_blank"&gt;RettyEng/redux-kt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pardom/redux-kotlin" target="_blank"&gt;pardom/redux-kotlin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ReSwift/ReSwift" target="_blank"&gt;ReSwift/ReSwift&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rt2zz/redux-persist" target="_blank"&gt;rt2zz/redux-persist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://kotlinlang.org/docs/reference/data-classes.html" target="_blank"&gt;Data Classes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/zalmoxisus/redux-devtools-extension" target="_blank"&gt;zalmoxisus/redux-devtools-extension&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/muumuumuumuu" target="_blank"&gt;@muumuumuumuu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/xGUlsmHhIHg" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/xGUlsmHhIHg/167910339593</link><guid isPermaLink="false">http://dex.fm/post/167910339593</guid><pubDate>Mon, 27 Nov 2017 03:01:47 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/1qhsCTxDeSY/dexfm-ep036-redux-approach-at-retty.mp3" fileSize="26260711" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @muumuumuumuuさんをゲストに迎えてReduxやRettyでの導入事例について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Redux KotlinとReduxをAndroidアプリに導入した話をしました RettyEng/redux-kt pardom/redux-kotlin ReSwift/ReSwift rt2zz/redux-persist Data Classes zalmoxisus/redux-devtools-exten</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @muumuumuumuuさんをゲストに迎えてReduxやRettyでの導入事例について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Redux KotlinとReduxをAndroidアプリに導入した話をしました RettyEng/redux-kt pardom/redux-kotlin ReSwift/ReSwift rt2zz/redux-persist Data Classes zalmoxisus/redux-devtools-extension Contact: @dexfmpodcast @hotchemi @muumuumuumuu </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/167910339593</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/1qhsCTxDeSY/dexfm-ep036-redux-approach-at-retty.mp3" length="26260711" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep036-redux-approach-at-retty.mp3</feedburner:origEnclosureLink></item><item><title>035: A Wandering Engineer</title><description>&lt;p&gt;&lt;a href="https://twitter.com/karino2012" target="_blank"&gt;@karino2012&lt;/a&gt;さんをゲストに迎えて、個人アプリで一発当てる話、放浪癖、ソースコード読みアプリ、DOSモバ、LIBRIe、Androidを選んだ理由、お絵描きアプリなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep035-a-wandering-engineer.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep035-a-wandering-engineer.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://play.google.com/store/apps/details?id=org.nattou.www.layerpaint" target="_blank"&gt;LayerPaint - Android Apps on Google Play&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/karino2/ZipSourceCodeReading" target="_blank"&gt;karino2/ZipSourceCodeReading: Zipped source code reading app for Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/codesearch" target="_blank"&gt;google/codesearch: Fast, indexed regexp search over large file trees&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=j3XcXsh74n8" target="_blank"&gt;Keras01: sess.runの呼ばれ方を追う（コード読み実況） - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=P6w_5gJw3IY&amp;amp;t=1s" target="_blank"&gt;ライブコーディング catコマンド - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%82%AE%E3%82%A2" target="_blank"&gt;モバイルギア - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mb.amcsys.com/cgi-bin/mlib.cgi?type=PocketBSD&amp;amp;category=SYSTEM" target="_blank"&gt;MG LIB - MobileGear OnlineSoftware Library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ja.wikipedia.org/wiki/LIBRIe" target="_blank"&gt;LIBRIe - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ja.wikipedia.org/wiki/HTC_Dream" target="_blank"&gt;HTC Dream - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/karino2012" target="_blank"&gt;@karino2012&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/11nMACvWIc0" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/11nMACvWIc0/166044433088</link><guid isPermaLink="false">http://dex.fm/post/166044433088</guid><pubDate>Thu, 05 Oct 2017 01:20:03 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/jMrVP_sHnT4/dexfm-ep035-a-wandering-engineer.mp3" fileSize="40556170" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @karino2012さんをゲストに迎えて、個人アプリで一発当てる話、放浪癖、ソースコード読みアプリ、DOSモバ、LIBRIe、Androidを選んだ理由、お絵描きアプリなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: LayerPaint - Android Apps on Google Play karino2/ZipSourceCodeReading: Zipped source code reading app for Androi</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @karino2012さんをゲストに迎えて、個人アプリで一発当てる話、放浪癖、ソースコード読みアプリ、DOSモバ、LIBRIe、Androidを選んだ理由、お絵描きアプリなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: LayerPaint - Android Apps on Google Play karino2/ZipSourceCodeReading: Zipped source code reading app for Android google/codesearch: Fast, indexed regexp search over large file trees Keras01: sess.runの呼ばれ方を追う（コード読み実況） - YouTube ライブコーディング catコマンド - YouTube モバイルギア - Wikipedia MG LIB - MobileGear OnlineSoftware Library LIBRIe - Wikipedia HTC Dream - Wikipedia Contact: @dexfmpodcast @hydrakecat @karino2012 </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/166044433088</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/jMrVP_sHnT4/dexfm-ep035-a-wandering-engineer.mp3" length="40556170" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep035-a-wandering-engineer.mp3</feedburner:origEnclosureLink></item><item><title>034: Android Under the Hood</title><description>&lt;p&gt;&lt;a href="https://twitter.com/karino2012" target="_blank"&gt;@karino2012&lt;/a&gt;さんをゲストに迎えて、『Androidを支える技術』について話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep034-android-under-the-hood.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep034-android-under-the-hood.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://gihyo.jp/book/2017/978-4-7741-8759-4" target="_blank"&gt;Androidを支える技術〈Ⅰ〉──60fpsを達成するモダンなGUIシステム&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gihyo.jp/book/2017/978-4-7741-8861-4" target="_blank"&gt;Androidを支える技術〈Ⅱ〉──真のマルチタスクに挑んだモバイルOSの心臓部&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://connpass.com/event/60607/" target="_blank"&gt;「Androidを支える技術」出版記念イベント&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/karino2/AndroidSupportTech" target="_blank"&gt;Androidを支える技術のサポートページ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/karino2/InsideBinder" target="_blank"&gt;詳説 Binder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://karino2.livejournal.com/2015/08/" target="_blank"&gt;August 2015 - 南よ! 海の見える方!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hydrakecat.hatenablog.jp/entry/2017/08/28/%E3%80%8EAndroid%E3%82%92%E6%94%AF%E3%81%88%E3%82%8B%E6%8A%80%E8%A1%93%E3%80%8F%E3%82%92%E8%AA%AD%E3%82%80%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F" target="_blank"&gt;『Androidを支える技術』を読むべきか？ - hydrakecat’s blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;（以下、第Ⅰ巻の「本書の想定読者について」より抜粋）&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本書は、おもに4種類の読者を想定しています。&lt;/p&gt;
+  
+  &lt;ol&gt;&lt;li&gt;Androidのアプリ開発者で、Linuxの知識もある人&lt;/li&gt;
+  &lt;li&gt;デスクトップでのGUIアプリケーションの開発経験があるが、Androidアプリの開発経験はない人&lt;/li&gt;
+  &lt;li&gt;組み込みやLinuxの経験はあるが本格的なGUIシステムの経験はあまりない人&lt;/li&gt;
+  &lt;li&gt;かつて一線で活躍していたエンジニアが現在マネージャになっていて、Androidについて知りたい人&lt;/li&gt;
+  &lt;/ol&gt;&lt;/blockquote&gt;
+
+&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/karino2012" target="_blank"&gt;@karino2012&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/I9g90ze-_wY" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/I9g90ze-_wY/165884456373</link><guid isPermaLink="false">http://dex.fm/post/165884456373</guid><pubDate>Sat, 30 Sep 2017 11:54:52 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/5Ab5dMjgu0k/dexfm-ep034-android-under-the-hood.mp3" fileSize="35075889" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @karino2012さんをゲストに迎えて、『Androidを支える技術』について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Androidを支える技術〈Ⅰ〉──60fpsを達成するモダンなGUIシステム Androidを支える技術〈Ⅱ〉──真のマルチタスクに挑んだモバイルOSの心臓部 「Androidを支える技術」出版記念イベント Androidを支える技術のサポートページ 詳説 Binder August 2015 - 南よ! 海の見える方!</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @karino2012さんをゲストに迎えて、『Androidを支える技術』について話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Androidを支える技術〈Ⅰ〉──60fpsを達成するモダンなGUIシステム Androidを支える技術〈Ⅱ〉──真のマルチタスクに挑んだモバイルOSの心臓部 「Androidを支える技術」出版記念イベント Androidを支える技術のサポートページ 詳説 Binder August 2015 - 南よ! 海の見える方! 『Androidを支える技術』を読むべきか？ - hydrakecat’s blog （以下、第Ⅰ巻の「本書の想定読者について」より抜粋） 本書は、おもに4種類の読者を想定しています。 Androidのアプリ開発者で、Linuxの知識もある人 デスクトップでのGUIアプリケーションの開発経験があるが、Androidアプリの開発経験はない人 組み込みやLinuxの経験はあるが本格的なGUIシステムの経験はあまりない人 かつて一線で活躍していたエンジニアが現在マネージャになっていて、Androidについて知りたい人 Contact: @dexfmpodcast @hydrakecat @karino2012 </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/165884456373</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/5Ab5dMjgu0k/dexfm-ep034-android-under-the-hood.mp3" length="35075889" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep034-android-under-the-hood.mp3</feedburner:origEnclosureLink></item><item><title>033: Handing over OSS project</title><description>&lt;p&gt;&lt;a href="https://twitter.com/__gfx__" target="_blank"&gt;@gfx&lt;/a&gt;さんをゲストに迎えて、maskarade、OSSの引き継ぎ方や英語などについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep033-handing-over-oss-project.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep033-handing-over-oss-project.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://github.com/maskarade/" target="_blank"&gt;maskarade&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gfx.hatenablog.com/entry/2017/08/14/104301" target="_blank"&gt;Androidライブラリのためのmaskaradeというorgを作った&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/maskarade/gradle-android-ribbonizer-plugin/issues/21" target="_blank"&gt;[WANTED] A new maintainer: maskarade/gradle-android-ribbonizer-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://builderscon.io/tokyo/2017/session/ab4825b9-8158-4c99-90e4-386d07efe038" target="_blank"&gt;OSS の引き継ぎ方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/orgs/permissions-dispatcher/" target="_blank"&gt;orgs/permissions-dispatcher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://johnresig.com/blog/write-code-every-day/" target="_blank"&gt;Write Code Every Day&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://code.facebook.com/posts/112130496157735/explaining-react-s-license/" target="_blank"&gt;Explaining React&amp;rsquo;s license&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/__gfx__" target="_blank"&gt;@gfx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/WH_BbB6lD8s" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/WH_BbB6lD8s/165466119458</link><guid isPermaLink="false">http://dex.fm/post/165466119458</guid><pubDate>Mon, 18 Sep 2017 15:29:27 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/8yuWBMNu66Q/dexfm-ep033-handing-over-oss-project.mp3" fileSize="29764881" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @gfxさんをゲストに迎えて、maskarade、OSSの引き継ぎ方や英語などについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: maskarade Androidライブラリのためのmaskaradeというorgを作った [WANTED] A new maintainer: maskarade/gradle-android-ribbonizer-plugin OSS の引き継ぎ方 orgs/permissions-dispatcher Write</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @gfxさんをゲストに迎えて、maskarade、OSSの引き継ぎ方や英語などについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: maskarade Androidライブラリのためのmaskaradeというorgを作った [WANTED] A new maintainer: maskarade/gradle-android-ribbonizer-plugin OSS の引き継ぎ方 orgs/permissions-dispatcher Write Code Every Day Explaining React&amp;rsquo;s license Contact: @dexfmpodcast @hotchemi @gfx </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/165466119458</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/8yuWBMNu66Q/dexfm-ep033-handing-over-oss-project.mp3" length="29764881" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep033-handing-over-oss-project.mp3</feedburner:origEnclosureLink></item><item><title>032: ORM discussion with gfx</title><description>&lt;p&gt;&lt;a href="https://twitter.com/__gfx__" target="_blank"&gt;@gfx&lt;/a&gt;さんをゲストに迎えて、Orma、Room、SQLBrite/Delightなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep032-orm-discussion.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep032-orm-discussion.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://github.com/maskarade/Android-Orma" target="_blank"&gt;maskarade/Android-Orma&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.android.com/topic/libraries/architecture/room.html" target="_blank"&gt;Room Persistence Library - Android Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/square/sqlbrite" target="_blank"&gt;square/sqlbrite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/square/sqldelight" target="_blank"&gt;square/sqldelight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=ksgmm8VolT4" target="_blank"&gt;Droidcon NYC 2016 - Embracing SQL Without Abstraction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fragmentedpodcast.com/episodes/95/" target="_blank"&gt;095 : Room Databases with Florina Muntenescu - FragmentedPodcast &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://qiita.com/pside/items/0c78f1166c09338c88c4" target="_blank"&gt;天下一「AndroidのORM」武道会（2015年版）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/compile-testing" target="_blank"&gt;google/compile-testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DroidKaigi/conference-app-2017" target="_blank"&gt;DroidKaigi/conference-app-2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/__gfx__" target="_blank"&gt;@gfx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/a42cFQE07t4" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/a42cFQE07t4/165220246103</link><guid isPermaLink="false">http://dex.fm/post/165220246103</guid><pubDate>Mon, 11 Sep 2017 19:40:09 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/JRtQTdQAQMs/dexfm-ep032-orm-discussion.mp3" fileSize="30805182" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @gfxさんをゲストに迎えて、Orma、Room、SQLBrite/Delightなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: maskarade/Android-Orma Room Persistence Library - Android Developers square/sqlbrite square/sqldelight Droidcon NYC 2016 - Embracing SQL Without Abstraction</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @gfxさんをゲストに迎えて、Orma、Room、SQLBrite/Delightなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: maskarade/Android-Orma Room Persistence Library - Android Developers square/sqlbrite square/sqldelight Droidcon NYC 2016 - Embracing SQL Without Abstraction 095 : Room Databases with Florina Muntenescu - FragmentedPodcast 天下一「AndroidのORM」武道会（2015年版） google/compile-testing DroidKaigi/conference-app-2017 Contact: @dexfmpodcast @hotchemi @gfx </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/165220246103</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/JRtQTdQAQMs/dexfm-ep032-orm-discussion.mp3" length="30805182" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep032-orm-discussion.mp3</feedburner:origEnclosureLink></item><item><title>031: JUnit5 with Marcel Schnelle</title><description>&lt;p&gt;&lt;a href="https://twitter.com/marcelschnelle" target="_blank"&gt;Marcel Schnelle&lt;/a&gt; joins us to talk about JUnit5 and its features.&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep031-junit5.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;Subscribe a &lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt; or download a mp3 file from &lt;a href="http://dexfm.github.io/mp3/dexfm-ep031-junit5.mp3" rel="enclosure" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://junit.org/junit5/" target="_blank"&gt;JUnit5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions" target="_blank"&gt;3.4. Assertions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering" target="_blank"&gt;3.7. Tagging and Filtering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#extensions" target="_blank"&gt;5. Extension Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-sources" target="_blank"&gt;3.13.2. Sources of Arguments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-display-names" target="_blank"&gt;3.3. Display Names&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-nested" target="_blank"&gt;3.9. Nested Tests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/aurae/android-junit5" target="_blank"&gt;aurae/android-junit5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href="https://blog.stylingandroid.com/category/unit-testing/junit-5/" target="_blank"&gt;JUnit 5: Styling Android&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href="https://soundcloud.com/mannodermaus/dexfmtheme" target="_blank"&gt;dex.fm Theme&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hotchemi" target="_blank"&gt;@hotchemi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/marcelschnelle" target="_blank"&gt;Marcel Schnelle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/fE4I6_XzNdU" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/fE4I6_XzNdU/165028114438</link><guid isPermaLink="false">http://dex.fm/post/165028114438</guid><pubDate>Wed, 06 Sep 2017 09:50:04 +0900</pubDate><category>dexfm</category><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/J93cp9d_tBI/dexfm-ep031-junit5.mp3" fileSize="32646710" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> Marcel Schnelle joins us to talk about JUnit5 and its features. Subscribe a podcast feed or download a mp3 file from here. Show Notes: JUnit5 3.4. Assertions 3.7. Tagging and Filtering 5. Extension Model 3.13.2. Sources of Arguments 3.3. Display Names 3.</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> Marcel Schnelle joins us to talk about JUnit5 and its features. Subscribe a podcast feed or download a mp3 file from here. Show Notes: JUnit5 3.4. Assertions 3.7. Tagging and Filtering 5. Extension Model 3.13.2. Sources of Arguments 3.3. Display Names 3.9. Nested Tests aurae/android-junit5 JUnit 5: Styling Android dex.fm Theme Contact: @dexfmpodcast @hotchemi Marcel Schnelle </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/165028114438</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/J93cp9d_tBI/dexfm-ep031-junit5.mp3" length="32646710" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep031-junit5.mp3</feedburner:origEnclosureLink></item><item><title>030: Colorful Android</title><description>&lt;p&gt;引き続き&lt;a href="https://twitter.com/yanzm" target="_blank"&gt;@yanzm&lt;/a&gt;さんをゲストに迎えて、Constraint Layout、Kotlin、Fragment、DDDなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep030-colorful-android.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep030-colorful-android.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://y-anz-m.blogspot.jp/2017/05/whats-new-in-android-design-tools-new.html" target="_blank"&gt;Y.A.M の 雑記帳: What&amp;rsquo;s New in Android Design Tools (Google I/O &amp;lsquo;17)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://techbooster.booth.pm/items/488337" target="_blank"&gt;Colorful Android 【技術書典2新刊】 - TechBooster - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://techbooster.booth.pm/items/586710" target="_blank"&gt;Edge of Android 8【C92新刊＋特典付き】 - TechBooster - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/flexbox-layout" target="_blank"&gt;google/flexbox-layout: Flexbox for Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.android.com/preview/features/working-with-fonts.html" target="_blank"&gt;Working With Fonts | Android Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.android.com/topic/libraries/support-library/preview/spring-animation.html" target="_blank"&gt;Spring Animation | Android Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.android.com/studio/preview/index.html" target="_blank"&gt;Android Studio プレビューを入手する | Android Studio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://kotlinlang.org/docs/reference/java-interop.html" target="_blank"&gt;Calling Java from Kotlin - Kotlin Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tatsu-zine.com/books/master-of-fragments" target="_blank"&gt;Master of Fragment (Android Professional Developerシリーズ) - 達人出版会&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/mhidaka/status/850728478425075712" target="_blank"&gt;mhidaka@1日目 東せ13a on Twitter: &amp;ldquo;TechBooster 最後に間に合いました。新刊をお知らせします。Master Of Fragmentが全面刷新で登場です。先行リリースのため電子書籍版のみ提供ですが技術書典2でPDF版を頒布いたします。 #技術書典 は秋葉原UDX 11時から。サンプル用意しておまちしてます。 https://t.co/qAOvCW1O4n&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://techbooster.booth.pm/items/392260" target="_blank"&gt;わかる！ドメイン駆動設計 ～もちこちゃんの大冒険～【C91新刊】 - TechBooster - BOOTH（同人誌通販・ダウンロード）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://y-anz-m.blogspot.jp/2017/03/droidkaigi-2017_9.html" target="_blank"&gt;Y.A.M の 雑記帳: ドメイン駆動設計について DroidKaigi 2017 で登壇しました。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://news.realm.io/jp/news/droidkaigi17-how-to-apply-ddd-to-android-application-development" target="_blank"&gt;How to apply DDD to Android Application Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.co.jp/dp/B00GRKD6XU" target="_blank"&gt;エリック・エヴァンスのドメイン駆動設計 | Eric Evans, 和智右桂, 牧野祐子, 今関剛 | 工学 | Kindleストア | Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/yanzm" target="_blank"&gt;@yanzm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/7j8n4rjw3iE" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/7j8n4rjw3iE/163858009523</link><guid isPermaLink="false">http://dex.fm/post/163858009523</guid><pubDate>Sun, 06 Aug 2017 15:52:30 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/J1QVxcJVrAI/dexfm-ep030-colorful-android.mp3" fileSize="38399082" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> 引き続き@yanzmさんをゲストに迎えて、Constraint Layout、Kotlin、Fragment、DDDなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Y.A.M の 雑記帳: What&amp;rsquo;s New in Android Design Tools (Google I/O &amp;lsquo;17) Colorful Android 【技術書典2新刊】 - TechBooster - BOOTH（同人誌通販・ダウンロード）</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> 引き続き@yanzmさんをゲストに迎えて、Constraint Layout、Kotlin、Fragment、DDDなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Y.A.M の 雑記帳: What&amp;rsquo;s New in Android Design Tools (Google I/O &amp;lsquo;17) Colorful Android 【技術書典2新刊】 - TechBooster - BOOTH（同人誌通販・ダウンロード） Edge of Android 8【C92新刊＋特典付き】 - TechBooster - BOOTH（同人誌通販・ダウンロード） google/flexbox-layout: Flexbox for Android Working With Fonts | Android Developers Spring Animation | Android Developers Android Studio プレビューを入手する | Android Studio Calling Java from Kotlin - Kotlin Programming Language Master of Fragment (Android Professional Developerシリーズ) - 達人出版会 mhidaka@1日目 東せ13a on Twitter: &amp;ldquo;TechBooster 最後に間に合いました。新刊をお知らせします。Master Of Fragmentが全面刷新で登場です。先行リリースのため電子書籍版のみ提供ですが技術書典2でPDF版を頒布いたします。 #技術書典 は秋葉原UDX 11時から。サンプル用意しておまちしてます。 https://t.co/qAOvCW1O4n&amp;rdquo; わかる！ドメイン駆動設計 ～もちこちゃんの大冒険～【C91新刊】 - TechBooster - BOOTH（同人誌通販・ダウンロード） Y.A.M の 雑記帳: ドメイン駆動設計について DroidKaigi 2017 で登壇しました。 How to apply DDD to Android Application Development エリック・エヴァンスのドメイン駆動設計 | Eric Evans, 和智右桂, 牧野祐子, 今関剛 | 工学 | Kindleストア | Amazon Contact: @dexfmpodcast @hydrakecat @yanzm </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/163858009523</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/J1QVxcJVrAI/dexfm-ep030-colorful-android.mp3" length="38399082" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep030-colorful-android.mp3</feedburner:origEnclosureLink></item><item><title>029: droid girls Backstage</title><description>&lt;p&gt;&lt;a href="https://twitter.com/yanzm" target="_blank"&gt;@yanzm&lt;/a&gt;さんをゲストに迎えて、uPhycaのお仕事、droid girls、GTUG Girlsなどについて話しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;audio class="mejs-player" controls="" data-mejsoptions='{"alwaysShowControls": true, "alwaysShowHours": true, "enableAutosize": true, "features": ["playpause", "progress", "current", "duration", "volume", "speed"]}' preload="auto" src="http://dexfm.github.io/mp3/dexfm-ep029-droidgirls.mp3"&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.feedburner.com/dexfm" target="_blank"&gt;podcast feed&lt;/a&gt;を購読するか、&lt;a href="http://dexfm.github.io/mp3/dexfm-ep029-droidgirls.mp3" rel="enclosure" target="_blank"&gt;DL&lt;/a&gt;してお楽しみ下さい。&lt;/p&gt;
+
+&lt;h2&gt;Show Notes:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://y-anz-m.blogspot.jp/" target="_blank"&gt;Y.A.M の 雑記帳&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.uphyca.com/" target="_blank"&gt;uPhyca inc.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://droidgirls.connpass.com/" target="_blank"&gt;droid girls - connpass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gdg-tokyo.connpass.com/event/38927/" target="_blank"&gt;DevFest Tokyo 2016 - connpass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hydrakecat.hatenablog.jp/entry/2017/07/02/DroidGirls%E3%81%A7RxJava%E3%81%AE%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3%E3%82%92%E3%81%97%E3%81%A6%E3%81%8D%E3%81%BE%E3%81%97%E3%81%9F" target="_blank"&gt;DroidGirlsでRxJavaのハンズオンをしてきました - hydrakecat’s blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.gtuggirls.jp/" target="_blank"&gt;GTUG Girls&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gtuggirls.connpass.com/event/57110/" target="_blank"&gt;第33回 GTUG Girls Raspberry Pi で Google Assistant - connpass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://android-jp.herokuapp.com/" target="_blank"&gt;Join android-jp on Slack!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Contact:&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://twitter.com/dexfmpodcast" target="_blank"&gt;@dexfmpodcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/hydrakecat" target="_blank"&gt;@hydrakecat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/yanzm" target="_blank"&gt;@yanzm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/dexfm/~4/onb_tT8InfY" height="1" width="1" alt=""/&gt;</description><link>http://feedproxy.google.com/~r/dexfm/~3/onb_tT8InfY/163583674808</link><guid isPermaLink="false">http://dex.fm/post/163583674808</guid><pubDate>Sun, 30 Jul 2017 12:08:52 +0900</pubDate><dc:creator>Shintaro Katafuchi &amp; Hiroshi Kurokawa</dc:creator><media:content url="http://feedproxy.google.com/~r/dexfm/~5/HWakC1tKygY/dexfm-ep029-droidgirls.mp3" fileSize="27929204" type="audio/mp3" /><itunes:explicit>no</itunes:explicit><itunes:subtitle> @yanzmさんをゲストに迎えて、uPhycaのお仕事、droid girls、GTUG Girlsなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Y.A.M の 雑記帳 uPhyca inc. droid girls - connpass DevFest Tokyo 2016 - connpass DroidGirlsでRxJavaのハンズオンをしてきました - hydrakecat’s blog GTUG Girls 第33回 GTU</itunes:subtitle><itunes:author>Shintaro Katafuchi &amp; Hiroshi Kurokawa</itunes:author><itunes:summary> @yanzmさんをゲストに迎えて、uPhycaのお仕事、droid girls、GTUG Girlsなどについて話しました。 podcast feedを購読するか、DLしてお楽しみ下さい。 Show Notes: Y.A.M の 雑記帳 uPhyca inc. droid girls - connpass DevFest Tokyo 2016 - connpass DroidGirlsでRxJavaのハンズオンをしてきました - hydrakecat’s blog GTUG Girls 第33回 GTUG Girls Raspberry Pi で Google Assistant - connpass Join android-jp on Slack! Contact: @dexfmpodcast @hydrakecat @yanzm </itunes:summary><itunes:keywords>Android,tech</itunes:keywords><feedburner:origLink>http://dex.fm/post/163583674808</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/dexfm/~5/HWakC1tKygY/dexfm-ep029-droidgirls.mp3" length="27929204" type="audio/mp3" /><feedburner:origEnclosureLink>http://dexfm.github.io/mp3/dexfm-ep029-droidgirls.mp3</feedburner:origEnclosureLink></item><language>en-us</language><copyright>© 2016 Shintaro Katafuchi &amp; Hiroshi Kurokawa</copyright><media:credit role="author">Shintaro Katafuchi &amp; Hiroshi Kurokawa</media:credit><media:rating>nonadult</media:rating><media:description type="plain">A Japanese podcast about Android.</media:description></channel></rss>

@@ -1,0 +1,1718 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+    xmlns:media="http://search.yahoo.com/mrss/" >
+  <channel>
+    <title>ajitofm</title>
+    <link>https://ajito.fm</link>
+    <description>技術・ガジェット・エンジニアリング・組織などに関するポッドキャストです。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>Copyright: © 2017- ajito.fm in Tokyo, Japan</copyright>
+    <itunes:new-feed-url>https://ajito.fm/index.xml</itunes:new-feed-url>
+    <itunes:subtitle>ajitoでの日常会話</itunes:subtitle>
+    <itunes:summary>技術・ガジェット・エンジニアリング・組織などに関するポッドキャストです。</itunes:summary>
+    <itunes:category text="Technology">
+        <itunes:category text="Tech News" />
+    </itunes:category>
+    <itunes:author>Kenta Suzuki</itunes:author>
+    <itunes:owner>
+        <itunes:name>Kenta Suzuki</itunes:name>
+        <itunes:email>suzuken326@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:block>no</itunes:block>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+    <lastBuildDate>Wed, 18 Apr 2018 09:20:00 +0900</lastBuildDate>
+    <atom:link href="https://ajito.fm/" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ajitofm 23: Effective Presentations</title>
+      <link>https://ajito.fm/23/</link>
+      <enclosure url="https://ajito.fm/files/23.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 18 Apr 2018 09:20:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/23/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt;さんとプレゼンテーション、講演の作り方、ストーリーの組み立て、研修などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/understanding-the-spiral-of-technologies&#34;&gt;技術選定の審美眼 / Understanding the Spiral of Technologies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/18/2018.html&#34;&gt;技術選定の審美眼。時代を超えて生き続ける技術と、破壊的な変化をもたらす技術を見極める（前編）。デブサミ2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/php-conference-2016&#34;&gt;PHP7 で堅牢なコードを書く - 例外処理、表明プログラミング、契約による設計 / PHP Conference 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=54jHDHvcYAo&#34;&gt;（動画）phpconfuk2017: PHP7で堅牢なコードを書く - 例外処理、表明プログラミング、契約による設計 和田 卓人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/482224816X&#34;&gt;スティーブ・ジョブズ 驚異のプレゼン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;フィードバックもお待ちしております！ &lt;a href=&#34;https://ajito.fm/form/&#34;&gt;https://ajito.fm/form/&lt;/a&gt; または Twitter: #ajitofm までどうぞ。&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt;さんとプレゼンテーション、講演の作り方、ストーリーの組み立て、研修などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/understanding-the-spiral-of-technologies&#34;&gt;技術選定の審美眼 / Understanding the Spiral of Technologies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/18/2018.html&#34;&gt;技術選定の審美眼。時代を超えて生き続ける技術と、破壊的な変化をもたらす技術を見極める（前編）。デブサミ2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/php-conference-2016&#34;&gt;PHP7 で堅牢なコードを書く - 例外処理、表明プログラミング、契約による設計 / PHP Conference 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=54jHDHvcYAo&#34;&gt;（動画）phpconfuk2017: PHP7で堅牢なコードを書く - 例外処理、表明プログラミング、契約による設計 和田 卓人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/482224816X&#34;&gt;スティーブ・ジョブズ 驚異のプレゼン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;フィードバックもお待ちしております！ &lt;a href=&#34;https://ajito.fm/form/&#34;&gt;https://ajito.fm/form/&lt;/a&gt; または Twitter: #ajitofm までどうぞ。&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:03:31</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/t_wada</atom:uri>
+          <atom:name>t_wada</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 22: Headers Already Sent</title>
+      <link>https://ajito.fm/22/</link>
+      <enclosure url="https://ajito.fm/files/22.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 21 Mar 2018 09:12:55 +0900</pubDate>
+      
+      <guid>https://ajito.fm/22/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt; さん、大島さんとPHPerKaigi、BEAR.Sunday、コードレビュー、今日の録音環境などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://phperkaigi.jp/2018/&#34;&gt;PHPerKaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/koriym/bear-dot-sunday-2018&#34;&gt;BEAR.Sunday (2018)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://swagger.io/&#34;&gt;Swagger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/internship/treasure/&#34;&gt;Treasure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.slideshare.net/do_aki/php-sapi-zendengine3&#34;&gt;PHP と SAPI と ZendEngine3 と&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/understanding-the-spiral-of-technologies&#34;&gt;技術選定の審美眼 / Understanding the Spiral of Technologies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/8028957/how-to-fix-headers-already-sent-error-in-php&#34;&gt;How to fix Headers already sent error in PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/hidenorigoto/solidfalseyuan-ze-tutedonnahuunishi-ufalse&#34;&gt;SOLIDの原則ってどんなふうに使うの？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/18&#34;&gt;18. PHP を選ぶ / サイバーエージェントの現場（goodoo）| PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zoom.co.jp/products/production-recording/live-sound-recording/livetrak-l-12&#34;&gt;LIVETRAK L‑12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://music.usen.com/channel/j56/&#34;&gt;アリバイチャンネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;HUGO | The world&amp;rsquo;s fastest framework for building websites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;おまけ: この回は @brtriver に録音とマスタリングを依頼しました。フィードバックもお待ちしております！ &lt;a href=&#34;https://ajito.fm/form/&#34;&gt;https://ajito.fm/form/&lt;/a&gt; または Twitter: #ajitofm までどうぞ。&lt;/p&gt;
+
+&lt;p&gt;当日の様子です。 &lt;a href=&#34;https://twitter.com/suzu_v/status/975669232850497536&#34;&gt;写真&lt;/a&gt;&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt; さん、大島さんとPHPerKaigi、BEAR.Sunday、コードレビュー、今日の録音環境などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://phperkaigi.jp/2018/&#34;&gt;PHPerKaigi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/koriym/bear-dot-sunday-2018&#34;&gt;BEAR.Sunday (2018)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://swagger.io/&#34;&gt;Swagger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/internship/treasure/&#34;&gt;Treasure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.slideshare.net/do_aki/php-sapi-zendengine3&#34;&gt;PHP と SAPI と ZendEngine3 と&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/understanding-the-spiral-of-technologies&#34;&gt;技術選定の審美眼 / Understanding the Spiral of Technologies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/8028957/how-to-fix-headers-already-sent-error-in-php&#34;&gt;How to fix Headers already sent error in PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/hidenorigoto/solidfalseyuan-ze-tutedonnahuunishi-ufalse&#34;&gt;SOLIDの原則ってどんなふうに使うの？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/18&#34;&gt;18. PHP を選ぶ / サイバーエージェントの現場（goodoo）| PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zoom.co.jp/products/production-recording/live-sound-recording/livetrak-l-12&#34;&gt;LIVETRAK L‑12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://music.usen.com/channel/j56/&#34;&gt;アリバイチャンネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;HUGO | The world&amp;rsquo;s fastest framework for building websites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;おまけ: この回は @brtriver に録音とマスタリングを依頼しました。フィードバックもお待ちしております！ &lt;a href=&#34;https://ajito.fm/form/&#34;&gt;https://ajito.fm/form/&lt;/a&gt; または Twitter: #ajitofm までどうぞ。&lt;/p&gt;
+
+&lt;p&gt;当日の様子です。 &lt;a href=&#34;https://twitter.com/suzu_v/status/975669232850497536&#34;&gt;写真&lt;/a&gt;&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>00:59:44</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/brtriver</atom:uri>
+          <atom:name>brtriver</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/kazumasa-ohshima</atom:uri>
+          <atom:name>kazumasa-ohshima</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 21: the State of Front-End</title>
+      <link>https://ajito.fm/21/</link>
+      <enclosure url="https://ajito.fm/files/21.mp3" type="audio/mpeg" />
+      <pubDate>Tue, 13 Mar 2018 12:39:25 +0900</pubDate>
+      
+      <guid>https://ajito.fm/21/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/mizchi&#34;&gt;mizchi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/rail44&#34;&gt;雨宮&lt;/a&gt;氏とキーボード、React、Redux、Firebase、WebAssembly、Flutter、Web Componentsなどについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techplay.jp/column/2&#34;&gt;ErgoDox users meet up (2016)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nekoya.github.io/blog/2015/07/03/double-keyboard/&#34;&gt;キーボード二刀流のススメ | Nekoya Press&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.edikun.co.jp/kinesis/&#34;&gt;Kinesis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/Dvorak%E9%85%8D%E5%88%97&#34;&gt;Dvorak配列 - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mizchi/items/4d25bc26def1719d52e6&#34;&gt;なぜ仮想DOMという概念が俺達の魂を震えさせるのか (2014)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redux.js.org/&#34;&gt;Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redux.js.org/recipes/structuring-reducers/refactoring-reducers-example&#34;&gt;Refactoring Reducers Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367&#34;&gt;You Might Not Need Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dailymotion/vast-client-js&#34;&gt;dailymotion/vast-client-js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rails/sprockets&#34;&gt;rails/sprockets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/airbnb/hypernova&#34;&gt;airbnb/hypernova&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/reactjs/react-rails&#34;&gt;reactjs/react-rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mizchi.hatenablog.com/entry/2017/03/18/173230&#34;&gt;今、SPA/ReactNativeにとっての必要な PaaS を考える&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/mizchi/spa-on-firebase-hosting&#34;&gt;Node/SPAエンジニアにとっての富豪的Firebase Hosting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/auth/&#34;&gt;Firebase Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/auth/web/anonymous-auth&#34;&gt;Authenticate with Firebase Anonymously Using JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/firestore/&#34;&gt;Cloud Firestore&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/cognito/&#34;&gt;Amazon Cognito&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html&#34;&gt;ユーザープールのトークンの使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/appsync/&#34;&gt;AWS AppSync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mizchi/items/8036b20d814921625a76&#34;&gt;Firebase Functions 上に GraphQL サーバーを実装する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Facebook_Query_Language&#34;&gt;Facebook Query Language (FQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://grpc.io/&#34;&gt;grpc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://microservices.io/patterns/apigateway.html&#34;&gt;Pattern: API Gateway / Backend for Front-End&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://webassembly.org/&#34;&gt;WebAssembly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://uxplanet.org/optimistic-1000-34d9eefe4c05&#34;&gt;Optimistic UIs in under 1000 words&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/serde-rs/serde&#34;&gt;serde-rs/serde&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://diary.hatenablog.jp/entry/2017/11/27/041044&#34;&gt;RustをEmscriptenなしでwasmにコンパイルしてNode.jsから呼び出す&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flutter.io/widgets-intro/&#34;&gt;A Tour of the Flutter Widget Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://note.mu/mizchi/n/n53d0b34b25ac&#34;&gt;Flutter感想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Fuchsia&#34;&gt;Google Fuchsia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://material.io/guidelines/components/buttons-floating-action-button.html&#34;&gt;Buttons: Floating Action Button&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3.org/TR/html-imports/&#34;&gt;HTML Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/skatejs/skatejs&#34;&gt;skatejs/skatejs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://2ality.com/2016/04/unhandled-rejections.html&#34;&gt;Tracking unhandled rejected Promises&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mizchi.hatenablog.com/entry/2018/03/13/214755&#34;&gt;フロントエンドの負債と向き合う&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/mizchi&#34;&gt;mizchi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/rail44&#34;&gt;雨宮&lt;/a&gt;氏とキーボード、React、Redux、Firebase、WebAssembly、Flutter、Web Componentsなどについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techplay.jp/column/2&#34;&gt;ErgoDox users meet up (2016)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nekoya.github.io/blog/2015/07/03/double-keyboard/&#34;&gt;キーボード二刀流のススメ | Nekoya Press&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.edikun.co.jp/kinesis/&#34;&gt;Kinesis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/Dvorak%E9%85%8D%E5%88%97&#34;&gt;Dvorak配列 - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mizchi/items/4d25bc26def1719d52e6&#34;&gt;なぜ仮想DOMという概念が俺達の魂を震えさせるのか (2014)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redux.js.org/&#34;&gt;Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redux.js.org/recipes/structuring-reducers/refactoring-reducers-example&#34;&gt;Refactoring Reducers Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367&#34;&gt;You Might Not Need Redux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dailymotion/vast-client-js&#34;&gt;dailymotion/vast-client-js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rails/sprockets&#34;&gt;rails/sprockets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/airbnb/hypernova&#34;&gt;airbnb/hypernova&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/reactjs/react-rails&#34;&gt;reactjs/react-rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mizchi.hatenablog.com/entry/2017/03/18/173230&#34;&gt;今、SPA/ReactNativeにとっての必要な PaaS を考える&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/mizchi/spa-on-firebase-hosting&#34;&gt;Node/SPAエンジニアにとっての富豪的Firebase Hosting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/auth/&#34;&gt;Firebase Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/auth/web/anonymous-auth&#34;&gt;Authenticate with Firebase Anonymously Using JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/firestore/&#34;&gt;Cloud Firestore&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/cognito/&#34;&gt;Amazon Cognito&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html&#34;&gt;ユーザープールのトークンの使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/appsync/&#34;&gt;AWS AppSync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mizchi/items/8036b20d814921625a76&#34;&gt;Firebase Functions 上に GraphQL サーバーを実装する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Facebook_Query_Language&#34;&gt;Facebook Query Language (FQL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://grpc.io/&#34;&gt;grpc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://microservices.io/patterns/apigateway.html&#34;&gt;Pattern: API Gateway / Backend for Front-End&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://webassembly.org/&#34;&gt;WebAssembly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://uxplanet.org/optimistic-1000-34d9eefe4c05&#34;&gt;Optimistic UIs in under 1000 words&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/serde-rs/serde&#34;&gt;serde-rs/serde&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://diary.hatenablog.jp/entry/2017/11/27/041044&#34;&gt;RustをEmscriptenなしでwasmにコンパイルしてNode.jsから呼び出す&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flutter.io/widgets-intro/&#34;&gt;A Tour of the Flutter Widget Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://note.mu/mizchi/n/n53d0b34b25ac&#34;&gt;Flutter感想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Fuchsia&#34;&gt;Google Fuchsia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://material.io/guidelines/components/buttons-floating-action-button.html&#34;&gt;Buttons: Floating Action Button&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.w3.org/TR/html-imports/&#34;&gt;HTML Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/skatejs/skatejs&#34;&gt;skatejs/skatejs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://2ality.com/2016/04/unhandled-rejections.html&#34;&gt;Tracking unhandled rejected Promises&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mizchi.hatenablog.com/entry/2018/03/13/214755&#34;&gt;フロントエンドの負債と向き合う&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:08:06</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/mizchi</atom:uri>
+          <atom:name>mizchi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/rail44</atom:uri>
+          <atom:name>rail44</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 20: Refactoring Organizations</title>
+      <link>https://ajito.fm/20/</link>
+      <enclosure url="https://ajito.fm/files/20.mp3" type="audio/mpeg" />
+      <pubDate>Sun, 11 Mar 2018 08:50:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/20/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/hiroki_daichi&#34;&gt;広木&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さんとエンジニアリング組織論への招待について話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/book/2018/978-4-7741-9605-3&#34;&gt;エンジニアリング組織論への招待 ～不確実性に向き合う思考と組織のリファクタリング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rector.co.jp/&#34;&gt;rector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;スケジュール&lt;/li&gt;
+&lt;li&gt;「わからない」こと&lt;/li&gt;
+&lt;li&gt;不確実性&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rework.withgoogle.com/guides/managers-develop-and-support-managers/steps/review-googles-new-manager-training/&#34;&gt;Tool: Review Google’s new manager training&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00EQ25BBQ/&#34;&gt;デッドライン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/hiroki_daichi&#34;&gt;広木&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さんとエンジニアリング組織論への招待について話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/book/2018/978-4-7741-9605-3&#34;&gt;エンジニアリング組織論への招待 ～不確実性に向き合う思考と組織のリファクタリング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rector.co.jp/&#34;&gt;rector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;スケジュール&lt;/li&gt;
+&lt;li&gt;「わからない」こと&lt;/li&gt;
+&lt;li&gt;不確実性&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rework.withgoogle.com/guides/managers-develop-and-support-managers/steps/review-googles-new-manager-training/&#34;&gt;Tool: Review Google’s new manager training&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00EQ25BBQ/&#34;&gt;デッドライン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:09:26</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/hiroki_daichi</atom:uri>
+          <atom:name>hiroki_daichi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/makoga</atom:uri>
+          <atom:name>makoga</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 19: Beyond my Understanding</title>
+      <link>https://ajito.fm/19/</link>
+      <enclosure url="https://ajito.fm/files/19.mp3" type="audio/mpeg" />
+      <pubDate>Mon, 12 Feb 2018 19:30:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/19/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/onk&#34;&gt;onk&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;さいないぷ&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/tamakiii&#34;&gt;tamakiii&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/karahiyo_n&#34;&gt;ゆっけ&lt;/a&gt;さんと技術力評価会などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/culture/growth/ccfb/&#34;&gt;CCFB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kayac.com/vision/dice&#34;&gt;サイコロ給とスマイル給&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://2018.scalamatsuri.org/&#34;&gt;ScalaMatsuri 2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.onk.ninja/2018/02/05/move_to_kyoto&#34;&gt;なんか京都に移住することになった&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/onk&#34;&gt;onk&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;さいないぷ&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/tamakiii&#34;&gt;tamakiii&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/karahiyo_n&#34;&gt;ゆっけ&lt;/a&gt;さんと技術力評価会などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/culture/growth/ccfb/&#34;&gt;CCFB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kayac.com/vision/dice&#34;&gt;サイコロ給とスマイル給&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://2018.scalamatsuri.org/&#34;&gt;ScalaMatsuri 2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.onk.ninja/2018/02/05/move_to_kyoto&#34;&gt;なんか京都に移住することになった&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>00:55:46</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/onk</atom:uri>
+          <atom:name>onk</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/songmu</atom:uri>
+          <atom:name>songmu</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/cynipe</atom:uri>
+          <atom:name>cynipe</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/tamakiii</atom:uri>
+          <atom:name>tamakiii</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/karahiyo_n</atom:uri>
+          <atom:name>karahiyo_n</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 18: Call me John</title>
+      <link>https://ajito.fm/18/</link>
+      <enclosure url="https://ajito.fm/files/18.mp3" type="audio/mpeg" />
+      <pubDate>Sun, 28 Jan 2018 19:30:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/18/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/soudai1025&#34;&gt;そーだい&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com&#34;&gt;ajiyoshi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;さいないぷ&lt;/a&gt;さんとリモートワーク、CRE、技術力評価会、コミュニケーション、敬称などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www3.nhk.or.jp/news/html/20180122/k10011297631000.html&#34;&gt;関東甲信で大雪 都心も積雪２０センチ超 交通影響に警戒&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://developer.hatenastaff.com/entry/2017/08/09/173607&#34;&gt;セールスエンジニア 改め Customer Reliability Engineer (CRE) になりました | Hatena Developer Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloudplatform-jp.googleblog.com/2016/10/google-cre.html&#34;&gt;Google の新しい専門職 : CRE が必要な理由&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/14&#34;&gt;14. データベースにかける（soudai1025） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://japanese.joelonsoftware.com/Articles/Interviewing.html&#34;&gt;ゲリラ的雇用面接のすすめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側 | SELECK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00EQ25BBQ&#34;&gt;デッドライン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/soudai1025&#34;&gt;そーだい&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com&#34;&gt;ajiyoshi&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;さいないぷ&lt;/a&gt;さんとリモートワーク、CRE、技術力評価会、コミュニケーション、敬称などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www3.nhk.or.jp/news/html/20180122/k10011297631000.html&#34;&gt;関東甲信で大雪 都心も積雪２０センチ超 交通影響に警戒&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://developer.hatenastaff.com/entry/2017/08/09/173607&#34;&gt;セールスエンジニア 改め Customer Reliability Engineer (CRE) になりました | Hatena Developer Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloudplatform-jp.googleblog.com/2016/10/google-cre.html&#34;&gt;Google の新しい専門職 : CRE が必要な理由&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/14&#34;&gt;14. データベースにかける（soudai1025） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://japanese.joelonsoftware.com/Articles/Interviewing.html&#34;&gt;ゲリラ的雇用面接のすすめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側 | SELECK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00EQ25BBQ&#34;&gt;デッドライン&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:00:11</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/soudai1025</atom:uri>
+          <atom:name>soudai1025</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/cynipe</atom:uri>
+          <atom:name>cynipe</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 17: What will happen in 2018</title>
+      <link>https://ajito.fm/17/</link>
+      <enclosure url="https://ajito.fm/files/17.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 12 Jan 2018 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/17/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さんと帯広、仮想通貨、リモートワーク、バイアス、2018年などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.countryhomefukei.jp/product/dedepopo/&#34;&gt;でーでーぽっぽ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://daijuen.com/&#34;&gt;だいじゅ園&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B017SMO2ZG&#34;&gt;忘れられた巨人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/4130633686&#34;&gt;自動人形の城(オートマトンの城): 人工知能の意図理解をめぐる物語&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@makoga/books2017-d8b4f280e59e&#34;&gt;2017年に読んだ本 | medium.com/@makoga&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lightning.network/&#34;&gt;Lightning Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pc.watch.impress.co.jp/docs/news/event/1099879.html&#34;&gt;Intel、AMD GPUを1パッケージに統合した新CPUを正式発表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www3.nhk.or.jp/news/html/20180108/k10011281951000.html&#34;&gt;東京23区の新成人 ８人に１人が外国人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.1101.com/hamaguchihideshi/index.html&#34;&gt;濱口秀司さんのアイデアのカケラたち。 - ほぼ日刊イトイ新聞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2018/vol102&#34;&gt;WEB+DB PRESS Vol.102&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さんと帯広、仮想通貨、リモートワーク、バイアス、2018年などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.countryhomefukei.jp/product/dedepopo/&#34;&gt;でーでーぽっぽ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://daijuen.com/&#34;&gt;だいじゅ園&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B017SMO2ZG&#34;&gt;忘れられた巨人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/4130633686&#34;&gt;自動人形の城(オートマトンの城): 人工知能の意図理解をめぐる物語&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@makoga/books2017-d8b4f280e59e&#34;&gt;2017年に読んだ本 | medium.com/@makoga&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lightning.network/&#34;&gt;Lightning Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pc.watch.impress.co.jp/docs/news/event/1099879.html&#34;&gt;Intel、AMD GPUを1パッケージに統合した新CPUを正式発表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www3.nhk.or.jp/news/html/20180108/k10011281951000.html&#34;&gt;東京23区の新成人 ８人に１人が外国人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/1143&#34;&gt;社外の専門家も評価に参加！エンジニアを育てる、VOYAGE「技術力評価会」の裏側&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.1101.com/hamaguchihideshi/index.html&#34;&gt;濱口秀司さんのアイデアのカケラたち。 - ほぼ日刊イトイ新聞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2018/vol102&#34;&gt;WEB+DB PRESS Vol.102&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>00:58:54</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/makoga</atom:uri>
+          <atom:name>makoga</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 16: Machine Learning for Systems</title>
+      <link>https://ajito.fm/16/</link>
+      <enclosure url="https://ajito.fm/files/16.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 20 Dec 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/16/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さんとLearned Index Structures、機械学習とシステム、コンテナ、Go、Makefileなどについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://wyukawa.tumblr.com/post/168675684673/%E3%83%A9%E3%83%BC%E3%82%BD%E3%83%BC%E3%83%A1%E3%83%B3-guest-sgykfjsm-show-notes-ajitofm&#34;&gt;ep35 ラーソーメン : wyukawa&amp;rsquo;s podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.arxiv-vanity.com/papers/1712.01208v1/&#34;&gt;The Case for Learned Index Structures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://learningsys.org/nips17/assets/slides/dean-nips17.pdf&#34;&gt;Machine Learning for Systems and Systems for Machine Learning (pdf) | Jeff Dean, NIPS 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.wave.one/icml2017/&#34;&gt;Real-Time Adaptive Image Compression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://events.withgoogle.com/ml-developer-meetup/&#34;&gt;Machine Learning Developer Meetup Tokyo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/ecs/&#34;&gt;Amazon Elastic Container Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/17/post_265.html&#34;&gt;Dockerコンテナ時代の第一章の終わり、そして第二章の展望など | Publickey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.docker.com/2013/03/opening-docker/&#34;&gt;Opening Docker (2013)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/eng-image/multistage-build/&#34;&gt;Use multi-stage builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/14/google20.html&#34;&gt;すでにGoogleは全部のソフトウェアをコンテナに乗せており、毎週20億個ものコンテナを起動している (2014) | Publickey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/jbeda/containers-at-scale&#34;&gt;Containers At Scale (2014)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html&#34;&gt;AWS Systems Manager Parameter Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/kms/&#34;&gt;AWS Key Management Service (KMS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/aws_history/details/&#34;&gt;AWS 10年の歩み ~沿革~&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2011/03/now-open-aws-region-in-tokyo.html&#34;&gt;【AWS発表】 クラウドが日本に上陸: AWSの東京データセンターが開設 (2011) &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/advent-calendar/2017/go&#34;&gt;Go Advent Calendar 2017 | Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/vmihailenco/msgpack&#34;&gt;github.com/vmihailenco/msgpack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/json-and-go&#34;&gt;JSON and Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/file_get_contents&#34;&gt;PHP: file_get_contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/voyagegroup/make-advent-calendar-2017&#34;&gt;make-advent-calendar-2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sohlich.github.io/post/go_makefile/&#34;&gt;Golang: Don&amp;rsquo;t afraid of makefiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 12月22日(金)19時から&lt;a href=&#34;https://connpass.com/event/73150/&#34;&gt;ajitofm忘年会 at AJITO&lt;/a&gt;を開催予定です！是非お越しください〜。&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さんとLearned Index Structures、機械学習とシステム、コンテナ、Go、Makefileなどについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://wyukawa.tumblr.com/post/168675684673/%E3%83%A9%E3%83%BC%E3%82%BD%E3%83%BC%E3%83%A1%E3%83%B3-guest-sgykfjsm-show-notes-ajitofm&#34;&gt;ep35 ラーソーメン : wyukawa&amp;rsquo;s podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.arxiv-vanity.com/papers/1712.01208v1/&#34;&gt;The Case for Learned Index Structures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://learningsys.org/nips17/assets/slides/dean-nips17.pdf&#34;&gt;Machine Learning for Systems and Systems for Machine Learning (pdf) | Jeff Dean, NIPS 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.wave.one/icml2017/&#34;&gt;Real-Time Adaptive Image Compression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://events.withgoogle.com/ml-developer-meetup/&#34;&gt;Machine Learning Developer Meetup Tokyo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/ecs/&#34;&gt;Amazon Elastic Container Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/17/post_265.html&#34;&gt;Dockerコンテナ時代の第一章の終わり、そして第二章の展望など | Publickey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.docker.com/2013/03/opening-docker/&#34;&gt;Opening Docker (2013)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/eng-image/multistage-build/&#34;&gt;Use multi-stage builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.publickey1.jp/blog/14/google20.html&#34;&gt;すでにGoogleは全部のソフトウェアをコンテナに乗せており、毎週20億個ものコンテナを起動している (2014) | Publickey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/jbeda/containers-at-scale&#34;&gt;Containers At Scale (2014)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html&#34;&gt;AWS Systems Manager Parameter Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/kms/&#34;&gt;AWS Key Management Service (KMS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/aws_history/details/&#34;&gt;AWS 10年の歩み ~沿革~&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2011/03/now-open-aws-region-in-tokyo.html&#34;&gt;【AWS発表】 クラウドが日本に上陸: AWSの東京データセンターが開設 (2011) &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/advent-calendar/2017/go&#34;&gt;Go Advent Calendar 2017 | Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/vmihailenco/msgpack&#34;&gt;github.com/vmihailenco/msgpack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/json-and-go&#34;&gt;JSON and Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/file_get_contents&#34;&gt;PHP: file_get_contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/voyagegroup/make-advent-calendar-2017&#34;&gt;make-advent-calendar-2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sohlich.github.io/post/go_makefile/&#34;&gt;Golang: Don&amp;rsquo;t afraid of makefiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 12月22日(金)19時から&lt;a href=&#34;https://connpass.com/event/73150/&#34;&gt;ajitofm忘年会 at AJITO&lt;/a&gt;を開催予定です！是非お越しください〜。&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:01:29</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 15: featuring #phpgenba</title>
+      <link>https://ajito.fm/15/</link>
+      <enclosure url="https://ajito.fm/files/15.mp3" type="audio/mpeg" />
+      <pubDate>Mon, 11 Dec 2017 10:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/15/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/shin1x1&#34;&gt;shin1x1&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt;さんとPHPの現場、Podcastの編集・録音などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/&#34;&gt;PHPの現場&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/jp/podcast/php%E3%81%AE%E7%8F%BE%E5%A0%B4/id1210077076?mt=2&#34;&gt;iTunes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://subscribeonandroid.com/php-genba.shin1x1.com/rss&#34;&gt;Android&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/wdpress/status/939003890015526913&#34;&gt;WEB+DB Press vol.102&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/12&#34;&gt;12. カンファレンスの現場（tomzoh / cakephper） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/11&#34;&gt;11. VOYAGE GROUP の現場（brtriver / ara_ta3 / _nishigori）| PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 12月22日(金)19時から&lt;a href=&#34;https://connpass.com/event/73150/&#34;&gt;ajitofm忘年会 at AJITO&lt;/a&gt;を開催予定です！是非お越しください〜。&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://twitter.com/shin1x1&#34;&gt;shin1x1&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt;さんとPHPの現場、Podcastの編集・録音などについて話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/&#34;&gt;PHPの現場&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/jp/podcast/php%E3%81%AE%E7%8F%BE%E5%A0%B4/id1210077076?mt=2&#34;&gt;iTunes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://subscribeonandroid.com/php-genba.shin1x1.com/rss&#34;&gt;Android&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/wdpress/status/939003890015526913&#34;&gt;WEB+DB Press vol.102&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/12&#34;&gt;12. カンファレンスの現場（tomzoh / cakephper） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/11&#34;&gt;11. VOYAGE GROUP の現場（brtriver / ara_ta3 / _nishigori）| PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 12月22日(金)19時から&lt;a href=&#34;https://connpass.com/event/73150/&#34;&gt;ajitofm忘年会 at AJITO&lt;/a&gt;を開催予定です！是非お越しください〜。&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>00:56:23</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/shin1x1</atom:uri>
+          <atom:name>shin1x1</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/brtriver</atom:uri>
+          <atom:name>brtriver</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 14: Losing $100 in 5 minutes at Las Vegas</title>
+      <link>https://ajito.fm/14/</link>
+      <enclosure url="https://ajito.fm/files/14.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 01 Dec 2017 19:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/14/</guid>
+      <description>&lt;p&gt;AWS re:Invent 2017について&lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt;、&lt;a href=&#34;https://twitter.com/chocopie116&#34;&gt;つばさ&lt;/a&gt;と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/&#34;&gt;AWS re:Invent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=1IxDLeFQKPk&#34;&gt;AWS re:Invent 2017 Keynote: Andy Jassy - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/eks/&#34;&gt;Amazon EKS - Highly available and scalable Kubernetes service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-fargate/&#34;&gt;Introducing AWS Fargate - Run Containers without Managing Infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/sagemaker/&#34;&gt;Amazon SageMaker | Build, train, and deploy machine learning models at scale&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/suzu_v/status/936074222534668288&#34;&gt;Twitter | MCL345 - NEW LAUNCH! Integrating Amazon SageMaker into your Enterpriseにいる &amp;hellip; &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.allthingsdistributed.com/2017/11/sagemaker.html&#34;&gt;Accelerate Machine Learning with Amazon SageMaker | All Things Distributed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html&#34;&gt;Using Your Own Training Algorithms | Amazon SageMaker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-amazon-ec2-bare-metal-instances-with-direct-access-to-hardware/&#34;&gt;Amazon EC2 Bare Metal Instances with Direct Access to Hardware&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-for-amazon-dynamodb-global-tables-and-on-demand-backup/&#34;&gt;Amazon DynamoDB Update - Global Tables and On-Demand Backup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/deeplens/&#34;&gt;AWS DeepLens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2017/11/30/072301&#34;&gt;DeepLensはAWSの新サービスてんこ盛りデバイスだった&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/deeplens/&#34;&gt;AWS DeepLens - Get Hands-On Experience with Deep Learning With Our New Video Camera&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/reinvent-2017-deeplens-workshop&#34;&gt;GitHub - aws-samples/reinvent-2017-deeplens-workshop: A reference Lambda function that predicts image labels for a image using a MXNet built deep learning model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/greengrass/&#34;&gt;AWS GreenGrass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://greengrass-bootcamp.s3-website.eu-central-1.amazonaws.com/Basic/Greengrass-Bootcamp_Basic.html&#34;&gt;Greengrass Bootcamp - Basic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/about-aws/whats-new/2017/11/introducing-amazon-kinesis-video-streams/&#34;&gt;Introducing Amazon Kinesis Video Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/learn/hackathon/&#34;&gt;The Non-Profit Hackathon | AWS re:Invent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/guardduty/&#34;&gt;Amazon GuardDuty | Intelligent threat detection and continuous monitoring to protect your AWS accounts and workloads.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/aws-lambda-edge-workshops&#34;&gt;AWS Lambda Edge Workshops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/aws-lambda-edge-workshops/tree/master/Workshop1/Lab3_SimpleAPI&#34;&gt;Lab 3: Simple API | Lambda@Edge Workshop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html&#34;&gt;AWS EC2 Virtualization 2017 | Brendan Gregg&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/about-aws/whats-new/2017/11/announcing-amazon-ec2-bare-metal-instances-preview/&#34;&gt;Announcing Amazon EC2 Bare Metal Instances (Preview)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.vmware.com/vmc-aws&#34;&gt;VMware Cloud on AWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/pinpoint/&#34;&gt;Amazon Pinpoint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/alexaforbusiness/&#34;&gt;Alexa for Business | Empower your organization with Alexa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/transcribe/&#34;&gt;Amazon Transcribe | Automatic speech recognition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/introducing-amazon-translate-real-time-text-language-translation/&#34;&gt;Introducing Amazon Translate – Real-time Language Translation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/comprehend/&#34;&gt;Amazon Comprehend | Discover insights and relationships in text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/learn/deep-learning-summit/&#34;&gt;DEEP LEARNING SUMMIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/media-services/&#34;&gt;AWS メディアサービス | 動画ワークフローをクラウド上で構築する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;もうre:Invent 2017のVideoがちらほらあがってきているようです。&lt;a href=&#34;https://www.youtube.com/user/AmazonWebServices/playlists?shelf_id=27&amp;amp;sort=dd&amp;amp;view=50&#34;&gt;YouTube / AWS re:Invent 2017 | Breakout Sessions&lt;/a&gt;&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;AWS re:Invent 2017について&lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt;、&lt;a href=&#34;https://twitter.com/chocopie116&#34;&gt;つばさ&lt;/a&gt;と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/&#34;&gt;AWS re:Invent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=1IxDLeFQKPk&#34;&gt;AWS re:Invent 2017 Keynote: Andy Jassy - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/eks/&#34;&gt;Amazon EKS - Highly available and scalable Kubernetes service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-fargate/&#34;&gt;Introducing AWS Fargate - Run Containers without Managing Infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/sagemaker/&#34;&gt;Amazon SageMaker | Build, train, and deploy machine learning models at scale&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/suzu_v/status/936074222534668288&#34;&gt;Twitter | MCL345 - NEW LAUNCH! Integrating Amazon SageMaker into your Enterpriseにいる &amp;hellip; &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.allthingsdistributed.com/2017/11/sagemaker.html&#34;&gt;Accelerate Machine Learning with Amazon SageMaker | All Things Distributed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html&#34;&gt;Using Your Own Training Algorithms | Amazon SageMaker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-amazon-ec2-bare-metal-instances-with-direct-access-to-hardware/&#34;&gt;Amazon EC2 Bare Metal Instances with Direct Access to Hardware&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-for-amazon-dynamodb-global-tables-and-on-demand-backup/&#34;&gt;Amazon DynamoDB Update - Global Tables and On-Demand Backup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/deeplens/&#34;&gt;AWS DeepLens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2017/11/30/072301&#34;&gt;DeepLensはAWSの新サービスてんこ盛りデバイスだった&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/deeplens/&#34;&gt;AWS DeepLens - Get Hands-On Experience with Deep Learning With Our New Video Camera&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/reinvent-2017-deeplens-workshop&#34;&gt;GitHub - aws-samples/reinvent-2017-deeplens-workshop: A reference Lambda function that predicts image labels for a image using a MXNet built deep learning model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/greengrass/&#34;&gt;AWS GreenGrass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://greengrass-bootcamp.s3-website.eu-central-1.amazonaws.com/Basic/Greengrass-Bootcamp_Basic.html&#34;&gt;Greengrass Bootcamp - Basic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/about-aws/whats-new/2017/11/introducing-amazon-kinesis-video-streams/&#34;&gt;Introducing Amazon Kinesis Video Streams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/learn/hackathon/&#34;&gt;The Non-Profit Hackathon | AWS re:Invent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/guardduty/&#34;&gt;Amazon GuardDuty | Intelligent threat detection and continuous monitoring to protect your AWS accounts and workloads.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/aws-lambda-edge-workshops&#34;&gt;AWS Lambda Edge Workshops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aws-samples/aws-lambda-edge-workshops/tree/master/Workshop1/Lab3_SimpleAPI&#34;&gt;Lab 3: Simple API | Lambda@Edge Workshop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html&#34;&gt;AWS EC2 Virtualization 2017 | Brendan Gregg&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/about-aws/whats-new/2017/11/announcing-amazon-ec2-bare-metal-instances-preview/&#34;&gt;Announcing Amazon EC2 Bare Metal Instances (Preview)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.vmware.com/vmc-aws&#34;&gt;VMware Cloud on AWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/pinpoint/&#34;&gt;Amazon Pinpoint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/alexaforbusiness/&#34;&gt;Alexa for Business | Empower your organization with Alexa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/transcribe/&#34;&gt;Amazon Transcribe | Automatic speech recognition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/introducing-amazon-translate-real-time-text-language-translation/&#34;&gt;Introducing Amazon Translate – Real-time Language Translation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/comprehend/&#34;&gt;Amazon Comprehend | Discover insights and relationships in text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reinvent.awsevents.com/learn/deep-learning-summit/&#34;&gt;DEEP LEARNING SUMMIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/media-services/&#34;&gt;AWS メディアサービス | 動画ワークフローをクラウド上で構築する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;もうre:Invent 2017のVideoがちらほらあがってきているようです。&lt;a href=&#34;https://www.youtube.com/user/AmazonWebServices/playlists?shelf_id=27&amp;amp;sort=dd&amp;amp;view=50&#34;&gt;YouTube / AWS re:Invent 2017 | Breakout Sessions&lt;/a&gt;&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:02:19</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/_nishigori</atom:uri>
+          <atom:name>_nishigori</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/chocopie116</atom:uri>
+          <atom:name>chocopie116</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 13: Test Driven Development</title>
+      <link>https://ajito.fm/13/</link>
+      <enclosure url="https://ajito.fm/files/13.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 10 Nov 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/13/</guid>
+      <description>&lt;p&gt;『テスト駆動開発』について&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/at_grandpa&#34;&gt;つっちー&lt;/a&gt;と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/exec/obidos/ASIN/4274217884&#34;&gt;テスト駆動開発 | Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://estore.ohmsha.co.jp/titles/978427421788P&#34;&gt;テスト駆動開発 | オーム社 eBook Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/t_wada/status/923733864165490688&#34;&gt;Amazon 上の『テスト駆動開発』、入荷予定すら無くなって&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/6/&#34;&gt;ajitofm 6: Worse is Better&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t-wada.hatenablog.jp/entry/tddbook&#34;&gt;新訳版『テスト駆動開発』が出ます - t-wadaのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/suzuken/go-tddbook&#34;&gt;suzuken/go-tddbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/at-grandpa/study-tdd&#34;&gt;at-grandpa/study-tdd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/katzchang/4251773&#34;&gt;gauche unitを書いた&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/stretchr/testify&#34;&gt;stretchr/testify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://connpass.com/event/69821/&#34;&gt;技術書の歩き方勉強会「テスト駆動開発」編&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;『テスト駆動開発』について&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/at_grandpa&#34;&gt;つっちー&lt;/a&gt;と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/exec/obidos/ASIN/4274217884&#34;&gt;テスト駆動開発 | Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://estore.ohmsha.co.jp/titles/978427421788P&#34;&gt;テスト駆動開発 | オーム社 eBook Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/t_wada/status/923733864165490688&#34;&gt;Amazon 上の『テスト駆動開発』、入荷予定すら無くなって&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/6/&#34;&gt;ajitofm 6: Worse is Better&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t-wada.hatenablog.jp/entry/tddbook&#34;&gt;新訳版『テスト駆動開発』が出ます - t-wadaのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/suzuken/go-tddbook&#34;&gt;suzuken/go-tddbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/at-grandpa/study-tdd&#34;&gt;at-grandpa/study-tdd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/katzchang/4251773&#34;&gt;gauche unitを書いた&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/stretchr/testify&#34;&gt;stretchr/testify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://connpass.com/event/69821/&#34;&gt;技術書の歩き方勉強会「テスト駆動開発」編&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:01:49</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/t_wada</atom:uri>
+          <atom:name>t_wada</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/at_grandpa</atom:uri>
+          <atom:name>at_grandpa</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 12: Learning from mistakes</title>
+      <link>https://ajito.fm/12/</link>
+      <enclosure url="https://ajito.fm/files/12.mp3" type="audio/mpeg" />
+      <pubDate>Sat, 04 Nov 2017 10:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/12/</guid>
+      <description>&lt;p&gt;CTOとVP of Engineering、評価、目標、採用、カンファレンスなどについて &lt;a href=&#34;https://twitter.com/bash0c7&#34;&gt;こしば&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/joker1007&#34;&gt;ジョーカー&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://inside.pixiv.blog/bash/196&#34;&gt;より成長の実感を持てる開発組織をつくる ── 小芝敏明がピクシブの開発本部長へ就任&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=i5zBVyWsc_Q&#34;&gt;Let&amp;rsquo;s go to &amp;ldquo;Shibuya Rubyist Lunch&amp;rdquo; at Tokyo, Japan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chatstory.pixiv.net/&#34;&gt;pixiv chatstory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://inside.pixiv.blog/edvakf/1843&#34;&gt;CTOが福岡移住！？ピクシブ福岡オフィスついに始動！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@katzchang/%E6%AF%8E%E6%97%A5%E3%81%8C%E9%87%91%E6%9B%9C%E6%97%A5-5b4966ebcc09&#34;&gt;毎日が金曜日&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/katzchang/status/920913149196247041&#34;&gt;目標設定はしないほうがいい、みたいな話をよくする。。。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jp.techcrunch.com/2016/12/27/techcrunch-tokyo-cto-night-2016/&#34;&gt;多様化するスタートアップ企業の技術チャレンジ、CTO Night登壇10社のピッチをご紹介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/joker1007/status/922778203726286850&#34;&gt;事前に、Bigqueryに全てのデータを突っ込み、Bigqueryで突き合わせて足りないデータを補完して&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/database/amazon-aurora-under-the-hood-fast-ddl/&#34;&gt;Amazon Aurora Under the Hood: Fast DDL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://joker1007.hatenablog.com/entry/2017/10/23/100000&#34;&gt;如何にしてAsakusaから来た面々はISUCON7の予選に敗北したのか&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nikkei.com/article/DGXMZO22644520U7A021C1EE9000/&#34;&gt;みずほのシステム完成、金融界にも安堵&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://comic-days.com/blog/entry/2017/08/22/110000&#34;&gt;圧倒的募集から数か月・・！発表・・！開発会社・・！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kai-you.net/article/45289&#34;&gt;講談社がpixivと新アプリ開発を明かす　紙を前提としない新たなビジネスモデルを&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00FS2X0P2&#34;&gt;アドレナリンジャンキー&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hackers-champloo.org/&#34;&gt;Hackers Champloo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tech.rakuten.co.jp/&#34;&gt;Rakuten Technology Conference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/ja/blog/entry/event/mackerel-day&#34;&gt;史上最大のお祭り Mackerel Dayを開催しました&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@katzchang/%E3%81%AF%E3%81%A6%E3%81%AA%E7%A4%BE%E3%81%AB%E4%BF%AE%E8%A1%8C%E3%81%AB%E8%A1%8C%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E8%A9%B1-8f8fe76d61d7&#34;&gt;はてな社に修行に行ってきた話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/12&#34;&gt;12. カンファレンスの現場（tomzoh / cakephper） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;CTOとVP of Engineering、評価、目標、採用、カンファレンスなどについて &lt;a href=&#34;https://twitter.com/bash0c7&#34;&gt;こしば&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/joker1007&#34;&gt;ジョーカー&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://inside.pixiv.blog/bash/196&#34;&gt;より成長の実感を持てる開発組織をつくる ── 小芝敏明がピクシブの開発本部長へ就任&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=i5zBVyWsc_Q&#34;&gt;Let&amp;rsquo;s go to &amp;ldquo;Shibuya Rubyist Lunch&amp;rdquo; at Tokyo, Japan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chatstory.pixiv.net/&#34;&gt;pixiv chatstory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://inside.pixiv.blog/edvakf/1843&#34;&gt;CTOが福岡移住！？ピクシブ福岡オフィスついに始動！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@katzchang/%E6%AF%8E%E6%97%A5%E3%81%8C%E9%87%91%E6%9B%9C%E6%97%A5-5b4966ebcc09&#34;&gt;毎日が金曜日&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/katzchang/status/920913149196247041&#34;&gt;目標設定はしないほうがいい、みたいな話をよくする。。。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jp.techcrunch.com/2016/12/27/techcrunch-tokyo-cto-night-2016/&#34;&gt;多様化するスタートアップ企業の技術チャレンジ、CTO Night登壇10社のピッチをご紹介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/joker1007/status/922778203726286850&#34;&gt;事前に、Bigqueryに全てのデータを突っ込み、Bigqueryで突き合わせて足りないデータを補完して&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/database/amazon-aurora-under-the-hood-fast-ddl/&#34;&gt;Amazon Aurora Under the Hood: Fast DDL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://joker1007.hatenablog.com/entry/2017/10/23/100000&#34;&gt;如何にしてAsakusaから来た面々はISUCON7の予選に敗北したのか&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nikkei.com/article/DGXMZO22644520U7A021C1EE9000/&#34;&gt;みずほのシステム完成、金融界にも安堵&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://comic-days.com/blog/entry/2017/08/22/110000&#34;&gt;圧倒的募集から数か月・・！発表・・！開発会社・・！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kai-you.net/article/45289&#34;&gt;講談社がpixivと新アプリ開発を明かす　紙を前提としない新たなビジネスモデルを&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B00FS2X0P2&#34;&gt;アドレナリンジャンキー&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hackers-champloo.org/&#34;&gt;Hackers Champloo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tech.rakuten.co.jp/&#34;&gt;Rakuten Technology Conference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/ja/blog/entry/event/mackerel-day&#34;&gt;史上最大のお祭り Mackerel Dayを開催しました&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@katzchang/%E3%81%AF%E3%81%A6%E3%81%AA%E7%A4%BE%E3%81%AB%E4%BF%AE%E8%A1%8C%E3%81%AB%E8%A1%8C%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E8%A9%B1-8f8fe76d61d7&#34;&gt;はてな社に修行に行ってきた話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php-genba.shin1x1.com/12&#34;&gt;12. カンファレンスの現場（tomzoh / cakephper） | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:54:06</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/bash0C7</atom:uri>
+          <atom:name>bash0C7</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/joker1007</atom:uri>
+          <atom:name>joker1007</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/songmu</atom:uri>
+          <atom:name>songmu</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 11: Golden Shuriken</title>
+      <link>https://ajito.fm/11/</link>
+      <enclosure url="https://ajito.fm/files/11.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 27 Oct 2017 08:12:29 +0900</pubDate>
+      
+      <guid>https://ajito.fm/11/</guid>
+      <description>&lt;p&gt;ISUCON、Mackerel、忍者、ボウリング、冪等性などについて &lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/tomita&#34;&gt;トミール&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/ja/&#34;&gt;Mackerel（マカレル）: 新世代のサーバ管理・監視ツール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.instagram.com/p/QLxIU/&#34;&gt;Plaクマ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://e8y.net/&#34;&gt;e8y.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://techplay.jp/event/633461&#34;&gt;Fastly Yamagoya Meetup 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ryysd/microservices-on-fastly&#34;&gt;Microservices on Fastly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://togetter.com/li/1161958&#34;&gt;fastly #yamagoya2017 - Togetter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/50961706.html&#34;&gt;ISUCON7 予選問題の公開と解説&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/50960409.html&#34;&gt;ISUCON7 予選開始の遅延について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.songmu.jp/riji/entry/2017-06-19-isucon6.html&#34;&gt;ISUCON7開催に寄せて。もしくはISUCON6予選問題作問奮闘記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/isucon/isucon6-qualify/tree/master/bench&#34;&gt;isucon6-qualify/bench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/isucon/isucon7-qualify/tree/master/bench&#34;&gt;isucon7-qualify/bench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873113616/&#34;&gt;ハイパフォーマンスWebサイト――高速サイトを実現する14のルール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873116761/&#34;&gt;ハイパフォーマンス ブラウザネットワーキング ――ネットワークアプリケーションのためのパフォーマンス最適化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873118048/&#34;&gt;Real World HTTP ――歴史とコードに学ぶインターネットとウェブ技術&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t-wada.hatenablog.jp/entry/tddbook&#34;&gt;新訳版『テスト駆動開発』が出ます - t-wadaのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.lambdanote.com/products/go&#34;&gt;Goならわかるシステムプログラミング - 技術書出版と販売のラムダノート&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/book/2017/978-4-7741-9213-0&#34;&gt;Mackerel サーバ監視［実践］入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://g.hatena.ne.jp/&#34;&gt;はてなグループ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://topics.cybozu.co.jp/news/2017/10/24-4407.html&#34;&gt;無料グループウェア「サイボウズLive」サービス終了のお知らせ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/Comet&#34;&gt;Comet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/songmu/status/922366301326123008&#34;&gt;「サーバープロビジョニングが冪等になるように頑張ろう」ってトレンドは短かったな。&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/katzchang/purobiziyoninguturuhamakedejue-maridaro&#34;&gt;プロビジョニングツールはMakeで決まりだろ by katzchang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.songmu.jp/riji/entry/2017-10-24-isucon7-qualifier.html&#34;&gt;ISUCON7の予選をはてなメンバーで通過してきました&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;ISUCON、Mackerel、忍者、ボウリング、冪等性などについて &lt;a href=&#34;https://twitter.com/songmu&#34;&gt;songmu&lt;/a&gt;さん、&lt;a href=&#34;https://twitter.com/tomita&#34;&gt;トミール&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mackerel.io/ja/&#34;&gt;Mackerel（マカレル）: 新世代のサーバ管理・監視ツール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.instagram.com/p/QLxIU/&#34;&gt;Plaクマ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://e8y.net/&#34;&gt;e8y.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://techplay.jp/event/633461&#34;&gt;Fastly Yamagoya Meetup 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/ryysd/microservices-on-fastly&#34;&gt;Microservices on Fastly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://togetter.com/li/1161958&#34;&gt;fastly #yamagoya2017 - Togetter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/50961706.html&#34;&gt;ISUCON7 予選問題の公開と解説&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/50960409.html&#34;&gt;ISUCON7 予選開始の遅延について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.songmu.jp/riji/entry/2017-06-19-isucon6.html&#34;&gt;ISUCON7開催に寄せて。もしくはISUCON6予選問題作問奮闘記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/isucon/isucon6-qualify/tree/master/bench&#34;&gt;isucon6-qualify/bench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/isucon/isucon7-qualify/tree/master/bench&#34;&gt;isucon7-qualify/bench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873113616/&#34;&gt;ハイパフォーマンスWebサイト――高速サイトを実現する14のルール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873116761/&#34;&gt;ハイパフォーマンス ブラウザネットワーキング ――ネットワークアプリケーションのためのパフォーマンス最適化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873118048/&#34;&gt;Real World HTTP ――歴史とコードに学ぶインターネットとウェブ技術&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t-wada.hatenablog.jp/entry/tddbook&#34;&gt;新訳版『テスト駆動開発』が出ます - t-wadaのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.lambdanote.com/products/go&#34;&gt;Goならわかるシステムプログラミング - 技術書出版と販売のラムダノート&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gihyo.jp/book/2017/978-4-7741-9213-0&#34;&gt;Mackerel サーバ監視［実践］入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://g.hatena.ne.jp/&#34;&gt;はてなグループ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://topics.cybozu.co.jp/news/2017/10/24-4407.html&#34;&gt;無料グループウェア「サイボウズLive」サービス終了のお知らせ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/Comet&#34;&gt;Comet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/songmu/status/922366301326123008&#34;&gt;「サーバープロビジョニングが冪等になるように頑張ろう」ってトレンドは短かったな。&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/katzchang/purobiziyoninguturuhamakedejue-maridaro&#34;&gt;プロビジョニングツールはMakeで決まりだろ by katzchang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.songmu.jp/riji/entry/2017-10-24-isucon7-qualifier.html&#34;&gt;ISUCON7の予選をはてなメンバーで通過してきました&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:08:05</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/songmu</atom:uri>
+          <atom:name>songmu</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/tomita</atom:uri>
+          <atom:name>tomita</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 10: Long Live PHP!</title>
+      <link>https://ajito.fm/10/</link>
+      <enclosure url="https://ajito.fm/files/10.mp3" type="audio/mpeg" />
+      <pubDate>Tue, 17 Oct 2017 19:24:12 +0900</pubDate>
+      
+      <guid>https://ajito.fm/10/</guid>
+      <description>&lt;p&gt;PHPカンファレンス, PHP4, Microservicesなどについて &lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt; さん、 &lt;a href=&#34;https://twitter.com/nekoya&#34;&gt;nekoya&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://phpcon.php.gr.jp/2017/&#34;&gt;PHPカンファレンス2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlog.voyagegroup.com/entry/phpcon2017&#34;&gt;VOYAGE GROUPの企業ブースと登壇資料まとめ #phpcon2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hiveclick/mojavi&#34;&gt;hiveclick/mojavi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kunit.jp/maple/&#34;&gt;Maple Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://saien.connpass.com/event/69375/&#34;&gt;再演 ~ PHPCon Dockerコマぶち抜きイベント&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/php4.php&#34;&gt;PHP 4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tengunatto.com/g-hoshi.html&#34;&gt;ほし納豆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.phpclasses.org/blog/post/493-php-performance-evolution.html&#34;&gt;PHP Performance Comparison 2017 and 2016 - PHP Benchmark Script to Figure How Each PHP Version Compare in Speed Improvements between PHP 5 vs PHP 7.0 vs 7.1 with OpCache vs PHP 8 or PHP 7.2 with a PHP JIT Features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;php.net/var_dump&#34;&gt;PHP: var_dump&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/language.namespaces.php&#34;&gt;PHP:名前空間&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/book.phar.php&#34;&gt;PHP: Phar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/history.php.php&#34;&gt;PHP: PHPの歴史&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Server_Side_Includes&#34;&gt;Server Side Includes - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11859015/what-is-phtml-and-when-should-i-use-a-phtml-extension-rather-than-php&#34;&gt;What is phtml, and when should I use a .phtml extension rather than .php?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.smarty.net/syntax_comparison&#34;&gt;Template Syntax: Smarty vs PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://arata.hatenadiary.com/entry/2014/04/26/224836&#34;&gt;twigテンプレートエンジンでvue.jsを使うとデリミタがコンフリクトする。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samnewman.io/patterns/architectural/bff/&#34;&gt;Pattern: Backends For Frontends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/suzuken/phpcon2017&#34;&gt;広告配信管理システムを支えるPHP - レガシーシステムからの段階的移行戦略 / phpcon2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/97197/what-is-n1-select-query-issue&#34;&gt;What is N+1 SELECT query issue?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.safaribooksonline.com/library/view/software-architecture-patterns/9781491971437/ch01.html&#34;&gt;Layered Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://buoyant.io/2016/05/17/distributed-tracing-for-polyglot-microservices/&#34;&gt;Distributed Tracing for Polyglot Microservices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://fabien.potencier.org/symfony4-best-practices.html&#34;&gt;Symfony 4: Best Practices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/suzu_v/status/916855775045095424&#34;&gt;#ajitofm ポスター in PHPカンファレンス2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;PHPカンファレンス, PHP4, Microservicesなどについて &lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;brtriver&lt;/a&gt; さん、 &lt;a href=&#34;https://twitter.com/nekoya&#34;&gt;nekoya&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://phpcon.php.gr.jp/2017/&#34;&gt;PHPカンファレンス2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlog.voyagegroup.com/entry/phpcon2017&#34;&gt;VOYAGE GROUPの企業ブースと登壇資料まとめ #phpcon2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hiveclick/mojavi&#34;&gt;hiveclick/mojavi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kunit.jp/maple/&#34;&gt;Maple Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://saien.connpass.com/event/69375/&#34;&gt;再演 ~ PHPCon Dockerコマぶち抜きイベント&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/php4.php&#34;&gt;PHP 4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tengunatto.com/g-hoshi.html&#34;&gt;ほし納豆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.phpclasses.org/blog/post/493-php-performance-evolution.html&#34;&gt;PHP Performance Comparison 2017 and 2016 - PHP Benchmark Script to Figure How Each PHP Version Compare in Speed Improvements between PHP 5 vs PHP 7.0 vs 7.1 with OpCache vs PHP 8 or PHP 7.2 with a PHP JIT Features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;php.net/var_dump&#34;&gt;PHP: var_dump&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/language.namespaces.php&#34;&gt;PHP:名前空間&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/book.phar.php&#34;&gt;PHP: Phar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/ja/history.php.php&#34;&gt;PHP: PHPの歴史&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Server_Side_Includes&#34;&gt;Server Side Includes - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11859015/what-is-phtml-and-when-should-i-use-a-phtml-extension-rather-than-php&#34;&gt;What is phtml, and when should I use a .phtml extension rather than .php?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.smarty.net/syntax_comparison&#34;&gt;Template Syntax: Smarty vs PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://arata.hatenadiary.com/entry/2014/04/26/224836&#34;&gt;twigテンプレートエンジンでvue.jsを使うとデリミタがコンフリクトする。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samnewman.io/patterns/architectural/bff/&#34;&gt;Pattern: Backends For Frontends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/suzuken/phpcon2017&#34;&gt;広告配信管理システムを支えるPHP - レガシーシステムからの段階的移行戦略 / phpcon2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/97197/what-is-n1-select-query-issue&#34;&gt;What is N+1 SELECT query issue?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.safaribooksonline.com/library/view/software-architecture-patterns/9781491971437/ch01.html&#34;&gt;Layered Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://buoyant.io/2016/05/17/distributed-tracing-for-polyglot-microservices/&#34;&gt;Distributed Tracing for Polyglot Microservices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://fabien.potencier.org/symfony4-best-practices.html&#34;&gt;Symfony 4: Best Practices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/suzu_v/status/916855775045095424&#34;&gt;#ajitofm ポスター in PHPカンファレンス2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>01:02:33</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/brtriver</atom:uri>
+          <atom:name>brtriver</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/nekoya</atom:uri>
+          <atom:name>nekoya</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 9: Better than Shift Shift</title>
+      <link>https://ajito.fm/9/</link>
+      <enclosure url="https://ajito.fm/files/9.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 13 Sep 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/9/</guid>
+      <description>&lt;p&gt;IntelliJ, Upsource, 自動化などについて &lt;a href=&#34;https://twitter.com/yusuke&#34;&gt;yusuke&lt;/a&gt; さん、 &lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/&#34;&gt;サムライズム&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://junit.org/junit5/&#34;&gt;JUnit 5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://junit.org/junit4/junit-lambda-contributors.html&#34;&gt;JUnit - JUnit Lambda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://twitter4j.org&#34;&gt;Twitter4J&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/2017/08/22/5186&#34;&gt;スプラトゥーン大会を開催しました #samuratoon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plugins.jetbrains.com/plugin/164-ideavim&#34;&gt;IdeaVim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plugins.jetbrains.com/plugin/7007-liveedit&#34;&gt;LiveEdit :: JetBrains Plugin Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/products/zeroturnaround/jrebel&#34;&gt;JRevel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/upsource/&#34;&gt;Upsource: Code Review, Project Analytics, and Team Collaboration by JetBrains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reviewable.io/&#34;&gt;Reviewable - GitHub Code Reviews Done Right&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.seleniumhq.org/&#34;&gt;Selenium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/2014/07/10/2485&#34;&gt;コロッケ割（キャンペーンは終了しています）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/enterprise/2.10/admin/guides/user-management/using-ldap/&#34;&gt;Using LDAP - GitHub Enterprise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/yusuke/status/906511934962274304&#34;&gt;そういえば日本語テーブル名、日本語カラム名、日本語クラス名、日本語メソッド名を実践している弊社ですが &amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/masanobuimai/&#34;&gt;marsのメモ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Microsoft/language-server-protocol&#34;&gt;github.com/Microsoft/language-server-protocol&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/go/&#34;&gt;Gogland: The Up-and-Coming Go IDE by JetBrains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/JBuilder&#34;&gt;JBuilder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.jetbrains.com/ruby/2017/09/rubymine-at-rubykaigi-2017/&#34;&gt;Meet the RubyMine Team at RubyKaigi 2017! | RubyMine Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/youtrack/&#34;&gt;YouTrack: Issue Tracking and Project Management Tool for Developers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;IntelliJ, Upsource, 自動化などについて &lt;a href=&#34;https://twitter.com/yusuke&#34;&gt;yusuke&lt;/a&gt; さん、 &lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/&#34;&gt;サムライズム&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://junit.org/junit5/&#34;&gt;JUnit 5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://junit.org/junit4/junit-lambda-contributors.html&#34;&gt;JUnit - JUnit Lambda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://twitter4j.org&#34;&gt;Twitter4J&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/2017/08/22/5186&#34;&gt;スプラトゥーン大会を開催しました #samuratoon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plugins.jetbrains.com/plugin/164-ideavim&#34;&gt;IdeaVim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plugins.jetbrains.com/plugin/7007-liveedit&#34;&gt;LiveEdit :: JetBrains Plugin Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/products/zeroturnaround/jrebel&#34;&gt;JRevel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/upsource/&#34;&gt;Upsource: Code Review, Project Analytics, and Team Collaboration by JetBrains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://reviewable.io/&#34;&gt;Reviewable - GitHub Code Reviews Done Right&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.seleniumhq.org/&#34;&gt;Selenium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://samuraism.com/2014/07/10/2485&#34;&gt;コロッケ割（キャンペーンは終了しています）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/enterprise/2.10/admin/guides/user-management/using-ldap/&#34;&gt;Using LDAP - GitHub Enterprise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/yusuke/status/906511934962274304&#34;&gt;そういえば日本語テーブル名、日本語カラム名、日本語クラス名、日本語メソッド名を実践している弊社ですが &amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/masanobuimai/&#34;&gt;marsのメモ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Microsoft/language-server-protocol&#34;&gt;github.com/Microsoft/language-server-protocol&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/go/&#34;&gt;Gogland: The Up-and-Coming Go IDE by JetBrains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/JBuilder&#34;&gt;JBuilder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.jetbrains.com/ruby/2017/09/rubymine-at-rubykaigi-2017/&#34;&gt;Meet the RubyMine Team at RubyKaigi 2017! | RubyMine Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/youtrack/&#34;&gt;YouTrack: Issue Tracking and Project Management Tool for Developers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>1:13:09</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/yusuke</atom:uri>
+          <atom:name>yusuke</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/_nishigori</atom:uri>
+          <atom:name>_nishigori</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    
+    
+    <item>
+      <title>ajitofm 8: No Career Path</title>
+      <link>https://ajito.fm/8/</link>
+      <enclosure url="https://ajito.fm/files/8.mp3" type="audio/mpeg" />
+      <pubDate>Mon, 14 Aug 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/8/</guid>
+      <description>&lt;p&gt;組織文化, 採用, キャリアパスなどについて&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=PqW4VS1Q-6U&#34;&gt;Desktop Apps with JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=iETLvdY-tBY&#34;&gt;The Evolution of PHP at Slack HQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.soumu.metro.tokyo.jp/07ogasawara/nature/wnhogasawara.html&#34;&gt;世界自然遺産小笠原諸島について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://japanese.joelonsoftware.com/Articles/FireAndMotion.html&#34;&gt;射撃しつつ前進&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/4478016380&#34;&gt;ピクサー流 創造するちから &amp;ndash; 小さな可能性から、大きな価値を生み出す方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wired.jp/2013/08/20/googles-20-percent-time-is-as-good-as-dead-because-it-doesnt-need-it-anymore/&#34;&gt;グーグルの「20％ルール」は死んだか&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.vainglorygame.com/&#34;&gt;Vainglory - The MOBA Perfected for Touch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;組織文化, 採用, キャリアパスなどについて&lt;a href=&#34;https://twitter.com/makoga&#34;&gt;makoga&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=PqW4VS1Q-6U&#34;&gt;Desktop Apps with JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=iETLvdY-tBY&#34;&gt;The Evolution of PHP at Slack HQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.soumu.metro.tokyo.jp/07ogasawara/nature/wnhogasawara.html&#34;&gt;世界自然遺産小笠原諸島について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://japanese.joelonsoftware.com/Articles/FireAndMotion.html&#34;&gt;射撃しつつ前進&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/4478016380&#34;&gt;ピクサー流 創造するちから &amp;ndash; 小さな可能性から、大きな価値を生み出す方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wired.jp/2013/08/20/googles-20-percent-time-is-as-good-as-dead-because-it-doesnt-need-it-anymore/&#34;&gt;グーグルの「20％ルール」は死んだか&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.vainglorygame.com/&#34;&gt;Vainglory - The MOBA Perfected for Touch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>0:58:56</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/makoga</atom:uri>
+          <atom:name>makoga</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 7: make test everywhere</title>
+      <link>https://ajito.fm/7/</link>
+      <enclosure url="https://ajito.fm/files/7.mp3" type="audio/mpeg" />
+      <pubDate>Mon, 07 Aug 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ajito.fm/7/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://builderscon.io/tokyo/2017&#34;&gt;builderscon tokyo 2017&lt;/a&gt;にて, 技術力評価会, Makefile, テストチーム, 橙などについて&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/tomita&#34;&gt;トミール&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/beaconsco&#34;&gt;yowcow&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://builderscon.io/tokyo/2017/session/48978f7b-8caf-43a9-9e86-4f36330ae7ef&#34;&gt;Desktop Apps with JavaScript | builderscon 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/phpstorm/&#34;&gt;PhpStorm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/5/&#34;&gt;ajito.fm/5: 外部評価者について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/6/&#34;&gt;ajito.fm/6: モックオブジェクトについて&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/faq#Packages_Testing&#34;&gt;Packages and Testing | Frequently Asked Questions | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tabelog.com/tokyo/A1317/A131705/13009763/&#34;&gt;橙 | 食べログ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;&lt;a href=&#34;https://builderscon.io/tokyo/2017&#34;&gt;builderscon tokyo 2017&lt;/a&gt;にて, 技術力評価会, Makefile, テストチーム, 橙などについて&lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;ajiyoshi&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/tomita&#34;&gt;トミール&lt;/a&gt;さん, &lt;a href=&#34;https://twitter.com/beaconsco&#34;&gt;yowcow&lt;/a&gt;さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://builderscon.io/tokyo/2017/session/48978f7b-8caf-43a9-9e86-4f36330ae7ef&#34;&gt;Desktop Apps with JavaScript | builderscon 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/phpstorm/&#34;&gt;PhpStorm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/5/&#34;&gt;ajito.fm/5: 外部評価者について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ajito.fm/6/&#34;&gt;ajito.fm/6: モックオブジェクトについて&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/faq#Packages_Testing&#34;&gt;Packages and Testing | Frequently Asked Questions | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tabelog.com/tokyo/A1317/A131705/13009763/&#34;&gt;橙 | 食べログ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>0:25:15</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/tomita</atom:uri>
+          <atom:name>tomita</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/beaconsco</atom:uri>
+          <atom:name>beaconsco</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 6: Worse is Better</title>
+      <link>https://ajito.fm/6/</link>
+      <enclosure url="https://ajito.fm/files/6.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 02 Aug 2017 08:04:59 +0900</pubDate>
+      
+      <guid>https://ajito.fm/6/</guid>
+      <description>&lt;p&gt;ペアプログラミング, コードレビュー, 開発者テスト, Go, 子育てなどについて&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codezine.jp/article/detail/10264&#34;&gt;難易度は？ 効果は？ 実践して初めて分かった「ペアプログラミング」の実際&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/5w1h-and-faq-of-pair-programming&#34;&gt;ペアプログラミングの5W1HとFAQ / 5W1H and FAQ of Pair Programming by Takuto Wada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530&#34;&gt;Test Driven Development: By Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/t_wada/status/888236076640239618&#34;&gt;便利な道具が発明されると.. | Takuto Wadaさんのツイート&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.martinfowler.com/articles/mocksArentStubs.html&#34;&gt;Mocks Aren&amp;rsquo;t Stubs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xunitpatterns.com/Test%20Double.html&#34;&gt;Test Double | xUnit Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/pkg/testing/&#34;&gt;Package testing | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/faq#Packages_Testing&#34;&gt;Packages and Testing | Frequently Asked Questions | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jwz.org/doc/worse-is-better.html&#34;&gt;The Rise of Worse is Better&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://talks.golang.org/2015/simplicity-is-complicated.slide#1&#34;&gt;Simplicity is Complicated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://talks.golang.org/2014/c2go.slide#1&#34;&gt;Go, from C to Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kazuhooku.com/2017/01/fastly.html&#34;&gt;Fastly に入社しました&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/write-code-every-day&#34;&gt;Write Code Every Day&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 2017/8/4 12:10-12:40 で &lt;a href=&#34;https://builderscon.io/tokyo/2017&#34;&gt;builderscon 2017&lt;/a&gt; のランチセッションにて出張ajitofmをやります。お楽しみに！&lt;/p&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;ペアプログラミング, コードレビュー, 開発者テスト, Go, 子育てなどについて&lt;a href=&#34;https://twitter.com/t_wada&#34;&gt;t_wada&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codezine.jp/article/detail/10264&#34;&gt;難易度は？ 効果は？ 実践して初めて分かった「ペアプログラミング」の実際&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/5w1h-and-faq-of-pair-programming&#34;&gt;ペアプログラミングの5W1HとFAQ / 5W1H and FAQ of Pair Programming by Takuto Wada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530&#34;&gt;Test Driven Development: By Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/t_wada/status/888236076640239618&#34;&gt;便利な道具が発明されると.. | Takuto Wadaさんのツイート&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.martinfowler.com/articles/mocksArentStubs.html&#34;&gt;Mocks Aren&amp;rsquo;t Stubs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xunitpatterns.com/Test%20Double.html&#34;&gt;Test Double | xUnit Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/pkg/testing/&#34;&gt;Package testing | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/faq#Packages_Testing&#34;&gt;Packages and Testing | Frequently Asked Questions | The Go Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jwz.org/doc/worse-is-better.html&#34;&gt;The Rise of Worse is Better&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://talks.golang.org/2015/simplicity-is-complicated.slide#1&#34;&gt;Simplicity is Complicated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://talks.golang.org/2014/c2go.slide#1&#34;&gt;Go, from C to Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kazuhooku.com/2017/01/fastly.html&#34;&gt;Fastly に入社しました&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/twada/write-code-every-day&#34;&gt;Write Code Every Day&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;お知らせ: 2017/8/4 12:10-12:40 で &lt;a href=&#34;https://builderscon.io/tokyo/2017&#34;&gt;builderscon 2017&lt;/a&gt; のランチセッションにて出張ajitofmをやります。お楽しみに！&lt;/p&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>1:00:21</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/t_wada</atom:uri>
+          <atom:name>t_wada</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 5: You&#39;re launching IntelliJ now</title>
+      <link>https://ajito.fm/5/</link>
+      <enclosure url="https://ajito.fm/files/5.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 28 Jul 2017 09:00:39 +0900</pubDate>
+      
+      <guid>https://ajito.fm/5/</guid>
+      <description>&lt;p&gt;Symfony, 技術力評価会, エンジニアの評価, エディタについて&lt;a href=&#34;https://twitter.com/gomachan46&#34;&gt;ごまちゃん&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/at_grandpa&#34;&gt;つっちー&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/tokoroten&#34;&gt;tokoroten&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gonzalo123.com/2017/07/10/silex-is-dead-or-not/amp/&#34;&gt;Silex is dead (&amp;hellip; or not)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php-genba.shin1x1.com/9&#34;&gt;9. メルカリの現場 | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/gomachan/kowakunaisymfony2-ye-wu-deshi-tuteqi-duita7tufalseliang-itokoro&#34;&gt;こわくないSymfony2 - 業務で使って気づいた7つの良いところ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://symfony.com/doc/current/quick_tour/the_big_picture.html&#34;&gt;Symfony | the big picture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/tokoroten&#34;&gt;ところてんさん&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/834&#34;&gt;VOYAGEのエンジニア評価制度の全貌。「技術力評価会」による、人が育つ組織の作り方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/katzchang/52eb6c8520f2fd4a1025&#34;&gt;エンジニアの評価観点について - @katzchang.gist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://at-grandpa.hatenablog.jp/entry/2017/07/07/084120&#34;&gt;Rubyアソシエーションのイベントで、Crystal言語について発表しました | 圧倒亭グランパのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/idea/searching-everywhere.html&#34;&gt;Searching Everywhere | IntelliJ IDEA 2017.2 Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;Symfony, 技術力評価会, エンジニアの評価, エディタについて&lt;a href=&#34;https://twitter.com/gomachan46&#34;&gt;ごまちゃん&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/at_grandpa&#34;&gt;つっちー&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;katzchang&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/tokoroten&#34;&gt;tokoroten&lt;/a&gt; さんと話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gonzalo123.com/2017/07/10/silex-is-dead-or-not/amp/&#34;&gt;Silex is dead (&amp;hellip; or not)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php-genba.shin1x1.com/9&#34;&gt;9. メルカリの現場 | PHPの現場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/gomachan/kowakunaisymfony2-ye-wu-deshi-tuteqi-duita7tufalseliang-itokoro&#34;&gt;こわくないSymfony2 - 業務で使って気づいた7つの良いところ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://symfony.com/doc/current/quick_tour/the_big_picture.html&#34;&gt;Symfony | the big picture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/tokoroten&#34;&gt;ところてんさん&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://seleck.cc/834&#34;&gt;VOYAGEのエンジニア評価制度の全貌。「技術力評価会」による、人が育つ組織の作り方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/katzchang/52eb6c8520f2fd4a1025&#34;&gt;エンジニアの評価観点について - @katzchang.gist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://at-grandpa.hatenablog.jp/entry/2017/07/07/084120&#34;&gt;Rubyアソシエーションのイベントで、Crystal言語について発表しました | 圧倒亭グランパのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/idea/searching-everywhere.html&#34;&gt;Searching Everywhere | IntelliJ IDEA 2017.2 Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>1:03:13</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/gomachan46</atom:uri>
+          <atom:name>gomachan46</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/at_grandpa</atom:uri>
+          <atom:name>at_grandpa</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/tokoroten</atom:uri>
+          <atom:name>tokoroten</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 4: Controlling Chaos</title>
+      <link>https://ajito.fm/4/</link>
+      <enclosure url="https://ajito.fm/files/4.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 21 Jul 2017 09:30:59 +0900</pubDate>
+      
+      <guid>https://ajito.fm/4/</guid>
+      <description>&lt;p&gt;ETL職人, aws-cli, Terraform, SREと組織, JenkinsおじさんとCIツールなどについて &lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;cynipe&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/bigquery/streaming-data-into-bigquery&#34;&gt;BigQueryへのデータのストリーミング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/athena/&#34;&gt;Amazon Athena&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/&#34;&gt;Analyzing Data in S3 using Amazon Athena | AWS Big Data Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html&#34;&gt;Hadoop Streaming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecs/&#34;&gt;Amazon EC2 Container Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/voyagegroup/tf_aws_ecs&#34;&gt;github.com/voyagegroup/tf_aws_ecs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/cli/latest/reference/ec2/wait/index.html&#34;&gt;wait | AWS CLI Command Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vP56l7qThNs&#34;&gt;AWS re:Invent 2014 | (DEV301) Advanced Usage of the AWS CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmespath.org/&#34;&gt;JMESPath&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;./jq&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.packer.io/docs/templates/index.html&#34;&gt;Packer Template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ansible.com/&#34;&gt;Ansible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://puppet.com/&#34;&gt;Puppet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://landing.google.com/sre/interview/ben-treynor.html&#34;&gt;What is &amp;lsquo;Site Reliability Engineering&amp;rsquo;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spinnaker/igor&#34;&gt;github.com/spinnaker/igor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://concourse.ci/&#34;&gt;Concourse: CI that scales with your project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.jenkins.io/display/JENKINS/Emotional+Jenkins+Plugin&#34;&gt;Emotional Jenkins Plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;ETL職人, aws-cli, Terraform, SREと組織, JenkinsおじさんとCIツールなどについて &lt;a href=&#34;https://twitter.com/_nishigori&#34;&gt;nishigori&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/cynipe&#34;&gt;cynipe&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/bigquery/streaming-data-into-bigquery&#34;&gt;BigQueryへのデータのストリーミング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/athena/&#34;&gt;Amazon Athena&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/&#34;&gt;Analyzing Data in S3 using Amazon Athena | AWS Big Data Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html&#34;&gt;Hadoop Streaming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecs/&#34;&gt;Amazon EC2 Container Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/voyagegroup/tf_aws_ecs&#34;&gt;github.com/voyagegroup/tf_aws_ecs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/cli/latest/reference/ec2/wait/index.html&#34;&gt;wait | AWS CLI Command Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vP56l7qThNs&#34;&gt;AWS re:Invent 2014 | (DEV301) Advanced Usage of the AWS CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jmespath.org/&#34;&gt;JMESPath&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;./jq&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.packer.io/docs/templates/index.html&#34;&gt;Packer Template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ansible.com/&#34;&gt;Ansible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://puppet.com/&#34;&gt;Puppet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://landing.google.com/sre/interview/ben-treynor.html&#34;&gt;What is &amp;lsquo;Site Reliability Engineering&amp;rsquo;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spinnaker/igor&#34;&gt;github.com/spinnaker/igor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://concourse.ci/&#34;&gt;Concourse: CI that scales with your project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.jenkins.io/display/JENKINS/Emotional+Jenkins+Plugin&#34;&gt;Emotional Jenkins Plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>0:57:55</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/_nishigori</atom:uri>
+          <atom:name>_nishigori</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/cynipe</atom:uri>
+          <atom:name>cynipe</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 3: Writing a Poem</title>
+      <link>https://ajito.fm/3/</link>
+      <enclosure url="https://ajito.fm/files/3.mp3" type="audio/mpeg" />
+      <pubDate>Fri, 14 Jul 2017 18:00:58 +0900</pubDate>
+      
+      <guid>https://ajito.fm/3/</guid>
+      <description>&lt;p&gt;リサーチ, 広告, HTTPS, Goなどについて &lt;a href=&#34;https://twitter.com/katz_arc&#34;&gt;あわさん&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/beaconsco&#34;&gt;yowcowさん&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlife.cookpad.com/entry/2014/10/03/110806&#34;&gt;開発環境のデータをできるだけ本番に近づける - クックパッド開発者ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://letsencrypt.org//2017/07/06/wildcard-certificates-coming-jan-2018.html&#34;&gt;Wildcard Certificates Coming January 2018 - Let&amp;rsquo;s Entrypt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://news.mynavi.jp/news/2017/04/14/103/&#34;&gt;Let&amp;rsquo;s EncryptとComodoのTLS証明書、96%の詐欺サイトで使用 | マイナビニュース&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/load-balancing/&#34;&gt;Google Cloud Load Balancing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc5077&#34;&gt;Transport Layer Security (TLS) Session Resumption without Server-Side State&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/pipelines&#34;&gt;Go Concurrency Patterns: Pipelines and cancellation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docstore.mik.ua/orelly/perl/prog3/ch27_02.htm&#34;&gt;Perl Poetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tomill/Acme-Perlingual&#34;&gt;Acme::Perlingual - Convert perl code to php or something.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jp.square-enix.com/ff12_tza/&#34;&gt;FINAL FANTASY XII THE ZODIAC AGE | SQUARE ENIX&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;リサーチ, 広告, HTTPS, Goなどについて &lt;a href=&#34;https://twitter.com/katz_arc&#34;&gt;あわさん&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/beaconsco&#34;&gt;yowcowさん&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlife.cookpad.com/entry/2014/10/03/110806&#34;&gt;開発環境のデータをできるだけ本番に近づける - クックパッド開発者ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://letsencrypt.org//2017/07/06/wildcard-certificates-coming-jan-2018.html&#34;&gt;Wildcard Certificates Coming January 2018 - Let&amp;rsquo;s Entrypt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://news.mynavi.jp/news/2017/04/14/103/&#34;&gt;Let&amp;rsquo;s EncryptとComodoのTLS証明書、96%の詐欺サイトで使用 | マイナビニュース&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/load-balancing/&#34;&gt;Google Cloud Load Balancing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc5077&#34;&gt;Transport Layer Security (TLS) Session Resumption without Server-Side State&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/pipelines&#34;&gt;Go Concurrency Patterns: Pipelines and cancellation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docstore.mik.ua/orelly/perl/prog3/ch27_02.htm&#34;&gt;Perl Poetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tomill/Acme-Perlingual&#34;&gt;Acme::Perlingual - Convert perl code to php or something.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jp.square-enix.com/ff12_tza/&#34;&gt;FINAL FANTASY XII THE ZODIAC AGE | SQUARE ENIX&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>1:04:26</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katz_arc</atom:uri>
+          <atom:name>katz_arc</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/beaconsco</atom:uri>
+          <atom:name>beaconsco</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 2: Lambda on Pipes</title>
+      <link>https://ajito.fm/2/</link>
+      <enclosure url="https://ajito.fm/files/2.mp3" type="audio/mpeg" />
+      <pubDate>Thu, 06 Jul 2017 13:18:10 +0900</pubDate>
+      
+      <guid>https://ajito.fm/2/</guid>
+      <description>&lt;p&gt;AWS Lambda, HTTP, 電子書籍, 評価などについて &lt;a href=&#34;https://twitter.com/makoga&#34;&gt;@makoga&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;@ajiyoshi&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://apex.run&#34;&gt;Apex - Serverless Infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Yahoo!_Pipes&#34;&gt;Yahoo! Pipes - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.iab.com/guidelines/real-time-bidding-rtb-project/&#34;&gt;OpenRTB - iab.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Generalized_second-price_auction&#34;&gt;Generalized second-price auction - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.diablowiki.net/Auction_house&#34;&gt;Auction House - Diablo Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873118048/&#34;&gt;Real World HTTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.com/ideas/were-reinventing-too&#34;&gt;We&amp;rsquo;re reinventing, too - O&amp;rsquo;Reilly Media&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.lambdanote.com/&#34;&gt;技術書出版ラムダノート株式会社&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/news/ctonight-2017-spring-aws-summit-tokyo/&#34;&gt;【開催報告】CTO Night 2017 Spring @ AWS Summit Tokyo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.allthingsdistributed.com/&#34;&gt;All Things Distributed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/voluntas/4f90a626adae624d8c23&#34;&gt;評価制度の無い評価制度&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;AWS Lambda, HTTP, 電子書籍, 評価などについて &lt;a href=&#34;https://twitter.com/makoga&#34;&gt;@makoga&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/ajiyoshi&#34;&gt;@ajiyoshi&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://apex.run&#34;&gt;Apex - Serverless Infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Yahoo!_Pipes&#34;&gt;Yahoo! Pipes - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.iab.com/guidelines/real-time-bidding-rtb-project/&#34;&gt;OpenRTB - iab.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Generalized_second-price_auction&#34;&gt;Generalized second-price auction - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.diablowiki.net/Auction_house&#34;&gt;Auction House - Diablo Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873118048/&#34;&gt;Real World HTTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.com/ideas/were-reinventing-too&#34;&gt;We&amp;rsquo;re reinventing, too - O&amp;rsquo;Reilly Media&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.lambdanote.com/&#34;&gt;技術書出版ラムダノート株式会社&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/jp/blogs/news/ctonight-2017-spring-aws-summit-tokyo/&#34;&gt;【開催報告】CTO Night 2017 Spring @ AWS Summit Tokyo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.allthingsdistributed.com/&#34;&gt;All Things Distributed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/voluntas/4f90a626adae624d8c23&#34;&gt;評価制度の無い評価制度&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>1:05:03</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/makoga</atom:uri>
+          <atom:name>makoga</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/ajiyoshi</atom:uri>
+          <atom:name>ajiyoshi</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+    
+    <item>
+      <title>ajitofm 1: finding Treasure</title>
+      <link>https://ajito.fm/1/</link>
+      <enclosure url="https://ajito.fm/files/1.mp3" type="audio/mpeg" />
+      <pubDate>Wed, 07 Jun 2017 12:00:42 +0900</pubDate>
+      
+      <guid>https://ajito.fm/1/</guid>
+      <description>&lt;p&gt;Treasure, Go, チーム開発などについて &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;@katzchang&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;@brtriver&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/internship/treasure/&#34;&gt;インターンシップ Treasure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tech.voyagegroup.com/archives/802649.html&#34;&gt;Treasure2010の様子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlog.voyagegroup.com/entry/2016/09/14/101839&#34;&gt;Treasure2016を経て&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/pkg/net/http/httptest/&#34;&gt;net/http/httptest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+
+      <itunes:author>Kenta Suzuki</itunes:author>
+      <itunes:summary>&lt;p&gt;Treasure, Go, チーム開発などについて &lt;a href=&#34;https://twitter.com/katzchang&#34;&gt;@katzchang&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/brtriver&#34;&gt;@brtriver&lt;/a&gt; と話しました。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://voyagegroup.com/internship/treasure/&#34;&gt;インターンシップ Treasure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tech.voyagegroup.com/archives/802649.html&#34;&gt;Treasure2010の様子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://techlog.voyagegroup.com/entry/2016/09/14/101839&#34;&gt;Treasure2016を経て&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/pkg/net/http/httptest/&#34;&gt;net/http/httptest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</itunes:summary>
+      <itunes:image href="https://ajito.fm/img/ajito_1400x1400.png" />
+      <itunes:duration>0:54:32</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/katzchang</atom:uri>
+          <atom:name>katzchang</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/brtriver</atom:uri>
+          <atom:name>brtriver</atom:name>
+      </atom:contributor>
+      
+      <atom:contributor>
+          <atom:uri>https://twitter.com/suzu_v</atom:uri>
+          <atom:name>suzu_v</atom:name>
+      </atom:contributor>
+      
+    </item>
+    
+    
+  </channel>
+</rss>

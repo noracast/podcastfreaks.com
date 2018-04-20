@@ -1,0 +1,876 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss" rel="self" type="application/rss+xml"/>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss?before=286826074" rel="next" type="application/rss+xml"/>
+        <title>にゃにゃにゃラジオ</title>
+        <link>http://soundcloud.com/nyanyanya_radio</link>
+        <pubDate>Sun, 15 Oct 2017 13:57:55 +0000</pubDate>
+        <lastBuildDate>Sun, 15 Oct 2017 13:57:55 +0000</lastBuildDate>
+        <ttl>60</ttl>
+        <language>ja</language>
+        <copyright>All rights reserved</copyright>
+        <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+        <description>毎週日曜更新◎ 東京の学生エンジニアゆずちんが日常をお送りするPodcast</description>
+        <itunes:subtitle>毎週日曜更新◎ 東京の学生エンジニアゆずちんが日常をお送りするPodcast</itunes:subtitle>
+        <itunes:owner>
+          <itunes:name>にゃにゃにゃラジオ</itunes:name>
+          <itunes:email>feeds@soundcloud.com</itunes:email>
+        </itunes:owner>
+        <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+        <image>
+          <url>http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg</url>
+          <title>にゃにゃにゃラジオ</title>
+          <link>http://soundcloud.com/nyanyanya_radio</link>
+        </image>
+        <itunes:category text="Technology"/>
+        <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/346996580</guid>
+      <title>034 - 激動のお医者さん界のはなしをきいてみる【ゲスト・みやもとさん】</title>
+      <pubDate>Sun, 15 Oct 2017 13:57:55 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/034-do</link>
+      <itunes:duration>00:43:59</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>久々に更新！医学部にかよう大好きなお友達、みやもとさんとおしゃべり◎
+- 美味しいものは食べ続けると美味しくなくなるか？
+- すこしずつ背伸びしてみよう
+- 胸が大きくみえるための体操を考案した天才みやもと
+- お医者さんはAIの話をたくさんしてるらしい！
+- セカンドキャリアは？？
+さいきん元気があったりなかったりなので是非メールをください！radionyanyanya@gmail.com です◎</itunes:summary>
+      <itunes:subtitle>久々に更新！医学部にかよう大好きなお友達、みやもとさんとおしゃべり◎
+- 美味しいものは食べ続ける…</itunes:subtitle>
+      <description>久々に更新！医学部にかよう大好きなお友達、みやもとさんとおしゃべり◎
+- 美味しいものは食べ続けると美味しくなくなるか？
+- すこしずつ背伸びしてみよう
+- 胸が大きくみえるための体操を考案した天才みやもと
+- お医者さんはAIの話をたくさんしてるらしい！
+- セカンドキャリアは？？
+さいきん元気があったりなかったりなので是非メールをください！radionyanyanya@gmail.com です◎</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/346996580-nyanyanya_radio-034-do.m4a" length="87257541"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/341733971</guid>
+      <title>033 - What is Computational Thinking? meet with a Ph.D student Caitlin 【ゲスト・けいとりん】</title>
+      <pubDate>Sun, 10 Sep 2017 13:34:51 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/033-what-is-computational</link>
+      <itunes:duration>00:46:20</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>All in English for the first time! :) 
+- How Caitlin &amp; Yuzu met 
+- Caitlin's Ph.D student life
+- Software engineering vs CS teaching
+- Mental well-being</itunes:summary>
+      <itunes:subtitle>All in English for the first time! :) 
+- How Cait…</itunes:subtitle>
+      <description>All in English for the first time! :) 
+- How Caitlin &amp; Yuzu met 
+- Caitlin's Ph.D student life
+- Software engineering vs CS teaching
+- Mental well-being</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/341733971-nyanyanya_radio-033-what-is-computational.m4a" length="91951346"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/338684225</guid>
+      <title>032 - Facebookエンジニアと米時事＆Google多様性メモの話【ゲスト・じゃらる】</title>
+      <pubDate>Sun, 20 Aug 2017 13:47:22 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/032-facebook-google</link>
+      <itunes:duration>00:47:17</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Facebookエンジニアの親友じゃらると、時事ネタを斬ってみた
+- トランプvs北朝鮮
+- Charlottesvilleのプロテスト
+- Google の多様性メモ
+- わたしたちに何が出来るか？てか何がわるかったのか？みたいな
+- めざせYouTuber（結局）</itunes:summary>
+      <itunes:subtitle>Facebookエンジニアの親友じゃらると、時事ネタを斬ってみた
+- トランプvs北朝鮮
+- Ch…</itunes:subtitle>
+      <description>Facebookエンジニアの親友じゃらると、時事ネタを斬ってみた
+- トランプvs北朝鮮
+- Charlottesvilleのプロテスト
+- Google の多様性メモ
+- わたしたちに何が出来るか？てか何がわるかったのか？みたいな
+- めざせYouTuber（結局）</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/338684225-nyanyanya_radio-032-facebook-google.m4a" length="88895407"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/336700974</guid>
+      <title>031 -  海にあたまのねじ落としたまま人生とかについて話す回【ゲスト・ねき】</title>
+      <pubDate>Sun, 06 Aug 2017 13:33:38 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/031-surf</link>
+      <itunes:duration>00:39:00</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>某千葉でのサーフィンからの帰り道に喋った回
+- あたまのねじってなんだろう
+- マイルドヤンキーって言うことって遠ざけてない？
+- 人生にもっとノイズを
+- オズの魔法使い
+- 変化をみとめる関係性って愛なんじゃね？</itunes:summary>
+      <itunes:subtitle>某千葉でのサーフィンからの帰り道に喋った回
+- あたまのねじってなんだろう
+- マイルドヤンキーっ…</itunes:subtitle>
+      <description>某千葉でのサーフィンからの帰り道に喋った回
+- あたまのねじってなんだろう
+- マイルドヤンキーって言うことって遠ざけてない？
+- 人生にもっとノイズを
+- オズの魔法使い
+- 変化をみとめる関係性って愛なんじゃね？</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/336700974-nyanyanya_radio-031-surf.m4a" length="77501992"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/333570313</guid>
+      <title>030 - にゃにゃにゃラジオは月曜に甦る【ゲスト・ねき】</title>
+      <pubDate>Mon, 17 Jul 2017 14:51:15 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/030-yomi</link>
+      <itunes:duration>00:29:37</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>にゃにゃにゃラジオは月曜に甦る！おまたせしました！
+- おまたせしましたか？
+- さいきんどうよ？
+- 野ブタをプロデュースの堀北真希状態
+- 野ブタパワー注入？
+- ねき流処世術</itunes:summary>
+      <itunes:subtitle>にゃにゃにゃラジオは月曜に甦る！おまたせしました！
+- おまたせしましたか？
+- さいきんどうよ？…</itunes:subtitle>
+      <description>にゃにゃにゃラジオは月曜に甦る！おまたせしました！
+- おまたせしましたか？
+- さいきんどうよ？
+- 野ブタをプロデュースの堀北真希状態
+- 野ブタパワー注入？
+- ねき流処世術</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/333570313-nyanyanya_radio-030-yomi.m4a" length="56785781"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/325999187</guid>
+      <title>029 - ひさびさになりました汗 安定のメールよみよみ回【ゲスト・ねき】</title>
+      <pubDate>Sun, 04 Jun 2017 15:30:08 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/029-mail</link>
+      <itunes:duration>00:22:57</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>更新が遅くなっちゃいましたごめんなさい！心なしか緊張しているメールよみよみ回
+- わたしたちの恋愛観？！
+- ゆずちんが主体かねきが主体か
+- 中学生のあの娘だ！
+メールは radionyanyanya@gmail.com にお待ちしています:) :)</itunes:summary>
+      <itunes:subtitle>更新が遅くなっちゃいましたごめんなさい！心なしか緊張しているメールよみよみ回
+- わたしたちの恋愛…</itunes:subtitle>
+      <description>更新が遅くなっちゃいましたごめんなさい！心なしか緊張しているメールよみよみ回
+- わたしたちの恋愛観？！
+- ゆずちんが主体かねきが主体か
+- 中学生のあの娘だ！
+メールは radionyanyanya@gmail.com にお待ちしています:) :)</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/325999187-nyanyanya_radio-029-mail.m4a" length="39936571"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/319068452</guid>
+      <title>028 - 祝ねき内定！一緒にメールを読む【ゲスト・ねき】</title>
+      <pubDate>Sun, 23 Apr 2017 10:59:20 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/028a</link>
+      <itunes:duration>00:42:43</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>祝！ねき内定！これで2人ともエンジニア！
+- ねきが就活中IKKO化した話
+- 内定おめでとう！
+- メールよみよみ みなさんメールありがとう
+- 社会人生活どうよ？
+- 足の速い人
+
+メールお待ちしております！radionyanyanya@gmail.com
+Twitterは#にゃにゃにゃラジオ、Podcast, iTunesアプリの感想も大歓迎です◎</itunes:summary>
+      <itunes:subtitle>祝！ねき内定！これで2人ともエンジニア！
+- ねきが就活中IKKO化した話
+- 内定おめでとう！
+…</itunes:subtitle>
+      <description>祝！ねき内定！これで2人ともエンジニア！
+- ねきが就活中IKKO化した話
+- 内定おめでとう！
+- メールよみよみ みなさんメールありがとう
+- 社会人生活どうよ？
+- 足の速い人
+
+メールお待ちしております！radionyanyanya@gmail.com
+Twitterは#にゃにゃにゃラジオ、Podcast, iTunesアプリの感想も大歓迎です◎</description>
+      <enclosure type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/319068452-nyanyanya_radio-028a.mp3" length="61526853"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/317943812</guid>
+      <title>027 - 大阪で話してたら止まらなくなった回【ゲスト・みやもとさん】</title>
+      <pubDate>Sun, 16 Apr 2017 15:20:38 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/027-osaka</link>
+      <itunes:duration>01:22:58</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>027 - 大阪で話してたら止まらなくなった回【ゲスト・みやもとさん】 by ゆずちんさん(@rubberyuzu)</itunes:summary>
+      <itunes:subtitle>027 - 大阪で話してたら止まらなくなった回【ゲスト・みやもとさん】 by ゆずちんさん(@ru…</itunes:subtitle>
+      <description>027 - 大阪で話してたら止まらなくなった回【ゲスト・みやもとさん】 by ゆずちんさん(@rubberyuzu)</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/317943812-nyanyanya_radio-027-osaka.m4a" length="164425995"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/316842450</guid>
+      <title>026 - 大阪よりお届け！歯止めのきかないお笑いマッドネス【ゲスト・みやもとさん】</title>
+      <pubDate>Sun, 09 Apr 2017 14:15:22 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/026-madness</link>
+      <itunes:duration>00:33:01</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>卒業旅行ついに大阪へ…！お笑い・グルメ友達のみやもとさんとよなよな盛り上がる
+- 関西のモーニング文化
+- とまらない学天即奥田さんへの想い
+- 好き避け…！
+- ミキの人気とどまることろを知らず
+- 大阪の漫才師金属バット、感動のあまりため息
+- ミナミの治安の悪さ vs 歌舞伎町の治安の悪さ
+
+感想は メール→ radionyanyanya@gmail.com , Twitter → #にゃにゃにゃラジオ , iTunes / Podcast アプリのレビューからお待ちしております!!</itunes:summary>
+      <itunes:subtitle>卒業旅行ついに大阪へ…！お笑い・グルメ友達のみやもとさんとよなよな盛り上がる
+- 関西のモーニング…</itunes:subtitle>
+      <description>卒業旅行ついに大阪へ…！お笑い・グルメ友達のみやもとさんとよなよな盛り上がる
+- 関西のモーニング文化
+- とまらない学天即奥田さんへの想い
+- 好き避け…！
+- ミキの人気とどまることろを知らず
+- 大阪の漫才師金属バット、感動のあまりため息
+- ミナミの治安の悪さ vs 歌舞伎町の治安の悪さ
+
+感想は メール→ radionyanyanya@gmail.com , Twitter → #にゃにゃにゃラジオ , iTunes / Podcast アプリのレビューからお待ちしております!!</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/316842450-nyanyanya_radio-026-madness.m4a" length="65593566"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/315705503</guid>
+      <title>025 - 京都からお届け！なぜかたかぶる恋心、のようなもの【ゲスト・みやもとさん】</title>
+      <pubDate>Sun, 02 Apr 2017 16:26:07 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/025-k</link>
+      <itunes:duration>00:21:21</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>卒業旅行!狂気じみたトーンで京都からお届け！
+- 和食とフレンチの違いとは！？香りを載せる媒体
+- 和食は人間で言ったら絶対広瀬すず
+- フレンチ料理は人間で言ったら絶対山本美月
+- 山本美月つねに正しい説
+- 学天即奥田さんがかっこよいと急に気づいた我々
+- 学天即奥田さん妄想でもりあがる我々</itunes:summary>
+      <itunes:subtitle>卒業旅行!狂気じみたトーンで京都からお届け！
+- 和食とフレンチの違いとは！？香りを載せる媒体
+-…</itunes:subtitle>
+      <description>卒業旅行!狂気じみたトーンで京都からお届け！
+- 和食とフレンチの違いとは！？香りを載せる媒体
+- 和食は人間で言ったら絶対広瀬すず
+- フレンチ料理は人間で言ったら絶対山本美月
+- 山本美月つねに正しい説
+- 学天即奥田さんがかっこよいと急に気づいた我々
+- 学天即奥田さん妄想でもりあがる我々</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/315705503-nyanyanya_radio-025-k.m4a" length="42458708"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/314546762</guid>
+      <title>024 - 東大卒業！同級生と振り返る大学生活【ゲスト・むろ、ゆいこ】</title>
+      <pubDate>Sun, 26 Mar 2017 15:14:28 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/024-graduation</link>
+      <itunes:duration>00:42:49</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>われわれ東京大学を卒業しました！東大文Ⅰ・Ⅱの同じクラスだった3人で大学生活を振り返る
+- 友達に大事ってもっと言おう
+- 国際交流ブームだった大学一二年の頃
+- 東大生は大学3, 4年で鬱になる？！
+- 東大じつはめっちゃいい学校説
+- コンサバの人議論うまい説
+- 大学院に行くかどうか</itunes:summary>
+      <itunes:subtitle>われわれ東京大学を卒業しました！東大文Ⅰ・Ⅱの同じクラスだった3人で大学生活を振り返る
+- 友達に…</itunes:subtitle>
+      <description>われわれ東京大学を卒業しました！東大文Ⅰ・Ⅱの同じクラスだった3人で大学生活を振り返る
+- 友達に大事ってもっと言おう
+- 国際交流ブームだった大学一二年の頃
+- 東大生は大学3, 4年で鬱になる？！
+- 東大じつはめっちゃいい学校説
+- コンサバの人議論うまい説
+- 大学院に行くかどうか</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/314546762-nyanyanya_radio-024-graduation.m4a" length="85055263"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/313232693</guid>
+      <title>023 - 卒業を前に大学生活を振り返る【ゲスト・ねき】</title>
+      <pubDate>Sun, 19 Mar 2017 13:44:43 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/023-grad</link>
+      <itunes:duration>00:23:39</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>卒業旅行を終えて、終わりゆく学生時代を振り返る in 羽田空港
+- 補足：キューバでねきは身ぐるみ剥がれました by スリ
+- コールのある学生時代・ねき
+- コールのない学生時代・ゆず
+- 大学時代、人間としてどう変わった？
+- 大学時代、友達できた？
+- 多様性に不寛容な人に寛容になれない多様性信者
+- これからもともだち
+
+メール（radionyanyanya@gmail.com）、Twitter（#にゃにゃにゃラジオ）、iTunes/Podcastアプリでのレビューなどで感想・ご意見、お待ちしてます！</itunes:summary>
+      <itunes:subtitle>卒業旅行を終えて、終わりゆく学生時代を振り返る in 羽田空港
+- 補足：キューバでねきは身ぐるみ…</itunes:subtitle>
+      <description>卒業旅行を終えて、終わりゆく学生時代を振り返る in 羽田空港
+- 補足：キューバでねきは身ぐるみ剥がれました by スリ
+- コールのある学生時代・ねき
+- コールのない学生時代・ゆず
+- 大学時代、人間としてどう変わった？
+- 大学時代、友達できた？
+- 多様性に不寛容な人に寛容になれない多様性信者
+- これからもともだち
+
+メール（radionyanyanya@gmail.com）、Twitter（#にゃにゃにゃラジオ）、iTunes/Podcastアプリでのレビューなどで感想・ご意見、お待ちしてます！</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/313232693-nyanyanya_radio-023-grad.m4a" length="47023337"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/311988648</guid>
+      <title>022 - Digital Detoxで狂ってしまったミレニアルズ in キューバ【ゲスト・ねき】</title>
+      <pubDate>Sun, 12 Mar 2017 13:40:10 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/022-digital-detox-in</link>
+      <itunes:duration>00:29:00</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>キューバの強制Digital Detox(=ネット禁)でおかしくなったふたりのミレニアルズ
+- 現代妖怪スマホ首
+- インプットが減ると過去の記憶が蘇る
+- キューバよいとこ一度はおいで
+- クッパドバドバ学園って何？
+- みなさんの「クッパドバドバ学園」みたいなものを送ってください（メールテーマ）
+
+メール→ radionyanyanya@gmail.com
+Twitter→ #にゃにゃにゃラジオ</itunes:summary>
+      <itunes:subtitle>キューバの強制Digital Detox(=ネット禁)でおかしくなったふたりのミレニアルズ
+- 現…</itunes:subtitle>
+      <description>キューバの強制Digital Detox(=ネット禁)でおかしくなったふたりのミレニアルズ
+- 現代妖怪スマホ首
+- インプットが減ると過去の記憶が蘇る
+- キューバよいとこ一度はおいで
+- クッパドバドバ学園って何？
+- みなさんの「クッパドバドバ学園」みたいなものを送ってください（メールテーマ）
+
+メール→ radionyanyanya@gmail.com
+Twitter→ #にゃにゃにゃラジオ</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/311988648-nyanyanya_radio-022-digital-detox-in.m4a" length="56559797"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/310807441</guid>
+      <title>021 - TOEFL得点開示を実況！英語の勉強の成果は……？！【ゲスト・なし】</title>
+      <pubDate>Sun, 05 Mar 2017 12:31:45 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/021-toefl</link>
+      <itunes:duration>00:24:56</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>TOEFL得点開示を実況してみた
+- 遅刻癖の萎えスタート
+- Essay Writing の独特な言い回し
+- スピーキングは隣の人ができてると焦る
+- そして得点開示！点数は…？！
+
+感想お待ちしています！
+メール→ radionyanyanya@gmail.com , Twitter→ #にゃにゃにゃラジオ , PodcastアプリやiTunesからのレビューも大歓迎です(^^)/</itunes:summary>
+      <itunes:subtitle>TOEFL得点開示を実況してみた
+- 遅刻癖の萎えスタート
+- Essay Writing の独特…</itunes:subtitle>
+      <description>TOEFL得点開示を実況してみた
+- 遅刻癖の萎えスタート
+- Essay Writing の独特な言い回し
+- スピーキングは隣の人ができてると焦る
+- そして得点開示！点数は…？！
+
+感想お待ちしています！
+メール→ radionyanyanya@gmail.com , Twitter→ #にゃにゃにゃラジオ , PodcastアプリやiTunesからのレビューも大歓迎です(^^)/</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/310807441-nyanyanya_radio-021-toefl.m4a" length="49676123"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/308499689</guid>
+      <title>020 - あまいもの倶楽部の厳選スイーツランキング【ゲスト・みやもとさん】</title>
+      <pubDate>Sun, 19 Feb 2017 14:07:26 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/020-sweets</link>
+      <itunes:duration>00:41:04</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メール→ radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ iTunes/Podcastアプリのレビューもお待ちしています(^^)
+
+甘いものが好きだ好きだ好きだーーーーっ！回
+- みやもとさん
+- グルメの自覚がめばえた頃
+- 好きな甘い店ランキングを発表
+- 汚い中華屋ほど美味い説
+- 好きなコンビニ食べ物ランキングを発表
+- 女の人のパティシエが少ない理由</itunes:summary>
+      <itunes:subtitle>メール→ radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ …</itunes:subtitle>
+      <description>メール→ radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ iTunes/Podcastアプリのレビューもお待ちしています(^^)
+
+甘いものが好きだ好きだ好きだーーーーっ！回
+- みやもとさん
+- グルメの自覚がめばえた頃
+- 好きな甘い店ランキングを発表
+- 汚い中華屋ほど美味い説
+- 好きなコンビニ食べ物ランキングを発表
+- 女の人のパティシエが少ない理由</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/308499689-nyanyanya_radio-020-sweets.m4a" length="83778342"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/307360089</guid>
+      <title>019 - TOEFLを受けます◎ ゆずちんの崩れエリート時代【ゲスト・なし】</title>
+      <pubDate>Sun, 12 Feb 2017 15:31:21 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/019-toefl</link>
+      <itunes:duration>00:26:24</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メール→radionyanyanya@gmail.com , Twitter → #にゃにゃにゃラジオ , Podcastアプリのレビューもお待ちしてます(^^)
+
+日常をまったり語る回、があってもいいんじゃないか回
+- backspace.fm drikinさんのPodcastアドバイス
+- 卒論発表のdisasterを思い出す
+- TOEFLを受けるぞ！
+- TOEFLを受けるべき理由、受けぬべき理由
+- めざせ110点！？
+- 昔の稚拙英語エッセイ
+- メール読み読み
+- Soliで舌の位置とりたかった…</itunes:summary>
+      <itunes:subtitle>メール→radionyanyanya@gmail.com , Twitter → #にゃにゃにゃラ…</itunes:subtitle>
+      <description>メール→radionyanyanya@gmail.com , Twitter → #にゃにゃにゃラジオ , Podcastアプリのレビューもお待ちしてます(^^)
+
+日常をまったり語る回、があってもいいんじゃないか回
+- backspace.fm drikinさんのPodcastアドバイス
+- 卒論発表のdisasterを思い出す
+- TOEFLを受けるぞ！
+- TOEFLを受けるべき理由、受けぬべき理由
+- めざせ110点！？
+- 昔の稚拙英語エッセイ
+- メール読み読み
+- Soliで舌の位置とりたかった…</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/307360089-nyanyanya_radio-019-toefl.m4a" length="53092934"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/306229331</guid>
+      <title>018 - アスリートはお肉のお弁当！？セカンドキャリアは？【ゲスト・徳南堅太選手】</title>
+      <pubDate>Sun, 05 Feb 2017 14:57:49 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/018-athlete</link>
+      <itunes:duration>00:40:01</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>前回に引き続きオリンピアン徳南選手がゲストです◎
+- 徳南選手がヒーローすぎる話
+- 太田雄貴さんの名言「アスリートはお肉のお弁当」
+- セカンドキャリアについて
+- コーチングや教育分野への転換は？
+- 運動音痴にトップアスリートからアドバイス！
+- 毎日の生活はどんな感じ？
+- ゆずちんのエンジニア業務</itunes:summary>
+      <itunes:subtitle>前回に引き続きオリンピアン徳南選手がゲストです◎
+- 徳南選手がヒーローすぎる話
+- 太田雄貴さん…</itunes:subtitle>
+      <description>前回に引き続きオリンピアン徳南選手がゲストです◎
+- 徳南選手がヒーローすぎる話
+- 太田雄貴さんの名言「アスリートはお肉のお弁当」
+- セカンドキャリアについて
+- コーチングや教育分野への転換は？
+- 運動音痴にトップアスリートからアドバイス！
+- 毎日の生活はどんな感じ？
+- ゆずちんのエンジニア業務</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/306229331-nyanyanya_radio-018-athlete.m4a" length="82280019"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/305090726</guid>
+      <title>017 - フェンシングオリンピック日本代表選手に聞くトップアスリートの世界【ゲスト・徳南堅太選手】</title>
+      <pubDate>Sun, 29 Jan 2017 15:29:59 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/017-olympian</link>
+      <itunes:duration>00:32:59</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>とっても気さくな騎士、徳南堅太選手がゲストにきてくださいました
+- すごい食べてたフェンサーさん達
+- フェンシングの三種目
+- フェンシングのユニフォームってなんで白いの？（怖い話）
+- 競技をはじめたきっかけ
+- ポテンシャルスポーツ◎
+- オリンピックをめざすきもち</itunes:summary>
+      <itunes:subtitle>とっても気さくな騎士、徳南堅太選手がゲストにきてくださいました
+- すごい食べてたフェンサーさん達…</itunes:subtitle>
+      <description>とっても気さくな騎士、徳南堅太選手がゲストにきてくださいました
+- すごい食べてたフェンサーさん達
+- フェンシングの三種目
+- フェンシングのユニフォームってなんで白いの？（怖い話）
+- 競技をはじめたきっかけ
+- ポテンシャルスポーツ◎
+- オリンピックをめざすきもち</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/305090726-nyanyanya_radio-017-olympian.m4a" length="67720893"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/303969779</guid>
+      <title>016 - メディアアート作品づくりの苦しみ【ゲスト・ねきつくすず】</title>
+      <pubDate>Sun, 22 Jan 2017 15:39:17 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/016-md</link>
+      <itunes:duration>00:34:02</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>アートハッカソンの感想つづき◎
+メール→ radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ
+- 暦本先生がメール読み読み回を聞いたらしい
+- 懲りずにメール読み読み
+- つくゆずはアルスで一度会っていた
+- 作品作りの後悔と反省
+- あえてよかった</itunes:summary>
+      <itunes:subtitle>アートハッカソンの感想つづき◎
+メール→ radionyanyanya@gmail.com Twi…</itunes:subtitle>
+      <description>アートハッカソンの感想つづき◎
+メール→ radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ
+- 暦本先生がメール読み読み回を聞いたらしい
+- 懲りずにメール読み読み
+- つくゆずはアルスで一度会っていた
+- 作品作りの後悔と反省
+- あえてよかった</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/303969779-nyanyanya_radio-016-md.m4a" length="68385494"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/302813044</guid>
+      <title>015 - アート×ハッカソンで作品づくり！【ゲスト・ねきつくすず】</title>
+      <pubDate>Sun, 15 Jan 2017 14:55:20 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/015-x</link>
+      <itunes:duration>00:22:17</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メール→ radionyanyanya@hmail.com Twitter→#にゃにゃにゃラジオ レビューでの感想もお待ちしています
+アートハッカソンに参加した時の話
+- つく・すずという素晴らしき人々！
+- ねきの建築魂もゆる
+- 裸にこだわるつく・ゆず
+- 参加のきっかけ◎</itunes:summary>
+      <itunes:subtitle>メール→ radionyanyanya@hmail.com Twitter→#にゃにゃにゃラジオ …</itunes:subtitle>
+      <description>メール→ radionyanyanya@hmail.com Twitter→#にゃにゃにゃラジオ レビューでの感想もお待ちしています
+アートハッカソンに参加した時の話
+- つく・すずという素晴らしき人々！
+- ねきの建築魂もゆる
+- 裸にこだわるつく・ゆず
+- 参加のきっかけ◎</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/302813044-nyanyanya_radio-015-x.m4a" length="45173649"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/301511558</guid>
+      <title>014 - 英語に恋せよ！メール読み読み篇【ゲスト・なし】</title>
+      <pubDate>Sun, 08 Jan 2017 12:52:07 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/014a</link>
+      <itunes:duration>00:33:20</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メール読み読み回！Twitter→#にゃにゃにゃラジオ
+メール→radionyanyanya@gmail.com
+- ネットとお笑い
+- 女装パーティーに行った話
+- 人気者ケパからのメール
+- 英語に恋をしよう
+- エンジニア英語だけで本かけそうなゆずちん</itunes:summary>
+      <itunes:subtitle>メール読み読み回！Twitter→#にゃにゃにゃラジオ
+メール→radionyanyanya@gm…</itunes:subtitle>
+      <description>メール読み読み回！Twitter→#にゃにゃにゃラジオ
+メール→radionyanyanya@gmail.com
+- ネットとお笑い
+- 女装パーティーに行った話
+- 人気者ケパからのメール
+- 英語に恋をしよう
+- エンジニア英語だけで本かけそうなゆずちん</description>
+      <enclosure type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/301511558-nyanyanya_radio-014a.mp3" length="48009426"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/300439488</guid>
+      <title>013 - あけましておめでとう2017抱負回【ゲスト・ねき】</title>
+      <pubDate>Sun, 01 Jan 2017 13:02:46 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/013-2017akeome</link>
+      <itunes:duration>00:42:25</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>あけおめにゃ メール→radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ iTunesレビューお待ちしてます！
+- 怒涛の2016を振り返る
+- 2017の抱負
+- こころのシェルターをつくろう
+- テストステロン過多で負けず嫌いが病気レベル
+- ラジオをつづけるぞ</itunes:summary>
+      <itunes:subtitle>あけおめにゃ メール→radionyanyanya@gmail.com Twitter→#にゃにゃ…</itunes:subtitle>
+      <description>あけおめにゃ メール→radionyanyanya@gmail.com Twitter→#にゃにゃにゃラジオ iTunesレビューお待ちしてます！
+- 怒涛の2016を振り返る
+- 2017の抱負
+- こころのシェルターをつくろう
+- テストステロン過多で負けず嫌いが病気レベル
+- ラジオをつづけるぞ</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/300439488-nyanyanya_radio-013-2017akeome.m4a" length="84320839"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/299543569</guid>
+      <title>012 - Appleインターンを振り返る（おわり篇）【ゲスト・なし】</title>
+      <pubDate>Sun, 25 Dec 2016 14:06:55 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/012-apple</link>
+      <itunes:duration>00:21:55</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メリークリスマスにゃにゃにゃ
+メールを作りました radionyanyanya@gmail.com
+- 金属バットの漫才はエンジニア絶対好き説
+- Appleでひとなつの恋的な展開
+- トラウマになるイーストパルアルト
+- ファレル・ウィリアムズが来た！
+- エンジニアでよかった（しみじみ）</itunes:summary>
+      <itunes:subtitle>メリークリスマスにゃにゃにゃ
+メールを作りました radionyanyanya@gmail.com…</itunes:subtitle>
+      <description>メリークリスマスにゃにゃにゃ
+メールを作りました radionyanyanya@gmail.com
+- 金属バットの漫才はエンジニア絶対好き説
+- Appleでひとなつの恋的な展開
+- トラウマになるイーストパルアルト
+- ファレル・ウィリアムズが来た！
+- エンジニアでよかった（しみじみ）</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/299543569-nyanyanya_radio-012-apple.m4a" length="43522311"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/298471693</guid>
+      <title>011 - Apple本社インターンを振り返る（おしごと篇）【ゲスト：なし】</title>
+      <pubDate>Sun, 18 Dec 2016 14:35:00 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/011-apple</link>
+      <itunes:duration>00:23:11</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>おひとりさま回…のはずが、心霊登場！？
+- AppleのShared Bike Program
+- Appleの社食はおいしい
+- とにかくかっこいいみなさま
+- 毎日トイレにこもって泣く日々
+- （本当はメールのお便りとか読んでみたい）</itunes:summary>
+      <itunes:subtitle>おひとりさま回…のはずが、心霊登場！？
+- AppleのShared Bike Program
+-…</itunes:subtitle>
+      <description>おひとりさま回…のはずが、心霊登場！？
+- AppleのShared Bike Program
+- Appleの社食はおいしい
+- とにかくかっこいいみなさま
+- 毎日トイレにこもって泣く日々
+- （本当はメールのお便りとか読んでみたい）</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/298471693-nyanyanya_radio-011-apple.m4a" length="45358174"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/297381485</guid>
+      <title>010 - M-1雑談 + 遂にAppleインターンオファー【ゲスト：なし】</title>
+      <pubDate>Sun, 11 Dec 2016 14:23:49 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/010-m-1-apple</link>
+      <itunes:duration>00:22:38</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>再びおひとりさま回
+- 前半：M-1の話をしたら止まらなくなる、インターネットでお笑い文化はどう変容するか？ミレニアル世代の感性？
+- 後半：Appleからインターンのオファーをもらった話、オファーパケットが可愛い、そして遂に渡米</itunes:summary>
+      <itunes:subtitle>再びおひとりさま回
+- 前半：M-1の話をしたら止まらなくなる、インターネットでお笑い文化はどう変…</itunes:subtitle>
+      <description>再びおひとりさま回
+- 前半：M-1の話をしたら止まらなくなる、インターネットでお笑い文化はどう変容するか？ミレニアル世代の感性？
+- 後半：Appleからインターンのオファーをもらった話、オファーパケットが可愛い、そして遂に渡米</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/297381485-nyanyanya_radio-010-m-1-apple.m4a" length="45107259"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/296140011</guid>
+      <title>009 - Apple本社のインターンの話（入るまで）【ゲスト：なし】</title>
+      <pubDate>Sun, 04 Dec 2016 13:21:03 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/009-apple</link>
+      <itunes:duration>00:26:31</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>おひとりさまで去年のAppleインターンを思い出す（入るまで編）
+- カリフォルニアで職業訓練校に通った
+- Google STEPインターン
+- Grace Hopper Conference
+- ジョブブース就活◎</itunes:summary>
+      <itunes:subtitle>おひとりさまで去年のAppleインターンを思い出す（入るまで編）
+- カリフォルニアで職業訓練校に…</itunes:subtitle>
+      <description>おひとりさまで去年のAppleインターンを思い出す（入るまで編）
+- カリフォルニアで職業訓練校に通った
+- Google STEPインターン
+- Grace Hopper Conference
+- ジョブブース就活◎</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/296140011-nyanyanya_radio-009-apple.m4a" length="53255916"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/294992059</guid>
+      <title>008 - シリコンバレーはトランプ政権で変わる？・インポスター症候群【ゲスト・じゃらる】</title>
+      <pubDate>Sun, 27 Nov 2016 15:02:09 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/008-jal</link>
+      <itunes:duration>00:26:27</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Facebookで働くじゃらる君とエンジニアトーク
+- ゆずが苦しむインポスター症候群とは…？
+- トランプ政権でシリコンバレーは変わる？
+- Facebookからオファー！働くオフィスの場所
+- 遠藤周作の沈黙を読もう</itunes:summary>
+      <itunes:subtitle>Facebookで働くじゃらる君とエンジニアトーク
+- ゆずが苦しむインポスター症候群とは…？
+-…</itunes:subtitle>
+      <description>Facebookで働くじゃらる君とエンジニアトーク
+- ゆずが苦しむインポスター症候群とは…？
+- トランプ政権でシリコンバレーは変わる？
+- Facebookからオファー！働くオフィスの場所
+- 遠藤周作の沈黙を読もう</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/294992059-nyanyanya_radio-008-jal.m4a" length="53437020"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/293920763</guid>
+      <title>007 - 面接対策の仕方・diversity in tech【ゲスト・じゃらる】</title>
+      <pubDate>Sun, 20 Nov 2016 14:50:51 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/007-diversity-in-tech</link>
+      <itunes:duration>00:23:43</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Facebookで働く親友じゃらる君とえんじにあトーク
+- 技術面接の準備の仕方
+- エンジニア女の子すくない問題
+- 初心者にプログラミングを教えるには？</itunes:summary>
+      <itunes:subtitle>Facebookで働く親友じゃらる君とえんじにあトーク
+- 技術面接の準備の仕方
+- エンジニア女…</itunes:subtitle>
+      <description>Facebookで働く親友じゃらる君とえんじにあトーク
+- 技術面接の準備の仕方
+- エンジニア女の子すくない問題
+- 初心者にプログラミングを教えるには？</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/293920763-nyanyanya_radio-007-diversity-in-tech.m4a" length="47490878"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/292825060</guid>
+      <title>006 - シリコンバレーのエンジニア就活事情【ゲスト・じゃらる】</title>
+      <pubDate>Sun, 13 Nov 2016 14:06:25 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/006-engineers-in-sv</link>
+      <itunes:duration>00:25:30</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>シリコンバレーに住む親友じゃらる君と就活トーク
+- じゃらるとゆずの出会い in Berkeley
+- Feedbackの受け止め方
+- エンジニア就活、会社えらび</itunes:summary>
+      <itunes:subtitle>シリコンバレーに住む親友じゃらる君と就活トーク
+- じゃらるとゆずの出会い in Berkeley…</itunes:subtitle>
+      <description>シリコンバレーに住む親友じゃらる君と就活トーク
+- じゃらるとゆずの出会い in Berkeley
+- Feedbackの受け止め方
+- エンジニア就活、会社えらび</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/292825060-nyanyanya_radio-006-engineers-in-sv.m4a" length="50603810"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/291766853</guid>
+      <title>005 - Digital Nature Groupを卒業した我々の未来【ゲスト：よしみつ・いとうさん】</title>
+      <pubDate>Sun, 06 Nov 2016 15:32:46 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/005-digital-nature-group</link>
+      <itunes:duration>00:35:01</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>落合陽一先生のゼミDigital Nature Groupを去りし我々の未来とは
+- メディアアート文化研究がしたいよしみつ
+- いとうさんの人工知能はやっぱり凄い
+- ゆずは就職、そのこころ
+- めざせ革命エリート</itunes:summary>
+      <itunes:subtitle>落合陽一先生のゼミDigital Nature Groupを去りし我々の未来とは
+- メディアアー…</itunes:subtitle>
+      <description>落合陽一先生のゼミDigital Nature Groupを去りし我々の未来とは
+- メディアアート文化研究がしたいよしみつ
+- いとうさんの人工知能はやっぱり凄い
+- ゆずは就職、そのこころ
+- めざせ革命エリート</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/291766853-nyanyanya_radio-005-digital-nature-group.m4a" length="70923607"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/290660413</guid>
+      <title>004 - Digital Nature Group東京の一年を振り返る【ゲスト：よしみつ・いとうさん】</title>
+      <pubDate>Sun, 30 Oct 2016 14:59:33 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/004-digital-nature-group</link>
+      <itunes:duration>00:29:55</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>落合陽一先生のゼミDigital Nature Group東京の同窓会トーク！
+- 落合ゼミの立ち上げ期が楽しかった話
+- いとうさんは人工知能研究へ
+- よしみつはメディアアート研究へ
+- DNG東京の思い出</itunes:summary>
+      <itunes:subtitle>落合陽一先生のゼミDigital Nature Group東京の同窓会トーク！
+- 落合ゼミの立ち…</itunes:subtitle>
+      <description>落合陽一先生のゼミDigital Nature Group東京の同窓会トーク！
+- 落合ゼミの立ち上げ期が楽しかった話
+- いとうさんは人工知能研究へ
+- よしみつはメディアアート研究へ
+- DNG東京の思い出</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/290660413-nyanyanya_radio-004-digital-nature-group.m4a" length="61314864"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/289557693</guid>
+      <title>003 - UT¥500kまさかの優勝を振り返る【ゲスト：ゆうき】</title>
+      <pubDate>Sun, 23 Oct 2016 09:08:07 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/003-ut-500k</link>
+      <itunes:duration>00:40:04</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>チームメイトのゆうきくんとリモートお話し
+- ゆうきくんとの出会い
+- UT¥500kという大会に出た話
+- ME310というスタンフォードの授業</itunes:summary>
+      <itunes:subtitle>チームメイトのゆうきくんとリモートお話し
+- ゆうきくんとの出会い
+- UT¥500kという大会に…</itunes:subtitle>
+      <description>チームメイトのゆうきくんとリモートお話し
+- ゆうきくんとの出会い
+- UT¥500kという大会に出た話
+- ME310というスタンフォードの授業</description>
+      <enclosure type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/289557693-nyanyanya_radio-003-ut-500k.mp3" length="57710677"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/288301084</guid>
+      <title>002 - おわりし夏をまだ振り返る【ゲスト：ねき】</title>
+      <pubDate>Sun, 16 Oct 2016 12:42:18 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/002_neki</link>
+      <itunes:duration>00:37:31</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>前回の続き
+- 料理初心者たちの挑戦
+- フランス料理はうまい
+- ねきのプラントインターンが凄い
+- ここへきて学位が取りたい
+- LifeIsTech!へ投資した本田が凄い</itunes:summary>
+      <itunes:subtitle>前回の続き
+- 料理初心者たちの挑戦
+- フランス料理はうまい
+- ねきのプラントインターンが凄い…</itunes:subtitle>
+      <description>前回の続き
+- 料理初心者たちの挑戦
+- フランス料理はうまい
+- ねきのプラントインターンが凄い
+- ここへきて学位が取りたい
+- LifeIsTech!へ投資した本田が凄い</description>
+      <enclosure type="audio/x-m4a" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/288301084-nyanyanya_radio-002_neki.m4a" length="74544263"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/286826074</guid>
+      <title>001 - おわりし夏を振り返る【ゲスト：ねき】</title>
+      <pubDate>Sun, 09 Oct 2016 10:57:11 +0000</pubDate>
+      <link>https://soundcloud.com/nyanyanya_radio/001_neki</link>
+      <itunes:duration>00:30:07</itunes:duration>
+      <itunes:author>ゆずちんさん(@rubberyuzu)</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ねき(親友)を招いて夏トーク
+- コンピュータサイエンス女学生のための「アニタボルグ奨学金」のイベントでインド旅行
+- 世界最大のメディアアート祭・アルスエレクトロニカで作品展示！オーストリアへ
+- スリランカ旅行・フランス旅行の感想</itunes:summary>
+      <itunes:subtitle>ねき(親友)を招いて夏トーク
+- コンピュータサイエンス女学生のための「アニタボルグ奨学金」のイベ…</itunes:subtitle>
+      <description>ねき(親友)を招いて夏トーク
+- コンピュータサイエンス女学生のための「アニタボルグ奨学金」のイベントでインド旅行
+- 世界最大のメディアアート祭・アルスエレクトロニカで作品展示！オーストリアへ
+- スリランカ旅行・フランス旅行の感想</description>
+      <enclosure type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/286826074-nyanyanya_radio-001_neki.mp3" length="43372587"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000270422958-thzgiz-original.jpg"/>
+    </item>
+      </channel>
+    </rss>

@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted () {
-    this.loadRSS(`https://rssproxy.karappo.net/?url=${this.feed}`)
+    this.loadRSS(`/rss/${this.feed}.rss`)
     .then(res => {
 
       this.title = res.title

@@ -1,0 +1,1376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://www.rssboard.org/media-rss" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:feedpress="https://feed.press/xmlns" version="2.0">
+  <channel>
+    <feedpress:locale>en</feedpress:locale>
+    <atom:link rel="self" href="http://feedpress.me/automagic"/>
+    <title>Automagic Podcast</title>
+    <itunes:author>Yasuhisa Hasegawa</itunes:author>
+    <link>http://automagic.fm/</link>
+    <description>Webやアプリのデザインの仕事に携わる長谷川恭久が、今活躍していらっしゃるプロの方を招いていろいろな話をしています。</description>
+    <itunes:subtitle>Webから見るデザインの世界</itunes:subtitle>
+    <itunes:summary>Webやアプリのデザインの仕事に携わる長谷川恭久が、今活躍していらっしゃるプロの方を招いていろいろな話をしています。</itunes:summary>
+    <language>ja</language>
+    <itunes:owner>
+      <itunes:name>Yasuhisa Hasegawa</itunes:name>
+      <itunes:email>automagic.podcast@gmail.com</itunes:email>
+    </itunes:owner>
+    <image>
+      <url>http://yhassy.heteml.jp/albumart-v2.jpg</url>
+      <title>Automagic Podcast</title>
+      <link>http://automagic.fm/</link>
+    </image>
+    <itunes:link rel="image" type="video/jpeg" href="http://yhassy.heteml.jp/albumart-v2.jpg">Automagic Podcast</itunes:link>
+    <itunes:category text="Arts">
+      <itunes:category text="Design"/>
+    </itunes:category>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News"/>
+      <itunes:category text="Podcasting"/>
+    </itunes:category>
+    <itunes:category text="Society &amp; Culture">
+      <itunes:category text="Personal Journals"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:new-feed-url>http://feedpress.me/automagic</itunes:new-feed-url>
+    <lastBuildDate>Tue, 17 Apr 2018 08:37:04 +0900</lastBuildDate>
+    <item>
+      <title>#213 ナユさん（株式会社トゥーアール）</title>
+      <guid isPermaLink="false">43922679-73d0-4f23-8433-f458ce03f25a</guid>
+      <link>http://automagic.fm/post/173010608635/nayu</link>
+      <description><![CDATA[
+<p>株式会社トゥーアールでフロントエンドエンジニアをしているナユさん<a href="https://twitter.com/nayucolony">@nayucolony</a>がゲスト。フロントエンドエンジニアから見えるデザインの景色や、広がり続ける職域について話し合いました。ひとりではモノ作りが完結しないからこそ、作るという行為とどう向き合えば良いのか考えさせられる回になりました。</p> <ul><li><a href="https://www.to-r.net/">株式会社トゥーアール（to-R）</a> </li><li><a href="https://nayucolony.net/">nayucolony.net</a> </li><li>コーディングが難しいデザイン </li><li>実装という工程がないとデザインが完成しない </li><li>自分の担当範囲以外のことを知る責任 </li><li>職務を全うすることが『ものづくり』ではない </li><li>デザイナーはみんな上流工程へ進んで万能にならないといけないの？ </li><li>デザイナーだけがデザインに携わる世界ではなくなってきている </li><li>道案内ができる制作者 </li><li>XD がディレクターツールになることの懸念 </li><li>職能以外に目を向ける </li><li><a href="https://twitcasting.tv/nayucolony">ますこなゆ</a> </li><li><a href="https://amzn.to/2J3fFKH">Webデザイナーの仕事を楽にする! gulpではじめるWeb制作ワークフロー入門 </a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic213.mp3" length="68050517" type="audio/mpeg"/>
+      <itunes:duration>01:20:48</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 17 Apr 2018 08:37:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#212 角田綾佳さん （スピカグラフ）</title>
+      <guid isPermaLink="false">f0b1d2a0-a511-42db-a480-eac0d7b636bf</guid>
+      <link>http://automagic.fm/post/172534593660/spicagraph</link>
+      <description><![CDATA[
+<p>大阪在住のデザイナー角田綾佳さん <a href="https://twitter.com/spicagraph">@spicagraph</a>と、作るだけではないデザイナーの働き方について意見交換しました。デザインの仕事をしながら、なぜコンテンツ配信を続けるのか。様々な情報が行き交う web で、どのように「自分がなりたいデザイナーの姿」を探し出すのか。それぞれ違う視点からデザインの仕事の『先』を話しました。</p> <ul><li><a href="http://automagic.fm/post/129103691400/spicagraph">前回のポッドキャスト</a> </li><li><a href="https://spicagraph.com/">spicagraph｜スピカグラフ</a> </li><li><a href="https://in.spicagraph.com/">デザイナーのイラストノート</a> </li><li><a href="https://kiteretz.com/">KITERETZ - 株式会社キテレツ</a> </li><li>売るためだと感性だけでは足りない </li><li>コンテンツ配信としてのソーシャルメディア </li><li>ブログが合わないコンテンツもある </li><li>読者との距離を縮めるための配信 </li><li>思いがけない接点が作れる面白さと難しさ </li><li>デザイナー斯くあるべし論のキツさ </li><li><a href="https://twitter.com/yhassy/status/970678513731710977">Facebookのアカウント利用の解除画面。最後に友達の顔を大きく出して「寂しがっている」の一言。</a> </li><li>デザイナーはビジネスにドップリ浸かるべきではない </li><li>工程のボトルネックにならないデザインレビュー </li><li>デザイナーの職域は広がるのか？ </li><li>作り手視点の過剰な作り込み </li><li><a href="https://www.wwdjapan.com/572763">セブン-イレブンが制服一新　佐藤可士和が監修</a> </li><li>デザイナーであり、優れたセールスマンであること </li><li>何作ろうか、から考え始めない </li><li>デザイナーは個を出してアピールする必要ある？ </li><li>なりたいデザイナーの姿を思い浮かべる </li><li>ブログを始めたキッカケ </li><li><a href="http://mtddc2018.mt-ezo.net/">MTDDC MEETUP HOKKAIDO 2018</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic212.mp3" length="72114820" type="audio/mpeg"/>
+      <itunes:duration>01:25:38</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 3 Apr 2018 08:22:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#211 たじま ちはるさん（HUMORE）</title>
+      <guid isPermaLink="false">794c5899-fa78-4a20-bac2-def0fc948807</guid>
+      <link>http://automagic.fm/post/172036145750/humore</link>
+      <description><![CDATA[
+<p>デザイナー たじま ちはるさん（<a href="https://twitter.com/DesignHumore">@DesignHumore</a>）とデザイナーにも必要なマーケティング思考について話し合いました。制作と結びつきやすいデザインの仕事の中で、いかに戦略から入り込むのか彼女の経験を語っていただきました。マーケティングとデザインを結びつけることで仕事がどう変わるのでしょうか。</p> <ul><li><a href="https://chi-design-ooo.com/">Humore design web</a> </li><li>マーケティング＋デザイン </li><li>ただ見せるだけのポートフォリオでは伝わらない </li><li>目的をきちんと立てるところから始まる </li><li>デザインという期待値を合わせる </li><li>人を騙すことができるデザイン</li><li><a href="https://speakerdeck.com/tajima/gong-you-di-dian-doko">共有地点DOKO // Speaker Deck</a> </li><li>トップページの制作費用は高くするべき？ </li><li>脱広告になってきた web コミュニケーション </li><li>デザインで重要なのはビジュアルの良さなのか </li><li>マーケティング学ぶためのはじめの一歩 </li><li>周りの人がやっている仕事を理解する </li><li><a href="https://twitter.com/hashtag/%E3%81%9F%E3%81%98%E3%81%BE%E3%81%AE%E5%8B%89%E5%BC%B7%E3%83%A1%E3%83%A2?src=hash">#たじまの勉強メモ</a> </li><li><a href="https://www.instagram.com/everydesign.insta/">EveryDesign.insta</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic211.mp3" length="49659015" type="audio/mpeg"/>
+      <itunes:duration>00:58:54</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 20 Mar 2018 01:16:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#210 齋藤恵太さん（Goodpatch）</title>
+      <guid isPermaLink="false">f75d9fdc-e020-447d-b4da-f96a35973e70</guid>
+      <link>http://automagic.fm/post/171324442455/saito-goodpatch</link>
+      <description><![CDATA[
+<p>Goodpatch のサービスデザイナー 齋藤恵太さんと、外部の立場からクライアントと一緒にデザインすることの意味について話を伺いました。内製化が進み、手法をただ実践するだけでは通用しない今、デザイナーはどういう働きかけが必要なのでしょうか。昨年、齋藤さんは深圳を訪れましたが、そのとき見たエキサイティングな様子も教えていただきました。</p> <ul><li><a href="https://www.facebook.com/sauihumono">Facebook プロフィール</a> </li><li><a href="https://www.wantedly.com/companies/goodpatch/post_articles/74665">サービスデザイナーとして切り拓く、デザインと組織の未来</a> </li><li>受託会社としてサービスデザインに取り組む </li><li>担当者が喜んでくれたら良しなのか </li><li>分からないことは分からないといえる組織 </li><li>UIデザイナーがいない、の真意 </li><li>経営層にも分かるデザインの通訳 </li><li>地道に付き合うという行為 </li><li>手法から生まれる誤解 </li><li>ユーザーにとっての『良い』とは？ </li><li>仕方ないで片付けない </li><li>シリコンバレーを超える深圳のエネルギー </li><li>深圳に勝てないと思ってしまうところ </li><li><a href="http://cedec.cesa.or.jp/2017/">CEDEC 2017 | Computer Entertainment Developers Conference</a> </li><li>メタファという入れ子からの解放 </li><li><a href="http://www.gc-conf.com/">ゲームクリエイターズカンファレンス’18 </a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic210.mp3" length="66888189" type="audio/mpeg"/>
+      <itunes:duration>01:19:25</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 27 Feb 2018 08:22:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#209 吉竹 遼さん（よりデザイン）</title>
+      <guid isPermaLink="false">3e264878-304d-4c8a-b8ba-ceb2a03d6b88</guid>
+      <link>http://automagic.fm/post/170813183805/ryopan</link>
+      <description><![CDATA[
+<p>よりデザインの吉竹 遼さん（<a href="https://twitter.com/ryo_pan">@ryo_pan</a>）と Sketch 以降のデザインツールと、デザイナーの役割の変化について伺いました。また、昨年から話題になっているデザインシステムにおける課題と対策について、それぞれの見解を話し合いました。会話の終盤はオススメの海外テレビドラマについて話しています。</p><ul><li><a href="https://t.co/VPeFI73sZA">よりデザイン</a></li><li><a href="https://www.webprofessional.jp/lesson/sketch/">吉竹 遼のSketch入門 for UIデザイナー - WPJ</a> </li><li><a href="http://amzn.to/2Brz8zL">UIデザイナーのための Sketch入門&実践ガイド</a> </li><li><a href="https://www.standardinc.jp/">Standard Inc. </a> </li><li>思想を感じるデザインツール </li><li><a href="https://www.figma.com/">Figma</a> </li><li>コミュニケーションツールになったデザインツール </li><li><a href="http://sketchrunner.com/">Sketch Runner</a> </li><li><a href="http://www.animaapp.com/">Launchpad</a> </li><li><a href="https://github.com/sonburn/symbol-organizer">symbol-organizer</a> </li><li><a href="https://github.com/sonburn/presto-selecto">presto-selecto</a> </li><li><a href="http://rodi01.github.io/RenameIt/">Rename It</a> </li><li><a href="http://www.yasuhisa.com/could/article/sketch-symbols/">Sketchから学ぶコンポーネントデザイン</a> </li><li>見た目以外ところを考える機会が増えた </li><li>構造が意識しやすくなったデザインツール </li><li>ユーザーインターフェイスの情報設計 </li><li>全部入りのライブラリでは意味がない </li><li>チームのため、組織のためのデザインシステム </li><li>プラットフォームを超えたシステム化は可能か </li><li>上を見過ぎない進め方が必要 </li><li><a href="https://www.facebook.com/notes/facebook-design/facebook-design-principles/118951047792/">Facebook Design Principles</a> </li><li>ビジネスへコミットできる準備はできている？ </li><li><a href="https://www.fenrir-inc.com/">フェンリル </a> </li><li>今だからある受託デザイナーの強み </li><li><a href="https://www.netflix.com/title/80209096">My Next Guest Needs No Introduction With David Letterman</a> </li><li><a href="https://www.netflix.com/title/80144355">Mars 火星移住計画</a> </li><li><a href="https://www.netflix.com/title/80097140">Altered Carbon</a> </li><li><a href="https://www.youtube.com/watch?v=ma8te7ywEio">Mute | Official Trailer</a> </li><li><a href="http://amzn.to/2CcnuZK">フィリップ・K・ディックのエレクトリック・ドリームズ</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic209.mp3" length="64876574" type="audio/mpeg"/>
+      <itunes:duration>01:17:01</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 13 Feb 2018 08:36:31 +0900</pubDate>
+    </item>
+    <item>
+      <title>#208 小島 芳樹さん（テクニカルクリエイター）</title>
+      <guid isPermaLink="false">46f70f8f-7dfd-4857-82e2-57fa3294e05c</guid>
+      <link>http://automagic.fm/post/170282797605/technical-creator</link>
+      <description><![CDATA[
+<p>テクニカルクリエーターを運用するディレクター・プランナーの小島 芳樹さん（<a href="https://twitter.com/yoshikikoji">@yoshikikoji</a>と、未来のデザインの仕方について話し合いました。スマホアプリだけでなく、音声や AR/VR などデジタルプロダクトに触れる機会が増えてきた現在。それに合わせてデザインツールの役割も変わってきています。ツールと同様、デザイナーはどうアップグレードしていくべきなのか伺いました。</p> <ul><li><a href="https://technical-creator.com/">TECHNICAL CREATOR</a> </li><li><a href="https://quip.com/">Quip</a> </li><li><a href="http://amzn.to/2Gn2HGj">アイアンマン</a> </li><li><a href="http://marvelcinematicuniverse.wikia.com/wiki/J.A.R.V.I.S.">J.A.R.V.I.S. </a> </li><li><a href="https://www.facebook.com/notes/mark-zuckerberg/building-jarvis/10154361492931634/">Building Jarvis</a> </li><li><a href="https://www.amazon.com/gp/product/B01J24C0TI/">Echo Show - Black</a> </li><li><a href="http://katsumakazuyo.hatenablog.com/">勝間和代が徹底的にマニアックな話をアップするブログ</a> </li><li><a href="https://disneyworld.disney.go.com/plan/my-disney-experience/bands-cards/">MagicBands </a> </li><li><a href="http://www.imdb.com/title/tt2395427/">Avengers: Age of Ultron (2015)</a> </li><li><a href="http://viv.ai/">Viv</a> </li><li><a href="https://www.invisionapp.com/">InVision</a> </li><li><a href="https://www.figma.com/">Figma</a> </li><li><a href="https://framer.com/">Framer </a> </li><li>なぜ今新しいデザインツールが必要なのか </li><li><a href="https://www.fusetools.com/">Fuse</a> </li><li>エンジニアと連携がとれる窓口がツールに欲しい </li><li><a href="https://prottapp.com/ja/features/">Prott </a> </li><li>デザインが手軽に作れるようになることの弱点 </li><li>デザインの仕方ではなくプロダクトの作り方 </li><li>作ることに多くの時間を費やす仕事ではない </li><li><a href="https://medium.com/tictail/code-with-design-how-we-built-a-tool-to-export-react-prototypes-from-sketch-c8d0c23e8126">Code with Design — How we Built a Tool to Export React Prototypes from Sketch</a> </li><li><a href="http://amzn.to/2FHWlku">デザイン組織のつくりかた</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic208.mp3" length="64139373" type="audio/mpeg"/>
+      <itunes:duration>01:16:09</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 30 Jan 2018 08:31:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#207 千貫りこさん（KICKS Web）</title>
+      <guid isPermaLink="false">85209249-61d2-4120-b3d9-e6241cba7620</guid>
+      <link>http://automagic.fm/post/169749930705/henyorico</link>
+      <description><![CDATA[
+<p>#207 千貫りこさん（KICKS Web）<a href="https://www.kicks-web.com/">KICKS Web</a> の千貫りこ（<a href="https://twitter.com/henyorico">@henyorico</a>）さんと web に関わる仕事の変化についてはお話を伺いました。制作より運用をする機会が増えたことや、教える対象者の変化を見ならが、千貫さんどんなことに興味をもって仕事に取り組んでいるのか話してもらいました。</p><ul><li><a href="http://automagic.fm/post/154399836320/kicksweb-rico">前回のポッドキャスト</a></li><li><a href="https://www.facebook.com/rico.sengan">Facebook プロフィール</a></li><li><a href="https://www.instagram.com/henyorico/">Instagram</a> </li><li><a href="http://amzn.to/2EaIK3C">これからはじめる HTML &amp; CSSの本</a></li><li>コードを学びたい運用者</li><li>制作者としてのエゴ</li><li>改善マインドへの変わった理由</li><li><a href="http://amzn.to/2l2OHYf">聞く力―心をひらく35のヒント</a></li><li><a href="http://anatani-aitai.com/">あなたに会いたい！</a></li><li>Webサイトを制作するという仕事の今後</li><li><a href="https://www.creativevillage.ne.jp/31117">と、コラボ特別編「IAってなんなのさ」</a></li><li>『マッチョ』なインターネット</li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic207.mp3" length="63833096" type="audio/mpeg"/>
+      <itunes:duration>01:15:47</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 16 Jan 2018 08:15:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#206 土屋尚史さん（Goodpatch）</title>
+      <guid isPermaLink="false">04c39981-5b4d-4c47-93bb-8d1473ff3dda</guid>
+      <link>http://automagic.fm/post/168941232640/goodpatch</link>
+      <description><![CDATA[
+<p><a href="http://goodpatch.com/">Goodpatch</a> の CEO・土屋尚史さん <a href="https://twitter.com/tsuchinao83">@tsuchinao83</a> とビジネスパートナーとして活躍していくためのデザイナーの条件について話し合いました。Goodpatch の成長を振り返りながら、作るためのスキルを磨くだけでなく、環境作りの重要を話してもらいました。</p><ul><li><a href="http://likeasiliconvalley.tumblr.com/">LIKE A SILICON VALLEY</a></li><li><a href="https://prottapp.com/ja/">Prott</a></li><li>経営に集中するための組織作り</li><li>1対50フラットでの苦労</li><li>逃げずに向き合う</li><li>Goodpatch 流組織の作り方</li><li><a href="http://amzn.to/2DgpCSb">ピクサー流 創造するちから</a></li><li>ビジョン共有の重要性</li><li><a href="https://www.youtube.com/watch?v=qp0HIF3SfI4">How great leaders inspire action | Simon Sinek</a></li><li>伝えるのが下手な日本人</li><li>コミュニケーション補助ツールとしての Prott</li><li><a href="https://www.invisionapp.com/studio">inVision Studio</a></li><li>デザイナーに力を与えたい</li><li>複数のプラットフォームで一貫性を保つデザイン</li><li><a href="http://www.yasuhisa.com/could/article/ui-design-system/">成熟期に入ったUIデザインとデザインシステム</a></li><li><a href="https://dropbox.design/">Dropbox Branding</a></li><li>ブランディングというデザインチャレンジ</li><li>進むデザインの内製化</li><li>これからどうなる、受託ビジネス</li><li>デザイナーがいる組織作りの難しさ</li><li>デザインパートナーでありビジネスパートナー</li><li>未知だから面白い</li><li>デザインだけで変わることはあるのか</li><li>『ユーザー中心』ってなに？</li><li>スマホですべてが変わったけど、これからは？</li><li>寄り道しましょう</li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic206.mp3" length="73902989" type="audio/mpeg"/>
+      <itunes:duration>01:27:46</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 26 Dec 2017 08:40:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#205 Manaさん（Webクリエイターボックス）</title>
+      <guid isPermaLink="false">f0c08696-543c-4202-80e7-be622dbdd044</guid>
+      <link>http://automagic.fm/post/167955322105/webcreatorbox</link>
+      <description><![CDATA[
+<p><a href="https://www.webcreatorbox.com/">Webクリエイターボックス</a>（<a href="https://twitter.com/webcreatorbox">@webcreatorbox</a>）の管理人であり、webデザイナー + webデベロッパーをされている Mana さん（<a href="https://twitter.com/chibimana">@chibimana</a>）に、デザイナーとしてどのようにコードを学習したのか伺いました。欧米圏と日本の仕事の仕方の違いや講師業を通して、コードを学ぶポイントについても話してもらいました。</p><ul><li>情報発信の基準</li><li>配色とフォントは大好物</li><li><a href="https://www.dropbox.com/branding">Dropbox Brand</a></li><li>Webデザイナーの仕事の領域</li><li><a href="https://techacademy.jp/">TechAcadmy</a></li><li>説明するのもデザイナーの仕事</li><li>相手を引き込む伝え方</li><li><a href="https://css-tricks.com/">CSS Tricks</a></li><li><a href="https://codepen.io/">CodePen</a></li><li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to CSS Grid</a></li><li>機械化が進んでも webデザインの勉強は必要</li><li><a href="https://caniuse.com/#search=frame">Frame</a> - Can I Use</li><li><a href="https://www.webcreatorbox.com/gallery">Webクリエイターボックス　ギャラリー</a></li><li>魔法の１行</li><li><a href="http://webdesignerwall.com/">Web Designer Wall</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic205.mp3" length="60295055" type="audio/mpeg"/>
+      <itunes:duration>01:11:34</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 28 Nov 2017 08:08:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#204 鈴木伸緒さん（株式会社メルカリ）</title>
+      <guid isPermaLink="false">473c3eae-3f31-4936-a997-2e8c67bd435c</guid>
+      <link>http://automagic.fm/post/167463427800/nobgraphica</link>
+      <description><![CDATA[
+<p>株式会社メルカリのデザイナー鈴木伸緒さん（<a href="https://twitter.com/nobgraphica">@nobgraphica</a>）とスマホのための UI デザイン後の世界について話しました。ボイスや IoT など新しいユーザーとのインタラクションが増えてきた今、UI デザイナーは何を知り、どう作っていけば良いのでしょうか。また、事業会社の中でデザイナーと働くことの特徴についても伺いました。</p><ul><li>前回のポッドキャスト <a href="http://automagic.fm/post/145528729915/mercari-suzuki">Automatic #167</a></li><li><a href="https://medium.com/@nobgraphica/">Medium</a></li><li><a href="https://www.mercari.com/jp/">メルカリ</a></li><li>ヨーロッパの方もハイコンテキスト</li><li>UI作りから体験作りへ</li><li><a href="https://airbnb.design/sketching-interfaces/">Sketching Interfaces</a></li><li><a href="http://amzn.to/2liAslG">Amazon Dash Button</a></li><li><a href="http://www.itmedia.co.jp/news/articles/1710/26/news053.html">Amazon、不在でも家の中まで配送する「Amazon Key」、250ドルでスタート</a></li><li><a href="http://amzn.to/2zqpXm2">Amazon Echo</a></li><li>ボイスインターフェイスの可能性    </li><li><a href="https://www.apple.com/jp/iphone-x/">iPhone X</a></li><li>人工知能をデザインすることの責任</li><li>疑問が投げかけることができるデザイナー</li><li>さらに大きな課題に取り組んでいく</li><li>24時間の奪い合い</li><li>オフライン・オンラインの線引きの問題</li><li><a href="https://culturedcode.com/things/">Things</a></li><li>ポスト スマホUIデザインの勉強法</li><li>かたちを変えて生きていく職業</li><li><a href="https://www.slideshare.net/johnmaeda/design-in-tech-report-2017">Design in Tech Report 2017</a></li><li>特定の手段だけでは進められない環境</li><li><a href="https://dropbox.design/">Dropbox Brand</a></li><li><a href="https://www.underconsideration.com/brandnew/archives/new_identity_for_ebay_by_form.php">Old eBay, we Bid you Adieu</a></li><li><a href="https://www.pinterest.jp/sgrandmaison/ray-gun-magazine/?lp=true">Ray Gun</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic204.mp3" length="71024880" type="audio/mpeg"/>
+      <itunes:duration>01:24:20</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 14 Nov 2017 07:14:55 +0900</pubDate>
+    </item>
+    <item>
+      <title>#203 坂上 北斗さん（株式会社メディア・エーシー）</title>
+      <guid isPermaLink="false">8e4b38d1-e09b-4e89-a673-e1dbfee84321</guid>
+      <link>http://automagic.fm/post/166961353300/hosaka7s</link>
+      <description><![CDATA[
+<p>株式会社メディア・エーシーで web プランナーとして働く坂上 北斗さん（<a href="https://twitter.com/Hosaka7s">@Hosaka7s</a>）を迎えて、高知で web の仕事をすることの面白さと課題について伺いました。高知をはじめ多くの中小企業が 2回以上ホームページを作った経験があります。そのなかでどのような提案をすれば良いのか、成果を上げるには何をしなければならないのか話し合いました。</p><ul><li><a href="https://www.facebook.com/hokuto.sakaue">Facebook プロフィール</a></li><li><a href="https://www.mediaac.co.jp/company/">株式会社メディア・エーシー</a></li><li><a href="http://amzn.to/2hAZirY">Webサイト、これからどうなるの? キーワードから探るWeb制作の未来像</a></li><li>ホームページがいらないタイミング</li><li>広告代理店に求められていることの変化</li><li>成果を上げるための運用</li><li>体系化されているからこそできるデジタル化</li><li>できないことを明確化</li><li>まとめて見れるという web サイトのメリット</li><li>人と web サイトは『同じ』になる</li><li><a href="http://www.kochiweb.com/event/meeting/">WCK Meeting</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic203.mp3" length="67342089" type="audio/mpeg"/>
+      <itunes:duration>01:19:57</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 31 Oct 2017 08:30:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#202 小久保浩大郎（CAMPFIRE）</title>
+      <guid isPermaLink="false">a9caaa37-21e9-4aa3-a282-3f1ad089731e</guid>
+      <link>http://automagic.fm/post/166550490150/kotarok</link>
+      <description><![CDATA[
+<p>#202 小久保浩大郎（CAMPFIRE）CAMPFIRE で CXO を務める小久保 浩大郎さん（<a href="https://twitter.com/kotarok">@kotarok</a>）とデザインできる組織の特徴について話し合いました。良い組織には必ず「カルチャーがある」と語る小久保さん。その意味を掘り下げながら、動きの早いスタートアップの仕事現場の面白さについて伺いました。</p><ul><li><a href="http://kotarok.com/">個人サイト</a></li><li><a href="https://camp-fire.jp/">Campfire</a></li><li><a href="https://www.b-architects.com/">ビジネス・アーキテクツ</a></li><li><a href="https://japan.googleblog.com/">Google Japan</a> </li><li><a href="https://2016.uxdaystokyo.com/">UX Days Tokyo 2016</a></li><li>CXOって何ですか？</li><li><a href="http://amzn.to/2wZ00po">Rise of the DEO: Leadership by Design</a></li><li><a href="https://www.google.com/doodles/googles-19th-birthday">Google 創立 19 周年</a></li><li>大きくても早く動ける組織</li><li><a href="https://www.atlassian.com/team-playbook">Atlassian Team Playbook</a></li><li>判断基準のための組織カルチャー</li><li><a href="https://inside.campfire.co.jp/column/2017/09/15/emotion/">プロダクトのもつエモさと作り手のエゴについて</a></li><li>情報が足りない時点では決めれない</li><li><a href="https://twitter.com/yhassy/status/905944870145081344">成長するデザイナーの視点</a></li><li>全部説明できれば良いわけでもないデザイン</li><li>組織が前進するための言語化</li><li>作られたもののコンテキストを理解する</li><li><a href="https://inside.campfire.co.jp/">Inside Campfire</a></li><li><a href="https://www.wantedly.com/projects/93688">CAMPFIREの各プロダクトを一緒にデザインしていける仲間をWANTED</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic202.mp3" length="77050509" type="audio/mpeg"/>
+      <itunes:duration>01:31:31</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 19 Oct 2017 08:15:50 +0900</pubDate>
+    </item>
+    <item>
+      <title>#201 小林信次さん（株式会社まぼろし）</title>
+      <guid isPermaLink="false">895e0f05-24eb-4bf8-9437-dbbf21c95007</guid>
+      <link>http://automagic.fm/post/165985392805/maboroshi</link>
+      <description><![CDATA[
+<p><a href="https://maboroshi.biz/">株式会社まぼろし</a>のCOOで、フロントエンドエンジニアをしている小林信次（<a href="https://twitter.com/koba">@koba</a>）さんに、フロントエンドの過去と現在について話を伺いました。何が簡単になり、何が難しくなったのか。デザイナーとの連携の難しさについて意見交換をしました。</p><ul><li><a href="https://www.facebook.com/Kobayashi.Shinji">Facebook プロフィール</a></li><li>マークアップの面白さ</li><li>構造化をどう捉えるか</li><li>便利になったWeb開発</li><li>緩すぎるから故に難しいCSS</li><li>私のHTMLは泥臭い</li><li>こういうデザインは困る</li><li>柔軟性と表現の間</li><li><a href="https://github.com/hiloki/flocss">FLOCSS</a></li><li>部品の意味付け</li><li>仕組みを理解していなくてデザインできる？</li><li><a href="https://www.protest.eu/t">Protest</a></li><li>インタラクションの意思疎通</li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic201.mp3" length="59971847" type="audio/mpeg"/>
+      <itunes:duration>01:11:11</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 3 Oct 2017 08:06:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#200 矢野りんさん（Baidu）</title>
+      <guid isPermaLink="false">e5c5e9e2-e42d-4cb1-8a21-c19ec95260ff</guid>
+      <link>http://automagic.fm/post/165490549160/yanorin</link>
+      <description><![CDATA[
+<p>Baidu のデザイナー 矢野りん（<a href="https://twitter.com/yanorin">@yanorin</a>）さんとデザイナーとして働くことの現在について意見交換しました。フリーランスを経て企業で働くデザイナー兼マネージャーをしている矢野さん。中国のデザイナーの特徴、UIデザインとブランディング、デザインシステムの現実性など様々なトピックについて話しました。</p><ul><li><a href="http://yanorin.blogspot.jp/">ものづくりにっぽん</a></li><li><a href="http://amzn.to/2vF8YeA">サルでもわかる！デザインの本</a></li><li><a href="http://amzn.to/2x4SDQB">ウェブデザインのつくり方、インターフェイスデザインの考え方。</a></li><li><a href="https://simeji.me/">Simeji</a></li><li><a href="https://www.baidu.jp/">Baidu Japan</a></li><li>フリーランスから組織の人間へ</li><li>ファシリテーターとしてのスキルの必要性</li><li>中国のデザイナーの特徴</li><li><a href="https://www.apple.com/jp/ios/app-store/">Apple App ストア</a></li><li><a href="https://developer.apple.com/design/awards/">Apple Design Award</a></li><li><a href="https://culturedcode.com/things/">Things 3</a></li><li><a href="https://developer.apple.com/design/">Human Interface Guideline</a></li><li><a href="https://www.lightningdesignsystem.com/guidelines/messaging/components/illustration-inline-text/">Salesforce: Illustration &amp; Inline Text</a></li><li><a href="https://medium.com/dropbox-design/illustrating-a-more-human-brand-part-1-e1cfe3c28d9">Illustrating a more human brand (part 1)</a></li><li>デザインと直感</li><li>デザインシステムは難しい</li><li>ネイティブに結果を求められる世代</li><li>数字だけ追い求めることで生まれるダークパターン</li><li><a href="http://cssnite.jp/lp/lp53/">CSS Nite LP53「ワイヤーフレームとビジュアルデザインの間の暗くて深い闇」</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic200.mp3" length="62738848" type="audio/mpeg"/>
+      <itunes:duration>01:14:29</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 19 Sep 2017 08:27:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#199 田口 真行さん（株式会社デスクトップワークス）</title>
+      <guid isPermaLink="false">1c13444a-e950-4de4-af01-67cca1408ae6</guid>
+      <link>http://automagic.fm/post/164988229975/desktopworks</link>
+      <description><![CDATA[
+<p><a href="https://d-w.jp/">株式会社デスクトップワークス</a>の Webディレクター・田口 真行さん（<a href="https://twitter.com/webdirection">@webdirection</a>）を迎えて、コンテンツ配信の真意について意見交換しました。Webディレクターという肩書きで仕事をしている田口さんですが、ほぼ毎日メディア配信をしています。ひとりメディアカンパニーのような活動を続ける田口さんの配信コンセプトやオチベーションの維持の仕方について話を伺いしました。</p><ul><li><a href="http://automagic.fm/post/144828656395/taguchi-webdirection">前回のポッドキャスト</a></li><li>ほぼ毎日配信している田口的コンセプト</li><li>自分にとって納得いく配信</li><li>情報の流れ、取得方法の変化</li><li>細分化されるメディアと人の居場所</li><li>コンテンツを作るひとりとしての表現</li><li>量ではなく、文脈と質</li><li><a href="http://cssnite-shizuoka.jp/vol06/">CSS Nite in SHIZUOKA, Vol.6</a></li><li><a href="https://www.youtube.com/channel/UCh5Vp0d5huKdhmQ4hOJUU-Q">OVSERVER</a></li><li><a href="https://www.facebook.com/entermina/">エンタミナ</a></li><li>ユーチューバーになるか？</li><li><a href="http://automagic.fm/post/161225717035/regraphy">#193 有限会社リーグラフィとの打ち合わせ</a></li><li>隠し事が作れないライブ配信の魅力</li><li><a href="http://automagic.fm/post/163665919915/readymadegogo">#197 株式会社まぼろし 松田直樹さん</a></li><li>多様性のパラドックス</li><li>大事にしているポリシーのようなもの</li><li>田口さんの配信モチベーション</li><li><a href="https://ifttt.com/discover">IFTTT</a></li><li><a href="http://www.bear-writer.com/">Bear</a></li><li><a href="https://www.instagram.com/p/BVJXvprDEw8/?taken-by=yhassy">田口さんのセミナー内容をスケッチ</a></li><li><a href="https://www.instagram.com/p/BUV_jCMDpm9/?taken-by=yhassy">アクセシビリティの祭典のスケッチ</a></li><li><a href="http://cssnite-aomori.net/">CSS Nite AOMORI</a></li><li><a href="http://cssnite.jp/lp/lp53/">CSS Nite LP53「ワイヤーフレームとビジュアルデザインの間の暗くて深い闇」</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic199.mp3" length="117029610" type="audio/mpeg"/>
+      <itunes:duration>02:19:06</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 5 Sep 2017 08:13:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#198 足立健誌さん（イントリックス株式会社）</title>
+      <guid isPermaLink="false">343ac6f0-c76e-4fcd-b877-471deb88c553</guid>
+      <link>http://automagic.fm/post/164460162925/think-creative</link>
+      <description><![CDATA[
+<p><a href="http://www.intrix.co.jp/">イントリックス株式会社</a>の Web ディレクター 足立健誌さん（<a href="https://twitter.com/_takeshi">@_takeshi</a> ）に BtoB の魅力と課題について伺いました。コミュニケーションデザインの設計やデザインのアプローチなど、どこが特徴的で、どの部分が共通しているのでしょうか。また、足立さんは海外留学経験もあるので、当時の思い出について話してもらいました。</p><ul><li>運用支援の重要性</li><li>BtoBにある長くて複雑な検討プロセス</li><li>タッチポイントやステージで変わる目的</li><li>Webサイトだけで終わらないときの効果測定</li><li>ユーザーのステージと目的の明確化</li><li>ツールを手段としない、持続可能な運用</li><li>海外展開するときの Webサイトのあり方</li><li>オンラインにおける企業と人との関係性</li><li><a href="https://us.coca-cola.com/">Coca-Cola (US)</a></li><li><a href="http://www.toprankblog.com/2016/07/snapchat-for-b2b/">Snapchat for B2B: Examples of Brands in Action, Best Practices &amp; Tips</a></li><li><a href="http://www.yasuhisa.com/could/article/website-socialmedia/">ソーシャルメディアで変わったwebサイトの役割</a></li><li>CMSの真価</li><li>アメリカの大学、デザインの授業</li><li><a href="http://www.thinkcreative.jp/">Think Creative</a></li><li><a href="https://www.amazon.co.jp/Non-Designers-Design-Book-Non-Designers/">The Non-Designer's Design Book</a></li><li><a href="http://websig247.jp/">WebSig 24/7</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic198.mp3" length="58029503" type="audio/mpeg"/>
+      <itunes:duration>01:08:52</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 22 Aug 2017 07:39:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#197 松田直樹さん（株式会社まぼろし）</title>
+      <guid isPermaLink="false">c9c36a79-8265-4952-b7a0-6d421f75a017</guid>
+      <link>http://automagic.fm/post/163665919915/readymadegogo</link>
+      <description><![CDATA[
+<p><a href="https://maboroshi.biz/">株式会社まぼろし</a>のデザイナー松田直樹さん（<a href="https://twitter.com/readymadegogo">@readymadegogo</a>）と、日本の歴史からデザインについて考えてみました。私たちが「良い」と思うことだけでなく、仕事に対する姿勢にも理由であったりルーツがあります。今回は日本のデザイン、日本人デザイナーの「なぜ」を歴史や言語を通して意見交換しました。</p><ul><li><a href="http://automagic.fm/post/131049219860/maboroshi-matsuda">前回のポッドキャスト</a></li><li><a href="https://www.facebook.com/readymadegogo">Facebook プロフィール</a></li><li>日本人の「なぜ」を歴史から探る</li><li>外的要素に対する柔軟性（我流で改善）</li><li>儒学的思想からの影響と部分的解釈</li><li>宗教が与えるコミュニケーション量力の違い</li><li>交渉力が高かった江戸時代の人々</li><li>言語構成で変わる、物事の伝え方</li><li>ウチとソトという立ち位置</li><li>日本的なハイコンテキストコミュニケーション</li><li>世間からの影響と自我</li><li>『恥』と『罰』</li><li>手法の儀式化</li><li>一次情報が別言語であることの壁</li><li>わび・さび からの再発見</li><li>良し悪しの判断の前に「なぜ」</li><li>日本語の多様性と流行り廃り</li><li>主語がないコミュニケーションの神秘性 </li><li>ローコンテキストからハイコンテキストへ</li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic197.mp3" length="77682384" type="audio/mpeg"/>
+      <itunes:duration>01:32:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 1 Aug 2017 14:35:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#196 佐藤  歩さん（株式会社サイバーエージェント）</title>
+      <guid isPermaLink="false">33a521b6-0533-49cf-af0c-e885c265e468</guid>
+      <link>http://automagic.fm/post/163114905435/ahomu</link>
+      <description><![CDATA[
+<p>株式会社サイバーエージェントの Web フロントエンジニア佐藤  歩さん（<a href="https://twitter.com/ahomu">@ahomu</a>）と組織、教育、啓蒙について話をしました。ひとりで Web やアプリを作ることはマレです。周りを巻き込みながら、どのようにパフォーマンスやアクセシビリティなどを取り組むのでしょうか。後半は組織でデザインを運用していくという観点から、デザインシステムにも触れています。</p><ul><li><a href="https://havelog.ayumusato.com/">ブログ</a></li><li><a href="https://abema.tv/">Abema.tv</a></li><li><a href="https://github.com/ahomu">GitHub</a></li><li><a href="https://speakerdeck.com/ahomu">Speak Desk</a></li><li>アクシビリティとパフォーマンス</li><li>組織ビジョンに合わせた施策</li><li><a href="https://www.cyberagent.co.jp/features/detail/id=13682">独自の視点でWebの可能性を切り開くフロントエンドのスペシャリスト</a></li><li><a href="http://automagic.fm/post/158906893165/sensui">#188 泉水翔吾さんとのポッドキャスト</a></li><li>Webイニシアチブセンター</li><li><a href="http://ragnarokonline.gungho.jp/">ラグナロク オンライン</a></li><li><a href="https://unity3d.com/jp/">Unity</a></li><li><a href="https://docs.microsoft.com/ja-jp/dotnet/csharp/programming-guide/">C# プログラミング</a></li><li><a href="https://www.browserstack.com/">BrowerStack</a></li><li><a href="https://speakerdeck.com/ahomu/fluent-design-system-in-5-minutes">Fluent Design System in 5 minutes</a></li><li><a href="http://airbnb.io/react-sketchapp/">React-sketchapp</a></li><li><a href="http://www.yasuhisa.com/could/article/whatisbutton/">意外と難しいボタンのお話</a></li><li><a href="http://jp.techcrunch.com/2017/06/02/20170531here-are-some-reasons-behind-techs-design-shortage/">過去5年間でデザイナーの採用目標が倍増――大手6社のデータに見るデザイン人材の動向</a></li></ul> ]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic196.mp3" length="55142456" type="audio/mpeg"/>
+      <itunes:duration>01:05:26</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 18 Jul 2017 09:56:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#195 土屋一彦さん（Website-Usability.info）</title>
+      <guid isPermaLink="false">5ec07dbb-0ff8-43f2-9c1d-0d8229ffa52e</guid>
+      <link>http://automagic.fm/post/162022035920/website-usability-info</link>
+      <description><![CDATA[
+<p><a href="http://website-usability.info/">Website-usability.info</a> の運用をされているユーザビリティ調査の専門家・土屋一彦さん（<a href="https://twitter.com/caztcha">@caztcha</a>）と、「使いやすさ」をテーマに話をしました。使いやすさはどのように生まれるのか。スマホが登場して以降変わった調査とフィードバック。アクセシビリティとの関係について話しました。</p><ul><li>Always On の世界のアクセシビリティ</li><li>見たことあるから使いやすい？</li><li><a href="http://website-usability.info/2017/04/entry_170415.html">ユーザーを引っ掛けようとする UI</a></li><li>そもそもの問題解決と使いやすさ</li><li>情報を連続的に並べる</li><li><a href="https://www.nngroup.com/articles/author/jakob-nielsen/">Articles by Jakob Nielsen</a></li><li>Out of sight, out of mind</li><li>書籍「<a href="http://amzn.to/2shpgEr">Don't Make Me Think, Revisited</a>」</li><li>デザインにおける倫理</li><li><a href="http://accfes.com/">アクセシビリティの祭典</a></li><li><a href="https://blog.motchie.com/accessibility/ja-shift-left-in-accessibility.html">アクセシビリティもシフトレフト！</a></li><li><a href="https://code.facebook.com/posts/1259786714075766/building-scalable-systems-to-understand-content/">Building scalable systems to understand content</a></li><li><a href="https://www.facebook.com/accessibility/videos/1082033931840331/">Facebook の画像認識技術</a></li><li><a href="https://twitter.com/Google/status/864891667723300864">Google Lens</a></li><li>AccSell ポッドキャスト<a href="https://accsell.net/podcast/0089.html">第89回: 「消防団員、増やしたいですね」</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic195.mp3" length="67497797" type="audio/mpeg"/>
+      <itunes:duration>01:20:08</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 20 Jun 2017 07:54:03 +0900</pubDate>
+    </item>
+    <item>
+      <title>#194 小枝 繁子さん（マークアップエンジニア）</title>
+      <guid isPermaLink="false">1f30e2bd-55c0-4eab-a02c-b41d0d5c864c</guid>
+      <link>http://automagic.fm/post/161483906385/milk</link>
+      <description><![CDATA[
+<p>マークアップエンジニアの小枝 繁子 / <a href="https://twitter.com/milk54">みるく</a>（<a href="https://twitter.com/milk54">@milk54</a>）さんと、web アクセシビリティに取り組んでもらうためのアイデアや実践していることを教えてもらいました。小枝さんが実行委員のひとりとして携わっているイベント「D2Draft」で実際やっている取り組みを紹介しながら、web アクセシビリティを学ぶことの面白さと難しさについて意見交換しました。</p><ul><li><a href="https://white-stage.com/">White Stage</a></li><li><a href="http://d2draft.net/">D2Draft</a></li><li><a href="https://d2draft.doorkeeper.jp/">D2Draft イベント情報</a></li><li><a href="https://white-stage.com/article.php/d2daccessibility2017">D2D アクセシビリティ勉強会 ～WAI-ARIAでアクセシブルにしてみよう～を開催しました。</a></li><li><a href="http://accfes.com/">アクセシビリティの祭典</a></li><li>マウスは使うな！</li><li>属性は同じだとしても人それぞれ</li><li>明確が答えがないから議論する</li><li><a href="https://www.slideshare.net/nozomisawada969/accfes2017-d2-d20170518">WAI-ARIAの正しい使い方 〜あるある？ケーススタディ〜</a></li><li>寛容的なマークアップ言語であるが故の難しさ</li><li>アクセシビリティのチェックができる人が必要</li><li><a href="http://automagic.fm/post/114434943425/sawadastddesign">澤田望さんとのポッドキャスト</a></li><li><a href="http://waic.jp/docs/WCAG-TECHS/Overview.html">WCAG 2.0 達成方法集</a></li><li><a href="http://nishimotz.github.io/nvdajp-book/">NVDA 日本語版ガイドブック</a></li><li>顔も知らない誰かの笑顔のために</li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic194.mp3" length="56256813" type="audio/mpeg"/>
+      <itunes:duration>01:06:46</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 6 Jun 2017 08:12:10 +0900</pubDate>
+    </item>
+    <item>
+      <title>#193 有限会社リーグラフィとの打ち合わせ</title>
+      <guid isPermaLink="false">ed0cdbc3-b37d-4318-8bd8-e4287f7fae75</guid>
+      <link>http://automagic.fm/post/161225717035/regraphy</link>
+      <description><![CDATA[
+<p>有限会社リーグラフィの李 優未さんと水越佑介さんとの打ち合わせ。あるクライアントの Web サイト企画を考えているときの模様をお送ります。クライアント名や企画の詳細は伏せてあるので分かりにくい部分もありますが、打ち合わせの雰囲気が少しでも伝わればと思って公開しています。</p><p>リーグラフィのメンバーのみなさま、こうした機会を作ってくださり、ありがとうございました！</p>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic193.mp3" length="44543021" type="audio/mpeg"/>
+      <itunes:duration>00:52:49</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 30 May 2017 12:10:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>#192 坂本貴史さん + 伊原力也さん</title>
+      <guid isPermaLink="false">678e3d55-083f-4f92-a205-d742d4103678</guid>
+      <link>http://automagic.fm/post/160962443720/bookslope-magi1125</link>
+      <description><![CDATA[
+<p><a href="http://www.netyear.net/">ネットイヤーグループ株式会社</a>の UX デザイナー・坂本貴史さん（<a href="https://twitter.com/bookslope">@bookslope</a>）と、<a href="https://www.b-architects.com/">株式会社ビジネス・アーキテクツ</a>の伊原力也さん (<a href="https://twitter.com/magi1125">@magi1125</a>) と三人で「IAって何なのさ」を考えてみました。IA（情報アーキテクチャ）は重要と言われていつつも、後付けであったり、以前ほど注目されていないように見えます。ワイヤーフレームを書くことだけが IA なのでしょうか？ 現場で働くお二人の視点から IA の現在について語っていただきました。</p><ul><li>前回、<a href="http://automagic.fm/post/156599918465/bookslope-magi1125">三人で話したときのポッドキャスト</a></li><li>ビデオ「<a href="https://www.youtube.com/watch?v=lIgtjOrmKCA">良いwebサイトとはどんなwebサイト？</a>」</li><li><a href="http://www.concentinc.jp/seminar/2017/04/ia-meetup-japan-featuring-ias17/">IA Meetup Japan featuring IAS17</a></li><li>正しく情報を伝えるためのスキルと責任</li><li><a href="http://amzn.to/2qtqGM6">IA100</a></li><li><a href="http://amzn.to/2pBerwV">IA Thinking</a></li><li><a href="http://amzn.to/2qDe5IL">情報アーキテクチャ 第4版</a></li><li><a href="http://amzn.to/2pDWvnt">IA/UXプラクティス</a></li><li>UI/UXデザイナーとは？</li><li><a href="https://careers.google.com/jobs#t=sq&amp;q=j&amp;li=20&amp;l=false&amp;jlo=en-US&amp;jc=USER_EXPERIENCE&amp;">Google の求人情報</a></li><li>今の仕事で IA は必要？</li><li>リーンなIA</li><li>Alan Cooper「<a href="https://medium.com/@MrAlanCooper/whats-going-on-here-7755d520c192">What’s Going On Here?</a>」</li><li>デザインと倫理</li><li><a href="https://medium.com/swlh/advice-to-todays-digital-design-students-347f42a1a5ba">Advice to today’s digital design students</a></li><li><a href="https://blog.prototypr.io/information-architecture-the-most-important-part-of-design-youre-probably-overlooking-20372ade4fc0">Information Architecture. The Most Important Part of Design You’re Probably Overlooking</a></li><li>それでも知っておきたい IA</li><li>情報アーキテクチャと情報デザイン</li><li><a href="https://designexplosions.academy/design-explosions-mapping-on-ios-ad4ec6ba5c59">Design Explosions #1  Mapping on iOS</a></li><li>文脈を合わせることで伝わること</li><li><a href="http://20170613.peatix.com/view">AIシンキング -Web制作者・担当者のためのAI思考術-</a></li><li><a href="http://peatix.com/event/265733/view">文化としてのUX　～『UX x Biz Book』スピンアウトセミナー in 京都～</a></li><li><a href="https://www.web-important.com/04/">!important #04 -特盛！アクセシビリティスペシャル-</a></li><li><a href="https://connpass.com/event/55559/">セキュリティとUXの◯◯な関係</a></li><li><a href="https://www.instagram.com/p/BStfL-KAXas/?taken-by=bookslope">Instagram : Bookslope </a></li><li><a href="https://medium.com/@magi1125">Medium: Rikiya Ihara</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic192.mp3" length="74058766" type="audio/mpeg"/>
+      <itunes:duration>01:27:57</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 23 May 2017 07:25:11 +0900</pubDate>
+    </item>
+    <item>
+      <title>#191 関口 裕さん（株式会社コンセント）</title>
+      <guid isPermaLink="false">cb096738-f345-4c9e-a1c4-191430cfc77d</guid>
+      <link>http://automagic.fm/post/160458426345/sekig</link>
+      <description><![CDATA[
+<p><a href="http:www.concentinc.jp">株式会社コンセント</a>のデザイナー関口 裕さん（<a href="https://twitter.com/S_E_K_I_G">@S_E_K_I_G</a>）と、デジタルプロダクトをデザインするためのスキルセットについて議論しました。今年のはじめ関口さんがコーディングを学び始めたことや、彼が実施したコーディング苦手意識調査について。それらの経験を通して感じたデザイナーにとって欠かせない仕事能力について話していただきました。</p><ul><li><a href="http://automagic.fm/post/144118143050/concent-sekiguchi">関口さんとの前回のポッドキャスト</a></li><li><a href="https://www.facebook.com/sekig">Facebook プロフィール</a></li><li><a href="http://hanarenoheya.tumblr.com/">note</a> - 関口さんの個人ブログ</li><li><a href="https://medium.com/@s_e_k_i_g">Medium</a> - 関口さんの記事が幾つか</li><li><a href="http://amzn.to/2o23UvM">レイアウトデザイン見本帳 レイアウトの意味と効果が学べるガイドブック </a></li><li><a href="http://www.hanarenoheya.com/note/individualism/">デザイナーであろうとすること</a></li><li><a href="http://www.hanarenoheya.com/note/enquete/">コーディング苦手意識調査してみた（結果発表）</a></li><li><a href="https://www.wired.com/2017/03/john-maeda-want-survive-design-better-learn-code">John Maeda: If You Want to Survive in Design, You Better Learn to Code</a></li><li><a href="http://www.apple.com/jp/swift/playgrounds/">Swift Playground</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic191.mp3" length="63011951" type="audio/mpeg"/>
+      <itunes:duration>01:14:48</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 9 May 2017 08:11:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#190 Web ディレクター池田僚介さん + デザイナー清水久美子さん</title>
+      <guid isPermaLink="false">5a0c093c-23fb-4f05-8d2d-d88bfc110b21</guid>
+      <link>http://automagic.fm/post/159955209340/cssnite-shizuoka</link>
+      <description><![CDATA[
+<p>Global Design の Web ディレクター池田僚介さん（<a href="https://www.facebook.com/ryo.lkeda">ryo.ikeda</a>）、トトコトデザインの清水 久美子さん（<a href="https://twitter.com/oratnin">@oratnin</a>）がゲスト。動きが早い Web ですが、一方制作者の興味は Web からアプリ / ゲームへ移っているようにも見えます。そうした中、社内外への教育や啓蒙、自分自身のスキルのステップアップをどのように取り組んでいるのでしょうか。他にも静岡在住のお二人が実行委員を務めている CSS Nite in SHIZUOKA のコンセプトについても伺いしました。</p><ul><li>6月10日開催 <a href="http://cssnite-shizuoka.jp/vol06/">CSS Nite SHIZUOKA Vol.6 </a></li><li><a href="http://www.glode.co.jp/">Global Design</a></li><li><a href="http://www.cms8341.jp/">CMS-8341</a></li><li><a href="https://totocoto.design/">トトコトデザイン</a></li><li><a href="http://amzn.to/2mPmxns">書かなきゃいけない人のためのWebコピーライティング教室 </a></li><li><a href="http://shifshizu.net/about/">コマンドシフトシズオカ</a></li><li>スキルの習得と使うタイミング</li><li>ユーザー、クライアント、チームとのコミュニケーション</li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic190.mp3" length="57652185" type="audio/mpeg"/>
+      <itunes:duration>01:08:25</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 25 Apr 2017 08:14:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#189 UI デザイナー Risa Yuguchiさん</title>
+      <guid isPermaLink="false">3aabbed6-dddc-4ee1-ba79-99247b4650c0</guid>
+      <link>http://automagic.fm/post/159429610390/risay</link>
+      <description><![CDATA[
+<p>UI デザイナーの Risa Yuguchi（<a href="https://twitter.com/risay">@risay</a>）さんに Adobe XD の魅力と使いどころを教えてもらいました。機能表だけでは分かりにくいところだけでなく、『正しい』ツールとの付き合い方について意見交換もしています。ツールによってデザイナーの仕事の仕方はどのように変わるのでしょうか。</p><ul><li><a href="http://www.adobe.com/jp/products/experience-design.html">Adobe Experience Design</a></li><li><a href="http://web.r-studio.jp/">RsStudio Styles</a></li><li><a href="https://medium.com/@risayuguchi">Medium</a></li><li><a href="https://www.figma.com/">Figma</a></li><li><a href="https://ohako.studio/">Ohako Studio</a></li><li><a href="https://en.wikipedia.org/wiki/Microsoft_Expression_Design">Microsoft Expression Design</a></li><li><a href="https://vectr.com/">Vectr</a></li><li><a href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a></li><li><a href="https://blogs.adobe.com/creativestation/">Creative Station</a></li><li><a href="https://prottapp.com/">Prott</a></li><li><a href="https://www.microsoft.com/microsoft-hololens/en-us">Microsoft Hololens</a></li><li><a href="https://creative.adobe.com/ja/plans">Adobe CC 単体プランは 2,180 円</a></li><li><a href="https://xd-study.connpass.com/event/54747/">4月20日開催 Adobe XD Meeting #04</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic189.mp3" length="53017437" type="audio/mpeg"/>
+      <itunes:duration>01:02:54</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 11 Apr 2017 07:30:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#188 株式会社サイバーエージェント 泉水翔吾さん</title>
+      <guid isPermaLink="false">c1e99fe4-deeb-4a37-9e78-1abaa139d3fa</guid>
+      <link>http://automagic.fm/post/158906893165/sensui</link>
+      <description><![CDATA[
+<p>株式会社サイバーエージェントのフロントエンドエンジニア 泉水翔吾さん（<a href="https://twitter.com/1000ch">@1000ch</a>）さんと、技術とデザインの繋げ方について話をしました。近年の開発ツール、デザインツールの進化を振り返りながら、エンジニアとデザイナーとのコミュニケーションがどのように変わってきているのか意見交換しました。</p><ul><li><a href="https://1000ch.net/">1000ch.net</a></li><li><a href="https://github.com/1000ch/grd">Grd</a></li><li><a href="https://www.git-tower.com/">Tower</a></li><li><a href="https://www.sourcetreeapp.com/">Source Tree</a></li><li><a href="https://codekitapp.com/">CodeKit</a></li><li><a href="http://inside-frontend.com/">Inside Frontend</a></li><li><a href="https://1000ch.net/posts/2017/component-of-web-frontend.html">Webフロントエンドにおけるコンポーネント化のアプローチ</a></li><li>デザインツールのもつ課題</li><li><a href="https://avocode.com/design-report-2016/">2016 Web Design Trend Report</a></li><li><a href="https://animaapp.github.io/Auto-Layout/">Auto Layout for Sketch</a></li><li><a href="http://sketchplugins.com/d/87-new-file-format-in-sketch-43">New file format in Sketch</a></li><li><a href="https://www.figma.com/">Figma</a></li><li><a href="http://getbootstrap.com/">Bootstrap</a></li><li><a href="https://bootstrapstudio.io/">Bootstrap Studio</a></li><li><a href="https://github.com/meteor/chromatic">Chromatic</a></li><li><a href="http://sourabhbajaj.com/mac-setup/iTerm/README.html">iTerm2</a></li><li><a href="https://developers.google.com/web/progressive-web-apps/">Progressive Web Apps</a></li><li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers">Service Worker の紹介</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic188.mp3" length="71549670" type="audio/mpeg"/>
+      <itunes:duration>01:24:58</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 28 Mar 2017 08:11:28 +0900</pubDate>
+    </item>
+    <item>
+      <title>#187 Web 解析士 江尻 俊章さん</title>
+      <guid isPermaLink="false">c82a964a-6232-4215-b5b3-d629b52eb31c</guid>
+      <link>http://automagic.fm/post/158370880455/ejtter</link>
+      <description><![CDATA[
+<p>Web 解析士の江尻 俊章さん（<a href="http://twitter.com/ejtter">@ejtter</a>）と、クリエイティブと分析・解析にある共通点について話し合いました。正反対の立場にいるようなデザインと web 解析ですが、実はそんなことはありません。抱えている課題やアプローチなど似ているところは幾つかあります。Web サイトの分析だけに留まらない Web の価値の見つけ方について教えていただきました。</p><ul><li><a href="https://www.kan.co.jp/">株式会社環</a></li><li><a href="https://www.facebook.com/ejtter">Facebook プロフィール</a></li><li><a href="http://ejtter.com/">個人ブログ</a></li><li><a href="https://www.waca.associates/jp/">一般社団法人ウェブ解析士協会</a></li><li><a href="https://www.similarweb.com/">SimilarWeb</a></li><li>正しさではなく、行動ができる仮説をつくること</li><li>一緒に時間を過ごすことの重要性</li><li>Web解析にある右脳的な働き方</li><li><a href="https://itunes.apple.com/us/app/google-analytics/id881599038?mt=8">Google Analytics for iOS</a></li><li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.giant&amp;hl=en">Google Analytics for Android</a> </li><li><a href="http://www.campaignlive.co.uk/article/youtube-stop-30-second-unskippable-ads/1424541">YouTube to stop 30-second unskippable ads</a></li><li><a href="http://amzn.to/2kTIdtw">繁盛するWebの秘訣「ウェブ解析入門」</a></li><li><a href="http://amzn.to/2lhfLCQ">ウェブ解析士認定試験公式テキスト2017</a></li><li><a href="https://www.amazon.co.jp/gp/product/4839960879/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=4839960879&amp;linkCode=as2&amp;tag=could-22">Google&amp;Yahoo!タグマネージャーの教科書</a></li><li><a href="https://analytics.google.com/analytics/web/template?uid=9Ooh-iBBTyWdkEQu7RTLIg">江尻さんが作った時間帯カスタムレポート</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic187.mp3" length="61724360" type="audio/mpeg"/>
+      <itunes:duration>01:13:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 14 Mar 2017 08:26:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#186 よつばデザイン 後藤賢司さん</title>
+      <guid isPermaLink="false">02e2671f-2290-4713-991b-941aa7b60f1e</guid>
+      <link>http://automagic.fm/post/157802198510/428goto</link>
+      <description><![CDATA[
+<p><a href="http://yotsuba-d.com/">よつばデザイン</a>の後藤賢司さん（<a href="https://twitter.com/428design">@428design</a>）と『作業しない』デザイナーのあり方について話し合いました。手段が目的になった提案によって、制作側も発注側も不幸になることがあります。テクノロジーやツールはどんどん変わって来ていますが、デザイナーがしなければならない本来の仕事は昔と変わらないと後藤さんは言います。これからも磨いていきたいデザイナーのスキルについて伺いました。</p><ul><li><a href="https://www.facebook.com/yotsubadesign/">よつばデザイン</a></li><li><a href="http://bit.ly/2mycD5Z">前回のポッドキャスト</a></li><li><a href="https://cmu.connpass.com/">クリーエーターズミートアップ</a></li><li><a href="http://yotsuba-d.com/blog/%E3%80%90%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%80%91%E3%83%86%E3%82%99%E3%82%B5%E3%82%99%E3%82%A4%E3%83%B3%E3%81%97%E3%81%AA%E3%81%84%E3%83%86%E3%82%99%E3%82%B5%E3%82%99%E3%82%A4%E3%83%8A%E3%83%BC/">デザインしないデザイナーになる</a></li><li>最初の一歩を踏み出せるための働きかけ</li><li><a href="http://yotsuba-d.com/blog/important-03/">フリーランスデザイナーとクライアントとのつきあい方</a></li><li><a href="http://automagic.fm/post/115707963120/%E3%82%88%E3%81%A4%E3%81%B0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%81%AE%E5%BE%8C%E8%97%A4%E8%B3%A2%E5%8F%B8%E3%81%95%E3%82%93428design%E3%81%8C%E3%82%B2%E3%82%B9%E3%83%88%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%81%8C%E6%A9%9F%E6%A2%B0%E5%8C%96%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%81%8F%E4%B8%AD%E3%81%A7">前回の後藤さんとの番組</a></li><li><a href="http://www.wix.com/blog/2016/06/wix-artificial-design-intelligence/">The Future of Website Creation: Introducing Wix ADI</a></li><li><a href="https://flexbox.webflow.com/">Webflow + Flexbox</a></li><li><a href="https://www.web-important.com/03/">!important #3</a></li><li><a href="https://www.facebook.com/groups/241838242545737/">webクリエイターのための情報交換所</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic186.mp3" length="77771865" type="audio/mpeg"/>
+      <itunes:duration>01:32:22</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 28 Feb 2017 10:46:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#185 デザイナー イシジマミキさん</title>
+      <guid isPermaLink="false">b7acfbe5-7c58-406c-a154-c8c7c062efff</guid>
+      <link>http://automagic.fm/post/157209945750/woopsdez</link>
+      <description><![CDATA[
+　<p>デザイナーのイシジマ ミキさん（<a href="https://twitter.com/woopsdez">@woopsdez</a>）と、デザインツールとの付き合い方について話をしました。本当に必要なツールは、機能比較だけでは見つけることができません。自分に合うツールの見つけ方や、教える立場から提案するデザインの学び方について伺いました。</p><ul><li><a href="http://amzn.to/2j8R2Pi">スマートフォンデザインでラクするために</a></li><li><a href="http://amzn.to/2j8HG66">神速Photoshop</a></li><li><a href="https://www.sketchapp.com/">Sketch</a></li><li><a href="https://affinity.serif.com/ja-jp/photo/">Affinity Photo</a></li><li><a href="https://affinity.serif.com/ja-jp/designer/">Affinity Designer</a></li><li><a href="http://www.adobe.com/jp/products/experience-design.html">Adobe XD</a></li><li>プロトタイプを活用する仕事環境</li><li><a href="https://medium.com/@zerobase/%E6%97%A5%E6%9C%AC%E4%BA%BA%E3%81%AE%E4%BD%8E%E3%81%99%E3%81%8E%E3%82%8B%E7%94%9F%E7%94%A3%E6%80%A7%E3%81%A8-it%E6%89%93%E3%81%A1%E5%A3%8A%E3%81%97%E7%99%BE%E5%A7%93%E4%B8%80%E6%8F%86-a77ec2cc68be#.8zsozd11z">日本人の低すぎる生産性と、IT打ち壊し百姓一揆</a></li><li>何を学べば良いのか分かりにくい</li><li><a href="http://www.yasuhisa.com/could/article/wcan-prototype-design/">プロトタイプが閉じたデザインを切り開く</a></li><li>なぜ新しいデザインツールが次々と出てきているのか</li><li><a href="https://uxmilk.connpass.com/event/47922/">UX JAM 14 -NEW YEAR SPECIAL</a></li><li><a href="http://www.yasuhisa.com/could/article/visual-design-ciritique/">ビジュアルでもできるデザイン批評</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic185.mp3" length="77939447" type="audio/mpeg"/>
+      <itunes:duration>01:32:34</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 14 Feb 2017 08:29:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#184 坂本貴史さん + 伊原力也さん</title>
+      <guid isPermaLink="false">39d68fb2-8833-4a96-9b46-01a202050aa2</guid>
+      <link>http://automagic.fm/post/156599918465/bookslope-magi1125</link>
+      <description><![CDATA[
+<p>ネットイヤーグループ株式会社の UX デザイナー・坂本貴史さん（<a href="https://twitter.com/bookslope">@bookslope</a>）と、株式会社ビジネス・アーキテクツの伊原力也さん (<a href="https://twitter.com/magi1125">@magi1125</a>) と三人で「Webサイトの品質」をテーマに議論をしました。視点や立場によって良いという評価は変わりますが、それを理解することで熟練者へと成長することができます。しかし、そのための教育、知るための手段はあまりないという課題もあります。何気に使っている「良い Web サイト」って一体どういう意味が含まれてるのでしょうか。</p><ul><li><a href="http://automagic.fm/post/142653963025/bookslope-2">前回の坂本さんとの回（#163）</a></li><li><a href="http://automagic.fm/tagged/automagic">前回の伊原さんとの回（#171）</a></li><li><a href="http://www.yasuhisa.com/could/article/what-is-website-quality/">改めてWebサイトの品質について考える</a></li><li><a href="https://u-site.jp/usability/methods/">ユーザビリティの評価手法</a></li><li><a href="https://wcan.jp/news/report-2016winter.html">WCAN 2016 Winter</a></li><li><a href="http://www.concentinc.jp/labs/2014/01/pixel-perfect-precision-handbook-2-japanese/">The ustwo™ Pixel Perfect Precision Handbook 2 日本語版</a></li><li><a href="http://waic.jp/docs/UNDERSTANDING-WCAG20/Overview.html">WCAG 2.0 を理解して実装するためのガイド</a></li><li><a href="https://github.com/yhassy/Content_Worksheet">コンテンツ設計のためのスターターキット</a></li><li><a href="http://www.atmarkit.co.jp/ait/articles/1008/31/news096.html">UXとは何ぞや？ UXを高める武器を手に入れよう！</a></li><li><a href="http://www.hcdnet.org/">HCD 特定非営利活動法人 人間中心設計推進機構</a></li><li><a href="https://www.sociomedia.co.jp/7237">フリー ユア UX 2016</a></li><li><a href="https://cybozu.co.jp/efforts/accessibility/">サイボウズ アクセシビリティへの取り組み</a></li></ul>]]></description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic184.mp3" length="73503912" type="audio/mpeg"/>
+      <itunes:duration>01:27:18</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 31 Jan 2017 08:20:40 +0900</pubDate>
+    </item>
+    <item>
+      <title>#183 KICKS Web 千貫りこさん</title>
+      <guid isPermaLink="false">59b4a2c5-c28a-4eda-aa5d-61caf6ee75d3</guid>
+      <link>http://automagic.fm/post/154399836320/kicksweb-rico</link>
+      <description>KICKS Web 千貫りこ（@henyorico）さんと、作ることの楽しさと、作るだけでは足りなくなってきている制作の仕事について話をしました。環境もツールも大きく変わるなか、講師として何を伝えることができるのでしょうか。変わりつつある「デザインの仕事」の視点・評価の違いについて意見交換しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic183.mp3" length="61779273" type="audio/mpeg"/>
+      <itunes:duration>01:13:20</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 13 Dec 2016 10:26:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#182 原さんとのアフレコ＋お知らせ</title>
+      <guid isPermaLink="false">af52e5e6-75f2-496e-a7f8-aed9ab0c7a07</guid>
+      <link>http://automagic.fm/post/154093933690/freelance-life</link>
+      <description>Greative の原 一浩さん（@kara_d）から、ポッドキャストのアフレコでフリーランスの生活リズムについてアドバイスをいただきました。今年のポッドキャストは次回で最後。1ヶ月ほどお休みして来年に備えようと思います。様々なトピックを扱っているので、もしよかったら過去の回も聞いてみてください。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic182.mp3" length="11387755" type="audio/mpeg"/>
+      <itunes:duration>00:13:12</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 06 Dec 2016 08:07:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#181 JUSO Coworking  深沢 幸治郎さん</title>
+      <guid isPermaLink="false">98679a78-447e-4816-9c32-6a58711024a4</guid>
+      <link>http://automagic.fm/post/153494061570/juso-coworking</link>
+      <description>JUSO Coworking の運用に携わるデザイナー 深沢 幸治郎（@witch_doktor）さんをゲストに迎えて、コワーキングペースから見る制作者の仕事の変化について話し合いました。コミュニケーション能力が必要と言われているけど、実際どう身につけて、何に心がければ良いのでしょうか。他にもコワーキングスペースの裏側も少し覗けるエピソードです。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic181.mp3" length="88039943" type="audio/mpeg"/>
+      <itunes:duration>01:44:36</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 22 Nov 2016 09:26:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#180 Greative 原 一浩さん</title>
+      <guid isPermaLink="false">4951e98f-4ad6-4c37-99a5-5ff4c8c01610</guid>
+      <link>http://automagic.fm/post/152873343100/greative</link>
+      <description>Greative の原 一浩さん（@kara_d）をゲストにお迎えして、Web デザイントレンドについて議論。そもそも『トレンド』とは何か？トレンドから学べることや、デザイン批評について意見交換しました。キャリアが長く、技術とデザイン両方への理解が深い原さんならではの視点が聞けます。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic180.mp3" length="94037035" type="audio/mpeg"/>
+      <itunes:duration>01:51:44</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 8 Nov 2016 08:01:07 +0900</pubDate>
+    </item>
+    <item>
+      <title>#179 ロンドンからこんにちは2</title>
+      <guid isPermaLink="false">c1d19ec8-0b4c-497a-98b0-bc74d41f5b32</guid>
+      <link>http://automagic.fm/post/152262854355/ldconf-day2</link>
+      <description>現在、ロンドンで開催されている Leading Design Conference の模様をレポート。今回は2日間のカンファレンスを通して感じたところを話しています。日本とは違うところ。米国ではなく欧米のカンファレンスにいく魅力。このイベント特有のことを話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic179.mp3" length="9129341" type="audio/mpeg"/>
+      <itunes:duration>00:11:41</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 26 Oct 2016 16:06:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#178 ロンドンからこんにちは</title>
+      <guid isPermaLink="false">489199c8-f2af-49f0-9069-48d4fea873b5</guid>
+      <link>http://automagic.fm/post/152262854355/ldconf-day1</link>
+      <description>現在、ロンドンで開催されている Leading Design Conference の模様をレポート。初日の感想・リアクションについて話しました。日本をはじめ欧米でもあるデザインに関わる課題とは何でしょう。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic178.mp3" length="8614318" type="audio/mpeg"/>
+      <itunes:duration>00:11:37</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 25 Oct 2016 06:04:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#177 樋口 剛さん＋松本 慶一郎さん</title>
+      <guid isPermaLink="false">5742a0af-1c30-406c-946b-6638717e17aa</guid>
+      <link>http://automagic.fm/post/151631265020/tyshgc-matumos</link>
+      <description>サービスデザイナー樋口剛さん（@tyshgc）、デザイナーの松本慶一郎さん（@matsumos）の二人を呼んで、デザインのシステム化について話をしました。デザインの運用、スケーリングを考えると欠かせないデザインシステム、ガイドラインの作成。画面全体や遷移といったマクロ視点から考える傾向が強いデザイナーは、デザインシステムというマイクロの視点をどのように取り入れたら良いのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic177.mp3" length="74753808" type="audio/mpeg"/>
+      <itunes:duration>01:28:47</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 11 Oct 2016 07:49:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#176 千貫りこさん＋篠崎祥子さん</title>
+      <guid isPermaLink="false">2184ee0a-bff4-4fb4-8c33-bdb26752df58</guid>
+      <link>http://automagic.fm/post/150993113640/kicks-web</link>
+      <description>KICKS Web の千貫りこさん（@henyorico）、クリーク・アンド・リバーの篠崎祥子さんをお呼びして、同業であるデザイナーや開発者に向けた情報発信やコミュニケーションについて話し合いました。千貫さんは登壇や講師業を続けていますし、篠崎さんは主催イベントを幾つか開催されています。それぞれの視点で伝えることの難しさや工夫していることを話していただきました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic176.mp3" length="71305621" type="audio/mpeg"/>
+      <itunes:duration>01:24:41</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 27 Sep 2016 12:45:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#175 株式会社Spelldata 竹洞 陽一郎さん</title>
+      <guid isPermaLink="false">9ef7651b-3ea7-4fc6-9b4a-fe51b1185ec3</guid>
+      <link>http://automagic.fm/post/150335657880/takehora</link>
+      <description>株式会社 Spelldata の竹洞 陽一郎さん（@takehora）と Web パフォーマンスの本質について意見を伺いました。定量計測が可能な技術的な分野だけでなく、コンテンツの価値という定性的なところまで、多方面からパフォーマンスについて話をしました。年々深刻化する Web パフォーマンス。アウトプットの仕方だけでなく、仕事との向き合い方からパフォーマンス最適化が始まります。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic175.mp3" length="78509952" type="audio/mpeg"/>
+      <itunes:duration>01:33:15</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 13 Sep 2016 10:43:07 +0900</pubDate>
+    </item>
+    <item>
+      <title>#174 H2O Space たにぐちまことさん</title>
+      <guid isPermaLink="false">73027b48-84ed-4bd0-943a-7cb336a069c8</guid>
+      <link>http://automagic.fm/post/149674094875/h2o</link>
+      <description>H2O Space のたにぐちまことさん（@seltzer）と、忙しい毎日、どのように新しいことを学んでいくのか、そもそも何を学ぶべきなのか話し合いました。お互い立場が少し違いますが、情報との向き合い方という意味で重なるところがたくさんあります。情報量も取得手段がたくさんありますが、いろいろあるから楽しめるという側面も。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic174.mp3" length="72466343" type="audio/mpeg"/>
+      <itunes:duration>01:26:03</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 30 Aug 2016 09:06:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#173 株式会社コンセント  筒井美希さん</title>
+      <guid isPermaLink="false">5f612dc0-33bb-49b8-be23-de5067fd198b</guid>
+      <link>http://automagic.fm/post/149015727945/naruhodo-tsutsui</link>
+      <description>株式会社コンセントのエディトリアルデザイナー  筒井美希さんと、デザインの共有と共感をテーマについて話しました。言語化することは重要ですが、それがすべてなのでしょうか。コンテンツの価値を増幅するためにデザインがありますが、様々なことが自動化、高速化が進むなか、どのようにデザインしていけば良いのでしょうか。書籍「なるほどデザイン」に関する裏話も少し聞けます。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic173.mp3" length="76148844" type="audio/mpeg"/>
+      <itunes:duration>01:30:26</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 16 Aug 2016 13:34:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#172 株式会社 イー・ネットワークス 前川昌幸さん</title>
+      <guid isPermaLink="false">92df5cb1-f111-4e06-b70a-28b256ac987f</guid>
+      <link>http://automagic.fm/post/148319795165/maepon</link>
+      <description>株式会社 イー・ネットワークスでフロントエンドエンジニアをされている 前川昌幸（@maepon）さんと、レスポンシブWebデザイン以降のワークフローについて意見交換しました。技術でできることが増え、作るツールも充実してきた現在ですが、制作者はどれだけ『アップデート』できているでしょうか。デザインと開発の溝を埋める方法があるとしたら？</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic172.mp3" length="86318374" type="audio/mpeg"/>
+      <itunes:duration>01:25:57</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 2 Aug 2016 08:24:11 +0900</pubDate>
+    </item>
+    <item>
+      <title>#171 株式会社ビジネス・アーキテクツ 伊原力也さん</title>
+      <guid isPermaLink="false">c86dcdcc-a561-4a11-9d72-81ac5426cf6c</guid>
+      <link>http://automagic.fm/post/147613709580/magi1125-q-and-a</link>
+      <description>株式会社ビジネス・アーキテクツの伊原力也さん (@magi1125) と、リスナーからのアクセシビリティに関する質問を答えました。なぜ、伊原さんは Web アクセシビリティに取り組み始めたのかというオリジンストーリーから、ラーメンやゲームに対する熱い想いを語っていただきました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic171.mp3" length="102822605" type="audio/mpeg"/>
+      <itunes:duration>02:02:12</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 19 Jul 2016 07:39:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#170 デザイナー 上谷真之さん</title>
+      <guid isPermaLink="false">e43dafff-152c-4474-bb79-d0758984d310</guid>
+      <link>http://automagic.fm/post/146917663255/uetani-designer</link>
+      <description>デザイナーの上谷真之さん（@utmy5）と、デザイナーとして働くことの責任や、何を学び、実践していけば良いのか意見交換をしました。nanapi で CCO をされていた頃を振り返りながら、今彼の中で抱いている『危機感』についてお伺いしました。今回は後半からスペシャルゲストも登場します。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic170.mp3" length="90787688" type="audio/mpeg"/>
+      <itunes:duration>01:47:52</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 5 Jul 2016 08:10:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#169 株式会社 Gaji-Labo 山岸ひとみさん</title>
+      <guid isPermaLink="false">3fcf09fd-15a0-4e39-9451-69ac56fe20f8</guid>
+      <link>http://automagic.fm/post/146227302070/gaji-labo</link>
+      <description>株式会社 Gaji-Labo のデザイナー、 山岸 ひとみ（@yamagishihitomi）さんと一緒に、ワークショップを通して伝えたいことや可能性について話し合いました。コミュニケーションを設計するという意味では、デザインとワークショップは密接な関係があります。ワークショップはなぜ日本で必要とされているのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic169.mp3" length="74785197" type="audio/mpeg"/>
+      <itunes:duration>01:28:49</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 21 Jun 2016 07:42:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#168 株式会社ビジネス・アーキテクツ 伊原力也さん</title>
+      <guid isPermaLink="false">095122cf-697d-420a-a705-e778f1357d15</guid>
+      <link>http://automagic.fm/post/145932576010/magi1125-intro</link>
+      <description>昨日、株式会社ビジネス・アーキテクツの伊原力也さん (@magi1125) とポッドキャスト収録をしました。今回は、Q&amp;A 形式でリスナーからの質問を答えてもらいました。質問をしていただいた皆様、ご協力ありがとうございました。本編の公開は少し先になりますが、収録の一部を一足先に公開しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic168.mp3" length="10197520" type="audio/mpeg"/>
+      <itunes:duration>00:11:56</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 15 Jun 2016 08:24:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#167 株式会社メルカリ 鈴木伸緒さん</title>
+      <guid isPermaLink="false">76580243-2df2-4026-b542-1144161dd423</guid>
+      <link>http://automagic.fm/post/145528729915/mercari-suzuki</link>
+      <description>株式会社メリカリで UI デザイナーとして活躍している鈴木伸緒さん（@nobgraphica）とアプリデザインの課題と、最近の動向について話しました。見た目が良い、使いやすい以外にデザインには何が求められているのでしょうか。デザイナーは製品向上のためにどう振る舞えばいいのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic167.mp3" length="95858076" type="audio/mpeg"/>
+      <itunes:duration>01:53:43</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 7 Jun 2016 07:57:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>#166 株式会社デスクトップワークス 田口 真行さん</title>
+      <link>http://automagic.fm/post/144828656395/taguchi-webdirection</link>
+      <description>株式会社デスクトップワークスの田口 真行さんをゲストに迎えて、Web ディレクションの真意についてお伺いしました。道具と職種は結びつけることができるのか？田口流、今だから固めておきたい Web ディレクターの基礎について話していただきました。また、コンテンツ配信を通じてのブランディングについても意見交換をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic166.mp3" length="71287988" type="audio/mpeg"/>
+      <itunes:duration>01:24:28</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 24 May 2016 08:14:20 +0900</pubDate>
+    </item>
+    <item>
+      <title>#165 株式会社コンセント 関口 裕さん</title>
+      <link>http://automagic.fm/post/144118143050/concent-sekiguchi</link>
+      <description>株式会社コンセントのアートディレクター 関口 裕さん（ @S_E_K_I_G）とデジタルコンテンツのデザインと、それに関わるデザイナー / ディレクターの役割について話し合いました。量だけでなく、見せ方や配信方法が劇的に変わり始めている Web・アプリの世界。今抱えているデザインの課題から、今後のコンテンツデザインについて読み解いてみました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic165.mp3" length="67998212" type="audio/mpeg"/>
+      <itunes:duration>01:20:33</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 10 May 2016 07:59:02 +0900</pubDate>
+    </item>
+    <item>
+      <title>#164 UIデザイナー 山本麻美さん</title>
+      <link>http://automagic.fm/post/143399744580/goma-apps</link>
+      <description>UIデザイナーとして活躍している山本麻美さん（@linen_beau）に UI デザイナーのお仕事について話を伺いました。UI デザイナーとしてのコミュニケーション術。これから UI デザイナーはどんな存在になるのか意見交換しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic164.mp3" length="75826636" type="audio/mpeg"/>
+      <itunes:duration>01:29:52</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 26 Apr 2016 08:12:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#163 ネットイヤーグループ株式会社　坂本貴史さん</title>
+      <link>http://automagic.fm/post/142653963025/bookslope-2</link>
+      <description>デザインとビジネスの関わり、これから必要とされるデザイナーの役割について話し合いました。手法や考え方をいかに自分の現場で活かせば良いのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic163.mp3" length="51710476" type="audio/mpeg"/>
+      <itunes:duration>01:47:12</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 12 Apr 2016 08:10:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#162 四国新聞 英 誠一郎さん</title>
+      <link>http://automagic.fm/post/141455730560/shikoku-shinbun</link>
+      <description>四国新聞で Web マスターをしている英 誠一朗さんと、新聞の Web サイトの運営を通じて感じた、コンテンツビジネスについてお話を伺いました。新聞はなぜ価値があったのか、そして今新聞の価値を語るとしたら何か。情報過多の時代に Web へコンテンツを配信することの面白さや難しさについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic162.mp3" length="52331272" type="audio/mpeg"/>
+      <itunes:duration>01:12:13</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 22 Mar 2016 08:15:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#161.5 株式会社マジカルリミックス 赤間公太郎さん</title>
+      <link>http://automagic.fm/post/141135511895/magical-remix2</link>
+      <description>前回、赤間さんとポッドキャストしましたが、そのとき入れることができなかったおまけコンテンツです。テキストエディタについてあれこれ話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic161.5.mp3" length="4326236" type="audio/mpeg"/>
+      <itunes:duration>00:08:19</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 16 Mar 2016 16:28:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#161 株式会社マジカルリミックス 赤間公太郎さん</title>
+      <link>http://automagic.fm/post/140653894430/magical-remix</link>
+      <description>株式会社マジカルリミックスの代表・赤間公太郎さん（@magicalremix）と、Webサイト制作の過去・現在を振り返りました。2月に改訂版書籍を出した赤間さんから見る変化について語っていただきました。また、プレゼンテーションという場で人に何かを伝えることの難しさや面白さを共有しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic161.mp3" length="69625703" type="audio/mpeg"/>
+      <itunes:duration>01:36:14</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 8 Mar 2016 08:22:10 +0900</pubDate>
+    </item>
+    <item>
+      <title>#160 HP Styling 代表 高森三樹さん</title>
+      <link>http://automagic.fm/post/139814367995/hp-styling</link>
+      <description>HP Styling 代表 高森三樹さんがゲスト。多種多様な業種のサイト制作に関わりながらPCスクールの講師をされています。過去数年にわたって障害者に向けて iPad の使い方を教えている高森さんが、iPad をはじめとしたタッチデバイス魅力とテクノロジーとの付き合い方について教えていただきました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic160.mp3" length="46287547" type="audio/mpeg"/>
+      <itunes:duration>01:21:18</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 23 Feb 2016 08:13:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#159 UXエバンジェリスト 羽山 祥樹さん</title>
+      <link>http://automagic.fm/post/138979583760/storywriter</link>
+      <description>UXエバンジェリストの羽山 祥樹さん（@storywriter）がゲスト。コンテンツとユーザー中心設計の交差点。企画・設計するフェイズと実際にモノを作り出していくフェイズにある『隙間』について話しました。アイデアを形にするには、どのような働きかけをしたら良いのか、お互い実践していることやアイデアについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic159.mp3" length="62087168" type="audio/mpeg"/>
+      <itunes:duration>01:21:18</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 9 Feb 2016 17:32:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>#158 株式会社インパス 山下 一樹さん</title>
+      <link>http://automagic.fm/post/138047730920/impath</link>
+      <description>株式会社インパスの山下 一樹さん（@yamashitakazuki）と、アプリ UI デザインとデザインの仕事の向き合いかたについて話し合いました。デザインの普通をつくることの重要性、デザインとエンジニアリングにある溝、デザイナーとしての今年の目標を伺いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic158.mp3" length="43834263" type="audio/mpeg"/>
+      <itunes:duration>01:00:24</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 26 Jan 2016 08:12:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#157 KICKS Web 千貫りこさん</title>
+      <link>http://automagic.fm/post/135220992815/kicksweb-rico</link>
+      <description>KICKS Web の千貫りこ（@henyorico）さんと Web サイト制作以後の Web プロフェッショナルの仕事について話しました。Web サイト制作の仕事は今もありますが、今後も作ることを目的とした仕事で十分でしょうか。 Web プロフェッショナルとして自信をもって提供できる価値は何でしょう。彼女の経験から可能性やアドバイスを話してもらいました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic157.mp3" length="54322572" type="audio/mpeg"/>
+      <itunes:duration>01:14:59</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 15 Dec 2015 10:32:40 +0900</pubDate>
+    </item>
+    <item>
+      <title>#156 株式会社ビジネス・アーキテクツ 伊原力也さん</title>
+      <link>http://automagic.fm/post/134294358735/ba-ihara</link>
+      <description>株式会社ビジネス・アーキテクツ の伊原力也さん (@magi1125) と変わりゆく「情報へのアクセスの仕方」と、今後のコンテンツ作成や配信について意見交換をしました。 Web ブラウザに表示されている情報だけがアクセシビリティであれば十分なのでしょうか。アプリをはじめ Web ブラウザから離れた Web がある現在。そこでのアクセシビリティとはどういったものか、それをどうデザインしていけば良いのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic156.mp3" length="67848741" type="audio/mpeg"/>
+      <itunes:duration>01:33:46</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 1 Dec 2015 08:19:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#155 株式会社ツクルバ 谷 拓樹さん</title>
+      <link>http://automagic.fm/post/132897615930/tsukuruba-tani</link>
+      <description>株式会社ツクルバのデザイナー 谷 拓樹さん（@hiloki）とフロントエンド技術とビジュアルデザインの『隙間』について話しました。CSS の現在と未来。Web デザインに興味をもってもらうにはどうするか。どのように学習していくかについて意見交換をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic155.mp3" length="51378805" type="audio/mpeg"/>
+      <itunes:duration>01:10:53</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 10 Nov 2015 08:01:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#154 インテリジェントネット株式会社 和田嘉弘さん</title>
+      <link>http://automagic.fm/post/131978864540/ini-wada</link>
+      <description>インテリジェントネット株式会社の和田嘉弘さん（@yoshihiro）さんと、Web の過去・現在・未来について話し合いました。スマートフォンの登場で変わったこと、閉鎖化していく情報と人の考え方、制作者の社会責任など、15年以上のキャリアをもつ彼に伺いしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic154.mp3" length="58563907" type="audio/mpeg"/>
+      <itunes:duration>01:20:52</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 27 Oct 2015 20:32:04 +0900</pubDate>
+    </item>
+    <item>
+      <title>#153 株式会社まぼろし 松田直樹さん</title>
+      <link>http://automagic.fm/post/131049219860/maboroshi-matsuda</link>
+      <description>株式会社まぼろしのデザイナー松田直樹さん（@readymadegogo）と、SVG の魅力と未来について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic153.mp3" length="83690740" type="audio/mpeg"/>
+      <itunes:duration>01:55:46</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 13 Oct 2015 07:43:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#152 と、コラボ特別編</title>
+      <link>http://automagic.fm/post/130132363395/tocolabo</link>
+      <description>8月8日に開催されたクリーク・アンド・リバー社主催のイベント「と、コラボ特別編」の様子。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic152.mp3" length="55589907" type="audio/mpeg"/>
+      <itunes:duration>01:16:44</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 29 Sep 2015 23:11:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#151 spicagraph 角田綾佳さん</title>
+      <link>http://automagic.fm/post/129103691400/spicagraph</link>
+      <description>大阪のフリーランスデザイナー 角田綾佳さん（@spicagraph）さんがゲスト。評価や勉強の仕方など、デザインについていろいろ話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic151.mp3" length="75693391" type="audio/mpeg"/>
+      <itunes:duration>01:44:39</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 15 Sep 2015 07:49:08 +0900</pubDate>
+    </item>
+    <item>
+      <title>#150 Ask Automagic「日本と海外でのUXの違い」</title>
+      <link>http://automagic.fm/post/128741645765/ask-automagic150</link>
+      <description>リスナーからの質問に応えます。今回は「UXという言葉について、日本での受け取られ方と海外でのそれと􏰁は少し違ったも􏰀のだと思いますか？」。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic150.mp3" length="4053195" type="audio/mpeg"/>
+      <itunes:duration>00:05:09</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 10 Sep 2015 09:35:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#149 Ask Automagic「初心者でも実践できるUX手法」</title>
+      <link>http://automagic.fm/post/128669741500/ask-automagic149</link>
+      <description>リスナーからの質問に応えます。今回は「デザインにUXを取り入れようと思ってもペルソナ等􏰀シナリオを考える􏰀が難しい。初心者でも簡単にとりかかれる方法􏰁はありますか?」。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic149.mp3" length="3955665" type="audio/mpeg"/>
+      <itunes:duration>00:05:01</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 9 Sep 2015 08:45:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#148 Ask Automagic「最近気になったプロダクト・サービスは？」</title>
+      <link>http://automagic.fm/post/128593138180/ask-automagic148</link>
+      <description>リスナーからの質問に応えます。今回は「UXに関わる視点で、最近プロダクト、サービスの事例で、興味深かったも􏰀、感心したも􏰀など􏰁ありますか?」。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic148.mp3" length="4422974" type="audio/mpeg"/>
+      <itunes:duration>00:05:40</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 8 Sep 2015 07:53:10 +0900</pubDate>
+    </item>
+    <item>
+      <title>#147 株式会社インフォアクシア 植木真さん</title>
+      <link>http://automagic.fm/post/128061079850/infoaxia-ueki</link>
+      <description>株式会社インフォアクシアの植木真さん（@makoto_ueki）がゲスト。 Web アクセシビリティの過去・現在・未来や課題について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic147.mp3" length="84815501" type="audio/mpeg"/>
+      <itunes:duration>01:57:47</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 1 Sep 2015 07:43:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#146 株式会社サイバーエージェント 鈴木伸緒さん</title>
+      <link>http://automagic.fm/post/126941942545/nobuo-suzuki</link>
+      <description>UIデザイナー 鈴木伸緒さん（@nobgraphica）さんがゲスト。融けるUIデザインのために意識していること。プロトタイプを作る理由について話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic146.mp3" length="71376440" type="audio/mpeg"/>
+      <itunes:duration>01:38:40</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 18 Aug 2015 07:06:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>#145 株式会社サイバーエージェント 大塚敏章さん</title>
+      <link>http://automagic.fm/post/125790176180/otk2</link>
+      <description>UXデザイナー 大塚敏章さん（@otk2）がゲスト。大企業での UX の仕事や啓蒙、デザインするためのツールの進化について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic145.mp3" length="51290500" type="audio/mpeg"/>
+      <itunes:duration>01:01:13</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 4 Aug 2015 07:08:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#144 Ask Automagic「Webにおける今後のユニバーサルデザインとは？」</title>
+      <link>http://automagic.fm/post/125464040765/universal-webdesign</link>
+      <description>リスナーからの質問に応えます。今回は「Webにおけるユニバーサルデザインやバリアフリーは今後どうなる？」。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic144.mp3" length="5103956" type="audio/mpeg"/>
+      <itunes:duration>00:06:38</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 31 Jul 2015 07:48:32 +0900</pubDate>
+    </item>
+    <item>
+      <title>#143 Ask Automagic「オススメのUI関連の書籍は？」</title>
+      <link>http://automagic.fm/post/125380852275/ui-books</link>
+      <description>リスナーからの質問に応えます。今回は「オススメのUI関連の書籍は？」</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic143.mp3" length="4792521" type="audio/mpeg"/>
+      <itunes:duration>00:06:11</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 30 Jul 2015 08:14:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#142 Ask Automagic「UXプロセスを採用しても失敗することはある？」</title>
+      <link>http://automagic.fm/post/125295555235/ux-process-fails</link>
+      <description>リスナーからの質問に応えます。今回は「UXプロセスを採用しても失敗することはある？」</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic142.mp3" length="3863911" type="audio/mpeg"/>
+      <itunes:duration>00:04:54</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 29 Jul 2015 08:32:02 +0900</pubDate>
+    </item>
+    <item>
+      <title>#141 Ask Automagic「UI/UXを重視したプロセスにするには？」</title>
+      <link>http://automagic.fm/post/125206772115/change-in-uiux-process</link>
+      <description>リスナーからの質問に応えます。今回は「UI/UXを重視したプロセスにするには？」</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic141.mp3" length="5115533" type="audio/mpeg"/>
+      <itunes:duration>00:06:38</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 28 Jul 2015 08:02:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#140 Ask Automagic「UXって数値化可能？」</title>
+      <link>http://automagic.fm/post/125118912615/140-ask-automagic</link>
+      <description>リスナーからの質問に応えます。今回は「UXって数値化できるものなのでしょうか？」</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic140.mp3" length="4649854" type="audio/mpeg"/>
+      <itunes:duration>00:05:59</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 27 Jul 2015 07:59:03 +0900</pubDate>
+    </item>
+    <item>
+      <title>#139 UXエバンジェリスト 羽山祥樹さん</title>
+      <link>http://automagic.fm/post/124608992305/ux</link>
+      <description>UXエバンジェリストの羽山 祥樹さん（@storywriter）がゲスト。「UXとはなにか？」といった基本的なところから、どのように社内外へ広げていくのか議論しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic139.mp3" length="61628173" type="audio/mpeg"/>
+      <itunes:duration>01:25:08</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 21 Jul 2015 07:31:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>#138 ネットイヤーグループ株式会社 坂本貴史さん</title>
+      <link>http://automagic.fm/post/123406710840/bookslope</link>
+      <description>ネットイヤーグループ株式会社の坂本貴史さん（@bookslope）がゲスト。ウェアラブルデバイスで変わるUXデザインとその評価。瞬間（モーメント）のデザインについては話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic138.mp3" length="109070283" type="audio/mpeg"/>
+      <itunes:duration>01:53:15</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 7 Jul 2015 07:42:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#137 シックス・アパート株式会社 壽かおりさん</title>
+      <link>http://automagic.fm/post/122211543930/kaoritter</link>
+      <description>シックス・アパート株式会社の壽かおりさん（@kaoritter）がゲスト。企業がオウンドメディアをするメリットについて話してもらいました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic137.mp3" length="94935454" type="audio/mpeg"/>
+      <itunes:duration>01:05:41</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 23 Jun 2015 10:10:01 +0900</pubDate>
+    </item>
+    <item>
+      <title>#136 株式会社ゼネラルアサヒ 稲本浩介さん</title>
+      <link>http://automagic.fm/post/121059038925/sevenina-information</link>
+      <description>株式会社ゼネラルアサヒの稲本浩介さん（@sevenina）がゲスト。変わりゆく情報の『アーキテクチャ』。Webブラウザから解き放たれるインターネットの世界について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic136.mp3" length="40734612" type="audio/mpeg"/>
+      <itunes:duration>00:56:06</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 9 Jun 2015 08:20:10 +0900</pubDate>
+    </item>
+    <item>
+      <title>#135 株式会社シロク 石山貴広さん</title>
+      <link>http://automagic.fm/post/119887435735/t-ishiyama</link>
+      <description>株式会社シロクの石山貴広さん（@t_ishiyama）がゲスト。ウェアラブルのデザイン、そしてUIデザイン全般の未来について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic135.mp3" length="43693098" type="audio/mpeg"/>
+      <itunes:duration>01:00:13</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 26 May 2015 07:52:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>#134 Microsoft Build 2015 特集</title>
+      <link>http://automagic.fm/post/118701233555/build-conference</link>
+      <description>Build Conference 開催記念。マイクロソフトの現在と未来について、松田直樹さん（@readymadegogo）、たにぐちまことさん（@seltzer）と話をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic134.mp3" length="83534230" type="audio/mpeg"/>
+      <itunes:duration>01:55:33</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 12 May 2015 00:41:06 +0900</pubDate>
+    </item>
+    <item>
+      <title>#133 技術評論社 馮 富久さん</title>
+      <link>http://automagic.fm/post/117054804720</link>
+      <description>技術評論社の馮 富久さん（@tomihisa）がゲスト。電子書籍の過去、現在、未来について。デジタルメディアで書くことと配信すること。これからの読者とのつながりについて話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic133.mp3" length="47152037" type="audio/mpeg"/>
+      <itunes:duration>01:05:01</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 22 Apr 2015 12:15:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#132 よつばデザイン 後藤賢司さん</title>
+      <link>http://automagic.fm/post/115707963120/428design</link>
+      <description>よつばデザインの後藤賢司さん（@428design）がゲスト。デザインが機械化・自動化されていく中で、どのようにデザイナー / 制作者の価値を見出していくのかを話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic132.mp3" length="51929998" type="audio/mpeg"/>
+      <itunes:duration>01:11:39</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 7 Apr 2015 08:08:40 +0900</pubDate>
+    </item>
+    <item>
+      <title>#131 澤田スタンダードデザイン 澤田望さん</title>
+      <link>http://automagic.fm/post/114434943425/sawadastddesign</link>
+      <description>澤田スタンダードデザインの澤田望さん（@SawadaStdDesign）がゲスト。長年携わっていた、ある大企業サイトの運営の経験や、そこから得たデザイン観について話していただきました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic131.mp3" length="48099821" type="audio/mpeg"/>
+      <itunes:duration>01:06:20</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 24 Mar 2015 06:11:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#130 株式会社まぼろし デザイナー松田直樹さん</title>
+      <link>http://automagic.fm/post/113202300815/readymadegogo</link>
+      <description>株式会社まぼろしのデザイナー松田直樹さん（@readymadegogo）と、ウェアラブル、プライバシー、Web やアプリにおけるビジュアルデザインの今後、フリーランスと仕事の関係など多岐に渡って雑談をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic130.mp3" length="72640271" type="audio/mpeg"/>
+      <itunes:duration>01:40:25</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 10 Mar 2015 07:58:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>#129 株式会社エフシーゼロ ふうりさん</title>
+      <link>http://automagic.fm/post/111899522565/fuuri-web</link>
+      <description>株式会社エフシーゼロのふうりさん（@fuuri）と Web とコンテンツについて話しました。今だから増えている Web を活用して何かをしたい人。彼等に何ができるのか、何をしているのかをお伺いしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic129.mp3" length="41291504" type="audio/mpeg"/>
+      <itunes:duration>00:56:53</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 24 Feb 2015 00:08:17 +0900</pubDate>
+    </item>
+    <item>
+      <title>#128 UXとクリエイティビティ</title>
+      <link>http://automagic.fm/post/110541390535/2015-2</link>
+      <description>今回のテーマは「UXとクリエイティビティ」。データドリブンへ偏ることによる、クリエイティビティの欠落について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic128.mp3" length="10224372" type="audio/mpeg"/>
+      <itunes:duration>00:13:44</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 10 Feb 2015 00:05:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#127 株式会社 OpenWeb Technology 白石俊平さん</title>
+      <link>http://automagic.fm/post/102959435450/openweb-technology-shumpei-html5</link>
+      <description>株式会社 OpenWeb Technology 代表・白石俊平（@Shumpei）と HTML5 をはじめとした、Web のオープンテクノジーについて話をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic127.mp3" length="37664094" type="audio/mpeg"/>
+      <itunes:duration>00:51:50</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 18 Nov 2014 23:49:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>#126 KICKS Web 千貫りこさん</title>
+      <link>http://automagic.fm/post/102309421490/kicks</link>
+      <description>本日のお相手は KICKS Web の千貫りこ（@henyorico）さん。働くことの捉え方や学習の仕方が、日々の仕事にどう影響するのか意見交換をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic126.mp3" length="44461328" type="audio/mpeg"/>
+      <itunes:duration>01:01:17</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 11 Nov 2014 07:49:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#125 H2O SPACE たにぐちまことさん</title>
+      <link>http://automagic.fm/post/101710854880/h2o-space-seltzer</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）がお相手。電話をはじめとした様々なツールをつかったコミュニケーションの捉え方や使うタイミングについて話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic125.mp3" length="39202953" type="audio/mpeg"/>
+      <itunes:duration>00:40:29</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 4 Nov 2014 08:33:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>#124 株式会社KDDIウェブコミュニケーションの阿部正幸さん</title>
+      <link>http://automagic.fm/post/101124763350/kddi-abec</link>
+      <description>株式会社KDDIウェブコミュニケーションの阿部正幸さん（@abechiyo）がエバンジェリストの必要性について語ってくれました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic124.mp3" length="35935657" type="audio/mpeg"/>
+      <itunes:duration>00:37:04</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 28 Oct 2014 08:33:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>#123 質問コーナー</title>
+      <link>http://automagic.fm/post/100757422185/yhassy</link>
+      <description>リスナーからの質問に応えています。もし質問があれば @yhassy までぜひ。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic123.mp3" length="18628378" type="audio/mpeg"/>
+      <itunes:duration>00:12:42</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 24 Oct 2014 01:47:32 +0900</pubDate>
+    </item>
+    <item>
+      <title>#122　株式会社まぼろし 松田直樹さん</title>
+      <link>http://automagic.fm/post/99955127000/readymadegogo</link>
+      <description>株式会社まぼろしのデザイナー松田直樹さん（@readymadegogo）と、新しい技術やプロセスをどのように導入していくか意見交換をしました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic122.mp3" length="27430842" type="audio/mpeg"/>
+      <itunes:duration>00:56:27</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 14 Oct 2014 10:13:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#121 角南北斗さん</title>
+      <link>http://automagic.fm/post/99353696080/web</link>
+      <description>フリーランスで Web デザインをしたり、日本語教育や情報教育の現場に携わっている角南北斗さん（@shokuto）と教育や学びについて話ました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic121.mp3" length="30897908" type="audio/mpeg"/>
+      <itunes:duration>01:03:40</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 7 Oct 2014 07:59:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>#120 Goodpatch 藤井幹大さん</title>
+      <link>http://automagic.fm/post/98753752675/goodpatch-ux-ux</link>
+      <description>GoodpatchのチーフUXデザイナー・藤井幹大さん（@mikihirocks）とUXやデザインマネージメントについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic120.mp3" length="26411774" type="audio/mpeg"/>
+      <itunes:duration>00:54:19</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 30 Sep 2014 06:48:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>#119 アップルップル 山田 拓生さん</title>
+      <link>http://automagic.fm/post/98104861080</link>
+      <description>名古屋のウェブ制作会社、アップルップルの山田 拓生さん（@yokozunat）と、iOS8、iPhone 6、Apple Watch からみる今後のデザインについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic119.mp3" length="24561380" type="audio/mpeg"/>
+      <itunes:duration>00:50:28</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 22 Sep 2014 09:58:58 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #118</title>
+      <link>http://automagic.fm/post/97652008305/yhassy-dconstruct-2014</link>
+      <description>久しぶりに、私 @yhassy によるひとりポッドキャストです。dConstruct 2014 で感じたことを淡々と。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic118.mp3" length="6889982" type="audio/mpeg"/>
+      <itunes:duration>00:13:39</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 17 Sep 2014 00:08:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #117</title>
+      <link>http://automagic.fm/post/96409966655</link>
+      <description>サイバーエージェントの 谷 拓樹（@hiloki）さん。新書に込めた想い、フロントエンド開発の現在と未来、デザイナーとの仕事関係について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic117.mp3" length="24148722" type="audio/mpeg"/>
+      <itunes:duration>00:49:36</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 2 Sep 2014 10:09:15 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #116</title>
+      <link>http://automagic.fm/post/95771944420/nabesaka-web</link>
+      <description>Web制作と運営のための写真撮影&amp;ディレクション教本の著者、鍋坂樹伸（@nabesaka）さんと。写真の仕事。プロとの仕事の必要性について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic116.mp3" length="26869760" type="audio/mpeg"/>
+      <itunes:duration>00:55:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 26 Aug 2014 08:08:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #115</title>
+      <link>http://automagic.fm/post/95175015035/web</link>
+      <description>山形県在住の Web プロフェッショナル・がじろう/原 一宣（@gazirow）さんと。変わりゆく『制作者』としての立場について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic115.mp3" length="29978624" type="audio/mpeg"/>
+      <itunes:duration>01:01:45</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 19 Aug 2014 17:09:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #114</title>
+      <link>http://automagic.fm/post/94485029375/web-directions-east</link>
+      <description>Web Directions East の菊池さん（@mantangs）にレスポンシブWebデザインについて伺いました。テクニックについてというより、ワークフローや考え方が中心です。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic114.mp3" length="21811200" type="audio/mpeg"/>
+      <itunes:duration>44:44</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 12 Aug 2014 10:04:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #113</title>
+      <link>http://automagic.fm/post/93817676175/web-yakumo</link>
+      <description>不動産業界特化のWeb制作会社サービシンクの名村さん（@yakumo）がゲスト。彼の考える Web ディレクター像や社内外でのコミュニケーションについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic113.mp3" length="28687323" type="audio/mpeg"/>
+      <itunes:duration>59:04</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 5 Aug 2014 08:02:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #112</title>
+      <link>http://automagic.fm/post/89204549730/momojam-eri-tstudio</link>
+      <description>さわだえりさん（@MOMOJAM_eri）と、神森勉さん（@tstudio）がゲスト。オススメのゲーム、ゲームってなに？ソーシャルゲームってなに？みたいなところを話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic112.mp3" length="28333826" type="audio/mpeg"/>
+      <itunes:duration>58:20</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 19 Jun 2014 08:36:22 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #111</title>
+      <link>http://automagic.fm/post/87741403850/maepon</link>
+      <description>岡山でフロントエンドエンジニアをされている前川昌幸さん（@maepon）がお相手。フロントエンドの難しさや、Web開発を学習していく上で必要なこと。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic111.mp3" length="24276992" type="audio/mpeg"/>
+      <itunes:duration>49:52</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 4 Jun 2014 09:06:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #110</title>
+      <link>http://automagic.fm/post/86903851720/h2o</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）がお相手。Webサイトのタブレットやスマートフォンへの対応。そして、今後について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic110.mp3" length="23695870" type="audio/mpeg"/>
+      <itunes:duration>48:40</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 27 May 2014 00:54:48 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #109</title>
+      <link>http://automagic.fm/post/85035860475</link>
+      <description>カラー &amp; Webデザイン フォルトゥナ代表・坂本 邦夫（@Kunio_Sakamoto）さん。自分の立ち位置や、仕事との関わりの変化について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic109.mp3" length="22331080" type="audio/mpeg"/>
+      <itunes:duration>45:49</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 15 May 2014 00:51:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #108</title>
+      <link>http://automagic.fm/post/85035860475</link>
+      <description> ニイハチヨンサン の大月 茂樹（@ohtsuki2843）さんと、最近いろいろ動きがある Facebook について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic108.mp3" length="23715840" type="audio/mpeg"/>
+      <itunes:duration>48:42</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 8 May 2014 02:35:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #107</title>
+      <link>http://automagic.fm/post/84234314445/dct-design-10-web</link>
+      <description>dct-design の蝦名晶子さん（@dctdesign）が、自社 10 周年を振り返ります。Web に携わる仕事の魅力。7月12日開催されるイベントの意図について話してもらいました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic107.mp3" length="22713238" type="audio/mpeg"/>
+      <itunes:duration>46:37</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 30 Apr 2014 01:46:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #106</title>
+      <link>http://automagic.fm/post/82645057882/web</link>
+      <description>山形県在住の Web プロフェッショナル・がじろう/原 一宣（@gazirow）さんと対談。変わりゆく Web の仕事、地方で働くということ、『ITの利活用』について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic106.mp3" length="25755648" type="audio/mpeg"/>
+      <itunes:duration>52:57</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 14 Apr 2014 11:01:52 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #105</title>
+      <link>http://automagic.fm/post/81991823822/necoze-k-yoshiaki324</link>
+      <description>純喫茶エピソードの皆様（@necoze @k_yoshiaki324 @crema）といっしょに、コンテンツに関わる Web サイト制作の今後や、プロフェッショナルの役割について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic105.mp3" length="15982592" type="audio/mpeg"/>
+      <itunes:duration>32:35</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 7 Apr 2014 23:12:43 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #104</title>
+      <link>http://automagic.fm/post/81241114778</link>
+      <description>名古屋のウェブ制作会社、アップルップルの山田 拓生（@yokozunat）さんと、デザインの魅力と、評価の難しさについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic104.mp3" length="17688074" type="audio/mpeg"/>
+      <itunes:duration>36:09</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 31 Mar 2014 09:48:10 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #103</title>
+      <link>http://automagic.fm/post/80549756523/co-host-kicks</link>
+      <description> KICKS Web の千貫りこ（@henyorico）さんと、「ウェブライターよ。なぜ君たちはこれほど文章がヘタなのか？ 」を起点に、Web という媒体に最適な文章については話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic103.mp3" length="21128114" type="audio/mpeg"/>
+      <itunes:duration>43:19</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 24 Mar 2014 13:57:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #102</title>
+      <link>http://automagic.fm/post/79265049132/h2o</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）と、タスク管理について話しました。過去使ったものから、今のツールに辿り着いた経緯。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic102.mp3" length="21937188" type="audio/mpeg"/>
+      <itunes:duration>45:00</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 11 Mar 2014 23:58:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #101</title>
+      <link>http://automagic.fm/post/78558255595/co-host-kicks-web</link>
+      <description>KICKS Web の千貫りこ（@henyorico）がお相手。Webサイト制作と運営との違い。好きから始まるキャリア、響くプレゼンの要素について話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic101.mp3" length="17786306" type="audio/mpeg"/>
+      <itunes:duration>36:21</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 5 Mar 2014 02:20:48 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #100</title>
+      <link>http://automagic.fm/post/77806766365/kddi-tstudio-web</link>
+      <description>KDDIウェブコミュニケーションズの神森勉さん（@tstudio）がお相手。Webサイト制作と運営との違い。コンテンツが重要というけど、何が重要なのかについて話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic100.mp3" length="27817920" type="audio/mpeg"/>
+      <itunes:duration>57:15</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 25 Feb 2014 23:42:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #99</title>
+      <link>http://automagic.fm/post/77069449246/h2o-space-seltzer-vaio</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）がお相手。ソニーの VAIO 撤退。PS4 と XBox One が好調のなか、不調の任天堂。今のゲーム、これからのゲームについて。 </description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic099.mp3" length="21777732" type="audio/mpeg"/>
+      <itunes:duration>44:40</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 18 Feb 2014 23:41:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #98</title>
+      <link>http://automagic.fm/post/76402718222/co-host</link>
+      <description>ニイハチヨンサン の大月 茂樹（@ohtsuki2843）さん。Webページの存在価値と今後について話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic098.mp3" length="24719938" type="audio/mpeg"/>
+      <itunes:duration>50:49</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 12 Feb 2014 14:49:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #97</title>
+      <link>http://automagic.fm/post/75488491732/co-host-kicks</link>
+      <description>KICKS Web の千貫りこ（@henyorico）がお相手。キャリアと不安感について。不安はどこからくるのか。それとどのように向き合っているのかを話し合いました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic097.mp3" length="19574596" type="audio/mpeg"/>
+      <itunes:duration>40:05</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 4 Feb 2014 01:16:49 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #96</title>
+      <link>http://automagic.fm/post/74950708436/commonstyle</link>
+      <description>主に電子書籍の関する講演や書籍を執筆されている境祐司（@commonstyle）がお相手。電子書籍の過去・現在そして、未来への課題。デジタルコンテンツの扱い方。Webも含めて抱えている『技術ソリューション』問題など。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic096.mp3" length="25903599" type="audio/mpeg"/>
+      <itunes:duration>53:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 30 Jan 2014 01:33:49 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #95</title>
+      <link>http://automagic.fm/post/74184506641/h2o-space</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）がお相手。オススメのアプリ、Android vs. iPhone、セキュリティやプライバシーについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic095.mp3" length="27788595" type="audio/mpeg"/>
+      <itunes:duration>57:12</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 23 Jan 2014 02:30:52 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #94</title>
+      <link>http://automagic.fm/post/73295884215/co-host-kicks-web</link>
+      <description>KICKS Web の千貫りこ（@henyorico）がお相手。テーマは「HTMLの名人は必要か」。HTMLの重要性と、仕事との繋がりについて話しました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic094.mp3" length="24514072" type="audio/mpeg"/>
+      <itunes:duration>50:23</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 14 Jan 2014 19:07:35 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #93</title>
+      <link>http://automagic.fm/post/72461253822/co-host-h2o</link>
+      <description>H2O SPACE のたにぐちまことさん（@seltzer）との番組。テーマは「Webの仕事と働き方」について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic093.mp3" length="16777230" type="audio/mpeg"/>
+      <itunes:duration>34:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Tue, 7 Jan 2014 03:57:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #92</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Yahoo! の新しいロゴとエンジニア中心のデザインプロセスについて（http://www.yahoo.com/dailylogo）。デザインはすべて計算すれば完成するのか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic092.mp3" length="5228762" type="audio/mpeg"/>
+      <itunes:duration>10:48</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 9 Sep 2013 16:38:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #91</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Dear Designer (http://bit.ly/14mdbP8) について。デザイナーと開発者の衝突の先にあるクリエイティビティについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic091.mp3" length="5229789" type="audio/mpeg"/>
+      <itunes:duration>10:48</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 22 Aug 2013 23:42:18 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #90</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>本当にスマホ向けのサイトは必要ないのか？未だに続くパソコン向けサイトデザインの価値観について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic090.mp3" length="5455002" type="audio/mpeg"/>
+      <itunes:duration>11:16</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 8 Aug 2013 23:53:45 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #89</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Android のアイコンデザインについて。iOS や Google のデザインガイドラインの比較や、フラットデザインではないことのメリットについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic089.mp3" length="4197206" type="audio/mpeg"/>
+      <itunes:duration>08:39</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 31 Jul 2013 12:59:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #88</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Goodpatch の土屋尚史さん @tsuchinao83 を迎えて、UIデザインの現在と未来、そしてメッセージを伝えるという観点から UI デザインについて語ってもらいました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic088.mp3" length="17658275" type="audio/mpeg"/>
+      <itunes:duration>36:42</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 19 Jul 2013 16:29:40 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #87</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>秩序がある「正しい」デザインと、少し違和感があるデザインについて。デザイナー視点の美しい・良いという価値観だけでは人を動かすことは難しいかもしれないという課題について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic087.mp3" length="4862421" type="audio/mpeg"/>
+      <itunes:duration>10:02</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 5 Jul 2013 13:54:11 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #86</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Skeuomorphism や Flat Design など、UI デザインのトレンドは表れては消えていきますが、本当に大事なものは何でしょうか？今後どのような UI デザインが必要とされているのでしょうか。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic086.mp3" length="6553901" type="audio/mpeg"/>
+      <itunes:duration>13:34</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 21 Jun 2013 12:54:24 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #85</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>WWDC で発表された iOS7 のデザインについて。リスナーの意見を交えながら、彼等が iOS7 を通して伝えたかったコトは何かをデザイン視点で検証してみました。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic085.mp3" length="13447168" type="audio/mpeg"/>
+      <itunes:duration>27:55</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 14 Jun 2013 10:07:21 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #84</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>「よくわかるFireworksの教科書」の著者、森和恵さん（@r360studio）と狭間句美さん（@hazakumi）との対談。Fireworksの現在と未来。Webサイトワークフローや伝える・教えることについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic084.mp3" length="23165062" type="audio/mpeg"/>
+      <itunes:duration>48:10</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 6 Jun 2013 01:45:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #83</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>1テラバイトに容量が増え、インターフェイスも大幅に変更されたFlickrの分析。UIから分かるFlickrの方向性。Tumblrのこれからを予測。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic083.mp3" length="9358199" type="audio/mpeg"/>
+      <itunes:duration>19:24</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 23 May 2013 02:36:48 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #82</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>大月茂樹(@ohtsuki2843)さんとの対談。ソーシャルメディアは日本で必要なのかというテーマで話をしました。お互いのソーシャルメディア観や、Web でのコミュニケーションの始め方など。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic082.mp3" length="35888890" type="audio/mpeg"/>
+      <itunes:duration>49:47</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 15 May 2013 12:55:32 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #81</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Facebook Home にある Chat Head 機能からみる Facebook の狙い。Panic がリリースした Status Board とドキュメンテーションデザインについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic081.mp3" length="14487394" type="audio/mpeg"/>
+      <itunes:duration>15:02</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Wed, 1 May 2013 19:03:42 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #80</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>UXトーク。メソドロジーから抜け出した先にある UX の姿と私たちが提案しなければならない同時体験の世界について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic080.mp3" length="13761399" type="audio/mpeg"/>
+      <itunes:duration>14:17</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 11 Apr 2013 23:38:12 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #79</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>Facebook Home からみるモバイルデバイスをつかった同時体験の提案と、iOS の課題について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic079.mp3" length="11849728" type="audio/mpeg"/>
+      <itunes:duration>12:18</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Mon, 8 Apr 2013 17:23:48 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #78</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>再びネイティブ広告について。読者の質問に応えながらネイティブ広告の捉え方の整理と、広告から狭告・深告への進化について。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic078.mp3" length="16152996" type="audio/mpeg"/>
+      <itunes:duration>16:47</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 29 Mar 2013 00:38:14 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #77</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>今年7月にサービス終了が決定した Google Reader について。RSSがもたらしたもの。従来の Web の価値観の終焉とこれからについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic077.mp3" length="14049372" type="audio/mpeg"/>
+      <itunes:duration>14:35</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 21 Mar 2013 23:10:41 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #76</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>フリーランスで Web の仕事に携わる 千貫りこ (@henyorico) さんとの対談。フリーランスについて、キャリアについて、これからについて。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic076.mp3" length="38813696" type="audio/mpeg"/>
+      <itunes:duration>40:23</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 8 Mar 2013 00:57:45 +0900</pubDate>
+    </item>
+    <item>
+      <title>Automagic #75</title>
+      <link>http://www.yasuhisa.com/could/</link>
+      <description>ネイティブ広告について。メディアの特性と見た目に合わせたコンテンツを主軸にした広告の出現と、今後の展望。</description>
+      <enclosure url="http://yhassy.heteml.jp/mp3/automagic075.mp3" length="11893539" type="audio/mpeg"/>
+      <itunes:duration>12:20</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Thu, 28 Feb 2013 01:40:21 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

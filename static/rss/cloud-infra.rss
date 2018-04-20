@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss" rel="self" type="application/rss+xml"/>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss?before=268454467" rel="next" type="application/rss+xml"/>
+        <title>のぼりーさんのクラウドインフラPodcast</title>
+        <link>https://cloudinfra.audio</link>
+        <pubDate>Mon, 09 Apr 2018 15:43:00 +0000</pubDate>
+        <lastBuildDate>Mon, 09 Apr 2018 15:43:00 +0000</lastBuildDate>
+        <ttl>60</ttl>
+        <language>ja</language>
+        <copyright>All rights reserved</copyright>
+        <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+        <description>AWS,AzureやGCPに代表されるクラウドサービスや、ITインフラの話題を中心にゲストを招いてお話をします。
+インフラストラクチャ寄りが少し多めで、サービスそのものについてや使い方、それを利用したアーキテクチャについて語ります。
+https://cloudinfra.audio , #nobolycloud</description>
+        <itunes:subtitle>AWS,AzureやGCPに代表されるクラウドサービスや、ITインフラの話題を中心にゲストを招いて…</itunes:subtitle>
+        <itunes:owner>
+          <itunes:name>のぼりーさんのクラウドインフラPodcast</itunes:name>
+          <itunes:email>feeds@soundcloud.com</itunes:email>
+        </itunes:owner>
+        <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+        <image>
+          <url>http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg</url>
+          <title>のぼりーさんのクラウドインフラPodcast</title>
+          <link>https://cloudinfra.audio</link>
+        </image>
+        <itunes:category text="Technology"/>
+        <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/427163943</guid>
+      <title>GTechG-00 ゴールデンTechGuy(Pre)</title>
+      <pubDate>Mon, 09 Apr 2018 15:50:11 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/gtechg-00</link>
+      <itunes:duration>01:17:22</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>2018年4月3日、新宿ゴールデン街無銘喫茶。
+山田店長・吉田スカウトのコンビで催されたイベント ゴールデンTechGuyの第0回テスト開催の様子です。
+『みなさんでゴールデン街でテックなトークをしませんか？』
+
+ゲスト一覧やトラックの補足はこちら cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>2018年4月3日、新宿ゴールデン街無銘喫茶。
+山田店長・吉田スカウトのコンビで催されたイベント …</itunes:subtitle>
+      <description>2018年4月3日、新宿ゴールデン街無銘喫茶。
+山田店長・吉田スカウトのコンビで催されたイベント ゴールデンTechGuyの第0回テスト開催の様子です。
+『みなさんでゴールデン街でテックなトークをしませんか？』
+
+ゲスト一覧やトラックの補足はこちら cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/427163943-cloudinfra_podcast_ja-gtechg-00.mp3" length="37488962"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000332332461-n2kyez-original.png"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/410904633</guid>
+      <title>B-Track 21 そしてSREへと舵を取る</title>
+      <pubDate>Fri, 09 Mar 2018 15:16:06 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track21</link>
+      <itunes:duration>00:16:33</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>あるきっかけから興味を持ってSREになったというお話やルーティーンなど。ほか、sawanobolyが登壇する第1回 HPC OPS 研究会についてのお知らせをしました。 ※タイトルを初出から変更。</itunes:summary>
+      <itunes:subtitle>あるきっかけから興味を持ってSREになったというお話やルーティーンなど。ほか、sawanoboly…</itunes:subtitle>
+      <description>あるきっかけから興味を持ってSREになったというお話やルーティーンなど。ほか、sawanobolyが登壇する第1回 HPC OPS 研究会についてのお知らせをしました。 ※タイトルを初出から変更。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/410904633-cloudinfra_podcast_ja-b-track21.mp3" length="8014223"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000313097235-qfd7za-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/410427954</guid>
+      <title>Track 21 deeeetさんとkubernetesな雑談</title>
+      <pubDate>Thu, 08 Mar 2018 08:15:25 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track21</link>
+      <itunes:duration>01:07:52</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>メルカリ中島大一(@deeeet)さんがゲスト。MercariにおけるKubernetes+Microservice化やSpinnakerについて話しました。
+
+トラックの補足はこちら cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>メルカリ中島大一(@deeeet)さんがゲスト。MercariにおけるKubernetes+Mic…</itunes:subtitle>
+      <description>メルカリ中島大一(@deeeet)さんがゲスト。MercariにおけるKubernetes+Microservice化やSpinnakerについて話しました。
+
+トラックの補足はこちら cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/410427954-cloudinfra_podcast_ja-track21.mp3" length="32640931"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000312650739-pfd5xn-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/398948571</guid>
+      <title>Event-01 Alexa Day 2018 出張インタビュー</title>
+      <pubDate>Tue, 13 Feb 2018 14:31:57 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/event-01</link>
+      <itunes:duration>01:37:26</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>2018年2月11日、神戸で開催された 『Alexa Day 2018』 (https://alexaday2018.jaws-ug.jp) というイベントの控室で発表者にインタビューをしてみました、ゲストは総勢8名！  感想などは #nobolycloud で。
+チャプターがついているはずなので、対応クライアントで表示されると思います。以下、ゲストごとの登場時間目安です。 
+［ 00:00:00 オープニング ］,
+［ 00:01:29 NRI 馬勝さん ］,
+［ 00:14:26 フリーランス伊東さん＆デジタルキューブ岡本(秀)さん ］,
+［ 00:35:38 サーバーワークス 坂本さん ］,
+［ 00:48:12 JAWSUG IoT支部 市川さん ］,
+［ 00:57:23 クラスメソッド 清野さん ］,
+［ 01:16:56 プレンプロジェクト 赤澤さん ］,
+［ 01:24:52 セクションナイン 吉田さん ］</itunes:summary>
+      <itunes:subtitle>2018年2月11日、神戸で開催された 『Alexa Day 2018』 (https://ale…</itunes:subtitle>
+      <description>2018年2月11日、神戸で開催された 『Alexa Day 2018』 (https://alexaday2018.jaws-ug.jp) というイベントの控室で発表者にインタビューをしてみました、ゲストは総勢8名！  感想などは #nobolycloud で。
+チャプターがついているはずなので、対応クライアントで表示されると思います。以下、ゲストごとの登場時間目安です。 
+［ 00:00:00 オープニング ］,
+［ 00:01:29 NRI 馬勝さん ］,
+［ 00:14:26 フリーランス伊東さん＆デジタルキューブ岡本(秀)さん ］,
+［ 00:35:38 サーバーワークス 坂本さん ］,
+［ 00:48:12 JAWSUG IoT支部 市川さん ］,
+［ 00:57:23 クラスメソッド 清野さん ］,
+［ 01:16:56 プレンプロジェクト 赤澤さん ］,
+［ 01:24:52 セクションナイン 吉田さん ］</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/398948571-cloudinfra_podcast_ja-event-01.mp3" length="46829276"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000301612959-e62l5f-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/374436755</guid>
+      <title>B-Track20 Independent entrepreneur イン オランダ</title>
+      <pubDate>Tue, 26 Dec 2017 05:35:15 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track20</link>
+      <itunes:duration>00:42:24</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>持ち歩いている機材の話、オランダにフリーランス用のビザがあるので住んでみるという話をしました。</itunes:summary>
+      <itunes:subtitle>持ち歩いている機材の話、オランダにフリーランス用のビザがあるので住んでみるという話をしました。</itunes:subtitle>
+      <description>持ち歩いている機材の話、オランダにフリーランス用のビザがあるので住んでみるという話をしました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/374436755-cloudinfra_podcast_ja-b-track20.mp3" length="32320428"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/373809674</guid>
+      <title>Track 20 スマートスピーカー開発、JAWS-UG KOBEのAlexa力のお話</title>
+      <pubDate>Sun, 24 Dec 2017 11:36:02 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track20</link>
+      <itunes:duration>01:17:00</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>オランダ在住フリーランス兼JAWS-UG神戸支部の伊東さん(@haruharuharuby)がゲスト。Alexa, Google Homeのスキル開発・デプロイの話などをしました。ほか、2018年AWSイベントの告知など。
+
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>オランダ在住フリーランス兼JAWS-UG神戸支部の伊東さん(@haruharuharuby)がゲス…</itunes:subtitle>
+      <description>オランダ在住フリーランス兼JAWS-UG神戸支部の伊東さん(@haruharuharuby)がゲスト。Alexa, Google Homeのスキル開発・デプロイの話などをしました。ほか、2018年AWSイベントの告知など。
+
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/373809674-cloudinfra_podcast_ja-track20.mp3" length="61416524"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/355000781</guid>
+      <title>[お知らせ]Discordサーバを作りましたなど</title>
+      <pubDate>Mon, 13 Nov 2017 07:32:40 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/info01_discord</link>
+      <itunes:duration>00:05:38</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Discordのサーバを開いたので、そのお知らせ兼収録テストです。 mizzyさんにお付き合いいただきました。
+Discordの招待リンクはこちら =&gt; https://discord.gg/AxAwMER
+
+各種クラウドベンダのイベント生放送の裏でAudio Channelを開くことがありますというお話。
+
+ ※ 収録場所の都合で、sawanoboly側の音質がやや悪いです。
+
+補足やリンクなどはこちら =&gt; https://cloudinfra.audio/info001-9f274927933b</itunes:summary>
+      <itunes:subtitle>Discordのサーバを開いたので、そのお知らせ兼収録テストです。 mizzyさんにお付き合いいた…</itunes:subtitle>
+      <description>Discordのサーバを開いたので、そのお知らせ兼収録テストです。 mizzyさんにお付き合いいただきました。
+Discordの招待リンクはこちら =&gt; https://discord.gg/AxAwMER
+
+各種クラウドベンダのイベント生放送の裏でAudio Channelを開くことがありますというお話。
+
+ ※ 収録場所の都合で、sawanoboly側の音質がやや悪いです。
+
+補足やリンクなどはこちら =&gt; https://cloudinfra.audio/info001-9f274927933b</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/355000781-cloudinfra_podcast_ja-info01_discord.mp3" length="4266562"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/346091393</guid>
+      <title>B-Track19 プレゼンガジェットとモバイルインフラ</title>
+      <pubDate>Mon, 09 Oct 2017 15:53:21 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track19b</link>
+      <itunes:duration>00:44:22</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>お仕事環境の話、プレゼンツールSpotlightなどガジェットの話、モバイルインフラを支えるお仕事の話をしました。</itunes:summary>
+      <itunes:subtitle>お仕事環境の話、プレゼンツールSpotlightなどガジェットの話、モバイルインフラを支えるお仕事…</itunes:subtitle>
+      <description>お仕事環境の話、プレゼンツールSpotlightなどガジェットの話、モバイルインフラを支えるお仕事の話をしました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/346091393-cloudinfra_podcast_ja-track19b.mp3" length="35416769"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/345502734</guid>
+      <title>Track 19 SBCloud森さんにAlibaba Cloudの紹介を聞こう</title>
+      <pubDate>Thu, 05 Oct 2017 17:14:24 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track19</link>
+      <itunes:duration>01:26:30</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>SBCloud森さん(@mosuke5)がゲスト。SBCloudがサービス展開しているAlibaba Cloud、中国絡みの事情のお話や、SBCloud求人など。トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>SBCloud森さん(@mosuke5)がゲスト。SBCloudがサービス展開しているAlibab…</itunes:subtitle>
+      <description>SBCloud森さん(@mosuke5)がゲスト。SBCloudがサービス展開しているAlibaba Cloud、中国絡みの事情のお話や、SBCloud求人など。トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/345502734-cloudinfra_podcast_ja-track19.mp3" length="69466086"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/326921653</guid>
+      <title>B-Track18 プロフィット情シス</title>
+      <pubDate>Wed, 07 Jun 2017 11:18:57 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track18</link>
+      <itunes:duration>00:20:16</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>情シスよプロフィット・センターであれという話、数ある趣味の中から車とPCゲームのお話をしました。</itunes:summary>
+      <itunes:subtitle>情シスよプロフィット・センターであれという話、数ある趣味の中から車とPCゲームのお話をしました。</itunes:subtitle>
+      <description>情シスよプロフィット・センターであれという話、数ある趣味の中から車とPCゲームのお話をしました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/326921653-cloudinfra_podcast_ja-b-track18.mp3" length="15844192"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/326190878</guid>
+      <title>Track 18 シンジ(cloudpack)さんと最近の情報システム部門の話</title>
+      <pubDate>Mon, 05 Jun 2017 13:45:26 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track18</link>
+      <itunes:duration>01:07:33</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>cloudpack齊藤愼仁さんに、ロードバランスすだちくん(ブログ)、IT系監査関連やSaaSを取り入れた社内システム、すだちくん勉強会のお話をしました。トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>cloudpack齊藤愼仁さんに、ロードバランスすだちくん(ブログ)、IT系監査関連やSaaSを取…</itunes:subtitle>
+      <description>cloudpack齊藤愼仁さんに、ロードバランスすだちくん(ブログ)、IT系監査関連やSaaSを取り入れた社内システム、すだちくん勉強会のお話をしました。トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/326190878-cloudinfra_podcast_ja-track18.mp3" length="53235429"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/318277722</guid>
+      <title>B-Track17 黒板と法人会計の話</title>
+      <pubDate>Tue, 18 Apr 2017 13:24:26 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track17b</link>
+      <itunes:duration>00:36:46</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track17のおまけ。何かを考える時に手書きで使えるツールと、法人経理・会計の話をしました。途中で数分間にわたり、環境音(掃除機)がはいっているなど少々お聞き苦しい点があります。</itunes:summary>
+      <itunes:subtitle>Track17のおまけ。何かを考える時に手書きで使えるツールと、法人経理・会計の話をしました。途中…</itunes:subtitle>
+      <description>Track17のおまけ。何かを考える時に手書きで使えるツールと、法人経理・会計の話をしました。途中で数分間にわたり、環境音(掃除機)がはいっているなど少々お聞き苦しい点があります。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/318277722-cloudinfra_podcast_ja-track17b.mp3" length="28474042"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/317823602</guid>
+      <title>Track17 Infrastructure as Code本とlibspecinfra</title>
+      <pubDate>Sat, 15 Apr 2017 17:19:49 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track17</link>
+      <itunes:duration>01:06:48</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>mizzy(gosukenator)さんゲスト。2017年3月に出版された書籍Infrastructure as Codeの見どころやIaC導入障壁の話と、Rust言語で開発中のライブラリlibspecinfraについてお話ししました。
+トラックの補足や関連商品のリンクはこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>mizzy(gosukenator)さんゲスト。2017年3月に出版された書籍Infrastruc…</itunes:subtitle>
+      <description>mizzy(gosukenator)さんゲスト。2017年3月に出版された書籍Infrastructure as Codeの見どころやIaC導入障壁の話と、Rust言語で開発中のライブラリlibspecinfraについてお話ししました。
+トラックの補足や関連商品のリンクはこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/317823602-cloudinfra_podcast_ja-track17.mp3" length="52309162"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/311461658</guid>
+      <title>B-Track16 ryuzeeさんの仕事環境やツールのお話</title>
+      <pubDate>Thu, 09 Mar 2017 03:15:35 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track16-ryuzee</link>
+      <itunes:duration>00:15:58</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track16のおまけ。ryuzeeさんに使用端末やツール、固定IPなどのお話を聞いてみました。</itunes:summary>
+      <itunes:subtitle>Track16のおまけ。ryuzeeさんに使用端末やツール、固定IPなどのお話を聞いてみました。</itunes:subtitle>
+      <description>Track16のおまけ。ryuzeeさんに使用端末やツール、固定IPなどのお話を聞いてみました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/311461658-cloudinfra_podcast_ja-b-track16-ryuzee.mp3" length="12405904"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/310809151</guid>
+      <title>Track16 ryuzeeさん、最近のお仕事どうですかと聞いてみました。</title>
+      <pubDate>Sun, 05 Mar 2017 13:19:37 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track16</link>
+      <itunes:duration>01:13:35</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>吉羽龍太郎(ryuzee)さんに、今のお仕事であるものづくり環境の改善に関するコンサルティングやトレーニングのお仕事について、導入の進め方などをお話いただきました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>吉羽龍太郎(ryuzee)さんに、今のお仕事であるものづくり環境の改善に関するコンサルティングやト…</itunes:subtitle>
+      <description>吉羽龍太郎(ryuzee)さんに、今のお仕事であるものづくり環境の改善に関するコンサルティングやトレーニングのお仕事について、導入の進め方などをお話いただきました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/310809151-cloudinfra_podcast_ja-track16.mp3" length="57141249"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/304745179</guid>
+      <title>B-Track15 チーフテックリードという役割</title>
+      <pubDate>Fri, 27 Jan 2017 15:01:12 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track15-b</link>
+      <itunes:duration>00:23:05</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track15のおまけ。エンジニアチームをリードするP山さんのお仕事に対する姿勢、コードを書くことへの情熱などを語っていただきました。</itunes:summary>
+      <itunes:subtitle>Track15のおまけ。エンジニアチームをリードするP山さんのお仕事に対する姿勢、コードを書くこと…</itunes:subtitle>
+      <description>Track15のおまけ。エンジニアチームをリードするP山さんのお仕事に対する姿勢、コードを書くことへの情熱などを語っていただきました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/304745179-cloudinfra_podcast_ja-track15-b.mp3" length="17961517"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/304454062</guid>
+      <title>Track15 ペパボP山さんと、ペパボインフラ、STNS、OpenStack、knife-zeroほかの話</title>
+      <pubDate>Wed, 25 Jan 2017 15:24:46 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track15</link>
+      <itunes:duration>00:47:15</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ペパボP山(pyama86)さんがゲスト、『ここで女性陣から質問が殺到する』。
+インフラ開発の効率アップのためにやったこと、時代が求めているSTNSの話とか、プロビジョニングツールの話などをしました。SEは'効果音ラボ'より。 
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>ペパボP山(pyama86)さんがゲスト、『ここで女性陣から質問が殺到する』。
+インフラ開発の効率…</itunes:subtitle>
+      <description>ペパボP山(pyama86)さんがゲスト、『ここで女性陣から質問が殺到する』。
+インフラ開発の効率アップのためにやったこと、時代が求めているSTNSの話とか、プロビジョニングツールの話などをしました。SEは'効果音ラボ'より。 
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/304454062-cloudinfra_podcast_ja-track15.mp3" length="36885310"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/299304397</guid>
+      <title>B-Track 14 FastContainer補足、使用端末の話と社内情報共有ツールの話</title>
+      <pubDate>Fri, 23 Dec 2016 16:02:56 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track-14-fastcontainer</link>
+      <itunes:duration>00:24:24</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track14おまけパート。 本編FastContainer起動関連にちょっと補足あり。各人使用端末環境の話と、ペパボさんニフティさんで社内の情報共有に使っているツールの話などをしました。</itunes:summary>
+      <itunes:subtitle>Track14おまけパート。 本編FastContainer起動関連にちょっと補足あり。各人使用端…</itunes:subtitle>
+      <description>Track14おまけパート。 本編FastContainer起動関連にちょっと補足あり。各人使用端末環境の話と、ペパボさんニフティさんで社内の情報共有に使っているツールの話などをしました。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/299304397-cloudinfra_podcast_ja-b-track-14-fastcontainer.mp3" length="18736013"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/298953165</guid>
+      <title>Track14 ニフティクラウド(スクリプト)やFastContainerの話</title>
+      <pubDate>Wed, 21 Dec 2016 13:36:59 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track14-fastcontainer</link>
+      <itunes:duration>01:08:26</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ニフティの森藤さん (muddydixon) とGMOペパボの松本亮介さん(matsumotory)がゲスト。ニフティクラウド全体のざっくりした紹介と、ニフティクラウド スクリプトを絡めてFastContainerアーキテクチャのことを話してみました。＊中盤以降、森藤さんの名前を間違えて呼んでおります、大変申し訳ありません。。  トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>ニフティの森藤さん (muddydixon) とGMOペパボの松本亮介さん(matsumotory…</itunes:subtitle>
+      <description>ニフティの森藤さん (muddydixon) とGMOペパボの松本亮介さん(matsumotory)がゲスト。ニフティクラウド全体のざっくりした紹介と、ニフティクラウド スクリプトを絡めてFastContainerアーキテクチャのことを話してみました。＊中盤以降、森藤さんの名前を間違えて呼んでおります、大変申し訳ありません。。  トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/298953165-cloudinfra_podcast_ja-track14-fastcontainer.mp3" length="52365433"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/297551965</guid>
+      <title>B-Track 13 Podcastの編集、ラスベガス観光案内</title>
+      <pubDate>Mon, 12 Dec 2016 17:01:49 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-13-b</link>
+      <itunes:duration>00:41:31</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track13おまけパート。SUPINFの中丸(pottava)さんとPodcast編集の話と、恒例作業端末周りのお話。ラスベガス周辺の耳寄り情報や英語の勉強について話しました。
+#nobolycloud</itunes:summary>
+      <itunes:subtitle>Track13おまけパート。SUPINFの中丸(pottava)さんとPodcast編集の話と、恒…</itunes:subtitle>
+      <description>Track13おまけパート。SUPINFの中丸(pottava)さんとPodcast編集の話と、恒例作業端末周りのお話。ラスベガス周辺の耳寄り情報や英語の勉強について話しました。
+#nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/297551965-cloudinfra_podcast_ja-track-13-b.mp3" length="32104011"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/297375131</guid>
+      <title>Track13 re:inventでAWSのDeveloperとしてきたECSやBatchの話、Deep LearningとGPU</title>
+      <pubDate>Sun, 11 Dec 2016 13:58:32 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-13</link>
+      <itunes:duration>01:31:54</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ゲストはSUPINFの中丸(pottava)さん。AWS re:invent2016の現地で見聞きしたことを中心にお話しました。
+ほか、Dockerコンテナのスケジューリングやサービス運用的な話、Deep Learningの初歩的質問とはじめ方など。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>ゲストはSUPINFの中丸(pottava)さん。AWS re:invent2016の現地で見聞き…</itunes:subtitle>
+      <description>ゲストはSUPINFの中丸(pottava)さん。AWS re:invent2016の現地で見聞きしたことを中心にお話しました。
+ほか、Dockerコンテナのスケジューリングやサービス運用的な話、Deep Learningの初歩的質問とはじめ方など。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/297375131-cloudinfra_podcast_ja-track-13.mp3" length="70718478"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/295891616</guid>
+      <title>Track12 やじうまAWS re:invent</title>
+      <pubDate>Fri, 02 Dec 2016 17:14:24 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-12</link>
+      <itunes:duration>00:50:27</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>AWS re:Invent 2016を肴に、日本で眺めてる組で雑談してみました。メインゲストはクラスメソッド大瀧(takipone)さんと照井(marcy_terui)さん。セクションナイン吉田(yoshidashingo)さんによる現地レポート(ホストが現地のことをほとんど尋ねないミス)で開幕です。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>AWS re:Invent 2016を肴に、日本で眺めてる組で雑談してみました。メインゲストはクラ…</itunes:subtitle>
+      <description>AWS re:Invent 2016を肴に、日本で眺めてる組で雑談してみました。メインゲストはクラスメソッド大瀧(takipone)さんと照井(marcy_terui)さん。セクションナイン吉田(yoshidashingo)さんによる現地レポート(ホストが現地のことをほとんど尋ねないミス)で開幕です。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/295891616-cloudinfra_podcast_ja-track-12.mp3" length="38943507"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/293328249</guid>
+      <title>b-track 11 情報収集と健康維持</title>
+      <pubDate>Wed, 16 Nov 2016 17:17:38 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/b-track-11</link>
+      <itunes:duration>00:30:26</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track11おまけパート。今回から恒例企画のゲスト作業端末周りのお話と、情報の収集や健康管理について話しました。リスナーさんの情報緩募ですよ。
+#nobolycloud #健康 #情報収集 それとリケンの麻婆茄子</itunes:summary>
+      <itunes:subtitle>Track11おまけパート。今回から恒例企画のゲスト作業端末周りのお話と、情報の収集や健康管理につ…</itunes:subtitle>
+      <description>Track11おまけパート。今回から恒例企画のゲスト作業端末周りのお話と、情報の収集や健康管理について話しました。リスナーさんの情報緩募ですよ。
+#nobolycloud #健康 #情報収集 それとリケンの麻婆茄子</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/293328249-cloudinfra_podcast_ja-b-track-11.mp3" length="23590022"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/292928043</guid>
+      <title>Track 11 理化学研究所のITインフラとワークフローエンジンGalaxy</title>
+      <pubDate>Mon, 14 Nov 2016 05:04:06 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track011</link>
+      <itunes:duration>00:58:58</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ゲストは石井学さん、所属は理化学研究所情報基盤センターのバイオインフォマティクス研究開発ユニットです。
+理研でのインフラ担当のお仕事についてのお話と、バイオ研究でデータ解析などに使うデファクトのワークフローエンジンGalaxyについて話をしました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>ゲストは石井学さん、所属は理化学研究所情報基盤センターのバイオインフォマティクス研究開発ユニットで…</itunes:subtitle>
+      <description>ゲストは石井学さん、所属は理化学研究所情報基盤センターのバイオインフォマティクス研究開発ユニットです。
+理研でのインフラ担当のお仕事についてのお話と、バイオ研究でデータ解析などに使うデファクトのワークフローエンジンGalaxyについて話をしました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/292928043-cloudinfra_podcast_ja-track011.mp3" length="45448093"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/289464002</guid>
+      <title>b-track 10 コミュニティの構築と維持のお話</title>
+      <pubDate>Sat, 22 Oct 2016 16:05:23 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track010b</link>
+      <itunes:duration>00:47:35</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Track10おまけパート。コミュニティの話をしました。
+ついでに脱線して、吉田さん仮認定のServerless Ninja(仮)であるShifterについて中の人がごっそり語ります。 ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>Track10おまけパート。コミュニティの話をしました。
+ついでに脱線して、吉田さん仮認定のSer…</itunes:subtitle>
+      <description>Track10おまけパート。コミュニティの話をしました。
+ついでに脱線して、吉田さん仮認定のServerless Ninja(仮)であるShifterについて中の人がごっそり語ります。 ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/289464002-cloudinfra_podcast_ja-track010b.mp3" length="38660523"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/289014568</guid>
+      <title>Track 10 吉田さん照井さんによるServerlessConfと界隈振り返り' 2016秋</title>
+      <pubDate>Thu, 20 Oct 2016 14:13:57 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track010</link>
+      <itunes:duration>01:07:17</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>持ち込み企画！ ServerlessConf Tokyoイベントの事情、至る経緯と今後の展望のお話。
+ゲストはイベント主催のセクションナイン吉田(yoshidashingo)さんと発表者を務めた照井(marcy_terui)さん。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>持ち込み企画！ ServerlessConf Tokyoイベントの事情、至る経緯と今後の展望のお話…</itunes:subtitle>
+      <description>持ち込み企画！ ServerlessConf Tokyoイベントの事情、至る経緯と今後の展望のお話。
+ゲストはイベント主催のセクションナイン吉田(yoshidashingo)さんと発表者を務めた照井(marcy_terui)さん。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/289014568-cloudinfra_podcast_ja-track010.mp3" length="54684228"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/286685783</guid>
+      <title>b-Track 9 ITエンジニアと自転車</title>
+      <pubDate>Sat, 08 Oct 2016 06:44:41 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track009b</link>
+      <itunes:duration>00:10:59</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Songmuさんおまけパート。自転車という趣味について。
+ツール・ド・信州やクラブラン、乗鞍峠など語って頂きました。 ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>Songmuさんおまけパート。自転車という趣味について。
+ツール・ド・信州やクラブラン、乗鞍峠など…</itunes:subtitle>
+      <description>Songmuさんおまけパート。自転車という趣味について。
+ツール・ド・信州やクラブラン、乗鞍峠など語って頂きました。 ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/286685783-cloudinfra_podcast_ja-track009b.mp3" length="8526301"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/285870105</guid>
+      <title>Track 9 SongmuさんとISUCON、MackerelやGoの話</title>
+      <pubDate>Mon, 03 Oct 2016 17:26:22 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track009</link>
+      <itunes:duration>01:26:07</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>はてなの松木さん(Songmu)さんをゲストにお迎えして、ISUCON、書籍「みんなのGo言語」、Mackerelの話をしました。Mackerelのインフラについて聞くのを忘れていますが、端々にちょいちょいでてきています。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>はてなの松木さん(Songmu)さんをゲストにお迎えして、ISUCON、書籍「みんなのGo言語」、…</itunes:subtitle>
+      <description>はてなの松木さん(Songmu)さんをゲストにお迎えして、ISUCON、書籍「みんなのGo言語」、Mackerelの話をしました。Mackerelのインフラについて聞くのを忘れていますが、端々にちょいちょいでてきています。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/285870105-cloudinfra_podcast_ja-track009.mp3" length="66840295"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/283336268</guid>
+      <title>Solo-Track 1 「みんなのGo言語」を頂きました</title>
+      <pubDate>Sun, 18 Sep 2016 02:44:10 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/solo-track-1-go</link>
+      <itunes:duration>00:17:13</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>1人でPodcast、『みんなのGo言語』という書籍を頂いたので、感想を話します。
+個人的にGoogle Cloud Speech APIを使ってみるためのテスト音源を兼ねて収録しました。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>1人でPodcast、『みんなのGo言語』という書籍を頂いたので、感想を話します。
+個人的にGoo…</itunes:subtitle>
+      <description>1人でPodcast、『みんなのGo言語』という書籍を頂いたので、感想を話します。
+個人的にGoogle Cloud Speech APIを使ってみるためのテスト音源を兼ねて収録しました。
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/283336268-cloudinfra_podcast_ja-solo-track-1-go.mp3" length="13969659"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/279403771</guid>
+      <title>Track 8 Codenize.tools, AWS Elastic Beanstalkと。つらいドリブンな話など。</title>
+      <pubDate>Wed, 24 Aug 2016 14:48:24 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-8</link>
+      <itunes:duration>02:02:39</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ゲストはクックパッド所属、Codenize.tools開発者の菅原 元気(winebarrel)さん。  
+まず普通に最近の出来事、そしてCodenize.toolsの事を語ります。Issue/PullReq大歓迎。
+クックパッドでの普段のお仕事の話題と、AWS Elastic Beanstalkのよいとこつらいとこや、Dockerは人を幸せにできたのだろうか？というお話をしました。
+
+トラックの補足はこちら https://cloudinfra.audio 感想ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>ゲストはクックパッド所属、Codenize.tools開発者の菅原 元気(winebarrel)さ…</itunes:subtitle>
+      <description>ゲストはクックパッド所属、Codenize.tools開発者の菅原 元気(winebarrel)さん。  
+まず普通に最近の出来事、そしてCodenize.toolsの事を語ります。Issue/PullReq大歓迎。
+クックパッドでの普段のお仕事の話題と、AWS Elastic Beanstalkのよいとこつらいとこや、Dockerは人を幸せにできたのだろうか？というお話をしました。
+
+トラックの補足はこちら https://cloudinfra.audio 感想ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/279403771-cloudinfra_podcast_ja-track-8.mp3" length="104368334"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/277193092</guid>
+      <title>Track 7 前佛さんとDocker1.12リリースの話、それと運用省力化の主張</title>
+      <pubDate>Sun, 07 Aug 2016 10:07:59 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-7-docker112</link>
+      <itunes:duration>01:06:47</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>ゲストはさくらインターネットの前佛さん(zembutsu)さん。7月末にリリースされたDockerの1.12について、新機能を中心にSwarm関連とVolume関連の話。それと前佛さんの運用観など。トラックの補足はこちら cloudinfra.audio ご意見ご感想はハッシュタグ #nobolycloud へ。</itunes:summary>
+      <itunes:subtitle>ゲストはさくらインターネットの前佛さん(zembutsu)さん。7月末にリリースされたDocker…</itunes:subtitle>
+      <description>ゲストはさくらインターネットの前佛さん(zembutsu)さん。7月末にリリースされたDockerの1.12について、新機能を中心にSwarm関連とVolume関連の話。それと前佛さんの運用観など。トラックの補足はこちら cloudinfra.audio ご意見ご感想はハッシュタグ #nobolycloud へ。</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/277193092-cloudinfra_podcast_ja-track-7-docker112.mp3" length="51921307"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/274723605</guid>
+      <title>Track 6 吉田真吾さんがServerlessや欧州クラウド事情、スタートアップを語ります</title>
+      <pubDate>Fri, 22 Jul 2016 03:44:44 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-6</link>
+      <itunes:duration>01:37:18</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>セクションナイン吉田真吾(yoshidashingo)さんとクラウドを語る回。Serverless Architectureの歴史的経緯、CMSイベントで見た欧州のクラウド事情、ServerlessConf(Ja)の予定、PaaS/SaaSのスタートアップに関わるという話と求人情報について話しました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>セクションナイン吉田真吾(yoshidashingo)さんとクラウドを語る回。Serverless…</itunes:subtitle>
+      <description>セクションナイン吉田真吾(yoshidashingo)さんとクラウドを語る回。Serverless Architectureの歴史的経緯、CMSイベントで見た欧州のクラウド事情、ServerlessConf(Ja)の予定、PaaS/SaaSのスタートアップに関わるという話と求人情報について話しました。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/274723605-cloudinfra_podcast_ja-track-6.mp3" length="76528569"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/273500572</guid>
+      <title>Track 5  Infrastructure as code イベントAfterShow</title>
+      <pubDate>Wed, 13 Jul 2016 16:52:26 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track005</link>
+      <itunes:duration>00:57:25</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>2016年の7月7日に開催されたイベント、Infrastructure as Code(Recruit Technologies Open Lab #3)について、主催されたmizzyさんと一緒に各発表を振り返りながら喋ってみました。※先にトラック補足のリンクからYoutubeの録画を見ておくとより楽しめます。 
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>2016年の7月7日に開催されたイベント、Infrastructure as Code(Recru…</itunes:subtitle>
+      <description>2016年の7月7日に開催されたイベント、Infrastructure as Code(Recruit Technologies Open Lab #3)について、主催されたmizzyさんと一緒に各発表を振り返りながら喋ってみました。※先にトラック補足のリンクからYoutubeの録画を見ておくとより楽しめます。 
+トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/273500572-cloudinfra_podcast_ja-track005.mp3" length="137790609"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/271992658</guid>
+      <title>Track 4 おしえてAzure、デプロイ王子廣瀬さん</title>
+      <pubDate>Sun, 03 Jul 2016 16:11:41 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-4</link>
+      <itunes:duration>01:21:21</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>遅れてきた10年選手、Microsoft Azureについて、ゲストの廣瀬一海さんに色々紹介してもらいました。アカウントの管理手法、システムタイプ別のサービス選定方法や最近注目のサービスについて話しました。
+イントロの脚本・演出はsawanobolyによるものです。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</itunes:summary>
+      <itunes:subtitle>遅れてきた10年選手、Microsoft Azureについて、ゲストの廣瀬一海さんに色々紹介しても…</itunes:subtitle>
+      <description>遅れてきた10年選手、Microsoft Azureについて、ゲストの廣瀬一海さんに色々紹介してもらいました。アカウントの管理手法、システムタイプ別のサービス選定方法や最近注目のサービスについて話しました。
+イントロの脚本・演出はsawanobolyによるものです。 トラックの補足はこちら https://cloudinfra.audio ハッシュタグ #nobolycloud</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/271992658-cloudinfra_podcast_ja-track-4.mp3" length="195255817"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/270497866</guid>
+      <title>Track 3 松本亮介とウェブの未来になめらかなシステム</title>
+      <pubDate>Thu, 23 Jun 2016 15:34:59 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track-3</link>
+      <itunes:duration>00:56:12</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>インフラ出身、オープンソース界隈で一風変わった活躍の松本亮介くんがゲスト。自前で持つ基盤の取るべき方向性や、先日彼が発表した『なめらかなシステム』という概念の話をしました。Web系企業へのメッセージなどを語りました。 #nobolycloud トラックの補足はこちら https://cloudinfra.audio</itunes:summary>
+      <itunes:subtitle>インフラ出身、オープンソース界隈で一風変わった活躍の松本亮介くんがゲスト。自前で持つ基盤の取るべき…</itunes:subtitle>
+      <description>インフラ出身、オープンソース界隈で一風変わった活躍の松本亮介くんがゲスト。自前で持つ基盤の取るべき方向性や、先日彼が発表した『なめらかなシステム』という概念の話をしました。Web系企業へのメッセージなどを語りました。 #nobolycloud トラックの補足はこちら https://cloudinfra.audio</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/270497866-cloudinfra_podcast_ja-track-3.mp3" length="134906691"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/269319498</guid>
+      <title>Track 2 GCP.AWSといわゆるSeverless、ほかHabitatの話</title>
+      <pubDate>Thu, 16 Jun 2016 02:40:46 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track002</link>
+      <itunes:duration>00:48:01</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>照井将士(marcy-terui)さんと、Google Cloud Platformの良いとこ悪いとこの話。Severlessってどう？どうなる？という話。Chef社の新プロダクトHabitatの話をしました。 トラックの補足はこちら https://cloudinfra.audio</itunes:summary>
+      <itunes:subtitle>照井将士(marcy-terui)さんと、Google Cloud Platformの良いとこ悪い…</itunes:subtitle>
+      <description>照井将士(marcy-terui)さんと、Google Cloud Platformの良いとこ悪いとこの話。Severlessってどう？どうなる？という話。Chef社の新プロダクトHabitatの話をしました。 トラックの補足はこちら https://cloudinfra.audio</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/269319498-cloudinfra_podcast_ja-track002.mp3" length="92214255"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/268454467</guid>
+      <title>Track 1 佐々木さんとAWS(主に書籍)の話</title>
+      <pubDate>Fri, 10 Jun 2016 13:47:57 +0000</pubDate>
+      <link>https://soundcloud.com/cloudinfra_podcast_ja/track001</link>
+      <itunes:duration>00:45:19</itunes:duration>
+      <itunes:author>のぼりーさんのクラウドインフラPodcast</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>某大手SIerの佐々木拓郎さんと。
+著書のAWS関連本の話から、自社でAWSを使うようになった流れの話などを中心に語りました。あと、AWSサミットの話をしようとしましたが微妙にできていません。
+トラックの補足はこちら https://cloudinfra.audio/</itunes:summary>
+      <itunes:subtitle>某大手SIerの佐々木拓郎さんと。
+著書のAWS関連本の話から、自社でAWSを使うようになった流れ…</itunes:subtitle>
+      <description>某大手SIerの佐々木拓郎さんと。
+著書のAWS関連本の話から、自社でAWSを使うようになった流れの話などを中心に語りました。あと、AWSサミットの話をしようとしましたが微妙にできていません。
+トラックの補足はこちら https://cloudinfra.audio/</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/268454467-cloudinfra_podcast_ja-track001.mp3" length="87030725"/>
+      <itunes:image href="http://i1.sndcdn.com/avatars-000230351455-3b0kmm-original.jpg"/>
+    </item>
+      </channel>
+    </rss>

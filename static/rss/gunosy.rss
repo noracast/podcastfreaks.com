@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss" rel="self" type="application/rss+xml"/>
+        <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss?before=322692243" rel="next" type="application/rss+xml"/>
+        <title>gunosy.fm</title>
+        <link>http://soundcloud.com/gunosyfm</link>
+        <pubDate>Wed, 13 Dec 2017 14:14:00 +0000</pubDate>
+        <lastBuildDate>Wed, 13 Dec 2017 14:14:00 +0000</lastBuildDate>
+        <ttl>60</ttl>
+        <language>ja</language>
+        <copyright>All rights reserved</copyright>
+        <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+        <description>gunosy.fmはGunosyの中の人がお届けする、カジュアルなPodcast番組です。テクノロジーの話題からサービス開発、オフィスでの出来事など普段は見えない「中の人」をゲストに招いてトークする番組です。</description>
+        <itunes:subtitle>gunosy.fmはGunosyの中の人がお届けする、カジュアルなPodcast番組です。テクノロ…</itunes:subtitle>
+        <itunes:owner>
+          <itunes:name>gunosy.fm</itunes:name>
+          <itunes:email>pr@gunosy.com</itunes:email>
+        </itunes:owner>
+        <itunes:author>gunosy.fm</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://i1.sndcdn.com/avatars-000314362524-e8dhlp-original.jpg"/>
+        <image>
+          <url>http://i1.sndcdn.com/avatars-000314362524-e8dhlp-original.jpg</url>
+          <title>gunosy.fm</title>
+          <link>http://soundcloud.com/gunosyfm</link>
+        </image>
+        <itunes:category text="Technology"/>
+        <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/368953067</guid>
+      <title>#7 re:Invent必須アイテム</title>
+      <pubDate>Wed, 13 Dec 2017 14:14:00 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm007</link>
+      <itunes:duration>00:30:56</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第7回はAWS re:Invent 2017の参加レポートです。
+（機材トラブルで途中かとう側の音声が途切れております。ご了承ください。）
+
+ゲスト：aibou
+MC：かとう
+
+- re:Invent https://reinvent.awsevents.com/
+- re:PLAY Party https://reinvent.awsevents.com/play/replay/
+- Thursday Night Football http://www.nfl.com/tnf
+- re:invent 2017に参加してきました！ http://tech.gunosy.io/entry/reinvent2017
+- Elasticsearch Serviceのセッション https://www.slideshare.net/AmazonWebServices/abd338mirrorweb-powering-largescale-fulltext-search-for-the-uk-government-web-archives-using-amazon-elasticsearch-service
+- Aurora Serverless https://aws.amazon.com/jp/rds/aurora/serverless/
+- Aurora Multi-Master https://aws.amazon.com/jp/blogs/news/sign-up-for-the-preview-of-amazon-aurora-multi-master/
+- SageMaker https://aws.amazon.com/jp/blogs/news/amazon-sagemaker/
+- ブラックジャックのベーシックストラテジー http://www.e-town21.com/lasvegas/casino/blackjack/bj_2.htm
+- ジャパンツアー http://biz.knt.co.jp/tour/2017/reinvent/
+- AWS re:Invent 2017 JAPAN PORTAL | クラスメソッド https://classmethod.jp/m/reinvent2017/
+- Ramen-Katanaya http://www.ramen-katanaya.com/</itunes:summary>
+      <itunes:subtitle>第7回はAWS re:Invent 2017の参加レポートです。
+（機材トラブルで途中かとう側の音…</itunes:subtitle>
+      <description>第7回はAWS re:Invent 2017の参加レポートです。
+（機材トラブルで途中かとう側の音声が途切れております。ご了承ください。）
+
+ゲスト：aibou
+MC：かとう
+
+- re:Invent https://reinvent.awsevents.com/
+- re:PLAY Party https://reinvent.awsevents.com/play/replay/
+- Thursday Night Football http://www.nfl.com/tnf
+- re:invent 2017に参加してきました！ http://tech.gunosy.io/entry/reinvent2017
+- Elasticsearch Serviceのセッション https://www.slideshare.net/AmazonWebServices/abd338mirrorweb-powering-largescale-fulltext-search-for-the-uk-government-web-archives-using-amazon-elasticsearch-service
+- Aurora Serverless https://aws.amazon.com/jp/rds/aurora/serverless/
+- Aurora Multi-Master https://aws.amazon.com/jp/blogs/news/sign-up-for-the-preview-of-amazon-aurora-multi-master/
+- SageMaker https://aws.amazon.com/jp/blogs/news/amazon-sagemaker/
+- ブラックジャックのベーシックストラテジー http://www.e-town21.com/lasvegas/casino/blackjack/bj_2.htm
+- ジャパンツアー http://biz.knt.co.jp/tour/2017/reinvent/
+- AWS re:Invent 2017 JAPAN PORTAL | クラスメソッド https://classmethod.jp/m/reinvent2017/
+- Ramen-Katanaya http://www.ramen-katanaya.com/</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/368953067-gunosyfm-gunosyfm007.mp3" length="19099638"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000269198990-mhl530-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/345598823</guid>
+      <title>#6 ねえ、OSSにcontributeするの、どんな気持ち？</title>
+      <pubDate>Fri, 06 Oct 2017 08:00:14 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm006</link>
+      <itunes:duration>00:34:27</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第6回はサービス開発、golangへのcontribute、ブロックチェーンについて話しました。
+
+ゲスト：timakin
+MC：かとう
+
+- LUCRA - ルクラ https://lucra.jp/
+- マイクロチームでの高速な新規開発を支える開発・分析基盤 https://builderscon.io/tokyo/2017/session/f80aad32-4f21-11e7-aa42-42010af00d0a
+-  BOOT.FM https://bootfm.github.io/
+- 「今年は…何か大きめのOSSにコントリビュートしたいですね」 https://medium.com/@timakin/902771f0ba0e
+- qunosy https://github.com/timakin/qunosy
+- blockchain.tokyo https://blockchain-tokyo.connpass.com/
+- HyperLedger Today https://speakerdeck.com/timakin/hyperledger-today
+- IPFS is the Distributed Web https://ipfs.io/
+- Hyperledger Fabric https://www.hyperledger.org/projects/fabric</itunes:summary>
+      <itunes:subtitle>第6回はサービス開発、golangへのcontribute、ブロックチェーンについて話しました。
+…</itunes:subtitle>
+      <description>第6回はサービス開発、golangへのcontribute、ブロックチェーンについて話しました。
+
+ゲスト：timakin
+MC：かとう
+
+- LUCRA - ルクラ https://lucra.jp/
+- マイクロチームでの高速な新規開発を支える開発・分析基盤 https://builderscon.io/tokyo/2017/session/f80aad32-4f21-11e7-aa42-42010af00d0a
+-  BOOT.FM https://bootfm.github.io/
+- 「今年は…何か大きめのOSSにコントリビュートしたいですね」 https://medium.com/@timakin/902771f0ba0e
+- qunosy https://github.com/timakin/qunosy
+- blockchain.tokyo https://blockchain-tokyo.connpass.com/
+- HyperLedger Today https://speakerdeck.com/timakin/hyperledger-today
+- IPFS is the Distributed Web https://ipfs.io/
+- Hyperledger Fabric https://www.hyperledger.org/projects/fabric</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/345598823-gunosyfm-gunosyfm006.mp3" length="33079298"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000245845563-mrsr9h-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/336805245</guid>
+      <title>#5 CTOと語るライフハック</title>
+      <pubDate>Mon, 07 Aug 2017 07:27:00 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm005</link>
+      <itunes:duration>00:45:12</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第5回はCTOのy_matsuwitterさんと食事、運動、睡眠、MR（Mixed Reality）、業務効率化、アドテクなどについて話を聞きました。
+
+ゲスト：y_matsuwitter
+MC：かとう
+
+- 料理も、睡眠も、仕事もハック！ GunosyのCTOが教える開発効率を上げるメソッド https://employment.en-japan.com/engineerhub/entry/2017/07/24/110000
+- Anova Precision Cooker https://anovaculinary.com/anova-precision-cooker/
+- メイラード反応 - Wikipedia https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%A9%E3%83%BC%E3%83%89%E5%8F%8D%E5%BF%9C
+- VR and mixed reality headsets https://www.microsoft.com/en-us/store/collections/vrandmixedrealityheadsets
+- VR向けの&quot;背負うPC&quot; http://akiba-pc.watch.impress.co.jp/docs/wakiba/find/1070853.html
+- Meal Replacement Powder https://jp.iherb.com/pr/Garden-of-Life-RAW-Organic-Meal-Shake-Meal-Replacement-Chocolate-Cacao-34-8-oz-986-g/45316
+- 完全食 COMP http://www.comp.jp/
+- ペヤング　背脂MAXやきそば http://www.peyoung.co.jp/products/686/
+- Philips Hue https://www2.meethue.com/ja-jp/
+- Withings スマートウォッチ Activité Steel https://health.nokia.com/jp/ja/steel
+- IRKit http://getirkit.com/
+- Kaggle https://www.kaggle.com/
+- Gunosy Summer Internship 2017 http://engineer-intern.gunosy.co.jp/
+- マイクロチームでの高速な新規開発を支える開発・分析基盤 - builderscon tokyo 2017 https://builderscon.io/tokyo/2017/session/f80aad32-4f21-11e7-aa42-42010af00d0a
+- 听屋 六本木 https://tabelog.com/tokyo/A1307/A130701/13181511/
+- 六本木店 | いきなり！ステーキ http://ikinaristeak.com/shopinfo/roppongi/
+- 旬熟成 六本木店 https://tabelog.com/tokyo/A1307/A130702/13147296/
+- ステーキハウス・グリル、肉料理「オーク ドア」 https://www.tokyo.grand.hyatt.co.jp/restaurants/oak-door-restaurant/
+- gunosyfmシール https://twitter.com/s_wool/status/892556589487407104</itunes:summary>
+      <itunes:subtitle>第5回はCTOのy_matsuwitterさんと食事、運動、睡眠、MR（Mixed Reality…</itunes:subtitle>
+      <description>第5回はCTOのy_matsuwitterさんと食事、運動、睡眠、MR（Mixed Reality）、業務効率化、アドテクなどについて話を聞きました。
+
+ゲスト：y_matsuwitter
+MC：かとう
+
+- 料理も、睡眠も、仕事もハック！ GunosyのCTOが教える開発効率を上げるメソッド https://employment.en-japan.com/engineerhub/entry/2017/07/24/110000
+- Anova Precision Cooker https://anovaculinary.com/anova-precision-cooker/
+- メイラード反応 - Wikipedia https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%A9%E3%83%BC%E3%83%89%E5%8F%8D%E5%BF%9C
+- VR and mixed reality headsets https://www.microsoft.com/en-us/store/collections/vrandmixedrealityheadsets
+- VR向けの&quot;背負うPC&quot; http://akiba-pc.watch.impress.co.jp/docs/wakiba/find/1070853.html
+- Meal Replacement Powder https://jp.iherb.com/pr/Garden-of-Life-RAW-Organic-Meal-Shake-Meal-Replacement-Chocolate-Cacao-34-8-oz-986-g/45316
+- 完全食 COMP http://www.comp.jp/
+- ペヤング　背脂MAXやきそば http://www.peyoung.co.jp/products/686/
+- Philips Hue https://www2.meethue.com/ja-jp/
+- Withings スマートウォッチ Activité Steel https://health.nokia.com/jp/ja/steel
+- IRKit http://getirkit.com/
+- Kaggle https://www.kaggle.com/
+- Gunosy Summer Internship 2017 http://engineer-intern.gunosy.co.jp/
+- マイクロチームでの高速な新規開発を支える開発・分析基盤 - builderscon tokyo 2017 https://builderscon.io/tokyo/2017/session/f80aad32-4f21-11e7-aa42-42010af00d0a
+- 听屋 六本木 https://tabelog.com/tokyo/A1307/A130701/13181511/
+- 六本木店 | いきなり！ステーキ http://ikinaristeak.com/shopinfo/roppongi/
+- 旬熟成 六本木店 https://tabelog.com/tokyo/A1307/A130702/13147296/
+- ステーキハウス・グリル、肉料理「オーク ドア」 https://www.tokyo.grand.hyatt.co.jp/restaurants/oak-door-restaurant/
+- gunosyfmシール https://twitter.com/s_wool/status/892556589487407104</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/336805245-gunosyfm-gunosyfm005.mp3" length="43398710"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000237230916-e24c3a-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/332468067</guid>
+      <title>#4 3D円グラフ警察</title>
+      <pubDate>Mon, 10 Jul 2017 07:07:32 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm004</link>
+      <itunes:duration>00:35:53</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第4回はAWS Dev Day Tokyo 2017で発表してきた話とJSAI 2017、社内〇〇警察の話、録音環境について話しました。
+
+ゲスト：おおそね
+MC：かとう
+
+- gunosy.fm #2 ざっくりわかる、データ分析部 https://soundcloud.com/gunosyfm/gunosyfm002
+- Gunosy における AWS 上での自然言語処理・機械学習の活用事例: AWS Summit dev day 2017 http://data.gunosy.io/entry/aws-dev-day-2017
+- JSAI2017 – 2017年度 人工知能学会全国大会（第31回） http://www.ai-gakkai.or.jp/jsai2017/
+- なぜ円グラフを安易に使ってはいけないのか？ http://jikitourai.net/dont-use-piechart
+- テノリテトラ https://www.amazon.co.jp/dp/B004E4JPTK
+- Podcasting Guide 2017 https://weblog.bulknews.net/podcasting-guide-2017-2e88531a367d
+- ゼンハイザー ダイナミックマイクロホン カーディオイド e935 https://www.amazon.co.jp/gp/product/B000N94RP2/</itunes:summary>
+      <itunes:subtitle>第4回はAWS Dev Day Tokyo 2017で発表してきた話とJSAI 2017、社内〇〇…</itunes:subtitle>
+      <description>第4回はAWS Dev Day Tokyo 2017で発表してきた話とJSAI 2017、社内〇〇警察の話、録音環境について話しました。
+
+ゲスト：おおそね
+MC：かとう
+
+- gunosy.fm #2 ざっくりわかる、データ分析部 https://soundcloud.com/gunosyfm/gunosyfm002
+- Gunosy における AWS 上での自然言語処理・機械学習の活用事例: AWS Summit dev day 2017 http://data.gunosy.io/entry/aws-dev-day-2017
+- JSAI2017 – 2017年度 人工知能学会全国大会（第31回） http://www.ai-gakkai.or.jp/jsai2017/
+- なぜ円グラフを安易に使ってはいけないのか？ http://jikitourai.net/dont-use-piechart
+- テノリテトラ https://www.amazon.co.jp/dp/B004E4JPTK
+- Podcasting Guide 2017 https://weblog.bulknews.net/podcasting-guide-2017-2e88531a367d
+- ゼンハイザー ダイナミックマイクロホン カーディオイド e935 https://www.amazon.co.jp/gp/product/B000N94RP2/</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/332468067-gunosyfm-gunosyfm004.mp3" length="34458145"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000232863272-2mw8f5-original.png"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/328322638</guid>
+      <title>#3 WWDCに行ってきた</title>
+      <pubDate>Fri, 16 Jun 2017 06:03:02 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm003</link>
+      <itunes:duration>00:46:11</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第3回はiOSエンジニアのかつやさんにWWDCに行ってきたレポートを話してもらいました。
+
+ゲスト：かつや
+MC：かとう
+
+リンク
+- iPhone&amp;Androidアプリ内課金プログラミング完全ガイド 第2版 http://www.shoeisha.co.jp/book/detail/9784798146072
+- WWDC発表まとめ：新iPad Pro、iMac Pro、SiriスピーカーHomePod、iOS 11、macOS High Sierraなど http://japanese.engadget.com/2017/06/05/wwdc-ipad-pro-imac-pro-siri-homepod-ios-11-macos-high/
+- ARKit - Apple Developer https://developer.apple.com/arkit/
+- Core ML | Apple Developer Documentation https://developer.apple.com/documentation/coreml
+- Apple earns an A+ for WWDC 2017's farewell beer bash http://www.cultofmac.com/486402/486402/
+- データ分析コース｜Gunosy Summer Internship 2017 http://engineer-intern.gunosy.co.jp/</itunes:summary>
+      <itunes:subtitle>第3回はiOSエンジニアのかつやさんにWWDCに行ってきたレポートを話してもらいました。
+
+ゲスト…</itunes:subtitle>
+      <description>第3回はiOSエンジニアのかつやさんにWWDCに行ってきたレポートを話してもらいました。
+
+ゲスト：かつや
+MC：かとう
+
+リンク
+- iPhone&amp;Androidアプリ内課金プログラミング完全ガイド 第2版 http://www.shoeisha.co.jp/book/detail/9784798146072
+- WWDC発表まとめ：新iPad Pro、iMac Pro、SiriスピーカーHomePod、iOS 11、macOS High Sierraなど http://japanese.engadget.com/2017/06/05/wwdc-ipad-pro-imac-pro-siri-homepod-ios-11-macos-high/
+- ARKit - Apple Developer https://developer.apple.com/arkit/
+- Core ML | Apple Developer Documentation https://developer.apple.com/documentation/coreml
+- Apple earns an A+ for WWDC 2017's farewell beer bash http://www.cultofmac.com/486402/486402/
+- データ分析コース｜Gunosy Summer Internship 2017 http://engineer-intern.gunosy.co.jp/</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/328322638-gunosyfm-gunosyfm003.mp3" length="44349567"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000228688817-ieid91-original.png"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/325004116</guid>
+      <title>#2 ざっくりわかる、データ分析部</title>
+      <pubDate>Mon, 29 May 2017 10:19:02 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm002</link>
+      <itunes:duration>00:34:12</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第2回はGunosyにおける記事の分析、データ分析部の紹介、おすすめランチについて話してもらいました。
+
+ゲスト：ビートいなにわ
+MC：かとう
+
+リンク
+- ビートいなにわ http://d.hatena.ne.jp/keyword/%A5%D3%A1%BC%A5%C8%A4%A4%A4%CA%A4%CB%A4%EF
+- Airbnbを利用した開発合宿のススメ http://data.gunosy.io/entry/airbnb-development-camp
+- 2017年度 人工知能学会全国大会 https://www.ai-gakkai.or.jp/jsai2017/
+- Gunosyデータ分析ブログ http://data.gunosy.io/
+- 魚屋 がぶ https://tabelog.com/tokyo/A1307/A130701/13094750/
+- AWS Dev Day Tokyo 2017 http://www.awssummit.tokyo/devday/?id=type#D2T8-6</itunes:summary>
+      <itunes:subtitle>第2回はGunosyにおける記事の分析、データ分析部の紹介、おすすめランチについて話してもらいまし…</itunes:subtitle>
+      <description>第2回はGunosyにおける記事の分析、データ分析部の紹介、おすすめランチについて話してもらいました。
+
+ゲスト：ビートいなにわ
+MC：かとう
+
+リンク
+- ビートいなにわ http://d.hatena.ne.jp/keyword/%A5%D3%A1%BC%A5%C8%A4%A4%A4%CA%A4%CB%A4%EF
+- Airbnbを利用した開発合宿のススメ http://data.gunosy.io/entry/airbnb-development-camp
+- 2017年度 人工知能学会全国大会 https://www.ai-gakkai.or.jp/jsai2017/
+- Gunosyデータ分析ブログ http://data.gunosy.io/
+- 魚屋 がぶ https://tabelog.com/tokyo/A1307/A130701/13094750/
+- AWS Dev Day Tokyo 2017 http://www.awssummit.tokyo/devday/?id=type#D2T8-6</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/325004116-gunosyfm-gunosyfm002.mp3" length="32841479"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000224803991-h67jma-original.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/322692243</guid>
+      <title>#1 F8に行ってきた</title>
+      <pubDate>Mon, 15 May 2017 08:01:05 +0000</pubDate>
+      <link>https://soundcloud.com/gunosyfm/gunosyfm001</link>
+      <itunes:duration>00:32:46</itunes:duration>
+      <itunes:author>gunosy.fm</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>第1回ということで、gunosy.fmのご挨拶とFacebookの開発者カンファレンス「F8」に行ってきたレポートをお送りします。
+
+ゲスト：サンドバーグ
+MC：かとう
+
+リンク
+- F8 https://www.fbf8.com/
+- Facebookは頭脳直結テキスト入力開発中 http://jp.techcrunch.com/2017/04/20/20170419facebook-brain-interface/
+- 太陽光で飛び続ける全翼ドローンAquila http://japanese.engadget.com/2015/07/31/facebook-aquila/
+- 360度カメラ全員配布 https://forbesjapan.com/articles/detail/15994
+- Nuclide https://nuclide.io/
+- React Native https://facebook.github.io/react-native/
+- Remote Development https://nuclide.io/docs/features/remote/
+- Jest https://facebook.github.io/jest/
+- アドエンジニア募集　https://hrmos.co/pages/1009778707507720193/jobs/0000005</itunes:summary>
+      <itunes:subtitle>第1回ということで、gunosy.fmのご挨拶とFacebookの開発者カンファレンス「F8」に行…</itunes:subtitle>
+      <description>第1回ということで、gunosy.fmのご挨拶とFacebookの開発者カンファレンス「F8」に行ってきたレポートをお送りします。
+
+ゲスト：サンドバーグ
+MC：かとう
+
+リンク
+- F8 https://www.fbf8.com/
+- Facebookは頭脳直結テキスト入力開発中 http://jp.techcrunch.com/2017/04/20/20170419facebook-brain-interface/
+- 太陽光で飛び続ける全翼ドローンAquila http://japanese.engadget.com/2015/07/31/facebook-aquila/
+- 360度カメラ全員配布 https://forbesjapan.com/articles/detail/15994
+- Nuclide https://nuclide.io/
+- React Native https://facebook.github.io/react-native/
+- Remote Development https://nuclide.io/docs/features/remote/
+- Jest https://facebook.github.io/jest/
+- アドエンジニア募集　https://hrmos.co/pages/1009778707507720193/jobs/0000005</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/322692243-gunosyfm-gunosyfm001.mp3" length="31462213"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000223732429-fa8inm-original.jpg"/>
+    </item>
+      </channel>
+    </rss>

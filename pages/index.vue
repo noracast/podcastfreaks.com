@@ -19,7 +19,7 @@ export default {
     'podcast': require('~/components/podcast.vue').default
   },
   data: function(){
-    return rss
+    return {feeds: Object.keys(rss)}
   }
 }
 </script>

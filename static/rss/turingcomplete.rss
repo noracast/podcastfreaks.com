@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:feedpress="https://feed.press/xmlns" version="2.0">
+  <channel>
+    <feedpress:locale>jp</feedpress:locale>
+    <atom:link rel="self" href="https://feeds.turingcomplete.fm/tcfm"/>
+    <atom:link rel="hub" href="http://feedpress.superfeedr.com/"/>
+    <title>Turing Complete FM</title>
+    <link>https://turingcomplete.fm</link>
+    <language>ja</language>
+    <copyright>Rui Ueyama</copyright>
+    <itunes:author>Rui Ueyama</itunes:author>
+    <itunes:summary>プログラミングとコンピュータサイエンスについてのディープな話をするポッドキャストです。</itunes:summary>
+    <itunes:owner>
+      <itunes:name>Rui Ueyama</itunes:name>
+      <itunes:email>rui314@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://turingcomplete.fm/icon2048.jpg"/>
+    <itunes:category text="Technology"/>
+    <itunes:explicit>No</itunes:explicit>
+    <item>
+      <title>14. 少年時代にPCを（本当の意味で）自作した話 (川合史朗)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>Gauche Schemeの作者の川合史朗さんと、Z80 CPUを使ったPCをホストコンピュータなしに自作した話や、Schemeの話などをしました。</itunes:subtitle>
+      <itunes:summary>Gauche Schemeの作者の川合史朗さんと、Z80 CPUを使ったPCをホストコンピュータなしに自作した話や、Schemeの話などをしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900706/14.mp3" type="audio/mpeg" length="60701323"/>
+      <guid>https://turingcomplete.fm/14</guid>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 GMT</pubDate>
+      <itunes:duration>1:24:07</itunes:duration>
+      <description><![CDATA[Gauche Schemeの作者の川合史朗さんと、Z80 CPUを使ったPCをホストコンピュータなしに自作した話や、Schemeの話などをしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/anohana">@anohana</a>)</span><p>
+<a href="https://turingcomplete.fm/14">https://turingcomplete.fm/14</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://practical-scheme.net/gauche/index-j.html">Gauche Scheme</a></li>
+<li style="margin:0.5em 0"><a href="https://amzn.to/2IXcpje">ハッカーと画家</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/shirok/Gauche">Gauche Schemeのソースコード</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Steel_Bank_Common_Lisp">Steel Bank Common Lisp</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/ITA_Software">ITA Software</a></li>
+<li style="margin:0.5em 0"><a href="https://clojure.org">Clojure言語</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Chrome_V8">V8 JavaScriptエンジン</a></li>
+<li style="margin:0.5em 0"><a href="https://brendaneich.com/2008/04/popularity/">JavaScript作者のBrenden Eichは当初「Schemeをやる」約束でNetscapeに雇われた</a></li>
+<li style="margin:0.5em 0"><a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format">WebAssemblyのS式フォーマット</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/shirok/Gauche/blob/e55d69ac9443c59fa43c3b5314156a5be935e939/src/port.c#L1478">gotoを使った手書きのDFA</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/shirok/Gauche/blob/e55d69ac9443c59fa43c3b5314156a5be935e939/src/port.c#L401">Gaucheのbuffered port</a></li>
+<li style="margin:0.5em 0"><a href="http://practical-scheme.net/wiliki/wiliki.cgi?l=jp&p=Shiro%3AOvenPC">オーブンPC</a></li>
+<li style="margin:0.5em 0"><a href="https://amzn.to/2qyo8x1">ラジオを直す話（ご冗談でしょう、ファインマンさん）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/EPROM">紫外線照射で消去できるROM、EPROM</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/7セグメントディスプレイ">7セグメントLED</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ブラックライト">紫外線を放つブラックライト</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/フラッシュメモリ">フラッシュメモリ</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/テトリス">テトリス</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/アレクセイ・パジトノフ">アレクセイ・パジトノフ（テトリス開発者）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ヘンク・ブラウアー・ロジャース">ヘンク・ロジャース（テトリスの権利を買い付けてきた人）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Kremvax">最初はいたずらだったが最後には実在するホストになったソ連のkremvax.demos.su</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/フロッピーディスク">フロッピーディスク</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/CLV">線速度一定</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/CP/M">CP/M</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ワイヤ・ボンディング">ワイヤ・ボンディング</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/APL">APL</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/J_(プログラミング言語)">J</a></li>
+<li style="margin:0.5em 0"><a href="http://dfns.dyalog.com/c_life.htm">APLによる1行のライフゲーム: ↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Turbo_Pascal">Turbo Pascal</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/386BSD">386BSD</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Serial_Line_Internet_Protocol">SLIP</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Point-to-Point_Protocol">PPP</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/AppleTalk">AppleTalk</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Asynchronous_Transfer_Mode">ATMプロトコル</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Cell_Broadband_Engine">SonyのCellプロセッサ</a></li>
+<li style="margin:0.5em 0"><a href="https://www.siggraph.org/">SIGGRAPH（シーグラフ）</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>13. 自作アセンブラ、リンカの最適化、トリッキーなビット操作の楽しさ、外資系IT企業のコーディング面接対策 (hikalium)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>hikaliumの自作アセンブラや自作言語、データ構造やトリッキーなビット操作を使ったアルゴリズム、リンカの最適化などについて話をしました。</itunes:subtitle>
+      <itunes:summary>hikaliumの自作アセンブラや自作言語、データ構造やトリッキーなビット操作を使ったアルゴリズム、リンカの最適化などについて話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900707/13.mp3" type="audio/mpeg" length="63604907"/>
+      <guid>https://turingcomplete.fm/13</guid>
+      <pubDate>Mon, 09 Apr 2018 00:00:00 GMT</pubDate>
+      <itunes:duration>1:28:08</itunes:duration>
+      <description><![CDATA[hikaliumの自作アセンブラや自作言語、データ構造やトリッキーなビット操作を使ったアルゴリズム、リンカの最適化などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/hikalium">@hikalium</a>)</span><p>
+<a href="https://turingcomplete.fm/13">https://turingcomplete.fm/13</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm">Intel and AT&T syntax</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/hikalium/asmium">asmium</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ブルームフィルタ">ブルームフィルタ</a></li>
+<li style="margin:0.5em 0"><a href="http://oswiki.osask.jp/?ASKA">ASKAアセンブラ</a></li>
+<li style="margin:0.5em 0"><a href="https://golang.org/doc/asm">Goのアセンブラ</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/herumi/xbyak">Xbyak（カイビャク）</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/intel/mkl-dnn">Xbyakを使っているIntelのディープニューラルネットワークライブラリ</a></li>
+<li style="margin:0.5em 0"><a href="https://amzn.to/2IzcUzN">ハッカーのたのしみ（本）</a></li>
+<li style="margin:0.5em 0"><a href="http://www.hackersdelight.org/basics2.pdf">Hacker's Delight第2版の無料の章</a></li>
+<li style="margin:0.5em 0"><a href="https://golang.org/pkg/sync/#WaitGroup">GoのWaitGroup</a></li>
+<li style="margin:0.5em 0"><a href="https://groups.google.com/forum/#!topic/golang-codereviews/Y5NagOKniWo">WaitGroupのバグ</a></li>
+<li style="margin:0.5em 0"><a href="https://www.felixcloutier.com/x86/POPCNT.html">POPCNT</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/golang/go/commit/0100afbdcc065ec20631d60cf7621d642f44b9d5">GoのPNGライブラリで使われている分岐なしabs関数</a></li>
+<li style="margin:0.5em 0"><a href="http://labs.cybozu.co.jp/youth/requirements.html">サイボウズ・ラボユース募集要項</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/hikalium/nv">nv</a></li>
+<li style="margin:0.5em 0"><a href="https://www.youtube.com/watch?v=XKu_SEDAykw">Googleの公式モックインタビュー動画</a></li>
+<li style="margin:0.5em 0"><a href="http://web.stanford.edu/class/cs9/">StanfordのCS9の資料</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>12. Unicode、絵文字、Androidのテキスト関連のハンドリング、無数の文字トリビア (のな)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>Androidのテキスト処理を担当しているのなさんと、UnicodeやUnicode絵文字、テキスト処理の複雑さ、文字トリビアなどについて話をしました。</itunes:subtitle>
+      <itunes:summary>Androidのテキスト処理を担当しているのなさんと、UnicodeやUnicode絵文字、テキスト処理の複雑さ、文字トリビアなどについて話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900708/12.mp3" type="audio/mpeg" length="56357688"/>
+      <guid>https://turingcomplete.fm/12</guid>
+      <pubDate>Sun, 01 Apr 2018 20:00:00 GMT</pubDate>
+      <itunes:duration>1:18:05</itunes:duration>
+      <description><![CDATA[Androidのテキスト処理を担当しているのなさんと、UnicodeやUnicode絵文字、テキスト処理の複雑さ、文字トリビアなどについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/ttuusskk">@ttuusskk</a>)</span><p>
+<a href="https://turingcomplete.fm/12">https://turingcomplete.fm/12</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://qiita.com/nonanona/items/b148c212ba7c24942e93">のなさんによる絵文字の解説</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Unicode">Unicode</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/UTF-8">UTF-8</a></li>
+<li style="margin:0.5em 0"><a href="https://www.theverge.com/2017/10/30/16569346/burgergate-emoji-google-apple">ハンバーガー絵文字とチーズの位置問題</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/合字">リガチャー（合字）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ß">ß （エスツェット）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/幽霊文字">幽霊文字</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ビャンビャン麺">ビャンビャン麺</a></li>
+<li style="margin:0.5em 0"><a href="https://note.mu/issei_y/n/nf348ba07a96a">Ponanzaのために作られた将棋の相手の駒の外事</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Chess_symbols_in_Unicode">チェスの駒のUnicode記号</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Domino_Tiles">ドミノタイルのUnicode記号</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Mahjong_Tiles_(Unicode_block)">Unicodeの麻雀牌</a></li>
+<li style="margin:0.5em 0"><a href="http://www.fileformat.info/info/unicode/char/fe18/index.htm">Brakcet</a></li>
+<li style="margin:0.5em 0"><a href="https://www.fileformat.info/info/unicode/char/1f5ff/index.htm">モヤイ像（「イースター島のモアイ像に似た日本の石像の絵文字」として定義されている）</a></li>
+<li style="margin:0.5em 0"><a href="http://doc.cat-v.org/bell_labs/utf-8_history">Rob PikeによるUTF-8の歴史</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Zawgyi_font">Zawgyi font</a></li>
+<li style="margin:0.5em 0"><a href="https://amzn.to/2GZX8hE">O'ReillyのCJKV本（フグ本）</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/キリル文字">キリル文字</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/モンゴル文字">モンゴル文字</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/満州文字">満洲文字</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Noto_fonts">Notoフォント</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/明朝体">明朝体</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/アンチエイリアス">アンチエイリアシング</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/サブピクセルレンダリング">サブピクセルレンダリング</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/PenTile_matrix_family">ペンタイル</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>11. C++ constexprによるコンパイル時Cコンパイラ、テンプレートとジェネリクス、コンピュータサイエンスの理論と実践 (うどん)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>うどんくんがELVMを使ってCコンパイラをC++14 constexprに移植した件や、テンプレートとジェネリクス、プログラミングの型の理論などについて話をしました。</itunes:subtitle>
+      <itunes:summary>うどんくんがELVMを使ってCコンパイラをC++14 constexprに移植した件や、テンプレートとジェネリクス、プログラミングの型の理論などについて話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900709/11.mp3" type="audio/mpeg" length="48029194"/>
+      <guid>https://turingcomplete.fm/11</guid>
+      <pubDate>Sun, 25 Mar 2018 07:00:00 GMT</pubDate>
+      <itunes:duration>1:06:32</itunes:duration>
+      <description><![CDATA[うどんくんがELVMを使ってCコンパイラをC++14 constexprに移植した件や、テンプレートとジェネリクス、プログラミングの型の理論などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/kw_udon_">@kw_udon_</a>)</span><p>
+<a href="https://turingcomplete.fm/11">https://turingcomplete.fm/11</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2FXUGdJ">結城さんの数学ガール</a></li>
+<li style="margin:0.5em 0"><a href="https://twitter.com/hyuki/status/975225171467358210">結城先生、うどんくんにコメントしてくれる</a></li>
+<li style="margin:0.5em 0"><a href="http://shinh.hatenablog.com/entry/2016/12/22/005706">HamajiさんによるELVM Compiler Infrastructureの解説</a></li>
+<li style="margin:0.5em 0"><a href="http://kw-udon.hatenablog.com/entry/2016/12/03/201722">コンパイル中にコンパイルする「コンパイル時Cコンパイラ」をつくった話</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ヒルベルトの23の問題">ヒルベルトの23の問題</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/テンプレートメタプログラミング">テンプレートメタプログラミング</a></li>
+<li style="margin:0.5em 0"><a href="https://amzn.to/2I4yyf5">純粋関数型データ構造</a></li>
+<li style="margin:0.5em 0"><a href="http://beza1e1.tuxen.de/articles/accidentally_turing_complete.html">Accidentally Turing-Complete</a></li>
+<li style="margin:0.5em 0"><a href="https://golang.org/doc/faq#generics">Why does Go not have generic types?</a></li>
+<li style="margin:0.5em 0"><a href="https://arxiv.org/abs/1605.05274">Java Generics are Turing Complete</a></li>
+<li style="margin:0.5em 0"><a href="https://dl.acm.org/citation.cfm?id=2984004">Java and scala's type systems are unsound</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Covariance and contravariance (computer science)</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Church_encoding">Church encoding</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Brainfuck">Brainfuck</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Malbolge">Malbolge</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Fizz_Buzz">Fizzbuzz問題</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/gfngfn/SATySFi">静的型付け関数型組版言語SATySFi</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ドナルド・クヌース">ドナルド・クヌース</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>10. Cコンパイラをスクラッチから作成、東大CPU実験、型とプログラミング (うどん)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>OSの移植に使えるレベルのCコンパイラを自作CPU向けにスクラッチから書いた話について話を伺いました。</itunes:subtitle>
+      <itunes:summary>OSの移植に使えるレベルのCコンパイラを自作CPU向けにスクラッチから書いた話について話を伺いました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900710/10.mp3" type="audio/mpeg" length="56383313"/>
+      <guid>https://turingcomplete.fm/10</guid>
+      <pubDate>Sat, 17 Mar 2018 08:00:00 GMT</pubDate>
+      <itunes:duration>1:18:07</itunes:duration>
+      <description><![CDATA[OSの移植に使えるレベルのCコンパイラを自作CPU向けにスクラッチから書いた話について話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/kw_udon_">@kw_udon_</a>)</span><p>
+<a href="https://turingcomplete.fm/10">https://turingcomplete.fm/10</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://nullpo-head.github.io/emcc-gaia-simu/xv6.html">JavaScript版の自作CPU向けシミュレータ上で今回移植したxv6を動かせるページ</a></li>
+<li style="margin:0.5em 0"><a href="http://nullpo-head.hateblo.jp/entry/2015/03/24/205419">CPU実験で自作CPUにUNIXライクOS (xv6) を移植した話</a></li>
+<li style="margin:0.5em 0"><a href="http://kw-udon.hatenablog.com/entry/2015/03/19/171921">自作CPU向けCコンパイラをつくってOS動かした話（CPU実験まとめ）</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2FXUGdJ">結城さんの数学ガール</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ゴールドバッハの予想">ゴールドバッハの予想</a></li>
+<li style="margin:0.5em 0"><a href="https://www.ohmsha.co.jp/book/9784274069116/">型システム入門 &mdash;プログラミング言語と型の理論&mdash;</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system">Hindley-Milner type system</a></li>
+<li style="margin:0.5em 0"><a href="https://pdos.csail.mit.edu/6.828/2012/xv6.html">xv6 Unix</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/2の補数">2の補数</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/kw-udon/ucc">ucc</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/rui314/8cc">8cc</a></li>
+<li style="margin:0.5em 0"><a href="https://bellard.org/tcc/">tcc</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/maekawatoshiki/rucc">rucc</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/トロン_(映画)">トロン（映画）</a></li>
+<li style="margin:0.5em 0"><a href="https://www.youtube.com/watch?v=3efV2wqEjEY#t=1m39s">1982年版トロンのCG</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/惑星ソラリス">惑星ソラリス（映画）</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>9. 東大CPU実験で自作CPUにUnixを移植した話 (ぬるぽへ)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>東大CPU実験でUnixが動かせるCPUを自作してxv6 Unixを移植した件について話を伺いました。</itunes:subtitle>
+      <itunes:summary>東大CPU実験でUnixが動かせるCPUを自作してxv6 Unixを移植した件について話を伺いました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900711/9.mp3" type="audio/mpeg" length="63514823"/>
+      <guid>https://turingcomplete.fm/9</guid>
+      <pubDate>Sun, 11 Mar 2018 02:00:00 GMT</pubDate>
+      <itunes:duration>1:28:01</itunes:duration>
+      <description><![CDATA[東大CPU実験でUnixが動かせるCPUを自作してxv6 Unixを移植した件について話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/nullpo_head">@nullpo_head</a>)</span><p>
+<a href="https://turingcomplete.fm/9">https://turingcomplete.fm/9</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://tts.utopiat.net/">日本語プログラミング言語TTSneo</a></li>
+<li style="margin:0.5em 0"><a href="http://nullpo-head.hateblo.jp/entry/2015/03/24/205419">CPU実験で自作CPUにUNIXライクOS (xv6) を移植した話</a></li>
+<li style="margin:0.5em 0"><a href="http://kw-udon.hatenablog.com/entry/2015/03/19/171921">自作CPU向けCコンパイラをつくってOS動かした話（CPU実験まとめ）</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2FPbeEI">パターソン &amp; ヘネシー コンピュータの構成と設計</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/可逆計算">可逆計算</a></li>
+<li style="margin:0.5em 0"><a href="https://cybozushiki.cybozu.co.jp/articles/m001205.html">プラレールの加算器</a></li>
+<li style="margin:0.5em 0"><a href="https://pdos.csail.mit.edu/6.828/2012/xv6.html">xv6</a></li>
+<li style="margin:0.5em 0"><a href="https://qiita.com/umegaya/items/ef69461d6f4967d5c623">Jeff Dean伝説</a></li>
+<li style="margin:0.5em 0"><a href="https://swtch.com/~rsc/">Russ Cox</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Robert_Tappan_Morris">Robert Morris</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Morris_worm">Morris worm</a></li>
+<li style="margin:0.5em 0"><a href="https://techcrunch.com/2008/08/30/myspace-cofounder-tom-anderson-was-a-real-life-wargames-hacker-in-1980s/">MySpace創業者 14歳の時に警察の捜索を受ける</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/John_Carmack">John Carmack</a></li>
+<li style="margin:0.5em 0"><a href="http://shinh.skr.jp/slide/llel/000.html">LLVMとELVMの話</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/チューリング完全">チューリング完全</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/rui314/8cc">8cc Cコンパイラ</a></li>
+<li style="margin:0.5em 0"><a href="https://www.spinellis.gr/blog/20060626/">Cプリプロセッサのアルゴリズム</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/2048_(video_game)">2048</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>8. 30日OS自作入門本を読んでOS自作、コンピュータサイエンスと大学、インターンシップ (hikalium)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>「30日でできる！OS自作入門」を小学5年生で手にして以来行ってきた低レイヤプログラミングについて話を伺いました。</itunes:subtitle>
+      <itunes:summary>「30日でできる！OS自作入門」を小学5年生で手にして以来行ってきた低レイヤプログラミングについて話を伺いました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900712/8.mp3" type="audio/mpeg" length="39099849"/>
+      <guid>https://turingcomplete.fm/8</guid>
+      <pubDate>Sun, 04 Mar 2018 06:00:00 GMT</pubDate>
+      <itunes:duration>1:21:13</itunes:duration>
+      <description><![CDATA[「30日でできる！OS自作入門」を小学5年生で手にして以来行ってきた低レイヤプログラミングについて話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/hikalium">@hikalium</a>)</span><p>
+<a href="https://turingcomplete.fm/8">https://turingcomplete.fm/8</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2FL898l">30日でできる！OS自作入門</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/セル・オートマトン">セルオートマトン</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ライフゲーム">ライフゲーム</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/chnos">hikalium自作OS</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/VESA_BIOS_Extensions">VESA BIOS Extensions</a></li>
+<li style="margin:0.5em 0"><a href="https://software.intel.com/en-us/articles/intel-sdm">Intel Software Developer Manuals</a></li>
+<li style="margin:0.5em 0"><a href="http://www.lulu.com/spotlight/IntelSDM">Intel Software Developer Manualsの印刷版が注文できるサイト</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/RISC-V">RISC-V</a></li>
+<li style="margin:0.5em 0"><a href="https://www.sifive.com/">SiFive</a></li>
+<li style="margin:0.5em 0"><a href="http://yamaguchi-1024.hatenablog.com/entry/2018/02/27/172417">東大のCPU実験で自作コア上の自作OS上で自作シェルを動かした話</a></li>
+<li style="margin:0.5em 0"><a href="https://www.slideshare.net/kinukox/cc-55863339">GomaのためのCプリプロセッサ</a></li>
+<li style="margin:0.5em 0"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection/addRange">Selection.addRange()</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/maekawatoshiki/naglfar">Rustで書かれたNaglfarブラウザ</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>7. macOSやWindowsでLinuxバイナリを動かすプログラムを作った話 (ぬるぽへ)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>仮想マシン上でLinuxを動かすのではなく、システムコールをトラップしてトランスレートすることによりLinuxアプリを他のOSで動かすことのできるNoahについて、ぬるぽへさんから話を伺いました。</itunes:subtitle>
+      <itunes:summary>仮想マシン上でLinuxを動かすのではなく、システムコールをトラップしてトランスレートすることによりLinuxアプリを他のOSで動かすことのできるNoahについて、ぬるぽへさんから話を伺いました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900713/7.mp3" type="audio/mpeg" length="46294881"/>
+      <guid>https://turingcomplete.fm/7</guid>
+      <pubDate>Sun, 25 Feb 2018 04:00:00 GMT</pubDate>
+      <itunes:duration>1:36:12</itunes:duration>
+      <description><![CDATA[仮想マシン上でLinuxを動かすのではなく、システムコールをトラップしてトランスレートすることによりLinuxアプリを他のOSで動かすことのできるNoahについて、ぬるぽへさんから話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/nullpo_head">@nullpo_head</a>)</span><p>
+<a href="https://turingcomplete.fm/7">https://turingcomplete.fm/7</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://github.com/linux-noah/noah">Noah</a></li>
+<li style="margin:0.5em 0"><a href="https://www.youtube.com/watch?v=eywi0h_Y5_U">Steve Ballmer、iPhoneを笑い飛ばす</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2tDdlWY">イノベーションのジレンマ</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/エンディアン">エンディアン</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Google_Fuchsia">Fuchsia</a></li>
+<li style="margin:0.5em 0"><a href="http://shinh.hatenablog.com/entry/20110316/1300238828">maloader</a></li>
+<li style="margin:0.5em 0"><a href="http://www.catb.org/jargon/html/L/language-lawyer.html">Language lawyer</a></li>
+<li style="margin:0.5em 0"><a href="http://nullpo-head.hateblo.jp/entry/2015/03/24/205419">CPU実験で自作CPUにUNIXライクOS (xv6) を移植した話</a></li>
+<li style="margin:0.5em 0"><a href="http://kw-udon.hatenablog.com/entry/2015/03/19/171921">自作CPU向けCコンパイラをつくってOS動かした話（CPU実験まとめ）</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>6. LuaJIT、Lisp、Forth、PostScript、メタオブジェクトプロトコル、勉強に良いソースコード (Miura Hideki)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>Miuraさんと一緒にいろいろなスクリプト言語の実装や言語そのものなどについて話をしました。</itunes:subtitle>
+      <itunes:summary>Miuraさんと一緒にいろいろなスクリプト言語の実装や言語そのものなどについて話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900714/6.mp3" type="audio/mpeg" length="28720752"/>
+      <guid>https://turingcomplete.fm/6</guid>
+      <pubDate>Sat, 17 Feb 2018 22:00:00 GMT</pubDate>
+      <itunes:duration>0:59:37</itunes:duration>
+      <description><![CDATA[Miuraさんと一緒にいろいろなスクリプト言語の実装や言語そのものなどについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/miura1729">@miura1729</a>)</span><p>
+<a href="https://turingcomplete.fm/6">https://turingcomplete.fm/6</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://www.lua.org/">Lua</a></li>
+<li style="margin:0.5em 0"><a href="https://www.sqlite.org/">SQLite</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/パブリックドメイン">パブリックドメイン</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/rsdoiel/xlisp">XLISP</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/トライグラフ">トライグラフ</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2GlNS7i">The Art of the Metaobject Protocol</a></li>
+<li style="margin:0.5em 0"><a href="http://practical-scheme.net/gauche/index-j.html">Gauche Scheme</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/COMEFROM">COME FROM</a></li>
+<li style="margin:0.5em 0"><a href="https://www.ece.cmu.edu/~ganger/712.fall02/papers/p761-thompson.pdf">Reflections on Trusting Trust</a></li>
+<li style="margin:0.5em 0"><a href="http://practical-scheme.net/wiliki/wiliki.cgi?l=jp&p=Shiro%3AOvenPC">オーブンPC</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Forth">Forth</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Open_Firmware">Open Firmware</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2tMjyjG">PostScriptチュートリアル&amp;クックブック</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>5. 動的型付け言語のJIT、Rubyの最適化しにくい文法、Crystal (Miura Hideki)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>mrubyのJITなどを書いているMiuraさんと一緒に、言語処理系の実装や最適化、Rubyの文法の最適化しづらい点などについて話をしました。</itunes:subtitle>
+      <itunes:summary>mrubyのJITなどを書いているMiuraさんと一緒に、言語処理系の実装や最適化、Rubyの文法の最適化しづらい点などについて話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900715/5.mp3" type="audio/mpeg" length="30849607"/>
+      <guid>https://turingcomplete.fm/5</guid>
+      <pubDate>Mon, 12 Feb 2018 02:00:00 GMT</pubDate>
+      <itunes:duration>1:04:03</itunes:duration>
+      <description><![CDATA[mrubyのJITなどを書いているMiuraさんと一緒に、言語処理系の実装や最適化、Rubyの文法の最適化しづらい点などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/miura1729">@miura1729</a>)</span><p>
+<a href="https://turingcomplete.fm/5">https://turingcomplete.fm/5</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://www.ruby-lang.org/">Ruby</a></li>
+<li style="margin:0.5em 0"><a href="https://crystal-lang.org/">Crystal</a></li>
+<li style="margin:0.5em 0"><a href="https://github.com/herumi/xbyak">Xbyak</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>4. カーネルデバッガ、C++ライブラリの移植、ネットワークプロトコルと大規模な実験 (るくす)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>るくすくんの作ったカーネルデバッガやC++ライブラリの移植、C++などの話をしました。</itunes:subtitle>
+      <itunes:summary>るくすくんの作ったカーネルデバッガやC++ライブラリの移植、C++などの話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900716/4.mp3" type="audio/mpeg" length="37030067"/>
+      <guid>https://turingcomplete.fm/4</guid>
+      <pubDate>Mon, 05 Feb 2018 09:00:00 GMT</pubDate>
+      <itunes:duration>1:16:55</itunes:duration>
+      <description><![CDATA[るくすくんの作ったカーネルデバッガやC++ライブラリの移植、C++などの話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
+<a href="https://turingcomplete.fm/4">https://turingcomplete.fm/4</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="http://rkx1209.hatenablog.com/entry/2016/12/25/141543">低レイヤーの歩き方</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ビザンチン将軍問題">ビザンチン将軍問題</a></li>
+<li style="margin:0.5em 0"><a href="http://practical-scheme.net/gauche/index-j.html">Gauche Scheme</a></li>
+<li style="margin:0.5em 0"><a href="https://www.ipa.go.jp/jinzai/mitou/2016/gaiyou_g-1.html">カーネルソフトウェア開発支援ツールの提案</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ジョージ・ホッツ">ジョージ・ホッツ</a></li>
+<li style="margin:0.5em 0"><a href="https://comma.ai">comma.ai</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/リード・ソロモン符号">リード・ソロモン符号</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">SIPプロトコル</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>3. カーネギーメロン大学の客員研究員ポジション、様々なCPUのバグ、オープンソースプロジェクトから読み取れる各社の意向 (るくす)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>るくすくんと一緒に低レベルプログラミングやオープンソースの話をしました。</itunes:subtitle>
+      <itunes:summary>るくすくんと一緒に低レベルプログラミングやオープンソースの話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900717/3.mp3" type="audio/mpeg" length="51956395"/>
+      <guid>https://turingcomplete.fm/3</guid>
+      <pubDate>Sun, 28 Jan 2018 02:00:00 GMT</pubDate>
+      <itunes:duration>1:47:59</itunes:duration>
+      <description><![CDATA[るくすくんと一緒に低レベルプログラミングやオープンソースの話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
+<a href="https://turingcomplete.fm/3">https://turingcomplete.fm/3</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">Opusオーディオコーデック</a></li>
+<li style="margin:0.5em 0"><a href="http://www.homebrewcpu.com">オールTTLの16ビットCPU Magic-1</a></li>
+<li style="margin:0.5em 0"><a href="http://www.littlewingpinball.com/doc/ja/ypsilon/index.html">ピンボールのために作られたScheme実装 Ypsilon</a></li>
+<li style="margin:0.5em 0"><a href="http://amzn.to/2FOGaVu">lccコンパイラの解説本</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>2. Nintendo Switchのエミュレータの開発、CPUの投機的実行のセキュリティホール、CMUとスタンフォード (るくす)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>るくすくんと一緒に、るくすくんが開発しているNintend Switchのエミュレータの話やセキュリティの話などをしました。</itunes:subtitle>
+      <itunes:summary>るくすくんと一緒に、るくすくんが開発しているNintend Switchのエミュレータの話やセキュリティの話などをしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900718/2.mp3" type="audio/mpeg" length="51003638"/>
+      <guid>https://turingcomplete.fm/2</guid>
+      <pubDate>Sun, 21 Jan 2018 20:00:00 GMT</pubDate>
+      <itunes:duration>1:46:00</itunes:duration>
+      <description><![CDATA[るくすくんと一緒に、るくすくんが開発しているNintend Switchのエミュレータの話やセキュリティの話などをしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
+<a href="https://turingcomplete.fm/2">https://turingcomplete.fm/2</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://cs140.stanford.edu">Stanford CS140</a></li>
+<li style="margin:0.5em 0"><a href="https://cs140e.stanford.edu">Stanford CS140e</a></li>
+<li style="margin:0.5em 0"><a href="https://lld.llvm.org">lldリンカ</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Google_Fuchsia">Fuchsia</a></li>
+<li style="margin:0.5em 0"><a href="https://lwn.net/Articles/727697/">OpenBSD kernel address randomized link</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
+      <title>1. コードゴルフ、ゴルフ場、セキュリティコンテスト（DEFCON CTF） (浜地 慎一郎)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>浜地さんを迎えてコードゴルフ、ゴルフ場のセキュリティ、先日ラスベガスで行われたセキュリティコンテスト（DEFCON CTF）の話を伺いました。</itunes:subtitle>
+      <itunes:summary>浜地さんを迎えてコードゴルフ、ゴルフ場のセキュリティ、先日ラスベガスで行われたセキュリティコンテスト（DEFCON CTF）の話を伺いました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/8900719/1.mp3" type="audio/mpeg" length="48415905"/>
+      <guid>https://turingcomplete.fm/1</guid>
+      <pubDate>Tue, 23 Aug 2016 13:00:00 GMT</pubDate>
+      <itunes:duration>1:07:08</itunes:duration>
+      <description><![CDATA[浜地さんを迎えてコードゴルフ、ゴルフ場のセキュリティ、先日ラスベガスで行われたセキュリティコンテスト（DEFCON CTF）の話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/shinh">@shinh</a>)</span><p>
+<a href="https://turingcomplete.fm/1">https://turingcomplete.fm/1</a></p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/APL">APL</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/J_(プログラミング言語)">J</a></li>
+<li style="margin:0.5em 0"><a href="http://golf.shinh.org/">浜地さんの運営しているゴルフ場</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+  </channel>
+</rss>
