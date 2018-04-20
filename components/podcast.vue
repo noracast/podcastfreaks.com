@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted () {
-    this.loadRSS(`/rss/${this.feed}.rss`)
+    this.loadRSS(`./rss/${this.feed}.rss`)
     .then(res => {
 
       this.title = res.title
