@@ -3,7 +3,7 @@ div
   div(v-if="title || feed || link")
     h3(v-if="title") {{ title }}
     a(:href="feed" v-if="feed") RSS
-    a(:href="link" v-if="link") Web
+    a(:href="link" v-if="link") Website
   button.btn.prev
     i.icon.icon-chevron-left
   button.btn.next
