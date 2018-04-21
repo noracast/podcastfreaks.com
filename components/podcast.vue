@@ -47,7 +47,6 @@ export default {
   mounted () {
 
     let cal = new CalHeatMap()
-    let now = new Date().getTime() / 1000
     let startDate = new Date()
     startDate.setMonth(startDate.getMonth() - 11)
     let def_config = {
