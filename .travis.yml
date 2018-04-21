@@ -1,0 +1,14 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: true
+node_js:
+  - '9'
+script:
+  - npm run generate:gh-pages
+after_success:
+  - npm run deploy
+branches:
+  - master
