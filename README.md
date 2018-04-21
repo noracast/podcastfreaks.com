@@ -11,7 +11,7 @@ npm run dev
 ## Deploy
 
 ```sh
-g clone git@github.com:developersjp/podcast-freaks.git -b gh-pages dist
+git clone git@github.com:developersjp/podcast-freaks.git -b gh-pages dist
 npm run generate:gh-pages
 npm run deploy
 ```
