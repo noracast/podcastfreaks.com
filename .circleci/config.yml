@@ -31,4 +31,4 @@ jobs:
 
       # run tests!
       - run: npm run generate:gh-pages
-      - run: npm run deploy
+      # - run: npm run deploy
