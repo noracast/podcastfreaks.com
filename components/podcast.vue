@@ -68,7 +68,6 @@ export default {
         cal.init({
           itemSelector: this.$el.querySelector('.heatmap'),
           data: data,
-          itemName: ["minute", 'minutes'],
           domain: 'month',
           subDomain: 'day',
           tooltip: true,
