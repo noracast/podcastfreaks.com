@@ -5,7 +5,7 @@ cache:
 notifications:
   email: true
 node_js:
-  - '9'
+  - stable
 script:
   - npm run generate:gh-pages
 after_success:
