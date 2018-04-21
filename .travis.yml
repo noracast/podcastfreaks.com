@@ -6,14 +6,14 @@ notifications:
   email: false
 node_js:
   - stable
-script:
+before_install:
   # Following instructions from https://www.tam-tam.co.jp/tipsnote/program/post11795.html
   - openssl aes-256-cbc -K $encrypted_19950a533095_key -iv $encrypted_19950a533095_iv -in podcast_freaks_key.enc -out ~\/.ssh/developersjp-podcast-freaks@travis/podcast_freaks_key -d
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "naokazu.terada@gmail.com"
   - git config --global user.name "Naokazu Terada on TravisCI"
-  #
+script:
   - git clone https://github.com/developersjp/podcast-freaks.git -b gh-pages dist
   - npm run generate:gh-pages
   - cd dist
