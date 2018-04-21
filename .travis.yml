@@ -8,7 +8,7 @@ node_js:
   - stable
 script:
   - npm run generate:gh-pages
-after_success:
+  - git remote set-url origin git@github.com:developersjp/podcast-freaks.git
   - npm run deploy
 branches:
   - master
