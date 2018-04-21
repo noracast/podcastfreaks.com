@@ -19,6 +19,7 @@ script:
   - cd dist
   - git add .
   - git commit -m 'Auto Commit'
+  - git remote set-url origin git@github.com:developersjp/podcast-freaks.git
   - git push origin gh-pages
 branches:
   - master
