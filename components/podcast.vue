@@ -33,14 +33,14 @@ import axios from 'axios'
 import CalHeatMap from 'cal-heatmap'
 import d3 from 'd3'
 import xml2js from '~/lib/xml2js-promise'
+import moment from 'moment'
 
 export default {
   props: ['feed'],
   data: function(){
     return {
       title: null,
-      link: null,
-      episodes: []
+      link: null
     }
   },
   mounted () {
@@ -49,30 +49,28 @@ export default {
 
       this.title = res.title
       this.link = res.link
-      this.episodes = res.episodes
 
       let cal = new CalHeatMap()
       let now = new Date().getTime() / 1000
       let startDate = new Date()
       startDate.setMonth(startDate.getMonth() - 11)
       var data = {}
-      if(this.episodes){
-        this.episodes.forEach(function(ep, index) {
+      if(res.episodes){
+        res.episodes.forEach(function(ep, index) {
           let date = new Date(ep.pubDate).getTime() / 1000
-          data[date] = 1
+          let duration = moment.duration(ep['itunes:duration'])
+          data[date] = parseInt(duration.asMinutes(),10)
         })
         cal.init({
           itemSelector: this.$el.querySelector('.heatmap'),
           data: data,
-          // afterLoadData: parser,
-          // cellSize: 7,
+          itemName: ["minute", 'minutes'],
           domain: 'month',
           subDomain: 'day',
           tooltip: true,
           start: startDate,
-          legendColors: ['white','#c068ff'],
           domainLabelFormat: '%b',
-          legend: [1],
+          legend: [120],
           displayLegend: false,
           previousSelector: this.$el.querySelector('.prev'),
           nextSelector: this.$el.querySelector('.next'),

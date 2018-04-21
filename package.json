@@ -29,6 +29,7 @@
     "cal-heatmap": "^3.6.2",
     "d3": "^5.0.0",
     "element-ui": "^2.3.3",
+    "moment": "^2.22.1",
     "nuxt": "^1.4.0",
     "shelljs": "^0.8.1",
     "wget-improved": "^1.5.0",
