@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted () {
-    this.loadRSS(`./rss/${this.feed}.rss`)
+    this.loadRSS(this.feed)
     .then(res => {
 
       this.title = res.title
@@ -70,7 +70,7 @@ export default {
           tooltip: true,
           start: startDate,
           domainLabelFormat: '%b',
-          legend: [120],
+          legend: [90],
           displayLegend: false,
           previousSelector: this.$el.querySelector('.prev'),
           nextSelector: this.$el.querySelector('.next'),

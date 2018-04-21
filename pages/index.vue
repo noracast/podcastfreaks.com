@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   h1 Podcast Activities
-  podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
+  podcast(v-for="(item, index) in feeds" :feed="`./rss/${item}.rss`" :key="index")
 </template>
 
 <style>
