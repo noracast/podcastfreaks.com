@@ -61,14 +61,10 @@ export default {
       previousSelector: this.$el.querySelector('.prev'),
       nextSelector: this.$el.querySelector('.next'),
     }
+
     if(this.feed) {
       this.loadRSS(this.feed)
       .then(res => {
-        if(!res.episodes){
-          console.log()
-          return
-        }
-
         this.title = res.title
         this.link = res.link
 
