@@ -1,5 +1,5 @@
 {
-  "name": "podhub",
+  "name": "podcast-freaks",
   "version": "0.0.1",
   "description": "Podcast Hub",
   "main": "index.js",
@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/naokazuterada/podhub.git"
+    "url": "git+https://github.com/developersjp/podcast-freaks.git"
   },
   "keywords": [
     "Podcast"
   ],
-  "author": "naokazuterada <naokazu.terada@gmail.com> (http://karappo.net)",
+  "author": "naokazuterada <naokazu.terada@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/naokazuterada/podhub/issues"
+    "url": "https://github.com/developersjp/podcast-freaks/issues"
   },
-  "homepage": "https://github.com/naokazuterada/podhub#readme",
+  "homepage": "https://github.com/developersjp/podcast-freaks/",
   "dependencies": {
     "ajv": "^6.4.0",
     "axios": "^0.18.0",
