@@ -1,9 +1,9 @@
 <template lang="pug">
 div
-  h3 {{ title }}
-  a(:href="feed") RSS
-  a(:href="link" v-if="link") Web
-  br
+  div(v-if="title || feed || link")
+    h3(v-if="title") {{ title }}
+    a(:href="feed" v-if="feed") RSS
+    a(:href="link" v-if="link") Web
   button.btn.prev
     i.icon.icon-chevron-left
   button.btn.next
@@ -36,7 +36,7 @@ import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
 
 export default {
-  props: ['feed'],
+  props: ['feeds','feed'],
   data: function(){
     return {
       title: null,
@@ -44,18 +44,22 @@ export default {
     }
   },
   mounted () {
-    this.loadRSS(this.feed)
-    .then(res => {
+    if(this.feed) {
+      this.loadRSS(this.feed)
+      .then(res => {
+        if(!res.episodes){
+          console.log()
+          return
+        }
 
-      this.title = res.title
-      this.link = res.link
+        this.title = res.title
+        this.link = res.link
 
-      let cal = new CalHeatMap()
-      let now = new Date().getTime() / 1000
-      let startDate = new Date()
-      startDate.setMonth(startDate.getMonth() - 11)
-      var data = {}
-      if(res.episodes){
+        let cal = new CalHeatMap()
+        let now = new Date().getTime() / 1000
+        let startDate = new Date()
+        startDate.setMonth(startDate.getMonth() - 11)
+        var data = {}
         res.episodes.forEach(function(ep, index) {
           let date = new Date(ep.pubDate).getTime() / 1000
           let duration = moment.duration(ep['itunes:duration'])
@@ -75,9 +79,32 @@ export default {
           previousSelector: this.$el.querySelector('.prev'),
           nextSelector: this.$el.querySelector('.next'),
          })
-      }
-    })
+      })
+    }
+    else if(this.feeds){
+      this.title = 'All Podcasts'
 
+      this.loadRSSs(this.feeds)
+      .then(res => {
+        let cal = new CalHeatMap()
+        let now = new Date().getTime() / 1000
+        let startDate = new Date()
+        startDate.setMonth(startDate.getMonth() - 11)
+        cal.init({
+          itemSelector: this.$el.querySelector('.heatmap'),
+          data: res,
+          itemName: ["minute", 'minutes'],
+          domain: 'month',
+          subDomain: 'day',
+          tooltip: true,
+          start: startDate,
+          domainLabelFormat: '%b',
+          legend: [1,2,3,4,5],
+          previousSelector: this.$el.querySelector('.prev'),
+          nextSelector: this.$el.querySelector('.next'),
+         })
+      })
+    }
   },
   methods: {
     async loadRSS (url) {
@@ -89,6 +116,19 @@ export default {
         link: channel.link,
         episodes: channel.item
       }
+    },
+    async loadRSSs (urls) {
+      let data = {}
+      for(let i = 0; i < urls.length; i++) {
+        let xml = await axios.get(urls[i])
+        let json = await xml2js(xml.data, {explicitArray: false})
+        json.rss.channel.item.forEach(function(ep, index) {
+          let date = new Date(ep.pubDate).getTime() / 1000
+          let duration = moment.duration(ep['itunes:duration'])
+          data[date] = data[date] ? data[date]+1 : 1
+        })
+      }
+      return data
     }
   }
 }
