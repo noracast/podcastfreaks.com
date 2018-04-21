@@ -34,6 +34,7 @@ import CalHeatMap from 'cal-heatmap'
 import d3 from 'd3'
 import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
+import _ from 'lodash'
 
 export default {
   props: ['feeds','feed'],
@@ -44,6 +45,22 @@ export default {
     }
   },
   mounted () {
+
+    let cal = new CalHeatMap()
+    let now = new Date().getTime() / 1000
+    let startDate = new Date()
+    startDate.setMonth(startDate.getMonth() - 11)
+    let def_config = {
+      itemSelector: this.$el.querySelector('.heatmap'),
+      domain: 'month',
+      subDomain: 'day',
+      tooltip: true,
+      start: startDate,
+      domainLabelFormat: '%b',
+      displayLegend: false,
+      previousSelector: this.$el.querySelector('.prev'),
+      nextSelector: this.$el.querySelector('.next'),
+    }
     if(this.feed) {
       this.loadRSS(this.feed)
       .then(res => {
@@ -55,29 +72,17 @@ export default {
         this.title = res.title
         this.link = res.link
 
-        let cal = new CalHeatMap()
-        let now = new Date().getTime() / 1000
-        let startDate = new Date()
-        startDate.setMonth(startDate.getMonth() - 11)
         var data = {}
         res.episodes.forEach(function(ep, index) {
           let date = new Date(ep.pubDate).getTime() / 1000
           let duration = moment.duration(ep['itunes:duration'])
           data[date] = parseInt(duration.asMinutes(),10)
         })
-        cal.init({
-          itemSelector: this.$el.querySelector('.heatmap'),
+        cal.init(_.merge(def_config, {
           data: data,
-          domain: 'month',
-          subDomain: 'day',
-          tooltip: true,
-          start: startDate,
-          domainLabelFormat: '%b',
           legend: [90],
-          displayLegend: false,
-          previousSelector: this.$el.querySelector('.prev'),
-          nextSelector: this.$el.querySelector('.next'),
-         })
+          displayLegend: false
+         }))
       })
     }
     else if(this.feeds){
@@ -85,23 +90,12 @@ export default {
 
       this.loadRSSs(this.feeds)
       .then(res => {
-        let cal = new CalHeatMap()
-        let now = new Date().getTime() / 1000
-        let startDate = new Date()
-        startDate.setMonth(startDate.getMonth() - 11)
-        cal.init({
-          itemSelector: this.$el.querySelector('.heatmap'),
+
+        cal.init(_.merge(def_config, {
           data: res,
           itemName: ["minute", 'minutes'],
-          domain: 'month',
-          subDomain: 'day',
-          tooltip: true,
-          start: startDate,
-          domainLabelFormat: '%b',
-          legend: [1,2,3,4,5],
-          previousSelector: this.$el.querySelector('.prev'),
-          nextSelector: this.$el.querySelector('.next'),
-         })
+          legend: [1,2,3,4,5]
+         }))
       })
     }
   },
