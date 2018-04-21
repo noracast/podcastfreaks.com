@@ -57,7 +57,6 @@ export default {
       tooltip: true,
       start: startDate,
       domainLabelFormat: '%b',
-      displayLegend: false,
       previousSelector: this.$el.querySelector('.prev'),
       nextSelector: this.$el.querySelector('.next'),
     }
