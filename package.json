@@ -4,7 +4,6 @@
   "description": "Podcast Hub",
   "main": "index.js",
   "scripts": {
-    "predev": "node _assets/download-rss.js",
     "dev": "nuxt",
     "pregenerate": "node _assets/download-rss.js",
     "generate": "nuxt generate",
