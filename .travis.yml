@@ -10,7 +10,6 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_19950a533095_key -iv $encrypted_19950a533095_iv -in podcast_freaks_key.enc -out podcast_freaks_key -d
   - ls -la
 script:
-  - mkdir ~/.ssh
   - touch ~/.ssh/id_rsa
   - touch ~/.ssh/config
   - chmod 600 ~/.ssh/id_rsa
@@ -21,6 +20,7 @@ script:
   - ls -la
   - npm run generate:gh-pages
   - cd dist
+  - ls -la
   - git add .
   - git commit -m 'Auto Commit'
   - git remote set-url origin git@github.com:developersjp/podcast-freaks.git
