@@ -8,7 +8,6 @@ node_js:
   - 9
 before_install:
   - openssl aes-256-cbc -K $encrypted_19950a533095_key -iv $encrypted_19950a533095_iv -in podcast_freaks_key.enc -out podcast_freaks_key -d
-  - ls -la
 script:
   - touch ~/.ssh/id_rsa
   - touch ~/.ssh/config
@@ -16,14 +15,12 @@ script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "naokazu.terada@gmail.com"
   - git config --global user.name "Naokazu Terada on TravisCI"
-  - git clone https://github.com/developersjp/podcast-freaks.git -b gh-pages dist
-  - ls -la
   - npm run generate:gh-pages
   - cd dist
-  - ls -la
+  - git init
+  - git remote add origin git@github.com:developersjp/podcast-freaks.git
   - git add .
-  - git commit -m 'Auto Commit'
-  - git remote set-url origin git@github.com:developersjp/podcast-freaks.git
+  - git commit -m 'Builds on travis'
   - git push origin gh-pages
 branches:
   - master
