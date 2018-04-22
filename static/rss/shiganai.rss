@@ -5,8 +5,8 @@
         <atom:link href="http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss?before=311951729" rel="next" type="application/rss+xml"/>
         <title>しがないラジオ</title>
         <link>http://soundcloud.com/user-194620696</link>
-        <pubDate>Wed, 18 Apr 2018 23:41:48 +0000</pubDate>
-        <lastBuildDate>Wed, 18 Apr 2018 23:41:48 +0000</lastBuildDate>
+        <pubDate>Sun, 22 Apr 2018 00:07:59 +0000</pubDate>
+        <lastBuildDate>Sun, 22 Apr 2018 00:07:59 +0000</lastBuildDate>
         <ttl>60</ttl>
         <language>ja</language>
         <copyright>All rights reserved</copyright>
@@ -27,6 +27,113 @@
         </image>
         <itunes:category text="Technology"/>
         <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/433261029</guid>
+      <title>sp.26b【ゲスト: takanoripe】楽しいフォントマニアのフロントエンド談義</title>
+      <pubDate>Sun, 22 Apr 2018 00:07:59 +0000</pubDate>
+      <link>https://soundcloud.com/user-194620696/sp26b-takanoripe</link>
+      <itunes:duration>01:12:37</itunes:duration>
+      <itunes:author>shiganaiRadio</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>&lt;p&gt;&lt;span&gt;takanorip(のりぴー)さんをゲストにお迎えして、差分納品、ReactとVue、Nuxt.js、SSR、GraphQL、フリーフォント、などについて話しました。&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;
+  &lt;p&gt;【Show Notes】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://smartdrive.co.jp/&quot; target=&quot;_blank&quot;&gt;株式会社スマートドライブ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.smartdrive-cars.jp/&quot; target=&quot;_blank&quot;&gt;SmartDrive Cars&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://reactjs.org/&quot; target=&quot;_blank&quot;&gt;React&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jp.vuejs.org/index.html&quot; target=&quot;_blank&quot;&gt;Vue.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ja.nuxtjs.org/&quot; target=&quot;_blank&quot;&gt;Nuxt.js - ユニバーサル Vue.js アプリケーション&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vuex.vuejs.org/ja/intro.html&quot; target=&quot;_blank&quot;&gt;Vuex とは何か? · Vuex&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/vue-cli&quot; target=&quot;_blank&quot;&gt;vuejs/vue-cli&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/declandewet/vue-meta&quot; target=&quot;_blank&quot;&gt;declandewet/vue-meta&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/chrisvfritz/prerender-spa-plugin&quot; target=&quot;_blank&quot;&gt;chrisvfritz/prerender-spa-plugin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/GoogleChrome/lighthouse&quot; target=&quot;_blank&quot;&gt;GoogleChrome/lighthouse&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://graphql.org/learn/&quot; target=&quot;_blank&quot;&gt;GraphQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.apollographql.com/&quot; target=&quot;_blank&quot;&gt;Apollo GraphQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.morisawa.co.jp/fonts/specimen/1479&quot; target=&quot;_blank&quot;&gt;新ゴ R | 株式会社モリサワ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://fontfree.me/2426&quot; target=&quot;_blank&quot;&gt;チェックポイント★リベンジ | フォントフリー&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://font.kim/&quot; target=&quot;_blank&quot;&gt;機械彫刻用標準書体フォント&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/Web%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88&quot; target=&quot;_blank&quot;&gt;Webフォント - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://smartdrive.co.jp/careers&quot; target=&quot;_blank&quot;&gt;採用情報 : 株式会社スマートドライブ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://techbookfest.org/event/tbf04/circle/12790002&quot; target=&quot;_blank&quot;&gt;犬テトラ+ | 技術書典&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span&gt;
+  配信情報はtwitter ID @shiganaiRadio で確認することができます。
+  フィードバックは(#しがないラジオ)でつぶやいてください！
+  感想、話して欲しい話題、改善して欲しいことなどつぶやいてもらえると、今後のポッドキャストをより良いものにしていけるので、ぜひたくさんのフィードバックをお待ちしています。
+&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;
+  &lt;p&gt;【パーソナリティ】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;gami&lt;a href=&quot;https://twitter.com/search?q=%40jumpei_ikegami&amp;src=typd&amp;lang=ja&quot; target=&quot;_blank&quot;&gt;@jumpei_ikegami&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;zuckey&lt;a href=&quot;https://twitter.com/search?q=%40zuckey_17&amp;src=typd&amp;lang=ja&quot; target=&quot;_blank&quot;&gt;@zuckey_17&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;
+  &lt;p&gt;【ゲスト】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;takanorip&lt;a href=&quot;https://twitter.com/takanoripe&quot; target=&quot;_blank&quot;&gt;@takanoripe&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;
+  &lt;p&gt;【機材】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://amzn.to/2tlkud3&quot; target=&quot;_blank&quot;&gt;Blue Micro Yeti USB 2.0マイク 15374&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</itunes:summary>
+      <itunes:subtitle>&lt;p&gt;&lt;span&gt;takanorip(のりぴー)さんをゲストにお迎えして、差分納品、ReactとV…</itunes:subtitle>
+      <description>&lt;p&gt;&lt;span&gt;takanorip(のりぴー)さんをゲストにお迎えして、差分納品、ReactとVue、Nuxt.js、SSR、GraphQL、フリーフォント、などについて話しました。&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;
+  &lt;p&gt;【Show Notes】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://smartdrive.co.jp/&quot; target=&quot;_blank&quot;&gt;株式会社スマートドライブ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.smartdrive-cars.jp/&quot; target=&quot;_blank&quot;&gt;SmartDrive Cars&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://reactjs.org/&quot; target=&quot;_blank&quot;&gt;React&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jp.vuejs.org/index.html&quot; target=&quot;_blank&quot;&gt;Vue.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ja.nuxtjs.org/&quot; target=&quot;_blank&quot;&gt;Nuxt.js - ユニバーサル Vue.js アプリケーション&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vuex.vuejs.org/ja/intro.html&quot; target=&quot;_blank&quot;&gt;Vuex とは何か? · Vuex&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/vue-cli&quot; target=&quot;_blank&quot;&gt;vuejs/vue-cli&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/declandewet/vue-meta&quot; target=&quot;_blank&quot;&gt;declandewet/vue-meta&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/chrisvfritz/prerender-spa-plugin&quot; target=&quot;_blank&quot;&gt;chrisvfritz/prerender-spa-plugin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/GoogleChrome/lighthouse&quot; target=&quot;_blank&quot;&gt;GoogleChrome/lighthouse&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://graphql.org/learn/&quot; target=&quot;_blank&quot;&gt;GraphQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.apollographql.com/&quot; target=&quot;_blank&quot;&gt;Apollo GraphQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.morisawa.co.jp/fonts/specimen/1479&quot; target=&quot;_blank&quot;&gt;新ゴ R | 株式会社モリサワ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://fontfree.me/2426&quot; target=&quot;_blank&quot;&gt;チェックポイント★リベンジ | フォントフリー&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://font.kim/&quot; target=&quot;_blank&quot;&gt;機械彫刻用標準書体フォント&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/Web%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88&quot; target=&quot;_blank&quot;&gt;Webフォント - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://smartdrive.co.jp/careers&quot; target=&quot;_blank&quot;&gt;採用情報 : 株式会社スマートドライブ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://techbookfest.org/event/tbf04/circle/12790002&quot; target=&quot;_blank&quot;&gt;犬テトラ+ | 技術書典&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span&gt;
+  配信情報はtwitter ID @shiganaiRadio で確認することができます。
+  フィードバックは(#しがないラジオ)でつぶやいてください！
+  感想、話して欲しい話題、改善して欲しいことなどつぶやいてもらえると、今後のポッドキャストをより良いものにしていけるので、ぜひたくさんのフィードバックをお待ちしています。
+&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;
+  &lt;p&gt;【パーソナリティ】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;gami&lt;a href=&quot;https://twitter.com/search?q=%40jumpei_ikegami&amp;src=typd&amp;lang=ja&quot; target=&quot;_blank&quot;&gt;@jumpei_ikegami&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;zuckey&lt;a href=&quot;https://twitter.com/search?q=%40zuckey_17&amp;src=typd&amp;lang=ja&quot; target=&quot;_blank&quot;&gt;@zuckey_17&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;
+  &lt;p&gt;【ゲスト】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;takanorip&lt;a href=&quot;https://twitter.com/takanoripe&quot; target=&quot;_blank&quot;&gt;@takanoripe&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;
+  &lt;p&gt;【機材】&lt;/p&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://amzn.to/2tlkud3&quot; target=&quot;_blank&quot;&gt;Blue Micro Yeti USB 2.0マイク 15374&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <enclosure type="audio/mpeg" url="http://feeds.soundcloud.com/stream/433261029-user-194620696-sp26b-takanoripe.mp3" length="69720109"/>
+      <itunes:image href="http://i1.sndcdn.com/artworks-000338313879-efz2zq-original.png"/>
+    </item><item>
       <guid isPermaLink="false">tag:soundcloud,2010:tracks/431821569</guid>
       <title>sp.26a【ゲスト: takanoripe】楽しいWeb制作会社からWebサービス企業に転職した理由</title>
       <pubDate>Wed, 18 Apr 2018 23:41:48 +0000</pubDate>
