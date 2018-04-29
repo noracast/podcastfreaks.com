@@ -8,17 +8,17 @@ node_js:
   - 9
 before_install:
   - openssl aes-256-cbc -K $encrypted_19950a533095_key -iv $encrypted_19950a533095_iv -in podcast_freaks_key.enc -out podcast_freaks_key -d
-  - ls
 script:
-  - touch ~/.ssh/id_rsa
-  - touch ~/.ssh/config
-  - chmod 600 ~/.ssh/id_rsa
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - git config --global user.email "naokazu.terada@gmail.com"
-  - git config --global user.name "Naokazu Terada"
-  - git checkout -b 'gh-pages'
-  - git commit --allow-empty -m 'Auto build'
-  - git push origin gh-pages --force
+  - ls
+  # - touch ~/.ssh/id_rsa
+  # - touch ~/.ssh/config
+  # - chmod 600 ~/.ssh/id_rsa
+  # - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  # - git config --global user.email "naokazu.terada@gmail.com"
+  # - git config --global user.name "Naokazu Terada"
+  # - git checkout -b 'gh-pages'
+  # - git commit --allow-empty -m 'Auto build'
+  # - git push origin gh-pages --force
   #- npm run generate:gh-pages
   #- cd dist
   #- git init
@@ -26,5 +26,7 @@ script:
   #- git add .
   #- git commit -m 'Builds on travis'
   #- git push origin gh-pages --force
+after_success:
+  - .travis/push.sh
 branches:
   - master
