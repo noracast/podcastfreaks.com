@@ -27,6 +27,6 @@ script:
   #- git commit -m 'Builds on travis'
   #- git push origin gh-pages --force
 after_success:
-  - .travis/push.sh
+  - ./_assets/push.sh
 branches:
   - master
