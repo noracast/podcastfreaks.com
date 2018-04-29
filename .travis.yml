@@ -16,12 +16,15 @@ script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "naokazu.terada@gmail.com"
   - git config --global user.name "Naokazu Terada"
-  - npm run generate:gh-pages
-  - cd dist
-  - git init
-  - git remote add origin git@github.com:developersjp/podcast-freaks.git
-  - git add .
-  - git commit -m 'Builds on travis'
+  - git checkout -b 'gh-pages'
+  - git commit --allow-empty -m 'Auto build'
   - git push origin gh-pages --force
+  #- npm run generate:gh-pages
+  #- cd dist
+  #- git init
+  #- git remote add origin git@github.com:developersjp/podcast-freaks.git
+  #- git add .
+  #- git commit -m 'Builds on travis'
+  #- git push origin gh-pages --force
 branches:
   - master
