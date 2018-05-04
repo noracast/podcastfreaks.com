@@ -18,7 +18,15 @@ before_install:
   - eval $(ssh-agent -s)
   - ssh-add github_deploy_key
 script:
-  - ls
+  - npm run generate:gh-pages
+  - cd dist
+  - git init
+  - git remote add origin git@github.com:developersjp/podcast-freaks.git
+  - git checkout -b gh-pages
+  - git add .
+  - git commit -m 'Builds on travis'
+  - git push origin gh-pages --force
+  # - ls
   # - touch ~/.ssh/id_rsa
   # - touch ~/.ssh/config
   # - chmod 600 ~/.ssh/id_rsa
@@ -28,13 +36,5 @@ script:
   # - git checkout -b 'gh-pages'
   # - git commit --allow-empty -m 'Auto build'
   # - git push origin gh-pages --force
-after_success:
-  - npm run generate:gh-pages
-  - cd dist
-  - git init
-  - git remote add origin git@github.com:developersjp/podcast-freaks.git
-  - git add .
-  - git commit -m 'Builds on travis'
-  - git push origin gh-pages --force
 branches:
   - master
