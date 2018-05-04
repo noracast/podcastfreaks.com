@@ -2,7 +2,7 @@
 div
   div(v-if="title")
     template(v-if="link")
-      a(:href="link")
+      a(:href="link" target="_blank")
         h3(v-if="title") {{ title }}
     template(v-else)
       h3(v-if="title") {{ title }}
