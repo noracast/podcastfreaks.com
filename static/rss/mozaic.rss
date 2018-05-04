@@ -11,7 +11,7 @@
     <itunes:author>Jxck</itunes:author>
     <itunes:category text="Technology"><itunes:category text="Podcasting" /></itunes:category>
     <itunes:explicit>no</itunes:explicit>
-    <itunes:image href="http://files.mozaic.fm/mozaic.png" />
+    <itunes:image href="http://files.mozaic.fm/mozaic.jpeg" />
     <itunes:keywords>web,technology,programming,it,software,jxck</itunes:keywords>
     <itunes:subtitle>next generation web podcast</itunes:subtitle>
     <itunes:summary>talking about next generation web technologies hosted by Jxck </itunes:summary>
@@ -21,7 +21,7 @@
     <media:description type="plain">next generation web podcast</media:description>
     <media:keywords>web,technology,programming,it,software,jxck</media:keywords>
     <media:rating>nonadult</media:rating>
-    <media:thumbnail url="http://files.mozaic.fm/mozaic.png" />
+    <media:thumbnail url="http://files.mozaic.fm/mozaic.jpeg" />
     <itunes:owner>
       <itunes:email>block.rxckin.beats@gmail.com</itunes:email>
       <itunes:name>Jxck</itunes:name>

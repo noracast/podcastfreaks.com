@@ -18,6 +18,43 @@
     <itunes:category text="Technology"/>
     <itunes:explicit>No</itunes:explicit>
     <item>
+      <title>16. プログラムの静的検証、システムズプログラミングの論文 (うどん)</title>
+      <itunes:author>Rui Ueyama</itunes:author>
+      <itunes:subtitle>うどんくんが研究していたプログラム検証の話や、システムズプログラミングの古典的な論文についての話をしました。</itunes:subtitle>
+      <itunes:summary>うどんくんが研究していたプログラム検証の話や、システムズプログラミングの古典的な論文についての話をしました。</itunes:summary>
+      <enclosure url="https://tracking.feedpress.it/link/18928/9006468/16.mp3" type="audio/mpeg" length="64592974"/>
+      <guid>https://turingcomplete.fm/16</guid>
+      <pubDate>Mon, 30 Apr 2018 02:00:00 GMT</pubDate>
+      <itunes:duration>1:29:31</itunes:duration>
+      <description><![CDATA[うどんくんが研究していたプログラム検証の話や、システムズプログラミングの古典的な論文についての話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/kw_udon_">@kw_udon_</a>)</span><p>
+<a href="https://turingcomplete.fm/16">https://turingcomplete.fm/16</a></p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
+<ul>
+<li style="margin:0.5em 0"><a href="https://www.ipa.go.jp/jinzai/camp/2018/zenkoku2018_characteristic.html">セキュキャン2018</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/線形論理">線形論理</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Model_checking">モデル検査</a></li>
+<li style="margin:0.5em 0"><a href="http://www-kb.is.s.u-tokyo.ac.jp/~koba/hmc/">高階モデル検査</a></li>
+<li style="margin:0.5em 0"><a href="http://www-kb.is.s.u-tokyo.ac.jp/~ryosuke/mochi">うどんくんの出身研究室が開発している関数型プログラムの自動検証器</a></li>
+<li style="margin:0.5em 0"><a href="https://www.rust-lang.org/">プログラミング言語Rust</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/カリー＝ハワード同型対応">カリーハワード同型対応</a></li>
+<li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Coq">Coq</a></li>
+<li style="margin:0.5em 0"><a href="http://compcert.inria.fr/compcert-C.html">COMPCERT Cコンパイラ</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/フランス国立情報学自動制御研究所">INRIA</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/四色定理">四色問題</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/ケプラー予想">ケプラー予想</a></li>
+<li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/Eiffel">プログラミング言語Eiffel</a></li>
+<li style="margin:0.5em 0"><a href="https://misreading.chat/">Misreading Chat</a></li>
+<li style="margin:0.5em 0"><a href="https://www.youtube.com/watch?v=JAtN0TGrNE4">簡単なプログラミング言語を30分で作る実況動画</a></li>
+<li style="margin:0.5em 0"><a href="https://note.mu/ruiu/n/n1061d541355f">音の良いポッドキャストを録音するために ― Turing Complete FMの収録テクニック</a></li>
+<li style="margin:0.5em 0"><a href="https://note.mu/ruiu/n/n76729d8930c9">Turing Complete FMの裏側 ― Webサイト構築編</a></li>
+<li style="margin:0.5em 0"><a href="https://cs240.stanford.edu">Stanford CS240</a></li>
+<li style="margin:0.5em 0"><a href="https://note.mu/ruiu/n/n9948f0cc3ed3">「悪い方が良い」原則と僕の体験談</a></li>
+<li style="margin:0.5em 0"><a href="https://note.mu/ruiu/n/ne56a41ba8e39">Arduinoで作る携帯サイト自動巡回マシン</a></li>
+</ul>]]></description>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
       <title>15. CERNでのソフトウェアエンジニアリング (高橋祐花)</title>
       <itunes:author>Rui Ueyama</itunes:author>
       <itunes:subtitle>CERNでソフトウェアエンジニアとして仕事をしている高橋祐花さんと、CERNでの話やスイスでの暮らし、外国語、フェミニズムなどについて話をしました。</itunes:subtitle>
@@ -28,7 +65,7 @@
       <itunes:duration>1:18:30</itunes:duration>
       <description><![CDATA[CERNでソフトウェアエンジニアとして仕事をしている高橋祐花さんと、CERNでの話やスイスでの暮らし、外国語、フェミニズムなどについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/00_">@00_</a>)</span><p>
 <a href="https://turingcomplete.fm/15">https://turingcomplete.fm/15</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/欧州原子核研究機構">CERN欧州原子核研究機構</a></li>
@@ -71,7 +108,7 @@
       <itunes:duration>1:24:07</itunes:duration>
       <description><![CDATA[Gauche Schemeの作者の川合史朗さんと、Z80 CPUを使ったPCをホストコンピュータなしに自作した話や、Schemeの話などをしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/anohana">@anohana</a>)</span><p>
 <a href="https://turingcomplete.fm/14">https://turingcomplete.fm/14</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://practical-scheme.net/gauche/index-j.html">Gauche Scheme</a></li>
@@ -124,7 +161,7 @@
       <itunes:duration>1:28:08</itunes:duration>
       <description><![CDATA[hikaliumの自作アセンブラや自作言語、データ構造やトリッキーなビット操作を使ったアルゴリズム、リンカの最適化などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/hikalium">@hikalium</a>)</span><p>
 <a href="https://turingcomplete.fm/13">https://turingcomplete.fm/13</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm">Intel and AT&T syntax</a></li>
@@ -158,7 +195,7 @@
       <itunes:duration>1:18:05</itunes:duration>
       <description><![CDATA[Androidのテキスト処理を担当しているのなさんと、UnicodeやUnicode絵文字、テキスト処理の複雑さ、文字トリビアなどについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/ttuusskk">@ttuusskk</a>)</span><p>
 <a href="https://turingcomplete.fm/12">https://turingcomplete.fm/12</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://qiita.com/nonanona/items/b148c212ba7c24942e93">のなさんによる絵文字の解説</a></li>
@@ -200,7 +237,7 @@
       <itunes:duration>1:06:32</itunes:duration>
       <description><![CDATA[うどんくんがELVMを使ってCコンパイラをC++14 constexprに移植した件や、テンプレートとジェネリクス、プログラミングの型の理論などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/kw_udon_">@kw_udon_</a>)</span><p>
 <a href="https://turingcomplete.fm/11">https://turingcomplete.fm/11</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://amzn.to/2FXUGdJ">結城さんの数学ガール</a></li>
@@ -235,7 +272,7 @@
       <itunes:duration>1:18:07</itunes:duration>
       <description><![CDATA[OSの移植に使えるレベルのCコンパイラを自作CPU向けにスクラッチから書いた話について話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/kw_udon_">@kw_udon_</a>)</span><p>
 <a href="https://turingcomplete.fm/10">https://turingcomplete.fm/10</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://nullpo-head.github.io/emcc-gaia-simu/xv6.html">JavaScript版の自作CPU向けシミュレータ上で今回移植したxv6を動かせるページ</a></li>
@@ -268,7 +305,7 @@
       <itunes:duration>1:28:01</itunes:duration>
       <description><![CDATA[東大CPU実験でUnixが動かせるCPUを自作してxv6 Unixを移植した件について話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/nullpo_head">@nullpo_head</a>)</span><p>
 <a href="https://turingcomplete.fm/9">https://turingcomplete.fm/9</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://tts.utopiat.net/">日本語プログラミング言語TTSneo</a></li>
@@ -303,7 +340,7 @@
       <itunes:duration>1:21:13</itunes:duration>
       <description><![CDATA[「30日でできる！OS自作入門」を小学5年生で手にして以来行ってきた低レイヤプログラミングについて話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/hikalium">@hikalium</a>)</span><p>
 <a href="https://turingcomplete.fm/8">https://turingcomplete.fm/8</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://amzn.to/2FL898l">30日でできる！OS自作入門</a></li>
@@ -333,7 +370,7 @@
       <itunes:duration>1:36:12</itunes:duration>
       <description><![CDATA[仮想マシン上でLinuxを動かすのではなく、システムコールをトラップしてトランスレートすることによりLinuxアプリを他のOSで動かすことのできるNoahについて、ぬるぽへさんから話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/nullpo_head">@nullpo_head</a>)</span><p>
 <a href="https://turingcomplete.fm/7">https://turingcomplete.fm/7</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://github.com/linux-noah/noah">Noah</a></li>
@@ -359,7 +396,7 @@
       <itunes:duration>0:59:37</itunes:duration>
       <description><![CDATA[Miuraさんと一緒にいろいろなスクリプト言語の実装や言語そのものなどについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/miura1729">@miura1729</a>)</span><p>
 <a href="https://turingcomplete.fm/6">https://turingcomplete.fm/6</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://www.lua.org/">Lua</a></li>
@@ -389,7 +426,7 @@
       <itunes:duration>1:04:03</itunes:duration>
       <description><![CDATA[mrubyのJITなどを書いているMiuraさんと一緒に、言語処理系の実装や最適化、Rubyの文法の最適化しづらい点などについて話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/miura1729">@miura1729</a>)</span><p>
 <a href="https://turingcomplete.fm/5">https://turingcomplete.fm/5</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://www.ruby-lang.org/">Ruby</a></li>
@@ -409,7 +446,7 @@
       <itunes:duration>1:16:55</itunes:duration>
       <description><![CDATA[るくすくんの作ったカーネルデバッガやC++ライブラリの移植、C++などの話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
 <a href="https://turingcomplete.fm/4">https://turingcomplete.fm/4</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="http://rkx1209.hatenablog.com/entry/2016/12/25/141543">低レイヤーの歩き方</a></li>
@@ -434,7 +471,7 @@
       <itunes:duration>1:47:59</itunes:duration>
       <description><![CDATA[るくすくんと一緒に低レベルプログラミングやオープンソースの話をしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
 <a href="https://turingcomplete.fm/3">https://turingcomplete.fm/3</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">Opusオーディオコーデック</a></li>
@@ -455,7 +492,7 @@
       <itunes:duration>1:46:00</itunes:duration>
       <description><![CDATA[るくすくんと一緒に、るくすくんが開発しているNintend Switchのエミュレータの話やセキュリティの話などをしました。 <span style="white-space:nowrap">(<a href="https://twitter.com/RKX1209">@RKX1209</a>)</span><p>
 <a href="https://turingcomplete.fm/2">https://turingcomplete.fm/2</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://cs140.stanford.edu">Stanford CS140</a></li>
@@ -477,7 +514,7 @@
       <itunes:duration>1:07:08</itunes:duration>
       <description><![CDATA[浜地さんを迎えてコードゴルフ、ゴルフ場のセキュリティ、先日ラスベガスで行われたセキュリティコンテスト（DEFCON CTF）の話を伺いました。 <span style="white-space:nowrap">(<a href="https://twitter.com/shinh">@shinh</a>)</span><p>
 <a href="https://turingcomplete.fm/1">https://turingcomplete.fm/1</a></p>
-<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="http://patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
+<p>TCFMはサポーターの投げ銭によって収益を上げています。このコンテンツに課金してもいいよという方はぜひ<a href="https://www.patreon.com/tcfm">クリエイター支援サイトPatreon</a>から登録してご協力ください。</p>
 <p>ハッシュタグは<a href="https://twitter.com/search?q=%23tcfm&f=tweets">#tcfm</a>です。</p>
 <ul>
 <li style="margin:0.5em 0"><a href="https://ja.wikipedia.org/wiki/APL">APL</a></li>

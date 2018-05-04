@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>くもキャスト</title>
-    <description>プログラミングを学ぶ若者たちがゆるくつながってお話をするポッドキャストです</description>
-    <link>http://kumocast.jp/</link>
+    <description>ウェブやらアプリやらを作っているエンジニアがだらだらと雑談をするポッドキャストです</description>
+    <link>https://kumocast.jp/</link>
     
-    <lastBuildDate>Sat, 10 Mar 2018 13:52:43 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 May 2018 07:48:33 +0000</lastBuildDate>
     <media:keywords>kumocast, Web,若者,プログラミング,Podcast</media:keywords>
     <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category>
     <itunes:explicit>no</itunes:explicit>
     <itunes:image href="https://raw.githubusercontent.com/MokumokuCloud/podcasting/master/images/coverart.png" />
     <itunes:keywords>Web,若者,プログラミング,Podcast</itunes:keywords>
-    <itunes:subtitle>独学でプログラミングを学ぶ若者たちがゆるくお話したりするPodcastです</itunes:subtitle>
-    <itunes:summary>独学でプログラミングを学ぶ若者たちがゆるくお話したりするPodcastです</itunes:summary>
+    <itunes:subtitle>ウェブやらアプリやらを作っているエンジニアがだらだらと雑談をするポッドキャストです</itunes:subtitle>
+    <itunes:summary>ウェブやらアプリやらを作っているエンジニアがだらだらと雑談をするポッドキャストです</itunes:summary>
     <itunes:category text="Technology">
         <itunes:category text="Tech News" />
     </itunes:category>
@@ -20,6 +20,31 @@
     <language>ja</language>
     
       <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/tumblr/IkZP" /><feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="tumblr/ikzp" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item>
+          <title>43. イイ波のってんね</title>
+        <description>
+            若者文化、Markdown メモ帳、情報共有などについて話しました
+            &lt;h3 id="show-notes"&gt;Show Notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/gaaamii/status/987908851474165765"&gt;100MB/日さんのツイート: “若者の間で手に顎を乗せるのが流行ってるらしいと聞いて信じられずにいる”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=gpVc-xI0ADI"&gt;【TikTok】なんか手にアゴ乗せるやつ《まとめ》 - YouTube&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://nekobito.github.io/"&gt;Nekobito&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://www.bear-writer.com/"&gt;Bear - Notes for iPhone, iPad and Mac&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://shgam.hatenadiary.jp/entry/2018/04/08/220239"&gt;Bear が良い - gaaamii のブログ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://happenapps.com/#quiver"&gt;Quiver&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://scrapbox.io/product"&gt;Scrapbox - チームのための新しい共有ノート&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://zeplin.io/"&gt;Zeplin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        </description>
+        <itunes:subtitle>若者文化、Markdown メモ帳、情報共有などについて話しました</itunes:subtitle>
+        <enclosure url="https://kumocast.jp/audios/43.mp3" length="0" type="audio/mpeg" />
+        <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+        <link>https://kumocast.jp/2018/05/iinami-nottennne</link>
+        <guid isPermaLink="true">https://kumocast.jp/2018/05/iinami-nottennne</guid>
+      </item>
+    
+      <item>
           <title>42. TOEIC初受験で960点を叩き出した件</title>
         <description>
             TOEIC勉強法, Qiita, 福岡, Studyplusなどについて話しました
@@ -43,10 +68,10 @@
 
         </description>
         <itunes:subtitle>TOEIC勉強法, Qiita, 福岡, Studyplusなどについて話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/42.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/42.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2018/03/10/how-to-get-high-score-in-toeic.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2018/03/10/how-to-get-high-score-in-toeic.html</guid>
+        <link>https://kumocast.jp/2018/03/how-to-get-high-score-in-toeic</link>
+        <guid isPermaLink="true">https://kumocast.jp/2018/03/how-to-get-high-score-in-toeic</guid>
       </item>
     
       <item>
@@ -66,10 +91,10 @@
 
         </description>
         <itunes:subtitle>知り合った経緯, ドットインストール, 勉強の習慣化, きまべんなどについて話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/41.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/41.mp3" length="0" type="audio/mpeg" />
         <pubDate>Mon, 05 Feb 2018 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2018/02/05/tommy-met-at-dotinstall.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2018/02/05/tommy-met-at-dotinstall.html</guid>
+        <link>https://kumocast.jp/2018/02/tommy-met-at-dotinstall</link>
+        <guid isPermaLink="true">https://kumocast.jp/2018/02/tommy-met-at-dotinstall</guid>
       </item>
     
       <item>
@@ -88,10 +113,10 @@
 
         </description>
         <itunes:subtitle>ISUCONの反省をしたりしました。2017年11月に話した内容です。更新が遅れてすみません!本当にごめんなさい!!</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/40.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/40.mp3" length="0" type="audio/mpeg" />
         <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2018/01/31/we-lost-human-rights-at-isucon.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2018/01/31/we-lost-human-rights-at-isucon.html</guid>
+        <link>https://kumocast.jp/2018/01/we-lost-human-rights-at-isucon</link>
+        <guid isPermaLink="true">https://kumocast.jp/2018/01/we-lost-human-rights-at-isucon</guid>
       </item>
     
       <item>
@@ -116,10 +141,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/star__hoshi" target="blank"&gt;star__hoshi&lt;/a&gt;さんを迎えて、個人開発、Slack, MAMORIO, SEO, 筋トレ, Swift2 から 3 へ移行, Angular, React Native について話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/39.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/39.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/09/03/star__hoshi.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/09/03/star__hoshi.html</guid>
+        <link>https://kumocast.jp/2017/09/star__hoshi</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/09/star__hoshi</guid>
       </item>
     
       <item>
@@ -147,10 +172,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://scrapbox.io/kimaben/keicoro" target="blank"&gt;いけがみ&lt;/a&gt;さんを迎えて、Scrapboxミートアップ, Redash, Learning Musicなどについて話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/38.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/38.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/07/14/ikegami-part2.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/07/14/ikegami-part2.html</guid>
+        <link>https://kumocast.jp/2017/07/ikegami-part2</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/07/ikegami-part2</guid>
       </item>
     
       <item>
@@ -168,10 +193,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://scrapbox.io/kimaben/keicoro" target="blank"&gt;いけがみ&lt;/a&gt;さんを迎えて、スタートアップ、ペアプログラミング、学習について話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/37.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/37.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 18 Jun 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/06/18/hello-ikegami.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/06/18/hello-ikegami.html</guid>
+        <link>https://kumocast.jp/2017/06/hello-ikegami</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/06/hello-ikegami</guid>
       </item>
     
       <item>
@@ -209,10 +234,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/daizplus" target="blank"&gt;@daizplus&lt;/a&gt;さんを迎えて、はてなブログ引用機能、大学院、機械学習入門、食神カメラ、MOOCs続かない問題、Scrapbox、趣味開発、ソフトウェアテストなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/36.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/36.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/04/16/daiiz-with-scrapbox.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/04/16/daiiz-with-scrapbox.html</guid>
+        <link>https://kumocast.jp/2017/04/daiiz-with-scrapbox</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/04/daiiz-with-scrapbox</guid>
       </item>
     
       <item>
@@ -237,10 +262,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/_ayato_p" target="blank"&gt;@_ayato_p&lt;/a&gt;さんを迎えて、若者、格安SIM, 筋肉などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/35.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/35.mp3" length="0" type="audio/mpeg" />
         <pubDate>Mon, 27 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/02/27/thickness-of-chest-plate.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/02/27/thickness-of-chest-plate.html</guid>
+        <link>https://kumocast.jp/2017/02/thickness-of-chest-plate</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/02/thickness-of-chest-plate</guid>
       </item>
     
       <item>
@@ -268,10 +293,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/vsanna2"&gt;@vsanna2&lt;/a&gt; さんを迎えて、くもキャストベスト3, Rebuild, 幕末志士, 業務後のボードゲーム, Railsでビューのキャッシュ, スクレイピング記事で炎上, 結婚資金, プロポーズ などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/34.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/34.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/01/22/play-board-game-in-office.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/01/22/play-board-game-in-office.html</guid>
+        <link>https://kumocast.jp/2017/01/play-board-game-in-office</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/01/play-board-game-in-office</guid>
       </item>
     
       <item>
@@ -292,10 +317,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/vsanna2"&gt;@vsanna2&lt;/a&gt; さんを迎えて、個人開発、Vue.js について話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/33.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/33.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2017/01/14/a-shady-guest.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2017/01/14/a-shady-guest.html</guid>
+        <link>https://kumocast.jp/2017/01/a-shady-guest</link>
+        <guid isPermaLink="true">https://kumocast.jp/2017/01/a-shady-guest</guid>
       </item>
     
       <item>
@@ -330,10 +355,10 @@
 
         </description>
         <itunes:subtitle>Podcast, Rails と Webpack, CSS, Next.js, 節約, 最近観たものについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/32.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/32.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 13 Dec 2016 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2016/12/13/poor-grammer.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2016/12/13/poor-grammer.html</guid>
+        <link>https://kumocast.jp/2016/12/poor-grammer</link>
+        <guid isPermaLink="true">https://kumocast.jp/2016/12/poor-grammer</guid>
       </item>
     
       <item>
@@ -364,10 +389,10 @@
 
         </description>
         <itunes:subtitle>やっていきfm, Angularハンズオン, SPA, Bulma, Yarn などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/31.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/31.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2016/11/13/bulma-is-good.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2016/11/13/bulma-is-good.html</guid>
+        <link>https://kumocast.jp/2016/11/bulma-is-good</link>
+        <guid isPermaLink="true">https://kumocast.jp/2016/11/bulma-is-good</guid>
       </item>
     
       <item>
@@ -399,10 +424,10 @@
 
         </description>
         <itunes:subtitle>転職、作っていたもの、WikiHub, Gemなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/30.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/30.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 15 Oct 2016 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2016/10/15/active-podcast.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2016/10/15/active-podcast.html</guid>
+        <link>https://kumocast.jp/2016/10/active-podcast</link>
+        <guid isPermaLink="true">https://kumocast.jp/2016/10/active-podcast</guid>
       </item>
     
       <item>
@@ -423,10 +448,10 @@
 
         </description>
         <itunes:subtitle>Podcastどうしようか, 人狼アプリをRailsとReduxで作ってる, wdim, Rubyの文字列とシンボルの使い分けについて何度も検索してる件, HTMLってなんだ, などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/29.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/29.mp3" length="0" type="audio/mpeg" />
         <pubDate>Wed, 04 May 2016 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2016/05/04/string-or-symbol.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2016/05/04/string-or-symbol.html</guid>
+        <link>https://kumocast.jp/2016/05/string-or-symbol</link>
+        <guid isPermaLink="true">https://kumocast.jp/2016/05/string-or-symbol</guid>
       </item>
     
       <item>
@@ -449,10 +474,10 @@
 
         </description>
         <itunes:subtitle>2016年の抱負、Flux, iOS 開発などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/28.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/28.mp3" length="0" type="audio/mpeg" />
         <pubDate>Wed, 10 Feb 2016 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2016/02/10/2016s-style.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2016/02/10/2016s-style.html</guid>
+        <link>https://kumocast.jp/2016/02/2016s-style</link>
+        <guid isPermaLink="true">https://kumocast.jp/2016/02/2016s-style</guid>
       </item>
     
       <item>
@@ -483,10 +508,10 @@
 
         </description>
         <itunes:subtitle>Raspberry Pi, Haskell, Clojure, 進捗ダメです などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/27.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/27.mp3" length="0" type="audio/mpeg" />
         <pubDate>Mon, 28 Dec 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/12/28/mouten-is-a-daemon.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/12/28/mouten-is-a-daemon.html</guid>
+        <link>https://kumocast.jp/2015/12/mouten-is-a-daemon</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/12/mouten-is-a-daemon</guid>
       </item>
     
       <item>
@@ -514,10 +539,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/alea12" target="blank"&gt;@alea12&lt;/a&gt; さんを迎えて、HARD THINGS, シリコンバレー, ビール, Podcast, インターネット, おすすめ本 などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/26.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/26.mp3" length="0" type="audio/mpeg" />
         <pubDate>Thu, 17 Dec 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/12/17/hard-things.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/12/17/hard-things.html</guid>
+        <link>https://kumocast.jp/2015/12/hard-things</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/12/hard-things</guid>
       </item>
     
       <item>
@@ -543,10 +568,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/alea12" target="blank"&gt;@alea12&lt;/a&gt;さんを迎えて、もうだめだ、高度情報処理資格, &lt;a href="https://twitako.net" target="blank"&gt;twitako.net&lt;/a&gt;, Githubのプライベートリポジトリ活用などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/25.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/25.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 20 Nov 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/11/20/it-is-all-over.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/11/20/it-is-all-over.html</guid>
+        <link>https://kumocast.jp/2015/11/it-is-all-over</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/11/it-is-all-over</guid>
       </item>
     
       <item>
@@ -564,10 +589,10 @@
 
         </description>
         <itunes:subtitle>(※挨拶では23回と言ってるけど24回です。) &lt;a href="http://twitter.com/_ayato_p" target="blank"&gt;@_ayato_p&lt;/a&gt; さんを迎えて, 近況, 競技プログラミング, 転職の時考える/考えたこと, 進捗ダメなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/24.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/24.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 11 Oct 2015 15:26:13 +0000</pubDate>
-        <link>http://kumocast.jp/2015/10/12/kumocast-without-karur4n.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/10/12/kumocast-without-karur4n.html</guid>
+        <link>https://kumocast.jp/2015/10/kumocast-without-karur4n</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/10/kumocast-without-karur4n</guid>
       </item>
     
       <item>
@@ -598,10 +623,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/kimihito_" target="blank"&gt;@kimihito_&lt;/a&gt; さんを迎えて、はてなインターン、情報処理技術者試験、&lt;a href="https://trello.com/" target="blank"&gt;Trello&lt;/a&gt;で新婚旅行計画などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/23.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/23.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 29 Sep 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/09/29/goodness-is-the-best.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/09/29/goodness-is-the-best.html</guid>
+        <link>https://kumocast.jp/2015/09/goodness-is-the-best</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/09/goodness-is-the-best</guid>
       </item>
     
       <item>
@@ -627,10 +652,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="https://twitter.com/kimihito_"&gt;@kimihito_&lt;/a&gt; さんを迎えて、はてなインターンについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/22.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/22.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/09/12/hatena-intern-report.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/09/12/hatena-intern-report.html</guid>
+        <link>https://kumocast.jp/2015/09/hatena-intern-report</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/09/hatena-intern-report</guid>
       </item>
     
       <item>
@@ -651,10 +676,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/yaginuuu" target="blank"&gt;@yaginuuu&lt;/a&gt;さんを迎えて、たきざワッカソン, Project-based Learning, アジャイル, Zenhub などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/21.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/21.mp3" length="0" type="audio/mpeg" />
         <pubDate>Thu, 27 Aug 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/08/27/project-based-learning.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/08/27/project-based-learning.html</guid>
+        <link>https://kumocast.jp/2015/08/project-based-learning</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/08/project-based-learning</guid>
       </item>
     
       <item>
@@ -700,10 +725,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/kimihito_" target="blank"&gt;@kimihito_&lt;/a&gt;さんを迎えて、ハッカーズチャンプルー、はてなインターン、Electron, Podcast, 本の読み方、最近読んだ本、祝福について話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/20.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/20.mp3" length="0" type="audio/mpeg" />
         <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/08/17/hackers-champloo-background.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/08/17/hackers-champloo-background.html</guid>
+        <link>https://kumocast.jp/2015/08/hackers-champloo-background</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/08/hackers-champloo-background</guid>
       </item>
     
       <item>
@@ -722,10 +747,10 @@
 
         </description>
         <itunes:subtitle>正規化ってなんだ, インデックスってなんだ, はてなインターン合格などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/19.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/19.mp3" length="0" type="audio/mpeg" />
         <pubDate>Mon, 27 Jul 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/07/27/normal-form.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/07/27/normal-form.html</guid>
+        <link>https://kumocast.jp/2015/07/normal-form</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/07/normal-form</guid>
       </item>
     
       <item>
@@ -750,10 +775,10 @@
 
         </description>
         <itunes:subtitle>Nuclide, 本の読み方、 本気で変わりたい人の行動イノベーション、肉体マネジメント などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/18.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/18.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/07/17/two-men-look-out.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/07/17/two-men-look-out.html</guid>
+        <link>https://kumocast.jp/2015/07/two-men-look-out</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/07/two-men-look-out</guid>
       </item>
     
       <item>
@@ -781,10 +806,10 @@
 
         </description>
         <itunes:subtitle>ブログを書く環境、100冊プロジェクト、Nuclide, Vim, Web の収益化、Livecoding.tv などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/17.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/17.mp3" length="0" type="audio/mpeg" />
         <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/07/08/experience-or-mannerism.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/07/08/experience-or-mannerism.html</guid>
+        <link>https://kumocast.jp/2015/07/experience-or-mannerism</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/07/experience-or-mannerism</guid>
       </item>
     
       <item>
@@ -808,10 +833,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/_ayato_p" target="blank"&gt;@_ayato_p&lt;/a&gt;さんを迎えて、キーボードへのこだわり、勉強会、エディタ、結婚生活などについて話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/16.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/16.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/06/30/put-hands-on-keyboard.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/06/30/put-hands-on-keyboard.html</guid>
+        <link>https://kumocast.jp/2015/06/put-hands-on-keyboard</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/06/put-hands-on-keyboard</guid>
       </item>
     
       <item>
@@ -834,10 +859,10 @@
 
         </description>
         <itunes:subtitle>銭湯経済のすすめ、MINDパフォーマンスHACKS、マネーフォワードの便利さ、掃除しないと生活が淀む問題について話しました</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/15.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/15.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 21 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/06/21/moneyforward-is-good-for-lazy-person.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/06/21/moneyforward-is-good-for-lazy-person.html</guid>
+        <link>https://kumocast.jp/2015/06/moneyforward-is-good-for-lazy-person</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/06/moneyforward-is-good-for-lazy-person</guid>
       </item>
     
       <item>
@@ -859,10 +884,10 @@
 
         </description>
         <itunes:subtitle>フォロー 0 Twitter, GitHub Japan, Octocat, WWDC 2015, 音楽ストリーミングサービスなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/14.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/14.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/06/16/wwdc-2015-etc.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/06/16/wwdc-2015-etc.html</guid>
+        <link>https://kumocast.jp/2015/06/wwdc-2015-etc</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/06/wwdc-2015-etc</guid>
       </item>
     
       <item>
@@ -896,10 +921,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/kimihito_" target="blank"&gt;@kimihito_&lt;/a&gt;さんを迎えて、プログラミング学習、エディタ、ハッカーズチャンプルー、おすすめ本、インターンなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/13.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/13.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/06/12/welcome-kimihito-second.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/06/12/welcome-kimihito-second.html</guid>
+        <link>https://kumocast.jp/2015/06/welcome-kimihito-second</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/06/welcome-kimihito-second</guid>
       </item>
     
       <item>
@@ -918,10 +943,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/kimihito_" target="blank"&gt;@kimihito_&lt;/a&gt;さんを迎えて、ギークハウス沖縄、きみひとさんのこれまで などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/12.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/12.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 06 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/06/06/welcome-kimihito-first.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/06/06/welcome-kimihito-first.html</guid>
+        <link>https://kumocast.jp/2015/06/welcome-kimihito-first</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/06/welcome-kimihito-first</guid>
       </item>
     
       <item>
@@ -944,10 +969,10 @@
 
         </description>
         <itunes:subtitle>サードウェーブ系男子、iOS 開発、Babel, 読んでいる本などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/11.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/11.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 31 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/31/are-you-third-wave-boy.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/31/are-you-third-wave-boy.html</guid>
+        <link>https://kumocast.jp/2015/05/are-you-third-wave-boy</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/are-you-third-wave-boy</guid>
       </item>
     
       <item>
@@ -975,10 +1000,10 @@
 
         </description>
         <itunes:subtitle>フィードバックの返事、Monument Valley, Vainglory, ブルーボトルコーヒー、Realm, How Old Do I Look? などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/10.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/10.mp3" length="0" type="audio/mpeg" />
         <pubDate>Thu, 21 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/21/zatsudan.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/21/zatsudan.html</guid>
+        <link>https://kumocast.jp/2015/05/zatsudan</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/zatsudan</guid>
       </item>
     
       <item>
@@ -996,10 +1021,10 @@
 
         </description>
         <itunes:subtitle>くもキャストブログについて、プログラミングの基礎を読み始めたこと、オートメーション・バカ、「桐島、Rubyやめるってよ」が感動的な件、暇と退屈の倫理学などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/09.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/09.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 17 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/17/ends-and-means.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/17/ends-and-means.html</guid>
+        <link>https://kumocast.jp/2015/05/ends-and-means</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/ends-and-means</guid>
       </item>
     
       <item>
@@ -1045,10 +1070,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/_ayato_p" target="blank"&gt;@_ayato_p&lt;/a&gt;さんを迎えて、おすすめの本、Amazon ウィッシュリスト、好きな音楽、Clojure, Emacs, ここが嫌だよ Mac, Clojure のエコシステム、プロジェクト・オイラー、ゲスト募集などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/08.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/08.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/09/welcome-ayato_p-second.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/09/welcome-ayato_p-second.html</guid>
+        <link>https://kumocast.jp/2015/05/welcome-ayato_p-second</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/welcome-ayato_p-second</guid>
       </item>
     
       <item>
@@ -1070,10 +1095,10 @@
 
         </description>
         <itunes:subtitle>&lt;a href="http://twitter.com/_ayato_p" target="blank"&gt;@_ayato_p&lt;/a&gt;さんを迎えて、プログラマーになった経緯, 転職, 関数型言語との出会い, 勉強会, Language Exchange などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/07.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/07.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 05 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/05/welcome-ayato_p-first.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/05/welcome-ayato_p-first.html</guid>
+        <link>https://kumocast.jp/2015/05/welcome-ayato_p-first</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/welcome-ayato_p-first</guid>
       </item>
     
       <item>
@@ -1101,10 +1126,10 @@
 
         </description>
         <itunes:subtitle>Podcast で紹介してもらいました、Squarespace, ドローン、Apple Watch, Electron(Atom Shell), ソフトウェアの名付け、Java, IDE について話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/06.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/06.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 03 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/03/how-to-name-a-software.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/03/how-to-name-a-software.html</guid>
+        <link>https://kumocast.jp/2015/05/how-to-name-a-software</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/how-to-name-a-software</guid>
       </item>
     
       <item>
@@ -1126,10 +1151,10 @@
 
         </description>
         <itunes:subtitle>Jekyll に移行、 Rack のコードリーディング、YouTube と収益、MOOCs, Coursera について話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/05.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/05.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/05/01/tumblr-to-jekyll.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/05/01/tumblr-to-jekyll.html</guid>
+        <link>https://kumocast.jp/2015/05/tumblr-to-jekyll</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/05/tumblr-to-jekyll</guid>
       </item>
     
       <item>
@@ -1151,10 +1176,10 @@
 
         </description>
         <itunes:subtitle>クロスプラットフォーム開発、Aries, JSON Schema, Swift, ECMAScript 6, Go 言語、ゲスト募集、Jekyll などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/04.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/04.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 26 Apr 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/04/26/welcome-yoshiso44-second.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/04/26/welcome-yoshiso44-second.html</guid>
+        <link>https://kumocast.jp/2015/04/welcome-yoshiso44-second</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/04/welcome-yoshiso44-second</guid>
       </item>
     
       <item>
@@ -1173,10 +1198,10 @@
 
         </description>
         <itunes:subtitle>朝つらい、よしそさんに質問、映画、セルフブランディングなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/03.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/03.mp3" length="0" type="audio/mpeg" />
         <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/04/17/welcome-yoshiso44-first.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/04/17/welcome-yoshiso44-first.html</guid>
+        <link>https://kumocast.jp/2015/04/welcome-yoshiso44-first</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/04/welcome-yoshiso44-first</guid>
       </item>
     
       <item>
@@ -1204,10 +1229,10 @@
 
         </description>
         <itunes:subtitle>前回からの改善点、エイプリルフール、 Podcast の配信する手順、幕が上がる、イミテーション・ゲーム、アフロ田中、大学からお金をもらって開発をする学生エンジニア、Nekobito, BaaS, 今後 Podcast でやりたいことなどについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/02.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/02.mp3" length="0" type="audio/mpeg" />
         <pubDate>Tue, 07 Apr 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/04/07/dislike-april-fool.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/04/07/dislike-april-fool.html</guid>
+        <link>https://kumocast.jp/2015/04/dislike-april-fool</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/04/dislike-april-fool</guid>
       </item>
     
       <item>
@@ -1233,10 +1258,10 @@
 
         </description>
         <itunes:subtitle>Podcast を始めた理由、最近きてる美女などについて話しました。</itunes:subtitle>
-        <enclosure url="http://kumocast.jp/audios/01.mp3" length="0" type="audio/mpeg" />
+        <enclosure url="https://kumocast.jp/audios/01.mp3" length="0" type="audio/mpeg" />
         <pubDate>Sun, 29 Mar 2015 00:00:00 +0000</pubDate>
-        <link>http://kumocast.jp/2015/03/29/start-podcasting.html</link>
-        <guid isPermaLink="true">http://kumocast.jp/2015/03/29/start-podcasting.html</guid>
+        <link>https://kumocast.jp/2015/03/start-podcasting</link>
+        <guid isPermaLink="true">https://kumocast.jp/2015/03/start-podcasting</guid>
       </item>
     
   </channel>

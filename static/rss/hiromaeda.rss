@@ -15,7 +15,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 	<atom:link href="http://hiromaeda.com/feed/podcast/" rel="self" type="application/rss+xml" />
 	<link>http://hiromaeda.com</link>
 	<description>ベンチャーキャピタリスト</description>
-	<lastBuildDate>Mon, 16 Apr 2018 23:55:25 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 24 Apr 2018 02:32:08 +0000</lastBuildDate>
 	<language>ja</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -42,6 +42,77 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		<itunes:category text="Management &amp; Marketing"></itunes:category>
 	</itunes:category>
 	<rawvoice:subscribe feed="http://hiromaeda.com/feed/podcast/" itunes="https://itunes.apple.com/jp/podcast/hiromaeda-com-startup-podcast/id1320815302"></rawvoice:subscribe>
+	<item>
+		<title>創業者同士の共通認識、2人の相性はなぜ良かったのか。エウレカ創業者、赤坂優氏と西川順氏とのインタビュー</title>
+		<link>http://hiromaeda.com/2018/04/23/eurekaaaa/</link>
+		<pubDate>Mon, 23 Apr 2018 13:09:40 +0000</pubDate>
+		<guid isPermaLink="false">http://hiromaeda.com/?p=1070</guid>
+		<comments>http://hiromaeda.com/2018/04/23/eurekaaaa/#respond</comments>
+		<wfw:commentRss>http://hiromaeda.com/2018/04/23/eurekaaaa/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<category><![CDATA[podcast]]></category>
+		<description>大ヒットマッチングアプリ「Pairs」を生み出し、のちにThe Match Groupに買収されたエウレカ社を創業した赤坂さんと西川さんにお話を伺いました。 共同創業者の間で決めた方が良い共通認識、西川さんが組織のナンバー2として意識してきた事、2人のケンカ話などフランクで面白さ満載なエピソードになりました。 【ハイライト】 2人の相性はなぜ良かったのか 共同創業者の選び方 創業者との共通認識の重要性 ケンカした時の対策 ナンバー2として意識してた事 組織が育つために創業者たちが持つべき意識 Photo and sound edited by kobajenne ==================== 起業家向け相談会「Startup Office Hours」開催中！！ 起業を考えている、または既に起業されている方を対象に、メンタリングセッションを実施しています。 こんな悩みや疑問を持っている人におすすめです。 資金調達済みの起業家も大歓迎！ アイディアの検証方法が知りたい 事業戦略の “壁打ち” をしたい 正しいKPIの設定方法が知りたい データを活用してKPIを改善したい 資金調達で気をつけるべきポイント、戦略が知りたい チームマネジメントを改善したい ご応募はこちら！ ====================</description>
+		<content:encoded><![CDATA[<p style="text-align: right; font-size: 8px;"><a href="http://hiromaeda.com/wp-content/uploads/2018/04/2SHOT_name.png"><img class="alignleft wp-image-32 size-full" src="http://hiromaeda.com/wp-content/uploads/2018/04/2SHOT_name.png" alt="" width="640" height="382" /></a></p>
+<p>大ヒットマッチングアプリ「Pairs」を生み出し、のちにThe Match Groupに買収されたエウレカ社を創業した赤坂さんと西川さんにお話を伺いました。<br />
+共同創業者の間で決めた方が良い共通認識、西川さんが組織のナンバー2として意識してきた事、2人のケンカ話などフランクで面白さ満載なエピソードになりました。</p>
+<p>【ハイライト】</p>
+<ul>
+<li>2人の相性はなぜ良かったのか</li>
+<li>共同創業者の選び方</li>
+<li>創業者との共通認識の重要性</li>
+<li>ケンカした時の対策</li>
+<li>ナンバー2として意識してた事</li>
+<li>組織が育つために創業者たちが持つべき意識</li>
+</ul>
+
+<p style="text-align: right;">Photo and sound edited by <a href="https://twitter.com/kobajenne">kobajenne</a></p>
+<p style="text-align: center;">====================<br />
+<strong>起業家向け相談会「Startup Office Hours」開催中！！</strong><br />
+起業を考えている、または既に起業されている方を対象に、メンタリングセッションを実施しています。</p>
+<p style="text-align: center;"><strong>こんな悩みや疑問を持っている人におすすめです。</strong><br />
+<strong> 資金調達済みの起業家も大歓迎！</strong></p>
+<p style="text-align: center;">アイディアの検証方法が知りたい<br />
+事業戦略の “壁打ち” をしたい<br />
+正しいKPIの設定方法が知りたい<br />
+データを活用してKPIを改善したい<br />
+資金調達で気をつけるべきポイント、戦略が知りたい<br />
+チームマネジメントを改善したい</p>
+<p style="text-align: center;"><strong><a href="http://hiromaeda.com/office-hours/">ご応募はこちら！<br />
+</a></strong> ====================<br />
+<script type="text/javascript">(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+<h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
+
+<p>
+    <label>Email Address:</label>
+    <input type="email" name="EMAIL" placeholder="Your email address" required="required">
+</p><p>
+    <input type="submit" value="Subscribe">
+</p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+]]></content:encoded>
+		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/07_FINAL_Episode_7-Eureca.mp3" length="58887277" type="audio/mpeg" />
+		<itunes:subtitle>大ヒットマッチングアプリ「Pairs」を生み出し、のちにThe Match Groupに買収されたエウレカ社を創業した赤坂さんと西川さんにお話を伺いました。 共同創業者の間で決めた方が良い共通認識、西川さんが組織のナンバー2として意識してきた事、2人のケンカ話などフランクで面白さ満載なエピソードになりました。 【ハイライト】 2人の相性はなぜ良かったのか 共同創業者の選び方 創業者との共通認識の重要性 ケンカした時の対策 ナンバー2として意識してた事 組織が育つために創業者たちが持つべき意識 Pho...</itunes:subtitle>
+		<itunes:summary>大ヒットマッチングアプリ「Pairs」を生み出し、のちにThe Match Groupに買収されたエウレカ社を創業した赤坂さんと西川さんにお話を伺いました。 共同創業者の間で決めた方が良い共通認識、西川さんが組織のナンバー2として意識してきた事、2人のケンカ話などフランクで面白さ満載なエピソードになりました。 【ハイライト】 2人の相性はなぜ良かったのか 共同創業者の選び方 創業者との共通認識の重要性 ケンカした時の対策 ナンバー2として意識してた事 組織が育つために創業者たちが持つべき意識 Photo and sound edited by kobajenne ==================== 起業家向け相談会「Startup Office Hours」開催中！！ 起業を考えている、または既に起業されている方を対象に、メンタリングセッションを実施しています。 こんな悩みや疑問を持っている人におすすめです。 資金調達済みの起業家も大歓迎！ アイディアの検証方法が知りたい 事業戦略の “壁打ち” をしたい 正しいKPIの設定方法が知りたい データを活用してKPIを改善したい 資金調達で気をつけるべきポイント、戦略が知りたい チームマネジメントを改善したい ご応募はこちら！ ====================</itunes:summary>
+		<itunes:author>hiromaeda.com Startup Podcast</itunes:author>
+		<itunes:image href="http://hiromaeda.com/wp-content/uploads/2017/12/hiromaeda.com_podcast_coverart-1-1.png" />
+		<itunes:explicit>clean</itunes:explicit>
+		<itunes:duration>40:53</itunes:duration>
+		</item>
 	<item>
 		<title>ハードウェアスタートアップのHard Things。WHILL社 杉江 理社長にインタビュー。</title>
 		<link>http://hiromaeda.com/2018/02/25/hardwarehardthings/</link>
@@ -91,7 +162,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		}
 	}
 })();
-</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-2" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
 <h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
 
 <p>
@@ -100,7 +171,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 </p><p>
     <input type="submit" value="Subscribe">
 </p>
-<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1524365287" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-2" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
 ]]></content:encoded>
 		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/06_revised_Episode6-WHILL.mp3" length="25616560" type="audio/mpeg" />
 		<itunes:subtitle>累計30億円以上を調達し、シリコンバレーを拠点にパーソナルモビリティーを開発するWHILLの杉江社長と話しました。ハードウェアのコンセプトを考え、製造するまでのプロセス、シリコンバレーに進出してからの様々な経験、そして”超実践的”な英語勉強方法などについて触れました。 【ハイライト】 WHILLの立ち上げ アイディアの検証方法 何を材料にVCを説得したのか 英語の勉強方法 日本人とアメリカ人のマネージメントの違い ==================== 起業家向け相談会「Startup Offic...</itunes:subtitle>
@@ -161,7 +232,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		}
 	}
 })();
-</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-2" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-3" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
 <h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
 
 <p>
@@ -170,7 +241,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 </p><p>
     <input type="submit" value="Subscribe">
 </p>
-<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1524365287" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-2" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-3" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
 ]]></content:encoded>
 		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/_FINAL_04_Episode4-Crowdworks.mp3" length="49925408" type="audio/mpeg" />
 		<itunes:subtitle>ポッドキャストシリーズ 第4段。今回のゲストは、設立3年で上場を果たしたクラウドワークスの吉田社長。 彼が経験した様々な苦労から学び得た超実践的マネージメント手法や上場後に感じた課題とその解決策、そして自分自身の型にハマったライフスタイルとは。 【ハイライト】 成果＝結果＋伝達 苦労から学んだ経営方法 1勝9敗のマネージメント法 「約束」と「バブバブ」の時間を設ける理由 あらゆる物を固定化する重要性 意思決定に必要な「事実と解釈」 ==================== 起業家向け相談会「Star...</itunes:subtitle>
@@ -227,7 +298,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		}
 	}
 })();
-</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-3" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-4" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
 <h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
 
 <p>
@@ -236,7 +307,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 </p><p>
     <input type="submit" value="Subscribe">
 </p>
-<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1524365287" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-3" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-4" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
 ]]></content:encoded>
 		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/03_Episode3-BANK_Inc.mp3" length="37683354" type="audio/mpeg" />
 		<itunes:subtitle>今回のポッドキャストは、2017年、驚異的な速さでサービスの立ち上げから70億円の事業売却まで実現させた「CASH」を運営するBANK社の光本勇介氏をゲストに迎えました。 今回のポッドキャストのハイライトはこちら： Cashのアイディアはどうやって思いついたのか？ スタートトゥデイの前澤社長はどんな人？彼から一番得られた事とは？ 2018年のトレンド。そして「思考停止」な時代について。 ==================== 起業家向け相談会「Startup Office Hours」開催中！！ ...</itunes:subtitle>
@@ -298,7 +369,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		}
 	}
 })();
-</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-4" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-5" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
 <h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
 
 <p>
@@ -307,7 +378,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 </p><p>
     <input type="submit" value="Subscribe">
 </p>
-<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1524365287" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-4" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-5" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
 ]]></content:encoded>
 		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/_podacast_SaaS_Conference_TOKYO_2017_Salesforce-Firesidechat.mp3" length="43650086" type="audio/mpeg" />
 		<itunes:subtitle>時価総額約8兆円のセールスフォース・ドットコム。 成長の勢いは止まることを知らず、来期の売り上げ予想は前年比20%増の1.4兆円だという。この「SaaSの王者」の営業部隊の中は一体どうなっているのか？ 日本のセールスフォース・ドットコムでフィールドセールスのチームそして、インサイドセールスチームを引っ張る寺本 裕一さんと鈴木 淳一さんに話を聞きました。 今回は前回に続いて、『SaaS Conference TOKYO 2017』での対談の一部をポッドキャスト配信します。 今回のポッドキャストのハイラ...</itunes:subtitle>
@@ -368,7 +439,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 		}
 	}
 })();
-</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-5" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
+</script><!-- MailChimp for WordPress v4.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-6" class="mc4wp-form mc4wp-form-648 mc4wp-form-theme mc4wp-form-theme-green" method="post" data-id="648" data-name="Default sign-up form" ><div class="mc4wp-form-fields"><br />
 <h2 style="text-align:center;color:red;font-size:1.5em;">前田ヒロのメルマガは以下で登録できます</h2>
 
 <p>
@@ -377,7 +448,7 @@ xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
 </p><p>
     <input type="submit" value="Subscribe">
 </p>
-<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1524365287" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-5" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
+<br /></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1525424452" /><input type="hidden" name="_mc4wp_form_id" value="648" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-6" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></p>
 ]]></content:encoded>
 		<enclosure url="http://media.blubrry.com/hiromaeda/content.blubrry.com/hiromaeda/_podcast_SaaS_Conference_TOKYO_2017_SmartHR-Firesidechat.mp3" length="35852148" type="audio/mpeg" />
 		<itunes:subtitle>宮田社長が初期のメンバーと作った「文化」と「マネージメントスタイル」は、SmartHRの急成長に大きく貢献していると思っている。 今回は初のポッドキャストという形で、先日行ったSaaS Conference Tokyo 2017での宮田社長との対談を一部公開することにした。 今回のポッドキャストでは、これらについてディスカッションした： 文化の基盤の作り方 コアバリューを会社に浸透させた方法 SmartHRの採用プロセス なぜ情報をフルオープンにしているか 立ち上げ時の人員構成 もし何かをやり直すと...</itunes:subtitle>

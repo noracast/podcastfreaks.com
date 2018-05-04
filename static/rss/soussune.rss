@@ -9,7 +9,7 @@
             <link>https://soussune.com/</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 20 Apr 2018 15:00:42 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 04 May 2018 07:08:09 GMT</lastBuildDate>
         <atom:link href="https://soussune.com/feed.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Thu, 01 Jun 2017 04:00:00 GMT</pubDate>
         <copyright><![CDATA[2017 soussune]]></copyright>
@@ -31,6 +31,130 @@
             <itunes:category text="Software How-To"/>
         </itunes:category>
         <itunes:explicit>no</itunes:explicit>
+        <item>
+            <title><![CDATA[39. わかばちゃんの楽しい学び方 Aftershow]]></title>
+            <description><![CDATA[<p>trkwとmiyaokaとllminatollの3人で、わかばちゃん、Docker、原稿管理、Google アナリティクス、ビジネス、趣味などについて話しました。</p>
+<h2>Show Notes</h2>
+<h3>わかばちゃんが出る ISUCON</h3>
+<ul>
+<li>学習や体験のハードル下げることができる漫画</li>
+<li>わかばちゃんの成長を感じる</li>
+<li>わかばちゃんは需要があるところに出没して、解決していく</li>
+</ul>
+<h3>マンガでわかる Docker</h3>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr"><a href="https://twitter.com/hashtag/%E3%83%9E%E3%83%B3%E3%82%AC%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8BDocker?src=hash&amp;ref_src=twsrc%5Etfw">#マンガでわかるDocker</a> <br>BOOTHにてインターネットダウンロード販売はじめました🎉✨<br><br>こちらからご購入いただけます<a href="https://t.co/GXn20eSFjk">https://t.co/GXn20eSFjk</a><a href="https://twitter.com/hashtag/%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B8?src=hash&amp;ref_src=twsrc%5Etfw">#技術書典</a> <a href="https://twitter.com/hashtag/%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B84?src=hash&amp;ref_src=twsrc%5Etfw">#技術書典4</a> <a href="https://twitter.com/hashtag/BOOTH?src=hash&amp;ref_src=twsrc%5Etfw">#BOOTH</a></p>&mdash; マンガでわかるDocker DL販売中！ (@webdesignManga) <a href="https://twitter.com/webdesignManga/status/988207935766450177?ref_src=twsrc%5Etfw">2018年4月23日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li>Docker を使う人は自学自習していくタイプが多いと思い、「マンガで分かる Docker」 は書くべきか悩んだが、フロントエンドエンジニアでも開発環境を揃える為に Docker を使っているという話を聞いたため書いてみようと思った</li>
+<li>DX（Developer Experience）</li>
+<li><a href="https://github.com/soussune/soussune.com">soussune/soussune.com: エンジニアわいわいポッドキャスト「そうっすね」</a></li>
+<li><a href="https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/">Introducing Deploy Previews in Netlify | Netlify</a></li>
+<li><a href="https://devcenter.heroku.com/articles/github-integration-review-apps">Review Apps | Heroku Dev Center</a></li>
+<li>技術に乗り気じゃない人にも読んで欲しい</li>
+<li><a href="https://github.com/IFTTT/dash">IFTTT/dash: A simple Docker Compose wrapper command used in developing applications at IFTTT.</a></li>
+<li><a href="https://github.com/ansible/ansible">ansible/ansible: Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications — automate in a language that approaches plain English, using SSH, with no agents to install on remote systems. https://docs.ansible.com/ansible/</a></li>
+</ul>
+<h3>GitHub で原稿を管理している</h3>
+<ul>
+<li><a href="https://github.com/textlint/textlint">textlint/textlint: The pluggable natural language linter for text and markdown.</a></li>
+<li><a href="https://github.com/kmuto/review">kmuto/review: Re:VIEW is flexible document format/conversion system</a></li>
+<li><a href="https://help.github.com/articles/viewing-contribution-activity-in-a-repository/">Viewing contribution activity in a repository - User Documentation</a></li>
+<li><a href="https://www.reddit.com/r/github/comments/768oqr/is_the_punchcard_graph_gone_now/dotrc1n/">Is the punchcard graph gone now?</a></li>
+</ul>
+<h3>わかばちゃんと学ぶ Google アナリティクス</h3>
+<ul>
+<li>soussune は、Google アナリティクス を見て朝の通勤時間に聞いている方が多かった為、リリースを朝の 9:00 にしている</li>
+<li>収益や PV をあげる為にはどうしたらいいかが書かれている</li>
+</ul>
+<ul>
+<li><a href="https://mba.globis.ac.jp/about_mba/glossary/detail-12524.html">3C 分析とは・意味｜ MBA のグロービス経営大学院</a></li>
+<li><a href="https://mba.globis.ac.jp/about_mba/glossary/detail-11607.html">4P とは・意味｜ MBA のグロービス経営大学院</a></li>
+<li>Google アナリティクス は、非技術者と、技術者を戦略レベルで誘導させられるツールである</li>
+<li>第一章は、いいエモい話になっている</li>
+<li><a href="https://support.google.com/partners/answer/6089828?hl=ja">Google アナリティクス個人認定資格（GAIQ）理解度テストについて - Google Partners ヘルプ</a></li>
+<li><a href="https://kobit.in/archives/9507">マンガでわかる Google アナリティクス 序章 「インターンシップ先は問題だらけ！？」 – KOBIT</a></li>
+<li><a href="http://shahoo.jp/series/lesson/lesson94.html">これだけ知っておけば大丈夫！校正にまつわる 7 つの専門用語 - 社内報担当者のための情報サイト SHAHOO!（シャホー！）</a></li>
+<li><a href="https://www.clipstudio.net/">イラスト マンガ制作ソフト・アプリ CLIP STUDIO PAINT（クリップスタジオペイント）</a></li>
+<li><a href="http://www.c-r.com/">株式会社 C&amp;R 研究所</a></li>
+</ul>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Vuexの図をかいてたら途中からナナチを書いていた <a href="https://t.co/p3kRHSMShD">pic.twitter.com/p3kRHSMShD</a></p>&mdash; mio (@mio3io) <a href="https://twitter.com/mio3io/status/951868664495579136?ref_src=twsrc%5Etfw">2018年1月12日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li><a href="https://techbookfest.org/">技術書典 - 技術書典</a></li>
+</ul>
+<h3>人生のイベントを抑えるビジネス</h3>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/bOEn0984kJNVfS" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/tomohirokumagai54/loveswift" title="プログラマーのための新千歳空港入門 #love_swift" target="_blank">プログラマーのための新千歳空港入門 #love_swift</a> </strong> from <strong><a href="https://www.slideshare.net/tomohirokumagai54" target="_blank">Tomohiro Kumagai</a></strong> </div>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/B015DA91GU/">ターミナル (字幕版) - 動画 - Amazon ビデオ</a>
+<ul>
+<li><a href="https://ja.wikipedia.org/wiki/%E7%A9%BA%E6%B8%AF%E3%81%AB%E5%B1%85%E4%BD%8F%E3%81%97%E3%81%9F%E4%BA%BA%E7%89%A9%E3%81%AE%E4%B8%80%E8%A6%A7">空港に居住した人物の一覧 - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%83%8F%E3%83%B3%E3%83%BB%E3%82%AB%E3%83%AA%E3%83%9F%E3%83%BB%E3%83%8A%E3%82%BB%E3%83%AA">マーハン・カリミ・ナセリ - Wikipedia</a></li>
+</ul>
+</li>
+<li><a href="https://www.aeonlife.jp/">[公式]イオンのお葬式 - 葬儀・家族葬 全国の葬儀場から検索</a></li>
+<li><a href="https://studysapuri.jp/">【公式】スタディサプリ - 神授業、見放題。</a></li>
+<li><a href="https://job.rikunabi.com/">【就活ならリクナビ】新卒・既卒の就職活動・採用情報サイト</a></li>
+</ul>
+<ul>
+<li><a href="https://zexy.net/">ウエディング、ブライダルなら結婚準備の総合サイト ゼクシィ</a></li>
+</ul>
+<h3>継続する趣味</h3>
+<ul>
+<li><a href="https://jumpei-ikegami.hatenablog.com/entry/2018/01/04/091643">自己肯定感を爆上げする、MRM(Morning Routine Management)を始めてみた - がみぶろ</a></li>
+</ul>
+<h4>trkw - キャンプ</h4>
+<ul>
+<li>1 人旅行にハマってた時期</li>
+</ul>
+<ul>
+<li><a href="https://www.welcomekyushu.jp/article/?mode=detail&amp;id=119">宮崎県・高千穂のパワースポット三社をめぐる開運トリップのススメ｜九州への旅行や観光情報は九州旅ネット</a></li>
+<li><a href="https://yamahack.com/1656">乾徳山 - 20m の岩を登るスリル！富士山の絶景を楽しむ日帰りルート - YAMA HACK</a></li>
+</ul>
+<ul>
+<li>キャンプやる</li>
+<li>キャンプ YouTuber いる話</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Uc1RwthfFnc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<ul>
+<li>山、ジムが続かなかった</li>
+<li><a href="https://yamahack.com/1656">乾徳山 - 20m の岩を登るスリル！富士山の絶景を楽しむ日帰りルート - YAMA HACK</a></li>
+<li>野球</li>
+</ul>
+<h4>miyaoka - 映画</h4>
+<ul>
+<li>映画とはなんなのかという根源的な疑問から、年間 300 本くらい見るようになっていた趣味というか修行</li>
+<li><a href="https://ja.wikipedia.org/wiki/%E5%8D%88%E5%89%8D%E5%8D%81%E6%99%82%E3%81%AE%E6%98%A0%E7%94%BB%E7%A5%AD">午前十時の映画祭 - Wikipedia</a></li>
+<li>TOHO シネマズ では 50 本くらい（6000 分）見ると１ヶ月間無料のフリーパスが貰える</li>
+</ul>
+<h4>llminatoll - 仕事が趣味になっている</h4>
+<ul>
+<li>ピアノをやってた</li>
+<li>合気道をやってた
+<ul>
+<li>合気道は自分から攻撃せず相手を傷つけない、自分を守る為にある</li>
+</ul>
+</li>
+<li>社会人になると趣味を辞めてしまっているかも</li>
+<li><a href="https://techbook-meetup.connpass.com/event/57522/">もくもく執筆会 REV.1 〜技術系同人誌／商業誌・発表資料・ブログ〜 - connpass</a></li>
+<li>ミニマリスト</li>
+<li><a href="http://evening.moae.jp/lineup/248">山賊ダイアリー / 岡本健太郎 - イブニング公式サイト - モアイ</a></li>
+</ul>
+<hr><h2>💬おたより募集中</h2>
+soussuneでは感想や質問などリスナーからのご意見をお待ちしています。
+<ul>
+  <li><a href="https://twitter.com/intent/tweet?hashtags=soussune&url=https%3A%2F%2Fsoussune.com%2Fepisode%2F39">Twitter</a></li>
+  <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSe4p8EuJIocQ_PJl7qe-lZ--pD7AN3LCk4FefDW0DmSBTBHIA/viewform?usp=sf_link&entry.286431956=https%3A%2F%2Fsoussune.com%2Fepisode%2F39">感想フォーム</a></li>
+</ul>
+からお気軽にコメントをお寄せください]]></description>
+            <link>https://soussune.com/episode/39</link>
+            <guid isPermaLink="true">https://soussune.com/episode/39</guid>
+            <pubDate>Thu, 03 May 2018 15:00:00 GMT</pubDate>
+            <enclosure url="//downloads.ctfassets.net/gvze4h7pavn2/920djDYYsEky0MsiUcyGQ/3d68485fa4205c61cbe9fbb2c573d72b/39.mp3" length="0" type="audio/mp3"/>
+            <itunes:author>そうっすね制作委員会</itunes:author>
+            <itunes:subtitle>trkwとmiyaokaとllminatollの3人で、わかばちゃん、Docker、原稿管理、Google アナリティクス、ビジネス、趣味などについて話しました。</itunes:subtitle>
+            <itunes:duration>1:21:14</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+        </item>
         <item>
             <title><![CDATA[38. わかばちゃんの楽しい学び方]]></title>
             <description><![CDATA[<p>trkwとmiyaokaとllminatollの3人で、Git入門、学習コスト、娯楽と学び、初心者目線、媒体の未来などについて話しました。</p>

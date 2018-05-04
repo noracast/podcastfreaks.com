@@ -16,7 +16,7 @@
 		<atom:link href="https://capitalp.jp/feed/podcast" rel="self" type="application/rss+xml"/>
 		<link>https://capitalp.jp/</link>
 		<description>WordPressエキスパートによるデジタル・メディアハブ</description>
-		<lastBuildDate>Fri, 20 Apr 2018 15:42:23 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 02 May 2018 16:56:20 +0000</lastBuildDate>
 		<language>ja</language>
 		<copyright>© 2017 Capital P</copyright>
 		<itunes:subtitle>WordPressエキスパートによるデジタル・メディアハブ</itunes:subtitle>
@@ -194,12 +194,12 @@
 											<itunes:keywords>Advent Calendar 2017,お金,カスタムフィールド,テーマ,ビジネス,ライセンス</itunes:keywords>
 																														<content:encoded><![CDATA[<p>先日公開された「<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">カスタムフィールド製造業ならびにWebアセンブラーという職業について</a>」という記事には、大きな反響がありました。</p>
 <div class="wp-oembed-blog-card"><a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/" target="_self"></p>
-<div class="wp-oembed-blog-card__figure"><img src="https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg" alt=""></div>
+<div class="wp-oembed-blog-card__figure" style="background-image: url(https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg)"></div>
 <div class="wp-oembed-blog-card__body">
 <div class="wp-oembed-blog-card__title">カスタムフィールド製造業ならびにWebアセンブラーという職業について &#8211; Capital P</div>
-<div class="wp-oembed-blog-card__description">SPONSORED LINK このCapital Pではポッドキャストを公開しているが、その収録の中 &hellip;</div>
-</div>
+<div class="wp-oembed-blog-card__description">このCapital Pではポッドキャストを公開しているが、その収録の中で何度か出てきた言葉にカスタム &hellip;</div>
 <div class="wp-oembed-blog-card__domain"><img class="wp-oembed-blog-card__favicon" src="https://capitalp.jp/wp-content/uploads/2017/01/cropped-capital-icon2-32x32.png" alt="">capitalp.jp</div>
+</div>
 <p></a></div>
 <p>今回のポッドキャストでは、<a href="https://serverless.com/framework/">Serverless Framework</a>のコミッターを務めつつ、カスタムフィールド製造業界の住人でもある<a href="https://twitter.com/horike37">堀家隆宏</a>さんをお迎えして、カスタムフィールド製造業についての話を2時間半にわたってお送りしています。</p>
 <p>私（<a href="https://twitter.com/shinichiN">西川</a>）としての感想は、カスタムフィールド製造業まだまだいけるわ、ということでした。<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">前回の記事</a>で、以下の言葉、</p>
@@ -257,12 +257,12 @@
 ]]></content:encoded>
 					<itunes:summary><![CDATA[<p>先日公開された「<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">カスタムフィールド製造業ならびにWebアセンブラーという職業について</a>」という記事には、大きな反響がありました。</p>
 <div class="wp-oembed-blog-card"><a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/" target="_self"></p>
-<div class="wp-oembed-blog-card__figure"><img src="https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg" alt=""></div>
+<div class="wp-oembed-blog-card__figure" style="background-image: url(https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg)"></div>
 <div class="wp-oembed-blog-card__body">
 <div class="wp-oembed-blog-card__title">カスタムフィールド製造業ならびにWebアセンブラーという職業について &#8211; Capital P</div>
-<div class="wp-oembed-blog-card__description">SPONSORED LINK このCapital Pではポッドキャストを公開しているが、その収録の中 &hellip;</div>
-</div>
+<div class="wp-oembed-blog-card__description">このCapital Pではポッドキャストを公開しているが、その収録の中で何度か出てきた言葉にカスタム &hellip;</div>
 <div class="wp-oembed-blog-card__domain"><img class="wp-oembed-blog-card__favicon" src="https://capitalp.jp/wp-content/uploads/2017/01/cropped-capital-icon2-32x32.png" alt="">capitalp.jp</div>
+</div>
 <p></a></div>
 <p>今回のポッドキャストでは、<a href="https://serverless.com/framework/">Serverless Framework</a>のコミッターを務めつつ、カスタムフィールド製造業界の住人でもある<a href="https://twitter.com/horike37">堀家隆宏</a>さんをお迎えして、カスタムフィールド製造業についての話を2時間半にわたってお送りしています。</p>
 <p>私（<a href="https://twitter.com/shinichiN">西川</a>）としての感想は、カスタムフィールド製造業まだまだいけるわ、ということでした。<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">前回の記事</a>で、以下の言葉、</p>
@@ -310,15 +310,15 @@
 <p>ポッドキャストの中で触れたプラグインをいくつかご紹介します。</p>
 <ul>
 <li><a href="https://pods.io/">Home &#8211; Pods Framework</a>: これは便利そうです。次回からこれを使いたいと思っています。</li>
-<li><a href="https://github.com/humanmade/Custom-Meta-B]]></itunes:summary>
+<li><a href="https://github.com/humanmade/]]></itunes:summary>
 					<googleplay:description><![CDATA[<p>先日公開された「<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">カスタムフィールド製造業ならびにWebアセンブラーという職業について</a>」という記事には、大きな反響がありました。</p>
 <div class="wp-oembed-blog-card"><a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/" target="_self"></p>
-<div class="wp-oembed-blog-card__figure"><img src="https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg" alt=""></div>
+<div class="wp-oembed-blog-card__figure" style="background-image: url(https://capitalp.jp/wp-content/uploads/2017/09/pexels-photo-64609.jpeg)"></div>
 <div class="wp-oembed-blog-card__body">
 <div class="wp-oembed-blog-card__title">カスタムフィールド製造業ならびにWebアセンブラーという職業について &#8211; Capital P</div>
-<div class="wp-oembed-blog-card__description">SPONSORED LINK このCapital Pではポッドキャストを公開しているが、その収録の中 &hellip;</div>
-</div>
+<div class="wp-oembed-blog-card__description">このCapital Pではポッドキャストを公開しているが、その収録の中で何度か出てきた言葉にカスタム &hellip;</div>
 <div class="wp-oembed-blog-card__domain"><img class="wp-oembed-blog-card__favicon" src="https://capitalp.jp/wp-content/uploads/2017/01/cropped-capital-icon2-32x32.png" alt="">capitalp.jp</div>
+</div>
 <p></a></div>
 <p>今回のポッドキャストでは、<a href="https://serverless.com/framework/">Serverless Framework</a>のコミッターを務めつつ、カスタムフィールド製造業界の住人でもある<a href="https://twitter.com/horike37">堀家隆宏</a>さんをお迎えして、カスタムフィールド製造業についての話を2時間半にわたってお送りしています。</p>
 <p>私（<a href="https://twitter.com/shinichiN">西川</a>）としての感想は、カスタムフィールド製造業まだまだいけるわ、ということでした。<a href="https://capitalp.jp/2017/09/30/what-is-customfield-industory-and-web-assembler/">前回の記事</a>で、以下の言葉、</p>
@@ -366,7 +366,7 @@
 <p>ポッドキャストの中で触れたプラグインをいくつかご紹介します。</p>
 <ul>
 <li><a href="https://pods.io/">Home &#8211; Pods Framework</a>: これは便利そうです。次回からこれを使いたいと思っています。</li>
-<li><a href="https://github.com/humanmade/Custom-Meta-B]]></googleplay:description>
+<li><a href="https://github.com/humanmade/]]></googleplay:description>
 											<itunes:image href="https://capitalp.jp/wp-content/uploads/2017/11/5c32dfd25650fb23702b49348dc40ee2.png"></itunes:image>
 						<googleplay:image href="https://capitalp.jp/wp-content/uploads/2017/11/5c32dfd25650fb23702b49348dc40ee2.png"></googleplay:image>
 										<enclosure url="https://capitalp.jp/podcast-download/2260/custom-fields-manufacturing-industry.mp3" length="154414525" type="audio/mpeg"></enclosure>

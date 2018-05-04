@@ -15,7 +15,7 @@ xmlns:media="http://search.yahoo.com/mrss/"
 	<atom:link href="https://misreading.chat/category/episodes/feed/" rel="self" type="application/rss+xml" />
 	<link>https://misreading.chat</link>
 	<description>Nonsensical CS Paper Talk by Morrita and Mukai</description>
-	<lastBuildDate>Sun, 22 Apr 2018 02:45:05 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 04 May 2018 08:56:20 +0000</lastBuildDate>
 	<language>en</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -31,6 +31,169 @@ xmlns:media="http://search.yahoo.com/mrss/"
 <itunes:keywords>Computer Science</itunes:keywords>
 <itunes:category text='Technology' />
 	<item>
+		<title>Episode 07 &#8211; One VM to Rule Them All</title>
+		<link>https://misreading.chat/2018/05/03/episode-07-one-vm-to-rule-them-all/</link>
+		<pubDate>Fri, 04 May 2018 00:00:01 +0000</pubDate>
+		<dc:creator><![CDATA[Hajime Morrita]]></dc:creator>
+				<category><![CDATA[episodes]]></category>
+
+		<guid isPermaLink="false">http://misreading.chat/?p=89</guid>
+		<description><![CDATA[Graal VM のデザインを説明した論文 One VM to rule them all を森田が紹介します。]]></description>
+				<content:encoded><![CDATA[<p>Graal VM のデザインを説明した論文 &#8220;One VM to Rule Them All&#8221; を<a href="https://twitter.com/omo2009">森田</a>が紹介します。<span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z">感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> か <a href="mailto:hello@misreading.chat">hello@misreading.chat</a> にお寄せください。</span></p>
+<!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+<audio class="wp-audio-shortcode" id="audio-89-1" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://misreadingchat.files.wordpress.com/2018/04/ep07.mp3?_=1" /><a href="https://misreadingchat.files.wordpress.com/2018/04/ep07.mp3">https://misreadingchat.files.wordpress.com/2018/04/ep07.mp3</a></audio>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=2509581">One VM to rule them all</a></li>
+<li><a href="http://www.graalvm.org/">GraalVM</a></li>
+<li><a href="https://github.com/oracle/graal/blob/master/docs/Publications.md">graal/Publications.md at master · oracle/graal</a></li>
+<li><a href="http://blog.llvm.org/2014/07/ftl-webkits-llvm-based-jit.html">LLVM Project Blog: FTL: WebKit’s LLVM based JIT</a>
+<ul>
+<li><a href="https://webkit.org/blog/3362/introducing-the-webkit-ftl-jit/">Introducing the WebKit FTL JIT | WebKit</a></li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg">Two Minute Papers &#8211; YouTube &#8211; YouTube</a></li>
+</ul>
+<h2>Follow-up and Correction</h2>
+<ul>
+<li><a href="https://misreading.chat/2018/05/03/notes-on-episode-7/">わかりにくかった部分の補足を書きました</a>。</li>
+<li>冒頭で episode 6 後半といいましたが混乱しそうなので episode 7 ということにします。</li>
+<li>何箇所か execuse と呼んでいる部分は execute の間違いです。</li>
+</ul>
+]]></content:encoded>
+	<enclosure url="http://misreadingchat.files.wordpress.com/2018/04/ep07.mp3" length="29640575" type="audio/mpeg" />
+	<itunes:author>Hajime Morrita, Jun Mukai</itunes:author>
+<itunes:explicit>no</itunes:explicit>
+<itunes:summary>Graal VM のデザインを説明した論文 One VM to rule them all を森田が紹介します。</itunes:summary>
+<itunes:subtitle>Graal VM のデザインを説明した論文 One VM to rule them all を森田が紹介します。</itunes:subtitle>
+
+		<media:content url="http://1.gravatar.com/avatar/783f7d008fe6b043ae81203941052c1d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">morrita2016</media:title>
+		</media:content>
+
+		<media:content url="http://misreadingchat.files.wordpress.com/2018/04/ep07.mp3" medium="audio" />
+	</item>
+		<item>
+		<title>Episode 06 &#8211; CloudBuild: Microsoft’s Distributed and Caching Build Service</title>
+		<link>https://misreading.chat/2018/04/30/episode-06-cloudbuild-microsofts-distributed-and-caching-build-service/</link>
+		<pubDate>Tue, 01 May 2018 03:02:02 +0000</pubDate>
+		<dc:creator><![CDATA[Jun Mukai]]></dc:creator>
+				<category><![CDATA[episodes]]></category>
+
+		<guid isPermaLink="false">http://misreading.chat/?p=86</guid>
+		<description><![CDATA[Microsoft の社内用分散ビルドシステム CloudBuild を向井が紹介します。]]></description>
+				<content:encoded><![CDATA[<p>Microsoft の社内用分散ビルドシステム CloudBuild の論文を<a href="https://twitter.com/jmuk">向井</a>が紹介します。数千万行の巨大な既存コードベースのビルドをいかにそのまま分散化するか、その頑張りが見どころです。<span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z">感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> か <a href="mailto:hello@misreading.chat">hello@misreading.chat</a> にお寄せください。</span></p>
+<audio class="wp-audio-shortcode" id="audio-86-2" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://misreadingchat.files.wordpress.com/2018/04/ep06.mp3?_=2" /><a href="https://misreadingchat.files.wordpress.com/2018/04/ep06.mp3">https://misreadingchat.files.wordpress.com/2018/04/ep06.mp3</a></audio>
+<ul>
+<li><a href="https://www.microsoft.com/en-us/research/publication/cloudbuild-microsofts-distributed-and-caching-build-service/">CloudBuild: Microsoft’s Distributed and Caching Build Service</a></li>
+<li><a href="https://travis-ci.org/">Travis</a> / <a href="https://jenkins.io/">Jenkins</a></li>
+<li><a href="https://www.perforce.com/">Perforce</a> / <a href="https://docs.microsoft.com/en-us/vsts/tfvc/overview?view=vsts">TFVC (Team Foundation Version Control)</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/publication/formalizing-and-verifying-a-modern-build-language/">Formalizing and Verifying a Modern Build Language</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx">nmake</a></li>
+<li><a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild">MSBuild</a></li>
+<li>chromium build systems
+<ul>
+<li><a href="https://ninja-build.org/">ninja</a></li>
+<li><a href="https://www.chromium.org/developers/gn-build-configuration">GN</a></li>
+<li><a href="https://gyp.gsrc.io/">gyp</a></li>
+<li><a href="https://scons.org/">SCons</a></li>
+<li><a href="https://chromium.googlesource.com/infra/goma/client/">goma</a></li>
+</ul>
+</li>
+<li><a href="https://bazel.build/">bazel</a></li>
+</ul>
+<h2>Follow-up</h2>
+<ul>
+<li><a href="https://changelog.com/gotime/77">Russ Cox on changelog</a></li>
+<li><a href="https://swtch.com/~rsc/regexp/">Implementing Regular Expressions</a></li>
+<li><a href="https://github.com/golang/proposal/blob/master/design/12914-monotonic.md">Monotonic Elapsed Time Measurements in Go</a></li>
+</ul>
+]]></content:encoded>
+	<enclosure url="http://misreadingchat.files.wordpress.com/2018/04/ep06.mp3" length="25146678" type="audio/mpeg" />
+	<itunes:author>Hajime Morrita, Jun Mukai</itunes:author>
+<itunes:explicit>no</itunes:explicit>
+<itunes:summary>Microsoft の社内用分散ビルドシステム CloudBuild を向井が紹介します。</itunes:summary>
+<itunes:subtitle>Microsoft の社内用分散ビルドシステム CloudBuild を向井が紹介します。</itunes:subtitle>
+
+		<media:content url="http://1.gravatar.com/avatar/78c2e017228552fab555963f9a0739a3?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jmuk42</media:title>
+		</media:content>
+
+		<media:content url="http://misreadingchat.files.wordpress.com/2018/04/ep06.mp3" medium="audio" />
+	</item>
+		<item>
+		<title>Episode 05: Agile CPU / Versioned Golang</title>
+		<link>https://misreading.chat/2018/04/22/episode-05-agile-cpu-versioned-golang/</link>
+		<pubDate>Sun, 22 Apr 2018 19:15:31 +0000</pubDate>
+		<dc:creator><![CDATA[Hajime Morrita]]></dc:creator>
+				<category><![CDATA[episodes]]></category>
+
+		<guid isPermaLink="false">http://misreading.chat/?p=76</guid>
+		<description><![CDATA[アジャイルなCPU開発とGoの次世代バージョン管理。]]></description>
+				<content:encoded><![CDATA[<p>森田が紹介するのは CPU をアジャイルの流儀で開発しようと主張する <a href="https://people.eecs.berkeley.edu/~bora/Journals/2016/IEEEMicro16.pdf">An Agile Approach to Building RISC-V Microprocessors</a>, 向井が紹介するのは Go の次世代バージョン管理システムのデザインを解説した <a href="https://research.swtch.com/vgo">Go &amp; Versioning</a> です。<span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z">感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> か <a href="mailto:hello@misreading.chat">hello@misreading.chat</a> にお寄せください。</span></p>
+<audio class="wp-audio-shortcode" id="audio-76-3" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://misreadingchat.files.wordpress.com/2018/04/s01e05.mp3?_=3" /><a href="https://misreadingchat.files.wordpress.com/2018/04/s01e05.mp3">https://misreadingchat.files.wordpress.com/2018/04/s01e05.mp3</a></audio>
+<h3>An Agile Approach to Building RISC-V Microprocessors</h3>
+<ul>
+<li>RISC-V
+<ul>
+<li><a href="https://riscv.org/">RISC-V Foundation | Instruction Set Architecture (ISA)</a></li>
+<li><a href="http://digitalassets.lib.berkeley.edu/techreports/ucb/text/EECS-2016-1.pdf">Design of the RISC-V Instruction Set Architecture</a></li>
+<li><a href="https://jolt.law.harvard.edu/digest/intel-and-the-x86-architecture-a-legal-perspective">Intel and the x86 Architecture: A Legal Perspective &#8211; Harvard Journal of Law &amp; Technology</a></li>
+<li><a href="https://www.youtube.com/watch?v=mD-njD2QKN0">Instruction Sets Want To Be Free: A Case for RISC-V &#8211; YouTube</a></li>
+</ul>
+</li>
+<li><a href="http://agilemanifesto.org/iso/ja/manifesto.html">アジャイルソフトウェア開発宣言</a></li>
+<li><a href="https://chisel.eecs.berkeley.edu/">Chisel: Constructing Hardware in an Scala Embedded Language</a>
+<ul>
+<li>The fun of programmingは『<a href="https://www.amazon.co.jp/dp/4274068056">関数プログラミングの楽しみ</a>』として翻訳あり。8章が<a href="http://ku-fpg.github.io/software/kansas-lava/">Lava</a>というハードウェア記述DSLの話。</li>
+<li><a href="https://danluu.com/why-hardware-development-is-hard/">Verilog is weird</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/freechipsproject/rocket-chip">GitHub &#8211; freechipsproject/rocket-chip: Rocket Chip Generator</a></li>
+<li><a href="https://www.sifive.com/">SiFive | CPU IP and Custom SoCs from the Inventors of RISC-V</a></li>
+<li><a href="https://www.esperanto.ai/">Esperanto Technologies / Energy-efficient RISC-V solutions for AI</a></li>
+<li><a href="https://www.phoronix.com/scan.php?page=news_item&amp;px=NVIDIA-RISC-V-Next-Gen-Falcon">NVIDIA Is Building Its Next-Gen Falcon Controller Using RISC-V &#8211; Phoronix</a></li>
+<li><a href="https://inst.eecs.berkeley.edu/~cs152/sp18/">Home Page for UCB CS152/CS252, Spring 2018</a></li>
+<li><a href="https://riscv.tokyo/2017/">RISC-V Day 2017 Tokyo – December 18, 2017</a></li>
+</ul>
+<h3>Go &amp; versioning</h3>
+<ul>
+<li><a href="https://swtch.com/~rsc/">Russ Cox</a></li>
+<li><a href="https://godoc.org/golang.org/x/vgo">vgo &#8211; GoDoc</a></li>
+<li><a href="https://golang.github.io/dep/">dep</a></li>
+<li><a href="http://bundler.io/">bundler</a></li>
+<li><a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">go-get / Remote import paths</a></li>
+<li><a href="https://research.swtch.com/version-sat">research!rsc: Version SAT</a></li>
+</ul>
+<h3>Miscellaneous</h3>
+<ul class="listtype-bullet listindent1 list-bullet1">
+<li><a href="https://twitter.com/shigemi1014/status/986090317408485378">しげみ on Twitter: &#8220;Novaは2017年にも後続の論文が出てて、mmapに対しても実装が進んでいる PCOMMITはWPQによっていらない子に #misreading&#8221;</a>
+<ul class="listtype-bullet listindent2 list-bullet2">
+<li><a href="http://cseweb.ucsd.edu/~swanson/papers/TechReport2017HardenedNOVA.pdf">Hardening the NOVA File System</a></li>
+</ul>
+</li>
+<li><span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z"><a class="attrlink" href="https://www.extremetech.com/computing/259155-micron-launches-new-nand-based-dimms-intel-announces-optane-dimms" target="_blank" rel="noreferrer nofollow noopener">Micron Launches New NAND-based DIMMs, Intel Announces Optane DIMMs &#8211; ExtremeTech</a></span><a class="attrlink" href="https://www.anandtech.com/show/12041/intel-to-launch-3d-xpoint-dimms-in-2h-2018" target="_blank" rel="noreferrer nofollow noopener">Intel To Launch 3D XPoint DIMMs in 2H 2018</a></li>
+<li><span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z"><a class="attrlink" href="https://spectrum.ieee.org/cars-that-think/transportation/self-driving/cmu-solves-12-year-old-darpa-grand-challenge-mystery" target="_blank" rel="noreferrer nofollow noopener">Carnegie Mellon Solves 12-Year-Old DARPA Grand Challenge Mystery &#8211; IEEE Spectrum</a></span></li>
+</ul>
+<h3>Correction</h3>
+<ul>
+<li>Maven 3 Processor のクロック切り替え所要時間を 20 秒と言っていますが 20 ナノ秒の間違いです。20 秒で切り替わっても何も嬉しくないですね・・・</li>
+<li>SATの正式名称は <em>Boolean</em> Satisfiability Problemでした。言い間違えました。</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+	<enclosure url="http://misreadingchat.files.wordpress.com/2018/04/s01e05.mp3" length="43951079" type="audio/mpeg" />
+	<itunes:author>Hajime Morrita, Jun Mukai</itunes:author>
+<itunes:explicit>no</itunes:explicit>
+<itunes:summary>アジャイルなCPU開発とGoの次世代バージョン管理。</itunes:summary>
+<itunes:subtitle>アジャイルなCPU開発とGoの次世代バージョン管理。</itunes:subtitle>
+
+		<media:content url="http://1.gravatar.com/avatar/783f7d008fe6b043ae81203941052c1d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">morrita2016</media:title>
+		</media:content>
+
+		<media:content url="http://misreadingchat.files.wordpress.com/2018/04/s01e05.mp3" medium="audio" />
+	</item>
+		<item>
 		<title>Episode 04: Filesystem on NVM / Self-Driving Car on Dessert</title>
 		<link>https://misreading.chat/2018/04/16/episode-04-filesystem-on-nvm-self-driving-car-on-dessert/</link>
 		<pubDate>Tue, 17 Apr 2018 00:05:13 +0000</pubDate>
@@ -41,8 +204,7 @@ xmlns:media="http://search.yahoo.com/mrss/"
 		<description><![CDATA[向井が紹介するのは Linux 上に不揮発性メモリ用のファイルシステムを実装、評価した NOVA: A Log-structured File System for Hybrid Volatile/Non-volatile Main Memories, 森田が紹介するのは 2005 年の自動運転自動車レースで優勝したクルマのシステムを概観する Stanley: The Robot that Won the DARPA Grand Challenge です。 感想などはハッシュタグ #misreading などにお寄せください。 NOVA: A Log-structured File System for Hybrid Volatile/Non-volatile Main Memories GitHub &#8211; NVSL/linux-nova: NOVA is a log-structured file system designed for byte-addressable non-volatile memories, developed at &#8230; <a href="https://misreading.chat/2018/04/16/episode-04-filesystem-on-nvm-self-driving-car-on-dessert/" class="more-link">Continue reading<span class="screen-reader-text"> "Episode 04: Filesystem on NVM / Self-Driving Car on&#160;Dessert"</span></a>]]></description>
 				<content:encoded><![CDATA[<p>向井が紹介するのは Linux 上に不揮発性メモリ用のファイルシステムを実装、評価した <a href="https://www.usenix.org/node/194455">NOVA: A Log-structured File System for Hybrid Volatile/Non-volatile Main Memories</a>, 森田が紹介するのは 2005 年の自動運転自動車レースで優勝したクルマのシステムを概観する <a href="http://isl.ecst.csuchico.edu/DOCS/darpa2005/DARPA%202005%20Stanley.pdf">Stanley: The Robot that Won the DARPA Grand Challenge</a> です。<br />
 <span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z">感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> などにお寄せください。</span></p>
-<!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-<audio class="wp-audio-shortcode" id="audio-70-1" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e04.mp3?_=1" /><a href="https://storage.googleapis.com/misreading/s01e04.mp3">https://storage.googleapis.com/misreading/s01e04.mp3</a></audio>
+<audio class="wp-audio-shortcode" id="audio-70-4" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e04.mp3?_=4" /><a href="https://storage.googleapis.com/misreading/s01e04.mp3">https://storage.googleapis.com/misreading/s01e04.mp3</a></audio>
 <h3>NOVA: A Log-structured File System for Hybrid Volatile/Non-volatile Main Memories</h3>
 <ul>
 <li><a href="https://github.com/NVSL/linux-nova">GitHub &#8211; NVSL/linux-nova: NOVA is a log-structured file system designed for byte-addressable non-volatile memories, developed at the University of California, San Diego.</a></li>
@@ -95,7 +257,7 @@ xmlns:media="http://search.yahoo.com/mrss/"
 		<guid isPermaLink="false">http://misreading.chat/?p=65</guid>
 		<description><![CDATA[新入社員の苦労とデータサイエンティストの苦悩]]></description>
 				<content:encoded><![CDATA[<p><a href="http://twitter.com/omo2009">森田</a>が紹介するのは新入社員が職場に慣れて活躍するまでの苦労について調べた <a href="http://thomas-zimmermann.com/publications/details/rastogi-esem-2015/">Ramp-up Journey of New Hires: Tug of War of Aids and Impediments</a>, <a href="http://twitter.com/jmuk">向井</a>が紹介するのはデータサイエンティストの生態について調べた <span class="attrlink url author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90za3z66zs0a55z65zyz83znz73zlz88zdagz66zz83zu0fkz73zz78zjulz65zz76z"><a class="attrlink" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/kim-tse-2017.pdf" target="_blank" rel="noreferrer nofollow noopener">Data Scientists in Software Teams: State of the Art and Challenges</a> です。どちらも Microsoft Research の研究者 <a href="http://thomas-zimmermann.com/">Thomas Zimmermann</a> と仲間たちが同社内で行った調査に基づく論文。Microsoft の舞台裏を覗き見ることができる・・・かもしれません。感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> などにお寄せください。</span></p>
-<audio class="wp-audio-shortcode" id="audio-65-2" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e03.mp3?_=2" /><a href="https://storage.googleapis.com/misreading/s01e03.mp3">https://storage.googleapis.com/misreading/s01e03.mp3</a></audio>
+<audio class="wp-audio-shortcode" id="audio-65-5" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e03.mp3?_=5" /><a href="https://storage.googleapis.com/misreading/s01e03.mp3">https://storage.googleapis.com/misreading/s01e03.mp3</a></audio>
 <h3>Ramp-up Journey of New Hires: Tug of War of Aids and Impediments</h3>
 <ul>
 <li><a href="http://thomas-zimmermann.com/publications/details/rastogi-esem-2015/">Ramp-up Journey of New Hires: Tug of War of Aids and Impediments</a> 2015</li>
@@ -149,7 +311,7 @@ xmlns:media="http://search.yahoo.com/mrss/"
 		<guid isPermaLink="false">http://misreading.chat/?p=61</guid>
 		<description><![CDATA[Android Intent の使われ方調査と、商用 GPU レイトレの話。]]></description>
 				<content:encoded><![CDATA[<p><a href="http://twitter.com/jmuk">向井</a>が紹介するのは世の中の APK を分析して Android Intent の使い方を調べてまわった Inter-app Communication in Android, <a href="http://twitter.com/omo2009">森田</a>が紹介するのは NVIDIA 製 GPU レイトレーサ OptiX です。感想などはハッシュタグ <a href="https://twitter.com/search?q=%23misreading%20lang%3Aja">#misreading</a> などにお寄せください。</p>
-<audio class="wp-audio-shortcode" id="audio-61-3" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e02.mp3?_=3" /><a href="https://storage.googleapis.com/misreading/s01e02.mp3">https://storage.googleapis.com/misreading/s01e02.mp3</a></audio>
+<audio class="wp-audio-shortcode" id="audio-61-6" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e02.mp3?_=6" /><a href="https://storage.googleapis.com/misreading/s01e02.mp3">https://storage.googleapis.com/misreading/s01e02.mp3</a></audio>
 <p>Inter-app Communication in Android:</p>
 <ul>
 <li><a href="http://www.cs.cmu.edu/~aldrich/papers/msr2016-android-communication.pdf">Inter-app Communication in Android: Developer Challenges</a> (PDF)</li>
@@ -205,7 +367,7 @@ xmlns:media="http://search.yahoo.com/mrss/"
 		<guid isPermaLink="false">http://misreadingchat.wordpress.com/?p=9</guid>
 		<description><![CDATA[ML 向け JIT Compiler と Rust の安全性証明のはなし。]]></description>
 				<content:encoded><![CDATA[<p><a href="http://twitter.com/omo2009"><img data-attachment-id="40" data-permalink="https://misreading.chat/favicon/" data-orig-file="https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=107&#038;h=107" data-orig-size="512,512" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="favicon" data-image-description="" data-medium-file="https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=107&#038;h=107?w=300" data-large-file="https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=107&#038;h=107?w=512" class="  wp-image-40 alignright" src="https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=107&#038;h=107" alt="favicon" width="107" height="107" srcset="https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=107&amp;h=107 107w, https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=214&amp;h=214 214w, https://misreadingchat.files.wordpress.com/2018/03/favicon.jpg?w=150&amp;h=150 150w" sizes="(max-width: 107px) 85vw, 107px" />森田</a>が紹介するのは deep learning 向けの DST と JIT コンパイラ Tensor Comprensions. <a href="http://twitter.com/jmuk">向井</a>が紹介するのはプログラミング言語 Rust のメモリ安全性に関する形式的証明に挑む Rust Belt です。</p>
-<audio class="wp-audio-shortcode" id="audio-9-4" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e01.mp3?_=4" /><a href="https://storage.googleapis.com/misreading/s01e01.mp3">https://storage.googleapis.com/misreading/s01e01.mp3</a></audio>
+<audio class="wp-audio-shortcode" id="audio-9-7" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://storage.googleapis.com/misreading/s01e01.mp3?_=7" /><a href="https://storage.googleapis.com/misreading/s01e01.mp3">https://storage.googleapis.com/misreading/s01e01.mp3</a></audio>
 <p>Tensor Comprehensions:</p>
 <ul>
 <li><a href="https://arxiv.org/abs/1802.04730">[1802.04730] Tensor Comprehensions: Framework-Agnostic High-Performance Machine Learning Abstractions</a></li>
