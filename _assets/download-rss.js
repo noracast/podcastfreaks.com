@@ -1,22 +1,20 @@
 const rss = require('../data/rss.json')
+const conf = require('../data/config.json')
 const shell = require('shelljs')
 const wget = require('wget-improved')
 const fs = require('fs')
 const xml2js = require('xml2js')
 
-const RSS_DIR = './static/rss'
-const RSS_DATA_JSON = './static/rss_data.json'
-
 // Make sure parent dir existence and its clean
-shell.rm('-rf', RSS_DIR)
-shell.mkdir('-p', RSS_DIR)
+shell.rm('-rf', conf.rss_dir)
+shell.mkdir('-p', conf.rss_dir)
 
 var total = Object.keys(rss).length
 var latest_pubdates = []
 
 Object.keys(rss).forEach(function (key) {
   let src = rss[key]
-  let dist = `${RSS_DIR}/${key}.rss`
+  let dist = `${conf.rss_dir}/${key}.rss`
   let download = wget.download(src, dist)
   download.on('end', ()=> {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
@@ -43,7 +41,7 @@ Object.keys(rss).forEach(function (key) {
           var load_order = latest_pubdates.map(function(element, index, array) {
             return element.id;
           });
-          fs.writeFileSync(RSS_DATA_JSON, JSON.stringify({ load_order }), 'utf8');
+          fs.writeFileSync(conf.rss_data_json, JSON.stringify({ load_order }), 'utf8');
         }
       })
     })
