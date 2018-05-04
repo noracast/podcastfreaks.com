@@ -1,9 +1,11 @@
 <template lang="pug">
 div
-  div(v-if="title || feed || link")
-    h3(v-if="title") {{ title }}
-    a(:href="feed" v-if="feed") RSS
-    a(:href="link" v-if="link") Website
+  div(v-if="title")
+    template(v-if="link")
+      a(:href="link")
+        h3(v-if="title") {{ title }}
+    template(v-else)
+      h3(v-if="title") {{ title }}
   button.btn.prev
     i.icon.icon-chevron-left
   button.btn.next
@@ -16,6 +18,7 @@ h3
   display: inline-block
   margin-top: 20px
   margin-right: 20px
+  font-size: 18px
 div
   >a
     margin-right: 10px
@@ -47,14 +50,13 @@ export default {
   mounted () {
 
     let cal = new CalHeatMap()
-    let startDate = new Date()
-    startDate.setMonth(startDate.getMonth() - 11)
     let def_config = {
       itemSelector: this.$el.querySelector('.heatmap'),
-      domain: 'month',
+      domain: 'year',
       subDomain: 'day',
+      range: 1,
       tooltip: true,
-      start: startDate,
+      // start: moment().subtract(1, 'years').toDate(),
       domainLabelFormat: '%b',
       domainGutter: 0,
       previousSelector: this.$el.querySelector('.prev'),
