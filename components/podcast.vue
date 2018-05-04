@@ -78,6 +78,7 @@ export default {
         cal.init(_.merge(def_config, {
           data: data,
           legend: [90],
+          itemName: ["minute", 'minutes'],
           displayLegend: false
          }))
       })
@@ -88,7 +89,6 @@ export default {
       .then(res => {
         cal.init(_.merge(def_config, {
           data: res,
-          itemName: ["minute", 'minutes'],
           legend: [1,2,3,4,5]
          }))
       })
