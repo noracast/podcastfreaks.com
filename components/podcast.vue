@@ -57,7 +57,7 @@ export default {
       range: 1,
       tooltip: true,
       // start: moment().subtract(1, 'years').toDate(),
-      domainLabelFormat: '%b',
+      domainLabelFormat: '',
       domainGutter: 0,
       previousSelector: this.$el.querySelector('.prev'),
       nextSelector: this.$el.querySelector('.next'),
