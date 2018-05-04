@@ -1,4 +1,4 @@
-var merge = require('deepmerge')
+var _ = require('lodash')
 
 var conf = {
   head: {
@@ -26,7 +26,7 @@ if(process.env.DEPLOY_ENV === 'GH_PAGES'){
       }]
      ]
   }
-  conf = merge(conf, additional)
+  conf = _.merge(conf, additional)
 }
 
 module.exports = conf
