@@ -84,10 +84,8 @@ export default {
     }
     else if(this.feeds){
       this.title = 'All Podcasts'
-
       this.loadRSSs(this.feeds)
       .then(res => {
-
         cal.init(_.merge(def_config, {
           data: res,
           itemName: ["minute", 'minutes'],
