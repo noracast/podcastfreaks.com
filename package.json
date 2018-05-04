@@ -28,9 +28,9 @@
     "ajv": "^6.4.0",
     "axios": "^0.18.0",
     "cal-heatmap": "^3.6.2",
-    "d3": "^5.0.0",
-    "element-ui": "^2.3.3",
-    "lodash": "^4.17.5",
+    "d3": "^5.1.0",
+    "element-ui": "^2.3.7",
+    "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "nuxt": "^1.4.0",
     "shelljs": "^0.8.1",
@@ -38,7 +38,7 @@
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.0",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "push-dir": "^0.4.1",
