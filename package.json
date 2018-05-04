@@ -39,6 +39,7 @@
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
+    "deepmerge": "^2.1.0",
     "node-sass": "^4.9.0",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",

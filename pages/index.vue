@@ -1,13 +1,16 @@
 <template lang="pug">
-div
+div.wrap
   h1 Podcast Activities
   podcast(:feeds="feeds" :title="'ALL'")
   podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
 </template>
 
-<style>
-@import '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css';
-@import '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css';
+<style lang="sass?indentedSyntax" scoped>
+.wrap
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 </style>
 
 <script>
