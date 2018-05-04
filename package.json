@@ -7,6 +7,7 @@
     "dev": "nuxt",
     "pregenerate": "node _assets/download-rss.js",
     "generate": "nuxt generate",
+    "pregenerate:gh-pages": "node _assets/download-rss.js",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup --force"
   },
