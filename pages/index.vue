@@ -17,13 +17,14 @@ div.wrap
 import axios from 'axios'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
+import sortedRSS from '~/static/rss_data.json'
 
 export default {
   components: {
     'podcast': require('~/components/podcast.vue').default
   },
-  data: function(){
-    return {feeds: Object.keys(rss).map(i => `./rss/${i}.rss`)}
+  data: function() {
+    return {feeds: sortedRSS.load_order.map(i => `./rss/${i}.rss`)}
   }
 }
 </script>
