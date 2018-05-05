@@ -22,9 +22,13 @@ script:
   - cd dist
   - git init
   - git remote add origin git@github.com:developersjp/podcast-freaks.git
+  # github pages
   - git checkout -b gh-pages
   - git add .
   - git commit -m 'Builds on travis'
   - git push origin gh-pages --force
+  # netlify
+  - git checkout -b netlify
+  - git push origin netlify --force
 branches:
   - master
