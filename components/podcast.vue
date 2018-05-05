@@ -54,6 +54,7 @@ export default {
       itemSelector: this.$el.querySelector('.heatmap'),
       domain: 'year',
       subDomain: 'day',
+      itemName: ['episode', 'episodes'],
       range: 1,
       tooltip: true,
       // start: moment().subtract(1, 'years').toDate(),
@@ -78,7 +79,7 @@ export default {
         cal.init(_.merge(def_config, {
           data: data,
           legend: [90],
-          itemName: ["minute", 'minutes'],
+          itemName: ['minute', 'minutes'],
           displayLegend: false
          }))
       })
