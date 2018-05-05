@@ -25,7 +25,7 @@ script:
   - git remote add origin git@github.com:developersjp/podcast-freaks.git
   - git checkout -b gh-pages
   - git add .
-  - git commit -m 'Builds on travis'
+  - git commit -m 'Builds with Travis Cron Job'
   - git push origin gh-pages --force
   #
   - cd ..
@@ -36,7 +36,7 @@ script:
   - git remote add origin git@github.com:developersjp/podcast-freaks.git
   - git checkout -b netlify
   - git add .
-  - git commit -m 'Builds on travis'
+  - git commit -m 'Builds with Travis Cron Job'
   - git push origin netlify --force
 branches:
   - master
