@@ -81,7 +81,7 @@ export default {
           legend: [90],
           itemName: ['minute', 'minutes'],
           displayLegend: false
-         }))
+        }))
       })
     }
     else if(this.feeds){
@@ -91,7 +91,7 @@ export default {
         cal.init(_.merge(def_config, {
           data: res,
           legend: [1,2,3,4,5]
-         }))
+        }))
       })
     }
   },
