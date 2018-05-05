@@ -19,7 +19,7 @@ import axios from 'axios'
 import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
-import build_info from '~/static/build_info.json'
+import build_info from '~/static/downloads/build_info.json'
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
   },
   data: function() {
     return {
-      feeds: build_info.load_order.map(i => `./rss/${i}.rss`),
+      feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a")
     }
   }

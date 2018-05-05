@@ -4,11 +4,12 @@ const wget = require('wget-improved')
 const fs = require('fs')
 const xml2js = require('xml2js')
 
-const RSS_DIR = './static/rss'
-const BUILD_INFO = './static/build_info.json'
+const DOWNLOADS_DIR = './static/downloads'
+const RSS_DIR       = './static/downloads/rss'
+const BUILD_INFO    = './static/downloads/build_info.json'
 
 // Make sure parent dir existence and its clean
-shell.rm('-rf', RSS_DIR)
+shell.rm('-rf', DOWNLOADS_DIR)
 shell.mkdir('-p', RSS_DIR)
 
 var total = Object.keys(rss).length
