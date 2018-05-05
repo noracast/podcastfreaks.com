@@ -29,6 +29,8 @@ div
     outline: 0
 .heatmap
   margin-top: 10px
+  svg
+    width: 650px
 </style>
 
 <script>
@@ -38,6 +40,7 @@ import d3 from 'd3'
 import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
 import _ from 'lodash'
+import CalendarHeatMap from 'calendar-heatmap-mini'
 
 export default {
   props: ['feeds','feed'],
@@ -88,10 +91,27 @@ export default {
       this.title = 'All Podcasts'
       this.loadRSSs(this.feeds)
       .then(res => {
-        cal.init(_.merge(def_config, {
-          data: res,
-          legend: [1,2,3,4,5]
-        }))
+        // cal.init(_.merge(def_config, {
+        //   data: res,
+        //   legend: [1,2,3,4,5]
+        // }))
+
+        var chartData = [{
+          date: new Date(),
+          count: 100
+        }];
+
+        const chart1 = new CalendarHeatMap()
+                      .data(chartData)
+                      .selector('.heatmap')
+                      .colorRange(['#D8E6E7', '#218380'])
+                      .tooltipEnabled(true)
+                      .onClick(function (data) {
+                        console.log('onClick callback. Data:', data);
+                      });
+
+        // render the chart
+        chart1();
       })
     }
   },
