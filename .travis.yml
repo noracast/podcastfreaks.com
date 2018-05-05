@@ -18,17 +18,25 @@ before_install:
   - eval $(ssh-agent -s)
   - ssh-add github_deploy_key
 script:
+  # deploy to github pages
   - npm run generate:gh-pages
   - cd dist
   - git init
   - git remote add origin git@github.com:developersjp/podcast-freaks.git
-  # github pages
   - git checkout -b gh-pages
   - git add .
   - git commit -m 'Builds on travis'
   - git push origin gh-pages --force
-  # netlify
+  #
+  - cd ..
+  # deploy to netlify
+  - npm run generate
+  - cd dist
+  - git init
+  - git remote add origin git@github.com:developersjp/podcast-freaks.git
   - git checkout -b netlify
+  - git add .
+  - git commit -m 'Builds on travis'
   - git push origin netlify --force
 branches:
   - master
