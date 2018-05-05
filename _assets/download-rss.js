@@ -5,7 +5,7 @@ const fs = require('fs')
 const xml2js = require('xml2js')
 
 const RSS_DIR = './static/rss'
-const RSS_DATA_JSON = './static/rss_data.json'
+const BUILD_INFO = './static/build_info.json'
 
 // Make sure parent dir existence and its clean
 shell.rm('-rf', RSS_DIR)
@@ -43,7 +43,11 @@ Object.keys(rss).forEach(function (key) {
           var load_order = latest_pubdates.map(function(element, index, array) {
             return element.id;
           });
-          fs.writeFileSync(RSS_DATA_JSON, JSON.stringify({ load_order }), 'utf8');
+          var data = {
+            load_order,
+            updated: new Date()
+          }
+          fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
         }
       })
     })

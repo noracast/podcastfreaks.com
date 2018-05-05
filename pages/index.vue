@@ -1,6 +1,7 @@
 <template lang="pug">
 div.wrap
   h1 Podcast Activities
+  span Last update: {{ updated }}
   podcast(:feeds="feeds" :title="'ALL'")
   podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
 </template>
@@ -15,16 +16,20 @@ div.wrap
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
-import sortedRSS from '~/static/rss_data.json'
+import build_info from '~/static/build_info.json'
 
 export default {
   components: {
     'podcast': require('~/components/podcast.vue').default
   },
   data: function() {
-    return {feeds: sortedRSS.load_order.map(i => `./rss/${i}.rss`)}
+    return {
+      feeds: build_info.load_order.map(i => `./rss/${i}.rss`),
+      updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a")
+    }
   }
 }
 </script>
