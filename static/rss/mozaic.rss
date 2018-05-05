@@ -29,6 +29,522 @@
 
     <item>
       <category>mozaicfm</category>
+      <enclosure url="http://files.mozaic.fm/mozaic-ep37.mp3" length="57271676" type="audio/mpeg" />
+      <guid isPermaLink="false">https://mozaic.fm/episodes/37/monthly-web-201804.html</guid>
+      <link>https://mozaic.fm/episodes/37/monthly-web-201804.html</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0900</pubDate>
+      <title>ep37 Monthly Web 201804 | mozaic.fm</title>
+      <itunes:author>Jxck</itunes:author>
+      <itunes:duration>01:59:19</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords>web,tech,it</itunes:keywords>
+      <itunes:order>0</itunes:order>
+      <itunes:subtitle>第 37 回のテーマは 2018 年 4 月の Monthly Web です。</itunes:subtitle>
+      <media:content url="https://files.mozaic.fm/mozaic-ep37.mp3" fileSize="57271676" type="audio/mpeg" />
+      <description># ep37 Monthly Web 201804
+
+第 37 回のテーマは 2018 年 4 月の Monthly Web です。
+
+
+## Show Note
+
+### Chrome 動向
+
+- Stable: 66
+- Updates
+  - **New in Chrome 66**
+    - https://developers.google.com/web/updates/2018/04/nic66
+    - CSS Typed Object Model
+    - Async Clipboard API
+    - CSS Paint API
+    - autocomplete in TextArea and Select
+    - autocapitalize for form (compat with safari)
+    - trimStart() and trimEnd()
+  - **What&#039;s New In DevTools (Chrome 67)**
+    - https://developers.google.com/web/updates/2018/04/devtools
+    - Search across all network headers
+    - Copy as fetch
+    - New audits, desktop configuration options, and viewing traces
+    - Stop infinite loops
+    - JavaScript VM instances clearly listed in the Memory panel
+    - The Network tab in the Sources panel has been renamed to the Page tab
+    - Dark theme updates
+    - Certificate transparency information in the Security panel blog
+    - Site isolation features in the Performance panel
+  - Present web pages to secondary attached displays
+    - https://developers.google.com/web/updates/2018/04/present-web-pages-to-secondary-attached-displays
+  - Loading WebAssembly modules efficiently
+    - https://developers.google.com/web/updates/2018/04/loading-wasm
+  - **Enabling publishers to implement user controls on AMP pages**
+    - https://amphtml.wordpress.com/2018/04/02/enabling-publishers-to-implement-user-controls-on-amp-pages/
+    - AMP でユーザ制御 (Cookie 仕様の許可ダイアログなど) を実装できるように
+- **Blink on 9**
+  -  LT List
+    - https://docs.google.com/spreadsheets/d/1DovPnWWSXuG8PRyN-HT7R9gZ4PLihly5ZepqZJ3vmAc/edit#gid=0
+  - Tricium (code analyzer for chromium)
+    - https://docs.google.com/presentation/d/1_iJGKqdeV4lyUsTTCrU7xSmCs9xz3Xe9qjHRFVF1tc0/edit
+    - https://chromium.googlesource.com/infra/infra/+/master/go/src/infra/tricium
+  - Mojo (Service Worker IPC)
+    - https://docs.google.com/presentation/d/1ih5Dp39eGrfWKhtMLk2ZEibv2-t30kReiXGGgtt_TDM/edit
+  - Lazyload
+    - https://docs.google.com/presentation/d/14chb-DUlP6uofSL5aDTXceEVeKehd__9qqknRRC41qw/edit
+  - Optimized functions are not crucial for the performance in our cases
+    - https://docs.google.com/presentation/d/1fjuAcjopk726cXKmmKOUl_IQQ3_2Ih_Vt15tgjcr4jU/edit
+  - Server Push
+    - https://docs.google.com/presentation/d/1O-hZEewKwPHPrcucLUE2MRQhBiekhMtWm-eHS49XVhs/edit
+  - **Layered APIs**
+    - Layered APIs: an overview and update
+      - https://docs.google.com/presentation/d/1_5EVAiuragdEqop8V9b1hJkOW38y4EsXYgNBKdpSHmA/edit
+    - blog
+- Intents
+  - Ship: [Intervention] Stop loading in background, on mobile
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/83sXW-6caZ0/GzidYguJCgAJ
+  - Ship: RTCPeerConnection.id
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/4ZKccJozMuU/So_uEJbLCgAJ
+  - Ship: Provide network quality estimates to web servers via Client Hints
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/G_rkd0yo2AM/IGXDxRl9CwAJ
+  - **Ship: fetch() credentials default to &quot;same-origin&quot;**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/WOAtshyL2As/wITX3abkAQAJ
+    - fetch の cookie 付与などのデフォルトが same-origin になり、送られるようになった
+    - 送られたくない人は明示的に omit する必要
+  - Implement and Ship: WebAudio: Selectable automation rate for AudioParam
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/extLjVzLw7s/9XUZvQqcBQAJ
+  - **Implement and Ship: Cross-Origin Read Blocking (CORB)**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/hnAWBzq1qys/DhyRSDKKBQAJ
+    - https://chromium.googlesource.com/chromium/src/+/master/services/network/cross_origin_read_blocking_explainer.md
+    - https://anforowicz.github.io/xsdb-demo/index.html
+  - Implement and Ship: ping, rel, referrerPolicy, relList, hreflang, type and text properties on SVG elements
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/LXzY4gwaZFU/fVJIr55OAwAJ
+  - Implement and Ship: Case-insensitive DOMTokenList.supports
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/F3gn1sjq_mw/wJrBfeu5BwAJ
+  - Implement and Ship: Blocking FTP subresources
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/HzumeW2JQW8/TtbNkXw8AwAJ
+  - Implement and Ship: Accept two values in the overflow shorthand
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/4qF8XPQ1z2s/q2MFDxHxCAAJ
+  - Implement and Ship: CSS: &quot;grab&quot; and &quot;grabbing&quot; values for cursor property
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/1kWStcPD2yg/wrQvtTKEAAAJ
+  - Implement and Ship: user activation through long-press gesture
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/-2AyrUFwXvY/Q_wCUmKSAgAJ
+  - Implement: customElements.upgrade()
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/zCQe7UkR07w/8In0oinBAgAJ
+  - **Implement: Event Timing**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/QNE6TVQve-0/y3KfnxOaBAAJ
+  - Implement: Wake Lock API based on Promise
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/KMNZmMF1_H4/U6EGekDrBwAJ
+  - Implement: Keyboard Map
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/m0OOlPJGNTY/Mofa0PzxBwAJ
+  - Implement: Add FullscreenOptions
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/XdRp1DXmUFs/5vda0YM6CAAJ
+  - **Implement: User Timing L3**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/T-DgYf79sFU/Kuu6Ltt6CAAJ
+  - Implement: WebUSB on Web Workers
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/MReOVYgRpKk/1jY8MiyACQAJ
+    - USB のヘビーな I/O をワーカに
+  - **Implement: Priority Hints API**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/65lfM2f0eeM/-1ttGbZmCQAJ
+    - critical, high, medium, low, unimportant で優先度付け
+    - H2 の dependency/weight に反映するなど
+  - Implement: WebXR Hit-test
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/HYTqcRJu_aU/Dz0QTOGWCgAJ
+  - Implement: Worker&#039;s RequestAnimationFrame and new OffscreenCanvas.commit()
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/3dAVa13THa8/VeBUAmW5CwAJ
+  - Experiment: Kaby Lake VP8/VP9 acceleration on ChromeOS
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/S1l48d1NVsk/AfmkIuCcAgAJ
+    - Kaby Lake 以降に入ったハードウェアデコーダーを Chrome OS で利用する
+  - Unship: DOMCursor
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/78CbWoEUO7M/_yxxnMFIAgAJ
+  - Unship: SVGSVGElement.{pixel, screenPixel}UnitToMillimeter{X, Y}
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/-Vhlz6uEVOA/Z1wt0yEQBQAJ
+  - Remove: PointerEvent.fromElement and PointerEvent.toElement
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/G2s1Ol3qcgA/7J1i-WctCAAJ
+  - Deprecate and Remove: CSS filter should reject negative brightness
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/eIVnLFD_tPM/4tZUiyyBAwAJ
+  - Deprecate and Remove: &#039;stalled&#039; events for HTMLMediaElements using MediaSource
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/x54XtrTyOP8/4-5QZlZzDAAJ
+  - **Deprecate: Nonsecurely delivered cookies.**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/r0UBdUAyrLk/Pqg-fu6WBAAJ
+    - 平文で Cookie を送る場合、その Cookie が古いものなら消してしまうという提案
+  - **Request to Deprecate and Remove: Trust in existing Korean GPKI certificates**
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/ujIKn9HUCF4/sRruM1LeBAAJ
+    - 韓国の GPKI も色々やらかしてるから symantec みたいに外してくれというリクエスト
+  - Site Isolation Status - Making progress towards M67
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/_T0bC1X_fCI/nFv3yH5TBAAJ
+  - Request for comment: &#039;&gt;&gt;&gt;&#039; (a shadow-piercing combinator) in static profile (under experimental flag)
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/ScMLN_Hj52E/v0ETd6NpBQAJ
+  - PSA: Deprecating notification badges on Android M for Samsung devices
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/8OxBupjBBbE/gqH5qd6NBQAJ
+- Team Weekly Snippet
+  - Loading (3/12 - 30)
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/d4bzIzZXzxo/WEeU6xJZCAAJ
+  - Platform Architecture
+    - https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/TeEabAw5Msc/aYPTZXCQCwAJ
+- v8
+  - V8 JavaScript Engine: Improved code caching
+    - https://v8project.blogspot.jp/2018/04/improved-code-caching.html
+- Other
+  - **Official Google Webmaster Central Blog: Distrust of the Symantec PKI: Immediate action needed by site operators**
+    - https://webmasters.googleblog.com/2018/04/distrust-of-symantec-pki-immediate.html
+    - https://developers-jp.googleblog.com/2018/04/distrust-of-symantec-pki-immediate.html
+    - Chrome 66: 2018/4/17 に 2016/6 以前の証明書が無効
+    - Chrome 70: 2018/10/16 に全て無効
+  - **Migrate a GCM Client App for Android to Firebase Cloud Messaging**
+    - https://developers.google.com/cloud-messaging/android/android-migrate-fcm
+    - GCM での Push は 2018/4/10 で deprecate 2019/4/11 で remove
+  - Bookmarklet: Chrome DevTools trace page
+    - https://paul.kinlan.me/bookmarklet-trace-page/
+    - https://puppeteeraas.com/ で取得したトレースを
+    - https://chromedevtools.github.io/timeline-viewer/ で表示する
+    - という bookmarklet が便利という話
+  - New tools for building user controls in AMP pages
+    - https://amphtml.wordpress.com/2018/04/18/new-tools-for-building-user-controls-in-amp-pages/
+  - Chromium Blog: Protecting users from extension cryptojacking
+    - https://blog.chromium.org/2018/04/protecting-users-from-extension-cryptojacking.html
+
+
+### Firefox 動向
+
+- Stable: 59
+- Updates
+  - These Weeks in Firefox: Issue 36
+    - https://blog.nightly.mozilla.org/2018/04/11/these-weeks-in-firefox-issue-36/
+  - Improving DevTools&#039; performance, one iteration at a time
+    - https://blog.nightly.mozilla.org/2018/04/10/improving-devtools-performance-one-iteration-at-a-time/
+- Intents
+  - Ship: Allow the overflow shorthand to accept two values.
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/4vy-a5_a35o/FH_KnQFGBQAJ
+  - Ship: DOMPoint interface from its latest spec
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/jwmkVmU4DNM/IpF5K5epBAAJ
+  - **Ship: PerformanceServerTiming**
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/MSzaY7_4mvg/hGpUlTzxAgAJ
+  - **Implement and ship: same-site cookies**
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/7hOKZDuO3qI/w9FVLatSAAAJ
+    - **収録中 Jxck が &quot;CORS&quot; と言ってるのは &quot;CSRF&quot; の間違いです**
+  - Implement: CSS subgrid
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/-1SfS4jWqd8/D6aJ7XprBQAJ
+  - Implement: Early, experimental support for application/javascript+binast
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/1ZrtZlcI888/jOr1cTRHBQAJ
+  - Unship nsIDOMEvent:
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/5qNZRTZrhLE/TkTRLIHHBwAJ
+  - **Unship: URL.createObjectURL(MediaStream)**
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/o_0RoYoCmM4/vpspAxCVCAAJ
+  - Unship constructors on SVGNumber
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/1jEXK-Ctbng/T_AOEyyRCAAJ
+  - Unship: SVGViewElement.viewTarget
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/3rbtcFOcVjI/vC-oG_uQCAAJ
+  - Require Node 8.9.1/npm 5.5.1 for ESLint
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/OlPUPJ9x38s/CF3vzI2gCAAJ
+  - Deprecate: JS-Implemented WebIDL
+    - https://groups.google.com/forum/#!msg/mozilla.dev.platform/0GE0VDS1RNg/WDBaAehxAgAJ
+- Site Compat
+  - **Basic auth credentials are now encoded in UTF-8 instead of ISO-8859-1 (Affecting)**
+    - https://www.fxsitecompat.com/en-CA/docs/2018/basic-auth-credentials-are-now-encoded-in-utf-8-instead-of-iso-8859-1/
+  - **URL.createObjectURL() no longer accepts MediaStream as argument**
+    - https://www.fxsitecompat.com/en-CA/docs/2018/url-createobjecturl-no-longer-accepts-mediastream-as-argument/
+  - SVGViewElement.prototype.viewTarget has been removed
+    - https://www.fxsitecompat.com/en-CA/docs/2018/svgviewelement-prototype-viewtarget-has-been-removed/
+  - Touch event listeners are now passive by default, making scrolling faster on mobile
+    - https://www.fxsitecompat.com/en-CA/docs/2018/touch-event-listeners-are-now-passive-by-default-making-scrolling-faster-on-mobile/
+  - SVGNumber no longer comes with constructor
+    - https://www.fxsitecompat.com/en-CA/docs/2018/svgnumber-no-longer-comes-with-constructor/
+- Other
+  - JavaScript to Rust and Back Again: A wasm-bindgen Tale
+    - https://hacks.mozilla.org/2018/04/javascript-to-rust-and-back-again-a-wasm-bindgen-tale/
+  - **Compatibility/Unshippables**
+    - https://wiki.mozilla.org/Compatibility/Unshippables
+    - ship すると web の互換性が壊れる機能のリスト
+  - **MDN Changelog for March 2018**
+    - https://hacks.mozilla.org/2018/04/mdn-changelog-for-march-2018/
+    - Brotli を使う実験をしてみたら圧縮率は高かったけど時間がかかるという結果に
+      - エンコードのレベルなどを変えて向上はした
+    - CloudFront (Brotli 非サポート) を使うようにするので、実験は終了
+    - そもそも Python のミドルウェアで動的なエンコードをかますような実装だったので、使い方が間違っていた感も否めない
+    - Brotli については Akamai や Cloudflare も過去に実験している
+      - https://blog.cloudflare.com/results-experimenting-brotli/
+      - https://blogs.akamai.com/2016/02/understanding-brotlis-potential.html
+  - **A new video series: Web Demystified**
+    - https://hacks.mozilla.org/2018/04/a-new-video-series-web-demystified/
+    - Web の基礎技術を解説するビデオシリーズ
+  - **Hello wasm-pack!**
+    - https://hacks.mozilla.org/2018/04/hello-wasm-pack/
+    - WASM と JS をいい感じ混ぜて使うツール
+    - Rust (Cargo) と Node (NPM) を透過的に使えるように
+  - Testing Strategies for React and Redux
+    - https://hacks.mozilla.org/2018/04/testing-strategies-for-react-and-redux/
+  - **Sneak Peek at WebAssembly Studio**
+    - https://hacks.mozilla.org/2018/04/sneak-peek-at-webassembly-studio/
+    - https://webassembly.studio/
+
+
+### Safari 動向
+
+- Stable: 11.1
+- **New WebKit Features in Safari 11.1**
+  - https://webkit.org/blog/8216/new-webkit-features-in-safari-11-1/
+- **Release Notes for Safari Technology Preview 53**
+  - https://webkit.org/blog/8179/release-notes-for-safari-technology-preview-53/
+  - Added Fullscreen API as an Experimental Feature (r229680)
+  - Added support for VCP encoder on macOS and iOS (r229920)
+- **Release Notes for Safari Technology Preview 54**
+  - https://webkit.org/blog/8232/release-notes-for-safari-technology-preview-54/
+  - Fixing Clipboard API
+  - Fixing Beacon API
+  - Implement createImageBitmap(Blob)
+  - Fixing WebRTC
+  - Fixing Web Inspector
+- Other
+  - **Introducing the Payment Request API for Apple Pay**
+    - https://webkit.org/blog/8182/introducing-the-payment-request-api-for-apple-pay/
+  - Web Inspector Styles Sidebar Improvements
+    - https://webkit.org/blog/8239/web-inspector-styles-sidebar-improvements/
+  - **Safari の UA 文字列が固定されて固定されなくなったおはなし \- fragmentary**
+    - https://myakura.hatenablog.com/entry/2018/04/16/083000
+  - itp_study
+    - https://web-study.connpass.com/event/84158/
+
+
+### Edge 動向
+
+- Stable: EdgeHTML 16
+- Status Updates
+  - https://github.com/MicrosoftEdge/Status/compare/production@{2018-04-01}...production@{2018-05-01}
+- EdgeHTML
+  - 17 が出そうで出なかった
+  - https://aka.ms/devguide_edgehtml_16
+- Build Changelog
+  - https://developer.microsoft.com/en-us/microsoft-edge/platform/changelog/
+- ChakraCore
+  - Release ChakraCore v1.8.3 · Microsoft/ChakraCore
+  - https://github.com/Microsoft/ChakraCore/releases/tag/v1.8.3
+  - https://github.com/Microsoft/ChakraCore/wiki/Roadmap#v183
+- Other
+  - First wave of Progressive Web Apps hits the Microsoft Store
+    - https://www.neowin.net/news/first-wave-of-progressive-web-apps-hits-the-microsoft-store
+  - 2018 年 4 月の Internet Explorer / Microsoft Edge の累積的なセキュリティ更新プログラムを公開しました - Japan IE Support Team Blog
+    - https://blogs.technet.microsoft.com/jpieblog/2018/04/11/securityupdate201804/
+  - **Introducing sonarwhal v1: The linting tool for the web**
+    - https://blogs.windows.com/msedgedev/2018/04/19/sonarwhal-v1-linting-tool-for-web/
+    - Web を lint するツールの v1 がリリース
+  - **Introducing the Microsoft Edge DevTools Preview app**
+    - https://blogs.windows.com/msedgedev/2018/04/25/introducing-the-microsoft-edge-devtools-preview-app/
+
+
+### WHATWG/W3C 動向
+
+- Recommendation
+  - TTML Profiles for Internet Media Subtitles and Captions 1.0.1 (IMSC1) is now a W3C Recommendation
+    - https://www.w3.org/blog/news/archives/6975
+- Proposed Recommendation
+  - Call for Review: Web Content Accessibility Guidelines (WCAG) 2.1
+    - https://www.w3.org/blog/news/archives/6972
+- Candidate Recommendation
+  - Login with no password - Major Standards Milestone in Global Effort Towards Simpler, Stronger Authentication on the Web
+    - https://www.w3.org/blog/news/archives/6948
+  - W3C Invites Implementations of Timed Text Markup Language 1 (TTML1) (Third Edition)
+    - https://www.w3.org/blog/news/archives/6967
+- Working Draft
+  - Call for Consensus: ICE Transport Extensions for WebRTC
+    - https://lists.w3.org/Archives/Public/public-webrtc/2018Apr/0058.html
+  - Call for Consensus: MediaStreamTrack Content Hints
+    - https://lists.w3.org/Archives/Public/public-webrtc/2018Apr/0059.html
+  - Call for Consensus: DSCP Control API
+    - https://lists.w3.org/Archives/Public/public-webrtc/2018Apr/0060.html
+- First Public Working Draft
+  - Web of Things Protocol Binding Templates; updated WoT drafts
+    - https://www.w3.org/blog/news/archives/6945
+  - **CSS Layout API Level 1**
+    - https://www.w3.org/blog/news/archives/6953
+- Chartering
+  - Work in Progress on Web Fonts Working Group Charter
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0000.html
+  - AppsDesignLab Community Group created
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0007.html
+  - Audio Description Community Group created
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0006.html
+  - Proposed W3C Charter: Distributed Tracing Working Group
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0005.html
+  - Proposed W3C Charter: Timed Text Working Group
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0003.html
+  - Proposed W3C Charter: Web Real-Time Communications Working Group
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0008.html
+- **TAG Review**
+  - **CSS Layout API**
+    - https://github.com/w3ctag/design-reviews/issues/224
+  - **Signed Exchanges**
+    - https://github.com/w3ctag/design-reviews/issues/235
+  - **Web Components Guidelines Doc?**
+    - https://github.com/w3ctag/design-reviews/issues/227
+  - **Find-in-page API(s)**
+    - https://github.com/w3ctag/design-reviews/issues/236
+- Other
+  - **TAG の election で Intel の @kennethrohde が Join**
+    - https://twitter.com/w3cdevs/status/981159615013498880
+    - https://www.w3.org/2018/03/05-tag-nominations
+    - https://www.w3.org/blog/news/archives/6939
+  - **Proposal: https://example.com/.well-known/modify-credentials**
+    - https://lists.w3.org/Archives/Public/public-webappsec/2018Apr/0003.html
+  - Audio Description Community Group Proposed
+    - https://lists.w3.org/Archives/Public/public-new-work/2018Apr/0001.html
+    - To create an open standard file format to support audio description all the way from scripting to mixing
+  - **Requirements for Secondary Certificates**
+    - https://lists.w3.org/Archives/Public/ietf-http-wg/2018AprJun/0052.html
+  - **`Accept-CH` header is weird · Issue #206 · w3ctag/design-reviews**
+    - https://github.com/w3ctag/design-reviews/issues/206#issuecomment-379422513
+    - 先月話した Client Hints 、 TAG 的にはやってくことになった
+  - **CSS2 maintenance proposal · Issue #2553 · w3c/csswg-drafts**
+    - https://github.com/w3c/csswg-drafts/issues/2553
+    - CSSWG の F2F で、 CSS Level 2 仕様の現状まとめと今後のメンテ計画について議論
+  - **A short update on the web-platform-test project invitation**
+    - https://www.w3.org/blog/2018/04/a-short-update-on-the-web-platform-test-project-invitation/
+    - WTP の organization を移した話
+
+
+### TC39 動向
+
+- minutes
+  - **3 月の minutes**
+  - https://github.com/tc39/tc39-notes/tree/master/es9/2018-03
+- Proposals Diff
+  - https://github.com/tc39/proposals/compare/master@{2018-01-01}...master@{2018-02-01}
+  - 0-&gt;1: N/A
+  - 1-&gt;2: N/A
+  - 2-&gt;3: N/A
+  - 3-&gt;4: N/A
+- New Proposals
+- Other
+  - **「TC39 のリリースは 5-10 年サイクルに戻した方がいいのかもなぁ」 by @awbjs**
+    - https://twitter.com/awbjs/status/984546160277794816
+    - TC39 の大きなゴールが無い問題
+
+
+### IETF 動向
+
+- IETF
+- RFC
+- IETF Last Call
+- WG Last Call
+  - 2nd Working Group Last Call: draft-ietf-httpbis-rand-access-live-03
+    - https://lists.w3.org/Archives/Public/ietf-http-wg/2018AprJun/0023.html
+    - 大きめの変更が入ったので 2 回目
+- Call for Adoption
+- I-D Action
+- Draft
+  - **HTTP Server *ush**
+    - https://tools.ietf.org/html/draft-pardue-server-ush-00
+    - April Fools&#039; Draft
+  - HTTP Representation Variants
+    - https://tools.ietf.org/html/draft-ietf-httpbis-variants-00
+  - **HTTPtre: HTTP の改定が各仕様でドラフトに**
+    - https://lists.w3.org/Archives/Public/ietf-http-wg/2018AprJun/0024.html
+    - Authentication
+      - https://tools.ietf.org/html/draft-ietf-httpbis-auth-00
+    - Caching
+      - https://tools.ietf.org/html/draft-ietf-httpbis-cache-00
+    - Conditional Requests
+      - https://tools.ietf.org/html/draft-ietf-httpbis-conditional-00
+    - Range Requests
+      - https://tools.ietf.org/html/draft-ietf-httpbis-range-00
+    - Semantics and Content
+      - https://tools.ietf.org/html/draft-ietf-httpbis-semantics-00
+    - Message Syntax and Routing
+      - https://tools.ietf.org/html/draft-ietf-httpbis-messaging-00
+  - **The &#039;payto&#039; URI scheme for payments**
+    - https://tools.ietf.org/html/draft-dold-payto-01
+    - 支払いのための URI scheme の提案
+    - `payto://sepa/CH9300762011623852957?amount=EUR:200.0&amp;message=hello`
+  - Referring to Internet Drafts as &#039;Internet Drafts&#039; Rather Than &#039;Works in Progress&#039;
+    - https://tools.ietf.org/html/draft-roach-id-cite-00
+    - &#039;Works in Progress&#039; という用語を &#039;Internet Drafts&#039; で統一する
+  - Geneve Extensions
+    - https://tools.ietf.org/html/draft-worley-nvo3-geneve-misc-00
+  - Too Many Requests Response Code for the Constrained Application Protocol
+    - https://tools.ietf.org/html/draft-ietf-core-too-many-reqs-00
+  - **Signed HTTP Exchanges Implementation Checkpoints**
+    - https://tools.ietf.org/html/draft-yasskin-httpbis-origin-signed-exchanges-impl-00#section-3.1.1
+  - Usage of SPAKE with TLS 1.3
+    - https://tools.ietf.org/html/draft-barnes-tls-pake-00
+  - Elliptic curve 2y^2=x^3+x over field size 8^91+5
+    - https://tools.ietf.org/html/draft-brown-ec-2y2-x3-x-mod-8-to-91-plus-5-01
+  - HTTP Overload Control Mechanism
+    - https://tools.ietf.org/html/draft-asveren-dispatch-http-overload-control-00
+  - Poll-Based SET Token Delivery Using HTTP
+    - https://tools.ietf.org/html/draft-ietf-secevent-http-poll-00
+    - Security Event Token (jwt etc) を Polling で取得する
+  - Push-Based SET Token Delivery Using HTTP
+    - https://tools.ietf.org/html/draft-ietf-secevent-http-push-00
+    - Security Event Token (jwt etc) を Push(HTTP POST) で配布す
+- Other
+  - Tests for HTTP Structured Headers
+    - https://github.com/httpwg/structured-header-tests
+    - 実装者向け test case のリポジトリ
+
+
+### 周辺動向
+
+- **Announcing 1.1.1.1: the fastest, privacy-first consumer DNS service**
+  - https://blog.cloudflare.com/announcing-1111/
+  - https://labs.apnic.net/?p=1127
+  - https://1.1.1.1/
+  - https://1.1.1.1/ja-jp/
+- ImperialViolet - Post-quantum confidentiality for TLS
+  - https://www.imperialviolet.org/2018/04/11/pqconftls.html
+  - 耐量子コンピュータ TLS
+- Submit final certs to CT logs (#3640)
+  - https://github.com/letsencrypt/boulder/commit/1271a15be79b9717ee5b98e707b76e7ac86a9a0e
+  - SCT を埋め込んだ証明書も Submit するように
+- **ブロッキング騒動に対する声明**
+  - ISOC-JP
+    - 著作権侵害サイトに対するブロッキングについて
+    - https://www.isoc.jp/wiki.cgi?page=20180412_Blocking_Statement
+  - JPNIC
+    - 政府によるサイトブロッキング要請報道への当センターの見解 - JPNIC
+    - https://www.nic.ad.jp/ja/topics/2018/20180412-01.html
+  - WIDE
+    - 漫画・アニメの海賊版サイトに関する WIDE プロジェクトの意見
+    - http://www.wide.ad.jp/News/2018/20180411.html
+  - NTT
+    - インターネット上の海賊版サイトに対するブロッキングの実施について
+    - http://www.ntt.co.jp/news2018/1804/180423a.html
+  - その他多数
+  - mangamura.org で言えば、 Cloudflare を使ってるので DNS A レコード削除で対応
+  - ISP なら、外の DNS を設定してる人にもブロックを適用できる
+  - 外 DNS を DoH で使うとブロックできないので、 DoH 普及するとこの方法はできなさそう
+- **Wizard Bible**
+  - http://wizardbible.org/
+  - セキュリティ系の情報まとめサイトが閉鎖された。
+  - 警察/検察からの圧力があったらしい
+- Announcing NGINX Unit 1.0 | NGINX
+  - https://www.nginx.com/blog/nginx-unit-1-0-released/
+  - 軽量アプリケーションコンテナ実装
+- April 22, 1993: Mosaic Browser Lights Up Web With Color, Creativity | WIRED
+  - https://www.wired.com/2010/04/0422mosaic-web-browser/
+  - Mosaic 1.0 リリースから 25 年
+- **Yahoo! Japan が TLS1.0, TLS1.1 を 2018 年 6 月 1 日で切る**
+  - https://security.yahoo.co.jp/news/tls12.html
+
+
+### イベント
+
+- 4 月
+  - 18-19: BlinkOn 9
+- 5 月
+  - 7-9: Microsoft Build
+    - https://developer.microsoft.com/en-us/events/build
+  - 8-10: Google I/O 2018
+    - https://events.google.com/io/
+  - 10-11: Web5G Workshop
+    - https://www.w3.org/2017/11/web5g-workshop/sponsorship
+  - build
+- 6 月
+  - 4-8: WWDC
+    - https://developer.apple.com/wwdc/
+- 10 月
+  - 22-26: TPAC 2018 Lyon
+    - https://www.w3.org/2018/10/TPAC/Overview.html
+</description>
+    </item>
+
+    <item>
+      <category>mozaicfm</category>
       <enclosure url="http://files.mozaic.fm/mozaic-ep36.mp3" length="78517239" type="audio/mpeg" />
       <guid isPermaLink="false">https://mozaic.fm/episodes/36/monthly-web-201803.html</guid>
       <link>https://mozaic.fm/episodes/36/monthly-web-201803.html</link>
@@ -38,12 +554,12 @@
       <itunes:duration>02:43:35</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>0</itunes:order>
-      <itunes:subtitle>第 35 回のテーマは 2018 年 3 月の Monthly Web です。</itunes:subtitle>
+      <itunes:order>1</itunes:order>
+      <itunes:subtitle>第 36 回のテーマは 2018 年 3 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep36.mp3" fileSize="78517239" type="audio/mpeg" />
       <description># ep36 Monthly Web 201803
 
-第 35 回のテーマは 2018 年 3 月の Monthly Web です。
+第 36 回のテーマは 2018 年 3 月の Monthly Web です。
 
 
 ## Show Note
@@ -703,7 +1219,7 @@
       <itunes:duration>02:08:10</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>1</itunes:order>
+      <itunes:order>2</itunes:order>
       <itunes:subtitle>第 35 回のテーマは Security の Bug Bounty 編です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep35.mp3" fileSize="123037757" type="audio/mpeg" />
       <description># ep35 Security (Bug Bounty)
@@ -760,7 +1276,7 @@
       <itunes:duration>02:16:08</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>2</itunes:order>
+      <itunes:order>3</itunes:order>
       <itunes:subtitle>第 34 回のテーマは 2018 年 2 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep34.mp3" fileSize="130683485" type="audio/mpeg" />
       <description># ep34 Monthly Web 201802
@@ -1355,7 +1871,7 @@
       <itunes:duration>02:51:04</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>3</itunes:order>
+      <itunes:order>4</itunes:order>
       <itunes:subtitle>第 33 回のテーマは 2018 年 1 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep33.mp3" fileSize="164216636" type="audio/mpeg" />
       <description># ep33 Monthly Web 201801
@@ -2266,7 +2782,7 @@
       <itunes:duration>01:51:25</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>4</itunes:order>
+      <itunes:order>5</itunes:order>
       <itunes:subtitle>第 32 回のテーマは 2017 年の Yearly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep32.mp3" fileSize="106963003" type="audio/mpeg" />
       <description># ep32 Yearly Web 2017
@@ -2616,7 +3132,7 @@ ep25 Monthly Web 201707
       <itunes:duration>02:09:30</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>5</itunes:order>
+      <itunes:order>6</itunes:order>
       <itunes:subtitle>第 31 回のテーマは IETF です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep31.mp3" fileSize="124315195" type="audio/mpeg" />
       <description># ep31 IETF
@@ -2686,7 +3202,7 @@ ep25 Monthly Web 201707
       <itunes:duration>02:26:39</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>6</itunes:order>
+      <itunes:order>7</itunes:order>
       <itunes:subtitle>第 30 回のテーマは 2017 年 11 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep30.mp3" fileSize="140783035" type="audio/mpeg" />
       <description># ep30 Monthly Web 201711
@@ -3464,7 +3980,7 @@ ep25 Monthly Web 201707
       <itunes:duration>01:57:27</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>7</itunes:order>
+      <itunes:order>8</itunes:order>
       <itunes:subtitle>第 29 回のテーマは Houdini です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep29.mp3" fileSize="112756023" type="audio/mpeg" />
       <description># ep29 Houdini
@@ -3547,7 +4063,7 @@ ep25 Monthly Web 201707
       <itunes:duration>02:26:08</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>8</itunes:order>
+      <itunes:order>9</itunes:order>
       <itunes:subtitle>第 28 回のテーマは 2017 年 10 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep28.mp3" fileSize="140282300" type="audio/mpeg" />
       <description># ep28 Monthly Web 201710
@@ -4156,7 +4672,7 @@ ep25 Monthly Web 201707
       <itunes:duration>02:07:29</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>9</itunes:order>
+      <itunes:order>10</itunes:order>
       <itunes:subtitle>第 27 回のテーマは 2017 年 9 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep27.mp3" fileSize="122386155" type="audio/mpeg" />
       <description># ep27 Monthly Web 201709
@@ -4712,7 +5228,7 @@ ep25 Monthly Web 201707
       <itunes:duration>02:05:40</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>10</itunes:order>
+      <itunes:order>11</itunes:order>
       <itunes:subtitle>第 26 回のテーマは 2017 年 8 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep26.mp3" fileSize="120638775" type="audio/mpeg" />
       <description># ep26 Monthly Web 201708
@@ -5116,7 +5632,7 @@ ep25 Monthly Web 201707
       <itunes:duration>01:09:00</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>11</itunes:order>
+      <itunes:order>12</itunes:order>
       <itunes:subtitle>第 25 回のテーマは 2017 年 7 月の Monthly Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep25.mp3" fileSize="66234039" type="audio/mpeg" />
       <description># ep25 Monthly Web 201707
@@ -5337,7 +5853,7 @@ Web をより深く理解するために
       <itunes:duration>02:20:03</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>12</itunes:order>
+      <itunes:order>13</itunes:order>
       <itunes:subtitle>第 24 回のテーマは Angular2 です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep24.mp3" fileSize="134441320" type="audio/mpeg" />
       <description># ep24 Angular2
@@ -5389,7 +5905,7 @@ Angular 自身、そしてそれを取り巻くエコシステムや標準化の
       <itunes:duration>01:34:18</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>13</itunes:order>
+      <itunes:order>14</itunes:order>
       <itunes:subtitle>第 23 回のテーマは Let&#039;s Encrypt です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep23.mp3" fileSize="90521366" type="audio/mpeg" />
       <description># ep23 Let&amp;#039;s Encrypt
@@ -5466,7 +5982,7 @@ Angular 自身、そしてそれを取り巻くエコシステムや標準化の
       <itunes:duration>01:15:11</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>14</itunes:order>
+      <itunes:order>15</itunes:order>
       <itunes:subtitle>第 22 回のテーマは AMP(Accelerated Mobile Pages) です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep22.mp3" fileSize="72175045" type="audio/mpeg" />
       <description># ep22 AMP
@@ -5524,7 +6040,7 @@ Angular 自身、そしてそれを取り巻くエコシステムや標準化の
       <itunes:duration>00:10:35</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>15</itunes:order>
+      <itunes:order>16</itunes:order>
       <itunes:subtitle>mozaic.fm の v2 をリリースしました。 breaking change があるので、そのアナウンスとテストを兼ねています。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep21.mp3" fileSize="10158905" type="audio/mpeg" />
       <description># ep21 mozaic.fm v2 release note
@@ -5586,7 +6102,7 @@ mozaic.fm を引き続きよろしくお願いいたします。
       <itunes:duration>02:14:43</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>16</itunes:order>
+      <itunes:order>17</itunes:order>
       <itunes:subtitle>第 20 回のテーマは Browser です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep20.mp3" fileSize="129320928" type="audio/mpeg" />
       <description># ep20 Browser
@@ -5703,7 +6219,7 @@ mozaic.fm を引き続きよろしくお願いいたします。
       <itunes:duration>01:00:53</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>17</itunes:order>
+      <itunes:order>18</itunes:order>
       <itunes:subtitle>第 19 回 ES7 の SideShow です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep19.sideshow.mp3" fileSize="58454692" type="audio/mpeg" />
       <description># ep19 ES7 sideshow
@@ -5746,7 +6262,7 @@ Bug 147340 - [ES6] Implement ES6 Modules
       <itunes:duration>01:29:10</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>18</itunes:order>
+      <itunes:order>19</itunes:order>
       <itunes:subtitle>第 19 回のテーマは ES7 です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep19.mp3" fileSize="85606973" type="audio/mpeg" />
       <description># ep19 ES7
@@ -5800,7 +6316,7 @@ Bug 147340 - [ES6] Implement ES6 Modules
       <itunes:duration>01:31:50</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>19</itunes:order>
+      <itunes:order>20</itunes:order>
       <itunes:subtitle>第 18 回のテーマは Nginx です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep18.mp3" fileSize="88153509" type="audio/mpeg" />
       <description># ep18 Nginx
@@ -5924,7 +6440,7 @@ Bug 147340 - [ES6] Implement ES6 Modules
       <itunes:duration>01:23:44</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>20</itunes:order>
+      <itunes:order>21</itunes:order>
       <itunes:subtitle>第 17 回のテーマは Service Worker です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep17.mp3" fileSize="80387023" type="audio/mpeg" />
       <description># ep17 Service Worker
@@ -6034,7 +6550,7 @@ Bug 147340 - [ES6] Implement ES6 Modules
       <itunes:duration>01:22:50</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>21</itunes:order>
+      <itunes:order>22</itunes:order>
       <itunes:subtitle>第 16 回のテーマは Security (application) です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep16.mp3" fileSize="79513103" type="audio/mpeg" />
       <description># ep16 Security (application)
@@ -6090,7 +6606,7 @@ BGM: public domain jazz
       <itunes:duration>00:47:04</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>22</itunes:order>
+      <itunes:order>23</itunes:order>
       <itunes:subtitle>第 15 回のテーマは Extensible Web です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep15.mp3" fileSize="45178590" type="audio/mpeg" />
       <description># ep15 Extensible Web
@@ -6153,7 +6669,7 @@ BGM: public domain jazz
       <itunes:duration>01:14:39</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>23</itunes:order>
+      <itunes:order>24</itunes:order>
       <itunes:subtitle>第 14 回のテーマは WHATWG です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep14.mp3" fileSize="71666755" type="audio/mpeg" />
       <description># ep14 WHATWG
@@ -6231,7 +6747,7 @@ BGM: public domain jazz
       <itunes:duration>00:32:18</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>24</itunes:order>
+      <itunes:order>25</itunes:order>
       <itunes:subtitle>第 13 回 Virtual DOM の SideShow です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep13.sideshow.mp3" fileSize="31007326" type="audio/mpeg" />
       <description># ep13 Virtual DOM sideshow
@@ -6271,7 +6787,7 @@ BGM: public domain jazz
       <itunes:duration>01:18:53</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>25</itunes:order>
+      <itunes:order>26</itunes:order>
       <itunes:subtitle>第 13 回のテーマは Virtual DOM です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep13.mp3" fileSize="75732292" type="audio/mpeg" />
       <description># ep13 Virtual DOM
@@ -6324,7 +6840,7 @@ BGM: public domain jazz
       <itunes:duration>00:38:43</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>26</itunes:order>
+      <itunes:order>27</itunes:order>
       <itunes:subtitle>第 12 回 Ruby on Rails の SideShow です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep12.sideshow.mp3" fileSize="37165838" type="audio/mpeg" />
       <description># ep12 Rails sideshow
@@ -6363,7 +6879,7 @@ BGM: public domain jazz
       <itunes:duration>01:10:46</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>27</itunes:order>
+      <itunes:order>28</itunes:order>
       <itunes:subtitle>第 12 回のテーマは Ruby on Rails です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep12.mp3" fileSize="33974566" type="audio/mpeg" />
       <description># ep12 Rails
@@ -6418,7 +6934,7 @@ BGM: public domain jazz
       <itunes:duration>01:09:26</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>28</itunes:order>
+      <itunes:order>29</itunes:order>
       <itunes:subtitle>第 11 回のテーマは High Performance Browser Networking です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep11.mp3" fileSize="66648569" type="audio/mpeg" />
       <description># ep11 High Performance Browser Networking
@@ -6477,7 +6993,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>00:53:32</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>29</itunes:order>
+      <itunes:order>30</itunes:order>
       <itunes:subtitle>第 10 回 Node.js の SideShow です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep10.sideshow.mp3" fileSize="51386315" type="audio/mpeg" />
       <description># ep10 Node.js sideshow
@@ -6537,7 +7053,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>02:32:21</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>30</itunes:order>
+      <itunes:order>31</itunes:order>
       <itunes:subtitle>第 10 回のテーマは Node.js です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep10.mp3" fileSize="146256953" type="audio/mpeg" />
       <description># ep10 Node.js
@@ -6635,7 +7151,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:13:04</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>31</itunes:order>
+      <itunes:order>32</itunes:order>
       <itunes:subtitle>第 9 回のテーマは Socket.IO です。**全編英語**です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep9.mp3" fileSize="70139127" type="audio/mpeg" />
       <description># ep9 Socket.IO
@@ -6673,7 +7189,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:02:11</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>32</itunes:order>
+      <itunes:order>33</itunes:order>
       <itunes:subtitle>第 8 回のテーマは altJS(TypeScript, Dart) です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep8.mp3" fileSize="59691639" type="audio/mpeg" />
       <description># ep8 AltJS
@@ -6717,7 +7233,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>02:05:18</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>33</itunes:order>
+      <itunes:order>34</itunes:order>
       <itunes:subtitle>第 7 回のテーマは REST です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep7.mp3" fileSize="120291447" type="audio/mpeg" />
       <description># ep7 REST
@@ -6767,7 +7283,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:29:25</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>34</itunes:order>
+      <itunes:order>35</itunes:order>
       <itunes:subtitle>第 6 回のテーマは WebRTC です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep6.mp3" fileSize="85841463" type="audio/mpeg" />
       <description># ep6 WebRTC
@@ -6807,7 +7323,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:32:29</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>35</itunes:order>
+      <itunes:order>36</itunes:order>
       <itunes:subtitle>第 5 回のテーマは TypeScript です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep5.mp3" fileSize="88787127" type="audio/mpeg" />
       <description># ep5 TypeScript
@@ -6841,7 +7357,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:21:07</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>36</itunes:order>
+      <itunes:order>37</itunes:order>
       <itunes:subtitle>第 4 回のテーマは Security (Protocol)です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep4.mp3" fileSize="77866167" type="audio/mpeg" />
       <description># ep4 Security (protocol)
@@ -6875,7 +7391,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>01:14:46</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>37</itunes:order>
+      <itunes:order>38</itunes:order>
       <itunes:subtitle>第 3 回のテーマは Angular.js です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep3.mp3" fileSize="71768631" type="audio/mpeg" />
       <description># ep3 Angular.js
@@ -6911,7 +7427,7 @@ HPBN は、複雑化し、知らなくてはならい知識が飛躍的に増え
       <itunes:duration>00:14:36</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>38</itunes:order>
+      <itunes:order>39</itunes:order>
       <itunes:subtitle>第 2 回 HTTP2 の SideShow です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep2.sideshow.mp3" fileSize="14011401" type="audio/mpeg" />
       <description># ep2 HTTP2 sideshow
@@ -6946,7 +7462,7 @@ OSS 奨励賞受賞の裏話や、 http2 や spdylay が今後どうなるのか
       <itunes:duration>01:06:37</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>39</itunes:order>
+      <itunes:order>40</itunes:order>
       <itunes:subtitle>第 2 回のテーマは HTTP2 です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep2.mp3" fileSize="63955191" type="audio/mpeg" />
       <description># ep2 HTTP2
@@ -6994,7 +7510,7 @@ OSS 奨励賞受賞の裏話や、 http2 や spdylay が今後どうなるのか
       <itunes:duration>00:54:55</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>40</itunes:order>
+      <itunes:order>41</itunes:order>
       <itunes:subtitle>第 1 回のテーマは WebComponents です。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep1.mp3" fileSize="52724343" type="audio/mpeg" />
       <description># ep1 WebComponents
@@ -7039,7 +7555,7 @@ OSS 奨励賞受賞の裏話や、 http2 や spdylay が今後どうなるのか
       <itunes:duration>00:02:32</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
       <itunes:keywords>web,tech,it</itunes:keywords>
-      <itunes:order>41</itunes:order>
+      <itunes:order>42</itunes:order>
       <itunes:subtitle>次世代 Web Podcast Mozaic の紹介です。 feed のテストも兼ねています。</itunes:subtitle>
       <media:content url="https://files.mozaic.fm/mozaic-ep0.mp3" fileSize="2425143" type="audio/mpeg" />
       <description># ep0 introduction of mozaic.fm
