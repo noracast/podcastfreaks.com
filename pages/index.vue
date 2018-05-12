@@ -3,7 +3,14 @@ div.wrap
   h1 Podcast Activities
   span Last update: {{ updated }}
   allpodcasts(:feeds="feeds")
-  podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
+  // podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
+  section
+    h2 Episodes in last 2 weeks
+    article(v-for="(item, index) in episodes_in_2weeks" :key="index")
+      h3 {{ item.podcast_title }}
+      h4 {{ item.title }}
+      small {{ item.pubDate | formatDate }}
+      //p {{ item.description }}
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -27,9 +34,11 @@ export default {
     'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
+    console.log(build_info.episodes_in_2weeks)
     return {
       feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
-      updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a")
+      updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a"),
+      episodes_in_2weeks: build_info.episodes_in_2weeks
     }
   }
 }

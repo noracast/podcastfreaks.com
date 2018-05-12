@@ -12,7 +12,8 @@ var conf = {
       { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' },
       { type: 'text/css', rel: 'stylesheet', href: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css' }
     ]
-  }
+  },
+  plugins: ['~plugins/filters.js']
 }
 
 if(process.env.DEPLOY_ENV === 'GH_PAGES'){
