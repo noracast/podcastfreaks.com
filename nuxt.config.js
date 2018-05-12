@@ -1,6 +1,10 @@
-var _ = require('lodash')
-
 var conf = {
+  build: {
+    vendor: ['element-ui']
+  },
+  css: [
+    'element-ui/lib/theme-chalk/index.css'
+  ],
   head: {
     titleTemplate: 'Podcast Freaks',
     meta: [
@@ -9,25 +13,16 @@ var conf = {
       { hid: 'description', name: 'description', content: 'Meta description' }
     ],
     link: [
-      { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' },
-      { type: 'text/css', rel: 'stylesheet', href: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css' }
+      { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' }
     ]
   },
-  plugins: ['~plugins/filters.js']
-}
-
-if(process.env.DEPLOY_ENV === 'GH_PAGES'){
-  const additional = {
-    router: {
-      base: '/podcast-freaks/'
-    },
-    modules: [
-      ['@nuxtjs/google-analytics', {
-        id: 'UA-117929880-2'
-      }]
-     ]
-  }
-  conf = _.merge(conf, additional)
+  modules: [
+    ['@nuxtjs/google-analytics', {id: 'UA-117929880-2'}]
+  ],
+  plugins: [
+    '~plugins/filters.js',
+    '~plugins/element-ui'
+  ]
 }
 
 module.exports = conf
