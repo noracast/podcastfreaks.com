@@ -22,7 +22,10 @@ var conf = {
   plugins: [
     '~plugins/filters.js',
     '~plugins/element-ui'
-  ]
+  ],
+  generate: {
+    fallback: true
+  }
 }
 
 module.exports = conf

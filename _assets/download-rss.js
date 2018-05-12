@@ -16,6 +16,7 @@ shell.mkdir('-p', RSS_DIR)
 var total = Object.keys(rss).length
 var latest_pubdates = []
 var episodes_in_2weeks = []
+var channels = {}
 
 Object.keys(rss).forEach(function (key) {
   let src = rss[key]
@@ -48,6 +49,8 @@ Object.keys(rss).forEach(function (key) {
           el['channel_title'] = channel_title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
+        // Save title
+        channels[key] = channel_title
 
         total--
 
@@ -65,6 +68,7 @@ Object.keys(rss).forEach(function (key) {
           var data = {
             load_order,
             episodes_in_2weeks,
+            channels,
             updated: new Date(),
           }
           fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');

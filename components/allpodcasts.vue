@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  h2 All Podcasts
   el-button.prev(circle) ←
   el-button.next(circle) →
   .heatmap
