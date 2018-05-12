@@ -3,10 +3,8 @@ div
   el-header
     h1 Podcast Activities
     small Last update: {{ updated }}
-
   el-main
     allpodcasts(:feeds="feeds")
-
     h2
       | 新着エピソード
       small (2weeks)
@@ -16,10 +14,8 @@ div
           h3
             a(:href="item.link" v-text="item.title" target="_blank")
           div.description(v-html="item.description")
-
     h2 登録チャンネル
     nuxt-link.channel(v-for="(val, key) in channels" :to="'channel/'+key" v-text="val" :key="key")
-
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -42,8 +38,8 @@ import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
 import build_info from '~/static/downloads/build_info.json'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
   components: {
