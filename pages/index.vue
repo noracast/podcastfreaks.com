@@ -18,12 +18,11 @@ div
 
 <style lang="sass?indentedSyntax" scoped>
 .warp
-  border: 1px solid #f1f1f1
-  background-color: #fdfdfd
-  padding: 20px
+  background-color: #f2f6fc
+  padding: 30px
   border-radius: 8px
 .description
-  border-top: 1px solid #f1f1f1
+  border-top: 1px solid #ffffff
 </style>
 
 <script>
