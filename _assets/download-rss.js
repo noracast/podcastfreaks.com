@@ -38,14 +38,14 @@ Object.keys(rss).forEach(function (key) {
         })
 
         // Store episodes in last 2 weeks
-        const podcast_title = json.rss.channel.title
+        const channel_title = json.rss.channel.title
         const episodes = json.rss.channel.item.filter(function(element, index, array) {
           const twoweeksago = moment().subtract(14, 'days').startOf('date')
           return moment(element.pubDate).isAfter(twoweeksago)
         })
         // Add channel info into each episodes
         episodes.forEach(function(el) {
-          el['podcast_title'] = podcast_title
+          el['channel_title'] = channel_title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
 

@@ -22,7 +22,7 @@ div
   padding: 30px
   border-radius: 8px
 .description
-  border-top: 1px solid #ffffff
+  border-top: 1px solid #333
 </style>
 
 <script>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     title: function(ep) {
-      return `${this.$options.filters.formatDate(ep.pubDate)} - ${ep.podcast_title}`
+      return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
     }
   }
 }
