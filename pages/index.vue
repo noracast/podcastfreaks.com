@@ -5,17 +5,19 @@ div
     small Last update: {{ updated }}
   el-main
     allpodcasts(:feeds="feeds")
-    h2
-      | 新着エピソード
-      small (2weeks)
+    h2 新着エピソード
+    h5 {{ episodes_in_2weeks.length }} episodes / 2 weeks
     el-collapse
-      el-collapse-item(v-for="(item, index) in episodes_in_2weeks" :title="title(item)" :key="index" :name="index")
+      el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
         .warp
           h3
-            a(:href="item.link" v-text="item.title" target="_blank")
-          div.description(v-html="item.description")
+            a(:href="val.link" v-text="val.title" target="_blank")
+          div.description(v-html="val.description")
     h2 登録チャンネル
-    nuxt-link.channel(v-for="(val, key) in channels" :to="'channel/'+key" v-text="val" :key="key")
+    h5 {{ channels.length }}
+    ol
+      li(v-for="(val, key) in channels" :key="key")
+        nuxt-link.channel(:to="'channel/'+key" v-text="val")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -30,6 +32,13 @@ header
 .channel
   display: inline-block
   margin-right: 1em
+ol
+  li
+    color: #303133
+    font-size: 13px
+    font-weight: 500
+    a
+      text-decoration: none
 </style>
 
 <script>
