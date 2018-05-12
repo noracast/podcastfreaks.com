@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   el-header
-    h1 Podcast Activities
+    h1 Podcast Freaks
     small Last update: {{ updated }}
   el-main
     allpodcasts(:feeds="feeds")
