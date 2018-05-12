@@ -2,11 +2,10 @@
 div
   a(:href="link" target="_blank")
     h3 {{ title }}
-  button.btn.prev
-    i.icon.icon-chevron-left
-  button.btn.next
-    i.icon.icon-chevron-right
-  .heatmap
+  div
+    el-button.prev(circle) ←
+    el-button.next(circle) →
+    .heatmap
 </template>
 
 <style lang="sass?indentedSyntax">

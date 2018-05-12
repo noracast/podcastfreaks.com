@@ -5,14 +5,23 @@ div
     small Last update: {{ updated }}
   el-main
     allpodcasts(:feeds="feeds")
+
     h2 新着エピソード
-    h5 {{ episodes_in_2weeks.length }} episodes / 2 weeks
+    h5 今週 {{ episodes_in_1weeks.length }} episodes
+    el-collapse
+      el-collapse-item(v-for="(val, key) in episodes_in_1weeks" :title="title(val)" :key="key" :name="key")
+        .warp
+          h3
+            a(:href="val.link" v-text="val.title" target="_blank")
+          div.description(v-html="val.description")
+    h5 先週 {{ episodes_in_2weeks.length }} episodes
     el-collapse
       el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
         .warp
           h3
             a(:href="val.link" v-text="val.title" target="_blank")
           div.description(v-html="val.description")
+
     h2 登録チャンネル
     h5 {{ channels.length }}
     ol
@@ -56,10 +65,22 @@ export default {
     'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
+    const aweeksago = moment().subtract(7, 'days').startOf('date')
+    var episodes_in_1weeks = []
+    var episodes_in_2weeks = []
+    build_info.episodes_in_2weeks.forEach((item, index)=> {
+      if(moment(item.pubDate).isAfter(aweeksago)){
+        episodes_in_1weeks.push(item)
+      }
+      else {
+        episodes_in_2weeks.push(item)
+      }
+    })
     return {
       feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a"),
-      episodes_in_2weeks: build_info.episodes_in_2weeks,
+      episodes_in_1weeks,
+      episodes_in_2weeks,
       channels: build_info.channels
     }
   },
