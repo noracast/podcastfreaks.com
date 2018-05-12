@@ -10,7 +10,7 @@ var conf = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Meta description' }
+      { hid: 'description', name: 'description', content: '日本語のテック系ポッドキャストの更新情報をまとめています' }
     ],
     link: [
       { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' }
