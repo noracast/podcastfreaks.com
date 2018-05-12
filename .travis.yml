@@ -18,17 +18,6 @@ before_install:
   - eval $(ssh-agent -s)
   - ssh-add github_deploy_key
 script:
-  # deploy to github pages
-  - npm run generate:gh-pages
-  - cd dist
-  - git init
-  - git remote add origin git@github.com:developersjp/podcast-freaks.git
-  - git checkout -b gh-pages
-  - git add .
-  - git commit -m 'Builds with Travis Cron Job'
-  - git push origin gh-pages --force
-  #
-  - cd ..
   # deploy to netlify
   - npm run generate
   - cd dist
