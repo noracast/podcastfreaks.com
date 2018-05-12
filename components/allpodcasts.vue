@@ -1,10 +1,8 @@
 <template lang="pug">
 div
   h3 All Podcasts
-  button.btn.prev
-    i.icon.icon-chevron-left
-  button.btn.next
-    i.icon.icon-chevron-right
+  el-button.prev(circle) ←
+  el-button.next(circle) →
   .heatmap
 </template>
 

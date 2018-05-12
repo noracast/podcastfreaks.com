@@ -1,24 +1,29 @@
 <template lang="pug">
-div.wrap
-  h1 Podcast Activities
-  span Last update: {{ updated }}
-  allpodcasts(:feeds="feeds")
-  // podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
-  section
+div
+  el-header
+    h1 Podcast Activities
+    small Last update: {{ updated }}
+  el-main
+    allpodcasts(:feeds="feeds")
+
     h2 Episodes in last 2 weeks
-    article(v-for="(item, index) in episodes_in_2weeks" :key="index")
-      h3 {{ item.podcast_title }}
-      h4 {{ item.title }}
-      small {{ item.pubDate | formatDate }}
-      //p {{ item.description }}
+    el-collapse
+      el-collapse-item(v-for="(item, index) in episodes_in_2weeks" :title="title(item)" :name="index")
+        .warp
+          h3
+            a(:href="item.link" v-text="item.title" target="_blank")
+          div.description(v-html="item.description")
+
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
-.wrap
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+.warp
+  border: 1px solid #f1f1f1
+  background-color: #fdfdfd
+  padding: 20px
+  border-radius: 8px
+.description
+  border-top: 1px solid #f1f1f1
 </style>
 
 <script>
@@ -40,6 +45,11 @@ export default {
       feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a"),
       episodes_in_2weeks: build_info.episodes_in_2weeks
+    }
+  },
+  methods: {
+    title: function(ep) {
+      return `${this.$options.filters.formatDate(ep.pubDate)} - ${ep.podcast_title}`
     }
   }
 }
