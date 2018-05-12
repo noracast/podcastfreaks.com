@@ -34,7 +34,6 @@ export default {
     'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
-    console.log(build_info.episodes_in_2weeks)
     return {
       feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       updated: moment(build_info.updated).format("YYYY/MM/DD h:mm:ss a"),
