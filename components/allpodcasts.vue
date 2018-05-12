@@ -1,7 +1,6 @@
 <template lang="pug">
 div
-  a(:href="link" target="_blank")
-    h3 {{ title }}
+  h3 All Podcasts
   button.btn.prev
     i.icon.icon-chevron-left
   button.btn.next
@@ -11,7 +10,6 @@ div
 
 <style lang="sass?indentedSyntax">
 h3
-  display: inline-block
   margin-top: 20px
   margin-right: 20px
   font-size: 18px
@@ -35,32 +33,17 @@ import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
 
 export default {
-  props: ['feeds','feed'],
-  data: function(){
-    return {
-      title: null,
-      link: null
-    }
-  },
+  props: ['feeds'],
   mounted () {
     let cal = new CalHeatMap()
-    this.loadRSS(this.feed)
+    this.loadRSSs(this.feeds)
     .then(res => {
-      this.title = res.title
-      this.link = res.link
-
-      var data = {}
-      res.episodes.forEach(function(ep, index) {
-        let date = new Date(ep.pubDate).getTime() / 1000
-        let duration = moment.duration(ep['itunes:duration'])
-        data[date] = parseInt(duration.asMinutes(),10)
-      })
       cal.init({
-        data: data,
+        data: res,
         itemSelector: this.$el.querySelector('.heatmap'),
         domain: 'year',
         subDomain: 'day',
-        itemName: ['minute', 'minutes'],
+        itemName: ['episode', 'episodes'],
         range: 1,
         tooltip: true,
         // start: moment().subtract(1, 'years').toDate(),
@@ -68,21 +51,23 @@ export default {
         domainGutter: 0,
         previousSelector: this.$el.querySelector('.prev'),
         nextSelector: this.$el.querySelector('.next'),
-        legend: [90],
-        displayLegend: false
+        legend: [1,2,3,4,5]
       })
     })
   },
   methods: {
-    async loadRSS (url) {
-      let xml = await axios.get(url)
-      let json = await xml2js(xml.data, {explicitArray: false})
-      let channel = json.rss.channel
-      return {
-        title: channel.title,
-        link: channel.link,
-        episodes: channel.item
+    async loadRSSs (urls) {
+      let data = {}
+      for(let i = 0; i < urls.length; i++) {
+        let xml = await axios.get(urls[i])
+        let json = await xml2js(xml.data, {explicitArray: false})
+        json.rss.channel.item.forEach(function(ep, index) {
+          let date = new Date(ep.pubDate).getTime() / 1000
+          let duration = moment.duration(ep['itunes:duration'])
+          data[date] = data[date] ? data[date]+1 : 1
+        })
       }
+      return data
     }
   }
 }

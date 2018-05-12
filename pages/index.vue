@@ -2,7 +2,7 @@
 div.wrap
   h1 Podcast Activities
   span Last update: {{ updated }}
-  podcast(:feeds="feeds" :title="'ALL'")
+  allpodcasts(:feeds="feeds")
   podcast(v-for="(item, index) in feeds" :feed="item" :key="index")
 </template>
 
@@ -23,7 +23,8 @@ import build_info from '~/static/downloads/build_info.json'
 
 export default {
   components: {
-    'podcast': require('~/components/podcast.vue').default
+    'podcast': require('~/components/podcast.vue').default,
+    'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
     return {
