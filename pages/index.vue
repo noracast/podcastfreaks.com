@@ -8,14 +8,14 @@ div
     allpodcasts(:feeds="feeds")
 
     h2 新着エピソード
-    h5 今週 {{ episodes_in_1weeks.length }} episodes
+    h5 今週　　{{ episodes_in_1weeks.length }} episodes
     el-collapse
       el-collapse-item(v-for="(val, key) in episodes_in_1weeks" :title="title(val)" :key="key" :name="key")
         .warp
           h3
             a(:href="val.link" v-text="val.title" target="_blank")
           div.description(v-html="val.description")
-    h5 先週 {{ episodes_in_2weeks.length }} episodes
+    h5 先週　　{{ episodes_in_2weeks.length }} episodes
     el-collapse
       el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
         .warp
