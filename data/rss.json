@@ -6,7 +6,7 @@
   "cloud-infra": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
   "dex": "http://feeds.feedburner.com/dexfm",
   "engineer-meeting": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
-  "free-engineer": "git@github.com:developersjp/podcast-freaks.git",
+  "free-engineer": "https://free-engineer.xrea.jp/feed",
   "genba": "https://genba.fm/podcast.xml",
   "gunosy": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
   "hiromaeda": "http://hiromaeda.com/feed/podcast/",
