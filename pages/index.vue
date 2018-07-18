@@ -65,11 +65,11 @@ export default {
     'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
-    const aweeksago = moment().subtract(7, 'days').startOf('date')
+    const aweekago = moment().subtract(7, 'days').startOf('date')
     var episodes_in_1weeks = []
     var episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweeksago)){
+      if(moment(item.pubDate).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
       }
       else {
