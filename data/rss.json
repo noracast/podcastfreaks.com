@@ -1,24 +1,90 @@
 {
-  "ajito": "https://ajito.fm/index.xml",
-  "automagic": "http://feedpress.me/automagic",
-  "backspace": "http://feeds.backspace.fm/backspacefm",
-  "capitalp": "https://capitalp.jp/feed/podcast",
-  "cloud-infra": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
-  "dex": "http://feeds.feedburner.com/dexfm",
-  "engineer-meeting": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
-  "genba": "https://genba.fm/podcast.xml",
-  "gunosy": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
-  "hiromaeda": "http://hiromaeda.com/feed/podcast/",
-  "kumocast": "http://feeds.feedburner.com/tumblr/IkZP",
-  "misreading": "http://misreading.chat/category/episodes/feed/",
-  "mozaic": "http://feed.mozaic.fm/",
-  "nextstep": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
-  "rebuild": "http://feeds.rebuild.fm/rebuildfm",
-  "shiganai": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
-  "soussune": "https://soussune.com/feed.xml",
-  "takram": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
-  "turingcomplete": "https://feeds.turingcomplete.fm/tcfm",
-  "wyukawa": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
-  "yatteiki": "http://feeds.feedburner.com/Yatteikifm",
-  "yome": "https://yomefm.github.io/feed.xml"
+  "ajito": {
+    "feed": "https://ajito.fm/index.xml",
+    "hashtag": "#ajitofm"
+  },
+  "automagic": {
+    "feed": "http://feedpress.me/automagic",
+    "hashtag": "#automagic "
+  },
+  "backspace": {
+    "feed": "http://feeds.backspace.fm/backspacefm",
+    "hashtag": "#backspacefm"
+  },
+  "capitalp": {
+    "feed": "https://capitalp.jp/feed/podcast",
+    "hashtag": "#capitalp"
+  },
+  "cloud-infra": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
+    "hashtag": "TODO"
+  },
+  "dex": {
+    "feed": "http://feeds.feedburner.com/dexfm",
+    "hashtag": "#dexfm"
+  },
+  "engineer-meeting": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
+    "hashtag": "#engineermeeting"
+  },
+  "genba": {
+    "feed": "https://genba.fm/podcast.xml",
+    "hashtag": "#genbafm"
+  },
+  "gunosy": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
+    "hashtag": "#gunosyfm"
+  },
+  "hiromaeda": {
+    "feed": "http://hiromaeda.com/feed/podcast/",
+    "hashtag": "TODO"
+  },
+  "kumocast": {
+    "feed": "http://feeds.feedburner.com/tumblr/IkZP",
+    "hashtag": "#kumocast"
+  },
+  "misreading": {
+    "feed": "http://misreading.chat/category/episodes/feed/",
+    "hashtag": "#misreading"
+  },
+  "mozaic": {
+    "feed": "http://feed.mozaic.fm/",
+    "hashtag": "#mozaicfm"
+  },
+  "nextstep": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
+    "hashtag": "#nextstepfm"
+  },
+  "rebuild": {
+    "feed": "http://feeds.rebuild.fm/rebuildfm",
+    "hashtag": "#rebuildfm"
+  },
+  "shiganai": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
+    "hashtag": "#しがないラジオ"
+  },
+  "soussune": {
+    "feed": "https://soussune.com/feed.xml",
+    "hashtag": "#soussune"
+  },
+  "takram": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
+    "hashtag": "#takramcast"
+  },
+  "turingcomplete": {
+    "feed": "https://feeds.turingcomplete.fm/tcfm",
+    "hashtag": "#tcfm"
+  },
+  "wyukawa": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
+    "hashtag": "TODO"
+  },
+  "yatteiki": {
+    "feed": "http://feeds.feedburner.com/Yatteikifm",
+    "hashtag": "#yatteikifm"
+  },
+  "yome": {
+    "feed": "https://yomefm.github.io/feed.xml",
+    "hashtag": "#yomefm"
+  }
 }

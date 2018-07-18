@@ -1,6 +1,6 @@
 var conf = {
   build: {
-    vendor: ['element-ui']
+    vendor: ['element-ui','vuejs-heatmap']
   },
   css: [
     'element-ui/lib/theme-chalk/index.css'
@@ -21,7 +21,8 @@ var conf = {
   ],
   plugins: [
     '~plugins/filters.js',
-    '~plugins/element-ui'
+    '~plugins/element-ui',
+    '~plugins/vuejs-heatmap'
   ],
   generate: {
     fallback: true

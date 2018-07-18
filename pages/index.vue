@@ -4,7 +4,7 @@ div
     h1 Podcast Freaks
     small Last update: {{ updated }}
   el-main
-    VuejsHeatmap
+    //- VuejsHeatmap
     allpodcasts(:feeds="feeds")
 
     h2 新着エピソード
