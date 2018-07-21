@@ -26,7 +26,9 @@ div
     h5 {{ channels.length }}
     ol
       li(v-for="(val, key) in channels" :key="key")
-        nuxt-link.channel(:to="'channel/'+key" v-text="val")
+        nuxt-link(:to="'channel/'+key" v-text="val")
+        a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
+        a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -38,16 +40,18 @@ header
   border-radius: 8px
 .description
   border-top: 1px solid #333
-.channel
-  display: inline-block
-  margin-right: 1em
 ol
   li
     color: #303133
     font-size: 13px
     font-weight: 500
+    padding-bottom: 1em
     a
       text-decoration: none
+      display: block
+      &:first-child
+        font-size: 15px
+        font-weight: bold
 </style>
 
 <script>
@@ -87,6 +91,12 @@ export default {
   methods: {
     title: function(ep) {
       return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
+    },
+    twitter: function(key) {
+      return rss[key].twitter
+    },
+    hashtag: function(key) {
+      return rss[key].hashtag
     }
   }
 }
