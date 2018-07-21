@@ -19,9 +19,9 @@ var episodes_in_2weeks = []
 var channels = {}
 
 Object.keys(rss).forEach(function (key) {
-  let src = rss[key].feed
-  let dist = `${RSS_DIR}/${key}.rss`
-  let download = wget.download(src, dist)
+  const src = rss[key].feed
+  const dist = `${RSS_DIR}/${key}.rss`
+  const download = wget.download(src, dist)
   download.on('end', ()=> {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
     fs.readFile(`${__dirname}/.${dist}`, (err, xml)=> {
