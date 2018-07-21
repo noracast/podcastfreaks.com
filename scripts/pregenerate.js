@@ -19,7 +19,7 @@ var episodes_in_2weeks = []
 var channels = {}
 
 Object.keys(rss).forEach(function (key) {
-  let src = rss[key]
+  let src = rss[key].feed
   let dist = `${RSS_DIR}/${key}.rss`
   let download = wget.download(src, dist)
   download.on('end', ()=> {
