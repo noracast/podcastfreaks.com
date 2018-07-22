@@ -59,6 +59,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "inakafm": {
+    "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
+    "twitter": "@inaka_fm",
+    "hashtag": "#田舎fm"
+  },
   "jinseifm": {
     "feed": "https://kirimin.github.io/jinseifm/feed",
     "twitter": "@jinseifm",
