@@ -29,6 +29,11 @@
     "twitter": "@dexfmpodcast",
     "hashtag": "#dexfm"
   },
+    "dongurifm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
+    "twitter": "@dongurifm",
+    "hashtag": "#dongurifm"
+  },
   "engineer-meeting": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
     "twitter": "@engineermeeting",
@@ -53,6 +58,11 @@
     "feed": "http://hiromaeda.com/feed/podcast/",
     "twitter": null,
     "hashtag": null
+  },
+  "jinseifm": {
+    "feed": "https://kirimin.github.io/jinseifm/feed",
+    "twitter": "@jinseifm",
+    "hashtag": "#jinseifm"
   },
   "kumocast": {
     "feed": "http://feeds.feedburner.com/tumblr/IkZP",
@@ -79,6 +89,16 @@
     "twitter": null,
     "hashtag": "#nextstepfm"
   },
+  "omoiyarifm": {
+    "feed": "http://feeds.lean-agile.fm/omoiyarifm",
+    "twitter": null,
+    "hashtag": "#omoiyarifm"
+  },
+  "php-genba": {
+    "feed": "https://php-genba.shin1x1.com/rss",
+    "twitter": null,
+    "hashtag": "#phpgenba"
+  },
   "rebuild": {
     "feed": "http://feeds.rebuild.fm/rebuildfm",
     "twitter": "@rebuildfm",
@@ -93,6 +113,11 @@
     "feed": "https://soussune.com/feed.xml",
     "twitter": "@soussunefm",
     "hashtag": "#soussune"
+  },
+  "still-rendering": {
+    "feed": "https://anchor.fm/s/40a74b4/podcast/rss",
+    "twitter": null,
+    "hashtag": "#スティレン"
   },
   "takram": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
