@@ -13,21 +13,23 @@ div
       el-collapse-item(v-for="(val, key) in episodes_in_1weeks" :title="title(val)" :key="key" :name="key")
         .warp
           h3
-            a(:href="val.link" v-text="val.title" target="_blank")
+            a(:href="val.link" v-text="val.title" target='_blank')
           div.description(v-html="val.description")
     h5 先週　　{{ episodes_in_2weeks.length }} episodes
     el-collapse
       el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
         .warp
           h3
-            a(:href="val.link" v-text="val.title" target="_blank")
+            a(:href="val.link" v-text="val.title" target='_blank')
           div.description(v-html="val.description")
 
     h2 登録チャンネル
     h5 {{ channels.length }}
     ol
       li(v-for="(val, key) in channels" :key="key")
-        nuxt-link.channel(:to="'channel/'+key" v-text="val")
+        nuxt-link(:to="'channel/'+key" v-text="val")
+        a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
+        a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -39,16 +41,18 @@ header
   border-radius: 8px
 .description
   border-top: 1px solid #333
-.channel
-  display: inline-block
-  margin-right: 1em
 ol
   li
     color: #303133
     font-size: 13px
     font-weight: 500
+    padding-bottom: 1em
     a
       text-decoration: none
+      display: block
+      &:first-child
+        font-size: 15px
+        font-weight: bold
 </style>
 
 <script>
@@ -67,11 +71,11 @@ export default {
     'allpodcasts': require('~/components/allpodcasts.vue').default
   },
   data: function() {
-    const aweeksago = moment().subtract(7, 'days').startOf('date')
+    const aweekago = moment().subtract(7, 'days').startOf('date')
     var episodes_in_1weeks = []
     var episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweeksago)){
+      if(moment(item.pubDate).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
       }
       else {
@@ -89,6 +93,12 @@ export default {
   methods: {
     title: function(ep) {
       return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
+    },
+    twitter: function(key) {
+      return rss[key].twitter
+    },
+    hashtag: function(key) {
+      return rss[key].hashtag
     }
   }
 }
