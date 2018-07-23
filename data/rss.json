@@ -1,90 +1,152 @@
 {
   "ajito": {
     "feed": "https://ajito.fm/index.xml",
+    "twitter": "@ajitofm",
     "hashtag": "#ajitofm"
   },
   "automagic": {
     "feed": "http://feedpress.me/automagic",
+    "twitter": null,
     "hashtag": "#automagic "
   },
   "backspace": {
     "feed": "http://feeds.backspace.fm/backspacefm",
+    "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
+    "twitter": "@capitalPjp",
     "hashtag": "#capitalp"
   },
   "cloud-infra": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
-    "hashtag": "TODO"
+    "twitter": null,
+    "hashtag": null
   },
   "dex": {
     "feed": "http://feeds.feedburner.com/dexfm",
+    "twitter": "@dexfmpodcast",
     "hashtag": "#dexfm"
+  },
+    "dongurifm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
+    "twitter": "@dongurifm",
+    "hashtag": "#dongurifm"
   },
   "engineer-meeting": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
+    "twitter": "@engineermeeting",
     "hashtag": "#engineermeeting"
+  },
+  "free-engineer": {
+    "feed": "https://free-engineer.xrea.jp/feed",
+    "twitter": null,
+    "hashtag": null
   },
   "genba": {
     "feed": "https://genba.fm/podcast.xml",
+    "twitter": null,
     "hashtag": "#genbafm"
   },
   "gunosy": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
+    "twitter": null,
     "hashtag": "#gunosyfm"
   },
   "hiromaeda": {
     "feed": "http://hiromaeda.com/feed/podcast/",
-    "hashtag": "TODO"
+    "twitter": null,
+    "hashtag": null
+  },
+  "inakafm": {
+    "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
+    "twitter": "@inaka_fm",
+    "hashtag": "#田舎fm"
+  },
+  "jinseifm": {
+    "feed": "https://kirimin.github.io/jinseifm/feed",
+    "twitter": "@jinseifm",
+    "hashtag": "#jinseifm"
   },
   "kumocast": {
     "feed": "http://feeds.feedburner.com/tumblr/IkZP",
+    "twitter": "@kumocast",
     "hashtag": "#kumocast"
   },
   "misreading": {
     "feed": "http://misreading.chat/category/episodes/feed/",
+    "twitter": null,
     "hashtag": "#misreading"
+  },
+  "mosa": {
+    "feed": "https://mosa.fm/feed.xml",
+    "twitter": "@mosafmhq",
+    "hashtag": "#mosafm"
   },
   "mozaic": {
     "feed": "http://feed.mozaic.fm/",
+    "twitter": null,
     "hashtag": "#mozaicfm"
   },
   "nextstep": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
+    "twitter": null,
     "hashtag": "#nextstepfm"
+  },
+  "omoiyarifm": {
+    "feed": "http://feeds.lean-agile.fm/omoiyarifm",
+    "twitter": null,
+    "hashtag": "#omoiyarifm"
+  },
+  "php-genba": {
+    "feed": "https://php-genba.shin1x1.com/rss",
+    "twitter": null,
+    "hashtag": "#phpgenba"
   },
   "rebuild": {
     "feed": "http://feeds.rebuild.fm/rebuildfm",
+    "twitter": "@rebuildfm",
     "hashtag": "#rebuildfm"
   },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
+    "twitter": "@shiganaiRadio",
     "hashtag": "#しがないラジオ"
   },
   "soussune": {
     "feed": "https://soussune.com/feed.xml",
+    "twitter": "@soussunefm",
     "hashtag": "#soussune"
+  },
+  "still-rendering": {
+    "feed": "https://anchor.fm/s/40a74b4/podcast/rss",
+    "twitter": null,
+    "hashtag": "#スティレン"
   },
   "takram": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
+    "twitter": null,
     "hashtag": "#takramcast"
   },
   "turingcomplete": {
     "feed": "https://feeds.turingcomplete.fm/tcfm",
+    "twitter": null,
     "hashtag": "#tcfm"
   },
   "wyukawa": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
-    "hashtag": "TODO"
+    "twitter": null,
+    "hashtag": null
   },
   "yatteiki": {
     "feed": "http://feeds.feedburner.com/Yatteikifm",
+    "twitter": "@yatteikifm",
     "hashtag": "#yatteikifm"
   },
   "yome": {
     "feed": "https://yomefm.github.io/feed.xml",
+    "twitter": null,
     "hashtag": "#yomefm"
   }
 }
