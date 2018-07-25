@@ -94,6 +94,11 @@
     "twitter": null,
     "hashtag": "#nextstepfm"
   },
+  "noracast": {
+    "feed": "https://anchor.fm/s/472d1e4/podcast/rss",
+    "twitter": "noracast_",
+    "hashtag": "#noracast"
+  },
   "omoiyarifm": {
     "feed": "http://feeds.lean-agile.fm/omoiyarifm",
     "twitter": null,
