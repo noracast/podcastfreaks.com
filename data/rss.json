@@ -4,6 +4,16 @@
     "twitter": "@ajitofm",
     "hashtag": "#ajitofm"
   },
+  "anitech": {
+    "feed": "https://anitech.fm/feed/",
+    "twitter": "@anitechfm",
+    "hashtag": "#anitechfm"
+  },
+  "another-dawn": {
+    "feed": "https://h2plus.biz/another-dawn/feed/podcast/",
+    "twitter": "@_another_dawn_",
+    "hashtag": null
+  },
   "automagic": {
     "feed": "http://feedpress.me/automagic",
     "twitter": null,
@@ -43,6 +53,11 @@
     "feed": "https://free-engineer.xrea.jp/feed",
     "twitter": null,
     "hashtag": "#テクフリ"
+  },
+  "fukabori": {
+    "feed": "https://fukabori.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#fukabori"
   },
   "genba": {
     "feed": "https://genba.fm/podcast.xml",
@@ -93,6 +108,11 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
     "hashtag": "#nextstepfm"
+  },
+  "noedge": {
+    "feed": "http://feeds.feedburner.com/matchy/noedge",
+    "twitter": null,
+    "hashtag": null
   },
   "noracast": {
     "feed": "https://anchor.fm/s/472d1e4/podcast/rss",
