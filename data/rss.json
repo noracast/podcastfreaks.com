@@ -129,6 +129,11 @@
     "twitter": null,
     "hashtag": "#phpgenba"
   },
+  "prototype": {
+    "feed": "http://www.prototype.fm/blog?format=RSS",
+    "twitter": "@prototype_fm",
+    "hashtag": "#prototypefm"
+  },
   "rebuild": {
     "feed": "http://feeds.rebuild.fm/rebuildfm",
     "twitter": "@rebuildfm",
