@@ -130,7 +130,7 @@
     "hashtag": "#phpgenba"
   },
   "prototype": {
-    "feed": "http://www.prototype.fm/blog?format=RSS",
+    "feed": "http://www.prototype.fm/?format=rss",
     "twitter": "@prototype_fm",
     "hashtag": "#prototypefm"
   },
