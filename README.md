@@ -2,10 +2,10 @@
 
 ## Local Development
 
-```sh
-npm i
-npm run pregenerate # download rss feeds etc. into /static/downloads
-npm run dev
+```
+yarn
+yarn pregenerate # download rss feeds etc. into /static/downloads
+yarn dev
 ```
 
 # Daily Deployment
