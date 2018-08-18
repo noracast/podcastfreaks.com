@@ -3,6 +3,7 @@ var conf = {
     vendor: ['element-ui']
   },
   css: [
+    '@/assets/common.sass',
     'element-ui/lib/theme-chalk/index.css'
   ],
   head: {
@@ -13,7 +14,8 @@ var conf = {
       { hid: 'description', name: 'description', content: '日本語のテック系ポッドキャストの更新情報をまとめています' }
     ],
     link: [
-      { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' }
+      { type: 'text/css', rel: 'stylesheet', href: '//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css' },
+      { type: 'text/css', rel: 'stylesheet', href: '//fonts.googleapis.com/earlyaccess/notosansjp.css' }
     ]
   },
   modules: [
