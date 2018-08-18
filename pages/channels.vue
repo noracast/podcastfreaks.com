@@ -1,27 +1,38 @@
 <template lang="pug">
 div
-  h2 登録チャンネル
+  h2 Channels
   h5 {{ channels.length }}
-  ol
-    li(v-for="(val, key) in channels" :key="key")
-      nuxt-link(:to="'channel/'+key" v-text="val")
-      a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
-      a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
+  table
+    thead
+      tr
+        th Channel
+        th Twitter
+        th Hashtag
+    tbody
+      tr(v-for="(val, key) in channels" :key="key")
+        th
+          nuxt-link(:to="'channel/'+key" v-text="val")
+        td
+          a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
+        td
+          a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
-ol
-  li
-    color: #303133
-    font-size: 13px
+th,td
+  text-align: left
+  vertical-align: top
+  padding: 10px 0
+
+thead
+  color: #ddd
+  font-size: 12px
+tbody
+  th,td
+    border-top: 1px solid #ddd
     font-weight: 500
-    padding-bottom: 1em
-    a
-      text-decoration: none
-      display: block
-      &:first-child
-        font-size: 15px
-        font-weight: bold
+    font-size: 15px
+
 </style>
 
 <script>
@@ -58,9 +69,6 @@ export default {
     }
   },
   methods: {
-    title: function(ep) {
-      return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
-    },
     twitter: function(key) {
       return rss[key].twitter
     },
