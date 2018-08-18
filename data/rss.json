@@ -139,6 +139,11 @@
     "twitter": "@shiganaiRadio",
     "hashtag": "#しがないラジオ"
   },
+  "sore_ha_sou": {
+    "feed": "http://feeds.feedburner.com/BiaccoRadio",
+    "twitter": null,
+    "hashtag": "#sore_ha_sou"
+  },
   "soussune": {
     "feed": "https://soussune.com/feed.xml",
     "twitter": "@soussunefm",
