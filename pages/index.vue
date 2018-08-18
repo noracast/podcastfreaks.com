@@ -65,12 +65,6 @@ export default {
   methods: {
     title: function(ep) {
       return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
-    },
-    twitter: function(key) {
-      return rss[key].twitter
-    },
-    hashtag: function(key) {
-      return rss[key].hashtag
     }
   }
 }
