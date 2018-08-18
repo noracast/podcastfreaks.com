@@ -29,3 +29,4 @@ script:
   - git push origin netlify --force
 branches:
   - master
+  - solving-error-on-travis
