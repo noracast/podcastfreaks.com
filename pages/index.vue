@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     title: function(ep) {
-      return `${this.$options.filters.formatDate(ep.pubDate)}　　${ep.channel_title}`
+      return `${moment(ep.pubDate).format('M/D')}　　${ep.channel_title}　　${ep.title}`
     }
   }
 }
