@@ -1,32 +1,27 @@
 <template lang="pug">
 div
-  allpodcasts(:feeds="feeds")
-
-  h2 新着エピソード
-  h5 今週　　{{ episodes_in_1weeks.length }} episodes
-  el-collapse
-    el-collapse-item(v-for="(val, key) in episodes_in_1weeks" :title="title(val)" :key="key" :name="key")
-      .warp
-        h3
-          a(:href="val.link" v-text="val.title" target='_blank')
-        div.description(v-html="val.description")
-  h5 先週　　{{ episodes_in_2weeks.length }} episodes
-  el-collapse
-    el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
-      .warp
-        h3
-          a(:href="val.link" v-text="val.title" target='_blank')
-        div.description(v-html="val.description")
+  h2 登録チャンネル
+  h5 {{ channels.length }}
+  ol
+    li(v-for="(val, key) in channels" :key="key")
+      nuxt-link(:to="'channel/'+key" v-text="val")
+      a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
+      a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
-
-.warp
-  background-color: #f2f6fc
-  padding: 30px
-  border-radius: 8px
-.description
-  border-top: 1px solid #333
+ol
+  li
+    color: #303133
+    font-size: 13px
+    font-weight: 500
+    padding-bottom: 1em
+    a
+      text-decoration: none
+      display: block
+      &:first-child
+        font-size: 15px
+        font-weight: bold
 </style>
 
 <script>
