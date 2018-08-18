@@ -19,8 +19,7 @@ before_install:
   - ssh-add github_deploy_key
 script:
   # deploy to netlify
-  - npm install
-  - npm run generate
+  - yarn generate
   - cd dist
   - git init
   - git remote add origin git@github.com:developersjp/podcast-freaks.git
