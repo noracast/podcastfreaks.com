@@ -64,7 +64,8 @@ export default {
   },
   methods: {
     title: function(ep) {
-      return `${moment(ep.pubDate).format('M/D')}　　${ep.channel_title}　　${ep.title}`
+      moment.locale('ja')
+      return `${moment(ep.pubDate).format('M/D(ddd)')}　　${ep.channel_title}　　${ep.title}`
     }
   }
 }
