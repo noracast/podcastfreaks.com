@@ -27,6 +27,9 @@ div
   border-radius: 8px
 .description
   border-top: 1px solid #333
+.el-collapse-item
+  overflow: hidden
+
 </style>
 
 <script>
