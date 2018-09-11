@@ -1,6 +1,7 @@
 const rss = require('../data/rss.json')
 const shell = require('shelljs')
 const wget = require('wget-improved')
+const wgetp = require('node-wget-promise')
 const fs = require('fs')
 const xml2js = require('xml2js')
 const moment = require('moment')
@@ -21,6 +22,7 @@ var total = Object.keys(rss).length
 var latest_pubdates = []
 var episodes_in_2weeks = []
 var channels = {}
+var covers = {}
 
 Object.keys(rss).forEach(function (key) {
   const src = rss[key].feed
@@ -38,10 +40,8 @@ Object.keys(rss).forEach(function (key) {
         }
 
         // TODO: Download cover images
-        console.log('-------'+json.rss.channel.title)
         const cover = _.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url')
-        console.log(cover)
-        wget.download(cover, `${COVER_DIR}/${key}.${fileExtension(cover)}`)
+        covers[key] = cover
 
         // Get the latest episode's publish date
         latest_pubdates.push({
@@ -65,8 +65,10 @@ Object.keys(rss).forEach(function (key) {
 
         total--
 
-        // Export to list file ordered by pubDate
+        // Finish execution
         if(total <= 0) {
+
+          // Export to list file ordered by pubDate
           latest_pubdates.sort(function(a, b) {
             return new Date(b.pubDate) - new Date(a.pubDate)
           })
@@ -83,10 +85,22 @@ Object.keys(rss).forEach(function (key) {
             updated: new Date(),
           }
           fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
+
+          // Download cover images ONE BY ONE
+          // 一気にwgetすると404になる場合があるのでひとつずつ順番に
+          const resolveAfter = (_key, _url) => {
+            return wgetp(_url, {output: `${COVER_DIR}/${_key}.${fileExtension(_url)}`})
+          }
+          let p = Promise.resolve()
+          Object.keys(covers).forEach(function (_key) {
+            p = p.then(() => resolveAfter(_key, covers[_key]));
+          })
         }
       })
     })
   })
+
+
   download.on('error', (__err)=> {
     console.err(__err)
   })
