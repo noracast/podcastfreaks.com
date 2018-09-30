@@ -24,6 +24,7 @@ var episodes_in_2weeks = []
 var channels = {}
 var covers = {}
 
+process.on('unhandledRejection', console.dir)
 Object.keys(rss).forEach(function (key) {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
