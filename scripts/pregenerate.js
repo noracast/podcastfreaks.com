@@ -7,6 +7,7 @@ const xml2js = require('xml2js')
 const moment = require('moment')
 const _ = require('lodash')
 const fileExtension = require('file-extension')
+const url = require('url')
 
 const DOWNLOADS_DIR = './static/downloads'
 const RSS_DIR       = './static/downloads/rss'
@@ -25,6 +26,13 @@ var channels = {}
 var covers = {}
 
 process.on('unhandledRejection', console.dir)
+
+// https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
+var removeQuery = function(uri) {
+  const u = url.parse(uri)
+  return `${u.protocol}://${u.host}${u.pathname}`
+}
+
 Object.keys(rss).forEach(function (key) {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
@@ -40,9 +48,9 @@ Object.keys(rss).forEach(function (key) {
           throw _err
         }
 
-        // TODO: Download cover images
-        const cover = _.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url')
-        covers[key] = cover
+        // Get cover image urls
+        const cover_url = _.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url')
+        covers[key] = removeQuery(cover_url)
 
         // Get the latest episode's publish date
         latest_pubdates.push({
