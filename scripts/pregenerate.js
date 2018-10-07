@@ -69,6 +69,7 @@ Object.keys(rss).forEach(function (key) {
         })
         // Add channel info into each episodes
         episodes.forEach(function(el) {
+          el['key'] = key
           el['channel_title'] = channel_title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)

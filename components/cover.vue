@@ -10,10 +10,11 @@ div.cover(:style="styles")
 </style>
 
 <script>
+import build_info from '~/static/downloads/build_info.json'
 
 export default {
   props: {
-    src: {
+    channel: {
       type: String,
       required: true
     },
@@ -31,7 +32,7 @@ export default {
       return {
         'width': this.size,
         'height': this.size,
-        'background-image': `url(${this.src})`,
+        'background-image': `url(${build_info.channels[this.channel].cover})`,
         'border-radius': this.radius
       }
     }
