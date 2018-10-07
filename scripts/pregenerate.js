@@ -49,8 +49,11 @@ Object.keys(rss).forEach(function (key) {
         }
 
         // Get cover image urls
-        const cover_url = _.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url')
-        covers[key] = removeQuery(cover_url)
+        const cover_url = removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
+        covers[key] = {
+          src: cover_url,
+          dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+        }
 
         // Get the latest episode's publish date
         latest_pubdates.push({
@@ -70,7 +73,10 @@ Object.keys(rss).forEach(function (key) {
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
         // Save title
-        channels[key] = channel_title
+        channels[key] = {
+          title: channel_title,
+          cover: covers[key].dist.replace(/^\.\/static/, '')
+        }
 
         total--
 
@@ -87,6 +93,17 @@ Object.keys(rss).forEach(function (key) {
           var load_order = latest_pubdates.map(function(element, index, array) {
             return element.id;
           });
+
+          // Download cover images ONE BY ONE
+          // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
+          const resolveAfter = (_key, _src, _dist) => {
+            return wgetp(_src, {output: _dist})
+          }
+          let p = Promise.resolve()
+          Object.keys(covers).forEach(function (_key) {
+            p = p.then(() => resolveAfter(_key, covers[_key].src, covers[_key].dist));
+          })
+
           var data = {
             load_order,
             episodes_in_2weeks,
@@ -94,16 +111,6 @@ Object.keys(rss).forEach(function (key) {
             updated: new Date(),
           }
           fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
-
-          // Download cover images ONE BY ONE
-          // 一気にwgetすると404になる場合があるのでひとつずつ順番に
-          const resolveAfter = (_key, _url) => {
-            return wgetp(_url, {output: `${COVER_DIR}/${_key}.${fileExtension(_url)}`})
-          }
-          let p = Promise.resolve()
-          Object.keys(covers).forEach(function (_key) {
-            p = p.then(() => resolveAfter(_key, covers[_key]));
-          })
         }
       })
     })
