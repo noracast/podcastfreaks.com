@@ -1,34 +1,33 @@
 <template lang="pug">
 div
-  allpodcasts(:feeds="feeds")
-
   h2 新着エピソード
   h5 今週　　{{ episodes_in_1weeks.length }} episodes
-  el-collapse
-    el-collapse-item(v-for="(val, key) in episodes_in_1weeks" :title="title(val)" :key="key" :name="key")
-      .warp
-        h3
-          a(:href="val.link" v-text="val.title" target='_blank')
-        div.description(v-html="val.description")
+  .this-week
+    template(v-for="(val, key) in episodes_in_1weeks")
+      .border(v-if="!isSame(val.pubDate)")
+        span.date(v-text="date(val.pubDate)")
+      episode-row(:episode="val")
   h5 先週　　{{ episodes_in_2weeks.length }} episodes
-  el-collapse
-    el-collapse-item(v-for="(val, key) in episodes_in_2weeks" :title="title(val)" :key="key" :name="key")
-      .warp
-        h3
-          a(:href="val.link" v-text="val.title" target='_blank')
-        div.description(v-html="val.description")
+  .last-week
+    template(v-for="(val, key) in episodes_in_2weeks")
+      .border(v-if="!isSame(val.pubDate)")
+        span.date(v-text="date(val.pubDate)")
+      episode-row(:episode="val")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
 
-.warp
-  background-color: #f2f6fc
-  padding: 30px
-  border-radius: 8px
-.description
-  border-top: 1px solid #333
-.el-collapse-item
-  overflow: hidden
+.border
+  height: 0
+  border-top: 1px solid #ccc
+  margin: 10px 0
+  position: relative
+  .date
+    position: absolute
+    top: 10px
+    padding: 5px 0
+    height: 30px
+    line-height: 30px
 
 </style>
 
@@ -43,8 +42,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
   components: {
-    'podcast': require('~/components/podcast.vue').default,
-    'allpodcasts': require('~/components/allpodcasts.vue').default
+    'allpodcasts': require('~/components/allpodcasts.vue').default,
+    'cover': require('~/components/cover.vue').default,
+    'episode-row': require('~/components/episode-row.vue').default,
+    'podcast': require('~/components/podcast.vue').default
   },
   data: function() {
     const aweekago = moment().subtract(7, 'days').startOf('date')
@@ -62,13 +63,22 @@ export default {
       feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       episodes_in_1weeks,
       episodes_in_2weeks,
-      channels: build_info.channels
+      channels: build_info.channels,
+      current_date: null
     }
   },
   methods: {
-    title: function(ep) {
+    date: function(_date) {
       moment.locale('ja')
-      return `${moment(ep.pubDate).format('M/D(ddd)')}　　${ep.channel_title}　　${ep.title}`
+
+      return moment(_date).format('M/D(ddd)')
+    },
+    isSame: function(_date) {
+      if(this.current_date && this.current_date.isSame(_date,'day')){
+        return true
+      }
+      this.current_date = moment(_date)
+      return false
     }
   }
 }
