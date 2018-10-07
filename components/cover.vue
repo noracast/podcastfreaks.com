@@ -1,5 +1,5 @@
 <template lang="pug">
-div.cover(:style="'background-image: url('+src+'); width: '+size+'; height:'+size+';'")
+div.cover(:style="styles")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -7,21 +7,34 @@ div.cover(:style="'background-image: url('+src+'); width: '+size+'; height:'+siz
   background-repeat: no-repeat
   background-position: center
   background-size: cover
-  border-radius: 10%
 </style>
 
 <script>
 
 export default {
   props: {
-    size: {
-      type: String,
-      default: '60px'
-    },
     src: {
       type: String,
       required: true
+    },
+    radius: {
+      type: String,
+      default: '10%'
+    },
+    size: {
+      type: String,
+      default: '60px'
     }
   },
+  computed: {
+    styles () {
+      return {
+        'width': this.size,
+        'height': this.size,
+        'background-image': `url(${this.src})`,
+        'border-radius': this.radius
+      }
+    }
+  }
 }
 </script>
