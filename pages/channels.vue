@@ -13,7 +13,7 @@ div
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
           nuxt-link(:to="'channel/'+key")
-            cover(:src="val.cover" size='60')
+            cover(:src="val.cover")
         th
           nuxt-link(:to="'channel/'+key" v-text="val.title")
         td
