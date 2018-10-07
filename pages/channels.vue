@@ -5,13 +5,17 @@ div
   table
     thead
       tr
+        th
         th Channel
         th Twitter
         th Hashtag
     tbody
       tr(v-for="(val, key) in channels" :key="key")
+        td.cover
+          nuxt-link(:to="'channel/'+key")
+            cover(:src="val.cover")
         th
-          nuxt-link(:to="'channel/'+key" v-text="val")
+          nuxt-link(:to="'channel/'+key" v-text="val.title")
         td
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
@@ -32,6 +36,10 @@ tbody
     border-top: 1px solid #ddd
     font-weight: 500
     font-size: 15px
+    vertical-align: middle
+
+  td.cover
+    padding-right: 10px
 
 </style>
 
@@ -46,8 +54,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
   components: {
-    'podcast': require('~/components/podcast.vue').default,
-    'allpodcasts': require('~/components/allpodcasts.vue').default
+    'allpodcasts': require('~/components/allpodcasts.vue').default,
+    'cover': require('~/components/cover.vue').default,
+    'podcast': require('~/components/podcast.vue').default
   },
   data: function() {
     const aweekago = moment().subtract(7, 'days').startOf('date')
