@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "file-extension": "^4.0.5",
+    "node-image-resizer": "^1.0.0",
     "node-sass": "^4.9.1",
     "node-wget-promise": "^0.1.6",
     "pug": "^2.0.3",

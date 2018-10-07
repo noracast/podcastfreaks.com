@@ -2,6 +2,7 @@ const _ = require('lodash')
 const fileExtension = require('file-extension')
 const fs = require('fs')
 const moment = require('moment')
+const resizer = require('node-image-resizer')
 const rss = require('../data/rss.json')
 const shell = require('shelljs')
 const url = require('url')
@@ -98,7 +99,25 @@ Object.keys(rss).forEach(function (key) {
           // Download cover images ONE BY ONE
           // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
           const resolveAfter = (_key, _src, _dist) => {
-            return wgetp(_src, {output: _dist})
+            const config = {
+              all: {
+                quality: 100,
+                path: `${COVER_DIR}/`
+              },
+              versions: [
+                {
+                  suffix: '-30',
+                  width: 60,
+                  height: 60
+                },
+                {
+                  suffix: '-60',
+                  width: 120,
+                  height: 120
+                }
+              ]
+            }
+            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config))
           }
           let p = Promise.resolve()
           Object.keys(covers).forEach(function (_key) {

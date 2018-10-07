@@ -1,6 +1,6 @@
 <template lang="pug">
 a(:href="episode.link" target="_blank")
-  cover.cover(:channel="episode.key" size='30px' radius='50%')
+  cover.cover(:channel="episode.key" :size='30' radius='50%')
   span.title(v-text="episode.title")
 </template>
 

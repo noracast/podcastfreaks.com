@@ -23,16 +23,18 @@ export default {
       default: '10%'
     },
     size: {
-      type: String,
-      default: '60px'
+      type: Number,
+      default: 60
     }
   },
   computed: {
     styles () {
+      let image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`-${this.size}.$1`)
+      // TODO: Fix image_url if file not found
       return {
-        'width': this.size,
-        'height': this.size,
-        'background-image': `url(${build_info.channels[this.channel].cover})`,
+        'width': `${this.size}px`,
+        'height': `${this.size}px`,
+        'background-image': `url(${image_url})`,
         'border-radius': this.radius
       }
     }
