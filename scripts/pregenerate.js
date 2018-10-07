@@ -30,7 +30,7 @@ process.on('unhandledRejection', console.dir)
 // https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
 var removeQuery = function(uri) {
   const u = url.parse(uri)
-  return `${u.protocol}://${u.host}${u.pathname}`
+  return `${u.protocol}//${u.host}${u.pathname}`
 }
 
 Object.keys(rss).forEach(function (key) {
