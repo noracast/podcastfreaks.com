@@ -5,8 +5,8 @@
         nuxt-link(to='/') Podcast Freaks
       nav
         nuxt-link(to='/') Top
-        nuxt-link(to='/about') About
-        nuxt-link(to='/channels') Channels
+        nuxt-link(to='/about/') About
+        nuxt-link(to='/channels/') Channels
       .last-update Last update: {{ updated }}
     el-main
       nuxt
