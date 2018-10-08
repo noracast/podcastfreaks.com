@@ -35,6 +35,7 @@
     "moment": "^2.22.2",
     "nuxt": "^1.4.1",
     "shelljs": "^0.8.2",
+    "vue-responsive-components": "^0.2.3",
     "wget-improved": "^1.5.0",
     "xml2js": "^0.4.19"
   },
@@ -46,7 +47,6 @@
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "push-dir": "^0.4.1",
-    "sass-loader": "^7.0.3",
-    "vue-responsive-components": "^0.2.3"
+    "sass-loader": "^7.0.3"
   }
 }
