@@ -1,6 +1,6 @@
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('webpack-node-externals')
 
-var conf = {
+module.exports = {
   build: {
     vendor: ['element-ui'],
     extend(config, { isServer }) {
@@ -44,5 +44,3 @@ var conf = {
     fallback: true
   }
 }
-
-module.exports = conf
