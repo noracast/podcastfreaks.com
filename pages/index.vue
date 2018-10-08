@@ -51,7 +51,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
   components: {
-    'allpodcasts': require('~/components/allpodcasts.vue').default,
     'cover': require('~/components/cover.vue').default,
     'episode-row': require('~/components/episode-row.vue').default,
     'podcast': require('~/components/podcast.vue').default
@@ -79,7 +78,6 @@ export default {
   methods: {
     date: function(_date) {
       moment.locale('ja')
-
       return moment(_date).format('M/D(ddd)')
     },
     isSame: function(_date1, _date2) {
