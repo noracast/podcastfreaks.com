@@ -1,6 +1,20 @@
+var nodeExternals = require('webpack-node-externals');
+
 var conf = {
   build: {
-    vendor: ['element-ui']
+    vendor: ['element-ui'],
+    extend(config, { isServer }) {
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [
+              /\.(?!(?:js|json)$).{1,5}$/i,
+              /vue-responsive-components/
+            ]
+          })
+        ]
+      }
+    }
   },
   css: [
     '@/assets/common.sass',
@@ -22,8 +36,9 @@ var conf = {
     ['@nuxtjs/google-analytics', {id: 'UA-117929880-2'}]
   ],
   plugins: [
+    '~plugins/element-ui',
     '~plugins/filters.js',
-    '~plugins/element-ui'
+    '~plugins/vue-responsive-components.js',
   ],
   generate: {
     fallback: true
