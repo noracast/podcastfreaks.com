@@ -14,7 +14,7 @@ Responsive(:breakpoints="{small: el => el.width <= 900}")
       template(v-for="(val, idx) in episodes_in_2weeks")
         //- 違う日だったら
         .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
-        span.date(v-text="date(val.pubDate)")
+          span.date(v-text="date(val.pubDate)")
         episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
