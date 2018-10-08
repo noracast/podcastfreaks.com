@@ -1,18 +1,19 @@
 <template lang="pug">
-div
-  h2 新着エピソード
-  h5 今週　　{{ episodes_in_1weeks.length }} episodes
-  .this-week
-    template(v-for="(val, key) in episodes_in_1weeks")
-      .border(v-if="!isSame(val.pubDate)")
-        span.date(v-text="date(val.pubDate)")
-      episode-row(:episode="val")
-  h5 先週　　{{ episodes_in_2weeks.length }} episodes
-  .last-week
-    template(v-for="(val, key) in episodes_in_2weeks")
-      .border(v-if="!isSame(val.pubDate)")
-        span.date(v-text="date(val.pubDate)")
-      episode-row(:episode="val")
+Responsive(:breakpoints="{small: el => el.width <= 900}")
+  div(slot-scope="el" :class="{ small: el.is.small }")
+    h2 新着エピソード
+    h5 今週　　{{ episodes_in_1weeks.length }} episodes
+    .this-week
+      template(v-for="(val, key) in episodes_in_1weeks")
+        .border(v-if="!isSame(val.pubDate)")
+          span.date(v-text="date(val.pubDate)")
+        episode-row(:episode="val" :class="{ small: el.is.small }")
+    h5 先週　　{{ episodes_in_2weeks.length }} episodes
+    .last-week
+      template(v-for="(val, key) in episodes_in_2weeks")
+        .border(v-if="!isSame(val.pubDate)")
+          span.date(v-text="date(val.pubDate)")
+        episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -22,13 +23,19 @@ div
   border-top: 1px solid #ccc
   margin: 10px 0
   position: relative
-  .date
-    position: absolute
-    top: 10px
-    padding: 5px 0
-    height: 30px
-    line-height: 30px
 
+.date
+  position: absolute
+  top: 10px
+  padding: 5px 0
+  height: 30px
+  line-height: 30px
+
+div.small
+  .date
+    font-size: 11px
+    height: 20px
+    line-height: 20px
 </style>
 
 <script>

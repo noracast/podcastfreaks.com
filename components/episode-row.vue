@@ -1,11 +1,13 @@
 <template lang="pug">
-a(:href="episode.link" target="_blank")
-  cover.cover(:channel="episode.key" :size='30' radius='50%')
-  span.title(v-text="episode.title")
+  div.row
+    nuxt-link(:to="'channel/'+episode.key")
+      cover.cover(:channel="episode.key" :size='30' radius='50%')
+    a(:href="episode.link" target="_blank")
+      span.title(v-text="episode.title")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
-a
+div.row
   padding: 5px 0
   position: relative
   display: -webkit-flex
@@ -15,6 +17,12 @@ a
   margin-left: 100px
   &:hover
     color: #3a8ee6
+  &.small
+    margin-left: 60px
+    .title
+      height: 20px
+      line-height: 20px
+      font-size: 11px
 .cover
   width: 30px
 .title
