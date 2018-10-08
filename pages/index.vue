@@ -4,15 +4,17 @@ Responsive(:breakpoints="{small: el => el.width <= 900}")
     h2 新着エピソード
     h5 今週　　{{ episodes_in_1weeks.length }} episodes
     .this-week
-      template(v-for="(val, key) in episodes_in_1weeks")
-        .border(v-if="!isSame(val.pubDate)")
+      template(v-for="(val, idx) in episodes_in_1weeks")
+        //- 違う日だったら
+        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
           span.date(v-text="date(val.pubDate)")
         episode-row(:episode="val" :class="{ small: el.is.small }")
     h5 先週　　{{ episodes_in_2weeks.length }} episodes
     .last-week
-      template(v-for="(val, key) in episodes_in_2weeks")
-        .border(v-if="!isSame(val.pubDate)")
-          span.date(v-text="date(val.pubDate)")
+      template(v-for="(val, idx) in episodes_in_2weeks")
+        //- 違う日だったら
+        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
+        span.date(v-text="date(val.pubDate)")
         episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
@@ -56,8 +58,8 @@ export default {
   },
   data: function() {
     const aweekago = moment().subtract(7, 'days').startOf('date')
-    var episodes_in_1weeks = []
-    var episodes_in_2weeks = []
+    let episodes_in_1weeks = []
+    let episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
       if(moment(item.pubDate).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
@@ -80,12 +82,12 @@ export default {
 
       return moment(_date).format('M/D(ddd)')
     },
-    isSame: function(_date) {
-      if(this.current_date && this.current_date.isSame(_date,'day')){
-        return true
-      }
-      this.current_date = moment(_date)
-      return false
+    isSame: function(_date1, _date2) {
+      const __date1 = new Date(_date1)
+      const __date2 = new Date(_date2)
+      return __date1.getDate()==__date2.getDate() &&
+        __date1.getMonth()==__date2.getMonth() &&
+        __date1.getFullYear()==__date2.getFullYear()
     }
   }
 }
