@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/developersjp/podcast-freaks.git"
+    "url": "git+https://github.com/noracast/podcast-freaks.git"
   },
   "keywords": [
     "Podcast"
@@ -21,20 +21,21 @@
   "author": "naokazuterada <naokazu.terada@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/developersjp/podcast-freaks/issues"
+    "url": "https://github.com/noracast/podcast-freaks/issues"
   },
-  "homepage": "https://github.com/developersjp/podcast-freaks/",
+  "homepage": "https://github.com/noracast/podcast-freaks/",
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
     "cal-heatmap": "^3.6.2",
     "d3": "^5.5.0",
-    "element-ui": "^2.4.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "nuxt": "^1.4.1",
     "shelljs": "^0.8.2",
+    "vue-responsive-components": "^0.2.3",
+    "webpack-node-externals": "^1.7.2",
     "wget-improved": "^1.5.0",
     "xml2js": "^0.4.19"
   },

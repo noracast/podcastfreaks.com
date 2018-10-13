@@ -1,10 +1,22 @@
-var conf = {
+var nodeExternals = require('webpack-node-externals')
+
+module.exports = {
   build: {
-    vendor: ['element-ui']
+    extend(config, { isServer }) {
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [
+              /\.(?!(?:js|json)$).{1,5}$/i,
+              /vue-responsive-components/
+            ]
+          })
+        ]
+      }
+    }
   },
   css: [
-    '@/assets/common.sass',
-    'element-ui/lib/theme-chalk/index.css'
+    '@/assets/common.sass'
   ],
   head: {
     titleTemplate: 'Podcast Freaks',
@@ -23,11 +35,9 @@ var conf = {
   ],
   plugins: [
     '~plugins/filters.js',
-    '~plugins/element-ui'
+    '~plugins/vue-responsive-components.js',
   ],
   generate: {
     fallback: true
   }
 }
-
-module.exports = conf
