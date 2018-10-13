@@ -3,8 +3,8 @@ div
   a(:href="link" target="_blank")
     h3 {{ title }}
   div
-    el-button.prev(circle) ←
-    el-button.next(circle) →
+    button.prev(circle) ←
+    button.next(circle) →
     .heatmap
 </template>
 

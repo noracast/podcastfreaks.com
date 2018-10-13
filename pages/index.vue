@@ -46,8 +46,6 @@ import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
 import build_info from '~/static/downloads/build_info.json'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
   components: {

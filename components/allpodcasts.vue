@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  el-button.prev(circle) ←
-  el-button.next(circle) →
+  button.prev(circle) ←
+  button.next(circle) →
   .heatmap
 </template>
 

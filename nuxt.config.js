@@ -2,7 +2,6 @@ var nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   build: {
-    vendor: ['element-ui'],
     extend(config, { isServer }) {
       if (isServer) {
         config.externals = [
@@ -17,8 +16,7 @@ module.exports = {
     }
   },
   css: [
-    '@/assets/common.sass',
-    'element-ui/lib/theme-chalk/index.css'
+    '@/assets/common.sass'
   ],
   head: {
     titleTemplate: 'Podcast Freaks',
@@ -36,7 +34,6 @@ module.exports = {
     ['@nuxtjs/google-analytics', {id: 'UA-117929880-2'}]
   ],
   plugins: [
-    '~plugins/element-ui',
     '~plugins/filters.js',
     '~plugins/vue-responsive-components.js',
   ],

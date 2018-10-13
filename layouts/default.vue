@@ -1,6 +1,6 @@
 <template lang='pug'>
   .wrapper
-    el-header
+    header
       h1
         nuxt-link(to='/') Podcast Freaks
       nav
@@ -8,7 +8,7 @@
         nuxt-link(to='/about/') About
         nuxt-link(to='/channels/') Channels
       .last-update Last update: {{ updated }}
-    el-main
+    .main
       nuxt
 </template>
 
