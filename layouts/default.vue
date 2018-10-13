@@ -1,10 +1,10 @@
 <template lang='pug'>
-  .wrapper
+Responsive(:breakpoints="{small: el => el.width <= 700}")
+  .wrapper(slot-scope="el" :class="{ small: el.is.small }")
     header
       h1
         nuxt-link(to='/') Podcast Freaks
       nav
-        nuxt-link(to='/') Top
         nuxt-link(to='/about/') About
         nuxt-link(to='/channels/') Channels
       .last-update Last update: {{ updated }}
@@ -13,37 +13,56 @@
 </template>
 
 <style lang='sass?indentedSyntax' scoped>
-
+a
+  &:hover
+    color: #fff
+    opacity: 0.8
 header
-  height: 60px
-  margin-bottom: 60px
-  display: -webkit-flex
-  -webkit-flex-wrap: wrap
-  display: flex
-  flex-wrap: wrap
+  height: 40px
+  background: #8c22a7
+  padding: 20px
+.main
+  padding: 20px
 h1
   float: left
-  width: 300px
   display: -webkit-flex
   -webkit-align-items: center
   display: flex
   align-items: center
+  margin: 0
+  height: 100%
+  a
+    font-size: 15px
+    color: #fff
 nav
   float: left
-  width: calc(100% - 300px)
   display: -webkit-flex
   -webkit-align-items: center
   display: flex
   align-items: center
+  font-size: 13px
+  margin-left: 60px
+  height: 100%
   a
     display: inline-block
+    color: #fff
   a + a
     margin-left: 2em
 .last-update
-  clear: both
+  margin-left: auto
   font-size: 11px
-  color: #888
+  color: #fff
+  float: right
+  height: 100%
+  display: -webkit-flex
+  -webkit-align-items: center
+  display: flex
+  align-items: center
 
+.wrapper
+  &.small
+    .last-update
+      display: none
 </style>
 
 <script>

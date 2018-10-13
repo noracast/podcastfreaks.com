@@ -15,10 +15,13 @@ div.row
   display: flex
   flex-wrap: wrap
   margin-left: 100px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
   &:hover
     color: #3a8ee6
   &.small
-    margin-left: 60px
+    margin-left: 0
     .title
       height: 20px
       line-height: 20px
