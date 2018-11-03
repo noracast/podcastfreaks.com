@@ -7,8 +7,6 @@
     "dev": "nuxt",
     "pregenerate": "node scripts/pregenerate.js",
     "generate": "nuxt generate",
-    "pregenerate:gh-pages": "node scripts/pregenerate.js",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup --force"
   },
   "repository": {
