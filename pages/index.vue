@@ -1,15 +1,14 @@
 <template lang="pug">
 Responsive(:breakpoints="{small: el => el.width <= 900}")
   div(slot-scope="el" :class="{ small: el.is.small }")
-    h2 新着エピソード
-    h5 今週　　{{ episodes_in_1weeks.length }} episodes
+    h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
     .this-week
       template(v-for="(val, idx) in episodes_in_1weeks")
         //- 違う日だったら
         .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
           span.date(v-text="date(val.pubDate)")
         episode-row(:episode="val" :class="{ small: el.is.small }")
-    h5 先週　　{{ episodes_in_2weeks.length }} episodes
+    h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
     .last-week
       template(v-for="(val, idx) in episodes_in_2weeks")
         //- 違う日だったら
