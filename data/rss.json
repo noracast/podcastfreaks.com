@@ -129,6 +129,11 @@
     "twitter": null,
     "hashtag": "#omoiyarifm"
   },
+  "ossanfm": {
+    "feed": "https://ossan.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#ossanfm"
+  },
   "php-genba": {
     "feed": "https://php-genba.shin1x1.com/rss",
     "twitter": null,
