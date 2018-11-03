@@ -20,12 +20,6 @@ before_install:
 script:
   # deploy to netlify
   - yarn build
-  - cd dist
-  - git init
-  - git remote add origin git@github.com:developersjp/podcast-freaks.git
-  - git checkout -b netlify
-  - git add .
-  - git commit -m 'Builds with Travis Cron Job'
-  - git push origin netlify --force
+  - yarn deploy
 branches:
   - master
