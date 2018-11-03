@@ -83,7 +83,10 @@ Object.keys(rss).forEach(function (key) {
         // Save title
         channels[key] = {
           title: channel_title,
-          cover: covers[key].dist.replace(/^\.\/static/, '')
+          cover: covers[key].dist.replace(/^\.\/static/, ''),
+          total: json.rss.channel.item.length,
+          firstDate: _.last(json.rss.channel.item).pubDate,
+          lastDate: _.first(json.rss.channel.item).pubDate
         }
 
         total--

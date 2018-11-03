@@ -6,9 +6,12 @@ div
     thead
       tr
         th
-        th Channel
+        th Title
         th Twitter
         th Hashtag
+        th Total
+        th First
+        th Last
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
@@ -20,9 +23,14 @@ div
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
           a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
+        td {{ val.total }}
+        td {{ val.firstDate | formatDate }}
+        td {{ val.lastDate | formatDate }}
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
+table
+  width: 100%
 th,td
   text-align: left
   vertical-align: top
