@@ -7,7 +7,7 @@
     "dev": "nuxt",
     "pregenerate": "node scripts/pregenerate.js",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup --force"
+    "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
   },
   "repository": {
     "type": "git",
