@@ -19,7 +19,7 @@ a
     opacity: 0.8
 header
   height: 40px
-  background: #8c22a7
+  background: linear-gradient(80deg, #af078b, #050935)
   padding: 20px
 .main
   padding: 20px
