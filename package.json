@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nuxt",
-    "pregenerate": "node scripts/pregenerate.js",
-    "generate": "nuxt generate",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "nuxt generate",
     "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
   },
   "repository": {
