@@ -29,14 +29,18 @@ export default {
   },
   computed: {
     styles () {
-      let image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`-${this.size}.$1`)
+      const suffix = this.size == 0 ? '' : `-${this.size}`
+      const image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`${suffix}.$1`)
       // TODO: Fix image_url if file not found
-      return {
-        'width': `${this.size}px`,
-        'height': `${this.size}px`,
+      let style = {
         'background-image': `url(${image_url})`,
         'border-radius': this.radius
       }
+      if(this.size != 0){
+        style.width = `${this.size}px`
+        style.height = `${this.size}px`
+      }
+      return style
     }
   }
 }

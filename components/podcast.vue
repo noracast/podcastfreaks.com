@@ -1,14 +1,19 @@
 <template lang="pug">
 div
+  cover.cover(:channel="channelKey" :size="0" :radius="0")
   a(:href="link" target="_blank")
-    h3 {{ title }}
+    h3 {{ title }} {{ channelKey }}
+  .description {{ description }}
   div
     button.prev(circle) ←
     button.next(circle) →
     .heatmap
 </template>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass?indentedSyntax" scoped>
+.cover
+  width: 250px
+  height: 250px
 h3
   display: inline-block
   margin-top: 20px
@@ -34,22 +39,32 @@ import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
 
 export default {
-  props: ['feeds','feed'],
+  components: {
+    'cover': require('~/components/cover.vue').default
+  },
+  props: {
+    channelKey: {
+      type: String,
+      required: true
+    }
+  },
   data: function(){
     return {
       title: null,
+      description: null,
       link: null
     }
   },
   mounted () {
     let cal = new CalHeatMap()
-    this.loadRSS(this.feed)
-    .then(res => {
-      this.title = res.title
-      this.link = res.link
+    this.loadRSS(`/downloads/rss/${this.channelKey}.rss`)
+    .then(channel => {
+      this.title = channel.title
+      this.description = channel.description
+      this.link = channel.link
 
       var data = {}
-      res.episodes.forEach(function(ep, index) {
+      channel.item.forEach(function(ep, index) {
         let date = new Date(ep.pubDate).getTime() / 1000
         let duration = moment.duration(ep['itunes:duration'])
         data[date] = parseInt(duration.asMinutes(),10)
@@ -76,12 +91,7 @@ export default {
     async loadRSS (url) {
       let xml = await axios.get(url)
       let json = await xml2js(xml.data, {explicitArray: false})
-      let channel = json.rss.channel
-      return {
-        title: channel.title,
-        link: channel.link,
-        episodes: channel.item
-      }
+      return json.rss.channel
     }
   }
 }

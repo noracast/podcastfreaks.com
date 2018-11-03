@@ -1,5 +1,5 @@
 <template lang="pug">
-podcast(:feed="feed")
+podcast(:channelKey="channelKey")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -12,7 +12,7 @@ export default {
   },
   async asyncData({ app, params }) {
     return {
-      feed: `../downloads/rss/${params.id}.rss`
+      channelKey: params.id
     }
   }
 }

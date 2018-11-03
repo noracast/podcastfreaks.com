@@ -59,7 +59,6 @@ import build_info from '~/static/downloads/build_info.json'
 
 export default {
   components: {
-    'cover': require('~/components/cover.vue').default,
     'episode-row': require('~/components/episode-row.vue').default,
     'podcast': require('~/components/podcast.vue').default
   },
