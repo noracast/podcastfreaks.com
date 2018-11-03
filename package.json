@@ -4,7 +4,7 @@
   "description": "Activity visualizer of japanese tech podcasts - by podcast freaks",
   "main": "index.js",
   "scripts": {
-    "dev": "nuxt",
+    "start": "nuxt",
     "pregenerate": "node scripts/pregenerate.js",
     "generate": "nuxt generate",
     "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
