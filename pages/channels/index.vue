@@ -12,10 +12,10 @@ div
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
-          nuxt-link(:to="'channel/'+key")
+          nuxt-link(:to="'/channels/'+key")
             cover(:channel="key")
         th
-          nuxt-link(:to="'channel/'+key" v-text="val.title")
+          nuxt-link(:to="'/channels/'+key" v-text="val.title")
         td
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
