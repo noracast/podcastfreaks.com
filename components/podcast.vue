@@ -2,7 +2,7 @@
 div
   cover.cover(:channel="channelKey" :size="0" :radius="0")
   a(:href="link" target="_blank")
-    h3 {{ title }} {{ channelKey }}
+    h3 {{ title }}
   .description {{ description }}
   div
     button.prev(circle) ←
