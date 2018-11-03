@@ -4,6 +4,8 @@ div
   a(:href="link" target="_blank")
     h3 {{ title }}
   .description {{ description }}
+  .since Since: {{ since | formatDate }}
+  .episodes Total episodes: {{ episodes }}
   div
     button.prev(circle) ←
     button.next(circle) →
@@ -14,6 +16,9 @@ div
 .cover
   width: 250px
   height: 250px
+.since,
+.episodes
+  font-size: 32px
 h3
   display: inline-block
   margin-top: 20px
@@ -52,6 +57,8 @@ export default {
     return {
       title: null,
       description: null,
+      episodes: null,
+      since: null,
       link: null
     }
   },
@@ -62,6 +69,12 @@ export default {
       this.title = channel.title
       this.description = channel.description
       this.link = channel.link
+      // channel.item is not array when it has only a episode
+      if(!(channel.item instanceof Array)){
+        channel.item = [channel.item]
+      }
+      this.episodes = channel.item.length
+      this.since = channel.item[0].pubDate
 
       var data = {}
       channel.item.forEach(function(ep, index) {
