@@ -56,6 +56,11 @@ Object.keys(rss).forEach(function (key) {
           dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
         }
 
+        // Make sure json.rss.channel.item is Array
+        if(json.rss.channel.item instanceof Array == false) {
+          json.rss.channel.item = [json.rss.channel.item]
+        }
+
         // Get the latest episode's publish date
         latest_pubdates.push({
           id: key,
