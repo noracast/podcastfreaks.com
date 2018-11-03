@@ -57,8 +57,9 @@ Object.keys(rss).forEach(function (key) {
         }
 
         // json.rss.channel.item must be Array
-        if(json.rss.channel.item instanceof Array == false) {
+        if(!(json.rss.channel.item instanceof Array)) {
           json.rss.channel.item = [json.rss.channel.item]
+          // TODO ページの描画時にも配列でないことで不具合が起こるので、ここで上書きしてしまいたい
         }
 
         // Get the latest episode's publish date
