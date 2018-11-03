@@ -44,6 +44,11 @@
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
   },
+  "emfm": {
+    "feed": "https://anchor.fm/s/70a2c40/podcast/rss",
+    "twitter": null,
+    "hashtag": "#EMFM"
+  },
   "engineer-meeting": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
     "twitter": "@engineermeeting",
