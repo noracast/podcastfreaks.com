@@ -135,9 +135,7 @@ Object.keys(rss).forEach(function (key) {
       })
     })
   })
-
-
   download.on('error', (__err)=> {
-    console.err(__err)
+    console.error(__err)
   })
 })
