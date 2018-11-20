@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/noracast/podcast-freaks.svg?branch=master)](https://travis-ci.org/noracast/podcast-freaks)
+
+
 # Getting started
 
 ## Local Development
