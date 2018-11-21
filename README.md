@@ -21,11 +21,11 @@ Refs:
 
 This project is hosted on [Travis CI](https://travis-ci.org/developersjp/podcast-freaks). With its 'Cron Jobs', all rss seems to be updated on travis and pushed to 'gh-pages' branch of this project.
 
+Don't use `yarn deploy` (push-dir) on TravisCI. It will cause `Authentication failed`.
+
 # Manual deployment
 
 ```sh
 yarn build
 yarn deploy
 ```
-
-Don't use `yarn deploy` (push-dir) on TravisCI. It will cause `Authentication failed`.
