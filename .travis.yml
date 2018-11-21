@@ -20,6 +20,7 @@ before_install:
 script:
   # deploy to netlify
   - yarn build
+  - git remote -v
   - yarn deploy
 branches:
   - master
