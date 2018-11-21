@@ -7,7 +7,7 @@
     "start": "nuxt",
     "prebuild": "node scripts/prebuild.js",
     "build": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
+    "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force --verbose"
   },
   "repository": {
     "type": "git",
