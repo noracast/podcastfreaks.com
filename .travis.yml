@@ -18,8 +18,15 @@ before_install:
   - eval $(ssh-agent -s)
   - ssh-add github_deploy_key
 script:
-  # deploy to netlify
   - yarn build
-  - yarn deploy
+  # deploy to netlify
+  # Don't use 'yarn deploy'
+  - cd dist
+  - git init
+  - git remote add origin git@github.com:noracast/podcast-freaks.git
+  - git checkout -b netlify
+  - git add .
+  - git commit -m 'Builds with Travis Cron Job'
+  - git push origin netlify --force
 branches:
   - master
