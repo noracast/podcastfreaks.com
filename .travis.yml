@@ -26,7 +26,7 @@ script:
   - git remote add origin git@github.com:noracast/podcast-freaks.git
   - git checkout -b netlify
   - git add .
-  - git commit -m 'Builds with Travis Cron Job'
+  - git commit -m 'Builds on Travis Cron Job'
   - git push origin netlify --force
 branches:
   - master
