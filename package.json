@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nuxt",
     "prebuild": "node scripts/prebuild.js",
-    "build": "nuxt generate",
+    "build": "nuxt generate --spa",
     "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
   },
   "repository": {
