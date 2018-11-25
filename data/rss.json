@@ -34,6 +34,16 @@
     "twitter": null,
     "hashtag": null
   },
+  "corklab": {
+    "feed": "http://corklab.seesaa.net/index20.rdf",
+    "twitter": null,
+    "hashtag": null
+  },
+  "community-drive": {
+    "feed": "https://community-drive.com/feed/",
+    "twitter": null,
+    "hashtag": "#cmntdrv"
+  },
   "dex": {
     "feed": "http://feeds.feedburner.com/dexfm",
     "twitter": "@dexfmpodcast",
@@ -94,6 +104,16 @@
     "twitter": "@kumocast",
     "hashtag": "#kumocast"
   },
+  "kakakikikeke": {
+    "feed": "https://kakakikikeke.com/podcast/feed",
+    "twitter": "@kakakikikeke",
+    "hashtag": null
+  },
+  "kappa": {
+    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
+    "twitter": null,
+    "hashtag": null
+  },
   "lnlpninja": {
     "feed": "https://anchor.fm/s/5a86bb4/podcast/rss",
     "twitter": "@lnlpninja",
@@ -103,6 +123,11 @@
     "feed": "http://misreading.chat/category/episodes/feed/",
     "twitter": null,
     "hashtag": "#misreading"
+  },
+  "migrationfm": {
+    "feed": "https://migration.fm/feed.xml",
+    "twitter": "@migrationfm",
+    "hashtag": "#migrationfm"
   },
   "mosa": {
     "feed": "https://mosa.fm/feed.xml",
@@ -169,10 +194,20 @@
     "twitter": null,
     "hashtag": "#スティレン"
   },
+  "strobofm": {
+    "feed": "https://strobo.fm/index.xml",
+    "twitter": "@strobofm",
+    "hashtag": "#strobofm"
+  },
   "takram": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
     "hashtag": "#takramcast"
+  },
+  "tsujileaks": {
+    "feed": "http://www.tsujileaks.com/?feed=rss2",
+    "twitter": null,
+    "hashtag": "#セキュリティのアレ"
   },
   "turingcomplete": {
     "feed": "https://feeds.turingcomplete.fm/tcfm",
@@ -198,5 +233,10 @@
     "feed": "https://yomefm.github.io/feed.xml",
     "twitter": null,
     "hashtag": "#yomefm"
+  },
+  "yukaneradio": {
+    "feed": "https://anchor.fm/s/7660b00/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ゆうかねラジオ"
   }
 }
