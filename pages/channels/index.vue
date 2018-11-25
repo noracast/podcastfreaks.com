@@ -9,9 +9,9 @@ div
         th Title
         th Twitter
         th Hashtag
-        th Total
-        th First
-        th Last
+        th Total episodes
+        th First episode
+        th Last episode
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
