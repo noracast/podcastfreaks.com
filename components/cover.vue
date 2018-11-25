@@ -30,11 +30,15 @@ export default {
   computed: {
     styles () {
       const suffix = this.size == 0 ? '' : `-${this.size}`
-      const image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`${suffix}.$1`)
-      // TODO: Fix image_url if file not found
       let style = {
-        'background-image': `url(${image_url})`,
         'border-radius': this.radius
+      }
+      if(build_info.channels[this.channel].cover){
+        const image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`${suffix}.$1`)
+        style['background-image'] = `url(${image_url})`
+      }
+      else {
+        style['background-color'] = '#ccc'
       }
       if(this.size != 0){
         style.width = `${this.size}px`
