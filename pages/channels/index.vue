@@ -19,8 +19,8 @@ div
             cover(:channel="key")
         th
           nuxt-link(:to="'/channels/'+key" v-text="val.title")
-          span.feed {{ feed(key) }}
-          button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy
+          a.feed(:href="feed(key)" target="_blank") {{ feed(key) }}
+          button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy RSS
         td
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
@@ -58,6 +58,8 @@ tbody
   color: #ccc
   font-size: 10px
   margin-top: 5px
+  &:hover
+    color: #aaa
 .copy
   font-size: 8px
 </style>
