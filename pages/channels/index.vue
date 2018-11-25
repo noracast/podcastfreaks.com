@@ -19,6 +19,8 @@ div
             cover(:channel="key")
         th
           nuxt-link(:to="'/channels/'+key" v-text="val.title")
+          span.feed {{ feed(key) }}
+          button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy
         td
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
@@ -46,9 +48,18 @@ tbody
     font-size: 15px
     vertical-align: middle
 
+  th
+    font-weight: bold
   td.cover
     padding-right: 10px
 
+.feed
+  display: block
+  color: #ccc
+  font-size: 10px
+  margin-top: 5px
+.copy
+  font-size: 8px
 </style>
 
 <script>
@@ -84,6 +95,9 @@ export default {
     }
   },
   methods: {
+    feed: function(key) {
+      return rss[key].feed
+    },
     twitter: function(key) {
       return rss[key].twitter
     },
