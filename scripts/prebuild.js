@@ -54,9 +54,11 @@ Object.keys(rss).forEach(function (key) {
 
         // Get cover image urls
         const cover_url = removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
-        covers[key] = {
-          src: cover_url,
-          dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+        if(cover_url){
+          covers[key] = {
+            src: cover_url,
+            dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+          }
         }
 
         // json.rss.channel.item must be Array
@@ -88,7 +90,7 @@ Object.keys(rss).forEach(function (key) {
         // Save title
         channels[key] = {
           title: channel_title,
-          cover: covers[key].dist.replace(/^\.\/static/, ''),
+          cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
           firstDate: _.last(json.rss.channel.item).pubDate,
           lastDate: _.first(json.rss.channel.item).pubDate
@@ -131,7 +133,7 @@ Object.keys(rss).forEach(function (key) {
                 }
               ]
             }
-            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config))
+            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config), (e)=> console.error(_src, e))
           }
           let p = Promise.resolve()
           Object.keys(covers).forEach(function (_key) {
