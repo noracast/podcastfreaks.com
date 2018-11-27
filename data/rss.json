@@ -29,6 +29,11 @@
     "twitter": "@capitalPjp",
     "hashtag": "#capitalp"
   },
+  "cast-for-fun": {
+    "feed": "https://cast-for.fun/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "cloud-infra": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
     "twitter": null,
