@@ -12,7 +12,7 @@ div
         th Total episodes
         th First episode
         th Last episode
-        th File server
+        th File server of sound files
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
