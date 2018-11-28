@@ -12,6 +12,7 @@ div
         th Total episodes
         th First episode
         th Last episode
+        th File server
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
@@ -28,6 +29,7 @@ div
         td {{ val.total }}
         td {{ val.firstDate | formatDate }}
         td {{ val.lastDate | formatDate }}
+        td {{ val.fileServer }}
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -36,7 +38,7 @@ table
 th,td
   text-align: left
   vertical-align: top
-  padding: 10px 0
+  padding: 10px
 
 thead
   color: #ddd

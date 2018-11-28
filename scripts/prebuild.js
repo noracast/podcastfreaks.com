@@ -88,12 +88,14 @@ Object.keys(rss).forEach(function (key) {
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
         // Save title
+        const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
           title: channel_title,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
           firstDate: _.last(json.rss.channel.item).pubDate,
-          lastDate: _.first(json.rss.channel.item).pubDate
+          lastDate: _.first(json.rss.channel.item).pubDate,
+          fileServer: u.host
         }
 
         total--
