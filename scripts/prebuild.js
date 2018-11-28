@@ -95,7 +95,7 @@ Object.keys(rss).forEach(function (key) {
           total: json.rss.channel.item.length,
           firstDate: _.last(json.rss.channel.item).pubDate,
           lastDate: _.first(json.rss.channel.item).pubDate,
-          fileServer: u.host
+          fileServer: `${u.protocol}//${u.host}`
         }
 
         total--
