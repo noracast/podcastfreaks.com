@@ -1,27 +1,21 @@
 import opml from 'opml-generator'
+import rss from '../data/rss'
 
 exports.handler = async (event, context) => {
   const header = {
-      "title": "title-text",
-      "dateCreated": new Date(2014, 2, 9),
-      "ownerName": "azu"
+      "title": "podcast-freaks channel list",
+      "dateCreated": new Date(),
+      "ownerName": "podcast-freaks"
   };
-  const outlines = [
-    {
+  const outlines = Object.keys(rss).map((channelName)=>{
+    const channel = rss[channelName]
+    return {
       text: "txt",
-      title: "title-text",
+      title: channelName,
       type: "rss",
-      "xmlUrl": "http://example.com/rss",
-      "htmlUrl": "http://example.com/"
-    },
-    {
-      text: "txt",
-      title: "title-text",
-      type: "rss",
-      "xmlUrl": "http://example.com/rss",
-      "htmlUrl": "http://example.com/"
+      "xmlUrl": channel.feed
     }
-  ]
+  })
   return {
     statusCode: 200,
     body: opml(header, outlines)
