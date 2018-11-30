@@ -4216,6 +4216,13 @@ opener@^1.4.3:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
 
+opml-generator@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/opml-generator/-/opml-generator-1.1.1.tgz#d66cd416d02be8607d15eb93187d86c2ca591bce"
+  integrity sha1-1mzUFtAr6GB9FeuTGH2GwspZG84=
+  dependencies:
+    xml "^1.0.0"
+
 opn@4.0.2:
   version "4.0.2"
   resolved "http://registry.npmjs.org/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
@@ -6748,6 +6755,11 @@ xml2js@^0.4.19, xml2js@^0.4.5:
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
+
+xml@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
 
 xmlbuilder@~9.0.1:
   version "9.0.7"
