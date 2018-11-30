@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nuxt",
+    "dev:lambda": "netlify-lambda serve functions",
     "prebuild": "node scripts/prebuild.js",
     "build": "nuxt generate --spa",
-    "build:server": "netlify-lambda build functions",
+    "build:lambda": "netlify-lambda build functions",
     "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force"
   },
   "repository": {
