@@ -30,8 +30,11 @@ process.on('unhandledRejection', console.dir)
 
 // https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
 var removeQuery = function(uri) {
-  const u = url.parse(uri)
-  return `${u.protocol}//${u.host}${u.pathname}`
+  if(uri){
+    const u = url.parse(uri)
+    return `${u.protocol}//${u.host}${u.pathname}`
+  }
+  return uri
 }
 
 Object.keys(rss).forEach(function (key) {
@@ -51,9 +54,11 @@ Object.keys(rss).forEach(function (key) {
 
         // Get cover image urls
         const cover_url = removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
-        covers[key] = {
-          src: cover_url,
-          dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+        if(cover_url){
+          covers[key] = {
+            src: cover_url,
+            dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+          }
         }
 
         // json.rss.channel.item must be Array
@@ -71,8 +76,10 @@ Object.keys(rss).forEach(function (key) {
         // Store episodes in last 2 weeks
         const channel_title = json.rss.channel.title
         const twoweeksago = moment().subtract(14, 'days').startOf('date')
+        // RSS date format is RFC-822
+        const rfc822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
         const episodes = json.rss.channel.item.filter((element, index, array)=> {
-          return moment(element.pubDate).isAfter(twoweeksago)
+          return moment(element.pubDate, rfc822).isAfter(twoweeksago)
         })
         // Add channel info into each episodes
         episodes.forEach(function(el) {
@@ -81,12 +88,14 @@ Object.keys(rss).forEach(function (key) {
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
         // Save title
+        const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
           title: channel_title,
-          cover: covers[key].dist.replace(/^\.\/static/, ''),
+          cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
           firstDate: _.last(json.rss.channel.item).pubDate,
-          lastDate: _.first(json.rss.channel.item).pubDate
+          lastDate: _.first(json.rss.channel.item).pubDate,
+          fileServer: u.host
         }
 
         total--
@@ -126,7 +135,7 @@ Object.keys(rss).forEach(function (key) {
                 }
               ]
             }
-            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config))
+            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config), (e)=> console.error(_src, e))
           }
           let p = Promise.resolve()
           Object.keys(covers).forEach(function (_key) {

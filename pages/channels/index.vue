@@ -9,9 +9,10 @@ div
         th Title
         th Twitter
         th Hashtag
-        th Total
-        th First
-        th Last
+        th Total episodes
+        th First episode
+        th Last episode
+        th File server
     tbody
       tr(v-for="(val, key) in channels" :key="key")
         td.cover
@@ -19,6 +20,8 @@ div
             cover(:channel="key")
         th
           nuxt-link(:to="'/channels/'+key" v-text="val.title")
+          a.feed(:href="feed(key)" target="_blank") {{ feed(key) }}
+          button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy RSS
         td
           a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
         td
@@ -26,6 +29,7 @@ div
         td {{ val.total }}
         td {{ val.firstDate | formatDate }}
         td {{ val.lastDate | formatDate }}
+        td {{ val.fileServer }}
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
@@ -34,7 +38,7 @@ table
 th,td
   text-align: left
   vertical-align: top
-  padding: 10px 0
+  padding: 10px
 
 thead
   color: #ddd
@@ -46,9 +50,20 @@ tbody
     font-size: 15px
     vertical-align: middle
 
+  th
+    font-weight: bold
   td.cover
     padding-right: 10px
 
+.feed
+  display: block
+  color: #ccc
+  font-size: 10px
+  margin-top: 5px
+  &:hover
+    color: #aaa
+.copy
+  font-size: 8px
 </style>
 
 <script>
@@ -84,6 +99,9 @@ export default {
     }
   },
   methods: {
+    feed: function(key) {
+      return rss[key].feed
+    },
     twitter: function(key) {
       return rss[key].twitter
     },
