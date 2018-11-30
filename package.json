@@ -26,6 +26,8 @@
     "@nuxtjs/google-analytics": "^2.0.2",
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
     "cal-heatmap": "^3.6.2",
     "d3": "^5.5.0",
     "lodash": "^4.17.10",
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "file-extension": "^4.0.5",
+    "netlify-lambda": "^1.0.3",
     "node-image-resizer": "^1.0.0",
     "node-sass": "^4.9.1",
     "node-wget-promise": "^0.1.6",
