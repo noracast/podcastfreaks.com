@@ -7,6 +7,7 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
       nav
         nuxt-link(to='/about/') About
         nuxt-link(to='/channels/') Channels
+        nuxt-link(to='/register/') Register
       .last-update Last update: {{ updated }}
     .main
       nuxt
