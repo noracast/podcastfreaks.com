@@ -30,3 +30,9 @@ This project is hosted on [Travis CI](https://travis-ci.org/developersjp/podcast
 
 Don't use `yarn deploy` (push-dir) on TravisCI. It will cause `Authentication failed`.
 
+
+# Forms
+
+[!] You need to align items in form with `static/form.html`
+
+Ref: https://qiita.com/hiropy0123/items/2e8d14ea66b78ab64847

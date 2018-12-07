@@ -9,17 +9,17 @@ div
     label(for="feed") RSS feed *
     small 必須です
     br
-    input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml")
+    input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml" required)
 
     label(for="twitter") Twitter
     small 番組公式Twitterアカウントがある場合のみ
     br
-    input#email(type="text" name="twitter" placeholder="@noracast_")
+    input#twitter(type="text" name="twitter" placeholder="@noracast_")
 
-    label(for="twitter") Hashtag
+    label(for="hashtag") Hashtag
     small 番組公式ハッシュタグがある場合のみ
     br
-    input#email(type="text" name="twitter" placeholder="#noracast")
+    input#hashtag(type="text" name="hashtag" placeholder="#noracast")
 
     label(for="message") Message
     small なにかメッセージ等あれば
