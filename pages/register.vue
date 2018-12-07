@@ -7,7 +7,7 @@ div
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")
     label(for="feed") RSS feed *
-    small 必須です
+    small 番組のRSSフィードは必須です
     br
     input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml" required)
 
