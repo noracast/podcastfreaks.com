@@ -7,10 +7,10 @@
   <form name="register-request" method="POST" netlify>
     <input type="hidden" name="form-name" value="register-request">
     <!-- ここから -->
-    <input id="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml" required="required">
-    <input id="twitter" type="text" name="twitter" placeholder="@noracast_">
-    <input id="hashtag" type="text" name="twitter" placeholder="#noracast">
-    <textarea id="message" name="message" rows="5"></textarea>
+    <input type="text" name="feed" required>
+    <input type="text" name="twitter">
+    <input type="text" name="hashtag">
+    <textarea name="message"></textarea>
     <!-- /ここまでをregisterページの内容と合わせる必要あり -->
     <button type="submit">Send</button>
   </form>
