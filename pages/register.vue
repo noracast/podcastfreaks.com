@@ -1,11 +1,11 @@
 <template lang="pug">
 div
-  h2 Contact
+  h2 Register request
   p
     | 自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。<br>
     | ただし、運営者側の意図に沿わない場合は登録しかねる場合がありますことはご了承ください。
-  form(name="contact" method="POST" netlify)
-    input(type="hidden" name="form-name" value="contact")
+  form(name="register-request" method="POST" netlify)
+    input(type="hidden" name="form-name" value="register-request")
     label(for="feed") RSS feed *
     small 必須です
     br
