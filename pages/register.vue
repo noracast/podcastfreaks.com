@@ -3,7 +3,7 @@ div
   h2 Register request
   p
     | 自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。<br>
-    | ただし、運営者側の意図に沿わない場合は登録しかねる場合がありますことはご了承ください。
+    | 運営側の意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")
     label(for="feed") RSS feed *
