@@ -64,6 +64,7 @@ form
     font-weight: bold
     padding: 10px 20px
     min-width: 100px
+    cursor: pointer
     &:hover
       background: #af078b
 </style>
