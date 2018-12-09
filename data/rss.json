@@ -1,0 +1,247 @@
+{
+  "ajito": {
+    "feed": "https://ajito.fm/index.xml",
+    "twitter": "@ajitofm",
+    "hashtag": "#ajitofm"
+  },
+  "anitech": {
+    "feed": "https://anitech.fm/feed/",
+    "twitter": "@anitechfm",
+    "hashtag": "#anitechfm"
+  },
+  "another-dawn": {
+    "feed": "https://h2plus.biz/another-dawn/feed/podcast/",
+    "twitter": "@_another_dawn_",
+    "hashtag": null
+  },
+  "automagic": {
+    "feed": "http://feedpress.me/automagic",
+    "twitter": null,
+    "hashtag": "#automagic "
+  },
+  "backspace": {
+    "feed": "http://feeds.backspace.fm/backspacefm",
+    "twitter": "@backspacefm",
+    "hashtag": "#backspacefm"
+  },
+  "capitalp": {
+    "feed": "https://capitalp.jp/feed/podcast",
+    "twitter": "@capitalPjp",
+    "hashtag": "#capitalp"
+  },
+  "cast-for-fun": {
+    "feed": "https://cast-for.fun/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
+  "cloud-infra": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
+  "corklab": {
+    "feed": "http://corklab.seesaa.net/index20.rdf",
+    "twitter": null,
+    "hashtag": null
+  },
+  "community-drive": {
+    "feed": "https://community-drive.com/feed/",
+    "twitter": null,
+    "hashtag": "#cmntdrv"
+  },
+  "dex": {
+    "feed": "http://feeds.feedburner.com/dexfm",
+    "twitter": "@dexfmpodcast",
+    "hashtag": "#dexfm"
+  },
+    "dongurifm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
+    "twitter": "@dongurifm",
+    "hashtag": "#dongurifm"
+  },
+  "emfm": {
+    "feed": "https://anchor.fm/s/70a2c40/podcast/rss",
+    "twitter": null,
+    "hashtag": "#EMFM"
+  },
+  "engineer-meeting": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
+    "twitter": "@engineermeeting",
+    "hashtag": "#engineermeeting"
+  },
+  "free-engineer": {
+    "feed": "https://free-engineer.xrea.jp/feed",
+    "twitter": null,
+    "hashtag": "#テクフリ"
+  },
+  "fukabori": {
+    "feed": "https://fukabori.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#fukabori"
+  },
+  "genba": {
+    "feed": "https://genba.fm/podcast.xml",
+    "twitter": null,
+    "hashtag": "#genbafm"
+  },
+  "gunosy": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
+    "twitter": null,
+    "hashtag": "#gunosyfm"
+  },
+  "hiromaeda": {
+    "feed": "http://hiromaeda.com/feed/podcast/",
+    "twitter": null,
+    "hashtag": null
+  },
+  "inakafm": {
+    "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
+    "twitter": "@inaka_fm",
+    "hashtag": "#田舎fm"
+  },
+  "jinseifm": {
+    "feed": "https://kirimin.github.io/jinseifm/feed",
+    "twitter": "@jinseifm",
+    "hashtag": "#jinseifm"
+  },
+  "kumocast": {
+    "feed": "http://feeds.feedburner.com/tumblr/IkZP",
+    "twitter": "@kumocast",
+    "hashtag": "#kumocast"
+  },
+  "kakakikikeke": {
+    "feed": "https://kakakikikeke.com/podcast/feed",
+    "twitter": "@kakakikikeke",
+    "hashtag": null
+  },
+  "kappa": {
+    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
+    "twitter": null,
+    "hashtag": null
+  },
+  "lnlpninja": {
+    "feed": "https://anchor.fm/s/5a86bb4/podcast/rss",
+    "twitter": "@lnlpninja",
+    "hashtag": "#lnlpninja"
+  },
+  "misreading": {
+    "feed": "http://misreading.chat/category/episodes/feed/",
+    "twitter": null,
+    "hashtag": "#misreading"
+  },
+  "migrationfm": {
+    "feed": "https://migration.fm/feed.xml",
+    "twitter": "@migrationfm",
+    "hashtag": "#migrationfm"
+  },
+  "mosa": {
+    "feed": "https://mosa.fm/feed.xml",
+    "twitter": "@mosafmhq",
+    "hashtag": "#mosafm"
+  },
+  "mozaic": {
+    "feed": "http://feed.mozaic.fm/",
+    "twitter": null,
+    "hashtag": "#mozaicfm"
+  },
+  "nextstep": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
+    "twitter": null,
+    "hashtag": "#nextstepfm"
+  },
+  "noedge": {
+    "feed": "http://feeds.feedburner.com/matchy/noedge",
+    "twitter": null,
+    "hashtag": null
+  },
+  "noracast": {
+    "feed": "https://noracast.jp/feed.xml",
+    "twitter": "@noracast_",
+    "hashtag": "#noracast"
+  },
+  "omoiyarifm": {
+    "feed": "http://feeds.lean-agile.fm/omoiyarifm",
+    "twitter": null,
+    "hashtag": "#omoiyarifm"
+  },
+  "ossanfm": {
+    "feed": "https://ossan.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#ossanfm"
+  },
+  "php-genba": {
+    "feed": "https://php-genba.shin1x1.com/rss",
+    "twitter": null,
+    "hashtag": "#phpgenba"
+  },
+  "rebuild": {
+    "feed": "http://feeds.rebuild.fm/rebuildfm",
+    "twitter": "@rebuildfm",
+    "hashtag": "#rebuildfm"
+  },
+  "shiganai": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
+    "twitter": "@shiganaiRadio",
+    "hashtag": "#しがないラジオ"
+  },
+  "sore_ha_sou": {
+    "feed": "http://feeds.feedburner.com/BiaccoRadio",
+    "twitter": null,
+    "hashtag": "#sore_ha_sou"
+  },
+  "soussune": {
+    "feed": "https://soussune.com/feed.xml",
+    "twitter": "@soussunefm",
+    "hashtag": "#soussune"
+  },
+  "still-rendering": {
+    "feed": "https://anchor.fm/s/40a74b4/podcast/rss",
+    "twitter": null,
+    "hashtag": "#スティレン"
+  },
+  "strobofm": {
+    "feed": "https://strobo.fm/index.xml",
+    "twitter": "@strobofm",
+    "hashtag": "#strobofm"
+  },
+  "takram": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
+    "twitter": null,
+    "hashtag": "#takramcast"
+  },
+  "tsujileaks": {
+    "feed": "http://www.tsujileaks.com/?feed=rss2",
+    "twitter": null,
+    "hashtag": "#セキュリティのアレ"
+  },
+  "turingcomplete": {
+    "feed": "https://feeds.turingcomplete.fm/tcfm",
+    "twitter": null,
+    "hashtag": "#tcfm"
+  },
+  "wyukawa": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
+  "yancanfm": {
+    "feed": "https://www.yancan.tech/feed.xml",
+    "twitter": null,
+    "hashtag": "#yancanfm"
+  },
+  "yatteiki": {
+    "feed": "http://feeds.feedburner.com/Yatteikifm",
+    "twitter": "@yatteikifm",
+    "hashtag": "#yatteikifm"
+  },
+  "yome": {
+    "feed": "https://yomefm.github.io/feed.xml",
+    "twitter": null,
+    "hashtag": "#yomefm"
+  },
+  "yukaneradio": {
+    "feed": "https://anchor.fm/s/7660b00/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ゆうかねラジオ"
+  }
+}

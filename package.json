@@ -1,27 +1,50 @@
 {
   "name": "podcast-freaks",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Activity visualizer of japanese tech podcasts - by podcast freaks",
   "author": "Naokazu Terada",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
     "start": "nuxt start",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "nuxt generate --spa",
+    "build:skip": "nuxt generate --spa",
+    "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/google-analytics": "^2.0.2",
+    "ajv": "^6.6.1",
+    "cal-heatmap": "^3.6.2",
     "cross-env": "^5.2.0",
+    "d3": "^5.7.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.0.0"
+    "shelljs": "^0.8.3",
+    "vue-clipboard2": "^0.2.1",
+    "vue-responsive-components": "^0.2.3",
+    "webpack-node-externals": "^1.7.2",
+    "wget-improved": "^3.0.2",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-plugin-vue": "^4.0.0",
+    "file-extension": "^4.0.5",
+    "node-image-resizer": "^1.0.0",
+    "node-sass": "^4.11.0",
+    "node-wget-promise": "^0.1.6",
+    "nodemon": "^1.11.0",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "push-dir": "^0.4.1",
+    "sass-loader": "^7.1.0"
   }
 }

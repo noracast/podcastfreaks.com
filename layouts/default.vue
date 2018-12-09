@@ -1,55 +1,80 @@
-<template>
-  <div>
-    <nuxt/>
-  </div>
+<template lang='pug'>
+Responsive(:breakpoints="{small: el => el.width <= 700}")
+  .wrapper(slot-scope="el" :class="{ small: el.is.small }")
+    header
+      h1
+        nuxt-link(to='/') Podcast Freaks
+      nav
+        nuxt-link(to='/about/') About
+        nuxt-link(to='/channels/') Channels
+        nuxt-link(to='/register/') Register
+      .last-update Last update: {{ updated }}
+    .main
+      nuxt
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<style lang='sass?indentedSyntax' scoped>
+a
+  &:hover
+    color: #fff
+    opacity: 0.8
+header
+  height: 40px
+  background: linear-gradient(80deg, #af078b, #050935)
+  padding: 20px
+.main
+  padding: 20px
+h1
+  float: left
+  display: -webkit-flex
+  -webkit-align-items: center
+  display: flex
+  align-items: center
+  margin: 0
+  height: 100%
+  a
+    font-size: 15px
+    color: #fff
+nav
+  float: left
+  display: -webkit-flex
+  -webkit-align-items: center
+  display: flex
+  align-items: center
+  font-size: 13px
+  margin-left: 60px
+  height: 100%
+  a
+    display: inline-block
+    color: #fff
+  a + a
+    margin-left: 2em
+.last-update
+  margin-left: auto
+  font-size: 11px
+  color: #fff
+  float: right
+  height: 100%
+  display: -webkit-flex
+  -webkit-align-items: center
+  display: flex
+  align-items: center
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
+.wrapper
+  &.small
+    .last-update
+      display: none
 </style>
+
+<script>
+import moment from 'moment'
+import build_info from '~/static/downloads/build_info.json'
+
+export default {
+  data: function() {
+    return {
+      updated: moment(build_info.updated).format('YYYY/MM/DD h:mm:ss a'),
+    }
+  }
+}
+</script>
