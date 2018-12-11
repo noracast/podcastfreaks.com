@@ -5,11 +5,12 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
-$ yarn install
+yarn
+yarn pregenerate # Download assets into /static/downloads
+yarn dev
+```
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+**Use 'yarn' instead of 'npm' because it will cause problem on travis ci when you use 'npm'.**
 
 # build for production and launch server
 $ yarn run build
