@@ -7,7 +7,7 @@
 
 ```
 yarn
-yarn pregenerate # download rss feeds etc. into /static/downloads
+yarn pregenerate # Download assets into /static/downloads
 yarn dev
 ```
 
