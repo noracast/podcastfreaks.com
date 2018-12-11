@@ -34,11 +34,6 @@
     "twitter": null,
     "hashtag": null
   },
-  "cloud-infra": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "corklab": {
     "feed": "http://corklab.seesaa.net/index20.rdf",
     "twitter": null,
@@ -148,6 +143,11 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
     "hashtag": "#nextstepfm"
+  },
+  "nobolycloud": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
+    "twitter": null,
+    "hashtag": "#nobolycloud"
   },
   "noedge": {
     "feed": "http://feeds.feedburner.com/matchy/noedge",
