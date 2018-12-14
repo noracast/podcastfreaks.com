@@ -151,8 +151,8 @@
   },
   "noedge": {
     "feed": "http://feeds.feedburner.com/matchy/noedge",
-    "twitter": null,
-    "hashtag": null
+    "twitter": "@noedgexpodcast",
+    "hashtag": "#のたた"
   },
   "noracast": {
     "feed": "https://noracast.jp/feed.xml",
