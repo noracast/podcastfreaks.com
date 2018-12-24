@@ -6278,9 +6278,9 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-tunnel@0.0.2:
-  version "0.0.2"
-  resolved "http://registry.npmjs.org/tunnel/-/tunnel-0.0.2.tgz#f23bcd8b7a7b8a864261b2084f66f93193396334"
+tunnel@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -6691,12 +6691,12 @@ webpack@^3.11.0:
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
 
-wget-improved@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/wget-improved/-/wget-improved-1.5.0.tgz#fc9e89379f6eba72a5586ccc9d52f5580616f20f"
+wget-improved@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/wget-improved/-/wget-improved-3.0.2.tgz#191c48743b30db6da43dc6043c137837dcc6d1a2"
   dependencies:
     minimist "1.2.0"
-    tunnel "0.0.2"
+    tunnel "0.0.6"
 
 whet.extend@~0.9.9:
   version "0.9.9"
