@@ -33,7 +33,7 @@
     "moment": "^2.22.2",
     "nuxt": "^1.4.1",
     "shelljs": "^0.8.2",
-    "vue-clipboard2": "^0.2.1",
+    "vue-clipboard2": "^0.3.0",
     "vue-responsive-components": "^0.2.3",
     "webpack-node-externals": "^1.7.2",
     "wget-improved": "^1.5.0",
