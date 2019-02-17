@@ -43,7 +43,7 @@
     "node-wget-promise": "^0.1.6",
     "nodemon": "^1.11.0",
     "pug": "^2.0.3",
-    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.0.0",
     "push-dir": "^0.4.1",
     "sass-loader": "^7.1.0"
   }
