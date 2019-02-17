@@ -27,6 +27,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/common'
   ],
 
   /*
