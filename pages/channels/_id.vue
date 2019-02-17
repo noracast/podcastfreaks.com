@@ -2,7 +2,7 @@
 podcast(:channelKey="channelKey")
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 </style>
 
 <script>

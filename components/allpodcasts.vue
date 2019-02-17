@@ -5,7 +5,7 @@ div
   .heatmap
 </template>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass">
 h3
   margin-top: 20px
   margin-right: 20px

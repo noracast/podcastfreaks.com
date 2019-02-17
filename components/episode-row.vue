@@ -6,7 +6,7 @@ div.row
     span.title(v-text="episode.title")
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 div.row
   padding: 5px 0
   position: relative

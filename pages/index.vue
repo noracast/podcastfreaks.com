@@ -17,7 +17,7 @@ Responsive(:breakpoints="{small: el => el.width <= 900}")
         episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 
 .border
   height: 0

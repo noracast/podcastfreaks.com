@@ -13,7 +13,7 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
       nuxt
 </template>
 
-<style lang='sass?indentedSyntax' scoped>
+<style lang='sass' scoped>
 a
   &:hover
     color: #fff

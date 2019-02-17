@@ -5,6 +5,6 @@ div
     | このサイトは、近頃流行りのテック系ポッドキャストのアクティビティをまとめたサイトです。
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 
 </style>

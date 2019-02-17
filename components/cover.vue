@@ -2,7 +2,7 @@
 div.cover(:style="styles")
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 .cover
   background-repeat: no-repeat
   background-position: center

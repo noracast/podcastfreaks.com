@@ -29,7 +29,7 @@ div
     button(type="submit") Send
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 form
   label
     display: block

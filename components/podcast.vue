@@ -12,7 +12,7 @@ div
     .heatmap
 </template>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 .cover
   width: 250px
   height: 250px
