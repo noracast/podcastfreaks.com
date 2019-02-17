@@ -67,6 +67,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    transpile: ['vue-responsive-components']
   }
 }
