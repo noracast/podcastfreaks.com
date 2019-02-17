@@ -30,7 +30,12 @@ import xml2js from '~/lib/xml2js-promise'
 import moment from 'moment'
 
 export default {
-  props: ['feeds'],
+  props: {
+    feeds: {
+      type: Array,
+      default: null
+    }
+  },
   mounted () {
     let cal = new CalHeatMap()
     this.loadRSSs(this.feeds)

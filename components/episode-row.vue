@@ -45,7 +45,8 @@ export default {
   },
   props: {
     episode: {
-      required: true
+      required: true,
+      type: Object
     }
   }
 }
