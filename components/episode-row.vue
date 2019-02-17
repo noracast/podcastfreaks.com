@@ -1,9 +1,9 @@
 <template lang="pug">
-  div.row
-    nuxt-link(:to="'/channels/'+episode.key")
-      cover.cover(:channel="episode.key" :size='30' radius='50%')
-    a(:href="episode.link" target="_blank")
-      span.title(v-text="episode.title")
+div.row
+  nuxt-link(:to="'/channels/'+episode.key")
+    cover.cover(:channel="episode.key" :size='30' radius='50%')
+  a(:href="episode.link" target="_blank")
+    span.title(v-text="episode.title")
 </template>
 
 <style lang="sass?indentedSyntax" scoped>
