@@ -15,7 +15,7 @@ yarn dev
 
 Refs:
 - https://travis-ci.org/noracast/podcast-freaks/builds/416706653#L2821
-- https://github.com/nuxt/nuxt.js/issues/3039#issuecomment-396904887)
+- https://github.com/nuxt/nuxt.js/issues/3039#issuecomment-396904887
 
 # Deployment from local
 
