@@ -7,7 +7,7 @@
 
 ```
 yarn
-yarn pregenerate # Download assets into /static/downloads
+yarn prebuild # Download assets into /static/downloads
 yarn dev
 ```
 
