@@ -28,13 +28,14 @@
     "shelljs": "^0.8.3",
     "vue-clipboard2": "^0.2.1",
     "vue-responsive-components": "^0.2.3",
+    "vue-tables-2": "^1.4.70",
     "webpack-node-externals": "^1.7.2",
     "wget-improved": "^3.0.2",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^5.0.1",
+    "eslint": "^5.14.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^4.0.0",
     "file-extension": "^4.0.5",
@@ -45,6 +46,7 @@
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "push-dir": "^0.4.1",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.29.5"
   }
 }
