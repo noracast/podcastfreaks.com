@@ -29,6 +29,7 @@
     "vue-clipboard2": "^0.3.0",
     "vue-responsive-components": "^0.2.3",
     "vue-tables-2": "^1.4.70",
+    "vuex": "^3.1.0",
     "webpack-node-externals": "^1.7.2",
     "wget-improved": "^3.0.2",
     "xml2js": "^0.4.19"
