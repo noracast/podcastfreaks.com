@@ -36,7 +36,8 @@ module.exports = {
   plugins: [
     '~/plugins/filters',
     '~/plugins/vue-clipboard2',
-    '~/plugins/vue-responsive-components'
+    '~/plugins/vue-responsive-components',
+    '~/plugins/vue-table-2'
   ],
 
   /*
