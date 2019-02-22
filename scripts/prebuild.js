@@ -91,6 +91,9 @@ Object.keys(rss).forEach(function (key) {
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
           title: channel_title,
+          twitter: rss[key].twitter,
+          feed: rss[key].feed,
+          hashtag: rss[key].hashtag,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
           firstDate: _.last(json.rss.channel.item).pubDate,

@@ -84,30 +84,33 @@ export default {
     return {
       columns: [
         'title',
-        // 'twitter',
-        // 'hashtag',
+        'feed',
+        'twitter',
+        'hashtag',
         'total',
         'firstDate',
-        // 'last',
+        'lastDate',
         'fileServer'
       ],
       options: {
         headings: {
           title: 'Title',
-          // twitter: 'Twitter',
-          // hashtag: 'Hashtag',
+          feed: 'Feed',
+          twitter: 'Twitter',
+          hashtag: 'Hashtag',
           total: 'Total episodes',
           firstDate: 'First episode',
-          // last: 'Last episode',
+          lastDate: 'Last episode',
           fileServer: 'File server of sound files'
         },
         sortable: [
           'title',
-          // 'twitter',
-          // 'hashtag',
+          'feed',
+          'twitter',
+          'hashtag',
           'total',
           'firstDate',
-          // 'last',
+          'lastDate',
           'fileServer'
         ],
         texts: {
@@ -118,15 +121,6 @@ export default {
     }
   },
   methods: {
-    feed: function(key) {
-      return rss[key].feed
-    },
-    twitter: function(key) {
-      return rss[key].twitter
-    },
-    hashtag: function(key) {
-      return rss[key].hashtag
-    }
   }
 }
 </script>
