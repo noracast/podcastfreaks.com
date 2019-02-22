@@ -83,57 +83,39 @@ export default {
   data: function() {
     return {
       columns: [
-        'id',
-        'name',
-        'email'
+        'title',
+        // 'twitter',
+        // 'hashtag',
+        'total',
+        'firstDate',
+        // 'last',
+        'fileServer'
       ],
       options: {
         headings: {
-          id: 'id',
-          name: '名前',
-          email: 'メールアドレス'
+          title: 'Title',
+          // twitter: 'Twitter',
+          // hashtag: 'Hashtag',
+          total: 'Total episodes',
+          firstDate: 'First episode',
+          // last: 'Last episode',
+          fileServer: 'File server of sound files'
         },
         sortable: [
-          'id', 'name'
+          'title',
+          // 'twitter',
+          // 'hashtag',
+          'total',
+          'firstDate',
+          // 'last',
+          'fileServer'
         ],
         texts: {
           filterPlaceholder: '検索する'
         }
       },
-      data: [
-        {
-          'id': 1,
-          'name': 'sample1',
-          'email': 'sample1@example.com',
-          'group_name': '人事部'
-        },
-        {
-          'id': 2,
-          'name': 'sample2',
-          'email': 'sample2@example.com',
-          'group_name': '人事部'
-        },
-
-        {
-          'id': 3,
-          'name': 'sample3',
-          'email': 'sample3@example.com',
-          'group_name': '経理部'
-        },
-        {
-          'id': 4,
-          'name': 'sample4',
-          'email': 'sample4@example.com',
-          'group_name': '総務部'
-        }
-      ]
+      data: Object.values(build_info.channels)
     }
-    // return {
-    //   feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
-    //   episodes_in_1weeks,
-    //   episodes_in_2weeks,
-    //   channels: build_info.channels,
-    // }
   },
   methods: {
     feed: function(key) {
