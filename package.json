@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.14.1",
     "css-loader": "^2.1.0",
+    "eslint": "^5.14.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "file-extension": "^4.0.5",
@@ -49,7 +49,7 @@
     "pug-plain-loader": "^1.0.0",
     "push-dir": "^0.4.1",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.29.5",
-    "vue-loader": "^15.6.4"
+    "vue-loader": "^15.6.4",
+    "webpack": "^4.29.5"
   }
 }
