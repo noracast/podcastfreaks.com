@@ -1,35 +1,36 @@
 <template lang="pug">
 div
   h2 Channels
-  h5 {{ channels.length }}
-  table
-    thead
-      tr
-        th
-        th Title
-        th Twitter
-        th Hashtag
-        th Total episodes
-        th First episode
-        th Last episode
-        th File server of sound files
-    tbody
-      tr(v-for="(val, key) in channels" :key="key")
-        td.cover
-          nuxt-link(:to="'/channels/'+key")
-            cover(:channel="key")
-        th
-          nuxt-link(:to="'/channels/'+key" v-text="val.title")
-          a.feed(:href="feed(key)" target="_blank") {{ feed(key) }}
-          button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy RSS
-        td
-          a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
-        td
-          a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
-        td {{ val.total }}
-        td {{ val.firstDate | formatDate }}
-        td {{ val.lastDate | formatDate }}
-        td {{ val.fileServer }}
+  //- h5 {{ channels.length }}
+  v-client-table(:columns="columns" :data="data" :options="options")
+  //- table
+  //-   thead
+  //-     tr
+  //-       th
+  //-       th Title
+  //-       th Twitter
+  //-       th Hashtag
+  //-       th Total episodes
+  //-       th First episode
+  //-       th Last episode
+  //-       th File server of sound files
+  //-   tbody
+  //-     tr(v-for="(val, key) in channels" :key="key")
+  //-       td.cover
+  //-         nuxt-link(:to="'/channels/'+key")
+  //-           cover(:channel="key")
+  //-       th
+  //-         nuxt-link(:to="'/channels/'+key" v-text="val.title")
+  //-         a.feed(:href="feed(key)" target="_blank") {{ feed(key) }}
+  //-         button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy RSS
+  //-       td
+  //-         a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
+  //-       td
+  //-         a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
+  //-       td {{ val.total }}
+  //-       td {{ val.firstDate | formatDate }}
+  //-       td {{ val.lastDate | formatDate }}
+  //-       td {{ val.fileServer }}
 </template>
 
 <style lang="sass" scoped>
@@ -80,23 +81,59 @@ export default {
     'podcast': require('~/components/podcast.vue').default
   },
   data: function() {
-    const aweekago = moment().subtract(7, 'days').startOf('date')
-    var episodes_in_1weeks = []
-    var episodes_in_2weeks = []
-    build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweekago)){
-        episodes_in_1weeks.push(item)
-      }
-      else {
-        episodes_in_2weeks.push(item)
-      }
-    })
     return {
-      feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
-      episodes_in_1weeks,
-      episodes_in_2weeks,
-      channels: build_info.channels
+      columns: [
+        'id',
+        'name',
+        'email'
+      ],
+      options: {
+        headings: {
+          id: 'id',
+          name: '名前',
+          email: 'メールアドレス'
+        },
+        sortable: [
+          'id', 'name'
+        ],
+        texts: {
+          filterPlaceholder: '検索する'
+        }
+      },
+      data: [
+        {
+          'id': 1,
+          'name': 'sample1',
+          'email': 'sample1@example.com',
+          'group_name': '人事部'
+        },
+        {
+          'id': 2,
+          'name': 'sample2',
+          'email': 'sample2@example.com',
+          'group_name': '人事部'
+        },
+
+        {
+          'id': 3,
+          'name': 'sample3',
+          'email': 'sample3@example.com',
+          'group_name': '経理部'
+        },
+        {
+          'id': 4,
+          'name': 'sample4',
+          'email': 'sample4@example.com',
+          'group_name': '総務部'
+        }
+      ]
     }
+    // return {
+    //   feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
+    //   episodes_in_1weeks,
+    //   episodes_in_2weeks,
+    //   channels: build_info.channels,
+    // }
   },
   methods: {
     feed: function(key) {
