@@ -6,7 +6,9 @@ div
     template(slot="cover" slot-scope="props")
       nuxt-link(:to="'/channels/'+props.row.key")
         cover(:channel="props.row.key")
-    template(slot="feed" slot-scope="props")
+    template(slot="title" slot-scope="props")
+      | {{ props.row.title }}
+      br
       button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
@@ -16,8 +18,8 @@ div
 </template>
 
 <style lang="sass">
-table
-  width: 100%
+th
+  white-space: nowrap
 th,td
   text-align: left
   vertical-align: top
@@ -37,18 +39,40 @@ tbody
     font-weight: bold
   td.cover
     padding-right: 10px
-
-.feed
-  display: block
-  color: #ccc
-  font-size: 10px
-  margin-top: 5px
-  &:hover
-    color: #aaa
+.table-responsive
+  overflow: auto
+  width: 100%
 .copy
   font-size: 8px
+  display: inline-block
+  width: 80px
+
+.VueTables__search-field
+  margin-bottom: 20px
+  input
+    padding: 7px
+    outline: none
+    font-size: 13px
+    border-radius: 4px
+    border: 1px solid #ccc
+    width: 300px
+    &:placeholder-shown
+      color: #ccc
+    &::-webkit-input-placeholder
+      color: #ccc
+    &::-moz-placeholder
+      color: #ccc
+
 .VueTables__limit
   display: none
+.glyphicon-chevron-down
+  &:before
+    content: "↓"
+    margin-left: 10px
+.glyphicon-chevron-up
+  &:before
+    content: "↑"
+    margin-left: 10px
 </style>
 
 <script>
@@ -69,7 +93,6 @@ export default {
       columns: [
         'cover',
         'title',
-        'feed',
         'twitter',
         'hashtag',
         'total',
@@ -82,7 +105,6 @@ export default {
         headings: {
           cover: '',
           title: 'Title',
-          feed: 'Feed',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
           total: 'Total episodes',
@@ -92,7 +114,6 @@ export default {
         },
         sortable: [
           'title',
-          'feed',
           'twitter',
           'hashtag',
           'total',
@@ -101,6 +122,7 @@ export default {
           'fileServer'
         ],
         texts: {
+          filter: '',
           filterPlaceholder: 'Search'
         }
       },
