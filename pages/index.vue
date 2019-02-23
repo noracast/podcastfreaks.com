@@ -114,6 +114,9 @@ button
     input
       width: calc(100% - 20px)
       padding: 10px
+  th,td
+    &:first-child
+      padding-left: 15px
 </style>
 
 <script>
