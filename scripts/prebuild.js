@@ -140,7 +140,7 @@ Object.keys(rss).forEach(function (key) {
         const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
         const averageDuration = (count == 0) ? null : moment.utc(totalDurations.asMilliseconds()/count).format('HH:mm:ss')
 
-        // Save title
+        // Save data
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
           key: key,
