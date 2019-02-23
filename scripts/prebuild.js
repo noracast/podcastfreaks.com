@@ -87,6 +87,34 @@ Object.keys(rss).forEach(function (key) {
           el['channel_title'] = channel_title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
+
+        // Avarage duration
+        var getDuration2 = function(d) {
+          if(
+            /^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d) ||
+            /^\d{1,2}:\d{1,2}$/.test(d) ||
+            /^\d+$/.test(d)
+          ) {
+            return moment(d, ['HH:mm:ss','mm:ss','ss']).format('HH:mm:ss')
+          }
+          else {
+            console.log('[build error] `'+d+'` is not available format')
+          }
+        }
+        let count = 0
+        let durations = []
+        json.rss.channel.item.forEach(function(ep, index) {
+          if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
+            var val = getDuration2(ep['itunes:duration'])
+            if(val){
+              count++
+              durations.push(val)
+            }
+          }
+        })
+        const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
+        const averageDuration = (count == 0) ? null : moment.utc(totalDurations.asMilliseconds()/count).format('HH:mm:ss')
+
         // Save title
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
@@ -100,7 +128,8 @@ Object.keys(rss).forEach(function (key) {
           total: json.rss.channel.item.length,
           firstDate: moment(_.last(json.rss.channel.item).pubDate, rfc822).format(),
           lastDate: moment(_.first(json.rss.channel.item).pubDate, rfc822).format(),
-          fileServer: `${u.protocol}//${u.host}`
+          fileServer: `${u.protocol}//${u.host}`,
+          averageDuration
         }
 
         total--

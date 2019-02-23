@@ -96,6 +96,7 @@ export default {
         'total',
         'firstDate',
         'lastDate',
+        'averageDuration',
         'fileServer'
       ],
       options: {
@@ -108,6 +109,7 @@ export default {
           total: 'Total episodes',
           firstDate: 'First episode',
           lastDate: 'Last episode',
+          averageDuration: 'Avarage time',
           fileServer: 'File server of sound files'
         },
         sortable: [
@@ -117,6 +119,7 @@ export default {
           'total',
           'firstDate',
           'lastDate',
+          'averageDuration',
           'fileServer'
         ],
         texts: {
