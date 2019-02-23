@@ -98,7 +98,7 @@ Object.keys(rss).forEach(function (key) {
             return moment(d, ['HH:mm:ss','mm:ss','ss']).format('HH:mm:ss')
           }
           else {
-            console.log('[build error] `'+d+'` is not available format')
+            console.log('[build error] `'+d+'` seems to be wrong format')
           }
         }
         let count = 0
