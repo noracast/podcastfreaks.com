@@ -3,34 +3,13 @@ div
   h2 Channels
   //- h5 {{ channels.length }}
   v-client-table(:columns="columns" :data="data" :options="options")
-  //- table
-  //-   thead
-  //-     tr
-  //-       th
-  //-       th Title
-  //-       th Twitter
-  //-       th Hashtag
-  //-       th Total episodes
-  //-       th First episode
-  //-       th Last episode
-  //-       th File server of sound files
-  //-   tbody
-  //-     tr(v-for="(val, key) in channels" :key="key")
-  //-       td.cover
-  //-         nuxt-link(:to="'/channels/'+key")
-  //-           cover(:channel="key")
-  //-       th
-  //-         nuxt-link(:to="'/channels/'+key" v-text="val.title")
-  //-         a.feed(:href="feed(key)" target="_blank") {{ feed(key) }}
-  //-         button.copy(type="button" v-clipboard:copy="feed(key)" :title="feed(key)") Copy RSS
-  //-       td
-  //-         a(:href="'https://twitter.com/'+twitter(key).replace('@','')" v-text="twitter(key)" v-if="twitter(key)")
-  //-       td
-  //-         a(:href="'https://twitter.com/search?q=%23'+hashtag(key).replace('#','')" v-text="hashtag(key)" v-if="hashtag(key)")
-  //-       td {{ val.total }}
-  //-       td {{ val.firstDate | formatDate }}
-  //-       td {{ val.lastDate | formatDate }}
-  //-       td {{ val.fileServer }}
+    template(slot="title" slot-scope="props")
+      nuxt-link(:to="'/channels/'+props.row.key")
+        cover(:channel="props.row.key")
+    template(slot="feed" slot-scope="props")
+      button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
+    a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
+    a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
 </template>
 
 <style lang="sass">
@@ -121,6 +100,18 @@ export default {
     }
   },
   methods: {
+    twitterLink: function(str) {
+      if(str != null) {
+        return `https://twitter.com/${str.replace('@','')}`
+      }
+      return ''
+    },
+    hashtagLink: function(str) {
+      if(str != null) {
+        return `https://twitter.com/search?q=%23${str.replace('#','')}`
+      }
+      return ''
+    }
   }
 }
 </script>
