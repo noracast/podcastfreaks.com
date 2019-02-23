@@ -94,6 +94,7 @@ Object.keys(rss).forEach(function (key) {
           title: channel_title,
           twitter: rss[key].twitter,
           feed: rss[key].feed,
+          link: json.rss.channel.link,
           hashtag: rss[key].hashtag,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,

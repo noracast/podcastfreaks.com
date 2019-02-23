@@ -7,7 +7,7 @@ div
       nuxt-link(:to="'/channels/'+props.row.key")
         cover(:channel="props.row.key")
     template(slot="title" slot-scope="props")
-      | {{ props.row.title }}
+      a(target="_blank" :href="props.row.link") {{ props.row.title }}
       br
       button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
