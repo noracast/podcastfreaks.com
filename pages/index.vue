@@ -106,7 +106,7 @@ export default {
         },
         perPage: 9999,
         headings: {
-          cover: '',
+          cover: 'Artwork',
           title: 'Title',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
