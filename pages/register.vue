@@ -3,21 +3,22 @@ div
   h2 Register request
   p
     | 自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。<br>
-    | 運営側の意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。
+    | 運営側の意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。<br>
+    | ハッシュタグの登録漏れなど、なにか間違いがございましたら、Messageの欄に書いて送っていただけると助かります。
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")
-    label(for="feed") RSS feed *
-    small 番組のRSSフィードは必須です
+    label(for="feed") RSS feed
+    small 番組のRSSフィードURI
     br
-    input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml" required)
+    input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml")
 
     label(for="twitter") Twitter
-    small 番組公式Twitterアカウントがある場合のみ
+    small 番組公式Twitterアカウントがある場合
     br
     input#twitter(type="text" name="twitter" placeholder="@noracast_")
 
     label(for="hashtag") Hashtag
-    small 番組公式ハッシュタグがある場合のみ
+    small 番組公式ハッシュタグがある場合
     br
     input#hashtag(type="text" name="hashtag" placeholder="#noracast")
 
@@ -30,7 +31,9 @@ div
 </template>
 
 <style lang="sass" scoped>
+
 form
+  margin-top: 40px
   label
     display: block
     font-weight: bold
@@ -67,4 +70,5 @@ form
     cursor: pointer
     &:hover
       background: #af078b
+
 </style>
