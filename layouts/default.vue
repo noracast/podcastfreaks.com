@@ -22,8 +22,6 @@ header
   height: 40px
   background: linear-gradient(80deg, #af078b, #050935)
   padding: 20px
-.main
-  padding: 20px
 h1
   float: left
   display: -webkit-flex

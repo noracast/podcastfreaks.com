@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.main
   v-client-table(:columns="columns" :data="data" :options="options")
     template(slot="cover" slot-scope="props")
       nuxt-link(:to="'/channels/'+props.row.key")
@@ -11,35 +11,53 @@ div
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstDate" slot-scope="props") {{ props.row.firstDate | formatDate }}
-    template(slot="lastDate" slot-scope="props") {{ props.row.lastDate | formatDate }}
 
 </template>
 
 <style lang="sass">
+.main
+  padding-top: 20px
+  padding-bottom: 20px
+table
+  border-collapse: collapse
+  border-spacing: 0
 th
   white-space: nowrap
 th,td
   text-align: left
   vertical-align: top
   padding: 10px
+  &:first-child
+    padding-left: 20px
 
 thead
   color: #ddd
   font-size: 12px
+
 tbody
   th,td
-    border-top: 1px solid #ddd
     font-weight: 500
-    font-size: 15px
+    font-size: 13px
     vertical-align: middle
-
   th
     font-weight: bold
-  td.cover
-    padding-right: 10px
+  td.title
+    font-weight: bold
+    font-size: 15px
+  td.total
+    text-align: right
+    font-size: 15px
+
+  tr:nth-child(odd)
+    background: #f9f9f9
+.VueTables
+  .row
+    padding-left: 20px
+    padding-right: 20px
 .table-responsive
   overflow: auto
   width: 100%
+  margin-top: 15px
 .copy
   font-size: 8px
   display: inline-block
@@ -91,12 +109,11 @@ export default {
       columns: [
         'cover',
         'title',
-        'twitter',
-        'hashtag',
         'total',
         'firstDate',
-        'lastDate',
         'averageDuration',
+        'twitter',
+        'hashtag',
         'fileServer'
       ],
       options: {
@@ -104,16 +121,25 @@ export default {
         columnsDisplay: {
           fileServer: 'not_mobile'
         },
+        columnsClasses: {
+          cover: 'artwork',
+          title: 'title',
+          twitter: 'twitter',
+          hashtag: 'hashtag',
+          total: 'total',
+          firstDate: 'since',
+          averageDuration: 'averate',
+          fileServer: 'fileserver'
+        },
         perPage: 9999,
         headings: {
           cover: 'Artwork',
           title: 'Title',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
-          total: 'Total episodes',
-          firstDate: 'First episode',
-          lastDate: 'Last episode',
-          averageDuration: 'Avarage time',
+          total: 'Episodes',
+          firstDate: 'Sice',
+          averageDuration: 'Avarage',
           fileServer: 'File server of sound files'
         },
         sortable: [
@@ -122,7 +148,6 @@ export default {
           'hashtag',
           'total',
           'firstDate',
-          'lastDate',
           'averageDuration',
           'fileServer'
         ],

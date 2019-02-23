@@ -142,6 +142,9 @@ Object.keys(rss).forEach(function (key) {
 
         // Save data
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
+        const last_date = moment(_.last(json.rss.channel.item).pubDate, rfc822).format()
+        const first_date = moment(_.first(json.rss.channel.item).pubDate, rfc822).format()
+        console.log(key, first_date, last_date)
         channels[key] = {
           key: key,
           title: channel_title,
