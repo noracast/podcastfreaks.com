@@ -90,15 +90,30 @@ Object.keys(rss).forEach(function (key) {
 
         // Avarage duration
         var getDuration2 = function(d) {
-          if(
-            /^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d) ||
-            /^\d{1,2}:\d{1,2}$/.test(d) ||
-            /^\d+$/.test(d)
-          ) {
-            return moment(d, ['HH:mm:ss','mm:ss','ss']).format('HH:mm:ss')
+          const outFormat = 'HH:mm:ss'
+          // XX:XX:XX (correct format)
+          if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
+            return moment(d, 'HH:mm:ss').format(outFormat)
+          }
+          // XX:XX
+          else if(/^\d{1,2}:\d{1,2}$/.test(d)) {
+            // Treat value like 82:14 -> 01:22:14
+            const match = d.match(/^(\d{1,2}):(\d{1,2})$/)
+            const second = match[2]
+            const minute = match[1]%60
+            const hour = Math.floor(match[1]/60)
+            return moment({ hour, minute, second }).format(outFormat)
+          }
+          // XXXX
+          else if(/^\d+$/.test(d)) {
+            // Maybe it's 'seconds'
+            const second = d%60
+            const minute = Math.floor(d/60)%60
+            const hour = Math.floor(Math.floor(d/60)/60)
+            return moment({ hour, minute, second }).format(outFormat)
           }
           else {
-            console.log('[build error] `'+d+'` seems to be wrong format')
+            console.error('[build error] `'+d+'` seems to be wrong format')
           }
         }
         let count = 0
