@@ -1,3 +1,4 @@
+const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ';
 const _ = require('lodash')
 const fileExtension = require('file-extension')
 const fs = require('fs')
@@ -77,9 +78,8 @@ Object.keys(rss).forEach(function (key) {
         const title = json.rss.channel.title
         const twoweeksago = moment().subtract(14, 'days').startOf('date')
         // RSS date format is RFC-822
-        const rfc822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
         const episodes = json.rss.channel.item.filter((element, index, array)=> {
-          return moment(element.pubDate, rfc822).isAfter(twoweeksago)
+          return moment(element.pubDate, RFC822).isAfter(twoweeksago)
         })
         // Add channel info into each episodes
         episodes.forEach(function(el) {
@@ -153,8 +153,8 @@ Object.keys(rss).forEach(function (key) {
           hashtag: rss[key].hashtag,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
-          firstDate: moment(_.last(json.rss.channel.item).pubDate, rfc822).format(),
-          lastDate: moment(_.first(json.rss.channel.item).pubDate, rfc822).format(),
+          firstDate: moment(_.last(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+          lastDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
           fileServer,
           averageDuration
         }
