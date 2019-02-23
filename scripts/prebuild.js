@@ -97,8 +97,8 @@ Object.keys(rss).forEach(function (key) {
           hashtag: rss[key].hashtag,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
-          firstDate: _.last(json.rss.channel.item).pubDate,
-          lastDate: _.first(json.rss.channel.item).pubDate,
+          firstDate: moment(_.last(json.rss.channel.item).pubDate, rfc822).format(),
+          lastDate: moment(_.first(json.rss.channel.item).pubDate, rfc822).format(),
           fileServer: `${u.protocol}//${u.host}`
         }
 
