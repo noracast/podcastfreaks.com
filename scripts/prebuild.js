@@ -107,7 +107,7 @@ Object.keys(rss).forEach(function (key) {
           }
           // XXXX
           else if(/^\d+$/.test(d)) {
-            // Maybe it's 'seconds'
+            // Treat value as 'second'
             const second = d%60
             const minute = Math.floor(d/60)%60
             const hour = Math.floor(Math.floor(d/60)/60)
