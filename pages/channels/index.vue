@@ -10,6 +10,9 @@ div
       button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
+    template(slot="firstDate" slot-scope="props") {{ props.row.firstDate | formatDate }}
+    template(slot="lastDate" slot-scope="props") {{ props.row.lastDate | formatDate }}
+
 </template>
 
 <style lang="sass">
