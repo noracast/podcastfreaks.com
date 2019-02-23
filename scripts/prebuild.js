@@ -114,13 +114,13 @@ Object.keys(rss).forEach(function (key) {
             output = moment({ hour, minute, second })
           }
           else {
-            console.error('[build error] `'+d+'` seems to be wrong format')
+            console.error('[prebuild error] `'+d+'` seems to be wrong format')
             return null
           }
 
           // フォーマットは正しいが0のものがあるため間引く
           if(output.format(outFormat) == '00:00:00'){
-            console.error('[build error] `'+d+'` means zero time')
+            console.error('[prebuild error] `'+d+'` means zero time')
             return null
           }
 
