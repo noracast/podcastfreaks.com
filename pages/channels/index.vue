@@ -33,7 +33,7 @@ div
   //-       td {{ val.fileServer }}
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 table
   width: 100%
 th,td
