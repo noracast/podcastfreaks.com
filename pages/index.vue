@@ -47,9 +47,8 @@ tbody
   td.total
     text-align: right
     font-size: 15px
-
   tr:nth-child(odd)
-    background: #f9f9f9
+    background: #fbf7fd
 .VueTables
   .row
     padding-left: 20px
