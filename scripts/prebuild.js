@@ -74,7 +74,7 @@ Object.keys(rss).forEach(function (key) {
         })
 
         // Store episodes in last 2 weeks
-        const channel_title = json.rss.channel.title
+        const title = json.rss.channel.title
         const twoweeksago = moment().subtract(14, 'days').startOf('date')
         // RSS date format is RFC-822
         const rfc822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
@@ -84,7 +84,7 @@ Object.keys(rss).forEach(function (key) {
         // Add channel info into each episodes
         episodes.forEach(function(el) {
           el['key'] = key
-          el['channel_title'] = channel_title
+          el['channel_title'] = title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
 
@@ -140,14 +140,13 @@ Object.keys(rss).forEach(function (key) {
         const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
         const averageDuration = (count == 0) ? null : moment.utc(totalDurations.asMilliseconds()/count).format('HH:mm:ss')
 
-        // Save data
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
-        const last_date = moment(_.last(json.rss.channel.item).pubDate, rfc822).format()
-        const first_date = moment(_.first(json.rss.channel.item).pubDate, rfc822).format()
-        console.log(key, first_date, last_date)
+        const fileServer = `${u.protocol}//${u.host}`
+
+        // Save data
         channels[key] = {
-          key: key,
-          title: channel_title,
+          key,
+          title,
           twitter: rss[key].twitter,
           feed: rss[key].feed,
           link: json.rss.channel.link,
@@ -156,7 +155,7 @@ Object.keys(rss).forEach(function (key) {
           total: json.rss.channel.item.length,
           firstDate: moment(_.last(json.rss.channel.item).pubDate, rfc822).format(),
           lastDate: moment(_.first(json.rss.channel.item).pubDate, rfc822).format(),
-          fileServer: `${u.protocol}//${u.host}`,
+          fileServer,
           averageDuration
         }
 
