@@ -67,7 +67,7 @@ tbody
     outline: none
     font-size: 13px
     border-radius: 4px
-    border: 1px solid #ccc
+    border: 1px solid #ddd
     width: 300px
     &:placeholder-shown
       color: #ccc
@@ -88,7 +88,7 @@ tbody
     margin-left: 10px
 
 button
-  border: 1px solid #ccc
+  border: 1px solid #eee
   background: #fff
   border-radius: 4px
   padding: 4px 10px
