@@ -1,52 +1,76 @@
 <template lang="pug">
-Responsive(:breakpoints="{small: el => el.width <= 900}")
-  div(slot-scope="el" :class="{ small: el.is.small }")
-    h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
-    .this-week
-      template(v-for="(val, idx) in episodes_in_1weeks")
-        //- 違う日だったら
-        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
-          span.date(v-text="date(val.pubDate)")
-        episode-row(:episode="val" :class="{ small: el.is.small }")
-    h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
-    .last-week
-      template(v-for="(val, idx) in episodes_in_2weeks")
-        //- 違う日だったら
-        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
-          span.date(v-text="date(val.pubDate)")
-        episode-row(:episode="val" :class="{ small: el.is.small }")
+div
+  v-client-table(:columns="columns" :data="data" :options="options")
+    template(slot="cover" slot-scope="props")
+      nuxt-link(:to="'/channels/'+props.row.key")
+        cover(:channel="props.row.key")
+    template(slot="title" slot-scope="props")
+      a(target="_blank" :href="props.row.link") {{ props.row.title }}
+      br
+      button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
+    a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
+    a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
+    template(slot="firstDate" slot-scope="props") {{ props.row.firstDate | formatDate }}
+    template(slot="lastDate" slot-scope="props") {{ props.row.lastDate | formatDate }}
+
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
+th
+  white-space: nowrap
+th,td
+  text-align: left
+  vertical-align: top
+  padding: 10px
 
-.border
-  height: 0
-  border-top: 1px solid #ccc
-  margin: 10px 0
-  position: relative
+thead
+  color: #ddd
+  font-size: 12px
+tbody
+  th,td
+    border-top: 1px solid #ddd
+    font-weight: 500
+    font-size: 15px
+    vertical-align: middle
 
-.date
-  position: absolute
-  top: 10px
-  padding: 5px 0
-  height: 30px
-  line-height: 30px
+  th
+    font-weight: bold
+  td.cover
+    padding-right: 10px
+.table-responsive
+  overflow: auto
+  width: 100%
+.copy
+  font-size: 8px
+  display: inline-block
+  width: 80px
 
-div.small
-  .border
-    height: auto
-    margin-left: -20px
-    margin-right: -20px
-  .date
-    font-size: 11px
-    height: 20px
-    line-height: 20px
-    position: relative
-    display: block
-    width: 100%
-    margin-left: 20px
-h5
-  color: #8c22a7
+.VueTables__search-field
+  margin-bottom: 20px
+  input
+    padding: 7px
+    outline: none
+    font-size: 13px
+    border-radius: 4px
+    border: 1px solid #ccc
+    width: 300px
+    &:placeholder-shown
+      color: #ccc
+    &::-webkit-input-placeholder
+      color: #ccc
+    &::-moz-placeholder
+      color: #ccc
+
+.VueTables__limit
+  display: none
+.glyphicon-chevron-down
+  &:before
+    content: "↓"
+    margin-left: 10px
+.glyphicon-chevron-up
+  &:before
+    content: "↑"
+    margin-left: 10px
 </style>
 
 <script>
@@ -58,40 +82,63 @@ import build_info from '~/static/downloads/build_info.json'
 
 export default {
   components: {
-    'episode-row': require('~/components/episode-row.vue').default,
+    'allpodcasts': require('~/components/allpodcasts.vue').default,
+    'cover': require('~/components/cover.vue').default,
     'podcast': require('~/components/podcast.vue').default
   },
   data: function() {
-    const aweekago = moment().subtract(7, 'days').startOf('date')
-    let episodes_in_1weeks = []
-    let episodes_in_2weeks = []
-    build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweekago)){
-        episodes_in_1weeks.push(item)
-      }
-      else {
-        episodes_in_2weeks.push(item)
-      }
-    })
     return {
-      feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
-      episodes_in_1weeks,
-      episodes_in_2weeks,
-      channels: build_info.channels,
-      current_date: null
+      columns: [
+        'cover',
+        'title',
+        'twitter',
+        'hashtag',
+        'total',
+        'firstDate',
+        'lastDate',
+        'fileServer'
+      ],
+      options: {
+        perPage: 9999,
+        headings: {
+          cover: '',
+          title: 'Title',
+          twitter: 'Twitter',
+          hashtag: 'Hashtag',
+          total: 'Total episodes',
+          firstDate: 'First episode',
+          lastDate: 'Last episode',
+          fileServer: 'File server of sound files'
+        },
+        sortable: [
+          'title',
+          'twitter',
+          'hashtag',
+          'total',
+          'firstDate',
+          'lastDate',
+          'fileServer'
+        ],
+        texts: {
+          filter: '',
+          filterPlaceholder: 'Search'
+        }
+      },
+      data: Object.values(build_info.channels)
     }
   },
   methods: {
-    date: function(_date) {
-      moment.locale('ja')
-      return moment(_date).format('M/D(ddd)')
+    twitterLink: function(str) {
+      if(str != null) {
+        return `https://twitter.com/${str.replace('@','')}`
+      }
+      return ''
     },
-    isSame: function(_date1, _date2) {
-      const __date1 = new Date(_date1)
-      const __date2 = new Date(_date2)
-      return __date1.getDate()==__date2.getDate() &&
-        __date1.getMonth()==__date2.getMonth() &&
-        __date1.getFullYear()==__date2.getFullYear()
+    hashtagLink: function(str) {
+      if(str != null) {
+        return `https://twitter.com/search?q=%23${str.replace('#','')}`
+      }
+      return ''
     }
   }
 }
