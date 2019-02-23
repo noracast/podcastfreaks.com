@@ -7,7 +7,7 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
       nav
         nuxt-link(to='/about/') About
         nuxt-link(to='/in2weeks/') In 2 weeks
-        nuxt-link(to='/register/') Register
+        nuxt-link(to='/request/') Request
       .last-update Last update: {{ updated }}
     .main
       nuxt
