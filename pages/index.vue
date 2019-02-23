@@ -100,6 +100,10 @@ export default {
         'fileServer'
       ],
       options: {
+        columnsDropdown: true,
+        columnsDisplay: {
+          fileServer: 'not_mobile'
+        },
         perPage: 9999,
         headings: {
           cover: '',
