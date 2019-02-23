@@ -125,19 +125,17 @@ Object.keys(rss).forEach(function (key) {
 
           return output.format(outFormat)
         }
-        let count = 0
         let durations = []
         json.rss.channel.item.forEach(function(ep, index) {
           if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
             var val = getDuration(ep['itunes:duration'])
             if(val){
-              count++
               durations.push(val)
             }
           }
         })
         const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
-        const averageDuration = (count == 0) ? null : moment.utc(totalDurations.asMilliseconds()/count).format('HH:mm:ss')
+        const averageDuration = (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
 
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         const fileServer = `${u.protocol}//${u.host}`
