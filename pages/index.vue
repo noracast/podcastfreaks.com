@@ -147,6 +147,9 @@ export default {
       options: {
         columnsDropdown: true,
         columnsDisplay: {
+          firstDate: 'not_mobile',
+          twitter: 'not_mobile',
+          hashtag: 'not_mobile',
           fileServer: 'not_mobile'
         },
         columnsClasses: {
