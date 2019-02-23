@@ -90,6 +90,7 @@ Object.keys(rss).forEach(function (key) {
         // Save title
         const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
         channels[key] = {
+          key: key,
           title: channel_title,
           twitter: rss[key].twitter,
           feed: rss[key].feed,
