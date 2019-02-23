@@ -57,10 +57,6 @@ tbody
   overflow: auto
   width: 100%
   margin-top: 15px
-.copy
-  font-size: 8px
-  display: inline-block
-  width: 80px
 
 .VueTables__search-field
   margin-bottom: 20px
@@ -88,6 +84,34 @@ tbody
   &:before
     content: "↑"
     margin-left: 10px
+
+button
+  border: 1px solid #ccc
+  background: #fff
+  border-radius: 4px
+  padding: 4px 10px
+  font-size: 8px
+  display: inline-block
+  outline: none
+  &:active
+    background: #eee
+
+.copy
+  margin-top: 7px
+
+.small
+  .main
+    padding-top: 10px
+    padding-bottom: 15px
+
+  .VueTables
+    .row
+      padding-left: 15px
+      padding-right: 15px
+  .VueTables__search-field
+    input
+      width: calc(100% - 20px)
+      padding: 10px
 </style>
 
 <script>

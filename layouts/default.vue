@@ -22,6 +22,9 @@ header
   height: 40px
   background: linear-gradient(80deg, #af078b, #050935)
   padding: 20px
+  position: sticky
+  top: 0
+  z-index: 5
 h1
   float: left
   display: -webkit-flex
@@ -58,10 +61,19 @@ nav
   display: flex
   align-items: center
 
-.wrapper
-  &.small
-    .last-update
-      display: none
+.wrapper.small
+  header
+    padding-left: 15px
+    padding-right: 15px
+  h1
+    a
+      font-size: 14px
+  nav
+    float: right
+    margin-left: 0
+    font-size: 10px
+  .last-update
+    display: none
 </style>
 
 <script>
