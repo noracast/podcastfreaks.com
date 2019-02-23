@@ -83,7 +83,7 @@ import build_info from '~/static/downloads/build_info.json'
 export default {
   data: function() {
     return {
-      updated: moment(build_info.updated).format('YYYY/MM/DD h:mm:ss a'),
+      updated: moment(build_info.updated).format('YYYY.MM.DD h:mm:ss a'),
     }
   }
 }
