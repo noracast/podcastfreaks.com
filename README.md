@@ -23,6 +23,12 @@ Refs:
 yarn build
 yarn deploy
 ```
+or if you have already execute 'prebuild'
+
+```sh
+yarn build:skip
+yarn deploy
+```
 
 # Daily deployment
 
