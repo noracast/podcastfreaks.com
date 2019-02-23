@@ -89,8 +89,7 @@ Object.keys(rss).forEach(function (key) {
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
 
         // Avarage duration
-        var getDuration2 = function(d) {
-          const outFormat = 'HH:mm:ss'
+        var getDuration = function(d, outFormat = 'HH:mm:ss') {
           var output = null
           // XX:XX:XX (correct format)
           if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
@@ -130,7 +129,7 @@ Object.keys(rss).forEach(function (key) {
         let durations = []
         json.rss.channel.item.forEach(function(ep, index) {
           if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-            var val = getDuration2(ep['itunes:duration'])
+            var val = getDuration(ep['itunes:duration'])
             if(val){
               count++
               durations.push(val)
