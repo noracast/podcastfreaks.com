@@ -91,9 +91,10 @@ Object.keys(rss).forEach(function (key) {
         // Avarage duration
         var getDuration2 = function(d) {
           const outFormat = 'HH:mm:ss'
+          var output = null
           // XX:XX:XX (correct format)
           if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
-            return moment(d, 'HH:mm:ss').format(outFormat)
+            output = moment(d, 'HH:mm:ss')
           }
           // XX:XX
           else if(/^\d{1,2}:\d{1,2}$/.test(d)) {
@@ -102,7 +103,7 @@ Object.keys(rss).forEach(function (key) {
             const second = match[2]
             const minute = match[1]%60
             const hour = Math.floor(match[1]/60)
-            return moment({ hour, minute, second }).format(outFormat)
+            output = moment({ hour, minute, second })
           }
           // XXXX
           else if(/^\d+$/.test(d)) {
@@ -110,11 +111,20 @@ Object.keys(rss).forEach(function (key) {
             const second = d%60
             const minute = Math.floor(d/60)%60
             const hour = Math.floor(Math.floor(d/60)/60)
-            return moment({ hour, minute, second }).format(outFormat)
+            output = moment({ hour, minute, second })
           }
           else {
             console.error('[build error] `'+d+'` seems to be wrong format')
+            return null
           }
+
+          // フォーマットは正しいが0のものがあるため間引く
+          if(output.format(outFormat) == '00:00:00'){
+            console.error('[build error] `'+d+'` means zero time')
+            return null
+          }
+
+          return output.format(outFormat)
         }
         let count = 0
         let durations = []
