@@ -3,7 +3,7 @@ div
   h2 Channels
   //- h5 {{ channels.length }}
   v-client-table(:columns="columns" :data="data" :options="options")
-    template(slot="title" slot-scope="props")
+    template(slot="cover" slot-scope="props")
       nuxt-link(:to="'/channels/'+props.row.key")
         cover(:channel="props.row.key")
     template(slot="feed" slot-scope="props")
@@ -44,6 +44,8 @@ tbody
     color: #aaa
 .copy
   font-size: 8px
+.VueTables__limit
+  display: none
 </style>
 
 <script>
@@ -62,6 +64,7 @@ export default {
   data: function() {
     return {
       columns: [
+        'cover',
         'title',
         'feed',
         'twitter',
@@ -72,7 +75,9 @@ export default {
         'fileServer'
       ],
       options: {
+        perPage: 9999,
         headings: {
+          cover: '',
           title: 'Title',
           feed: 'Feed',
           twitter: 'Twitter',
@@ -93,7 +98,7 @@ export default {
           'fileServer'
         ],
         texts: {
-          filterPlaceholder: '検索する'
+          filterPlaceholder: 'Search'
         }
       },
       data: Object.values(build_info.channels)
