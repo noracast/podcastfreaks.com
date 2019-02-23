@@ -18,6 +18,8 @@ div.main
 .main
   padding-top: 20px
   padding-bottom: 20px
+  -webkit-overflow-scrolling: touch
+  overflow-scrolling: touch
 table
   border-collapse: collapse
   border-spacing: 0
