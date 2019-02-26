@@ -209,6 +209,11 @@
     "twitter": null,
     "hashtag": "#takramcast"
   },
+  "the-startup-podcast": {
+    "feed": "https://podcast.no-new-folk.com/feed/",
+    "twitter": null,
+    "hashtag": null
+  },
   "tsujileaks": {
     "feed": "http://www.tsujileaks.com/?feed=rss2",
     "twitter": null,
