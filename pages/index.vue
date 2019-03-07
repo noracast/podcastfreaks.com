@@ -11,6 +11,7 @@ div.main
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstDate" slot-scope="props") {{ props.row.firstDate | formatDate }}
+    template(slot="lastDate" slot-scope="props") {{ props.row.lastDate | formatDate }}
 
 </template>
 
@@ -172,6 +173,7 @@ export default {
         'title',
         'total',
         'firstDate',
+        'lastDate',
         'averageDuration',
         'twitter',
         'hashtag',
@@ -192,6 +194,7 @@ export default {
           hashtag: 'hashtag',
           total: 'total',
           firstDate: 'since',
+          lastDate: 'last',
           averageDuration: 'averate',
           fileServer: 'fileserver'
         },
@@ -203,7 +206,8 @@ export default {
           hashtag: 'Hashtag',
           total: 'Episodes',
           firstDate: 'Sice',
-          averageDuration: 'Avarage',
+          lastDate: 'Latest',
+          averageDuration: 'Avarage time',
           fileServer: 'File server of sound files'
         },
         sortable: [
@@ -212,6 +216,7 @@ export default {
           'hashtag',
           'total',
           'firstDate',
+          'lastDate',
           'averageDuration',
           'fileServer'
         ],
