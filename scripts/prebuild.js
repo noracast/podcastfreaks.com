@@ -150,8 +150,10 @@ Object.keys(rss).forEach(function (key) {
           hashtag: rss[key].hashtag,
           cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
           total: json.rss.channel.item.length,
-          firstDate: moment(_.last(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
-          lastDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+          firstEpisodeDate: moment(_.last(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+          lastEpisodeDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+          firstEpisodeLink: _.last(json.rss.channel.item).link,
+          lastEpisodeLink: _.first(json.rss.channel.item).link,
           fileServer,
           averageDuration
         }

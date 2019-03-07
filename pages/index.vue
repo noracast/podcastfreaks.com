@@ -10,8 +10,12 @@ div.main
       button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
-    template(slot="firstDate" slot-scope="props") {{ props.row.firstDate | formatDate }}
-    template(slot="lastDate" slot-scope="props") {{ props.row.lastDate | formatDate }}
+    template(slot="firstEpisodeDate" slot-scope="props")
+      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank") {{ props.row.firstEpisodeDate | formatDate }}
+      template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}
+    template(slot="lastEpisodeDate" slot-scope="props")
+      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
+      template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
 
 </template>
 
@@ -172,8 +176,8 @@ export default {
         'cover',
         'title',
         'total',
-        'firstDate',
-        'lastDate',
+        'firstEpisodeDate',
+        'lastEpisodeDate',
         'averageDuration',
         'twitter',
         'hashtag',
@@ -182,7 +186,7 @@ export default {
       options: {
         columnsDropdown: true,
         columnsDisplay: {
-          firstDate: 'not_mobile',
+          firstEpisodeDate: 'not_mobile',
           twitter: 'not_mobile',
           hashtag: 'not_mobile',
           fileServer: 'not_mobile'
@@ -193,8 +197,8 @@ export default {
           twitter: 'twitter',
           hashtag: 'hashtag',
           total: 'total',
-          firstDate: 'since',
-          lastDate: 'last',
+          firstEpisodeDate: 'since',
+          lastEpisodeDate: 'last',
           averageDuration: 'averate',
           fileServer: 'fileserver'
         },
@@ -205,8 +209,8 @@ export default {
           twitter: 'Twitter',
           hashtag: 'Hashtag',
           total: 'Episodes',
-          firstDate: 'Sice',
-          lastDate: 'Latest',
+          firstEpisodeDate: 'First Ep.',
+          lastEpisodeDate: 'Last Ep.',
           averageDuration: 'Avarage time',
           fileServer: 'File server of sound files'
         },
@@ -215,8 +219,8 @@ export default {
           'twitter',
           'hashtag',
           'total',
-          'firstDate',
-          'lastDate',
+          'firstEpisodeDate',
+          'lastEpisodeDate',
           'averageDuration',
           'fileServer'
         ],
