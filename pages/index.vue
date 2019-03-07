@@ -133,6 +133,7 @@ button
   min-width: 100px
   outline: none
   border: 0
+  cursor: pointer
   &:active
     background: lighten($purple, 10)
 
