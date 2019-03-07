@@ -51,6 +51,10 @@ tbody
     font-size: 15px
   tr:nth-child(odd)
     background: #fbf7fd
+  button
+    font-size: 10px
+    padding: 5px 10px
+    min-width: initial
 .VueTables
   .row
     padding-left: 20px
@@ -66,7 +70,6 @@ tbody
     padding: 7px
     outline: none
     font-size: 13px
-    border-radius: 4px
     border: 1px solid #ddd
     width: 300px
     &:placeholder-shown
@@ -88,15 +91,18 @@ tbody
     margin-left: 10px
 
 button
-  border: 1px solid #eee
-  background: #fff
-  border-radius: 4px
-  padding: 4px 10px
-  font-size: 8px
-  display: inline-block
+  display: block
+  border-radius: 3px
+  background: #650451
+  color: white
+  font-size: 12px
+  font-weight: bold
+  padding: 10px 20px
+  min-width: 100px
   outline: none
+  border: 0
   &:active
-    background: #eee
+    background: lighten(#650451, 10)
 
 .copy
   margin-top: 7px
