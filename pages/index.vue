@@ -15,6 +15,8 @@ div.main
 </template>
 
 <style lang="sass">
+$purple: #650451
+
 .main
   padding-top: 20px
   padding-bottom: 20px
@@ -67,7 +69,7 @@ tbody
 .VueTables__search-field
   margin-bottom: 20px
   input
-    padding: 7px
+    padding: 8px
     outline: none
     font-size: 13px
     border: 1px solid #ddd
@@ -78,22 +80,47 @@ tbody
       color: #ccc
     &::-moz-placeholder
       color: #ccc
-
+.VueTables__search
+  float: left
+  width: calc(100% - 100px)
+.VueTables__columns-dropdown
+  float: right
+  width: 100px
+  .dropdown-menu
+    position: absolute
+    right: 20px
+    padding: 15px
+    margin-top: 6px
+    margin-bottom: 0
+    background: #050935
+    border-radius: 3px
+    list-style: none
+    a
+      color: white
+      font-size: 12px
+    input[type=checkbox]
+      margin-right: 1em
 .VueTables__limit
   display: none
+.VueTables__sortable
+  cursor: pointer
+  &:hover
+    color: $purple
 .glyphicon-chevron-down
   &:before
-    content: "↓"
+    content: "▼"
     margin-left: 10px
+    font-size: 0.7em
 .glyphicon-chevron-up
   &:before
-    content: "↑"
+    content: "▲"
     margin-left: 10px
+    font-size: 0.7em
 
 button
   display: block
   border-radius: 3px
-  background: #650451
+  background: $purple
   color: white
   font-size: 12px
   font-weight: bold
@@ -102,7 +129,7 @@ button
   outline: none
   border: 0
   &:active
-    background: lighten(#650451, 10)
+    background: lighten($purple, 10)
 
 .copy
   margin-top: 7px
