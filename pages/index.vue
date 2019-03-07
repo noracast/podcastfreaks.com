@@ -82,7 +82,7 @@ tbody
       color: #ccc
 .VueTables__search
   float: left
-  width: calc(100% - 100px)
+  width: calc(100% - 120px)
 .VueTables__columns-dropdown
   float: right
   width: 100px
@@ -146,7 +146,7 @@ button
   .VueTables__search-field
     input
       width: calc(100% - 20px)
-      padding: 10px
+      padding: 9px
   th,td
     &:first-child
       padding-left: 15px
