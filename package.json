@@ -10,8 +10,8 @@
     "prebuild": "node scripts/prebuild.js",
     "build": "nuxt generate --spa",
     "build:skip": "nuxt generate --spa",
-    "push": "push-dir --dir=dist --branch=netlify --cleanup --force",
-    "deploy": "netlify deploy --dir=dist",
+    "deploy": "push-dir --dir=dist --branch=netlify --cleanup --force",
+    "deploy-direct": "netlify deploy --dir=dist",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
