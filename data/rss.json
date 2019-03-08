@@ -1,9 +1,4 @@
 {
-  "accsell": {
-    "feed": "https://accsell.net/atom.xml",
-    "twitter": "@accsell_net",
-    "hashtag": null
-  },
   "agileradio": {
     "feed": "https://agileradio.github.io/feed.xml",
     "twitter": "@agileradio15",
