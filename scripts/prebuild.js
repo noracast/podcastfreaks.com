@@ -64,10 +64,10 @@ Object.keys(rss).forEach(function (key) {
 
         // json.rss.channel.item がなくてエラーになることがあるのでここで間引く
         // TODO: ほんとに問題ない？
-        if(!_.has(json, 'rss.channel.item')){
-          console.error('[prebuild error] json.rss.channel.item (key='+key+')')
-          return
-        }
+        // if(!_.has(json, 'rss.channel.item')){
+        //   console.error('[prebuild error] json.rss.channel.item is undefined (key='+key+')')
+        //   // throw new Error('[prebuild error] json.rss.channel.item is undefined (key='+key+')')
+        // }
 
         // json.rss.channel.item must be Array
         if(!(json.rss.channel.item instanceof Array)) {
