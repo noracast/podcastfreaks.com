@@ -137,8 +137,11 @@ Object.keys(rss).forEach(function (key) {
         const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
         const averageDuration = (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
 
-        const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
-        const fileServer = `${u.protocol}//${u.host}`
+        var fileServer = null
+        if(_.has(json.rss.channel.item[0], 'enclosure.$.url')){
+          const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
+          fileServer = `${u.protocol}//${u.host}`
+        }
 
         // Save data
         channels[key] = {
