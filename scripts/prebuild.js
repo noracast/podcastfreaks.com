@@ -62,6 +62,13 @@ Object.keys(rss).forEach(function (key) {
           }
         }
 
+        // json.rss.channel.item がなくてエラーになることがあるのでここで間引く
+        // TODO: ほんとに問題ない？
+        if(!_.has(json, 'rss.channel.item')){
+          console.error('[prebuild error] json.rss.channel.item (key='+key+')')
+          return
+        }
+
         // json.rss.channel.item must be Array
         if(!(json.rss.channel.item instanceof Array)) {
           json.rss.channel.item = [json.rss.channel.item]
