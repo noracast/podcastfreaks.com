@@ -39,11 +39,6 @@
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
-  "bdpfm": {
-    "feed": "http://feeds.backspace.fm/backspacefm",
-    "twitter": "@backspacefm",
-    "hashtag": "#backspacefm"
-  },
   "becochan": {
     "feed": "https://channel.becolomochi.com/feed.xml",
     "twitter": null,
