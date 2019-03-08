@@ -1,4 +1,19 @@
 {
+  "accsell": {
+    "feed": "https://accsell.net/atom.xml",
+    "twitter": "@accsell_net",
+    "hashtag": null
+  },
+  "agileradio": {
+    "feed": "https://agileradio.github.io/feed.xml",
+    "twitter": "@agileradio15",
+    "hashtag": "#agileradio"
+  },
+  "airsap": {
+    "feed": "http://airsap.net/feed/podcast/",
+    "twitter": null,
+    "hashtag": "#AirSap"
+  },
   "ajito": {
     "feed": "https://ajito.fm/index.xml",
     "twitter": "@ajitofm",
@@ -24,6 +39,26 @@
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
+  "bdpfm": {
+    "feed": "http://feeds.backspace.fm/backspacefm",
+    "twitter": "@backspacefm",
+    "hashtag": "#backspacefm"
+  },
+  "becochan": {
+    "feed": "https://channel.becolomochi.com/feed.xml",
+    "twitter": null,
+    "hashtag": "#becochan"
+  },
+  "bkkcast": {
+    "feed": "https://bkkcast.me/index.xml",
+    "twitter": "@bkkcast",
+    "hashtag": "#bkkcast"
+  },
+  "bootfm": {
+    "feed": "https://bootfm.github.io/feed.xml",
+    "twitter": "@boot_fm",
+    "hashtag": "#bootfm "
+  },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
     "twitter": "@capitalPjp",
@@ -33,6 +68,16 @@
     "feed": "https://cast-for.fun/feed.xml",
     "twitter": null,
     "hashtag": null
+  },
+  "clfreaks": {
+    "feed": "http://clfreaks.org/rss",
+    "twitter": null,
+    "hashtag": "#clfreaks"
+  },
+  "community-drive": {
+    "feed": "https://community-drive.com/feed/",
+    "twitter": null,
+    "hashtag": "#cmntdrv"
   },
   "corklab": {
     "feed": "http://corklab.seesaa.net/index20.rdf",
@@ -44,12 +89,22 @@
     "twitter": null,
     "hashtag": "#cmntdrv"
   },
+  "deployfm": {
+    "feed": "https://takattata.github.io/deployfm/feed.xml",
+    "twitter": "@deploy_fm",
+    "hashtag": "#deployfm"
+  },
   "dex": {
     "feed": "http://feeds.feedburner.com/dexfm",
     "twitter": "@dexfmpodcast",
     "hashtag": "#dexfm"
   },
-    "dongurifm": {
+  "diverse-inc": {
+    "feed": "https://podcast.diverse-inc.com/feed.xml",
+    "twitter": "@diverse_inc",
+    "hashtag": "#diverse_inc"
+  },
+  "dongurifm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
@@ -69,6 +124,11 @@
     "twitter": null,
     "hashtag": "#テクフリ"
   },
+  "frontend-lunch": {
+    "feed": "https://hatena.github.io/frontend-lunch/feed.xml",
+    "twitter": null,
+    "hashtag": "#frontend_lunch"
+  },
   "fukabori": {
     "feed": "https://fukabori.fm/feed.xml",
     "twitter": null,
@@ -78,6 +138,11 @@
     "feed": "https://genba.fm/podcast.xml",
     "twitter": null,
     "hashtag": "#genbafm"
+  },
+  "girls-do-it": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:222198750/sounds.rss",
+    "twitter": null,
+    "hashtag": null
   },
   "gunosy": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
@@ -94,10 +159,20 @@
     "twitter": "@inaka_fm",
     "hashtag": "#田舎fm"
   },
+  "iosdcfm": {
+    "feed": "http://iosdc.fm/rss",
+    "twitter": "@iosdcjp",
+    "hashtag": "#iosdcfm"
+  },
   "jinseifm": {
     "feed": "https://kirimin.github.io/jinseifm/feed",
     "twitter": "@jinseifm",
     "hashtag": "#jinseifm"
+  },
+  "karino2": {
+    "feed": "https://anchor.fm/s/68ce140/podcast/rss",
+    "twitter": null,
+    "hashtag": "#プログラム雑談"
   },
   "kumocast": {
     "feed": "http://feeds.feedburner.com/tumblr/IkZP",
@@ -118,6 +193,16 @@
     "feed": "https://anchor.fm/s/5a86bb4/podcast/rss",
     "twitter": "@lnlpninja",
     "hashtag": "#lnlpninja"
+  },
+  "mazricafm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
+    "twitter": "@mazrica_jp",
+    "hashtag": "#マツリカfm"
+  },
+  "mercanfm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
+    "twitter": null,
+    "hashtag": "#mercanfm"
   },
   "misreading": {
     "feed": "http://misreading.chat/category/episodes/feed/",
@@ -174,20 +259,60 @@
     "twitter": null,
     "hashtag": "#ossanfm"
   },
+  "otakumode": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:361589768/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "php-genba": {
     "feed": "https://php-genba.shin1x1.com/rss",
     "twitter": null,
     "hashtag": "#phpgenba"
+  },
+  "php-manual": {
+    "feed": "https://php-manual.necomori.asia/feed/podcast/",
+    "twitter": null,
+    "hashtag": "#phpondoc"
+  },
+  "podpatch": {
+    "feed": "http://feedpress.me/podpatch",
+    "twitter": null,
+    "hashtag": null
+  },
+  "railsdm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
+    "twitter": "@railsdm",
+    "hashtag": "#railsdm"
   },
   "rebuild": {
     "feed": "http://feeds.rebuild.fm/rebuildfm",
     "twitter": "@rebuildfm",
     "hashtag": "#rebuildfm"
   },
+  "regonn-curry-fm": {
+    "feed": "https://regonn-curry-fm.github.io/feed.xml",
+    "twitter": null,
+    "hashtag": "#regonn_curry_fm"
+  },
+  "rehashfm": {
+    "feed": "https://rehash.fm/feed.xml",
+    "twitter": "@rehashfm",
+    "hashtag": "#rehashfm"
+  },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
     "hashtag": "#しがないラジオ"
+  },
+  "shinamonoradio": {
+    "feed": "http://shinamonoradio.github.io/feed.xml",
+    "twitter": "@shinamonolab",
+    "hashtag": "#品モノラジオ"
+  },
+  "shinjuku-lt": {
+    "feed": "https://shinjuku-lt.github.io/feed.xml",
+    "twitter": null,
+    "hashtag": "#shinjukult"
   },
   "sore_ha_sou": {
     "feed": "http://feeds.feedburner.com/BiaccoRadio",
@@ -214,10 +339,30 @@
     "twitter": null,
     "hashtag": "#takramcast"
   },
+  "tech-research": {
+    "feed": "https://anchor.fm/s/537fce4/podcast/rss",
+    "twitter": null,
+    "hashtag": "#techresearchlife"
+  },
+  "testradio": {
+    "feed": "http://testradio.fm/feed/",
+    "twitter": null,
+    "hashtag": "#testradio"
+  },
   "the-startup-podcast": {
     "feed": "https://podcast.no-new-folk.com/feed/",
     "twitter": null,
     "hashtag": null
+  },
+  "tofulab": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
+    "twitter": "@tofulab_inc",
+    "hashtag": null
+  },
+  "tonightfm": {
+    "feed": "https://tonight-fm.github.io/feed.xml",
+    "twitter": "@tonight_fm",
+    "hashtag": "#tonight_fm"
   },
   "tsujileaks": {
     "feed": "http://www.tsujileaks.com/?feed=rss2",
@@ -228,6 +373,16 @@
     "feed": "https://feeds.turingcomplete.fm/tcfm",
     "twitter": null,
     "hashtag": "#tcfm"
+  },
+  "wakateossan": {
+    "feed": "https://wakateossan.github.io/feed.xml",
+    "twitter": null,
+    "hashtag": "#wakateossan"
+  },
+  "washipo": {
+    "feed": "https://washipo.nyoho.jp/podcast.rss",
+    "twitter": null,
+    "hashtag": "#washipo"
   },
   "wyukawa": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
