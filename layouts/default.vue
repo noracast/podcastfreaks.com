@@ -55,7 +55,7 @@ nav
 .update
   margin-left: auto
   font-size: 10px
-  color: rgba(255,255,255,0.2)
+  color: rgba(255,255,255,0.3)
   border-left: 1px solid rgba(255,255,255,0.2)
   padding-left: 30px
   float: right
