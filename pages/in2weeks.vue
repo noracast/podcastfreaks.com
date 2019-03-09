@@ -17,9 +17,8 @@ Responsive.main(:breakpoints="{small: el => el.width <= 900}")
         episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
-<style lang="sass" scoped>
-.main
-  padding: 20px
+<style lang="sass">
+
 .border
   height: 0
   border-top: 1px solid #ccc
@@ -29,7 +28,7 @@ Responsive.main(:breakpoints="{small: el => el.width <= 900}")
 .date
   position: absolute
   top: 10px
-  padding: 5px 0
+  padding: 5px 20px
   height: 30px
   line-height: 30px
 
@@ -46,8 +45,10 @@ div.small
     display: block
     width: 100%
     margin-left: 20px
+    padding-left: 20px
 h5
   color: #8c22a7
+  padding: 0 20px
 </style>
 
 <script>
