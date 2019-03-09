@@ -9,8 +9,8 @@ div.main
 
   h3 OPMLのダウンロードについて
   p
-    | 書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLのダウンロードが可能です。<br>
-    | 書き出したOPMLファイルをPodcastアプリで読み込んで登録してください。MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。
+    | トップページから、書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLファイルがダウンロードできます。<br>
+    | MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。
 </template>
 
 <style lang="sass" scoped>
