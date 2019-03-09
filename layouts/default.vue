@@ -82,7 +82,7 @@ nav
     float: right
     margin-left: 0
     font-size: 10px
-  .last-update
+  .update
     display: none
 </style>
 
