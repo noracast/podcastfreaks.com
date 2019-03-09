@@ -174,11 +174,11 @@ export default {
         'cover',
         'title',
         'total',
-        'firstEpisodeDate',
         'lastEpisodeDate',
         'averageDuration',
         'twitter',
-        'hashtag'
+        'hashtag',
+        'firstEpisodeDate'
       ],
       options: {
         columnsDropdown: true,
