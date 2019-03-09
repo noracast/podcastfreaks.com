@@ -120,13 +120,13 @@ Object.keys(rss).forEach(function (key) {
             output = moment({ hour, minute, second })
           }
           else {
-            console.error('[prebuild error] `'+d+'` seems to be wrong format (key='+key+')')
+            console.error('[prebuild error] `'+d+'` seems to be wrong format | '+dist_rss)
             return null
           }
 
           // フォーマットは正しいが0のものがあるため間引く
           if(output.format(outFormat) == '00:00:00'){
-            console.error('[prebuild error] `'+d+'` means zero time (key='+key+')')
+            console.error('[prebuild error] `'+d+'` means zero time | '+dist_rss)
             return null
           }
 
