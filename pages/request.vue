@@ -33,6 +33,7 @@ div.main
 <style lang="sass" scoped>
 .main
   padding: 20px
+  max-width: 600px
 form
   margin-top: 40px
   label
