@@ -8,7 +8,9 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
         nuxt-link(to='/about/') About
         nuxt-link(to='/in2weeks/') In 2 weeks
         nuxt-link(to='/request/') Request
-      .last-update Last update: {{ updated }}
+      .update
+        span.date {{ updatedDate }}
+        span.time {{ updatedTime }} updated
     .main
       nuxt
 </template>
@@ -19,9 +21,9 @@ a
     color: #fff
     opacity: 0.8
 header
-  height: 40px
+  height: 80px
   background: linear-gradient(80deg, #af078b, #050935)
-  padding: 20px
+  padding: 0 20px
   position: sticky
   top: 0
   z-index: 5
@@ -34,7 +36,7 @@ h1
   margin: 0
   height: 100%
   a
-    font-size: 15px
+    font-size: 22px
     color: #fff
 nav
   float: left
@@ -50,17 +52,25 @@ nav
     color: #fff
   a + a
     margin-left: 2em
-.last-update
+.update
   margin-left: auto
-  font-size: 11px
-  color: #fff
+  font-size: 10px
+  color: rgba(255,255,255,0.2)
+  border-left: 1px solid rgba(255,255,255,0.2)
+  padding-left: 30px
   float: right
   height: 100%
-  display: -webkit-flex
-  -webkit-align-items: center
   display: flex
-  align-items: center
-
+  flex-direction: column
+  justify-content: center
+  transition-duration: 0.2s
+  &:hover
+    color: rgba(255,255,255,1)
+    transition-duration: 0.2s
+  .date
+    font-size: 16px
+  .time
+    font-size: 10px
 .wrapper.small
   header
     padding-left: 15px
@@ -83,7 +93,8 @@ import build_info from '~/static/downloads/build_info.json'
 export default {
   data: function() {
     return {
-      updated: moment(build_info.updated).format('YYYY.MM.DD h:mm:ss a'),
+      updatedDate: moment(build_info.updated).format('YYYY.MM.DD'),
+      updatedTime: moment(build_info.updated).format('h:mm:ss A'),
     }
   }
 }

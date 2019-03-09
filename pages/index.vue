@@ -29,6 +29,7 @@ $purple: #650451
 table
   border-collapse: collapse
   border-spacing: 0
+  width: 100%
 th
   white-space: nowrap
 th,td
@@ -38,23 +39,26 @@ th,td
   &:first-child
     padding-left: 20px
 thead
-  color: #ddd
+  color: #ccc
   font-size: 12px
+  th
+    font-weight: normal
 tbody
   th,td
     font-weight: 500
     font-size: 13px
     vertical-align: middle
-  th
-    font-weight: bold
   td.title
     font-weight: bold
     font-size: 15px
   td.total
     text-align: right
     font-size: 15px
-  tr:nth-child(odd)
-    background: #fbf7fd
+  tr
+    border-bottom: 1px solid #ccc
+    &:first-child
+      border-top: 1px solid #ccc
+
   button
     font-size: 10px
     padding: 5px 10px
