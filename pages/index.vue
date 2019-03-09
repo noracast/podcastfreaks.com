@@ -1,5 +1,6 @@
 <template lang="pug">
 div.main
+  button Export OPML
   v-client-table(:columns="columns" :data="data" :options="options")
     template(slot="cover" slot-scope="props")
       cover(:channel="props.row.key")
@@ -16,6 +17,8 @@ div.main
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
+    template(slot="opmlCheck" slot-scope="props")
+      input(type="checkbox" :value="props.row.feed")
 
 </template>
 
@@ -172,6 +175,7 @@ export default {
   data: function() {
     return {
       columns: [
+        'opmlCheck',
         'cover',
         'title',
         'total',
@@ -200,6 +204,7 @@ export default {
         },
         perPage: 9999,
         headings: {
+          opmlCheck: '',
           cover: 'Artwork',
           title: 'Title',
           twitter: 'Twitter',
