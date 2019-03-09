@@ -2,8 +2,8 @@
 div.main
   button(@click="exportOpml") Export OPML
   v-client-table(:columns="columns" :data="data" :options="options")
-    template(slot="opmlCheck" slot-scope="props")
-      input(type="checkbox" :value="props.row.key" v-model="exports")
+    template(slot="export" slot-scope="props")
+      input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
       cover(:channel="props.row.key")
     template(slot="title" slot-scope="props")
@@ -176,9 +176,9 @@ export default {
   },
   data: function() {
     return {
-      exports: [],
+      allMarked: false,
+      markedRows: [],
       columns: [
-        'opmlCheck',
         'cover',
         'title',
         'total',
@@ -186,7 +186,8 @@ export default {
         'averageDuration',
         'twitter',
         'hashtag',
-        'firstEpisodeDate'
+        'firstEpisodeDate',
+        'export'
       ],
       options: {
         columnsDropdown: true,
@@ -207,7 +208,6 @@ export default {
         },
         perPage: 9999,
         headings: {
-          opmlCheck: '',
           cover: 'Artwork',
           title: 'Title',
           twitter: 'Twitter',
@@ -215,7 +215,25 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Ep.',
           lastEpisodeDate: 'Last Ep.',
-          averageDuration: 'Avarage time'
+          averageDuration: 'Avarage time',
+          export: function(h){
+            const self = this;
+            return h('input', {
+              attrs: { type: 'checkbox' },
+              domProps: { value: self.value },
+              class: 'form-control check-all',
+              on: {
+                change: self.toggleAll,
+                input: function(event) {
+                  self.value = event.target.value
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        },
+        headingsTooltips: {
+          export: 'Check to export OPML'
         },
         sortable: [
           'title',
@@ -224,7 +242,7 @@ export default {
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
-          'averageDuration',
+          'averageDuration'
         ],
         texts: {
           filter: '',
@@ -247,13 +265,17 @@ export default {
       }
       return ''
     },
+    toggleAll: function() {
+      this.markedRows = this.allMarked ? [] : Object.keys(rss)
+      this.allMarked = !this.allMarked
+    },
     exportOpml: function(){
       const header = {
         "title": "podcast-freaks channel list",
         "dateCreated": new Date(),
         "ownerName": "podcast-freaks"
       }
-      const outlines = this.exports.map((channelName)=>{
+      const outlines = this.markedRows.map((channelName)=>{
         const channel = rss[channelName]
         return {
           text: "txt",
