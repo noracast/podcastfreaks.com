@@ -174,16 +174,14 @@ export default {
         'lastEpisodeDate',
         'averageDuration',
         'twitter',
-        'hashtag',
-        'fileServer'
+        'hashtag'
       ],
       options: {
         columnsDropdown: true,
         columnsDisplay: {
           firstEpisodeDate: 'not_mobile',
           twitter: 'not_mobile',
-          hashtag: 'not_mobile',
-          fileServer: 'not_mobile'
+          hashtag: 'not_mobile'
         },
         columnsClasses: {
           cover: 'artwork',
@@ -193,8 +191,7 @@ export default {
           total: 'total',
           firstEpisodeDate: 'since',
           lastEpisodeDate: 'last',
-          averageDuration: 'averate',
-          fileServer: 'fileserver'
+          averageDuration: 'averate'
         },
         perPage: 9999,
         headings: {
@@ -205,8 +202,7 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Ep.',
           lastEpisodeDate: 'Last Ep.',
-          averageDuration: 'Avarage time',
-          fileServer: 'File server of sound files'
+          averageDuration: 'Avarage time'
         },
         sortable: [
           'title',
@@ -216,7 +212,6 @@ export default {
           'firstEpisodeDate',
           'lastEpisodeDate',
           'averageDuration',
-          'fileServer'
         ],
         texts: {
           filter: '',
