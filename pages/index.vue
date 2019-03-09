@@ -118,6 +118,7 @@ tbody
     background: #050935
     border-radius: 3px
     list-style: none
+    z-index: 10
     a
       color: white
       font-size: 12px
