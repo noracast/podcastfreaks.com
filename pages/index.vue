@@ -166,13 +166,12 @@ button
   button
     font-size: 10px
   .download
+    top: 70px
     width: 100px
     .pc
       display: none
     .sp
       display: inline
-  .download
-    top: 66px
   .VueTables
     .row
       padding-left: 15px
