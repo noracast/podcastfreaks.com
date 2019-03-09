@@ -1,6 +1,8 @@
 <template lang="pug">
 div.main
-  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0") Download OPML
+  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0")
+    span.pc Download OPML
+    span.sp OPML
   v-client-table(:columns="columns" :data="data" :options="options")
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
@@ -37,6 +39,8 @@ $purple: #650451
   width: 150px
   top: 20px
   right: 110px
+  .sp
+    display: none
   &:disabled
     color: rgba(255,255,255,0.7)
     cursor: not-allowed
@@ -156,16 +160,33 @@ button
   .main
     padding-top: 10px
     padding-bottom: 15px
+  table
+    margin-top: 15px
+  button
+    font-size: 10px
   .download
-    top: 10px
+    width: 100px
+    .pc
+      display: none
+    .sp
+      display: inline
+  .download
+    top: 66px
   .VueTables
     .row
       padding-left: 15px
       padding-right: 15px
+  .VueTables__columns-dropdown
+    .dropdown-menu
+      right: 15px
+  .VueTables__search
+    width: 100%
   .VueTables__search-field
     input
-      width: calc(100% - 30px)
+      width: calc(100% - 20px)
       padding: 9px
+  .VueTables__columns-dropdown
+    clear: left
   th,td
     &:first-child
       padding-left: 15px
