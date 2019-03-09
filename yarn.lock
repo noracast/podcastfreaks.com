@@ -3962,6 +3962,11 @@ file-loader@^3.0.1:
     loader-utils "^1.0.2"
     schema-utils "^1.0.0"
 
+file-saver@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.1.tgz#7fe2242af1cbc559a29d8176078a8b56d781fa79"
+  integrity sha512-dCB3K7/BvAcUmtmh1DzFdv0eXSVJ9IAFt1mw3XZfAexodNRoE29l3xB2EX4wH2q8m/UTzwzEPq/ArYk98kUkBQ==
+
 file-type@^3.1.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
@@ -6348,6 +6353,13 @@ opener@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
   integrity sha512-goYSy5c2UXE4Ra1xixabeVh1guIX/ZV/YokJksb6q2lubWu6UbvPQ20p542/sFIll1nl8JnCyK9oBaOcCWXwvA==
+
+opml-generator@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/opml-generator/-/opml-generator-1.1.1.tgz#d66cd416d02be8607d15eb93187d86c2ca591bce"
+  integrity sha1-1mzUFtAr6GB9FeuTGH2GwspZG84=
+  dependencies:
+    xml "^1.0.0"
 
 optimize-css-assets-webpack-plugin@^5.0.1:
   version "5.0.1"
@@ -9690,6 +9702,11 @@ xml2js@^0.4.19, xml2js@^0.4.5:
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
+
+xml@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
 
 xmlbuilder@~9.0.1:
   version "9.0.7"

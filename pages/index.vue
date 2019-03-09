@@ -1,7 +1,9 @@
 <template lang="pug">
 div.main
-  button Export OPML
+  button(@click="exportOpml") Export OPML
   v-client-table(:columns="columns" :data="data" :options="options")
+    template(slot="opmlCheck" slot-scope="props")
+      input(type="checkbox" :value="props.row.key" v-model="exports")
     template(slot="cover" slot-scope="props")
       cover(:channel="props.row.key")
     template(slot="title" slot-scope="props")
@@ -17,8 +19,6 @@ div.main
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
-    template(slot="opmlCheck" slot-scope="props")
-      input(type="checkbox" :value="props.row.feed")
 
 </template>
 
@@ -165,6 +165,8 @@ import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
 import build_info from '~/static/downloads/build_info.json'
+import opml from 'opml-generator'
+import { saveAs } from 'file-saver'
 
 export default {
   components: {
@@ -174,6 +176,7 @@ export default {
   },
   data: function() {
     return {
+      exports: [],
       columns: [
         'opmlCheck',
         'cover',
@@ -243,6 +246,24 @@ export default {
         return `https://twitter.com/search?q=%23${str.replace('#','')}`
       }
       return ''
+    },
+    exportOpml: function(){
+      const header = {
+        "title": "podcast-freaks channel list",
+        "dateCreated": new Date(),
+        "ownerName": "podcast-freaks"
+      }
+      const outlines = this.exports.map((channelName)=>{
+        const channel = rss[channelName]
+        return {
+          text: "txt",
+          title: channelName,
+          type: "rss",
+          "xmlUrl": channel.feed
+        }
+      })
+      var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
+      saveAs(blob, "podcast-freaks.opml")
     }
   }
 }
