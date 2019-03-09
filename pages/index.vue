@@ -1,6 +1,9 @@
 <template lang="pug">
 div.main
+  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options")
+    template(slot="download" slot-scope="props")
+      input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
       cover(:channel="props.row.key")
     template(slot="title" slot-scope="props")
@@ -27,6 +30,16 @@ $purple: #650451
   padding-bottom: 20px
   -webkit-overflow-scrolling: touch
   overflow-scrolling: touch
+  position: relative
+.download
+  margin-right: 20px
+  position: absolute
+  width: 150px
+  top: 20px
+  right: 110px
+  &:disabled
+    color: rgba(255,255,255,0.7)
+    cursor: not-allowed
 table
   border-collapse: collapse
   border-spacing: 0
@@ -88,7 +101,7 @@ tbody
       color: #ccc
 .VueTables__search
   float: left
-  width: calc(100% - 120px)
+  width: calc(100% - 270px)
 .VueTables__columns-dropdown
   float: right
   width: 100px
@@ -143,13 +156,15 @@ button
   .main
     padding-top: 10px
     padding-bottom: 15px
+  .download
+    top: 10px
   .VueTables
     .row
       padding-left: 15px
       padding-right: 15px
   .VueTables__search-field
     input
-      width: calc(100% - 20px)
+      width: calc(100% - 30px)
       padding: 9px
   th,td
     &:first-child
@@ -162,6 +177,8 @@ import moment from 'moment'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
 import build_info from '~/static/downloads/build_info.json'
+import opml from 'opml-generator'
+import { saveAs } from 'file-saver'
 
 export default {
   components: {
@@ -171,6 +188,8 @@ export default {
   },
   data: function() {
     return {
+      allMarked: false,
+      markedRows: [],
       columns: [
         'cover',
         'title',
@@ -179,7 +198,8 @@ export default {
         'averageDuration',
         'twitter',
         'hashtag',
-        'firstEpisodeDate'
+        'firstEpisodeDate',
+        'download'
       ],
       options: {
         columnsDropdown: true,
@@ -207,7 +227,25 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Ep.',
           lastEpisodeDate: 'Last Ep.',
-          averageDuration: 'Avarage time'
+          averageDuration: 'Avarage time',
+          download: function(h){
+            const self = this;
+            return h('input', {
+              attrs: { type: 'checkbox' },
+              domProps: { value: self.value },
+              class: 'form-control check-all',
+              on: {
+                change: self.toggleAll,
+                input: function(event) {
+                  self.value = event.target.value
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        },
+        headingsTooltips: {
+          download: 'Check to download OPML'
         },
         sortable: [
           'title',
@@ -216,7 +254,7 @@ export default {
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
-          'averageDuration',
+          'averageDuration'
         ],
         texts: {
           filter: '',
@@ -238,6 +276,28 @@ export default {
         return `https://twitter.com/search?q=%23${str.replace('#','')}`
       }
       return ''
+    },
+    toggleAll: function() {
+      this.markedRows = this.allMarked ? [] : Object.keys(rss)
+      this.allMarked = !this.allMarked
+    },
+    downloadOpml: function(){
+      const header = {
+        "title": "podcast-freaks channel list",
+        "dateCreated": new Date(),
+        "ownerName": "podcast-freaks"
+      }
+      const outlines = this.markedRows.map((channelName)=>{
+        const channel = rss[channelName]
+        return {
+          text: "txt",
+          title: channelName,
+          type: "rss",
+          "xmlUrl": channel.feed
+        }
+      })
+      var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
+      saveAs(blob, "podcast-freaks.opml")
     }
   }
 }
