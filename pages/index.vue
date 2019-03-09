@@ -37,11 +37,9 @@ th,td
   padding: 10px
   &:first-child
     padding-left: 20px
-
 thead
   color: #ddd
   font-size: 12px
-
 tbody
   th,td
     font-weight: 500
@@ -61,15 +59,14 @@ tbody
     font-size: 10px
     padding: 5px 10px
     min-width: initial
-.VueTables
-  .row
-    padding-left: 20px
-    padding-right: 20px
 .table-responsive
   overflow: auto
   width: 100%
   margin-top: 15px
-
+.VueTables
+  .row
+    padding-left: 20px
+    padding-right: 20px
 .VueTables__search-field
   margin-bottom: 20px
   input
@@ -120,7 +117,6 @@ tbody
     content: "▲"
     margin-left: 10px
     font-size: 0.7em
-
 button
   display: block
   border-radius: 3px
@@ -135,7 +131,6 @@ button
   cursor: pointer
   &:active
     background: lighten($purple, 10)
-
 .copy
   margin-top: 7px
 
@@ -143,7 +138,6 @@ button
   .main
     padding-top: 10px
     padding-bottom: 15px
-
   .VueTables
     .row
       padding-left: 15px
