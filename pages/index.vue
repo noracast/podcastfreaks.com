@@ -7,6 +7,7 @@ div.main
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
       br
       button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
+    template(slot="averageDuration" slot-scope="props") {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
