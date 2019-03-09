@@ -2,8 +2,7 @@
 div.main
   v-client-table(:columns="columns" :data="data" :options="options")
     template(slot="cover" slot-scope="props")
-      nuxt-link(:to="'/channels/'+props.row.key")
-        cover(:channel="props.row.key")
+      cover(:channel="props.row.key")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
       br
