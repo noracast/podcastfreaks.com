@@ -84,6 +84,9 @@ tbody
       border-top: 1px solid #ccc
     &.VueTables__child-row
       border-top: 1px dotted #eee
+      background-image: url(/img/slant-bg.png)
+      background-color: #e4e4e4
+      background-size: 15%
       td
         padding: 20px
         line-height: 1.8em
