@@ -8,9 +8,12 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
         nuxt-link(to='/about/') About
         nuxt-link(to='/in2weeks/') In 2 weeks
         nuxt-link(to='/request/') Request
-      .update
-        span.date {{ updatedDate }}
-        span.time {{ updatedTime }} updated
+      .stats.channels
+        span {{ channelCount }}
+        span channels
+      .stats.update
+        span {{ updatedDate }}
+        span {{ updatedTime }} updated
     .main
       nuxt
 </template>
@@ -27,6 +30,8 @@ header
   position: sticky
   top: 0
   z-index: 5
+  display: flex
+  align-items: center
 h1
   float: left
   display: -webkit-flex
@@ -52,24 +57,28 @@ nav
     color: #fff
   a + a
     margin-left: 2em
-.update
-  margin-left: auto
-  font-size: 10px
-  color: rgba(255,255,255,0.3)
+
+.stats
+  margin-right: 0
   border-left: 1px solid rgba(255,255,255,0.2)
-  padding-left: 30px
-  float: right
+  color: rgba(255,255,255,0.3)
+  padding-left: 20px
   height: 100%
   display: flex
   flex-direction: column
   justify-content: center
   transition-duration: 0.2s
+  flex-shrink: 1
+  &:nth-of-type(1)
+    margin-left: auto
+  &:not(:last-child)
+    margin-right: 20px
   &:hover
     color: rgba(255,255,255,1)
     transition-duration: 0.2s
-  .date
+  >span:first-child
     font-size: 16px
-  .time
+  >span:nth-child(2)
     font-size: 10px
 .wrapper.small
   header
@@ -82,7 +91,7 @@ nav
     float: right
     margin-left: 0
     font-size: 10px
-  .update
+  .stats
     display: none
 </style>
 
@@ -95,6 +104,7 @@ export default {
     return {
       updatedDate: moment(build_info.updated).format('YYYY.MM.DD'),
       updatedTime: moment(build_info.updated).format('h:mm:ss A'),
+      channelCount: Object.keys(build_info.channels).length
     }
   }
 }
