@@ -170,7 +170,8 @@ Object.keys(rss).forEach(function (key) {
           firstEpisodeLink: _.last(json.rss.channel.item).link,
           lastEpisodeLink: _.first(json.rss.channel.item).link,
           fileServer,
-          averageDuration
+          averageDuration,
+          desciprtion: json.rss.channel.description
         }
 
         _total--

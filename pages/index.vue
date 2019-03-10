@@ -3,11 +3,11 @@ div.main
   button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0")
     span.pc Download OPML
     span.sp OPML
-  v-client-table(:columns="columns" :data="data" :options="options")
+  v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
-      cover(:channel="props.row.key")
+      cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
       br
@@ -21,7 +21,7 @@ div.main
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
-
+    template(slot="child_row" slot-scope="props") {{props.row.desciprtion}}
 </template>
 
 <style lang="sass">
@@ -54,7 +54,9 @@ th,td
   text-align: left
   vertical-align: top
   padding: 10px
-  &:first-child
+  &:first-child:not(:last-child)
+    display: none
+  &:nth-child(2)
     padding-left: 20px
 thead
   color: #ccc
@@ -73,14 +75,22 @@ tbody
     text-align: right
     font-size: 15px
   tr
-    border-bottom: 1px solid #ccc
     &:first-child
       border-top: 1px solid #ccc
+    &:not(.VueTables__child-row)
+      border-top: 1px solid #ccc
+    &.VueTables__child-row
+      border-top: 1px dotted #eee
+      td
+        padding-left: 20px
+        padding-right: 20px
 
   button
     font-size: 10px
     padding: 5px 10px
     min-width: initial
+.cover
+  cursor: pointer
 .table-responsive
   overflow: auto
   width: 100%
@@ -132,12 +142,12 @@ tbody
     color: $purple
 .glyphicon-chevron-down
   &:before
-    content: "▼"
+    content: '▼'
     margin-left: 10px
     font-size: 0.7em
 .glyphicon-chevron-up
   &:before
-    content: "▲"
+    content: '▲'
     margin-left: 10px
     font-size: 0.7em
 button
@@ -156,7 +166,6 @@ button
     background: lighten($purple, 10)
 .copy
   margin-top: 7px
-
 .small
   .main
     padding-top: 10px
@@ -188,8 +197,13 @@ button
   .VueTables__columns-dropdown
     clear: left
   th,td
-    &:first-child
+    &:nth-child(2)
       padding-left: 15px
+  tr
+    &.VueTables__child-row
+      td
+        padding-left: 15px
+        padding-right: 15px
 </style>
 
 <script>
@@ -280,12 +294,16 @@ export default {
         texts: {
           filter: '',
           filterPlaceholder: 'Search'
-        }
+        },
+        uniqueKey: 'key'
       },
       data: Object.values(build_info.channels)
     }
   },
   methods: {
+    toggleChildRow: function(key){
+      this.$refs.table.toggleChildRow(key)
+    },
     twitterLink: function(str) {
       if(str != null) {
         return `https://twitter.com/${str.replace('@','')}`
