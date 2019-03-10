@@ -10,8 +10,6 @@ div.main
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
-      br
-      button.copy(type="button" v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
     template(slot="averageDuration" slot-scope="props") {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
@@ -22,9 +20,11 @@ div.main
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
-      | {{props.row.desciprtion}}
+      | {{ props.row.desciprtion }}
       br(v-if="props.row.desciprtion")
-      a(target="_blank" :href="props.row.link") {{ props.row.link }}
+      br(v-if="props.row.desciprtion")
+      | {{ props.row.feed }}
+      button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
 </template>
 
 <style lang="sass">
@@ -282,7 +282,7 @@ export default {
         },
         perPage: 9999,
         headings: {
-          cover: 'Artwork',
+          cover: '',
           title: 'Title',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
