@@ -76,7 +76,7 @@ tbody
     font-size: 15px
   td.total
     text-align: right
-    font-size: 15px
+    font-size: 18px
   tr
     &:first-child
       border-top: 1px solid #ccc
