@@ -100,6 +100,25 @@ tbody
     min-width: initial
 .cover
   cursor: pointer
+  transition-duration: 0.2s
+  overflow: hidden
+  &:before
+    content: 'Info.'
+    color: white
+    font-size: 10px
+    font-weight: bold
+    background-color: rgba(0,0,0,0.6)
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100%
+    opacity: 0
+    transition-duration: 0.2s
+  &:hover
+    &:before
+      opacity: 1
+      transition-duration: 0.2s
 .table-responsive
   overflow: auto
   width: 100%
