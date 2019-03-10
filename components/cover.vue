@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     styles () {
-      const suffix = this.size == 0 ? '' : `-${this.size}`
+      const suffix = this.size == 0 ? '' : `-${this.size*2}`
       let style = {
         'border-radius': this.radius
       }
