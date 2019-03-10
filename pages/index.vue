@@ -21,7 +21,10 @@ div.main
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
-    template(slot="child_row" slot-scope="props") {{props.row.desciprtion}}
+    template(slot="child_row" slot-scope="props")
+      | {{props.row.desciprtion}}
+      br
+      a(target="_blank" :href="props.row.link") {{ props.row.link }}
 </template>
 
 <style lang="sass">
@@ -82,8 +85,14 @@ tbody
     &.VueTables__child-row
       border-top: 1px dotted #eee
       td
-        padding-left: 20px
-        padding-right: 20px
+        padding: 20px
+        line-height: 1.8em
+      a
+        color: #ccc
+        transition-duration: 0.2s
+        &:hover
+          color: #000
+          transition-duration: 0.2s
 
   button
     font-size: 10px
@@ -202,8 +211,7 @@ button
   tr
     &.VueTables__child-row
       td
-        padding-left: 15px
-        padding-right: 15px
+        padding: 15px
 </style>
 
 <script>
