@@ -27,6 +27,7 @@ var latest_pubdates = []
 var episodes_in_2weeks = []
 var channels = {}
 var covers = {}
+var episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
@@ -62,6 +63,9 @@ Object.keys(rss).forEach(function (key) {
             dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
           }
         }
+
+        // count episodes
+        episodeCount += json.rss.channel.item.length
 
         // json.rss.channel.item がなくてエラーになることがあるのでここで間引く
         // TODO: ほんとに問題ない？
@@ -218,6 +222,7 @@ Object.keys(rss).forEach(function (key) {
             episodes_in_2weeks,
             channels,
             updated: new Date(),
+            episodeCount
           }
           fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
         }

@@ -11,6 +11,9 @@ Responsive(:breakpoints="{small: el => el.width <= 700}")
       .stats.channels
         span {{ channelCount }}
         span channels
+      .stats.episodes
+        span {{ episodeCount }}
+        span episodes
       .stats.update
         span {{ updatedDate }}
         span {{ updatedTime }} updated
@@ -104,7 +107,8 @@ export default {
     return {
       updatedDate: moment(build_info.updated).format('YYYY.MM.DD'),
       updatedTime: moment(build_info.updated).format('h:mm:ss A'),
-      channelCount: Object.keys(build_info.channels).length
+      channelCount: Object.keys(build_info.channels).length,
+      episodeCount: build_info.episodeCount
     }
   }
 }
