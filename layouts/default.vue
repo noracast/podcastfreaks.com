@@ -1,5 +1,5 @@
 <template lang='pug'>
-Responsive(:breakpoints="{small: el => el.width <= 700}")
+Responsive(:breakpoints="{small: el => el.width <= 810}")
   .wrapper(slot-scope="el" :class="{ small: el.is.small }")
     header
       h1
@@ -92,7 +92,7 @@ nav
       font-size: 14px
   nav
     float: right
-    margin-left: 0
+    margin-left: 30px
     font-size: 10px
   .stats
     display: none
