@@ -23,7 +23,7 @@ div.main
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
       | {{props.row.desciprtion}}
-      br
+      br(v-if="props.row.desciprtion")
       a(target="_blank" :href="props.row.link") {{ props.row.link }}
 </template>
 
