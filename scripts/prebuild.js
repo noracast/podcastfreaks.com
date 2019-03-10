@@ -3,8 +3,9 @@ const _ = require('lodash')
 const fileExtension = require('file-extension')
 const fs = require('fs')
 const moment = require('moment')
-const resizer = require('node-image-resizer')
+const path = require('path')
 const rss = require('../data/rss.json')
+const sharp = require('sharp')
 const shell = require('shelljs')
 const url = require('url')
 const wget = require('wget-improved')
@@ -211,7 +212,24 @@ Object.keys(rss).forEach(function (key) {
                 }
               ]
             }
-            return wgetp(_src, {output: _dist}).then(() => resizer(_dist, config), (e)=> console.error(_src, e))
+            return wgetp(_src, {output: _dist}).then(() => {
+              const ext = path.extname(_dist)
+              const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+              const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+              sharp(_dist)
+                .resize(120)
+                .toFile(ext_120, (err, info) => {
+                  if(err){
+                    console.error('[prebuild error]', err, info)
+                  }
+                })
+                .resize(60)
+                .toFile(ext_60, (err, info) => {
+                  if(err){
+                    console.error('[prebuild error]', err, info)
+                  }
+                })
+            })
           }
           let p = Promise.resolve()
           Object.keys(covers).forEach(function (_key) {

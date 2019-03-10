@@ -44,14 +44,15 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "file-extension": "^4.0.5",
-    "node-image-resizer": "^1.0.0",
     "node-sass": "^4.11.0",
     "node-wget-promise": "^0.1.6",
     "nodemon": "^1.11.0",
+    "path": "^0.12.7",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "push-dir": "^0.4.1",
     "sass-loader": "^7.1.0",
+    "sharp": "^0.21.3",
     "vue-loader": "^15.6.4",
     "webpack": "^4.29.5"
   }
