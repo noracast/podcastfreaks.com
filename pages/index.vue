@@ -22,9 +22,9 @@ div.main
     template(slot="child_row" slot-scope="props")
       | {{ props.row.desciprtion }}
       br(v-if="props.row.desciprtion")
-      br(v-if="props.row.desciprtion")
-      | {{ props.row.feed }}
-      button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
+      p.feed
+        button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
+        span(type="text" readonly="readonly") {{ props.row.feed }}
 </template>
 
 <style lang="sass">
@@ -178,6 +178,23 @@ tbody
     content: '▲'
     margin-left: 10px
     font-size: 0.7em
+.feed
+  button
+    display: inline-block
+    margin: 0
+    border-radius: 3px 0 0 3px
+  span
+    border: 0
+    display: inline-block
+    outline: 0
+    background: none
+    background-color: #efefef
+    border-radius: 0 3px 3px 0
+    display: inline-block
+    padding: 0 10px 0 10px
+    margin: 0
+    font-size: 11px
+
 button
   display: block
   border-radius: 3px
@@ -192,8 +209,10 @@ button
   cursor: pointer
   &:active
     background: lighten($purple, 10)
+
 .copy
   margin-top: 7px
+
 .small
   .main
     padding-top: 10px
