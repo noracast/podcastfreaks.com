@@ -21,7 +21,8 @@ shell.rm('-rf', DOWNLOADS_DIR)
 shell.mkdir('-p', RSS_DIR)
 shell.mkdir('-p', COVER_DIR)
 
-var total = Object.keys(rss).length
+var _total = Object.keys(rss).length // for detect finish
+
 var latest_pubdates = []
 var episodes_in_2weeks = []
 var channels = {}
@@ -168,10 +169,10 @@ Object.keys(rss).forEach(function (key) {
           averageDuration
         }
 
-        total--
+        _total--
 
         // Finish execution
-        if(total <= 0) {
+        if(_total <= 0) {
 
           // Export to list file ordered by pubDate
           latest_pubdates.sort(function(a, b) {
