@@ -182,21 +182,30 @@ tbody
     margin-left: 10px
     font-size: 0.7em
 .feed
+  display: flex
+  align-items: center
+  height: 30px
   button
-    display: inline-block
+    height: 100%
+    width: 80px
     margin: 0
     border-radius: 3px 0 0 3px
+    display: flex
+    align-items: center
+    justify-content: center
   span
+    height: 100%
     border: 0
-    display: inline-block
     outline: 0
     background: none
-    background-color: #efefef
+    background-color: #4c4c4c
+    color: #ccc
     border-radius: 0 3px 3px 0
-    display: inline-block
-    padding: 0 10px 0 10px
+    padding: 0 10px
     margin: 0
     font-size: 11px
+    display: flex
+    align-items: center
 
 button
   display: block
