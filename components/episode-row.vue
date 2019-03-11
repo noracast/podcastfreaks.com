@@ -34,7 +34,7 @@ div.row
       color: #fff
       padding-left: 1em
       font-size: 12px
-      background: #666
+      background: #8000ff
       padding: 5px 8px
       border-radius: 3px
       margin-right: 10px
