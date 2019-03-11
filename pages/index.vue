@@ -20,7 +20,7 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
-      p.description {{ props.row.desciprtion }}
+      p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
       p.feed
         button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
         span(type="text" readonly="readonly") {{ props.row.feed }}
