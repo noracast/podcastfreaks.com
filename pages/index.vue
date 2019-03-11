@@ -101,33 +101,6 @@ tbody
     font-size: 10px
     padding: 5px 10px
     min-width: initial
-.cover
-  cursor: pointer
-  transition-duration: 0.2s
-  overflow: hidden
-  &:before
-    content: 'SHOW\AINFO.'
-    white-space: pre
-    color: white
-    font-size: 10px
-    line-height: 1.4em
-    font-weight: bold
-    background-color: rgba(0,0,0,0.4)
-    display: flex
-    justify-content: center
-    align-items: center
-    text-align: center
-    width: 100%
-    height: 100%
-    opacity: 0
-    transition-duration: 0.2s
-  &:hover
-    &:before
-      opacity: 1
-      transition-duration: 0.2s
-  &:active
-    &:before
-      opacity: 0
 .table-responsive
   overflow: auto
   width: 100%
@@ -136,6 +109,33 @@ tbody
   .row
     padding-left: 20px
     padding-right: 20px
+  .cover
+    cursor: pointer
+    transition-duration: 0.2s
+    overflow: hidden
+    &:before
+      content: 'SHOW\AINFO.'
+      white-space: pre
+      color: white
+      font-size: 10px
+      line-height: 1.4em
+      font-weight: bold
+      background-color: rgba(0,0,0,0.4)
+      display: flex
+      justify-content: center
+      align-items: center
+      text-align: center
+      width: 100%
+      height: 100%
+      opacity: 0
+      transition-duration: 0.2s
+    &:hover
+      &:before
+        opacity: 1
+        transition-duration: 0.2s
+    &:active
+      &:before
+        opacity: 0
 .VueTables__search-field
   margin-bottom: 20px
   input
