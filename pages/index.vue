@@ -218,6 +218,9 @@ tbody
     padding-bottom: 15px
   table
     margin-top: 15px
+  tbody
+    th,td
+      font-size: 11px
   button
     font-size: 10px
   .download
