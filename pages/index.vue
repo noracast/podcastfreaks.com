@@ -246,6 +246,7 @@ tbody
     input
       width: calc(100% - 20px)
       padding: 9px
+      font-size: 16px
   .VueTables__columns-dropdown
     clear: left
   th,td
