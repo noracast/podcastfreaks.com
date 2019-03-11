@@ -263,6 +263,7 @@ tbody
         padding: 15px
   .description
     max-width: calc(100vw - 30px)
+    text-align: justify
 </style>
 
 <script>
