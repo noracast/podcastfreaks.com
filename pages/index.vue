@@ -106,14 +106,17 @@ tbody
   transition-duration: 0.2s
   overflow: hidden
   &:before
-    content: 'Info.'
+    content: 'SHOW\AINFO.'
+    white-space: pre
     color: white
     font-size: 10px
+    line-height: 1.4em
     font-weight: bold
-    background-color: rgba(0,0,0,0.6)
+    background-color: rgba(0,0,0,0.4)
     display: flex
     justify-content: center
     align-items: center
+    text-align: center
     width: 100%
     height: 100%
     opacity: 0
@@ -122,6 +125,9 @@ tbody
     &:before
       opacity: 1
       transition-duration: 0.2s
+  &:active
+    &:before
+      opacity: 0
 .table-responsive
   overflow: auto
   width: 100%
