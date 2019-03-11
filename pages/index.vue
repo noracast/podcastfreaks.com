@@ -234,6 +234,9 @@ tbody
     .row
       padding-left: 15px
       padding-right: 15px
+    // hoverが解除されないので、打ち消す
+    .cover:hover:before
+      opacity: 0
   .VueTables__columns-dropdown
     .dropdown-menu
       right: 15px
