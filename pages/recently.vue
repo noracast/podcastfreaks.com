@@ -36,19 +36,19 @@ div.small
   .border
     height: auto
     margin-left: -20px
-    margin-right: -20px
+    margin-right: 0
   .date
     font-size: 11px
     height: 20px
     line-height: 20px
     position: relative
-    display: block
-    width: 100%
     margin-left: 20px
     padding-left: 20px
 h5
   color: #8c22a7
   padding: 0 20px
+.row.small
+  padding-left: 20px
 </style>
 
 <script>
