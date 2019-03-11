@@ -1,5 +1,5 @@
 <template lang="pug">
-div.main
+div#index
   button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0")
     span.pc Download OPML
     span.sp OPML
@@ -30,7 +30,7 @@ div.main
 <style lang="sass">
 $purple: #650451
 
-.main
+#index
   padding-top: 20px
   padding-bottom: 20px
   -webkit-overflow-scrolling: touch
@@ -232,7 +232,7 @@ button
   margin-top: 7px
 
 .small
-  .main
+  #index
     padding-top: 10px
     padding-bottom: 15px
   table

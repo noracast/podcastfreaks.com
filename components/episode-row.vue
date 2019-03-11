@@ -1,40 +1,52 @@
 <template lang="pug">
 div.row
   cover.cover(:channel="episode.key" :size='30' radius='50%')
-  a(:href="episode.link" target="_blank")
-    span.title(v-text="episode.title")
+  a.text(:href="episode.link" target="_blank")
+    span.channel {{ episode.channel_title }}
+    | {{ episode.title }}
 </template>
 
 <style lang="sass" scoped>
 div.row
   padding: 5px 0
   position: relative
-  display: -webkit-flex
-  -webkit-flex-wrap: wrap
   display: flex
-  flex-wrap: wrap
+  flex-wrap: nowrap
   margin-left: 100px
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
+  height: 30px
   &:hover
     color: #3a8ee6
-  &.small
-    margin-left: 0
-    .title
-      height: 20px
-      line-height: 20px
-      font-size: 11px
   .cover
-    width: 30px
-.title
-  height: 30px
-  line-height: 30px
-  width: calc(100% - 40px)
-  margin-left: 10px
-  overflow: hidden
-  white-space: nowrap
-  text-overflow: ellipsis
+    flex-shrink: 0
+  .text
+    flex-shrink: 1
+    height: 100%
+    line-height: 30px
+    margin-left: 10px
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    align-items: center
+    .channel
+      color: #fff
+      padding-left: 1em
+      font-size: 12px
+      background: #666
+      padding: 5px 8px
+      border-radius: 3px
+      margin-right: 10px
+
+  &.small
+    margin-left: 10px
+    .cover
+      width: 30px
+    .text
+      font-size: 12px
+      .channel
+        font-size: 10px
 </style>
 
 <script>

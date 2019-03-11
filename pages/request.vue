@@ -1,5 +1,5 @@
 <template lang="pug">
-div.main
+div#request
   h2 Register request
   p
     | 自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。<br>
@@ -31,7 +31,7 @@ div.main
 </template>
 
 <style lang="sass" scoped>
-.main
+#request
   padding: 20px
   max-width: 600px
 form

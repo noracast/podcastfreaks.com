@@ -1,5 +1,5 @@
 <template lang="pug">
-div.main
+div#about
   h2 About
   p
     | このサイトは、近頃流行りのテック系ポッドキャストのアクティビティをまとめたサイトです。中の人は<a href="https://noracast.jp" target="_blank">noracast</a>というポッドキャストをやっています。<br>
@@ -14,10 +14,10 @@ div.main
 </template>
 
 <style lang="sass" scoped>
-.main
+#about
   padding: 20px
   max-width: 600px
-a
-  border-bottom: 1px dotted #999
-  padding-bottom: 0.2em
+  a
+    border-bottom: 1px dotted #999
+    padding-bottom: 0.2em
 </style>

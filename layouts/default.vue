@@ -21,7 +21,7 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
       nuxt
 </template>
 
-<style lang='sass' scoped>
+<style lang='sass'>
 a
   &:hover
     color: #fff
@@ -46,6 +46,8 @@ h1
   a
     font-size: 22px
     color: #fff
+h2:first-child
+  margin-top: 0
 nav
   float: left
   display: -webkit-flex
