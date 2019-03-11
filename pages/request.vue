@@ -63,14 +63,11 @@ form
     margin-top: 20px
     display: block
     border-radius: 3px
-    background: darken(#af078b, 15%)
     color: white
     font-size: 15px
     font-weight: bold
     padding: 10px 20px
     min-width: 100px
     cursor: pointer
-    &:hover
-      background: #af078b
 
 </style>

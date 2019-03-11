@@ -28,7 +28,6 @@ div#index
 </template>
 
 <style lang="sass">
-$purple: #650451
 
 #index
   padding-top: 20px
@@ -44,9 +43,6 @@ $purple: #650451
   right: 110px
   .sp
     display: none
-  &:disabled
-    color: rgba(255,255,255,0.7)
-    cursor: not-allowed
 table
   border-collapse: collapse
   border-spacing: 0
@@ -176,7 +172,7 @@ tbody
 .VueTables__sortable
   cursor: pointer
   &:hover
-    color: $purple
+    color: #7f00ff
 .glyphicon-chevron-down
   &:before
     content: '▼'
@@ -212,21 +208,6 @@ tbody
     font-size: 11px
     display: flex
     align-items: center
-
-button
-  display: block
-  border-radius: 3px
-  background: $purple
-  color: white
-  font-size: 12px
-  font-weight: bold
-  padding: 10px 20px
-  min-width: 100px
-  outline: none
-  border: 0
-  cursor: pointer
-  &:active
-    background: lighten($purple, 10)
 
 .copy
   margin-top: 7px

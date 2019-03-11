@@ -46,7 +46,6 @@ div.small
     margin-left: 20px
     padding-left: 10px
 h5
-  color: #8c22a7
   padding: 0 20px
 .row.small
   padding-left: 20px
