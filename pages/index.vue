@@ -20,8 +20,7 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
-      | {{ props.row.desciprtion }}
-      br(v-if="props.row.desciprtion")
+      p.description {{ props.row.desciprtion }}
       p.feed
         button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
         span(type="text" readonly="readonly") {{ props.row.feed }}
@@ -187,6 +186,7 @@ tbody
   display: flex
   align-items: center
   height: 30px
+  margin-bottom: 0
   button
     height: 100%
     width: 80px
@@ -208,7 +208,9 @@ tbody
     font-size: 11px
     display: flex
     align-items: center
-
+.description
+  max-width: calc(100vw - 40px)
+  margin-top: 0
 .copy
   margin-top: 7px
 
