@@ -261,6 +261,8 @@ tbody
     &.VueTables__child-row
       td
         padding: 15px
+  .description
+    max-width: calc(100vw - 30px)
 </style>
 
 <script>
