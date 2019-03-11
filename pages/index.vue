@@ -187,6 +187,8 @@ tbody
   align-items: center
   height: 30px
   margin-bottom: 0
+  &:first-child
+    margin-top: 0
   button
     height: 100%
     width: 80px
@@ -210,7 +212,8 @@ tbody
     align-items: center
 .description
   max-width: calc(100vw - 40px)
-  margin-top: 0
+  &:first-child
+    margin-top: 0
 .copy
   margin-top: 7px
 
