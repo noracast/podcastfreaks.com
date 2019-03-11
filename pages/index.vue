@@ -224,7 +224,7 @@ tbody
   button
     font-size: 10px
   .download
-    top: 70px
+    top: 74px
     width: 100px
     .pc
       display: none
