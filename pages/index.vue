@@ -75,7 +75,7 @@ tbody
       background-color: #ccc
       color: white
       &.min0-15
-        background-color: #9eccfe
+        background-color: #89ef83
       &.min15-30
         background-color: #76dde8
       &.min30-45
