@@ -18,6 +18,16 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
         span {{ updatedDate }}
         span {{ updatedTime }} updated
     .main
+      .sp_stats
+        .channels
+          span {{ channelCount }}
+          span channels
+        .episodes
+          span {{ episodeCount }}
+          span episodes
+        .update
+          span {{ updatedDate }} {{ updatedTime }}
+          span updated
       nuxt
 </template>
 
@@ -50,8 +60,6 @@ h2:first-child
   margin-top: 0
 nav
   float: left
-  display: -webkit-flex
-  -webkit-align-items: center
   display: flex
   align-items: center
   font-size: 13px
@@ -62,7 +70,8 @@ nav
     color: #fff
   a + a
     margin-left: 2em
-
+.sp_stats
+  display: none
 button
   display: block
   border-radius: 3px
@@ -76,7 +85,7 @@ button
   cursor: pointer
   background-color: #7f00ff
   &[disabled]
-    background-color: darken(#7f00ff, 30)
+    color: rgba(255,255,255,0.4)
     cursor: not-allowed
   &:not([disabled])
     &:hover
@@ -107,15 +116,34 @@ button
   header
     padding-left: 15px
     padding-right: 15px
-  h1
-    a
-      font-size: 14px
-  nav
-    float: right
-    margin-left: 15px
+    height: 60px
+    h1
+      a
+        font-size: 14px
+    nav
+      float: right
+      margin-left: 18px
+      font-size: 10px
+    .stats
+      display: none
+  .sp_stats
+    background: linear-gradient(90deg, #7f00ff, #e100ff)
     font-size: 10px
-  .stats
-    display: none
+    color: white
+    display: flex
+    align-items: center
+    height: 30px
+    padding-top: 10px
+    padding-bottom: 10px
+    border-top: 1px solid rgba(255,255,255,0.4)
+    >div
+      display: flex
+      flex-direction: column
+      padding-left: 15px
+      margin-right: 15px
+      &:not(:first-child)
+        border-left: 1px solid rgba(255,255,255,0.4)
+
 </style>
 
 <script>

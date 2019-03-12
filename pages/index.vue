@@ -31,7 +31,7 @@ div#index
 </template>
 
 <style lang="sass">
-$color_update: #8ffe5c
+$color_update: #e100ff
 
 #index
   padding-top: 20px
@@ -129,7 +129,7 @@ tbody
       .updated
         font-weight: bold
         background-color: $color_update
-        color: darken($color_update, 40%)
+        color: white
         display: inline
         padding: 7px 10px
         font-size: 10px
