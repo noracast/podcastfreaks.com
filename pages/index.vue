@@ -225,7 +225,7 @@ tbody
   button
     font-size: 10px
   .download
-    top: 74px
+    top: 74px // 決めうちにするとデバイスによってずれるので、jsで動的に変える
     width: 130px
   .VueTables
     .row
@@ -349,10 +349,21 @@ export default {
       data: Object.values(build_info.channels)
     }
   },
-  mounted () {
-    console.log(this.$refs.downloadBtn)
+  // mounted (){
+  //   // this.$refs.downloadBtn.style.top = '100px'
+  //   // this.handleResize()
+  // },
+  ready: function () {
+    // window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    handleResize: function() {
+      this.$refs.downloadBtn.style.top = (this.$refs.table.$refs.columnsdropdown.getBoundingClientRect().top-80)+'px'
+      console.log((this.$refs.table.$refs.columnsdropdown.getBoundingClientRect().top-80))
+    },
     toggleChildRow: function(key){
       this.$refs.table.toggleChildRow(key)
     },
