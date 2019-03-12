@@ -381,8 +381,6 @@ export default {
     },
     convertToClass: function(str){
       if(str){
-        console.log(this.$options.filters.roughlyTime(str))
-        console.log(this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1'))
         return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1')
       }
     },
