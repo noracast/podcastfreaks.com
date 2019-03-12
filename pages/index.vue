@@ -8,7 +8,8 @@ div#index
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
-    template(slot="averageDuration" slot-scope="props") {{ props.row.averageDuration | roughlyTime }}
+    template(slot="averageDuration" slot-scope="props")
+      span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
@@ -25,7 +26,6 @@ div#index
 </template>
 
 <style lang="sass">
-
 #index
   padding-top: 20px
   padding-bottom: 20px
@@ -68,6 +68,25 @@ tbody
   td.total
     text-align: right
     font-size: 18px
+  td.average
+    span
+      padding: 3px 5px
+      border-radius: 3px
+      background-color: #ccc
+      color: white
+      &.min0-15
+        background-color: #9eccfe
+      &.min15-30
+        background-color: #76dde8
+      &.min30-45
+        background-color: #4abbff
+      &.min45-60
+        background-color: #0064ff
+      &.min60-90
+        background-color: #2a67a9
+      &.min90-120
+        background-color: #7f00ff
+
   tr
     &:first-child
       border-top: 1px solid #ccc
@@ -213,6 +232,7 @@ tbody
 .copy
   margin-top: 7px
 
+
 .small
   #index
     padding-top: 10px
@@ -311,7 +331,7 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Ep.',
           lastEpisodeDate: 'Last Ep.',
-          averageDuration: 'Avarage time',
+          averageDuration: 'Avarage Duration',
           download: function(h){
             const self = this;
             return h('input', {
@@ -358,6 +378,13 @@ export default {
         return `https://twitter.com/${str.replace('@','')}`
       }
       return ''
+    },
+    convertToClass: function(str){
+      if(str){
+        console.log(this.$options.filters.roughlyTime(str))
+        console.log(this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1'))
+        return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1')
+      }
     },
     hashtagLink: function(str) {
       if(str != null) {
