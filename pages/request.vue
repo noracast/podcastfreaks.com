@@ -71,3 +71,13 @@ form
     cursor: pointer
 
 </style>
+
+<script>
+export default {
+  head() {
+    return {
+      title: 'Register request'
+    }
+  }
+}
+</script>

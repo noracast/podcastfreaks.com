@@ -329,6 +329,12 @@ export default {
     'cover': require('~/components/cover.vue').default,
     'podcast': require('~/components/podcast.vue').default
   },
+  head() {
+    return {
+      title: 'Podcast Freaks - Japanese tech podcast archive',
+      titleTemplate: ''
+    }
+  },
   data: function() {
     return {
       newThreshold: moment().subtract(3, 'days').startOf('date'),

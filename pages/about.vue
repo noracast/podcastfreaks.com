@@ -21,3 +21,13 @@ div#about
     border-bottom: 1px dotted #999
     padding-bottom: 0.2em
 </style>
+
+<script>
+export default {
+  head() {
+    return {
+      title: 'About'
+    }
+  }
+}
+</script>

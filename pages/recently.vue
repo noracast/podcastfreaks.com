@@ -63,6 +63,11 @@ export default {
     'episode-row': require('~/components/episode-row.vue').default,
     'podcast': require('~/components/podcast.vue').default
   },
+  head() {
+    return {
+      title: 'Recently episodes'
+    }
+  },
   data: function() {
     const aweekago = moment().subtract(7, 'days').startOf('date')
     let episodes_in_1weeks = []
