@@ -5,6 +5,7 @@ div#index
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
+      i.updated(v-if="isThisWeek(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
@@ -19,6 +20,10 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
+      template(v-if="isThisWeek(props.row.lastEpisodeDate)")
+        a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
+        span.updated(v-else) New episode!
+
       p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
       p.feed
         button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
@@ -62,6 +67,18 @@ tbody
     font-weight: 500
     font-size: 13px
     vertical-align: middle
+  td.artwork
+    position: relative
+    i.updated
+      display: block
+      width: 18px
+      height: 18px
+      background: #c2e0ff
+      border-radius: 18px
+      z-index: 2
+      position: absolute
+      top: 3px
+      left: 11px
   td.title
     font-weight: bold
     font-size: 15px
@@ -106,6 +123,21 @@ tbody
         &:hover
           color: #000
           transition-duration: 0.2s
+      .updated
+        font-weight: bold
+        background-color: #c2e0ff
+        color: darken(#c2e0ff, 40%)
+        display: inline
+        padding: 7px 10px
+        font-size: 10px
+        border-radius: 3px
+      a.updated:hover
+        background-color: darken(#c2e0ff, 40%)
+        color: white
+      p
+        max-width: calc(100vw - 40px)
+        &:first-child
+          margin-top: 0
 
   button
     font-size: 10px
@@ -225,10 +257,6 @@ tbody
     font-size: 11px
     display: flex
     align-items: center
-.description
-  max-width: calc(100vw - 40px)
-  &:first-child
-    margin-top: 0
 .copy
   margin-top: 7px
 
@@ -292,6 +320,7 @@ export default {
   },
   data: function() {
     return {
+      aweekago: moment().subtract(7, 'days').startOf('date'),
       allMarked: false,
       markedRows: [],
       columns: [
@@ -393,6 +422,9 @@ export default {
     toggleAll: function() {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
+    },
+    isThisWeek: function(date){
+      return moment(date, 'YYYY.MM.DD').isAfter(this.aweekago)
     },
     downloadOpml: function(){
       const header = {
