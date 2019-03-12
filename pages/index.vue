@@ -1,6 +1,6 @@
 <template lang="pug">
 div#index
-  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
+  button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
