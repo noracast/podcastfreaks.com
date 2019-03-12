@@ -112,7 +112,7 @@ button
       font-size: 14px
   nav
     float: right
-    margin-left: 30px
+    margin-left: 15px
     font-size: 10px
   .stats
     display: none

@@ -1,16 +1,16 @@
 <template lang="pug">
 div#index
-  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0")
-    span.pc Download OPML
-    span.sp OPML
+  button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
+      i.updated(v-if="isThisWeek(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
-    template(slot="averageDuration" slot-scope="props") {{ props.row.averageDuration | roughlyTime }}
+    template(slot="averageDuration" slot-scope="props")
+      span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
@@ -20,6 +20,10 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
+      template(v-if="isThisWeek(props.row.lastEpisodeDate)")
+        a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
+        span.updated(v-else) New episode!
+
       p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
       p.feed
         button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
@@ -27,7 +31,6 @@ div#index
 </template>
 
 <style lang="sass">
-
 #index
   padding-top: 20px
   padding-bottom: 20px
@@ -40,8 +43,6 @@ div#index
   width: 150px
   top: 20px
   right: 110px
-  .sp
-    display: none
 table
   border-collapse: collapse
   border-spacing: 0
@@ -66,12 +67,43 @@ tbody
     font-weight: 500
     font-size: 13px
     vertical-align: middle
+  td.artwork
+    position: relative
+    i.updated
+      display: block
+      width: 18px
+      height: 18px
+      background: #c2e0ff
+      border-radius: 18px
+      z-index: 2
+      position: absolute
+      top: 3px
+      left: 11px
   td.title
     font-weight: bold
     font-size: 15px
   td.total
     text-align: right
     font-size: 18px
+  td.average
+    span
+      padding: 3px 5px
+      border-radius: 3px
+      background-color: #ccc
+      color: white
+      &.min0-15
+        background-color: #89ef83
+      &.min15-30
+        background-color: #76dde8
+      &.min30-45
+        background-color: #4abbff
+      &.min45-60
+        background-color: #0064ff
+      &.min60-90
+        background-color: #2a67a9
+      &.min90-120
+        background-color: #7f00ff
+
   tr
     &:first-child
       border-top: 1px solid #ccc
@@ -91,6 +123,21 @@ tbody
         &:hover
           color: #000
           transition-duration: 0.2s
+      .updated
+        font-weight: bold
+        background-color: #c2e0ff
+        color: darken(#c2e0ff, 40%)
+        display: inline
+        padding: 7px 10px
+        font-size: 10px
+        border-radius: 3px
+      a.updated:hover
+        background-color: darken(#c2e0ff, 40%)
+        color: white
+      p
+        max-width: calc(100vw - 40px)
+        &:first-child
+          margin-top: 0
 
   button
     font-size: 10px
@@ -210,12 +257,9 @@ tbody
     font-size: 11px
     display: flex
     align-items: center
-.description
-  max-width: calc(100vw - 40px)
-  &:first-child
-    margin-top: 0
 .copy
   margin-top: 7px
+
 
 .small
   #index
@@ -230,11 +274,7 @@ tbody
     font-size: 10px
   .download
     top: 74px
-    width: 100px
-    .pc
-      display: none
-    .sp
-      display: inline
+    width: 130px
   .VueTables
     .row
       padding-left: 15px
@@ -283,6 +323,7 @@ export default {
   },
   data: function() {
     return {
+      aweekago: moment().subtract(7, 'days').startOf('date'),
       allMarked: false,
       markedRows: [],
       columns: [
@@ -311,7 +352,7 @@ export default {
           total: 'total',
           firstEpisodeDate: 'since',
           lastEpisodeDate: 'last',
-          averageDuration: 'averate'
+          averageDuration: 'average'
         },
         perPage: 9999,
         headings: {
@@ -320,9 +361,9 @@ export default {
           twitter: 'Twitter',
           hashtag: 'Hashtag',
           total: 'Episodes',
-          firstEpisodeDate: 'First Ep.',
-          lastEpisodeDate: 'Last Ep.',
-          averageDuration: 'Avarage time',
+          firstEpisodeDate: 'First Episode',
+          lastEpisodeDate: 'Last Episode',
+          averageDuration: 'Avarage Duration',
           download: function(h){
             const self = this;
             return h('input', {
@@ -370,6 +411,11 @@ export default {
       }
       return ''
     },
+    convertToClass: function(str){
+      if(str){
+        return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1')
+      }
+    },
     hashtagLink: function(str) {
       if(str != null) {
         return `https://twitter.com/search?q=%23${str.replace('#','')}`
@@ -379,6 +425,9 @@ export default {
     toggleAll: function() {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
+    },
+    isThisWeek: function(date){
+      return moment(date, 'YYYY.MM.DD').isAfter(this.aweekago)
     },
     downloadOpml: function(){
       const header = {

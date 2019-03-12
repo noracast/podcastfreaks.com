@@ -16,6 +16,11 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
+  },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/google-analytics": "^2.1.0",
@@ -44,6 +49,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "file-extension": "^4.0.5",
+    "netlify-cli": "^2.8.3",
     "node-sass": "^4.11.0",
     "node-wget-promise": "^0.1.6",
     "nodemon": "^1.11.0",
