@@ -5,7 +5,7 @@ div#index
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
-      i.updated(v-if="isThisWeek(props.row.lastEpisodeDate)" title="New episode!")
+      i.updated(v-if="isNew(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
@@ -20,7 +20,7 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="child_row" slot-scope="props")
-      template(v-if="isThisWeek(props.row.lastEpisodeDate)")
+      template(v-if="isNew(props.row.lastEpisodeDate)")
         a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
         span.updated(v-else) New episode!
 
@@ -31,6 +31,8 @@ div#index
 </template>
 
 <style lang="sass">
+$color_update: #8ffe5c
+
 #index
   padding-top: 20px
   padding-bottom: 20px
@@ -71,14 +73,15 @@ tbody
     position: relative
     i.updated
       display: block
-      width: 18px
-      height: 18px
-      background: #c2e0ff
-      border-radius: 18px
+      width: 14px
+      height: 14px
+      background: $color_update
+      border-radius: 14px
       z-index: 2
       position: absolute
       top: 3px
       left: 11px
+      border: 2px solid white
   td.title
     font-weight: bold
     font-size: 15px
@@ -125,17 +128,17 @@ tbody
           transition-duration: 0.2s
       .updated
         font-weight: bold
-        background-color: #c2e0ff
-        color: darken(#c2e0ff, 40%)
+        background-color: $color_update
+        color: darken($color_update, 40%)
         display: inline
         padding: 7px 10px
         font-size: 10px
         border-radius: 3px
       a.updated:hover
-        background-color: darken(#c2e0ff, 40%)
+        background-color: darken($color_update, 40%)
         color: white
-      p
-        max-width: calc(100vw - 40px)
+      p:not(.feed)
+        max-width: calc(100vw - 30px)
         &:first-child
           margin-top: 0
 
@@ -244,6 +247,7 @@ tbody
     display: flex
     align-items: center
     justify-content: center
+    flex-shrink: 0
   span
     height: 100%
     border: 0
@@ -270,6 +274,10 @@ tbody
   tbody
     th,td
       font-size: 11px
+    td.artwork
+      i.updated
+        left: 6px
+
   button
     font-size: 10px
   .download
@@ -323,7 +331,7 @@ export default {
   },
   data: function() {
     return {
-      aweekago: moment().subtract(7, 'days').startOf('date'),
+      newThreshold: moment().subtract(3, 'days').startOf('date'),
       allMarked: false,
       markedRows: [],
       columns: [
@@ -426,8 +434,8 @@ export default {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
     },
-    isThisWeek: function(date){
-      return moment(date, 'YYYY.MM.DD').isAfter(this.aweekago)
+    isNew: function(date){
+      return moment(date, 'YYYY.MM.DD').isAfter(this.newThreshold)
     },
     downloadOpml: function(){
       const header = {
