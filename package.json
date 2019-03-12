@@ -1,7 +1,7 @@
 {
-  "name": "podcast-freaks",
+  "name": "Podcast Freaks",
   "version": "2.0.0",
-  "description": "Activity visualizer of japanese tech podcasts - by podcast freaks",
+  "description": "Japanese tech podcasts - by podcast freaks",
   "author": "Naokazu Terada",
   "private": true,
   "scripts": {
