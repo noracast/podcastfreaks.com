@@ -300,7 +300,7 @@ export default {
           total: 'total',
           firstEpisodeDate: 'since',
           lastEpisodeDate: 'last',
-          averageDuration: 'averate'
+          averageDuration: 'average'
         },
         perPage: 9999,
         headings: {
@@ -348,9 +348,6 @@ export default {
       },
       data: Object.values(build_info.channels)
     }
-  },
-  mounted () {
-    console.log(this.$refs.downloadBtn)
   },
   methods: {
     toggleChildRow: function(key){
