@@ -1,8 +1,6 @@
 <template lang="pug">
 div#index
-  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0")
-    span.pc Download OPML
-    span.sp OPML
+  button.download(@click="downloadOpml" v-bind:disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
@@ -40,8 +38,6 @@ div#index
   width: 150px
   top: 20px
   right: 110px
-  .sp
-    display: none
 table
   border-collapse: collapse
   border-spacing: 0
@@ -230,11 +226,7 @@ tbody
     font-size: 10px
   .download
     top: 74px
-    width: 100px
-    .pc
-      display: none
-    .sp
-      display: inline
+    width: 130px
   .VueTables
     .row
       padding-left: 15px
@@ -356,6 +348,9 @@ export default {
       },
       data: Object.values(build_info.channels)
     }
+  },
+  mounted () {
+    console.log(this.$refs.downloadBtn)
   },
   methods: {
     toggleChildRow: function(key){
