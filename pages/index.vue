@@ -358,8 +358,8 @@ export default {
           twitter: 'Twitter',
           hashtag: 'Hashtag',
           total: 'Episodes',
-          firstEpisodeDate: 'First Ep.',
-          lastEpisodeDate: 'Last Ep.',
+          firstEpisodeDate: 'First Episode',
+          lastEpisodeDate: 'Last Episode',
           averageDuration: 'Avarage Duration',
           download: function(h){
             const self = this;
