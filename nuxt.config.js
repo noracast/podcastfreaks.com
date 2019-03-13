@@ -10,10 +10,22 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+
+      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'Podcast Freaks' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://podcastfreaks.com' },
+      { hid: 'og:title', property: 'og:title', content: 'Podcast Freaks' },
+      { hid: 'og:description', property: 'og:description', content: pkg.description },
+      { hid: 'og:image', property: 'og:image', content: 'https://podcastfreaks.com/img/share.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Podcast Freaks' },
+      { name: 'twitter:description', content: pkg.description },
+      { name: 'twitter:image', content: 'https://podcastfreaks.com/img/share.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }
     ]
   },
 
