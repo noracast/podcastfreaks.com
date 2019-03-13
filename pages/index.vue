@@ -6,7 +6,7 @@ div#index
       i.updated(v-if="isNew(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
-      a(target="_blank" :href="props.row.link") {{ props.row.title }}
+      span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
       template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
@@ -23,8 +23,11 @@ div#index
       template(v-if="isNew(props.row.lastEpisodeDate)")
         a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
         span.updated(v-else) New episode!
-
-      p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
+      p.description(v-if="props.row.desciprtion || props.row.link")
+        template(v-if="props.row.desciprtion")
+          | {{ props.row.desciprtion }}
+          br
+        a(v-if="props.row.link" :href="props.row.link" target="_blank") {{ props.row.link }}
       p.feed
         button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
         span(type="text" readonly="readonly") {{ props.row.feed }}
@@ -85,6 +88,10 @@ tbody
   td.title
     font-weight: bold
     font-size: 15px
+    span
+      cursor: pointer
+      &:hover
+        color: lighten(#444, 10%)
   td.total
     text-align: right
     font-size: 18px
@@ -121,10 +128,10 @@ tbody
         padding: 20px
         line-height: 1.8em
       a
-        color: #ccc
+        color: #444
         transition-duration: 0.2s
         &:hover
-          color: #000
+          color: lighten(#444, 10%)
           transition-duration: 0.2s
       .updated
         font-weight: bold
@@ -416,6 +423,7 @@ export default {
   },
   methods: {
     toggleChildRow: function(key){
+      console.log(key)
       this.$refs.table.toggleChildRow(key)
     },
     twitterLink: function(str) {
