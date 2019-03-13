@@ -2,13 +2,14 @@
 div#index
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
-    template(slot="download" slot-scope="props")
-      input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="cover" slot-scope="props")
       i.updated(v-if="isNew(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       a(target="_blank" :href="props.row.link") {{ props.row.title }}
+    template(slot="lastEpisodeDate" slot-scope="props")
+      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
+      template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="averageDuration" slot-scope="props")
       span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
@@ -16,9 +17,8 @@ div#index
     template(slot="firstEpisodeDate" slot-scope="props")
       a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank") {{ props.row.firstEpisodeDate | formatDate }}
       template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}
-    template(slot="lastEpisodeDate" slot-scope="props")
-      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
-      template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
+    template(slot="download" slot-scope="props")
+      input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
       template(v-if="isNew(props.row.lastEpisodeDate)")
         a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
