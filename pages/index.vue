@@ -331,8 +331,7 @@ export default {
   },
   head() {
     return {
-      title: 'Podcast Freaks - Japanese tech podcast archive',
-      titleTemplate: ''
+      title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   },
   data: function() {

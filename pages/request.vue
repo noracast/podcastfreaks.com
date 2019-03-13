@@ -76,7 +76,7 @@ form
 export default {
   head() {
     return {
-      title: 'Register request'
+      title: 'Register request | Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

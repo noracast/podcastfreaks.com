@@ -26,7 +26,7 @@ div#about
 export default {
   head() {
     return {
-      title: 'About'
+      title: 'About | Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

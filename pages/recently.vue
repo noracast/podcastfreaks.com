@@ -65,7 +65,7 @@ export default {
   },
   head() {
     return {
-      title: 'Recently episodes'
+      title: 'Recently episodes | Podcast Freaks - Japanese techie podcast archive'
     }
   },
   data: function() {
