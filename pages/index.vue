@@ -97,23 +97,25 @@ tbody
     font-size: 18px
   td.average
     span
-      padding: 3px 5px
+      padding: 5px 7px
       border-radius: 3px
       background-color: #ccc
       color: white
-      &.min0-15
-        background-color: #89ef83
-      &.min15-30
-        background-color: #76dde8
-      &.min30-45
-        background-color: #4abbff
-      &.min45-60
-        background-color: #0064ff
-      &.min60-90
-        background-color: #2a67a9
-      &.min90-120
-        background-color: #7f00ff
-
+      font-weight: bold
+      &.min15
+        background-color: #6BEE59
+      &.min30
+        background-color: #49EC6D
+      &.min45
+        background-color: #3AEB9D
+      &.min60
+        background-color: #2BE9D7
+      &.min90
+        background-color: #1CB5E8
+      &.min120
+        background-color: #0E67E6
+      &.min120plus
+        background-color: #0010E5
   tr
     &:first-child
       border-top: 1px solid #ccc
@@ -434,7 +436,7 @@ export default {
     },
     convertToClass: function(str){
       if(str){
-        return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1')
+        return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1').replace('+','plus')
       }
     },
     hashtagLink: function(str) {

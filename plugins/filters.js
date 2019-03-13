@@ -13,18 +13,18 @@ Vue.filter('roughlyTime', val => {
   }
   else if(1 <= _val.hours()){
     if(30 <= _val.minutes()) {
-      return '90-120min'
+      return '120min'
     }
-    return '60-90min'
+    return '90min'
   }
   else if(45 < _val.minutes()){
-    return '45-60min'
+    return '60min'
   }
   else if(30 < _val.minutes()){
-    return '30-45min'
+    return '45min'
   }
   else if(15 < _val.minutes()){
-    return '15-30min'
+    return '30min'
   }
-  return '0-15min'
+  return '15min'
 })
