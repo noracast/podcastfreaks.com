@@ -20,19 +20,24 @@ Refs:
 # Deployment from local
 
 ```sh
-yarn build
-yarn deploy
+yarn build && yarn deploy
 ```
 or if you have already execute 'prebuild'
 
 ```sh
-yarn build:skip
-yarn deploy
+yarn build:skip && yarn deploy
 ```
+
+or if you want to push directly to Netlify with netlify-cli
+
+```sh
+yarn build:skip && yarn deploy:netlify
+```
+
 
 # Daily deployment
 
-This project is hosted on [Travis CI](https://travis-ci.org/developersjp/podcast-freaks). With its 'Cron Jobs', all rss seems to be updated on travis and pushed to 'gh-pages' branch of this project.
+This project is hosted on [Travis CI](https://travis-ci.org/developersjp/podcast-freaks). With its 'Cron Jobs', all rss seems to be updated on travis and pushed to 'netlify' branch of this project.
 
 Don't use `yarn deploy` (push-dir) on TravisCI. It will cause `Authentication failed`.
 
