@@ -11,6 +11,11 @@ div#about
   p
     | トップページから、書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLファイルがダウンロードできます。<br>
     | MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。
+
+  h3 Contribution
+  p
+    | このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br>
+    a(href="https://github.com/noracast/podcast-freaks" target="_blank") https://github.com/noracast/podcast-freaks
 </template>
 
 <style lang="sass" scoped>
