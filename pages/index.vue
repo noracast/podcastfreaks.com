@@ -72,17 +72,6 @@ tbody
     vertical-align: middle
   td.artwork
     position: relative
-    i.updated
-      display: block
-      width: 14px
-      height: 14px
-      background: $color_new
-      border-radius: 14px
-      z-index: 2
-      position: absolute
-      top: 3px
-      left: 11px
-      border: 2px solid white
   td.title
     font-weight: bold
     font-size: 15px
