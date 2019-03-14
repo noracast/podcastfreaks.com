@@ -3,13 +3,14 @@ div#index
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
-      i.updated(v-if="isNew(props.row.lastEpisodeDate)" title="New episode!")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
-      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") {{ props.row.lastEpisodeDate | formatDate }}
-      template(v-else="props.row.lastEpisodeLink") {{ props.row.lastEpisodeDate | formatDate }}
+      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
+        span.new(v-if="isNew(props.row.lastEpisodeDate)") New!
+        | {{ props.row.lastEpisodeDate | formatDate }}
+
     template(slot="averageDuration" slot-scope="props")
       span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
@@ -20,9 +21,6 @@ div#index
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
-      template(v-if="isNew(props.row.lastEpisodeDate)")
-        a.updated(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank") New episode!
-        span.updated(v-else) New episode!
       p.description(v-if="props.row.desciprtion || props.row.link")
         template(v-if="props.row.desciprtion")
           | {{ props.row.desciprtion }}
@@ -34,7 +32,7 @@ div#index
 </template>
 
 <style lang="sass">
-$color_update: #e100ff
+$color_new: #e100ff
 
 #index
   padding-top: 20px
@@ -78,7 +76,7 @@ tbody
       display: block
       width: 14px
       height: 14px
-      background: $color_update
+      background: $color_new
       border-radius: 14px
       z-index: 2
       position: absolute
@@ -95,6 +93,22 @@ tbody
   td.total
     text-align: right
     font-size: 18px
+  td.last
+    >a
+      position: relative
+      display: flex
+      align-items: center
+      .new
+        background: yellow
+        font-weight: bold
+        font-size: 10px
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 40px
+        height: 20px
+        border-radius: 10px
+        margin-right: 7px
   td.average
     span
       background-color: #ccc
@@ -139,17 +153,6 @@ tbody
         &:hover
           color: lighten(#444, 10%)
           transition-duration: 0.2s
-      .updated
-        font-weight: bold
-        background-color: $color_update
-        color: white
-        display: inline
-        padding: 7px 10px
-        font-size: 10px
-        border-radius: 3px
-      a.updated:hover
-        background-color: darken($color_update, 40%)
-        color: white
       p:not(.feed)
         max-width: calc(100vw - 30px)
         &:first-child
@@ -172,10 +175,10 @@ tbody
     transition-duration: 0.2s
     overflow: hidden
     &:before
-      content: 'SHOW\AINFO.'
+      content: '▼'
       white-space: pre
       color: white
-      font-size: 10px
+      font-size: 15px
       line-height: 1.4em
       font-weight: bold
       background-color: rgba(0,0,0,0.4)
