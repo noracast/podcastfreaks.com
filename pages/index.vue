@@ -434,7 +434,6 @@ export default {
   },
   methods: {
     toggleChildRow: function(key){
-      console.log(key)
       this.$refs.table.toggleChildRow(key)
     },
     twitterLink: function(str) {
