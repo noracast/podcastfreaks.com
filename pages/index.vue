@@ -21,14 +21,12 @@ div#index
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
-      p.description(v-if="props.row.desciprtion || props.row.link")
-        template(v-if="props.row.desciprtion")
-          | {{ props.row.desciprtion }}
-          br
-        a(v-if="props.row.link" :href="props.row.link" target="_blank") {{ props.row.link }}
-      p.feed
-        button.copy(v-clipboard:copy="props.row.feed" :title="props.row.feed") Copy RSS
-        span(type="text" readonly="readonly") {{ props.row.feed }}
+      p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
+      p.description(v-else) No description
+      p.button_text(v-if="props.row.link")
+        button-text(:text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
+      p.button_text
+        button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
 </template>
 
 <style lang="sass">
@@ -52,6 +50,8 @@ table
   width: 100%
 th
   white-space: nowrap
+  &.last
+    text-align: right
 th,td
   text-align: left
   vertical-align: top
@@ -87,6 +87,7 @@ tbody
       position: relative
       display: flex
       align-items: center
+      justify-content: flex-end
       .new
         background: yellow
         font-weight: bold
@@ -136,13 +137,7 @@ tbody
       td
         padding: 20px
         line-height: 1.8em
-      a
-        color: #444
-        transition-duration: 0.2s
-        &:hover
-          color: lighten(#444, 10%)
-          transition-duration: 0.2s
-      p:not(.feed)
+      p:not(.button_text)
         max-width: calc(100vw - 30px)
         &:first-child
           margin-top: 0
@@ -237,37 +232,6 @@ tbody
     content: '▲'
     margin-left: 10px
     font-size: 0.7em
-.feed
-  display: flex
-  align-items: center
-  height: 30px
-  margin-bottom: 0
-  &:first-child
-    margin-top: 0
-  button
-    height: 100%
-    width: 80px
-    margin: 0
-    border-radius: 3px 0 0 3px
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-shrink: 0
-  span
-    height: 100%
-    border: 0
-    outline: 0
-    background: none
-    background-color: #4c4c4c
-    color: #ccc
-    border-radius: 0 3px 3px 0
-    padding: 0 10px
-    margin: 0
-    font-size: 11px
-    display: flex
-    align-items: center
-.copy
-  margin-top: 7px
 .VuePagination
   .text-center
     margin-left: 0
@@ -332,6 +296,7 @@ import { saveAs } from 'file-saver'
 
 export default {
   components: {
+    'button-text': require('~/components/button-text.vue').default,
     'cover': require('~/components/cover.vue').default
   },
   head() {
