@@ -164,11 +164,11 @@ tbody
     transition-duration: 0.2s
     overflow: hidden
     &:before
-      content: '▼'
+      content: 'info\A▼'
       white-space: pre
       color: white
-      font-size: 15px
-      line-height: 1.4em
+      font-size: 10px
+      line-height: 1.3em
       font-weight: bold
       background-color: rgba(0,0,0,0.4)
       display: flex
