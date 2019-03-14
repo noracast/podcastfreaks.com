@@ -1,16 +1,17 @@
 <template lang="pug">
-p
+div
   button(v-if="buttonAction=='copy'" v-clipboard:copy="text") {{ buttonText }}
   a(v-else :href="text" target="_blank") {{ buttonText }}
   span(type="text" readonly="readonly") {{ text }}
 </template>
 
 <style lang="sass" scoped>
-p
+div
   display: flex
   align-items: center
   height: 30px
-  margin-bottom: 0
+  &:not(:last-child)
+    margin-bottom: 10px
   &:first-child
     margin-top: 0
   >button,
