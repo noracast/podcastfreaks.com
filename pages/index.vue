@@ -97,12 +97,12 @@ tbody
     font-size: 18px
   td.average
     span
-      border-radius: 3px
       background-color: #ccc
       color: white
       font-weight: bold
       width: 70px
       height: 23px
+      border-radius: 23px
       display: flex
       justify-content: center
       align-items: center
