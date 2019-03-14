@@ -332,9 +332,7 @@ import { saveAs } from 'file-saver'
 
 export default {
   components: {
-    'allpodcasts': require('~/components/allpodcasts.vue').default,
-    'cover': require('~/components/cover.vue').default,
-    'podcast': require('~/components/podcast.vue').default
+    'cover': require('~/components/cover.vue').default
   },
   head() {
     return {
