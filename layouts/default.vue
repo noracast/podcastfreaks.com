@@ -6,7 +6,7 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
         nuxt-link(to='/') Podcast Freaks
       nav
         nuxt-link(to='/about/') About
-        nuxt-link(to='/recently/') Recently
+        nuxt-link(to='/new/') New episodes
         nuxt-link(to='/request/') Request
       .stats.channels
         span {{ channelCount }}
