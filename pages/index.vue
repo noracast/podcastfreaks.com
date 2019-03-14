@@ -243,9 +243,8 @@ tbody
   tbody
     th,td
       font-size: 11px
-    td.artwork
-      i.updated
-        left: 6px
+    td.total
+      font-size: 14px
 
   button
     font-size: 10px
