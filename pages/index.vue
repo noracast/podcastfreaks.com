@@ -23,10 +23,8 @@ div#index
     template(slot="child_row" slot-scope="props")
       p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
       p.description(v-else) No description
-      p.button_text(v-if="props.row.link")
-        button-text(:text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
-      p.button_text
-        button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+      button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
+      button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
 </template>
 
 <style lang="sass">
@@ -137,7 +135,7 @@ tbody
       td
         padding: 20px
         line-height: 1.8em
-      p:not(.button_text)
+      p
         max-width: calc(100vw - 30px)
         &:first-child
           margin-top: 0
