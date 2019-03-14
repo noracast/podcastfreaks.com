@@ -1,4 +1,9 @@
 {
+  "admins-bar": {
+    "feed": "http://admins.bar/rss.xml",
+    "twitter": "@admnsbar",
+    "hashtag": "#adminsbar"
+  },
   "agileradio": {
     "feed": "https://agileradio.github.io/feed.xml",
     "twitter": "@agileradio15",
@@ -22,6 +27,16 @@
   "another-dawn": {
     "feed": "https://h2plus.biz/another-dawn/feed/podcast/",
     "twitter": "@_another_dawn_",
+    "hashtag": null
+  },
+  "antipop-fm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:188611416/sounds.rss",
+    "twitter": null,
+    "hashtag": "#antipopfm"
+  },
+  "ariel": {
+    "feed": "http://dev.ariel-networks.com/wp/archives/category/podcast/feed",
+    "twitter": null,
     "hashtag": null
   },
   "automagic": {
@@ -64,6 +79,11 @@
     "twitter": null,
     "hashtag": "#clfreaks"
   },
+  "codelunch-fm": {
+    "feed": "https://codelunch.fm/rss.xml",
+    "twitter": null,
+    "hashtag": "#codelunchfm"
+  },
   "community-drive": {
     "feed": "https://community-drive.com/feed/",
     "twitter": null,
@@ -98,6 +118,11 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
+  },
+  "elle-height": {
+    "feed": "http://feedpress.me/elle-height",
+    "twitter": null,
+    "hashtag": "#elleheight"
   },
   "emfm": {
     "feed": "https://anchor.fm/s/70a2c40/podcast/rss",
@@ -148,6 +173,11 @@
     "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
     "twitter": "@inaka_fm",
     "hashtag": "#田舎fm"
+  },
+  "ia-podcast": {
+    "feed": "http://feeds.feedburner.com/InformationArchitectsPodcast",
+    "twitter": null,
+    "hashtag": null
   },
   "iosdcfm": {
     "feed": "http://iosdc.fm/rss",
@@ -214,6 +244,11 @@
     "twitter": null,
     "hashtag": "#mozaicfm"
   },
+  "nanapod": {
+    "feed": "http://nanapod.kozyty.com/rss",
+    "twitter": "@nanapi_nanapod",
+    "hashtag": "#nanapod"
+  },
   "nextstep": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
@@ -269,6 +304,16 @@
     "twitter": null,
     "hashtag": null
   },
+  "postd": {
+    "feed": "https://postd.cc/feed/podcast/",
+    "twitter": "@POSTDcc",
+    "hashtag": null
+  },
+  "prototype-fm": {
+    "feed": "https://www.prototype.fm/rss",
+    "twitter": "@prototype_fm",
+    "hashtag": "#prototypefm"
+  },
   "railsdm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
     "twitter": "@railsdm",
@@ -289,6 +334,16 @@
     "twitter": "@rehashfm",
     "hashtag": "#rehashfm"
   },
+  "riywo": {
+    "feed": "http://feeds.feedburner.com/RiywosPodcast",
+    "twitter": null,
+    "hashtag": "#riywo"
+  },
+  "rubyist-club": {
+    "feed": "http://feeds.rubyist.club/rubyistclub",
+    "twitter": null,
+    "hashtag": "#rubyistclub"
+  },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
@@ -303,6 +358,11 @@
     "feed": "https://shinjuku-lt.github.io/feed.xml",
     "twitter": null,
     "hashtag": "#shinjukult"
+  },
+  "shock-sheets-tech": {
+    "feed": "http://feeds.feedburner.com/shock-sheets-tech",
+    "twitter": null,
+    "hashtag": null
   },
   "sore_ha_sou": {
     "feed": "http://feeds.feedburner.com/BiaccoRadio",
@@ -329,6 +389,11 @@
     "twitter": null,
     "hashtag": "#takramcast"
   },
+  "techbooster": {
+    "feed": "https://techbooster.org/feed/podcast/",
+    "twitter": "@TechBooster",
+    "hashtag": null
+  },
   "tech-research": {
     "feed": "https://anchor.fm/s/537fce4/podcast/rss",
     "twitter": null,
@@ -347,6 +412,11 @@
   "tofulab": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
     "twitter": "@tofulab_inc",
+    "hashtag": null
+  },
+  "tommie_nico": {
+    "feed": "http://podcast.tommie2.info/co9320/rss.xml",
+    "twitter": null,
     "hashtag": null
   },
   "tonightfm": {
@@ -373,6 +443,11 @@
     "feed": "https://washipo.nyoho.jp/podcast.rss",
     "twitter": null,
     "hashtag": "#washipo"
+  },
+  "windows-podcast": {
+    "feed": "http://windows-podcast.com/podcast/feed",
+    "twitter": null,
+    "hashtag": "#WoodStreamのデジタル生活"
   },
   "wyukawa": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
