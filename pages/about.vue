@@ -12,8 +12,11 @@ div#about
     | 手動で登録しているのは、フィードURLと、公式Twitter、公式ハッシュタグの３つで、残りの情報は取得したデータを元に作っています。
     | フィードや画像の取得はビルド時に行っています。TravisCIのCron JobsでDaily Buildして静的化、Netlifyから配信しています。
     br
+    br
     a.noborder(href="https://travis-ci.org/noracast/podcast-freaks" target="_blank")
-      img(src="https://travis-ci.org/noracast/podcast-freaks.svg?branch=master")
+      img.badge(src="https://travis-ci.org/noracast/podcast-freaks.svg?branch=master" alt="Build Status")
+    a.noborder(href="https://app.netlify.com/sites/podcast-freaks/deploys" target="_blank")
+      img.badge(src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status")
   h3 Twitterアカウント
   p
     | MCの方個人のTwitterアカウントですと、番組以外の情報が混ざってしまいやすいので、番組公式のものに限っています。<br>
@@ -35,6 +38,8 @@ div#about
   a:not(.noborder)
     border-bottom: 1px dotted #999
     padding-bottom: 0.2em
+  .badge
+    margin-right: 10px
 </style>
 
 <script>
