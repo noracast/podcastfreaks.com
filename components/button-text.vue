@@ -48,6 +48,7 @@ p
     padding: 0 10px
     margin: 0
     font-size: 11px
+    white-space: nowrap
     display: flex
     align-items: center
 </style>
