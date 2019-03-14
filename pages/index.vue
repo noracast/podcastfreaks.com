@@ -276,7 +276,9 @@ tbody
     align-items: center
 .copy
   margin-top: 7px
-
+.VuePagination
+  .text-center
+    margin-left: 0
 
 .small
   #index
