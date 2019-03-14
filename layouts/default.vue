@@ -68,7 +68,7 @@ nav
   a
     display: inline-block
     color: #fff
-  a + a
+  a:not(:first-child)
     margin-left: 2em
 .sp_stats
   display: none
@@ -115,15 +115,19 @@ button
 .wrapper.small
   header
     padding-left: 15px
-    padding-right: 15px
-    height: 60px
+    padding-right: 0
+    height: 70px
     h1
       a
-        font-size: 14px
+        font-size: 13px
     nav
       float: right
-      margin-left: 18px
+      margin-left: 15px
       font-size: 10px
+      a
+        font-size: 10px
+      a:not(:first-child)
+        margin-left: 10px
     .stats
       display: none
   .sp_stats
