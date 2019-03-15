@@ -102,6 +102,7 @@ $color_new: #e100ff
           position: absolute
           top: -40px
           right: -30px
+          color: #fd20d4
           &:after
             content: '▼'
             font-size: 12px
