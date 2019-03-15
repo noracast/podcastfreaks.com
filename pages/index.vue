@@ -292,8 +292,8 @@ import { saveAs } from 'file-saver'
 
 export default {
   components: {
-    'button-text': require('~/components/ButtonText.vue').default,
-    'cover': require('~/components/Cover.vue').default
+    'button-text': require('~/components/button-text.vue').default,
+    'cover': require('~/components/cover.vue').default
   },
   head() {
     return {

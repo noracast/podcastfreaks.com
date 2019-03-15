@@ -60,8 +60,8 @@ import build_info from '~/static/downloads/build_info.json'
 
 export default {
   components: {
-    'episode-row': require('~/components/EpisodeRow.vue').default,
-    'podcast': require('~/components/Podcast.vue').default
+    'episode-row': require('~/components/episode-row.vue').default,
+    'podcast': require('~/components/podcast.vue').default
   },
   head() {
     return {
