@@ -87,16 +87,31 @@ $color_new: #e100ff
         align-items: center
         justify-content: flex-end
         .new
-          background: yellow
+          $color: #f7ff00
+          background: $color
           font-weight: bold
           font-size: 10px
           display: flex
           justify-content: center
           align-items: center
-          width: 40px
+          width: 50px
           height: 20px
           border-radius: 10px
           margin-right: 7px
+          position: absolute
+          top: -37px
+          right: -30px
+          &:after
+            content: '▼'
+            font-size: 12px
+            line-height: 1em
+            position: absolute
+            display: block
+            color: $color
+            bottom: -7px
+            left: calc(50% - 8px)
+            transform: rotate(19deg)
+
     td.average
       span
         background-color: #ccc
