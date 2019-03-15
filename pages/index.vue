@@ -10,7 +10,6 @@ div#index
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
         span.new(v-if="isNew(props.row.lastEpisodeDate)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
-
     template(slot="averageDuration" slot-scope="props")
       span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
