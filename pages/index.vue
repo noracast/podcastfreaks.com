@@ -100,7 +100,7 @@ $color_new: #e100ff
           border-radius: 10px
           margin-right: 7px
           position: absolute
-          top: -37px
+          top: -40px
           right: -30px
           &:after
             content: '▼'
