@@ -11,7 +11,8 @@ div.root
         span.new(v-if="isNew(props.row.lastEpisodeDate)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="averageDuration" slot-scope="props")
-      span(:class="convertToClass(props.row.averageDuration)" v-if="props.row.averageDuration")| {{ props.row.averageDuration | roughlyTime }}
+      span(v-if="props.row.averageDuration" :class="convertToClass(props.row.averageDuration)") {{ props.row.averageDuration | roughlyTime }}
+      span(v-else) ?
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
@@ -114,7 +115,7 @@ $color_new: #e100ff
 
     td.average
       span
-        background-color: #ccc
+        background-color: #ededed
         color: white
         font-weight: bold
         width: 70px
