@@ -1,5 +1,5 @@
 <template lang="pug">
-div#index
+div.root
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
@@ -26,258 +26,259 @@ div#index
       button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 $color_new: #e100ff
 
-#index
-  padding-top: 20px
-  padding-bottom: 20px
-  -webkit-overflow-scrolling: touch
-  overflow-scrolling: touch
-  position: relative
 .download
   margin-right: 20px
   position: absolute
   width: 150px
   top: 20px
   right: 110px
-table
-  border-collapse: collapse
-  border-spacing: 0
-  width: 100%
-th
-  white-space: nowrap
-  &.last
-    text-align: right
-th,td
-  text-align: left
-  vertical-align: top
-  padding: 10px
-  &:first-child:not(:last-child)
-    display: none
-  &:nth-child(2)
-    padding-left: 20px
-thead
-  color: #ccc
-  font-size: 12px
+
+.root /deep/
+  padding-top: 20px
+  padding-bottom: 20px
+  -webkit-overflow-scrolling: touch
+  overflow-scrolling: touch
+  position: relative
+  table
+    border-collapse: collapse
+    border-spacing: 0
+    width: 100%
   th
-    font-weight: normal
-tbody
+    white-space: nowrap
+    &.last
+      text-align: right
   th,td
-    font-weight: 500
-    font-size: 13px
-    vertical-align: middle
-  td.artwork
-    position: relative
-  td.title
-    font-weight: bold
-    font-size: 15px
-    span
-      cursor: pointer
-      &:hover
-        color: lighten(#444, 10%)
-  td.total
-    text-align: right
-    font-size: 18px
-  td.last
-    >a
+    text-align: left
+    vertical-align: top
+    padding: 10px
+    &:first-child:not(:last-child)
+      display: none
+    &:nth-child(2)
+      padding-left: 20px
+  thead
+    color: #ccc
+    font-size: 12px
+    th
+      font-weight: normal
+  tbody
+    th,td
+      font-weight: 500
+      font-size: 13px
+      vertical-align: middle
+    td.artwork
       position: relative
-      display: flex
-      align-items: center
-      justify-content: flex-end
-      .new
-        background: yellow
+    td.title
+      font-weight: bold
+      font-size: 15px
+      span
+        cursor: pointer
+        &:hover
+          color: lighten(#444, 10%)
+    td.total
+      text-align: right
+      font-size: 18px
+    td.last
+      >a
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        .new
+          background: yellow
+          font-weight: bold
+          font-size: 10px
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 40px
+          height: 20px
+          border-radius: 10px
+          margin-right: 7px
+    td.average
+      span
+        background-color: #ccc
+        color: white
         font-weight: bold
-        font-size: 10px
+        width: 70px
+        height: 23px
+        border-radius: 23px
         display: flex
         justify-content: center
         align-items: center
-        width: 40px
-        height: 20px
-        border-radius: 10px
-        margin-right: 7px
-  td.average
-    span
-      background-color: #ccc
-      color: white
-      font-weight: bold
-      width: 70px
-      height: 23px
-      border-radius: 23px
-      display: flex
-      justify-content: center
-      align-items: center
-      &.min15
-        background-color: #6BEE59
-      &.min30
-        background-color: #49EC6D
-      &.min45
-        background-color: #3AEB9D
-      &.min60
-        background-color: #2BE9D7
-      &.min90
-        background-color: #1CB5E8
-      &.min120
-        background-color: #0E67E6
-      &.min120plus
-        background-color: #0010E5
-  tr
-    &:first-child
-      border-top: 1px solid #ccc
-    &:not(.VueTables__child-row)
-      border-top: 1px solid #ccc
-    &.VueTables__child-row
-      border-top: 1px dotted #eee
-      background-image: url(/img/slant-bg.png)
-      background-color: #e4e4e4
-      background-size: auto 168px
-      td
-        padding: 20px
-        line-height: 1.8em
-      p
-        max-width: calc(100vw - 30px)
-        &:first-child
-          margin-top: 0
+        &.min15
+          background-color: #6BEE59
+        &.min30
+          background-color: #49EC6D
+        &.min45
+          background-color: #3AEB9D
+        &.min60
+          background-color: #2BE9D7
+        &.min90
+          background-color: #1CB5E8
+        &.min120
+          background-color: #0E67E6
+        &.min120plus
+          background-color: #0010E5
+    tr
+      &:first-child
+        border-top: 1px solid #ccc
+      &:not(.VueTables__child-row)
+        border-top: 1px solid #ccc
+      &.VueTables__child-row
+        border-top: 1px dotted #eee
+        background-image: url(/img/slant-bg.png)
+        background-color: #e4e4e4
+        background-size: auto 168px
+        td
+          padding: 20px
+          line-height: 1.8em
+        p
+          max-width: calc(100vw - 30px)
+          &:first-child
+            margin-top: 0
 
-  button
-    font-size: 10px
-    padding: 5px 10px
-    min-width: initial
-.table-responsive
-  overflow: auto
-  width: 100%
-  margin-top: 15px
-.VueTables
-  .row
-    padding-left: 20px
-    padding-right: 20px
-  .cover
-    cursor: pointer
-    transition-duration: 0.2s
-    overflow: hidden
-    &:before
-      content: 'info\A▼'
-      white-space: pre
-      color: white
+    button
       font-size: 10px
-      line-height: 1.3em
-      font-weight: bold
-      background-color: rgba(0,0,0,0.4)
-      display: flex
-      justify-content: center
-      align-items: center
-      text-align: center
-      width: 100%
-      height: 100%
-      opacity: 0
-      transition-duration: 0.2s
-    &:hover
-      &:before
-        opacity: 1
-        transition-duration: 0.2s
-    &:active
-      &:before
-        opacity: 0
-.VueTables__search-field
-  margin-bottom: 20px
-  input
-    padding: 8px
-    outline: none
-    font-size: 13px
-    border: 1px solid #ddd
-    width: 300px
-    &:placeholder-shown
-      color: #ccc
-    &::-webkit-input-placeholder
-      color: #ccc
-    &::-moz-placeholder
-      color: #ccc
-.VueTables__search
-  float: left
-  width: calc(100% - 270px)
-.VueTables__columns-dropdown
-  float: right
-  width: 100px
-  .dropdown-menu
-    position: absolute
-    right: 20px
-    padding: 15px
-    margin-top: 6px
-    margin-bottom: 0
-    background: #050935
-    border-radius: 3px
-    list-style: none
-    z-index: 10
-    a
-      color: white
-      font-size: 12px
-    input[type=checkbox]
-      margin-right: 1em
-.VueTables__limit
-  display: none
-.VueTables__sortable
-  cursor: pointer
-  &:hover
-    color: #7f00ff
-.glyphicon-chevron-down
-  &:before
-    content: '▼'
-    margin-left: 10px
-    font-size: 0.7em
-.glyphicon-chevron-up
-  &:before
-    content: '▲'
-    margin-left: 10px
-    font-size: 0.7em
-.VuePagination
-  .text-center
-    margin-left: 0
-
-.small
-  #index
-    padding-top: 10px
-    padding-bottom: 15px
-  table
+      padding: 5px 10px
+      min-width: initial
+  .table-responsive
+    overflow: auto
+    width: 100%
     margin-top: 15px
-  tbody
-    th,td
-      font-size: 11px
-    td.total
-      font-size: 14px
-
-  button
-    font-size: 10px
-  .download
-    top: 74px
-    width: 130px
   .VueTables
     .row
-      padding-left: 15px
-      padding-right: 15px
-    // hoverが解除されないので、打ち消す
-    .cover:hover:before
-      opacity: 0
-  .VueTables__columns-dropdown
-    .dropdown-menu
-      right: 15px
-  .VueTables__search
-    width: 100%
+      padding-left: 20px
+      padding-right: 20px
+    .cover
+      cursor: pointer
+      transition-duration: 0.2s
+      overflow: hidden
+      &:before
+        content: 'info\A▼'
+        white-space: pre
+        color: white
+        font-size: 10px
+        line-height: 1.3em
+        font-weight: bold
+        background-color: rgba(0,0,0,0.4)
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        width: 100%
+        height: 100%
+        opacity: 0
+        transition-duration: 0.2s
+      &:hover
+        &:before
+          opacity: 1
+          transition-duration: 0.2s
+      &:active
+        &:before
+          opacity: 0
   .VueTables__search-field
+    margin-bottom: 20px
     input
-      width: calc(100% - 20px)
-      padding: 9px
-      font-size: 16px
+      padding: 8px
+      outline: none
+      font-size: 13px
+      border: 1px solid #ddd
+      width: 300px
+      &:placeholder-shown
+        color: #ccc
+      &::-webkit-input-placeholder
+        color: #ccc
+      &::-moz-placeholder
+        color: #ccc
+  .VueTables__search
+    float: left
+    width: calc(100% - 270px)
   .VueTables__columns-dropdown
-    clear: left
-  th,td
-    &:nth-child(2)
-      padding-left: 15px
-  tr
-    &.VueTables__child-row
-      td
-        padding: 15px
-  .description
-    max-width: calc(100vw - 30px)
+    float: right
+    width: 100px
+    .dropdown-menu
+      position: absolute
+      right: 20px
+      padding: 15px
+      margin-top: 6px
+      margin-bottom: 0
+      background: #050935
+      border-radius: 3px
+      list-style: none
+      z-index: 10
+      a
+        color: white
+        font-size: 12px
+      input[type=checkbox]
+        margin-right: 1em
+  .VueTables__limit
+    display: none
+  .VueTables__sortable
+    cursor: pointer
+    &:hover
+      color: #7f00ff
+  .glyphicon-chevron-down
+    &:before
+      content: '▼'
+      margin-left: 10px
+      font-size: 0.7em
+  .glyphicon-chevron-up
+    &:before
+      content: '▲'
+      margin-left: 10px
+      font-size: 0.7em
+  .VuePagination
+    .text-center
+      margin-left: 0
+
+.small
+  .root /deep/
+    padding-top: 10px
+    padding-bottom: 15px
+    table
+      margin-top: 15px
+    tbody
+      th,td
+        font-size: 11px
+      td.total
+        font-size: 14px
+
+    button
+      font-size: 10px
+    .download
+      top: 74px
+      width: 130px
+    .VueTables
+      .row
+        padding-left: 15px
+        padding-right: 15px
+      // hoverが解除されないので、打ち消す
+      .cover:hover:before
+        opacity: 0
+    .VueTables__columns-dropdown
+      .dropdown-menu
+        right: 15px
+    .VueTables__search
+      width: 100%
+    .VueTables__search-field
+      input
+        width: calc(100% - 20px)
+        padding: 9px
+        font-size: 16px
+    .VueTables__columns-dropdown
+      clear: left
+    th,td
+      &:nth-child(2)
+        padding-left: 15px
+    tr
+      &.VueTables__child-row
+        td
+          padding: 15px
+    .description
+      max-width: calc(100vw - 30px)
 </style>
 
 <script>

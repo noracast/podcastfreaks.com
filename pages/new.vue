@@ -1,5 +1,5 @@
 <template lang="pug">
-Responsive#recently(:breakpoints="{small: el => el.width <= 900}")
+Responsive.root(:breakpoints="{small: el => el.width <= 900}")
   div(slot-scope="el" :class="{ small: el.is.small }")
     h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
     .this-week
@@ -18,7 +18,7 @@ Responsive#recently(:breakpoints="{small: el => el.width <= 900}")
 </template>
 
 <style lang="sass">
-#recently
+.root
   padding-top: 0
 .border
   height: 0
