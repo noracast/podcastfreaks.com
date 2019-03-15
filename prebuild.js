@@ -164,7 +164,7 @@ Object.keys(rss).forEach(function (key) {
           feed: rss[key].feed,
           link: json.rss.channel.link,
           hashtag: rss[key].hashtag,
-          cover: covers[key] ? covers[key].dist : null,
+          cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
           total: json.rss.channel.item.length,
           firstEpisodeDate: moment(_.last(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
           lastEpisodeDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
