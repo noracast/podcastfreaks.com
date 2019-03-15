@@ -4,7 +4,7 @@ const fileExtension = require('file-extension')
 const fs = require('fs')
 const moment = require('moment')
 const path = require('path')
-const rss = require('../data/rss.json')
+const rss = require('./data/rss.json')
 const sharp = require('sharp')
 const shell = require('shelljs')
 const url = require('url')
@@ -12,10 +12,10 @@ const wget = require('wget-improved')
 const wgetp = require('node-wget-promise')
 const xml2js = require('xml2js')
 
-const DOWNLOADS_DIR = './static/downloads'
-const RSS_DIR       = './static/downloads/rss'
-const COVER_DIR     = './static/downloads/cover'
-const BUILD_INFO    = './static/downloads/build_info.json'
+const DOWNLOADS_DIR = 'static/downloads'
+const RSS_DIR       = 'static/downloads/rss'
+const COVER_DIR     = 'static/downloads/cover'
+const BUILD_INFO    = 'static/downloads/build_info.json'
 
 // Make sure parent dir existence and its clean
 shell.rm('-rf', DOWNLOADS_DIR)
@@ -47,7 +47,7 @@ Object.keys(rss).forEach(function (key) {
   const download = wget.download(src, dist_rss)
   download.on('end', ()=> {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
-    fs.readFile(`${__dirname}/.${dist_rss}`, (err, xml)=> {
+    fs.readFile(`${__dirname}/${dist_rss}`, (err, xml)=> {
       if(err) {
         throw err
       }
@@ -164,7 +164,7 @@ Object.keys(rss).forEach(function (key) {
           feed: rss[key].feed,
           link: json.rss.channel.link,
           hashtag: rss[key].hashtag,
-          cover: covers[key] ? covers[key].dist.replace(/^\.\/static/, '') : null,
+          cover: covers[key] ? covers[key].dist : null,
           total: json.rss.channel.item.length,
           firstEpisodeDate: moment(_.last(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
           lastEpisodeDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
