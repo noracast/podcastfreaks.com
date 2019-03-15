@@ -189,6 +189,11 @@
     "twitter": "@jinseifm",
     "hashtag": "#jinseifm"
   },
+  "kane-sandbox": {
+    "feed": "https://anchor.fm/s/82469c4/podcast/rss",
+    "twitter": null,
+    "hashtag": "#RadioSandbox"
+  },
   "karino2": {
     "feed": "https://anchor.fm/s/68ce140/podcast/rss",
     "twitter": null,
@@ -249,6 +254,16 @@
     "twitter": "@nanapi_nanapod",
     "hashtag": "#nanapod"
   },
+  "nashio": {
+    "feed": "https://anchor.fm/s/7dd4418/podcast/rss",
+    "twitter": null,
+    "hashtag": "#成し遂げたいam"
+  },
+  "ndsfm": {
+    "feed": "https://nagaokadevelopersstudy.github.io/ndsfm/feed.xml",
+    "twitter": null,
+    "hashtag": "#ndsfm"
+  },
   "nextstep": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
@@ -278,6 +293,11 @@
     "feed": "http://feeds.lean-agile.fm/omoiyarifm",
     "twitter": null,
     "hashtag": "#omoiyarifm"
+  },
+  "oshigotoam": {
+    "feed": "https://www.oshigotoam.com/rss",
+    "twitter": null,
+    "hashtag": "#おしごとam"
   },
   "ossanfm": {
     "feed": "https://ossan.fm/feed.xml",
@@ -384,10 +404,25 @@
     "twitter": "@strobofm",
     "hashtag": "#strobofm"
   },
+  "strong-strong": {
+    "feed": "https://strong-strong.github.io/feed.xml",
+    "twitter": "@strongxstrong_2",
+    "hashtag": "#Sto2"
+  },
   "takram": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
     "hashtag": "#takramcast"
+  },
+  "tanoshii-works": {
+    "feed": "https://anchor.fm/s/73628cc/podcast/rss",
+    "twitter": "@tanoshii_works",
+    "hashtag": "#たのしいWorks"
+  },
+  "tarumaefm": {
+    "feed": "https://tarumaefm.com/feed.xml",
+    "twitter": null,
+    "hashtag": null
   },
   "techbooster": {
     "feed": "https://techbooster.org/feed/podcast/",
