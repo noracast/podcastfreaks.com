@@ -144,14 +144,14 @@ $color_new: #e100ff
       font-size: 10px
       padding: 5px 10px
       min-width: initial
-  .table-responsive
-    overflow: auto
-    width: 100%
-    margin-top: 15px
   .VueTables
     .row
       padding-left: 20px
       padding-right: 20px
+    .table-responsive
+      overflow: auto
+      width: 100%
+      margin-top: 15px
     .cover
       cursor: pointer
       transition-duration: 0.2s
