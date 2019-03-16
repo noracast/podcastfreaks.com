@@ -8,7 +8,7 @@ div.root
       span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
-        span.new(v-if="isNew(props.row.lastEpisodeDate)") New!
+        span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="averageDuration" slot-scope="props")
       span(v-if="props.row.averageDuration" :class="convertToClass(props.row.averageDuration)") {{ props.row.averageDuration | roughlyTime }}
@@ -16,7 +16,9 @@ div.root
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
-      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank") {{ props.row.firstEpisodeDate | formatDate }}
+      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
+        span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
+        | {{ props.row.firstEpisodeDate | formatDate }}
       template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
@@ -36,6 +38,33 @@ $color_new: #e100ff
   width: 150px
   top: 20px
   right: 110px
+
+.new
+  $color: #f7ff00
+  background: $color
+  font-weight: bold
+  font-size: 10px
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 50px
+  height: 20px
+  border-radius: 10px
+  margin-right: 7px
+  position: absolute
+  top: -40px
+  right: -30px
+  color: #47525d
+  &:after
+    content: '▼'
+    font-size: 12px
+    line-height: 1em
+    position: absolute
+    display: block
+    color: $color
+    bottom: -7px
+    left: calc(50% - 8px)
+    transform: rotate(19deg)
 
 .root /deep/
   padding-top: 20px
@@ -81,39 +110,13 @@ $color_new: #e100ff
     td.total
       text-align: right
       font-size: 18px
-    td.last
+    td.last,
+    td.first
       >a
         position: relative
         display: flex
         align-items: center
         justify-content: flex-end
-        .new
-          $color: #f7ff00
-          background: $color
-          font-weight: bold
-          font-size: 10px
-          display: flex
-          justify-content: center
-          align-items: center
-          width: 50px
-          height: 20px
-          border-radius: 10px
-          margin-right: 7px
-          position: absolute
-          top: -40px
-          right: -30px
-          color: #47525d
-          &:after
-            content: '▼'
-            font-size: 12px
-            line-height: 1em
-            position: absolute
-            display: block
-            color: $color
-            bottom: -7px
-            left: calc(50% - 8px)
-            transform: rotate(19deg)
-
     td.average
       span
         background-color: #ededed
@@ -156,7 +159,6 @@ $color_new: #e100ff
           max-width: calc(100vw - 30px)
           &:first-child
             margin-top: 0
-
     button
       font-size: 10px
       padding: 5px 10px
@@ -319,7 +321,10 @@ export default {
   },
   data: function() {
     return {
-      newThreshold: moment().subtract(3, 'days').startOf('date'),
+      // 行ごとに何度も作成しないように予め作る
+      newThreshold1: moment().subtract(3, 'days').startOf('date'),
+      newThreshold2: moment().subtract(30, 'days').startOf('date'),
+
       allMarked: false,
       markedRows: [],
       columns: [
@@ -346,7 +351,7 @@ export default {
           twitter: 'twitter',
           hashtag: 'hashtag',
           total: 'total',
-          firstEpisodeDate: 'since',
+          firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
           averageDuration: 'average'
         },
@@ -422,8 +427,8 @@ export default {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
     },
-    isNew: function(date){
-      return moment(date, 'YYYY.MM.DD').isAfter(this.newThreshold)
+    isIn: function(date, threshold){
+      return moment(date, 'YYYY.MM.DD').isAfter(threshold)
     },
     downloadOpml: function(){
       const header = {
