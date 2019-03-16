@@ -323,6 +323,9 @@ export default {
       title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   },
+  mounted: function(){
+    this.toggleAllCheckbox()
+  },
   data: function() {
     return {
       // 行ごとに何度も作成しないように予め作る
@@ -366,11 +369,11 @@ export default {
           download: function(h){
             const self = this;
             return h('input', {
-              attrs: { type: 'checkbox' },
+              attrs: { type: 'checkbox', checked: true},
               domProps: { value: self.value },
               class: 'form-control check-all',
               on: {
-                change: self.toggleAll,
+                change: self.toggleAllCheckbox,
                 input: function(event) {
                   self.value = event.target.value
                   self.$emit('input', event.target.value)
@@ -421,7 +424,7 @@ export default {
       }
       return ''
     },
-    toggleAll: function() {
+    toggleAllCheckbox: function() {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
     },
