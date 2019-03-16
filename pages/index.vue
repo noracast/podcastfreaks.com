@@ -37,7 +37,7 @@ $color_new: #e100ff
   position: absolute
   width: 150px
   top: 20px
-  right: 110px
+  right: 0
 
 .new
   $color: #f7ff00
@@ -255,7 +255,7 @@ $color_new: #e100ff
 
 .small
   .root /deep/
-    padding-top: 10px
+    padding-top: 15px
     padding-bottom: 15px
     table
       margin-top: 15px
@@ -268,9 +268,12 @@ $color_new: #e100ff
     button
       font-size: 10px
     .download
-      top: 74px
-      width: 130px
+      position: relative
+      margin-left: 15px
+      top: initial
+      left: initial
     .VueTables
+      margin-top: 15px
       .row
         padding-left: 15px
         padding-right: 15px
@@ -283,6 +286,7 @@ $color_new: #e100ff
     .VueTables__search
       width: 100%
     .VueTables__search-field
+      margin-bottom: 0
       input
         width: calc(100% - 20px)
         padding: 9px
@@ -339,12 +343,6 @@ export default {
         'download'
       ],
       options: {
-        columnsDropdown: true,
-        columnsDisplay: {
-          firstEpisodeDate: 'not_mobile',
-          twitter: 'not_mobile',
-          hashtag: 'not_mobile'
-        },
         columnsClasses: {
           cover: 'artwork',
           title: 'title',
