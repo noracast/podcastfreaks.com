@@ -333,8 +333,8 @@ export default {
         'total',
         'lastEpisodeDate',
         'averageDuration',
-        'twitter',
         'hashtag',
+        'twitter',
         'firstEpisodeDate',
         'download'
       ],
@@ -348,8 +348,8 @@ export default {
         columnsClasses: {
           cover: 'artwork',
           title: 'title',
-          twitter: 'twitter',
           hashtag: 'hashtag',
+          twitter: 'twitter',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
