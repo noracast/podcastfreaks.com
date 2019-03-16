@@ -272,6 +272,7 @@ $color_new: #e100ff
       margin-left: 15px
       top: initial
       left: initial
+      height: 38px
     .VueTables
       margin-top: 15px
       .row
