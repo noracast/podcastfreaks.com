@@ -1,4 +1,19 @@
 {
+  "3jumper": {
+    "feed": "http://feeds.feedburner.com/3jumper",
+    "twitter": "@3jumper",
+    "hashtag": "#3jumper"
+  },
+  "abefm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:213089033/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
+  "accsell": {
+    "feed": "https://accsell.net/podcast/itunes.xml",
+    "twitter": "@accsell_net",
+    "hashtag": null
+  },
   "admins-bar": {
     "feed": "http://admins.bar/rss.xml",
     "twitter": "@admnsbar",
@@ -8,6 +23,11 @@
     "feed": "https://agileradio.github.io/feed.xml",
     "twitter": "@agileradio15",
     "hashtag": "#agileradio"
+  },
+  "ai-radio-by-team-ai": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
+    "twitter": null,
+    "hashtag": null
   },
   "airsap": {
     "feed": "http://airsap.net/feed/podcast/",
@@ -99,10 +119,20 @@
     "twitter": null,
     "hashtag": "#cmntdrv"
   },
+  "conne-radi": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "deployfm": {
     "feed": "https://takattata.github.io/deployfm/feed.xml",
     "twitter": "@deploy_fm",
     "hashtag": "#deployfm"
+  },
+  "design-academy": {
+    "feed": "http://design-academy.jp/feed/podcast/",
+    "twitter": "@DesignAcademyJP",
+    "hashtag": "#デザアカラジオ"
   },
   "dex": {
     "feed": "http://feeds.feedburner.com/dexfm",
@@ -159,6 +189,16 @@
     "twitter": null,
     "hashtag": null
   },
+  "goryugocom": {
+    "feed": "https://anchor.fm/s/2e56f6c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ごりゅごcast"
+  },
+  "grantall": {
+    "feed": "https://grantall.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#grantall"
+  },
   "gunosy": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
     "twitter": null,
@@ -214,6 +254,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "kepc": {
+    "feed": "https://kepc.mookmookradio.com/feed/",
+    "twitter": null,
+    "hashtag": "#mook05"
+  },
   "lnlpninja": {
     "feed": "https://anchor.fm/s/5a86bb4/podcast/rss",
     "twitter": "@lnlpninja",
@@ -248,6 +293,11 @@
     "feed": "http://feed.mozaic.fm/",
     "twitter": null,
     "hashtag": "#mozaicfm"
+  },
+  "msrs": {
+    "feed": "http://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
+    "twitter": null,
+    "hashtag": "#MSRS"
   },
   "nanapod": {
     "feed": "http://nanapod.kozyty.com/rss",
@@ -304,6 +354,11 @@
     "twitter": null,
     "hashtag": "#ossanfm"
   },
+  "OSSfm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:302417970/sounds.rss",
+    "twitter": null,
+    "hashtag": "#OSSfm"
+  },
   "otakumode": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:361589768/sounds.rss",
     "twitter": null,
@@ -358,6 +413,11 @@
     "feed": "http://feeds.feedburner.com/RiywosPodcast",
     "twitter": null,
     "hashtag": "#riywo"
+  },
+  "rlangradio": {
+    "feed": "https://rlangradio.org/feed.xml",
+    "twitter": "@rlangradio",
+    "hashtag": "#Rラジオ"
   },
   "rubyist-club": {
     "feed": "http://feeds.rubyist.club/rubyistclub",
@@ -444,9 +504,19 @@
     "twitter": null,
     "hashtag": null
   },
+  "tofu-ninjin": {
+    "feed": "https://tofu-ninjin.netlify.com/feed.xml",
+    "twitter": null,
+    "hashtag": "#Tofuにんじん"
+  },
   "tofulab": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
     "twitter": "@tofulab_inc",
+    "hashtag": null
+  },
+  "toiee": {
+    "feed": "https://toiee.jp/series/team-toieelab/feed/",
+    "twitter": "@toiee_lab",
     "hashtag": null
   },
   "tommie_nico": {
@@ -460,7 +530,7 @@
     "hashtag": "#tonight_fm"
   },
   "tsujileaks": {
-    "feed": "http://www.tsujileaks.com/?feed=rss2",
+    "feed": "http://www.tsujileaks.com/?feed=podcast",
     "twitter": null,
     "hashtag": "#セキュリティのアレ"
   },
@@ -468,6 +538,11 @@
     "feed": "https://feeds.turingcomplete.fm/tcfm",
     "twitter": null,
     "hashtag": "#tcfm"
+  },
+  "wadafm": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
+    "twitter": null,
+    "hashtag": "#wadafm"
   },
   "wakateossan": {
     "feed": "https://wakateossan.github.io/feed.xml",
