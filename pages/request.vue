@@ -4,7 +4,8 @@
   p
     | 自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。<br>
     | 運営側の意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。<br>
-    | ハッシュタグの登録漏れなど、なにか間違いがございましたら、Messageの欄に書いて送っていただけると助かります。
+    | ハッシュタグの登録漏れなど、なにか間違いがございましたら、Messageの欄に書いて送っていただけると助かります。<br>
+    | [こちらのファイル](https://github.com/noracast/podcast-freaks/blob/master/data/rss.json)へPRを送ってもらうとさらに助かります！（また、Feedに関する既知の問題は[こちら](https://github.com/noracast/podcast-freaks/issues?q=is%3Aissue+is%3Aopen+label%3AFeed)にまとめていますので、予めご一読いただけるとありがたいです）
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")
     label(for="feed") RSS feed
