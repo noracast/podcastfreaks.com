@@ -124,6 +124,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "bdpfm": {
+    "feed": "http://bdpfm.jp/feed.xml",
+    "twitter": "@bdpfm",
+    "hashtag": "#bdpfm"
+  },
   "devraji": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
     "twitter": null,
