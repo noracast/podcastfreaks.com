@@ -124,6 +124,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "devraji": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
+    "twitter": null,
+    "hashtag": "#デブラジ"
+  },
   "deployfm": {
     "feed": "https://takattata.github.io/deployfm/feed.xml",
     "twitter": "@deploy_fm",
