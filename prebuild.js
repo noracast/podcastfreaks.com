@@ -49,10 +49,12 @@ Object.keys(rss).forEach(function (key) {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
     fs.readFile(`${__dirname}/${dist_rss}`, (err, xml)=> {
       if(err) {
+        console.error(`[prebuild error] read | ${dist_rss}`)
         throw err
       }
       xml2js.parseString(xml, {explicitArray: false}, (_err, json)=> {
         if(_err) {
+          console.error(`[prebuild error] parse | ${dist_rss}`)
           throw _err
         }
 
