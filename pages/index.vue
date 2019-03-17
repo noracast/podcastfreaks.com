@@ -384,6 +384,9 @@ export default {
           }
         },
         headingsTooltips: {
+          title: 'Click to show more info.',
+          averageDuration: 'Calculate from time available episodes only.',
+          twitter: 'Limited to "official" twitter acount',
           download: 'Check to download OPML'
         },
         sortable: [
