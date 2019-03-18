@@ -184,6 +184,11 @@
     "twitter": "@engineermeeting",
     "hashtag": "#engineermeeting"
   },
+  "es-FM": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:161637047/sounds.rss",
+    "twitter": null,
+    "hashtag": "#エスノエフエム"
+  },
   "free-engineer": {
     "feed": "https://free-engineer.xrea.jp/feed/podcast",
     "twitter": null,
