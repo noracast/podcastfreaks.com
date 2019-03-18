@@ -134,6 +134,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "cyberspacecowboys": {
+    "feed": "http://feeds.feedburner.com/weblogs/csc",
+    "twitter": "@csc_bot",
+    "hashtag": "#電カー"
+  },
   "devraji": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
     "twitter": null,
@@ -498,6 +503,11 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
     "hashtag": "#takramcast"
+  },
+  "tachikawas-environmental-sound": {
+    "feed": "https://tachikawa.soramugi.net/feed/podcast/tachikawas-environmental-sound",
+    "twitter": null,
+    "hashtag": null
   },
   "tanoshii-works": {
     "feed": "https://anchor.fm/s/73628cc/podcast/rss",
