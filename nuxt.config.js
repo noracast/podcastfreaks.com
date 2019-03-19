@@ -25,7 +25,9 @@ module.exports = {
       { name: 'twitter:image', content: 'https://podcastfreaks.com/img/share.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' },
+      { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/img/apple-touch-icon-120.png', size: '120x120' },
+      { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/img/apple-touch-icon-152.png', size: '152x152' }
     ]
   },
 
