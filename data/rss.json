@@ -54,6 +54,11 @@
     "twitter": null,
     "hashtag": "#antipopfm"
   },
+  "aozorafm": {
+    "feed": "https://fortegp05.github.io/aozorafm/feed.xml",
+    "twitter": null,
+    "hashtag": "#aozorafm"
+  },
   "app-dojo": {
     "feed": "https://app-dojo.mookmookradio.com/feed/",
     "twitter": null,
