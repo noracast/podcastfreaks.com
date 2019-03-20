@@ -234,6 +234,11 @@
     "twitter": null,
     "hashtag": "#gunosyfm"
   },
+  "hbSAKABA": {
+    "feed": "https://heartbeats.jp/hbsakaba/rss",
+    "twitter": "@heartbeatsjp",
+    "hashtag": "#hbsakaba"
+  },
   "hiromaeda": {
     "feed": "http://hiromaeda.com/feed/podcast/",
     "twitter": null,
