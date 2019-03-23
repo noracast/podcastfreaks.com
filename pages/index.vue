@@ -324,9 +324,6 @@ export default {
       title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   },
-  mounted: function(){
-    this.toggleAllCheckbox()
-  },
   data: function() {
     return {
       // 行ごとに何度も作成しないように予め作る
@@ -406,6 +403,9 @@ export default {
       },
       data: Object.values(build_info.channels)
     }
+  },
+  mounted: function(){
+    this.toggleAllCheckbox()
   },
   methods: {
     toggleChildRow: function(key){
