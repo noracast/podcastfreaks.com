@@ -10,8 +10,8 @@ div.root
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
-    template(slot="durationAverage" slot-scope="props")
-      span(v-if="props.row.durationAverage" :class="convertToClass(props.row.durationAverage)") {{ props.row.durationAverage | roughlyTime }}
+    template(slot="durationMedian" slot-scope="props")
+      span(v-if="props.row.durationMedian" :class="convertToClass(props.row.durationMedian)") {{ props.row.durationMedian | roughlyTime }}
       span(v-else) ?
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
@@ -117,7 +117,7 @@ $color_new: #e100ff
         display: flex
         align-items: center
         justify-content: flex-end
-    td.average
+    td.duration
       span
         background-color: #ededed
         color: white
@@ -340,7 +340,7 @@ export default {
         'title',
         'total',
         'lastEpisodeDate',
-        'durationAverage',
+        'durationMedian',
         'hashtag',
         'twitter',
         'firstEpisodeDate',
@@ -355,7 +355,7 @@ export default {
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
-          durationAverage: 'average'
+          durationMedian: 'duration'
         },
         perPage: 9999,
         headings: {
@@ -366,7 +366,7 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Episode',
           lastEpisodeDate: 'Last Episode',
-          durationAverage: 'Avarage Duration',
+          durationMedian: 'Duration',
           download: function(h){
             const self = this;
             return h('input', {
@@ -384,10 +384,10 @@ export default {
           }
         },
         headingsTooltips: {
-          title: 'Click to show more info.',
-          durationAverage: 'Calculate from time available episodes only.',
-          twitter: 'Limited to "official" twitter acount',
-          download: 'Check to download OPML'
+          title: 'クリックすると詳細情報が確認できます',
+          durationMedian: '収録時間の中央値',
+          twitter: '番組公式Twitterアカウント',
+          download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
           'title',
@@ -396,7 +396,7 @@ export default {
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
-          'durationAverage'
+          'durationMedian'
         ],
         texts: {
           filter: '',

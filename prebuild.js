@@ -103,6 +103,14 @@ var getDurationAverage = (_items, _dist_rss)=> {
   const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
   return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
 }
+// 中央値
+var getDurationMedian = (_items, _dist_rss)=> {
+  let durations = getDurations(_items, _dist_rss).sort()
+  console.log('---')
+  console.log(_dist_rss)
+  console.log(_dist_rss)
+  return durations[Math.ceil(durations.length/2)]
+}
 
 Object.keys(rss).forEach((key)=> {
   const src = rss[key].feed
@@ -182,6 +190,7 @@ Object.keys(rss).forEach((key)=> {
           lastEpisodeLink: _.first(json.rss.channel.item).link,
           fileServer: getFileServer(json.rss.channel.item[0]),
           durationAverage: getDurationAverage(json.rss.channel.item, dist_rss),
+          durationMedian: getDurationMedian(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
 
