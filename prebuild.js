@@ -41,6 +41,65 @@ var removeQuery = (uri)=> {
   return uri
 }
 
+var getFileServer = (_item)=> {
+  var fileServer = null
+  if(_.has(_item, 'enclosure.$.url')){
+    const u = url.parse(_item.enclosure.$.url)
+    return `${u.protocol}//${u.host}`
+  }
+  return null
+}
+
+var getAverageDuration = (_items, _dist_rss)=> {
+  var getDuration = (d, outFormat = 'HH:mm:ss')=> {
+    var output = null
+    // XX:XX:XX (correct format)
+    if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
+      output = moment(d, 'HH:mm:ss')
+    }
+    // XX:XX
+    else if(/^\d{1,2}:\d{1,2}$/.test(d)) {
+      // Treat value like 82:14 -> 01:22:14
+      const match = d.match(/^(\d{1,2}):(\d{1,2})$/)
+      const second = match[2]
+      const minute = match[1]%60
+      const hour = Math.floor(match[1]/60)
+      output = moment({ hour, minute, second })
+    }
+    // XXXX
+    else if(/^\d+$/.test(d)) {
+      // Treat value as 'second'
+      const second = d%60
+      const minute = Math.floor(d/60)%60
+      const hour = Math.floor(Math.floor(d/60)/60)
+      output = moment({ hour, minute, second })
+    }
+    else {
+      console.error(`[prebuild error] \`${d}\` seems to be wrong format | ${_dist_rss}`)
+      return null
+    }
+
+    // フォーマットは正しいが0のものがあるため間引く
+    if(output.format(outFormat) == '00:00:00'){
+      console.error(`[prebuild error] \`${d}\` means zero time | ${_dist_rss}`)
+      return null
+    }
+
+    return output.format(outFormat)
+  }
+  let durations = []
+  _items.forEach(function(ep, index) {
+    if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
+      var val = getDuration(ep['itunes:duration'])
+      if(val){
+        durations.push(val)
+      }
+    }
+  })
+  const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
+  return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
+}
+
 Object.keys(rss).forEach((key)=> {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
@@ -103,62 +162,6 @@ Object.keys(rss).forEach((key)=> {
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
 
-
-        // Avarage duration
-        var getDuration = function(d, outFormat = 'HH:mm:ss') {
-          var output = null
-          // XX:XX:XX (correct format)
-          if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
-            output = moment(d, 'HH:mm:ss')
-          }
-          // XX:XX
-          else if(/^\d{1,2}:\d{1,2}$/.test(d)) {
-            // Treat value like 82:14 -> 01:22:14
-            const match = d.match(/^(\d{1,2}):(\d{1,2})$/)
-            const second = match[2]
-            const minute = match[1]%60
-            const hour = Math.floor(match[1]/60)
-            output = moment({ hour, minute, second })
-          }
-          // XXXX
-          else if(/^\d+$/.test(d)) {
-            // Treat value as 'second'
-            const second = d%60
-            const minute = Math.floor(d/60)%60
-            const hour = Math.floor(Math.floor(d/60)/60)
-            output = moment({ hour, minute, second })
-          }
-          else {
-            console.error('[prebuild error] `'+d+'` seems to be wrong format | '+dist_rss)
-            return null
-          }
-
-          // フォーマットは正しいが0のものがあるため間引く
-          if(output.format(outFormat) == '00:00:00'){
-            console.error('[prebuild error] `'+d+'` means zero time | '+dist_rss)
-            return null
-          }
-
-          return output.format(outFormat)
-        }
-        let durations = []
-        json.rss.channel.item.forEach(function(ep, index) {
-          if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-            var val = getDuration(ep['itunes:duration'])
-            if(val){
-              durations.push(val)
-            }
-          }
-        })
-        const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
-        const averageDuration = (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
-
-        var fileServer = null
-        if(_.has(json.rss.channel.item[0], 'enclosure.$.url')){
-          const u = url.parse(json.rss.channel.item[0].enclosure.$.url)
-          fileServer = `${u.protocol}//${u.host}`
-        }
-
         // Save data
         channels[key] = {
           key,
@@ -173,8 +176,8 @@ Object.keys(rss).forEach((key)=> {
           lastEpisodeDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
           firstEpisodeLink: _.last(json.rss.channel.item).link,
           lastEpisodeLink: _.first(json.rss.channel.item).link,
-          fileServer,
-          averageDuration,
+          fileServer: getFileServer(json.rss.channel.item[0]),
+          averageDuration: getAverageDuration(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
 
