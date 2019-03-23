@@ -50,7 +50,7 @@ var getFileServer = (_item)=> {
   return null
 }
 
-var getAverageDuration = (_items, _dist_rss)=> {
+var getDurationAverage = (_items, _dist_rss)=> {
   var getDuration = (d, outFormat = 'HH:mm:ss')=> {
     var output = null
     // XX:XX:XX (correct format)
@@ -177,7 +177,7 @@ Object.keys(rss).forEach((key)=> {
           firstEpisodeLink: _.last(json.rss.channel.item).link,
           lastEpisodeLink: _.first(json.rss.channel.item).link,
           fileServer: getFileServer(json.rss.channel.item[0]),
-          averageDuration: getAverageDuration(json.rss.channel.item, dist_rss),
+          durationAverage: getDurationAverage(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
 

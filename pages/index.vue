@@ -10,8 +10,8 @@ div.root
       a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
-    template(slot="averageDuration" slot-scope="props")
-      span(v-if="props.row.averageDuration" :class="convertToClass(props.row.averageDuration)") {{ props.row.averageDuration | roughlyTime }}
+    template(slot="durationAverage" slot-scope="props")
+      span(v-if="props.row.durationAverage" :class="convertToClass(props.row.durationAverage)") {{ props.row.durationAverage | roughlyTime }}
       span(v-else) ?
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
@@ -340,7 +340,7 @@ export default {
         'title',
         'total',
         'lastEpisodeDate',
-        'averageDuration',
+        'durationAverage',
         'hashtag',
         'twitter',
         'firstEpisodeDate',
@@ -355,7 +355,7 @@ export default {
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
-          averageDuration: 'average'
+          durationAverage: 'average'
         },
         perPage: 9999,
         headings: {
@@ -366,7 +366,7 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First Episode',
           lastEpisodeDate: 'Last Episode',
-          averageDuration: 'Avarage Duration',
+          durationAverage: 'Avarage Duration',
           download: function(h){
             const self = this;
             return h('input', {
@@ -385,7 +385,7 @@ export default {
         },
         headingsTooltips: {
           title: 'Click to show more info.',
-          averageDuration: 'Calculate from time available episodes only.',
+          durationAverage: 'Calculate from time available episodes only.',
           twitter: 'Limited to "official" twitter acount',
           download: 'Check to download OPML'
         },
@@ -396,7 +396,7 @@ export default {
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
-          'averageDuration'
+          'durationAverage'
         ],
         texts: {
           filter: '',
