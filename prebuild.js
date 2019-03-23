@@ -33,12 +33,12 @@ var episodeCount = 0
 process.on('unhandledRejection', console.dir)
 
 // https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
-var removeQuery = (uri)=> {
-  if(uri){
-    const u = url.parse(uri)
+var removeQuery = (_uri)=> {
+  if(_uri){
+    const u = url.parse(_uri)
     return `${u.protocol}//${u.host}${u.pathname}`
   }
-  return uri
+  return _uri
 }
 
 var getFileServer = (_item)=> {
@@ -49,41 +49,41 @@ var getFileServer = (_item)=> {
   }
   return null
 }
-var getDuration = (d, outFormat = 'HH:mm:ss')=> {
+var getDuration = (_d, _outFormat = 'HH:mm:ss')=> {
   var output = null
   // XX:XX:XX (correct format)
-  if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
-    output = moment(d, 'HH:mm:ss')
+  if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(_d)) {
+    output = moment(_d, 'HH:mm:ss')
   }
   // XX:XX
-  else if(/^\d+:\d{1,2}$/.test(d)) {
+  else if(/^\d+:\d{1,2}$/.test(_d)) {
     // Treat value like 82:14 -> 01:22:14
-    const match = d.match(/^(\d+):(\d{1,2})$/)
+    const match = _d.match(/^(\d+):(\d{1,2})$/)
     const second = match[2]
     const minute = match[1]%60
     const hour = Math.floor(match[1]/60)
     output = moment({ hour, minute, second })
   }
   // XXXX
-  else if(/^\d+$/.test(d)) {
+  else if(/^\d+$/.test(_d)) {
     // Treat value as 'second'
-    const second = d%60
-    const minute = Math.floor(d/60)%60
-    const hour = Math.floor(Math.floor(d/60)/60)
+    const second = _d%60
+    const minute = Math.floor(_d/60)%60
+    const hour = Math.floor(Math.floor(_d/60)/60)
     output = moment({ hour, minute, second })
   }
   else {
-    console.error(`[prebuild error] \`${d}\` seems to be wrong format | ${_dist_rss}`)
+    console.error(`[prebuild error] \`${_d}\` seems to be wrong format | ${_dist_rss}`)
     return null
   }
 
   // フォーマットは正しいが0のものがあるため間引く
-  if(output.format(outFormat) == '00:00:00'){
-    console.error(`[prebuild error] \`${d}\` means zero time | ${_dist_rss}`)
+  if(output.format(_outFormat) == '00:00:00'){
+    console.error(`[prebuild error] \`${_d}\` means zero time | ${_dist_rss}`)
     return null
   }
 
-  return output.format(outFormat)
+  return output.format(_outFormat)
 }
 var getDurationAverage = (_items, _dist_rss)=> {
   let durations = []
