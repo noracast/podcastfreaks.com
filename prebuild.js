@@ -33,7 +33,7 @@ var episodeCount = 0
 process.on('unhandledRejection', console.dir)
 
 // https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
-var removeQuery = function(uri) {
+var removeQuery = (uri)=> {
   if(uri){
     const u = url.parse(uri)
     return `${u.protocol}//${u.host}${u.pathname}`
@@ -41,7 +41,7 @@ var removeQuery = function(uri) {
   return uri
 }
 
-Object.keys(rss).forEach(function (key) {
+Object.keys(rss).forEach((key)=> {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
   const download = wget.download(src, dist_rss)
@@ -102,6 +102,7 @@ Object.keys(rss).forEach(function (key) {
           el['channel_title'] = title
         })
         episodes_in_2weeks = episodes_in_2weeks.concat(episodes)
+
 
         // Avarage duration
         var getDuration = function(d, outFormat = 'HH:mm:ss') {
