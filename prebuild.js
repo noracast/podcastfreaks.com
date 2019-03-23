@@ -58,9 +58,9 @@ var getDurationAverage = (_items, _dist_rss)=> {
       output = moment(d, 'HH:mm:ss')
     }
     // XX:XX
-    else if(/^\d{1,2}:\d{1,2}$/.test(d)) {
+    else if(/^\d+:\d{1,2}$/.test(d)) {
       // Treat value like 82:14 -> 01:22:14
-      const match = d.match(/^(\d{1,2}):(\d{1,2})$/)
+      const match = d.match(/^(\d+):(\d{1,2})$/)
       const second = match[2]
       const minute = match[1]%60
       const hour = Math.floor(match[1]/60)
