@@ -49,44 +49,43 @@ var getFileServer = (_item)=> {
   }
   return null
 }
-
-var getDurationAverage = (_items, _dist_rss)=> {
-  var getDuration = (d, outFormat = 'HH:mm:ss')=> {
-    var output = null
-    // XX:XX:XX (correct format)
-    if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
-      output = moment(d, 'HH:mm:ss')
-    }
-    // XX:XX
-    else if(/^\d+:\d{1,2}$/.test(d)) {
-      // Treat value like 82:14 -> 01:22:14
-      const match = d.match(/^(\d+):(\d{1,2})$/)
-      const second = match[2]
-      const minute = match[1]%60
-      const hour = Math.floor(match[1]/60)
-      output = moment({ hour, minute, second })
-    }
-    // XXXX
-    else if(/^\d+$/.test(d)) {
-      // Treat value as 'second'
-      const second = d%60
-      const minute = Math.floor(d/60)%60
-      const hour = Math.floor(Math.floor(d/60)/60)
-      output = moment({ hour, minute, second })
-    }
-    else {
-      console.error(`[prebuild error] \`${d}\` seems to be wrong format | ${_dist_rss}`)
-      return null
-    }
-
-    // フォーマットは正しいが0のものがあるため間引く
-    if(output.format(outFormat) == '00:00:00'){
-      console.error(`[prebuild error] \`${d}\` means zero time | ${_dist_rss}`)
-      return null
-    }
-
-    return output.format(outFormat)
+var getDuration = (d, outFormat = 'HH:mm:ss')=> {
+  var output = null
+  // XX:XX:XX (correct format)
+  if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(d)) {
+    output = moment(d, 'HH:mm:ss')
   }
+  // XX:XX
+  else if(/^\d+:\d{1,2}$/.test(d)) {
+    // Treat value like 82:14 -> 01:22:14
+    const match = d.match(/^(\d+):(\d{1,2})$/)
+    const second = match[2]
+    const minute = match[1]%60
+    const hour = Math.floor(match[1]/60)
+    output = moment({ hour, minute, second })
+  }
+  // XXXX
+  else if(/^\d+$/.test(d)) {
+    // Treat value as 'second'
+    const second = d%60
+    const minute = Math.floor(d/60)%60
+    const hour = Math.floor(Math.floor(d/60)/60)
+    output = moment({ hour, minute, second })
+  }
+  else {
+    console.error(`[prebuild error] \`${d}\` seems to be wrong format | ${_dist_rss}`)
+    return null
+  }
+
+  // フォーマットは正しいが0のものがあるため間引く
+  if(output.format(outFormat) == '00:00:00'){
+    console.error(`[prebuild error] \`${d}\` means zero time | ${_dist_rss}`)
+    return null
+  }
+
+  return output.format(outFormat)
+}
+var getDurationAverage = (_items, _dist_rss)=> {
   let durations = []
   _items.forEach(function(ep, index) {
     if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
