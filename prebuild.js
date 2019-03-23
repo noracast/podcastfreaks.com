@@ -85,7 +85,7 @@ var getDuration = (_d, _outFormat = 'HH:mm:ss')=> {
 
   return output.format(_outFormat)
 }
-var getDurationAverage = (_items, _dist_rss)=> {
+var getDurations = (_items)=> {
   let durations = []
   _items.forEach(function(ep, index) {
     if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
@@ -95,6 +95,10 @@ var getDurationAverage = (_items, _dist_rss)=> {
       }
     }
   })
+  return durations
+}
+var getDurationAverage = (_items, _dist_rss)=> {
+  let durations = getDurations(_items)
   const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
   return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
 }
