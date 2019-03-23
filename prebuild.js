@@ -49,7 +49,7 @@ var getFileServer = (_item)=> {
   }
   return null
 }
-var getDuration = (_d, _outFormat = 'HH:mm:ss')=> {
+var getDuration = (_d, _dist_rss, _outFormat = 'HH:mm:ss')=> {
   var output = null
   // XX:XX:XX (correct format)
   if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(_d)) {
@@ -85,11 +85,11 @@ var getDuration = (_d, _outFormat = 'HH:mm:ss')=> {
 
   return output.format(_outFormat)
 }
-var getDurations = (_items)=> {
+var getDurations = (_items, _dist_rss)=> {
   let durations = []
   _items.forEach(function(ep, index) {
     if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-      var val = getDuration(ep['itunes:duration'])
+      var val = getDuration(ep['itunes:duration'], _dist_rss)
       if(val){
         durations.push(val)
       }
@@ -97,8 +97,9 @@ var getDurations = (_items)=> {
   })
   return durations
 }
+// 平均値
 var getDurationAverage = (_items, _dist_rss)=> {
-  let durations = getDurations(_items)
+  let durations = getDurations(_items, _dist_rss)
   const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
   return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
 }
