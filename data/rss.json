@@ -369,6 +369,11 @@
     "twitter": "@noracast_",
     "hashtag": "#noracast"
   },
+  "nishikokura-hironobu": {
+    "feed": "https://anchor.fm/s/8a1f470/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "nyanyanya": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss",
     "twitter": null,
