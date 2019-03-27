@@ -510,7 +510,7 @@
     "hashtag": "#スティレン"
   },
   "strobofm": {
-    "feed": "https://strobo.fm/index.xml",
+    "feed": "http://feeds.feedburner.com/strobofm",
     "twitter": "@strobofm",
     "hashtag": "#strobofm"
   },
