@@ -1,9 +1,14 @@
+# Podcast Freaks
+
 [![Build Status](https://travis-ci.org/noracast/podcast-freaks.svg?branch=master)](https://travis-ci.org/noracast/podcast-freaks) [![Netlify Status](https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status)](https://app.netlify.com/sites/podcast-freaks/deploys)
 
+Podcast Freaks - Japanese techie podcast archive
 
-# Getting started
+https://podcastfreaks.com/
 
-## Local development
+## Getting started
+
+### Local development
 
 ```
 yarn
@@ -17,7 +22,7 @@ Refs:
 - https://travis-ci.org/noracast/podcast-freaks/builds/416706653#L2821
 - https://github.com/nuxt/nuxt.js/issues/3039#issuecomment-396904887
 
-# Deployment from local
+## Deployment from local
 
 ```sh
 yarn build && yarn deploy
@@ -35,14 +40,14 @@ yarn build:skip && yarn deploy:netlify
 ```
 
 
-# Daily deployment
+## Daily deployment
 
 This project is hosted on [Travis CI](https://travis-ci.org/developersjp/podcast-freaks). With its 'Cron Jobs', all rss seems to be updated on travis and pushed to 'netlify' branch of this project.
 
 Don't use `yarn deploy` (push-dir) on TravisCI. It will cause `Authentication failed`.
 
 
-# Forms
+## Forms
 
 [!] You need to align items in form with `static/form.html`
 
