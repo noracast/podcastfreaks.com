@@ -144,15 +144,20 @@
     "twitter": "@csc_bot",
     "hashtag": "#電カー"
   },
-  "devraji": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
-    "twitter": null,
-    "hashtag": "#デブラジ"
+  "denkiya": {
+    "feed": "https://inst-web.com/denkiya_blog/feed",
+    "twitter": "@_Coffee__",
+    "hashtag": "#電器屋Walker"
   },
   "deployfm": {
     "feed": "https://takattata.github.io/deployfm/feed.xml",
     "twitter": "@deploy_fm",
     "hashtag": "#deployfm"
+  },
+  "devraji": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
+    "twitter": null,
+    "hashtag": "#デブラジ"
   },
   "design-academy": {
     "feed": "http://design-academy.jp/feed/podcast/",
@@ -338,6 +343,11 @@
     "feed": "http://nanapod.kozyty.com/rss",
     "twitter": "@nanapi_nanapod",
     "hashtag": "#nanapod"
+  },
+  "narabazu": {
+    "feed": "https://narabazu.com/feed",
+    "twitter": "@narabazu",
+    "hashtag": "#narabazu"
   },
   "nashio": {
     "feed": "https://anchor.fm/s/7dd4418/podcast/rss",
@@ -598,6 +608,11 @@
     "feed": "https://podcast.unifa-e.com/feed.xml",
     "twitter": "@UniFa_JP",
     "hashtag": "#unifa_dev"
+  },
+  "voiceofonebutton": {
+    "feed": "http://radio.voiceofonebutton.net/index20.rdf",
+    "twitter": "@applenewsradio",
+    "hashtag": "#obt"
   },
   "wadafm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
