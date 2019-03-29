@@ -106,9 +106,6 @@ var getDurationAverage = (_items, _dist_rss)=> {
 // 中央値
 var getDurationMedian = (_items, _dist_rss)=> {
   let durations = getDurations(_items, _dist_rss).sort()
-  console.log('---')
-  console.log(_dist_rss)
-  console.log(_dist_rss)
   return durations[Math.ceil(durations.length/2)]
 }
 
