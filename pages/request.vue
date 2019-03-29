@@ -32,7 +32,12 @@
     label(for="message") Message
     small なにかメッセージ等あれば
     br
-    textarea#message(name="message" rows="5")
+    textarea#message(name="message" rows="5" placeholder="ハッシュタグが間違っているようです。")
+
+    label(for="contributor") Contributor
+    small お名前など教えていただけるとTwitter上でお礼申し上げます。無記名でももちろん大丈夫です！
+    br
+    input#hashtag(type="text" name="hashtag" placeholder="@naokazu_terada")
 
     button(type="submit") Send
 </template>
