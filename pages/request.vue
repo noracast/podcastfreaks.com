@@ -37,7 +37,7 @@
     label(for="contributor") Contributor
     small 無記名でももちろん大丈夫です！
     br
-    input#hashtag(type="text" name="hashtag" placeholder="@naokazu_terada")
+    input#contributor(type="text" name="contributor" placeholder="@naokazu_terada")
 
     button(type="submit") Send
 </template>
