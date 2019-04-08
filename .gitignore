@@ -80,5 +80,8 @@ dist
 # IDE
 .idea
 
+# PWA
+sw.*
+
 /static/downloads
 package-lock.json
