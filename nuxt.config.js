@@ -7,6 +7,9 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      lang: 'ja'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -59,10 +62,18 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-126960237-2'
-    }]
+    ['@nuxtjs/google-analytics', { id: 'UA-126960237-2' }],
+    '@nuxtjs/pwa',
   ],
+  // PWAのマニフェスト
+  manifest: {
+    name: 'Podcast Freaks',
+    short_name: 'P/F',
+    description:"Japanese techie podcast archive"
+    lang: 'ja',
+    start_url: '/',
+    display: 'standalone'
+  },
   /*
   ** Axios module configuration
   */
