@@ -24,6 +24,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/google-analytics": "^2.1.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.14",
     "ajv": "^6.6.1",
     "cal-heatmap": "^3.6.2",
     "cross-env": "^5.2.0",
