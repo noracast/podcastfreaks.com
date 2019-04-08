@@ -69,7 +69,7 @@ module.exports = {
   manifest: {
     name: 'Podcast Freaks',
     short_name: 'P/F',
-    description:"Japanese techie podcast archive"
+    description: 'Japanese techie podcast archive',
     lang: 'ja',
     start_url: '/',
     display: 'standalone'
