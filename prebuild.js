@@ -73,13 +73,13 @@ var getDuration = (_d, _dist_rss, _outFormat = 'HH:mm:ss')=> {
     output = moment({ hour, minute, second })
   }
   else {
-    console.error(`[prebuild error] \`${_d}\` seems to be wrong format | ${_dist_rss}`)
+    console.warn(`[prebuild warning] \`${_d}\` seems to be wrong format | ${_dist_rss}`)
     return null
   }
 
   // フォーマットは正しいが0のものがあるため間引く
   if(output.format(_outFormat) == '00:00:00'){
-    console.error(`[prebuild error] \`${_d}\` means zero time | ${_dist_rss}`)
+    console.warn(`[prebuild warning] \`${_d}\` means zero time | ${_dist_rss}`)
     return null
   }
 
@@ -265,6 +265,6 @@ Object.keys(rss).forEach((key)=> {
     })
   })
   download.on('error', (__err)=> {
-    console.error(__err)
+    console.error('[prebuild error]', __err)
   })
 })
