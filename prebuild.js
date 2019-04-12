@@ -121,9 +121,11 @@ Object.keys(rss).forEach((key)=> {
         throw err
       }
       xml2js.parseString(xml, {explicitArray: false}, (_err, json)=> {
+        _total--
         if(_err) {
           console.error(`[prebuild error] parse | ${dist_rss}`)
-          throw _err
+          // throw _err // ここでエラーを発生させてしまうとビルドが継続しない
+          return
         }
 
         // Get cover image urls
@@ -190,8 +192,6 @@ Object.keys(rss).forEach((key)=> {
           durationMedian: getDurationMedian(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
-
-        _total--
 
         // Finish execution
         if(_total <= 0) {
