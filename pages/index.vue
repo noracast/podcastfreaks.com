@@ -23,7 +23,7 @@ div.root
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
-      p.description(v-if="props.row.desciprtion") {{ props.row.desciprtion }}
+      p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
       p.description(v-else) No description
       button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
       button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
