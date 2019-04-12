@@ -354,6 +354,10 @@ export default {
           lastEpisodeDate: 'last',
           durationMedian: 'duration'
         },
+        orderBy: {
+          ascending: false,
+          column: 'lastEpisodeDate'
+        },
         perPage: 9999,
         headings: {
           cover: '▽ Click',
