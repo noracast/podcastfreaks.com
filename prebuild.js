@@ -122,6 +122,7 @@ Object.keys(rss).forEach((key)=> {
       }
       xml2js.parseString(xml, {explicitArray: false}, (_err, json)=> {
         _total--
+        console.log(`the rest of feeds: ${_total}`)
         if(_err) {
           console.error(`[prebuild error] parse | ${dist_rss}`)
           // throw _err // ここでエラーを発生させてしまうとビルドが継続しない
