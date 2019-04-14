@@ -71,7 +71,7 @@ export default {
       return '15min'
     },
     text(val) {
-      return this.roughlyTime(val) || '?'
+      return this.roughlyTime(val) || 'N/A'
     }
   }
 }
