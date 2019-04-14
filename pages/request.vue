@@ -32,7 +32,7 @@
     label(for="message") Message
     small なにかメッセージ等あれば
     br
-    textarea#message(name="message" rows="5" placeholder="ハッシュタグが間違っているようです。")
+    textarea#message(name="message" rows="5" placeholder="例）\nハッシュタグが間違っているようです。\nTwitter上でのお礼は結構です。")
 
     label(for="contributor") Contributor
     small 無記名でももちろん大丈夫です！
