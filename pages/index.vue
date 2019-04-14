@@ -11,8 +11,7 @@ div.root
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
-      span(v-if="props.row.durationMedian" :class="convertToClass(props.row.durationMedian)") {{ props.row.durationMedian | roughlyTime }}
-      span(v-else) ?
+      duration(:duration="props.row.durationMedian")
     a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
     template(slot="firstEpisodeDate" slot-scope="props")
@@ -117,31 +116,6 @@ $color_new: #e100ff
         display: flex
         align-items: center
         justify-content: flex-end
-    td.duration
-      span
-        background-color: #ededed
-        color: white
-        font-weight: bold
-        width: 70px
-        height: 23px
-        border-radius: 23px
-        display: flex
-        justify-content: center
-        align-items: center
-        &.min15
-          background-color: #6BEE59
-        &.min30
-          background-color: #49EC6D
-        &.min45
-          background-color: #3AEB9D
-        &.min60
-          background-color: #2BE9D7
-        &.min90
-          background-color: #1CB5E8
-        &.min120
-          background-color: #0E67E6
-        &.min120plus
-          background-color: #0010E5
     tr
       &:first-child
         border-top: 1px solid #ccc
@@ -317,7 +291,8 @@ import { saveAs } from 'file-saver'
 export default {
   components: {
     'button-text': require('~/components/button-text.vue').default,
-    'cover': require('~/components/cover.vue').default
+    'cover': require('~/components/cover.vue').default,
+    'duration': require('~/components/duration.vue').default
   },
   head() {
     return {
@@ -420,11 +395,6 @@ export default {
         return `https://twitter.com/${str.replace('@','')}`
       }
       return ''
-    },
-    convertToClass: function(str){
-      if(str){
-        return this.$options.filters.roughlyTime(str).replace(/([\d-]+)(\w*)/,'$2$1').replace('+','plus')
-      }
     },
     hashtagLink: function(str) {
       if(str != null) {
