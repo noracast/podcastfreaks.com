@@ -309,6 +309,11 @@
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
   },
+  "mentetsu": {
+    "feed": "https://anchor.fm/s/5959ffc/podcast/rss",
+    "twitter": "@mentetsu_hiroba",
+    "hashtag": null
+  },
   "mercanfm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
     "twitter": null,
