@@ -1,17 +1,17 @@
-const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ';
-const _ = require('lodash')
-const fileExtension = require('file-extension')
-const fs = require('fs')
-const moment = require('moment')
-const path = require('path')
-const rss = require('./data/rss.json')
-const sharp = require('sharp')
-const shell = require('shelljs')
-const url = require('url')
-const wget = require('wget-improved')
-const wgetp = require('node-wget-promise')
-const xml2js = require('xml2js')
+import _ from 'lodash'
+import fileExtension from 'file-extension'
+import fs from 'fs'
+import moment from 'moment'
+import path from 'path'
+import rss from './data/rss.json'
+import sharp from 'sharp'
+import shell from 'shelljs'
+import url from 'url'
+import wget from 'wget-improved'
+import wgetp from 'node-wget-promise'
+import xml2js from 'xml2js'
 
+const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
 const DOWNLOADS_DIR = 'static/downloads'
 const RSS_DIR       = 'static/downloads/rss'
 const COVER_DIR     = 'static/downloads/cover'
