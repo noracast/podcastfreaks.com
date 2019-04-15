@@ -43,3 +43,9 @@ This project will be deploy daily by calling Netlify's 'Build hooks' from IFTTT.
 [!] You need to align items in form with `static/form.html`
 
 Ref: https://qiita.com/hiropy0123/items/2e8d14ea66b78ab64847
+
+---
+
+You can create another podcast archives by replacing `data/rss.json` file yourself.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/noracast/podcast-freaks)
