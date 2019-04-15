@@ -36,7 +36,7 @@ yarn build:skip && yarn deploy:netlify
 
 ## Daily build
 
-This project will be deploy daily by calling Netlify's 'Build hooks' from [Zapier](https://zapier.com/app/editor/56354921/overview).
+This project will be deploy daily by calling Netlify's 'Build hooks' from IFTTT.
 
 ## Forms
 
