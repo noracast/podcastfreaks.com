@@ -24,8 +24,6 @@ shell.rm('-rf', DOWNLOADS_DIR)
 shell.mkdir('-p', RSS_DIR)
 shell.mkdir('-p', COVER_DIR)
 
-var _total = Object.keys(rss).length // for detect finish
-
 var latest_pubdates = []
 var episodes_in_2weeks = []
 var channels = {}
@@ -34,10 +32,10 @@ var episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
-Object.keys(rss).forEach((key)=> {
+const fetchFeed = async key => {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
-  wget(src, { output: dist_rss })
+  await wget(src, { output: dist_rss })
   .then( metadata => {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
     fs.readFile(`${__dirname}/${dist_rss}`, (err, xml)=> {
@@ -46,8 +44,7 @@ Object.keys(rss).forEach((key)=> {
         throw err
       }
       xml2js.parseString(xml, {explicitArray: false}, (_err, json)=> {
-        _total--
-        console.log(`the rest of feeds: ${_total}`)
+
         if(_err) {
           console.error(`[prebuild error] parse | ${dist_rss}`)
           // throw _err // ここでエラーを発生させてしまうとビルドが継続しない
@@ -118,79 +115,86 @@ Object.keys(rss).forEach((key)=> {
           durationMedian: util.getDurationMedian(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
-
-        // Finish execution
-        if(_total <= 0) {
-
-          // Export to list file ordered by pubDate
-          latest_pubdates.sort(function(a, b) {
-            return new Date(b.pubDate) - new Date(a.pubDate)
-          })
-          episodes_in_2weeks.sort(function(a, b) {
-            return new Date(b.pubDate) - new Date(a.pubDate)
-          })
-          var load_order = latest_pubdates.map(function(element, index, array) {
-            return element.id;
-          });
-
-          // Download cover images ONE BY ONE
-          // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
-          const resolveAfter = (_key, _src, _dist) => {
-            const config = {
-              all: {
-                quality: 100,
-                path: `${COVER_DIR}/`
-              },
-              versions: [
-                {
-                  suffix: '-30',
-                  width: 60,
-                  height: 60
-                },
-                {
-                  suffix: '-60',
-                  width: 120,
-                  height: 120
-                }
-              ]
-            }
-            return wgetp(_src, {output: _dist}).then(() => {
-              const ext = path.extname(_dist)
-              const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
-              const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-              sharp(_dist)
-                .resize(120)
-                .toFile(ext_120, (err, info) => {
-                  if(err){
-                    console.error('[prebuild error]', err, info)
-                  }
-                })
-                .resize(60)
-                .toFile(ext_60, (err, info) => {
-                  if(err){
-                    console.error('[prebuild error]', err, info)
-                  }
-                })
-            })
-          }
-          let p = Promise.resolve()
-          Object.keys(covers).forEach(function (_key) {
-            p = p.then(() => resolveAfter(_key, covers[_key].src, covers[_key].dist));
-          })
-
-          var data = {
-            load_order,
-            episodes_in_2weeks,
-            channels,
-            updated: new Date(),
-            episodeCount
-          }
-          fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
-        }
       })
     })
+    console.log('OK!', key)
   })
   .catch( err => {
-    console.error('[prebuild error]', err)
+    console.error('[prebuild error]', err, key)
   })
-})
+  console.log('done...')
+}
+
+(async () => {
+
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key)))
+
+  console.log('ALL DONE!!!!')
+
+  // Export to list file ordered by pubDate
+  latest_pubdates.sort(function(a, b) {
+    return new Date(b.pubDate) - new Date(a.pubDate)
+  })
+  episodes_in_2weeks.sort(function(a, b) {
+    return new Date(b.pubDate) - new Date(a.pubDate)
+  })
+  var load_order = latest_pubdates.map(function(element, index, array) {
+    return element.id;
+  });
+
+  // Download cover images ONE BY ONE
+  // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
+  const resolveAfter = (_key, _src, _dist) => {
+    const config = {
+      all: {
+        quality: 100,
+        path: `${COVER_DIR}/`
+      },
+      versions: [
+        {
+          suffix: '-30',
+          width: 60,
+          height: 60
+        },
+        {
+          suffix: '-60',
+          width: 120,
+          height: 120
+        }
+      ]
+    }
+    return wgetp(_src, {output: _dist}).then(() => {
+      const ext = path.extname(_dist)
+      const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+      const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+      sharp(_dist)
+        .resize(120)
+        .toFile(ext_120, (err, info) => {
+          if(err){
+            console.error('[prebuild error]', err, info)
+          }
+        })
+        .resize(60)
+        .toFile(ext_60, (err, info) => {
+          if(err){
+            console.error('[prebuild error]', err, info)
+          }
+        })
+    })
+  }
+  let p = Promise.resolve()
+  Object.keys(covers).forEach(function (_key) {
+    p = p.then(() => resolveAfter(_key, covers[_key].src, covers[_key].dist));
+  })
+
+  var data = {
+    load_order,
+    episodes_in_2weeks,
+    channels,
+    updated: new Date(),
+    episodeCount
+  }
+  fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
+  console.log('FILE OK!')
+})();
+
