@@ -6,7 +6,7 @@ import path from 'path'
 import rss from './data/rss.json'
 import sharp from 'sharp'
 import shell from 'shelljs'
-import wget from 'wget-improved'
+import wget from 'node-wget-promise'
 import wgetp from 'node-wget-promise'
 import xml2js from 'xml2js'
 import Util from './scripts/util'
@@ -34,12 +34,11 @@ var episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
-
 Object.keys(rss).forEach((key)=> {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
-  const download = wget.download(src, dist_rss)
-  download.on('end', ()=> {
+  wget(src, { output: dist_rss })
+  .then( metadata => {
     // nodeから実行する場合に、importなどが使えなかったために、async/awaitなどを使わないやり方で書いている
     fs.readFile(`${__dirname}/${dist_rss}`, (err, xml)=> {
       if(err) {
@@ -191,7 +190,7 @@ Object.keys(rss).forEach((key)=> {
       })
     })
   })
-  download.on('error', (__err)=> {
-    console.error('[prebuild error]', __err)
+  .catch( err => {
+    console.error('[prebuild error]', err)
   })
 })
