@@ -6,10 +6,12 @@ import path from 'path'
 import rss from './data/rss.json'
 import sharp from 'sharp'
 import shell from 'shelljs'
-import url from 'url'
 import wget from 'wget-improved'
 import wgetp from 'node-wget-promise'
 import xml2js from 'xml2js'
+import Util from './scripts/util'
+
+let util = new Util()
 
 const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
 const DOWNLOADS_DIR = 'static/downloads'
@@ -32,82 +34,6 @@ var episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
-// https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
-var removeQuery = (_uri)=> {
-  if(_uri){
-    const u = url.parse(_uri)
-    return `${u.protocol}//${u.host}${u.pathname}`
-  }
-  return _uri
-}
-
-var getFileServer = (_item)=> {
-  var fileServer = null
-  if(_.has(_item, 'enclosure.$.url')){
-    const u = url.parse(_item.enclosure.$.url)
-    return `${u.protocol}//${u.host}`
-  }
-  return null
-}
-var getDuration = (_d, _dist_rss, _outFormat = 'HH:mm:ss')=> {
-  var output = null
-  // XX:XX:XX (correct format)
-  if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(_d)) {
-    output = moment(_d, 'HH:mm:ss')
-  }
-  // XX:XX
-  else if(/^\d+:\d{1,2}$/.test(_d)) {
-    // Treat value like 82:14 -> 01:22:14
-    const match = _d.match(/^(\d+):(\d{1,2})$/)
-    const second = match[2]
-    const minute = match[1]%60
-    const hour = Math.floor(match[1]/60)
-    output = moment({ hour, minute, second })
-  }
-  // XXXX
-  else if(/^\d+$/.test(_d)) {
-    // Treat value as 'second'
-    const second = _d%60
-    const minute = Math.floor(_d/60)%60
-    const hour = Math.floor(Math.floor(_d/60)/60)
-    output = moment({ hour, minute, second })
-  }
-  else {
-    console.warn(`[prebuild warning] \`${_d}\` seems to be wrong format | ${_dist_rss}`)
-    return null
-  }
-
-  // フォーマットは正しいが0のものがあるため間引く
-  if(output.format(_outFormat) == '00:00:00'){
-    console.warn(`[prebuild warning] \`${_d}\` means zero time | ${_dist_rss}`)
-    return null
-  }
-
-  return output.format(_outFormat)
-}
-var getDurations = (_items, _dist_rss)=> {
-  let durations = []
-  _items.forEach(function(ep, index) {
-    if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-      var val = getDuration(ep['itunes:duration'], _dist_rss)
-      if(val){
-        durations.push(val)
-      }
-    }
-  })
-  return durations
-}
-// 平均値
-var getDurationAverage = (_items, _dist_rss)=> {
-  let durations = getDurations(_items, _dist_rss)
-  const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
-  return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
-}
-// 中央値
-var getDurationMedian = (_items, _dist_rss)=> {
-  let durations = getDurations(_items, _dist_rss).sort()
-  return durations[Math.ceil(durations.length/2)]
-}
 
 Object.keys(rss).forEach((key)=> {
   const src = rss[key].feed
@@ -130,7 +56,7 @@ Object.keys(rss).forEach((key)=> {
         }
 
         // Get cover image urls
-        const cover_url = removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
+        const cover_url = util.removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
         if(cover_url){
           covers[key] = {
             src: cover_url,
@@ -188,9 +114,9 @@ Object.keys(rss).forEach((key)=> {
           lastEpisodeDate: moment(_.first(json.rss.channel.item).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
           firstEpisodeLink: _.last(json.rss.channel.item).link,
           lastEpisodeLink: _.first(json.rss.channel.item).link,
-          fileServer: getFileServer(json.rss.channel.item[0]),
-          durationAverage: getDurationAverage(json.rss.channel.item, dist_rss),
-          durationMedian: getDurationMedian(json.rss.channel.item, dist_rss),
+          fileServer: util.getFileServer(json.rss.channel.item[0]),
+          durationAverage: util.getDurationAverage(json.rss.channel.item, dist_rss),
+          durationMedian: util.getDurationMedian(json.rss.channel.item, dist_rss),
           desciprtion: json.rss.channel.description
         }
 
