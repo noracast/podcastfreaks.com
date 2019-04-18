@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "start": "nuxt start",
-    "prebuild": "babel-node --presets es2015 prebuild.js",
+    "prebuild": "babel-node prebuild.js",
     "build": "nuxt generate --spa",
     "build:skip": "nuxt generate --spa",
     "deploy": "netlify deploy --dir=dist --prod",
@@ -21,12 +21,13 @@
     }
   },
   "dependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/google-analytics": "^2.1.0",
     "@nuxtjs/pwa": "^3.0.0-beta.14",
     "ajv": "^6.6.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "cal-heatmap": "^3.6.2",
     "cross-env": "^5.2.0",
     "d3": "^5.7.0",
