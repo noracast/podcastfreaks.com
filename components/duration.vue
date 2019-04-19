@@ -36,7 +36,7 @@ export default {
   props: {
     duration: {
       type: String,
-      required: true
+      default: null
     }
   },
   methods: {
