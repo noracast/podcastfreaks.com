@@ -80,7 +80,7 @@ const fetchFeed = async key => {
   const title = channel.title[0]
 
   // count episodes
-  episodeCount += episodes.length // TODOここじゃないとこで、最後にやる
+  episodeCount += episodes.length // TODO ここではなく、必要になる所で計測して依存関係を切る
 
   // Get the latest episode's publish date
   latest_pubdates.push({
