@@ -108,8 +108,6 @@ const fetchFeed = async key => {
     durationMedian: util.getDurationMedian(episodes, dist_rss),
     desciprtion: channel.description ? channel.description[0] : null
   }
-
-  console.log('OK!', key)
 }
 
 (async () => {
