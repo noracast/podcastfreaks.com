@@ -16,7 +16,7 @@
   h3 ざっくりとした仕組みの解説
   p
     | 手動で登録しているのは、フィードURLと、公式Twitter、公式ハッシュタグの３つで、残りの情報は取得したデータを元に作っています。
-    | フィードや画像の取得はビルド時に行っています。NetlifyのWebhookをIFTTTから叩いてビルドしています。
+    | フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。
     br
     br
     a.noborder(href="https://app.netlify.com/sites/podcast-freaks/deploys" target="_blank")
