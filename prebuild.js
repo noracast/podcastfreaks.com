@@ -132,6 +132,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
+  // TODO awaitを使って書き直す。FILE OK!が一番最後に呼ばれるようにする
   // Download cover images ONE BY ONE
   // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
   const resolveAfter = (_key, _src, _dist) => {
