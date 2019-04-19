@@ -6,6 +6,7 @@ import path from 'path'
 import sharp from 'sharp'
 import url from 'url'
 import wgetp from 'node-wget-promise'
+import { RFC822 } from './constants'
 
 class Util {
 
@@ -115,6 +116,20 @@ class Util {
           }
         })
     })
+  }
+
+  getEpisodesIn2Weeks(episodes, key, title) {
+    const twoweeksago = moment().subtract(14, 'days').startOf('date')
+    // Add channel info into each episodes
+    let res = episodes.filter((element, index, array) => {
+      // RSS date format is RFC-822
+      return moment(element.pubDate, RFC822).isAfter(twoweeksago)
+    })
+    res.forEach( el => {
+      el['key'] = key
+      el['channel_title'] = title
+    })
+    return res
   }
 }
 

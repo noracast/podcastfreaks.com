@@ -9,18 +9,13 @@ import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import PFUtil from './scripts/pf-util'
+import { RFC822, DOWNLOADS_DIR, RSS_DIR, COVER_DIR, BUILD_INFO } from './scripts/constants'
 import { promisify } from 'util'
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser()).parseString)
 const writeFile = promisify(fs.writeFile)
-
-const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
-const DOWNLOADS_DIR = 'static/downloads'
-const RSS_DIR       = 'static/downloads/rss'
-const COVER_DIR     = 'static/downloads/cover'
-const BUILD_INFO    = 'static/downloads/build_info.json'
 
 // Make sure parent dir existence and its clean
 shell.rm('-rf', DOWNLOADS_DIR)
@@ -35,17 +30,6 @@ let episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
-const twoweeksago = moment().subtract(14, 'days').startOf('date')
-const getEpisodesIn2Weeks = (episodes, key, title)=> {
-  // Add channel info into each episodes
-  return episodes.filter((element, index, array)=> {
-    // RSS date format is RFC-822
-    return moment(element.pubDate, RFC822).isAfter(twoweeksago)
-  }).forEach(function(el) {
-    el['key'] = key
-    el['channel_title'] = title
-  })
-}
 const fetchFeed = async key => {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
@@ -87,8 +71,8 @@ const fetchFeed = async key => {
     pubDate: episodes[0].pubDate
   })
 
-  episodes_in_2weeks = episodes_in_2weeks.concat(getEpisodesIn2Weeks(episodes, key, title))
-
+  episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
+  console.log(episodes_in_2weeks)
   // Save data
   channels[key] = {
     key,
