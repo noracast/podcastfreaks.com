@@ -1,5 +1,6 @@
 <template lang="pug">
-span(:class="this.convertToClass(duration)" v-text="this.text(duration)")
+span(v-if="duration" :class="this.convertToClass(duration)" v-text="this.roughlyTime(duration)")
+span(v-else :class="this.convertToClass(duration)" v-text="N/A" title="RSSからdurationが取得できませんでした")
 </template>
 
 <style lang="sass" scoped>
@@ -69,9 +70,6 @@ export default {
         return '30min'
       }
       return '15min'
-    },
-    text(val) {
-      return this.roughlyTime(val) || 'N/A'
     }
   }
 }
