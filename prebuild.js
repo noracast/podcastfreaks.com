@@ -15,6 +15,7 @@ import { promisify } from 'util'
 let util = new Util()
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser()).parseString)
+const writeFile = promisify(fs.writeFile)
 
 const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
 const DOWNLOADS_DIR = 'static/downloads'
@@ -183,7 +184,9 @@ const fetchFeed = async key => {
     updated: new Date(),
     episodeCount
   }
-  fs.writeFileSync(BUILD_INFO, JSON.stringify(data), 'utf8');
+
+  await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
   console.log('FILE OK!')
 })();
 
