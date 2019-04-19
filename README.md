@@ -8,8 +8,6 @@ https://podcastfreaks.com/
 
 ## Getting started
 
-### Local development
-
 ```
 yarn
 yarn prebuild # Download assets into /static/downloads
