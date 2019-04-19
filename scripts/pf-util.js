@@ -93,7 +93,7 @@ class Util {
   // 中央値
   getDurationMedian(_items, _dist_rss) {
     let durations = this.getDurations(_items, _dist_rss).sort()
-    return durations[Math.ceil(durations.length/2)]
+    return (durations.length == 0) ? null : durations[Math.ceil(durations.length/2)]
   }
 
   // 画像のダウンロードとリサイズ

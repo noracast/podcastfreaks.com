@@ -1,6 +1,6 @@
 <template lang="pug">
 span(v-if="duration" :class="this.convertToClass(duration)" v-text="this.roughlyTime(duration)")
-span(v-else :class="this.convertToClass(duration)" v-text="N/A" title="RSSからdurationが取得できませんでした")
+span(v-else v-text="'N/A'" title="RSSからdurationが取得できませんでした")
 </template>
 
 <style lang="sass" scoped>
