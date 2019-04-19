@@ -609,6 +609,11 @@
     "twitter": null,
     "hashtag": "#tcfm"
   },
+  "uit-inside": {
+    "feed": "https://uit-inside.linecorp.com/feed.atom",
+    "twitter": null,
+    "hashtag": "#uit_inside"
+  },
   "unifa-e": {
     "feed": "https://podcast.unifa-e.com/feed.xml",
     "twitter": "@UniFa_JP",
