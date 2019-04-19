@@ -95,7 +95,7 @@ const fetchFeed = async key => {
     title,
     twitter: rss[key].twitter,
     feed: rss[key].feed,
-    link: channel.link,
+    link: channel.link[0],
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
