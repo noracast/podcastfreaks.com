@@ -9,10 +9,10 @@ import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import wgetp from 'node-wget-promise'
 import xml2js from 'xml2js'
-import Util from './scripts/util'
+import MyUtil from './scripts/util'
 import { promisify } from 'util'
 
-let util = new Util()
+const util = new MyUtil()
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser()).parseString)
 const writeFile = promisify(fs.writeFile)
