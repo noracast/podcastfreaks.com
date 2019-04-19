@@ -237,13 +237,13 @@ Object.keys(rss).forEach((key)=> {
                 .resize(120)
                 .toFile(ext_120, (err, info) => {
                   if(err){
-                    console.error('[prebuild error]', err, info)
+                    console.error('[prebuild error]', key, err, info)
                   }
                 })
                 .resize(60)
                 .toFile(ext_60, (err, info) => {
                   if(err){
-                    console.error('[prebuild error]', err, info)
+                    console.error('[prebuild error]', key, err, info)
                   }
                 })
             })
@@ -266,6 +266,6 @@ Object.keys(rss).forEach((key)=> {
     })
   })
   download.on('error', (__err)=> {
-    console.error('[prebuild error]', __err)
+    console.error('[prebuild error]', key, __err)
   })
 })
