@@ -1,20 +1,22 @@
 <template lang="pug">
 Responsive.root(:breakpoints="{small: el => el.width <= 900}")
   div(slot-scope="el" :class="{ small: el.is.small }")
-    h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
-    .this-week
-      template(v-for="(val, idx) in episodes_in_1weeks")
-        //- 違う日だったら
-        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
-          span.date(v-text="date(val.pubDate)")
-        episode-row(:episode="val" :class="{ small: el.is.small }")
-    h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
-    .last-week
-      template(v-for="(val, idx) in episodes_in_2weeks")
-        //- 違う日だったら
-        .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
-          span.date(v-text="date(val.pubDate)")
-        episode-row(:episode="val" :class="{ small: el.is.small }")
+    template(v-if="episodes_in_1weeks.length")
+      h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
+      .this-week
+        template(v-for="(val, idx) in episodes_in_1weeks")
+          //- 違う日だったら
+          .border(v-if="idx == 0 || !isSame(val.pubDate[0], episodes_in_1weeks[idx-1].pubDate[0])")
+            span.date(v-text="date(val.pubDate[0])")
+          episode-row(:episode="val" :class="{ small: el.is.small }")
+    template(v-if="episodes_in_2weeks.length")
+      h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
+      .last-week
+        template(v-for="(val, idx) in episodes_in_2weeks")
+          //- 違う日だったら
+          .border(v-if="idx == 0 || !isSame(val.pubDate[0], episodes_in_2weeks[idx-1].pubDate[0])")
+            span.date(v-text="date(val.pubDate[0])")
+          episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
 <style lang="sass">
@@ -73,7 +75,7 @@ export default {
     let episodes_in_1weeks = []
     let episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweekago)){
+      if(moment(item.pubDate[0]).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
       }
       else {
@@ -90,6 +92,7 @@ export default {
   },
   methods: {
     date: function(_date) {
+      console.log(_date)
       moment.locale('ja')
       return moment(_date).format('M/D(ddd)')
     },

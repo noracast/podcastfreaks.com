@@ -3,7 +3,7 @@ div.row
   cover.cover(:channel="episode.key" :size='30' radius='50%')
   a.text(:href="episode.link" target="_blank")
     span.channel {{ episode.channel_title }}
-    | {{ episode.title }}
+    | {{ episode.title[0] }}
 </template>
 
 <style lang="sass" scoped>
@@ -24,7 +24,6 @@ div.row
   .text
     flex-shrink: 1
     height: 100%
-    line-height: 30px
     margin-left: 10px
     overflow: hidden
     white-space: nowrap
@@ -45,6 +44,7 @@ div.row
       width: 30px
     .text
       font-size: 12px
+      line-height: 30px
       .channel
         font-size: 10px
 </style>
