@@ -47,7 +47,7 @@ class Util {
       output = moment({ hour, minute, second })
     }
     // XXXX
-    else if(/^\d+$/.test(_d)) {
+    else if(/^[\d\.]+$/.test(_d)) {
       // Treat value as 'second'
       const second = _d%60
       const minute = Math.floor(_d/60)%60
