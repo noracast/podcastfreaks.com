@@ -1,18 +1,17 @@
+"use strict";
+
 import _ from 'lodash'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
-import path from 'path'
 import rss from './data/rss.json'
-import sharp from 'sharp'
 import shell from 'shelljs'
 import wget from 'node-wget-promise'
-import wgetp from 'node-wget-promise'
 import xml2js from 'xml2js'
-import MyUtil from './scripts/util'
+import PFUtil from './scripts/pf-util'
 import { promisify } from 'util'
 
-const util = new MyUtil()
+const util = new PFUtil()
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser()).parseString)
 const writeFile = promisify(fs.writeFile)
@@ -111,27 +110,6 @@ const fetchFeed = async key => {
   }
 }
 
-const downloadAndResize = (_key, _src, _dist) => {
-  return wgetp(_src, {output: _dist}).then(() => {
-    const ext = path.extname(_dist)
-    const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
-    const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-    sharp(_dist)
-      .resize(120)
-      .toFile(ext_120, (err) => {
-        if(err){
-          console.error('[prebuild error]', _key, err)
-        }
-      })
-      .resize(60)
-      .toFile(ext_60, (err) => {
-        if(err){
-          console.error('[prebuild error]', _key, err)
-        }
-      })
-  })
-}
-
 (async () => {
 
   // https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
@@ -140,8 +118,6 @@ const downloadAndResize = (_key, _src, _dist) => {
   // Serial execution
   // for(let key of Object.keys(rss)) await fetchFeed(key)
 
-  console.log('ALL DONE!!!!')
-
   // Export to list file ordered by pubDate
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
@@ -149,15 +125,15 @@ const downloadAndResize = (_key, _src, _dist) => {
   episodes_in_2weeks.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
-  var load_order = latest_pubdates.map(function(element, index, array) {
+  const load_order = latest_pubdates.map(function(element, index, array) {
     return element.id;
   });
 
   // Download cover images ONE BY ONE
   // 一気にwgetすると404になる場合があるのでひとつずつ順番に、直列実行
-  for(let key of Object.keys(covers)) await downloadAndResize(key, covers[key].src, covers[key].dist)
+  for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
-  var data = {
+  const data = {
     load_order,
     episodes_in_2weeks,
     channels,
@@ -165,8 +141,7 @@ const downloadAndResize = (_key, _src, _dist) => {
     episodeCount
   }
 
+  // Save to file
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
-
-  console.log('FILE OK!')
 })();
 

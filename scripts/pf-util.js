@@ -2,7 +2,10 @@
 
 import _ from 'lodash'
 import moment from 'moment'
+import path from 'path'
+import sharp from 'sharp'
 import url from 'url'
+import wgetp from 'node-wget-promise'
 
 class Util {
 
@@ -90,6 +93,28 @@ class Util {
   getDurationMedian(_items, _dist_rss) {
     let durations = this.getDurations(_items, _dist_rss).sort()
     return durations[Math.ceil(durations.length/2)]
+  }
+
+  // 画像のダウンロードとリサイズ
+  downloadAndResize(_key, _src, _dist) {
+    return wgetp(_src, {output: _dist}).then(() => {
+      const ext = path.extname(_dist)
+      const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+      const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+      sharp(_dist)
+        .resize(120)
+        .toFile(ext_120, (err) => {
+          if(err){
+            console.error('[prebuild error]', _key, err)
+          }
+        })
+        .resize(60)
+        .toFile(ext_60, (err) => {
+          if(err){
+            console.error('[prebuild error]', _key, err)
+          }
+        })
+    })
   }
 }
 
