@@ -29,10 +29,10 @@ shell.mkdir('-p', RSS_DIR)
 shell.mkdir('-p', COVER_DIR)
 
 let episodes_in_2weeks = []
-var latest_pubdates = []
-var channels = {}
-var covers = {}
-var episodeCount = 0
+let latest_pubdates = []
+let channels = {}
+let covers = {}
+let episodeCount = 0
 
 process.on('unhandledRejection', console.dir)
 
