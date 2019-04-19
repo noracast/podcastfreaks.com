@@ -9,8 +9,13 @@ import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import PFUtil from './scripts/pf-util'
-import { RFC822, DOWNLOADS_DIR, RSS_DIR, COVER_DIR, BUILD_INFO } from './scripts/constants'
+import { RFC822 } from './scripts/constants'
 import { promisify } from 'util'
+
+const DOWNLOADS_DIR = 'static/downloads'
+const RSS_DIR       = 'static/downloads/rss'
+const COVER_DIR     = 'static/downloads/cover'
+const BUILD_INFO    = 'static/downloads/build_info.json'
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
@@ -72,7 +77,7 @@ const fetchFeed = async key => {
   })
 
   episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
-  console.log(episodes_in_2weeks)
+
   // Save data
   channels[key] = {
     key,
