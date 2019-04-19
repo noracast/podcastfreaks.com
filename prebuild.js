@@ -135,10 +135,10 @@ const downloadAndResize = (_key, _src, _dist) => {
 (async () => {
 
   // https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  // 並列処理
-  // await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
-  // 直列処理
-  for(let key of Object.keys(rss)) await fetchFeed(key)
+  // Parallel Execution
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
+  // Serial execution
+  // for(let key of Object.keys(rss)) await fetchFeed(key)
 
   console.log('ALL DONE!!!!')
 
@@ -154,8 +154,7 @@ const downloadAndResize = (_key, _src, _dist) => {
   });
 
   // Download cover images ONE BY ONE
-  // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
-  // 直列実行
+  // 一気にwgetすると404になる場合があるのでひとつずつ順番に、直列実行
   for(let key of Object.keys(covers)) await downloadAndResize(key, covers[key].src, covers[key].dist)
 
   var data = {
