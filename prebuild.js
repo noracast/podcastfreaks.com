@@ -111,11 +111,32 @@ const fetchFeed = async key => {
   }
 }
 
+const downloadAndResize = (_key, _src, _dist) => {
+  return wgetp(_src, {output: _dist}).then(() => {
+    const ext = path.extname(_dist)
+    const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+    const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+    sharp(_dist)
+      .resize(120)
+      .toFile(ext_120, (err) => {
+        if(err){
+          console.error('[prebuild error]', _key, err)
+        }
+      })
+      .resize(60)
+      .toFile(ext_60, (err) => {
+        if(err){
+          console.error('[prebuild error]', _key, err)
+        }
+      })
+  })
+}
+
 (async () => {
 
   // https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   // 並列処理
-  // await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch(()=> { console.log('catch!'); return 'hoge' })
+  // await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
   // 直列処理
   for(let key of Object.keys(rss)) await fetchFeed(key)
 
@@ -132,51 +153,10 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  // TODO awaitを使って書き直す。FILE OK!が一番最後に呼ばれるようにする
   // Download cover images ONE BY ONE
   // 一気にwgetすると404になる場合があるのでひとつずつ順番に取得する
-  const resolveAfter = (_key, _src, _dist) => {
-    const config = {
-      all: {
-        quality: 100,
-        path: `${COVER_DIR}/`
-      },
-      versions: [
-        {
-          suffix: '-30',
-          width: 60,
-          height: 60
-        },
-        {
-          suffix: '-60',
-          width: 120,
-          height: 120
-        }
-      ]
-    }
-    return wgetp(_src, {output: _dist}).then(() => {
-      const ext = path.extname(_dist)
-      const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
-      const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-      sharp(_dist)
-        .resize(120)
-        .toFile(ext_120, (err, info) => {
-          if(err){
-            console.error('[prebuild error]', key, err, info)
-          }
-        })
-        .resize(60)
-        .toFile(ext_60, (err, info) => {
-          if(err){
-            console.error('[prebuild error]', key, err, info)
-          }
-        })
-    })
-  }
-  let p = Promise.resolve()
-  Object.keys(covers).forEach(function (_key) {
-    p = p.then(() => resolveAfter(_key, covers[_key].src, covers[_key].dist));
-  })
+  // 直列実行
+  for(let key of Object.keys(covers)) await downloadAndResize(key, covers[key].src, covers[key].dist)
 
   var data = {
     load_order,
