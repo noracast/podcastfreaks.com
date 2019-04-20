@@ -119,6 +119,7 @@ $color_new: #e100ff
     td.tweets
       text-align: center
       b
+        font-weight: 500
         display: block
         font-size: 18px
       small
