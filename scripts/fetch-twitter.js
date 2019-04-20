@@ -1,15 +1,129 @@
 "use strict";
 
+import _ from 'lodash'
+import moment from 'moment'
+import Twitter from 'twitter'
 import TwitterFollowersCount from 'twitter-followers-count'
 
 require('dotenv').config()
 
-let getTwitterFollowers = TwitterFollowersCount({
+const tfc = new TwitterFollowersCount({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
+const twitter = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+})
+
+const twitterSearch = (params) => {
+  return new Promise((resolve, reject) => {
+    twitter.get('search/tweets', params, function(error, tweets, response) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(tweets);
+      }
+    })
+  })
+}
+
+// Count followers
+const countFollowers = async data => {
+  let usernames = []
+  let reverseLookUpDict = {}
+  for(let key in data) {
+    if(data[key].twitter){
+      const username = data[key].twitter
+      usernames.push(username)
+      reverseLookUpDict[username] = key
+    }
+  }
+  const followerData = await tfc(usernames)
+  let res = {}
+  for(let username in followerData) {
+    const key = reverseLookUpDict[username]
+    res[key] = {
+      followers: followerData[username]
+    }
+  }
+  return res
+}
+
+// Count tweet including hash tag
+const countTweets = async data => {
+  let hashtags = []
+  let reverseLookUpDict = {}
+  for(let key in data) {
+    if(data[key].hashtag){
+      const hashtag = data[key].hashtag
+      hashtags.push(hashtag)
+      reverseLookUpDict[hashtag] = key
+    }
+  }
+
+  let res = {}
+
+  // Serial execution
+  for(let hashtag of hashtags) {
+    // In the last 7-days
+    const tweetData = await twitterSearch({q: hashtag, count: 100, result_type: 'recent'})
+    const key = reverseLookUpDict[hashtag]
+    res[key] = {
+      tweets: tweetData.statuses.length
+    }
+  }
+  return res
+}
+
+// (async () => {
+//   const data = {
+//     noracast: {
+//       hashtag: '#noracast'
+//     },
+//     backspace: {
+//       hashtag: '#backspacefm'
+//     },
+//     rebuild: {
+//       hashtag: '#rebuildfm'
+//     },
+//     iosdcfm: {
+//       hashtag: '#iosdcfm'
+//     },
+//     dongurifm: {
+//       hashtag: '#dongurifm'
+//     },
+//     nanapod: {
+//       hashtag: '#nanapod'
+//     }
+//   }
+//   let hashtags = []
+//   let reverseLookUpDict = {}
+//   for(let key in data) {
+//     if(data[key].hashtag){
+//       const hashtag = data[key].hashtag
+//       hashtags.push(hashtag)
+//       reverseLookUpDict[hashtag] = key
+//     }
+//   }
+
+//   let res = {}
+
+//   // Serial execution
+//   for(let hashtag of hashtags) {
+//     // In the last 7-days
+//     const tweetData = await twitterSearch({q: hashtag, count: 100, result_type: 'recent'})
+//     const key = reverseLookUpDict[hashtag]
+//     res[key] = {
+//       tweets: tweetData.statuses.length
+//     }
+//   }
+//   console.log(res)
+// })()
 
 async function run (arg) {
   /*
@@ -26,28 +140,19 @@ async function run (arg) {
       {
         'RSS_KEY': {
           followers: Number,
-          hashtag_count: Number
+          tweets: Number
         },
         ...
       }
   */
-  let usernames = []
-  let dict = {} // 後でusernameからの逆引きする用
-  for(let key in arg) {
-    if(arg[key].twitter){
-      const username = arg[key].twitter
-      usernames.push(username)
-      dict[username] = key
-    }
-  }
-  const followerData = await getTwitterFollowers(usernames)
-  let res = {}
-  for(let username in followerData) {
-    const key = dict[username]
-    res[key] = {
-      followers: followerData[username]
-    }
-  }
+  // Count followers
+  const tweets = await countTweets(arg)
+
+  // Count followers
+  const followers = await countFollowers(arg)
+
+  const res = _.merge({}, tweets, followers)
+  console.log(res)
   return res
 }
 
