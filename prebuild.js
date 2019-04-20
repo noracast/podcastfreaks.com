@@ -106,11 +106,9 @@ const fetchFeed = async key => {
 }
 
 (async () => {
-  // https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  // Parallel Execution
+
+  // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
-  // Serial execution
-  // for(let key of Object.keys(rss)) await fetchFeed(key)
 
   // Get and merge twitter data
   const accounts = {}
@@ -153,8 +151,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  // Download cover images ONE BY ONE
-  // 一気にwgetすると404になる場合があるのでひとつずつ順番に、直列実行
+  // Download cover images serially to avoid 404
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
   const data = {
