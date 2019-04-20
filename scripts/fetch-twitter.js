@@ -151,9 +151,7 @@ async function run (arg) {
   // Count followers
   const followers = await countFollowers(arg)
 
-  const res = _.merge({}, tweets, followers)
-  console.log(res)
-  return res
+  return _.merge({}, tweets, followers)
 }
 
 export default run
