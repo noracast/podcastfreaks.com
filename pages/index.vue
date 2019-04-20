@@ -13,10 +13,11 @@ div.root
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
-    template(slot="twitter" slot-scope="props")
+    template(slot="twitterFollowers" slot-scope="props")
       a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
-        span {{ props.row.twitter }}
-        span(v-if="props.row.twitterFollowers") ({{ props.row.twitterFollowers }})
+        span.followers(v-if="props.row.twitterFollowers") {{ props.row.twitterFollowers }}
+        br(v-if="props.row.twitterFollowers")
+        span.username {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
@@ -109,6 +110,12 @@ $color_new: #e100ff
         cursor: pointer
         &:hover
           color: lighten(#444, 10%)
+    td.twitterFollowers
+      span.followers
+        font-size: 18px
+      span.username
+        font-size: 10px
+        color: #ccc
     td.total
       text-align: right
       font-size: 18px
@@ -317,7 +324,7 @@ export default {
         'lastEpisodeDate',
         'durationMedian',
         'hashtag',
-        'twitter',
+        'twitterFollowers',
         'firstEpisodeDate',
         'download'
       ],
@@ -326,7 +333,7 @@ export default {
           cover: 'artwork',
           title: 'title',
           hashtag: 'hashtag',
-          twitter: 'twitter',
+          twitterFollowers: 'twitterFollowers',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
@@ -340,7 +347,7 @@ export default {
         headings: {
           cover: '▽ Click',
           title: 'Title',
-          twitter: 'Twitter',
+          twitterFollowers: 'Twitter followers',
           hashtag: 'Hashtag',
           total: 'Episodes',
           firstEpisodeDate: 'First Episode',
@@ -365,12 +372,12 @@ export default {
         headingsTooltips: {
           title: 'クリックすると詳細情報が確認できます',
           durationMedian: '収録時間の中央値',
-          twitter: '番組公式Twitterアカウント',
+          twitterFollowers: '番組公式Twitterアカウントのフォロワー数',
           download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
           'title',
-          'twitter',
+          'twitterFollowers',
           'hashtag',
           'total',
           'firstEpisodeDate',
@@ -383,6 +390,19 @@ export default {
         },
         uniqueKey: 'key'
       },
+      // customSorting: {
+      //   twitter: function (ascending) {
+      //     return function (a, b) {
+      //       var lastA = a.name[a.name.length - 1].toLowerCase();
+      //       var lastB = b.name[b.name.length - 1].toLowerCase();
+
+      //       if (ascending)
+      //           return lastA >= lastB ? 1 : -1;
+
+      //       return lastA <= lastB ? 1 : -1;
+      //     }
+      //   }
+      // },
       data: Object.values(build_info.channels)
     }
   },
