@@ -93,6 +93,7 @@ $color_new: #e100ff
       display: none
     &:nth-child(2)
       padding-left: 20px
+    &.duration,
     &.tweets,
     &.followers
       text-align: center
