@@ -14,7 +14,7 @@ div.root
       duration(:duration="props.row.durationMedian")
     template(slot="tweets" slot-scope="props")
       a(v-if="props.row.hashtag" target="_blank" :href="hashtagLink(props.row.hashtag)")
-        b(v-if="props.row.tweets") {{ props.row.tweets }}
+        b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
         small {{ props.row.hashtag }}
     template(slot="twitterFollowers" slot-scope="props")
       a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
