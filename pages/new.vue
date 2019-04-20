@@ -6,16 +6,16 @@ Responsive.root(:breakpoints="{small: el => el.width <= 900}")
       .this-week
         template(v-for="(val, idx) in episodes_in_1weeks")
           //- 違う日だったら
-          .border(v-if="idx == 0 || !isSame(val.pubDate[0], episodes_in_1weeks[idx-1].pubDate[0])")
-            span.date(v-text="date(val.pubDate[0])")
+          .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
+            span.date(v-text="date(val.pubDate)")
           episode-row(:episode="val" :class="{ small: el.is.small }")
     template(v-if="episodes_in_2weeks.length")
       h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
       .last-week
         template(v-for="(val, idx) in episodes_in_2weeks")
           //- 違う日だったら
-          .border(v-if="idx == 0 || !isSame(val.pubDate[0], episodes_in_2weeks[idx-1].pubDate[0])")
-            span.date(v-text="date(val.pubDate[0])")
+          .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
+            span.date(v-text="date(val.pubDate)")
           episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
@@ -75,7 +75,7 @@ export default {
     let episodes_in_1weeks = []
     let episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate[0]).isAfter(aweekago)){
+      if(moment(item.pubDate).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
       }
       else {

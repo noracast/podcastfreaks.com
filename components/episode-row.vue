@@ -3,7 +3,7 @@ div.row
   cover.cover(:channel="episode.key" :size='30' radius='50%')
   a.text(:href="episode.link" target="_blank")
     span.channel {{ episode.channel_title }}
-    | {{ episode.title[0] }}
+    | {{ episode.title }}
 </template>
 
 <style lang="sass" scoped>

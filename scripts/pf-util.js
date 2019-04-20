@@ -74,7 +74,7 @@ class Util {
     let self = this
     _items.forEach(function(ep, index) {
       if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-        var val = self.getDuration(ep['itunes:duration'][0], _dist_rss)
+        var val = self.getDuration(ep['itunes:duration'], _dist_rss)
         if(val){
           durations.push(val)
         }

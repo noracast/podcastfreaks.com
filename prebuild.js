@@ -19,7 +19,7 @@ const BUILD_INFO    = 'static/downloads/build_info.json'
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
-const xmlToJSON = promisify((new xml2js.Parser()).parseString)
+const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
 
 // Make sure parent dir existence and its clean
@@ -54,8 +54,13 @@ const fetchFeed = async key => {
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
+  // json.rss.channel.item must be Array
+  if(!(json.rss.channel.item instanceof Array)) {
+    json.rss.channel.item = [json.rss.channel.item]
+  }
+
   // Get cover image urls
-  const cover_url = util.removeQuery(_.get(json, 'rss.channel[0][itunes:image][0].$.href') || _.get(json, 'rss.channel[0][itunes:image][0].href') || _.get(json, 'rss.channel[0].image[0].url[0]'))
+  const cover_url = util.removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
   if(cover_url){
     covers[key] = {
       src: cover_url,
@@ -63,9 +68,9 @@ const fetchFeed = async key => {
     }
   }
 
-  const channel = json.rss.channel[0]
+  const channel = json.rss.channel
   const episodes = channel.item
-  const title = channel.title[0]
+  const title = channel.title
 
   // count episodes
   episodeCount += episodes.length // TODO ここではなく、必要になる所で計測して依存関係を切る
@@ -73,7 +78,7 @@ const fetchFeed = async key => {
   // Get the latest episode's publish date
   latest_pubdates.push({
     id: key,
-    pubDate: episodes[0].pubDate
+    pubDate: episodes.pubDate
   })
 
   episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
@@ -84,7 +89,7 @@ const fetchFeed = async key => {
     title,
     twitter: rss[key].twitter,
     feed: rss[key].feed,
-    link: channel.link ? channel.link[0] : null,
+    link: channel.link ? channel.link : null,
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
@@ -92,10 +97,10 @@ const fetchFeed = async key => {
     lastEpisodeDate: moment(_.first(episodes).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
     firstEpisodeLink: _.last(episodes).link,
     lastEpisodeLink: _.first(episodes).link,
-    fileServer: util.getFileServer(episodes[0]),
+    fileServer: util.getFileServer(episodes),
     durationAverage: util.getDurationAverage(episodes, dist_rss),
     durationMedian: util.getDurationMedian(episodes, dist_rss),
-    desciprtion: channel.description ? channel.description[0] : null
+    desciprtion: channel.description ? channel.description : null
   }
 }
 
