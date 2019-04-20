@@ -361,8 +361,8 @@ export default {
           twitterFollowers: 'Twitter followers',
           tweets: 'Tweets in a week',
           total: 'Episodes',
-          firstEpisodeDate: 'First Episode',
-          lastEpisodeDate: 'Last Episode',
+          firstEpisodeDate: 'First episode',
+          lastEpisodeDate: 'Last episode',
           durationMedian: 'Duration',
           download: function(h){
             const self = this;
