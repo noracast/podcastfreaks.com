@@ -12,8 +12,11 @@ div.root
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
-    a(slot="twitter" slot-scope="props" target="_blank" :href="twitterLink(props.row.twitter)") {{props.row.twitter}}
     a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
+    template(slot="twitter" slot-scope="props")
+      a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
+        span {{ props.row.twitter }}
+        span(v-if="props.row.twitterFollowers") ({{ props.row.twitterFollowers }})
     template(slot="firstEpisodeDate" slot-scope="props")
       a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
