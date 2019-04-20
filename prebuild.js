@@ -125,7 +125,7 @@ const fetchFeed = async key => {
         if(!accounts[key]) {
           accounts[key] = {}
         }
-        accounts[key]['hashtag'] = rss[key].hashtag.replace('#','')
+        accounts[key]['hashtag'] = rss[key].hashtag
       }
     }
   }
@@ -136,8 +136,8 @@ const fetchFeed = async key => {
       if(twitterData[key].followers){
         channels[key]['twitterFollowers'] = twitterData[key].followers
       }
-      if(twitterData[key].hashtag){
-        channels[key]['twitterHashtagCount'] = twitterData[key].hashtag
+      if(twitterData[key].tweets){
+        channels[key]['tweets'] = twitterData[key].tweets
       }
     }
   }

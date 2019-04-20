@@ -61,6 +61,7 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "sharp": "^0.21.3",
+    "twitter": "^1.7.1",
     "twitter-followers-count": "^1.0.3",
     "vue-loader": "^15.6.4",
     "webpack": "^4.29.5"

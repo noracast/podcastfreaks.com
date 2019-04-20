@@ -12,12 +12,14 @@ div.root
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
-    a(slot="hashtag" slot-scope="props" target="_blank" :href="hashtagLink(props.row.hashtag)") {{props.row.hashtag}}
+    template(slot="tweets" slot-scope="props")
+      a(v-if="props.row.hashtag" target="_blank" :href="hashtagLink(props.row.hashtag)")
+        b(v-if="props.row.tweets") {{ props.row.tweets }}
+        small {{ props.row.hashtag }}
     template(slot="twitterFollowers" slot-scope="props")
       a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
-        span.followers(v-if="props.row.twitterFollowers") {{ props.row.twitterFollowers }}
-        br(v-if="props.row.twitterFollowers")
-        span.username {{ props.row.twitter }}
+        b(v-if="props.row.twitterFollowers") {{ props.row.twitterFollowers }}
+        small {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
@@ -91,6 +93,9 @@ $color_new: #e100ff
       display: none
     &:nth-child(2)
       padding-left: 20px
+    &.tweets,
+    &.followers
+      text-align: center
   thead
     color: #ccc
     font-size: 12px
@@ -110,10 +115,14 @@ $color_new: #e100ff
         cursor: pointer
         &:hover
           color: lighten(#444, 10%)
-    td.twitterFollowers
-      span.followers
+    td.followers,
+    td.tweets
+      text-align: center
+      b
+        display: block
         font-size: 18px
-      span.username
+      small
+        display: block
         font-size: 10px
         color: #ccc
     td.total
@@ -323,7 +332,7 @@ export default {
         'total',
         'lastEpisodeDate',
         'durationMedian',
-        'hashtag',
+        'tweets',
         'twitterFollowers',
         'firstEpisodeDate',
         'download'
@@ -332,8 +341,8 @@ export default {
         columnsClasses: {
           cover: 'artwork',
           title: 'title',
-          hashtag: 'hashtag',
-          twitterFollowers: 'twitterFollowers',
+          tweets: 'tweets',
+          twitterFollowers: 'followers',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
@@ -348,7 +357,7 @@ export default {
           cover: '▽ Click',
           title: 'Title',
           twitterFollowers: 'Twitter followers',
-          hashtag: 'Hashtag',
+          tweets: 'Tweets in a week',
           total: 'Episodes',
           firstEpisodeDate: 'First Episode',
           lastEpisodeDate: 'Last Episode',
@@ -378,7 +387,7 @@ export default {
         sortable: [
           'title',
           'twitterFollowers',
-          'hashtag',
+          'tweets',
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
