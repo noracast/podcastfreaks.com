@@ -130,7 +130,6 @@ const fetchFeed = async key => {
     }
   }
   const twitterData = await fetchTwitter(accounts)
-  console.log(twitterData)
   for(let key in twitterData) {
     // Ignore if key is not exist in channels (maybe it couldn't get with error)
     if(channels[key]){
