@@ -14,12 +14,12 @@ const tfc = new TwitterFollowersCount({
 // Count followers
 const countFollowers = async data => {
   let usernames = []
-  let dict = {} // 後でusernameからの逆引きする用
+  let reverseLookUpDict = {}
   for(let key in data) {
     if(data[key].twitter){
       const username = data[key].twitter
       usernames.push(username)
-      dict[username] = key
+      reverseLookUpDict[username] = key
     }
   }
   const followerData = await tfc(usernames)
