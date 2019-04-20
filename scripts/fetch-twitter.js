@@ -1,6 +1,15 @@
-import twitterFollowersCount from 'twitter-followers-count'
+"use strict";
+
+import TwitterFollowersCount from 'twitter-followers-count'
 
 require('dotenv').config()
+
+let getTwitterFollowers = TwitterFollowersCount({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+})
 
 async function run (arg) {
   /*
@@ -22,14 +31,6 @@ async function run (arg) {
         ...
       }
   */
-  let getTwitterFollowers = twitterFollowersCount({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
-  })
-
-
   let usernames = []
   let dict = {} // 後でusernameからの逆引きする用
   for(let key in arg) {
