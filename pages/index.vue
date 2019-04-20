@@ -395,6 +395,13 @@ export default {
           'lastEpisodeDate',
           'durationMedian'
         ],
+        descOrderColumns: [
+          'twitterFollowers',
+          'tweets',
+          'total',
+          'lastEpisodeDate',
+          'durationMedian'
+        ],
         texts: {
           filter: '',
           filterPlaceholder: 'Search'
