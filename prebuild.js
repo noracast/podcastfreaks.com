@@ -1,16 +1,17 @@
 "use strict";
 
 import _ from 'lodash'
+import fetchTwitter from './scripts/fetch-twitter'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
+import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
-import PFUtil from './scripts/pf-util'
-import { RFC822 } from './scripts/constants'
 import { promisify } from 'util'
+import { RFC822 } from './scripts/constants'
 
 const DOWNLOADS_DIR = 'static/downloads'
 const RSS_DIR       = 'static/downloads/rss'
@@ -110,6 +111,36 @@ const fetchFeed = async key => {
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
   // Serial execution
   // for(let key of Object.keys(rss)) await fetchFeed(key)
+
+  // Get and merge twitter data
+  const accounts = {}
+  for(let key in rss) {
+    if(rss[key]){
+      if(rss[key].twitter) {
+        accounts[key] = {
+          twitter: rss[key].twitter.replace('@','')
+        }
+      }
+      if(rss[key].hashtag) {
+        if(!accounts[key]) {
+          accounts[key] = {}
+        }
+        accounts[key]['hashtag'] = rss[key].hashtag.replace('#','')
+      }
+    }
+  }
+  const twitterData = await fetchTwitter(accounts)
+  for(let key in twitterData) {
+    // Ignore if key is not exist in channels (maybe it couldn't get with error)
+    if(channels[key]){
+      if(twitterData[key].followers){
+        channels[key]['twitterFollowers'] = twitterData[key].followers
+      }
+      if(twitterData[key].hashtag){
+        channels[key]['twitterHashtagCount'] = twitterData[key].hashtag
+      }
+    }
+  }
 
   // Export to list file ordered by pubDate
   latest_pubdates.sort(function(a, b) {

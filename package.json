@@ -47,6 +47,7 @@
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
+    "dotenv": "^7.0.0",
     "eslint": "^5.14.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
@@ -60,6 +61,7 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "sharp": "^0.21.3",
+    "twitter-followers-count": "^1.0.3",
     "vue-loader": "^15.6.4",
     "webpack": "^4.29.5"
   }

@@ -8,6 +8,15 @@ https://podcastfreaks.com/
 
 ## Getting started
 
+Create `.env` file on the root directory.
+
+```
+TWITTER_CONSUMER_KEY=xxxxxxxx
+TWITTER_CONSUMER_SECRET=xxxxxxxx
+TWITTER_ACCESS_TOKEN_KEY=xxxxxxxx
+TWITTER_ACCESS_TOKEN_SECRET=xxxxxxxx
+```
+
 ```
 yarn
 yarn prebuild # Download assets into /static/downloads
