@@ -80,50 +80,57 @@ const countTweets = async data => {
   return res
 }
 
-// (async () => {
-//   const data = {
-//     noracast: {
-//       hashtag: '#noracast'
-//     },
-//     backspace: {
-//       hashtag: '#backspacefm'
-//     },
-//     rebuild: {
-//       hashtag: '#rebuildfm'
-//     },
-//     iosdcfm: {
-//       hashtag: '#iosdcfm'
-//     },
-//     dongurifm: {
-//       hashtag: '#dongurifm'
-//     },
-//     nanapod: {
-//       hashtag: '#nanapod'
-//     }
-//   }
-//   let hashtags = []
-//   let reverseLookUpDict = {}
-//   for(let key in data) {
-//     if(data[key].hashtag){
-//       const hashtag = data[key].hashtag
-//       hashtags.push(hashtag)
-//       reverseLookUpDict[hashtag] = key
-//     }
-//   }
+(async () => {
+  const data = {
+    automagic: {
+      hashtag: '#automagic'
+    },
+    // noracast: {
+    //   hashtag: '#noracast'
+    // },
+    // backspace: {
+    //   hashtag: '#backspacefm'
+    // },
+    // rebuild: {
+    //   hashtag: '#rebuildfm'
+    // },
+    // iosdcfm: {
+    //   hashtag: '#iosdcfm'
+    // },
+    // dongurifm: {
+    //   hashtag: '#dongurifm'
+    // },
+    // nanapod: {
+    //   hashtag: '#nanapod'
+    // }
+  }
+  let hashtags = []
+  let reverseLookUpDict = {}
+  for(let key in data) {
+    if(data[key].hashtag){
+      const hashtag = data[key].hashtag
+      hashtags.push(hashtag)
+      reverseLookUpDict[hashtag] = key
+    }
+  }
 
-//   let res = {}
+  let res = {}
 
-//   // Serial execution
-//   for(let hashtag of hashtags) {
-//     // In the last 7-days
-//     const tweetData = await twitterSearch({q: hashtag, count: 100, result_type: 'recent'})
-//     const key = reverseLookUpDict[hashtag]
-//     res[key] = {
-//       tweets: tweetData.statuses.length
-//     }
-//   }
-//   console.log(res)
-// })()
+  // Serial execution
+  for(let hashtag of hashtags) {
+    // In the last 7-days
+    let query = hashtag
+    if(process.env.TWITTER_LANG) {
+      query += ` lang:${process.env.TWITTER_LANG}`
+    }
+    const tweetData = await twitterSearch({q: query, count: 100, result_type: 'recent'})
+    const key = reverseLookUpDict[hashtag]
+    res[key] = {
+      tweets: tweetData.statuses.length
+    }
+  }
+  console.log(res)
+})()
 
 async function run (arg) {
   /*

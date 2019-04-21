@@ -15,7 +15,10 @@ TWITTER_CONSUMER_KEY=xxxxxxxx
 TWITTER_CONSUMER_SECRET=xxxxxxxx
 TWITTER_ACCESS_TOKEN_KEY=xxxxxxxx
 TWITTER_ACCESS_TOKEN_SECRET=xxxxxxxx
+TWITTER_LANG=ja
 ```
+
+`TWITTER_LANG` is used for restricting tweets to the given language in hashtag search. You can remove it if you don't want to use it.
 
 ```
 yarn
