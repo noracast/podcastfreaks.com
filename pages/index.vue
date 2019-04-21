@@ -439,7 +439,11 @@ export default {
     },
     hashtagLink: function(str) {
       if(str != null) {
-        return `https://twitter.com/search?q=%23${str.replace('#','')}`
+        let query = str.replace('#','%23')
+        if(process.env.TWITTER_LANG) {
+          query += ` lang:${process.env.TWITTER_LANG}`
+        }
+        return `https://twitter.com/search?q=${query}`
       }
       return ''
     },
