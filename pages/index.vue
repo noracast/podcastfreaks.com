@@ -440,8 +440,6 @@ export default {
     hashtagLink: function(str) {
       if(str != null) {
         let query = str.replace('#','%23')
-        console.log('process.env.TWITTER_LANG', process.env.TWITTER_LANG)
-        console.log('process.env', process.env)
         if(process.env.TWITTER_LANG) {
           query += ` lang:${process.env.TWITTER_LANG}`
         }
