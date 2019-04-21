@@ -3,6 +3,14 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
+  env: {
+    TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
+    TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
+    TWITTER_ACCESS_TOKEN_KEY: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    TWITTER_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+    TWITTER_LANG: process.env.TWITTER_LANG
+  },
+
   /*
   ** Headers of the page
   */
