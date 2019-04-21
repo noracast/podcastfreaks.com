@@ -259,7 +259,10 @@ $color_new: #e100ff
         font-size: 11px
       td.total
         font-size: 14px
-
+      td.followers,
+      td.tweets
+        b
+          font-size: 14px
     button
       font-size: 10px
     .download
