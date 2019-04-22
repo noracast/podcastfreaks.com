@@ -16,9 +16,9 @@ div.root
       a(v-if="props.row.hashtag" target="_blank" :href="tweetsLink(props.row.tweets_query)")
         b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
         small {{ props.row.hashtag }}
-    template(slot="twitterFollowers" slot-scope="props")
+    template(slot="followers" slot-scope="props")
       a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
-        b(v-if="props.row.twitterFollowers") {{ props.row.twitterFollowers }}
+        b(v-if="props.row.followers") {{ props.row.followers }}
         small {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
@@ -338,7 +338,7 @@ export default {
         'lastEpisodeDate',
         'durationMedian',
         'tweets',
-        'twitterFollowers',
+        'followers',
         'firstEpisodeDate',
         'download'
       ],
@@ -347,7 +347,7 @@ export default {
           cover: 'artwork',
           title: 'title',
           tweets: 'tweets',
-          twitterFollowers: 'followers',
+          followers: 'followers',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
@@ -361,7 +361,7 @@ export default {
         headings: {
           cover: '▽ Click',
           title: 'Title',
-          twitterFollowers: 'Twitter followers',
+          followers: 'Twitter followers',
           tweets: 'Tweets in a week',
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
@@ -386,12 +386,12 @@ export default {
         headingsTooltips: {
           title: 'クリックすると詳細情報が確認できます',
           durationMedian: '収録時間の中央値',
-          twitterFollowers: '番組公式Twitterアカウントのフォロワー数',
+          followers: '番組公式Twitterアカウントのフォロワー数',
           download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
           'title',
-          'twitterFollowers',
+          'followers',
           'tweets',
           'total',
           'firstEpisodeDate',
@@ -399,7 +399,7 @@ export default {
           'durationMedian'
         ],
         descOrderColumns: [
-          'twitterFollowers',
+          'followers',
           'tweets',
           'total',
           'lastEpisodeDate',
@@ -441,7 +441,6 @@ export default {
       return ''
     },
     tweetsLink: function(query) {
-      console.log(query)
       if(query != null) {
         return `https://twitter.com/search?q=${query.replace('#','%23')}`
       }
