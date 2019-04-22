@@ -70,15 +70,16 @@ const countTweets = async data => {
 
   // Serial execution
   for(let hashtag of hashtags) {
-    // In the last 7-days
     let query = hashtag
+    query += ` since:${moment().add(-7, 'days').format('YYYY-MM-DD')}` // in the last 7-days
     if(process.env.TWITTER_LANG) {
       query += ` lang:${process.env.TWITTER_LANG}`
     }
     const tweetData = await twitterSearch({q: query, count: 100, result_type: 'recent'})
     const key = reverseLookUpDict[hashtag]
     res[key] = {
-      tweets: tweetData.statuses.length
+      tweets: tweetData.statuses.length,
+      tweets_query: query
     }
   }
   return res

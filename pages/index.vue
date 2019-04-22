@@ -13,7 +13,7 @@ div.root
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="tweets" slot-scope="props")
-      a(v-if="props.row.hashtag" target="_blank" :href="hashtagLink(props.row.hashtag)")
+      a(v-if="props.row.hashtag" target="_blank" :href="tweetsLink(props.row.tweets_query)")
         b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
         small {{ props.row.hashtag }}
     template(slot="twitterFollowers" slot-scope="props")
@@ -440,13 +440,10 @@ export default {
       }
       return ''
     },
-    hashtagLink: function(str) {
-      if(str != null) {
-        let query = str.replace('#','%23')
-        if(process.env.TWITTER_LANG) {
-          query += ` lang:${process.env.TWITTER_LANG}`
-        }
-        return `https://twitter.com/search?q=${query}`
+    tweetsLink: function(query) {
+      console.log(query)
+      if(query != null) {
+        return `https://twitter.com/search?q=${query.replace('#','%23')}`
       }
       return ''
     },
