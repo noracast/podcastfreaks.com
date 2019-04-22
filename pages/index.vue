@@ -335,11 +335,11 @@ export default {
         'cover',
         'title',
         'total',
-        'lastEpisodeDate',
         'durationMedian',
         'tweets',
         'followers',
         'firstEpisodeDate',
+        'lastEpisodeDate',
         'download'
       ],
       options: {
