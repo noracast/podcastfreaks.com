@@ -131,11 +131,8 @@ const fetchFeed = async key => {
   for(let key in twitterData) {
     // Ignore if key is not exist in channels (maybe it couldn't get with error)
     if(channels[key]){
-      if(twitterData[key].followers){
-        channels[key]['twitterFollowers'] = twitterData[key].followers
-      }
-      if(twitterData[key].tweets){
-        channels[key]['tweets'] = twitterData[key].tweets
+      for(let prop in twitterData[key]){
+        channels[key][prop] = twitterData[key][prop]
       }
     }
   }
