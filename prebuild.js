@@ -4,6 +4,8 @@ import _ from 'lodash'
 import fetchTwitter from './scripts/fetch-twitter'
 import fileExtension from 'file-extension'
 import fs from 'fs'
+import imagemin from 'imagemin'
+import imageminWebp from 'imagemin-webp'
 import moment from 'moment'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
@@ -65,7 +67,7 @@ const fetchFeed = async key => {
   if(cover_url){
     covers[key] = {
       src: cover_url,
-      dist: `${COVER_DIR}/${key}.${fileExtension(cover_url)}`
+      dist: `${COVER_DIR}/${key}.webp`
     }
   }
 
@@ -150,6 +152,9 @@ const fetchFeed = async key => {
 
   // Download cover images serially to avoid 404
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
+
+  await imagemin(['static/downloads/cover/*.{jpg,png}'], 'static/downloads/cover', { use: [imageminWebp({quality: 50})]})
+  console.log('Images optimized')
 
   const data = {
     load_order,

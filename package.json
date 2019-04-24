@@ -53,6 +53,8 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "file-extension": "^4.0.5",
+    "imagemin": "^6.1.0",
+    "imagemin-webp": "^5.0.0",
     "lodash": "^4.17.11",
     "netlify-cli": "^2.11.11",
     "node-sass": "^4.11.0",
