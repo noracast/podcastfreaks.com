@@ -26,7 +26,7 @@ yarn prebuild # Download assets into /static/downloads
 yarn dev
 ```
 
-## Deployment from local
+## Deployment
 
 ```sh
 yarn build && yarn deploy
