@@ -7,21 +7,21 @@ div.root
     template(slot="title" slot-scope="props")
       span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
-      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank")
+      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank" rel="noopener")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="tweets" slot-scope="props")
-      a(v-if="props.row.hashtag" target="_blank" :href="tweetsLink(props.row.tweets_query)")
+      a(v-if="props.row.hashtag" :href="tweetsLink(props.row.tweets_query)" target="_blank" rel="noopener")
         b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
         small {{ props.row.hashtag }}
     template(slot="followers" slot-scope="props")
-      a(v-if="props.row.twitter" target="_blank" :href="twitterLink(props.row.twitter)")
+      a(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)" target="_blank" rel="noopener")
         b(v-if="props.row.followers") {{ props.row.followers }}
         small {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
-      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank")
+      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank" rel="noopener")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
         | {{ props.row.firstEpisodeDate | formatDate }}
       template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}

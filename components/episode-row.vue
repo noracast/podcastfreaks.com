@@ -1,7 +1,7 @@
 <template lang="pug">
 div.row
   cover.cover(:channel="episode.key" :size='30' radius='50%')
-  a.text(:href="episode.link" target="_blank")
+  a.text(:href="episode.link" target="_blank" rel="noopener")
     span.channel {{ episode.channel_title }}
     | {{ episode.title }}
 </template>
