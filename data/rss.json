@@ -479,6 +479,11 @@
     "twitter": null,
     "hashtag": "#rubyistclub"
   },
+  "sansan-tech-podcast": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:554143311/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
