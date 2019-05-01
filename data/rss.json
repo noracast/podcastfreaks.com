@@ -449,6 +449,11 @@
     "twitter": "@railsdm",
     "hashtag": "#railsdm"
   },
+  "randomfacts": {
+    "feed": "https://randomfacts.club/feed.xml",
+    "twitter": null,
+    "hashtag": "#rfclub"
+  },
   "rebuild": {
     "feed": "http://feeds.rebuild.fm/rebuildfm",
     "twitter": "@rebuildfm",
