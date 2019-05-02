@@ -649,6 +649,11 @@
     "twitter": null,
     "hashtag": "#washipo"
   },
+  "weekly-ebook-strategy": {
+    "feed": "http://feeds.feedburner.com/WeeklyEbookStrategy",
+    "twitter": null,
+    "hashtag": null
+  },
   "windows-podcast": {
     "feed": "http://windows-podcast.com/podcast/feed",
     "twitter": null,
