@@ -649,6 +649,11 @@
     "twitter": null,
     "hashtag": "#wakateossan"
   },
+  "wasabi": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "washipo": {
     "feed": "https://washipo.nyoho.jp/podcast.rss",
     "twitter": null,
