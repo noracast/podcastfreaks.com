@@ -69,6 +69,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "arisa_dev": {
+    "feed": "https://anchor.fm/s/8c07760/podcast/rss",
+    "twitter": "@arisa_dev",
+    "hashtag": null
+  },
   "automagic": {
     "feed": "http://feedpress.me/automagic",
     "twitter": null,
