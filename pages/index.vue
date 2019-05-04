@@ -313,6 +313,7 @@ $color_new: #e100ff
 <script>
 import axios from 'axios'
 import moment from 'moment'
+import auth from '~/plugins/auth'
 import xml2js from '~/lib/xml2js-promise'
 import rss from '~/data/rss.json'
 import build_info from '~/static/downloads/build_info.json'
@@ -437,6 +438,12 @@ export default {
   },
   mounted: function(){
     this.toggleAllCheckbox()
+  },
+  async created(){
+    const user = !this.isLogggedIn ? await auth() : null
+    await Promise.all([
+      this.isLogggedIn ? Promise.resolve() : this.$store.dispatch('users/setCurrentUser', { userId: user.uid || null }),
+    ])
   },
   methods: {
     toggleChildRow: function(key){
