@@ -1,7 +1,7 @@
 <template lang="pug">
 div.root
   .buttons-right
-    button.download(@click="buttons-rightOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML!!
+    button.download(@click="buttons-rightOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
     button-login.login
 
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
