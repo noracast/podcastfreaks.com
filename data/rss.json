@@ -144,6 +144,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "crescentradio": {
+    "feed": "https://anchor.fm/s/b0e4c40/podcast/rss",
+    "twitter": null,
+    "hashtag": "#三日月ラジオ"
+  },
   "cyberspacecowboys": {
     "feed": "http://feeds.feedburner.com/weblogs/csc",
     "twitter": "@csc_bot",
