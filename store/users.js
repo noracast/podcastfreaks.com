@@ -19,7 +19,8 @@ export const state = () => ({
 export const getters = {
   users: state => state.users,
   user: state => state.users.filter(user => user.uid === state.currentUserId),
-  currentUserId: state => state.currentUserId
+  currentUserId: state => state.currentUserId,
+  isLogggedIn: state => !!state.currentUserId
 }
 
 export const mutations = {

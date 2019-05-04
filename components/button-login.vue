@@ -1,6 +1,7 @@
 <template lang="pug">
 div
-  button(@click="login") ログイン
+  button(@click="logout" v-if="isLogggedIn") ログアウト
+  button(@click="login" v-else) ログイン
 </template>
 
 <style lang="sass" scoped>
@@ -14,7 +15,7 @@ export default {
   props: {
   },
   computed: {
-    ...mapGetters('users', ['currentUserId', 'user', 'users'])
+    ...mapGetters('users', ['isLogggedIn', 'user', 'users'])
   },
   methods: {
     ...mapActions('users', [
