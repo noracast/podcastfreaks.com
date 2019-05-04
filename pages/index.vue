@@ -1,6 +1,9 @@
 <template lang="pug">
 div.root
-  button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
+  .buttons-right
+    button.download(@click="buttons-rightOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML!!
+    button-login.login
+
   v-client-table(:columns="columns" :data="data" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
@@ -37,12 +40,16 @@ div.root
 <style lang="sass" scoped>
 $color_new: #e100ff
 
-.download
-  margin-right: 20px
+.buttons-right
   position: absolute
-  width: 150px
   top: 20px
   right: 0
+  display: flex
+  .download
+    width: 150px
+    margin-right: 20px
+  .login
+    margin-right: 20px
 
 .new
   $color: #f7ff00
@@ -314,6 +321,7 @@ import { saveAs } from 'file-saver'
 
 export default {
   components: {
+    'button-login': require('~/components/button-login.vue').default,
     'button-text': require('~/components/button-text.vue').default,
     'cover': require('~/components/cover.vue').default,
     'duration': require('~/components/duration.vue').default
