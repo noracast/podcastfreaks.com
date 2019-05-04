@@ -55,6 +55,7 @@
     "file-extension": "^4.0.5",
     "lodash": "^4.17.11",
     "netlify-cli": "^2.11.11",
+    "netlify-lambda": "^1.4.7",
     "node-sass": "^4.11.0",
     "node-wget-promise": "^0.1.6",
     "path": "^0.12.7",
