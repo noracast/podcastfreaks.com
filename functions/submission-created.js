@@ -1,6 +1,6 @@
-exports.handler = (event, context) => {
-  return {
+exports.handler = (event, context, callback) => {
+  callback(null, {
     statusCode: 200,
-    body: 'hogehogehogehoge'
-  };
+    body: 'hello!'
+  })
 };
