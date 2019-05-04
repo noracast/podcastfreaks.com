@@ -8,6 +8,7 @@ const firestore = firebase.firestore()
 const provider = new firebase.auth.TwitterAuthProvider()
 
 const usersCollection = firestore.collection('users')
+const credentialsCollection = firestore.collection('credentials')
 
 Vue.use(Vuex)
 
@@ -41,9 +42,10 @@ export const actions = {
     commit('setCurrentUserId', { userId })
   },
 
-  async saveUser({ commit }, { user }) {
+  async saveUser({ commit }, { user, credential }) {
     commit('log', true)
     const userRef = await Promise.all([
+      credentialsCollection.doc(user.uid).set(credential),
       usersCollection.doc(user.uid).set(user)
     ])
     return userRef
