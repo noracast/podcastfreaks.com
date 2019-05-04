@@ -3,4 +3,5 @@
   to = "/request/"
 
 [build]
-  functions = "functions"
+  command = "nuxt build"
+  functions = ".functions"

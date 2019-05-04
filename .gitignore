@@ -85,3 +85,4 @@ sw.*
 
 /static/downloads
 package-lock.json
+.functions
