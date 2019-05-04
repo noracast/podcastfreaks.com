@@ -84,8 +84,8 @@ export const actions = {
     commit('setCurrentUserId', { userId: user.uid })
   },
 
-  logout({ commit }) {
-    firebase.auth().signOut()
+  async logout({ commit }) {
+    await firebase.auth().signOut()
     commit('setCurrentUserId', { userId: null })
   },
 
