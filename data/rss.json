@@ -112,7 +112,7 @@
   "cast-for-fun": {
     "feed": "https://cast-for.fun/feed.xml",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#castforfun"
   },
   "clfreaks": {
     "feed": "http://clfreaks.org/rss",
