@@ -589,6 +589,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "taromatsumura": {
+    "feed": "https://anchor.fm/s/4feb40c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#radiotarosite"
+  },
   "techbooster": {
     "feed": "https://techbooster.org/feed/podcast/",
     "twitter": "@TechBooster",
