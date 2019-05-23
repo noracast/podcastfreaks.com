@@ -389,6 +389,11 @@
     "twitter": "@noedgexpodcast",
     "hashtag": "#のたた"
   },
+  "nominagaradio": {
+    "feed": "https://anchor.fm/s/9e6932c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#飲みながラジオ"
+  },
   "noracast": {
     "feed": "https://noracast.jp/feed.xml",
     "twitter": "@noracast_",
