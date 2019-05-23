@@ -259,6 +259,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "hiyokoMofu-fm": {
+    "feed": "https://mofumofu2.github.io/hiyokoMofu-fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#hiyokoMofufm"
+  },
   "inakafm": {
     "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
     "twitter": "@inaka_fm",
