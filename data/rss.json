@@ -450,7 +450,7 @@
     "hashtag": "#phpondoc"
   },
   "pilotboat_cast": {
-    "feed": "hhttp://feeds.soundcloud.com/users/soundcloud:users:233003387/sounds.rss",
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233003387/sounds.rss",
     "twitter": "@pilotboat_su",
     "hashtag": "#pilotboat"
   },
