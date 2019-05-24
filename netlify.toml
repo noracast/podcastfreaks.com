@@ -3,5 +3,6 @@
   to = "/request/"
 
 [build]
-  command = "nuxt build"
-  functions = ".functions"
+  command = "yarn build"
+  functions = "functions"
+  publish = "dist"
