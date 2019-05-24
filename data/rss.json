@@ -259,6 +259,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "hiyokoMofu-fm": {
+    "feed": "https://mofumofu2.github.io/hiyokoMofu-fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#hiyokoMofufm"
+  },
   "inakafm": {
     "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
     "twitter": "@inaka_fm",
@@ -444,6 +449,11 @@
     "twitter": null,
     "hashtag": "#phpondoc"
   },
+  "pilotboat_cast": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233003387/sounds.rss",
+    "twitter": "@pilotboat_su",
+    "hashtag": "#pilotboat"
+  },
   "podpatch": {
     "feed": "http://feedpress.me/podpatch",
     "twitter": null,
@@ -578,6 +588,11 @@
     "feed": "https://tarumaefm.com/feed.xml",
     "twitter": null,
     "hashtag": null
+  },
+  "taromatsumura": {
+    "feed": "https://anchor.fm/s/4feb40c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#radiotarosite"
   },
   "techbooster": {
     "feed": "https://techbooster.org/feed/podcast/",
