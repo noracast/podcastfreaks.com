@@ -294,6 +294,11 @@
     "twitter": null,
     "hashtag": "#プログラム雑談"
   },
+  "kinokoru": {
+    "feed": "https://anchor.fm/s/a7f362c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#きのこる"
+  },
   "kumocast": {
     "feed": "http://feeds.feedburner.com/tumblr/IkZP",
     "twitter": "@kumocast",
