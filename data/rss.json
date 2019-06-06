@@ -299,6 +299,11 @@
     "twitter": null,
     "hashtag": "#きのこる"
   },
+  "kinsuki": {
+    "feed": "https://anchor.fm/s/7aac524/podcast/rss",
+    "twitter": "@kinsukicom",
+    "hashtag": null
+  },
   "kumocast": {
     "feed": "http://feeds.feedburner.com/tumblr/IkZP",
     "twitter": "@kumocast",
