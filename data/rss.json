@@ -574,6 +574,11 @@
     "twitter": "@strongxstrong_2",
     "hashtag": "#Sto2"
   },
+  "sudachi": {
+    "feed": "https://anchor.fm/s/9010910/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "takram": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
