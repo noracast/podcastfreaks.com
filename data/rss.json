@@ -94,6 +94,11 @@
     "twitter": null,
     "hashtag": "#becochan"
   },
+  "bitcoiners": {
+    "feed": "https://anchor.fm/s/a8b554c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ビットコイナー反省会"
+  },
   "bkkcast": {
     "feed": "https://bkkcast.me/index.xml",
     "twitter": "@bkkcast",
