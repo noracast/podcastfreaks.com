@@ -214,6 +214,11 @@
     "twitter": null,
     "hashtag": "#エスノエフエム"
   },
+  "facast": {
+    "feed": "https://facast.net/feed.xml",
+    "twitter": "@facast_net",
+    "hashtag": "#FAcast"
+  },
   "free-engineer": {
     "feed": "https://free-engineer.xrea.jp/feed/podcast",
     "twitter": null,
