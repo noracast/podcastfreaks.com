@@ -529,6 +529,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "saotomeotolife": {
+    "feed": "https://anchor.fm/s/3f4b19c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#さおとめおとらいふ"
+  },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
