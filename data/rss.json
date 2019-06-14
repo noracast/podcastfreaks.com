@@ -624,6 +624,11 @@
     "twitter": null,
     "hashtag": "#testradio"
   },
+  "the-potluck-cast": {
+    "feed": "https://anchor.fm/s/bf3149c/podcast/rss",
+    "twitter": "@ThePotluckUs",
+    "hashtag": null
+  },
   "the-startup-podcast": {
     "feed": "https://podcast.no-new-folk.com/feed/",
     "twitter": null,
