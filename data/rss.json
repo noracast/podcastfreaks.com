@@ -214,6 +214,11 @@
     "twitter": null,
     "hashtag": "#エスノエフエム"
   },
+  "facast": {
+    "feed": "https://facast.net/feed.xml",
+    "twitter": "@facast_net",
+    "hashtag": "#FAcast"
+  },
   "free-engineer": {
     "feed": "https://free-engineer.xrea.jp/feed/podcast",
     "twitter": null,
@@ -633,6 +638,11 @@
     "feed": "http://testradio.fm/feed/",
     "twitter": null,
     "hashtag": "#testradio"
+  },
+  "the-potluck-cast": {
+    "feed": "https://anchor.fm/s/bf3149c/podcast/rss",
+    "twitter": "@ThePotluckUs",
+    "hashtag": null
   },
   "the-startup-podcast": {
     "feed": "https://podcast.no-new-folk.com/feed/",
