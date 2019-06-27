@@ -539,6 +539,11 @@
     "twitter": null,
     "hashtag": "#さおとめおとらいふ"
   },
+  "secure-brigade": {
+    "feed": "https://secure-brigade.com/podcast/index.xml",
+    "twitter": null,
+    "hashtag": "#セキュア旅団"
+  },
   "shiganai": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
