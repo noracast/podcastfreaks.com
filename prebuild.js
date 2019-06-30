@@ -57,7 +57,12 @@ const fetchFeed = async key => {
   }
 
   // Download RSS
-  await wget(src, { output: dist_rss }).catch((err) => { error('wget', dist_rss, err) })
+  let err = ''
+  const download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
+  if(!download){
+    error('wget', dist_rss, err)
+    return // catch内では、fetchFeedを抜けられないのでここでreturn
+  }
 
   // Read RSS
   const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
