@@ -129,7 +129,7 @@ const fetchFeed = async key => {
 (async () => {
 
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
   // Get and merge twitter data
   if(!NO_TWITTER){
