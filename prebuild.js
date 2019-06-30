@@ -13,6 +13,15 @@ import xml2js from 'xml2js'
 import { promisify } from 'util'
 import { RFC822 } from './scripts/constants'
 
+// ----------------
+// Detect arguments
+const args = process.argv.slice() // copy
+args.splice(0, 2) // remove not 'arg' values
+
+// CLI arguments list
+const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
+// ----------------
+
 const DOWNLOADS_DIR = 'static/downloads'
 const RSS_DIR       = 'static/downloads/rss'
 const COVER_DIR     = 'static/downloads/cover'
@@ -111,28 +120,31 @@ const fetchFeed = async key => {
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
 
   // Get and merge twitter data
-  const accounts = {}
-  for(let key in rss) {
-    if(rss[key]){
-      if(rss[key].twitter) {
-        accounts[key] = {
-          twitter: rss[key].twitter.replace('@','')
+  if(!NO_TWITTER){
+    console.log('[prebuild log] Fetching twitter data')
+    const accounts = {}
+    for(let key in rss) {
+      if(rss[key]){
+        if(rss[key].twitter) {
+          accounts[key] = {
+            twitter: rss[key].twitter.replace('@','')
+          }
         }
-      }
-      if(rss[key].hashtag) {
-        if(!accounts[key]) {
-          accounts[key] = {}
+        if(rss[key].hashtag) {
+          if(!accounts[key]) {
+            accounts[key] = {}
+          }
+          accounts[key]['hashtag'] = rss[key].hashtag
         }
-        accounts[key]['hashtag'] = rss[key].hashtag
       }
     }
-  }
-  const twitterData = await fetchTwitter(accounts)
-  for(let key in twitterData) {
-    // Ignore if key is not exist in channels (maybe it couldn't get with error)
-    if(channels[key]){
-      for(let prop in twitterData[key]){
-        channels[key][prop] = twitterData[key][prop]
+    const twitterData = await fetchTwitter(accounts)
+    for(let key in twitterData) {
+      // Ignore if key is not exist in channels (maybe it couldn't get with error)
+      if(channels[key]){
+        for(let prop in twitterData[key]){
+          channels[key][prop] = twitterData[key][prop]
+        }
       }
     }
   }

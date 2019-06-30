@@ -8,6 +8,7 @@
     "dev": "nuxt",
     "start": "nuxt start",
     "prebuild": "babel-node prebuild.js",
+    "prebuild:no-twitter": "babel-node prebuild.js --no-twitter",
     "build": "nuxt generate --spa",
     "build:skip": "nuxt generate --spa",
     "deploy": "netlify deploy --dir=dist --prod",
