@@ -55,6 +55,7 @@ const fetchFeed = async key => {
     console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
     errors.push({label, rss, error})
   }
+  //------------------
 
   // Download RSS
   let err = ''
@@ -70,6 +71,7 @@ const fetchFeed = async key => {
     error('readFile', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
+
   const json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
     error('xmlToJSON', dist_rss)
@@ -128,12 +130,15 @@ const fetchFeed = async key => {
 
 (async () => {
 
+  const log = function(text){
+    console.error(`[prebuild log] ${text}`)
+  }
+
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
-  // Get and merge twitter data
   if(!NO_TWITTER){
-    console.log('[prebuild log] Fetching twitter data')
+    log('Fetching twitter data')
     const accounts = {}
     for(let key in rss) {
       if(rss[key]){
@@ -161,7 +166,7 @@ const fetchFeed = async key => {
     }
   }
 
-  // Export to list file ordered by pubDate
+  log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
@@ -172,7 +177,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  // Download cover images serially to avoid 404
+  log('Download cover images serially to avoid 404')
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
   const data = {
