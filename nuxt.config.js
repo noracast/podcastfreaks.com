@@ -60,6 +60,7 @@ module.exports = {
   plugins: [
     '~/plugins/filters',
     '~/plugins/vue-clipboard2',
+    '~/plugins/vue-highlightjs',
     '~/plugins/vue-responsive-components',
     '~/plugins/vue-table-2'
   ],

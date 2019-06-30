@@ -98,24 +98,28 @@ class Util {
 
   // 画像のダウンロードとリサイズ
   downloadAndResize(_key, _src, _dist) {
-    return wgetp(_src, {output: _dist}).then(() => {
-      const ext = path.extname(_dist)
-      const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
-      const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-      sharp(_dist)
-        .resize(120)
-        .toFile(ext_120, (err) => {
-          if(err){
-            console.error('[prebuild error]', _key, err)
-          }
-        })
-        .resize(60)
-        .toFile(ext_60, (err) => {
-          if(err){
-            console.error('[prebuild error]', _key, err)
-          }
-        })
-    })
+    return wgetp(_src, {output: _dist})
+              .then(() => {
+              const ext = path.extname(_dist)
+              const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+              const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+              sharp(_dist)
+                .resize(120)
+                .toFile(ext_120, (err) => {
+                  if(err){
+                    console.error('[prebuild error]', _key, err)
+                  }
+                })
+                .resize(60)
+                .toFile(ext_60, (err) => {
+                  if(err){
+                    console.error('[prebuild error]', _key, err)
+                  }
+                })
+            })
+            .catch((err) => {
+              console.log('[prebuild error]', _key, err)
+            })
   }
 
   getEpisodesIn2Weeks(episodes, key, title) {

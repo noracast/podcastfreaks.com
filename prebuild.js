@@ -13,6 +13,15 @@ import xml2js from 'xml2js'
 import { promisify } from 'util'
 import { RFC822 } from './scripts/constants'
 
+// ----------------
+// Detect arguments
+const args = process.argv.slice() // copy
+args.splice(0, 2) // remove not 'arg' values
+
+// CLI arguments list
+const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
+// ----------------
+
 const DOWNLOADS_DIR = 'static/downloads'
 const RSS_DIR       = 'static/downloads/rss'
 const COVER_DIR     = 'static/downloads/cover'
@@ -33,6 +42,15 @@ let latest_pubdates = []
 let channels = {}
 let covers = {}
 let episodeCount = 0
+let errors = []
+
+const error = function(label, rss, error){
+  console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
+  errors.push({label, rss, error})
+}
+const log = function(text){
+  console.error(`[prebuild log] ${text}`)
+}
 
 process.on('unhandledRejection', console.dir)
 
@@ -40,18 +58,28 @@ const fetchFeed = async key => {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
 
+  // Handling errors
+
+  //------------------
+
   // Download RSS
-  await wget(src, { output: dist_rss }).catch((err) => { console.error(`[prebuild error] read | ${dist_rss}`, err) })
+  let err = ''
+  const download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
+  if(!download){
+    error('wget', dist_rss, err)
+    return // catch内では、fetchFeedを抜けられないのでここでreturn
+  }
 
   // Read RSS
   const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
   if(!xml){
-    console.error(`[prebuild error] read | ${dist_rss}`)
+    error('readFile', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
+
   const json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
-    console.error(`[prebuild error] parse | ${dist_rss}`)
+    error('xmlToJSON', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
@@ -106,38 +134,39 @@ const fetchFeed = async key => {
 }
 
 (async () => {
-
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { console.error('[fetchFeed error]', err) })
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
-  // Get and merge twitter data
-  const accounts = {}
-  for(let key in rss) {
-    if(rss[key]){
-      if(rss[key].twitter) {
-        accounts[key] = {
-          twitter: rss[key].twitter.replace('@','')
+  if(!NO_TWITTER){
+    log('Fetching twitter data')
+    const accounts = {}
+    for(let key in rss) {
+      if(rss[key]){
+        if(rss[key].twitter) {
+          accounts[key] = {
+            twitter: rss[key].twitter.replace('@','')
+          }
+        }
+        if(rss[key].hashtag) {
+          if(!accounts[key]) {
+            accounts[key] = {}
+          }
+          accounts[key]['hashtag'] = rss[key].hashtag
         }
       }
-      if(rss[key].hashtag) {
-        if(!accounts[key]) {
-          accounts[key] = {}
+    }
+    const twitterData = await fetchTwitter(accounts)
+    for(let key in twitterData) {
+      // Ignore if key is not exist in channels (maybe it couldn't get with error)
+      if(channels[key]){
+        for(let prop in twitterData[key]){
+          channels[key][prop] = twitterData[key][prop]
         }
-        accounts[key]['hashtag'] = rss[key].hashtag
       }
     }
   }
-  const twitterData = await fetchTwitter(accounts)
-  for(let key in twitterData) {
-    // Ignore if key is not exist in channels (maybe it couldn't get with error)
-    if(channels[key]){
-      for(let prop in twitterData[key]){
-        channels[key][prop] = twitterData[key][prop]
-      }
-    }
-  }
 
-  // Export to list file ordered by pubDate
+  log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
@@ -148,7 +177,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  // Download cover images serially to avoid 404
+  log('Download cover images serially to avoid 404')
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
   const data = {
@@ -156,7 +185,8 @@ const fetchFeed = async key => {
     episodes_in_2weeks,
     channels,
     updated: new Date(),
-    episodeCount
+    episodeCount,
+    errors
   }
 
   // Save to file
