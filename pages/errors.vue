@@ -15,9 +15,6 @@
 import build_info from '~/static/downloads/build_info.json'
 
 export default {
-  // components: {
-  //   'vue-json-pretty': require('vue-json-pretty').default
-  // },
   head() {
     return {
       title: 'Errors | Podcast Freaks - Japanese techie podcast archive'
