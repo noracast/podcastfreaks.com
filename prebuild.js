@@ -51,16 +51,9 @@ const fetchFeed = async key => {
 
   // Handling errors
   let errors = []
-  const error = function(label, rss, err){
-    const log = `[prebuild error] ${label} | ${rss}`
-    if(err){
-      console.error(log, err)
-      errors.push(`${log} | ${err}`)
-    }
-    else {
-      console.error(log)
-      errors.push(log)
-    }
+  const error = function(label, rss, error){
+    console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
+    errors.push({label, rss, error})
   }
 
   // Download RSS
