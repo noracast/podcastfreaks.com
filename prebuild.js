@@ -42,6 +42,15 @@ let latest_pubdates = []
 let channels = {}
 let covers = {}
 let episodeCount = 0
+let errors = []
+
+const error = function(label, rss, error){
+  console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
+  errors.push({label, rss, error})
+}
+const log = function(text){
+  console.error(`[prebuild log] ${text}`)
+}
 
 process.on('unhandledRejection', console.dir)
 
@@ -50,11 +59,7 @@ const fetchFeed = async key => {
   const dist_rss = `${RSS_DIR}/${key}.rss`
 
   // Handling errors
-  let errors = []
-  const error = function(label, rss, error){
-    console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
-    errors.push({label, rss, error})
-  }
+
   //------------------
 
   // Download RSS
@@ -129,11 +134,6 @@ const fetchFeed = async key => {
 }
 
 (async () => {
-
-  const log = function(text){
-    console.error(`[prebuild log] ${text}`)
-  }
-
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
