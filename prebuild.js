@@ -64,7 +64,7 @@ const fetchFeed = async key => {
   }
 
   // Download RSS
-  await wget(src, { output: dist_rss }).catch((err) => { error('wget', dist_rss, err)})
+  await wget(src, { output: dist_rss }).catch((err) => { error('wget', dist_rss, err) })
 
   // Read RSS
   const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
