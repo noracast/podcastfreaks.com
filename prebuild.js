@@ -49,18 +49,32 @@ const fetchFeed = async key => {
   const src = rss[key].feed
   const dist_rss = `${RSS_DIR}/${key}.rss`
 
+  // Handling errors
+  let errors = []
+  const error = function(label, rss, err){
+    const log = `[prebuild error] ${label} | ${rss}`
+    if(err){
+      console.error(log, err)
+      errors.push(`${log} | ${err}`)
+    }
+    else {
+      console.error(log)
+      errors.push(log)
+    }
+  }
+
   // Download RSS
-  await wget(src, { output: dist_rss }).catch((err) => { console.error(`[prebuild error] read | ${dist_rss}`, err) })
+  await wget(src, { output: dist_rss }).catch((err) => { error('read', dist_rss, err)})
 
   // Read RSS
   const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
   if(!xml){
-    console.error(`[prebuild error] read | ${dist_rss}`)
+    error('read', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
   const json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
-    console.error(`[prebuild error] parse | ${dist_rss}`)
+    error('parse', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
@@ -168,7 +182,8 @@ const fetchFeed = async key => {
     episodes_in_2weeks,
     channels,
     updated: new Date(),
-    episodeCount
+    episodeCount,
+    errors
   }
 
   // Save to file
