@@ -64,17 +64,17 @@ const fetchFeed = async key => {
   }
 
   // Download RSS
-  await wget(src, { output: dist_rss }).catch((err) => { error('read', dist_rss, err)})
+  await wget(src, { output: dist_rss }).catch((err) => { error('wget', dist_rss, err)})
 
   // Read RSS
   const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
   if(!xml){
-    error('read', dist_rss)
+    error('readFile', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
   const json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
-    error('parse', dist_rss)
+    error('xmlToJSON', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
