@@ -758,5 +758,10 @@
     "feed": "https://anchor.fm/s/7660b00/podcast/rss",
     "twitter": null,
     "hashtag": "#ゆうかねラジオ"
+  },
+  "yuru28": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:637230513/sounds.rss",
+    "twitter": "@yuru28club",
+    "hashtag": "#yuru28"
   }
 }
