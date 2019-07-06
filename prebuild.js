@@ -7,6 +7,7 @@ import fs from 'fs'
 import moment from 'moment'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
+import serializeError from 'serialize-error'
 import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
@@ -46,7 +47,7 @@ let errors = []
 
 const error = function(label, rss, error){
   console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
-  errors.push({label, rss, error})
+  errors.push({label, rss, error: serializeError(error)})
 }
 const log = function(text){
   console.error(`[prebuild log] ${text}`)
