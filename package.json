@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "start": "nuxt start",
     "prebuild": "babel-node prebuild.js",
     "prebuild:no-twitter": "babel-node prebuild.js --no-twitter",
     "build": "nuxt generate --spa",
