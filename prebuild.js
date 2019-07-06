@@ -191,7 +191,6 @@ const fetchFeed = async key => {
   }
 
   // Save to file
-  console.log(data)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
 })();
 
