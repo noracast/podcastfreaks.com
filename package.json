@@ -63,6 +63,7 @@
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
+    "serialize-error": "^4.1.0",
     "sharp": "^0.22.0",
     "twitter": "^1.7.1",
     "twitter-followers-count": "^1.0.3",
