@@ -259,6 +259,11 @@
     "twitter": null,
     "hashtag": "#gunosyfm"
   },
+  "haijico": {
+    "feed": "https://podcast.haiji.co/feed",
+    "twitter": null,
+    "hashtag": "#haijico"
+  },
   "hbSAKABA": {
     "feed": "https://heartbeats.jp/hbsakaba/rss",
     "twitter": "@heartbeatsjp",
