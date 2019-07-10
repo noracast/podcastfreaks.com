@@ -194,6 +194,11 @@
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
   },
+  "dosync-radio": {
+    "feed": "https://anchor.fm/s/c133c40/podcast/rss",
+    "twitter": "@dosync_radio",
+    "hashtag": "#dosync_radio"
+  },
   "elle-height": {
     "feed": "http://feedpress.me/elle-height",
     "twitter": null,
