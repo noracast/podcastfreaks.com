@@ -54,7 +54,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "file-extension": "^4.0.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "netlify-cli": "^2.11.11",
     "node-sass": "^4.11.0",
     "node-wget-promise": "^0.1.6",
