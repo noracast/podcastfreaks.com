@@ -773,5 +773,10 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:637230513/sounds.rss",
     "twitter": "@yuru28club",
     "hashtag": "#yuru28"
+  },
+  "Nomadineers": {
+    "feed": "https://anchor.fm/s/c2ef00c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#Nomadineers"
   }
 }
