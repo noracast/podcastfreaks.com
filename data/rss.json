@@ -429,6 +429,11 @@
     "twitter": null,
     "hashtag": "#飲みながラジオ"
   },
+  "nomadineers": {
+    "feed": "https://anchor.fm/s/c2ef00c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#Nomadineers"
+  },
   "noracast": {
     "feed": "https://noracast.jp/feed.xml",
     "twitter": "@noracast_",
