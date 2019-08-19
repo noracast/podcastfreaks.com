@@ -284,6 +284,11 @@
     "twitter": null,
     "hashtag": "#hiyokoMofufm"
   },
+  "ij-cast": {
+    "feed": "https://cast.innovator.jp.net/index.xml",
+    "twitter": null,
+    "hashtag": "#ijcast"
+  },
   "inakafm": {
     "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
     "twitter": "@inaka_fm",
