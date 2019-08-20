@@ -189,6 +189,11 @@
     "twitter": "@diverse_inc",
     "hashtag": "#diverse_inc"
   },
+  "dokanai": {
+    "feed": "https://anchor.fm/s/bafd2a4/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "dongurifm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
     "twitter": "@dongurifm",
