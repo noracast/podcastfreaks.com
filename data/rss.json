@@ -74,6 +74,11 @@
     "twitter": "@arisa_dev",
     "hashtag": null
   },
+  "ashikagacast": {
+    "feed": "https://anchor.fm/s/9231960/podcast/rss",
+    "twitter": "@ashikagacast",
+    "hashtag": "#アシカガCAST"
+  },
   "automagic": {
     "feed": "http://feedpress.me/automagic",
     "twitter": null,
@@ -138,11 +143,6 @@
     "feed": "http://corklab.seesaa.net/index20.rdf",
     "twitter": null,
     "hashtag": null
-  },
-  "community-drive": {
-    "feed": "https://community-drive.com/feed/",
-    "twitter": null,
-    "hashtag": "#cmntdrv"
   },
   "conne-radi": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
