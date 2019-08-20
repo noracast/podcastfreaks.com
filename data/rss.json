@@ -539,6 +539,11 @@
     "twitter": "@rehashfm",
     "hashtag": "#rehashfm"
   },
+  "researchatfm": {
+    "feed": "https://researchat.fm/feed.xml",
+    "twitter": "@researchatfm",
+    "hashtag": "#researchatfm"
+  },
   "riywo": {
     "feed": "http://feeds.feedburner.com/RiywosPodcast",
     "twitter": null,
