@@ -270,9 +270,9 @@
     "hashtag": "#gunosyfm"
   },
   "haijico": {
-    "feed": "https://podcast.haiji.co/feed",
-    "twitter": null,
-    "hashtag": "#haijico"
+    "feed": "https://export.fm/feed",
+    "twitter": "@exportfm",
+    "hashtag": "#exportfm"
   },
   "hbSAKABA": {
     "feed": "https://heartbeats.jp/hbsakaba/rss",
