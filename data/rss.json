@@ -99,6 +99,11 @@
     "twitter": null,
     "hashtag": "#becochan"
   },
+  "bitbitecoin": {
+    "feed": "https://bitbitecoin.com/feed/?lang=ja",
+    "twitter": "@bitbitecoin",
+    "hashtag": null
+  },
   "bitcoiners": {
     "feed": "https://anchor.fm/s/a8b554c/podcast/rss",
     "twitter": null,
@@ -244,6 +249,11 @@
     "twitter": null,
     "hashtag": "#fukabori"
   },
+  "gaiax-tech": {
+    "feed": "https://anchor.fm/s/d41b3e4/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "genba": {
     "feed": "https://genba.fm/podcast.xml",
     "twitter": null,
@@ -288,6 +298,11 @@
     "feed": "https://mofumofu2.github.io/hiyokoMofu-fm/feed.xml",
     "twitter": null,
     "hashtag": "#hiyokoMofufm"
+  },
+  "hukugyo": {
+    "feed": "https://anchor.fm/s/bcea1c0/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "ij-cast": {
     "feed": "https://cast.innovator.jp.net/index.xml",
@@ -699,6 +714,11 @@
     "twitter": "@toiee_lab",
     "hashtag": null
   },
+  "tokaitomori": {
+    "feed": "http://feeds.feedburner.com/podstudio/tm",
+    "twitter": null,
+    "hashtag": null
+  },
   "tommie_nico": {
     "feed": "http://podcast.tommie2.info/co9320/rss.xml",
     "twitter": null,
@@ -769,10 +789,20 @@
     "twitter": null,
     "hashtag": null
   },
+  "x-talk": {
+    "feed": "https://www.yancan.tech/feed.xml",
+    "twitter": "@Xtalk11",
+    "hashtag": null
+  },
   "yancanfm": {
     "feed": "https://www.yancan.tech/feed.xml",
     "twitter": null,
     "hashtag": "#yancanfm"
+  },
+  "yabaihomepageyasan": {
+    "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "yatteiki": {
     "feed": "http://feeds.feedburner.com/Yatteikifm",
