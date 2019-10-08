@@ -1,6 +1,6 @@
 # Podcast Freaks
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status)](https://app.netlify.com/sites/podcast-freaks/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status)](https://app.netlify.com/sites/podcastfreaks.com/deploys)
 
 Podcast Freaks - Japanese techie podcast archive
 
@@ -58,4 +58,4 @@ Ref: https://qiita.com/hiropy0123/items/2e8d14ea66b78ab64847
 
 You can create another podcast archives by replacing `data/rss.json` file yourself.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/noracast/podcast-freaks)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/noracast/podcastfreaks.com)

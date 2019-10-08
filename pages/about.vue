@@ -19,12 +19,12 @@
     | フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。
     br
     br
-    a.noborder(href="https://app.netlify.com/sites/podcast-freaks/deploys" target="_blank" rel="noopener")
+    a.noborder(href="https://app.netlify.com/sites/podcastfreaks.com/deploys" target="_blank" rel="noopener")
       img.badge(src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status")
   h3 Contribution
   p
     | このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br>
-    a(href="https://github.com/noracast/podcast-freaks" target="_blank" rel="noopener") https://github.com/noracast/podcast-freaks
+    a(href="https://github.com/noracast/podcastfreaks.com" target="_blank" rel="noopener") https://github.com/noracast/podcastfreaks.com
 </template>
 
 <style lang="sass" scoped>
