@@ -795,7 +795,7 @@
     "hashtag": null
   },
   "x-talk": {
-    "feed": "https://www.yancan.tech/feed.xml",
+    "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
     "hashtag": null
   },
@@ -805,7 +805,7 @@
     "hashtag": "#yancanfm"
   },
   "yabaihomepageyasan": {
-    "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
+    "feed": "https://yabaihomepageyasan.com/feed/podcast/",
     "twitter": null,
     "hashtag": null
   },
