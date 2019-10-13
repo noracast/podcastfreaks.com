@@ -509,6 +509,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "oyakataam": {
+    "feed": "https://anchor.fm/s/751e148/podcast/rss",
+    "twitter": null,
+    "hashtag": "oyakataam"
+  },  
   "php-genba": {
     "feed": "https://php-genba.shin1x1.com/rss",
     "twitter": null,
