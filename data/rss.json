@@ -94,6 +94,11 @@
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
+  "barihebo": {
+    "feed": "http://sky-plant.com/podcast/rss20.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "bdpfm": {
     "feed": "http://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
