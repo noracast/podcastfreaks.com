@@ -489,6 +489,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "offtopicjp": {
+    "feed": "https://anchor.fm/s/7369a14/podcast/rss",
+    "twitter": "@OffTopicJP",
+    "hashtag": null
+  },
   "omoiyarifm": {
     "feed": "http://feeds.lean-agile.fm/omoiyarifm",
     "twitter": null,
