@@ -549,6 +549,11 @@
     "twitter": "@prototype_fm",
     "hashtag": "#prototypefm"
   },
+  "pydatajp": {
+    "feed": "https://anchor.fm/s/7b15e98/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "railsdm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
     "twitter": "@railsdm",
