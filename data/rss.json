@@ -389,6 +389,11 @@
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
   },
+  "meetsfm": {
+    "feed": "https://anchor.fm/s/81ca130/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "mentetsu": {
     "feed": "https://anchor.fm/s/5959ffc/podcast/rss",
     "twitter": "@mentetsu_hiroba",
