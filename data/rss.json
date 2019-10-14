@@ -409,6 +409,11 @@
     "twitter": null,
     "hashtag": "#mercanfm"
   },
+  "miraitech": {
+    "feed": "https://anchor.fm/s/cdcf4e0/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "misreading": {
     "feed": "http://misreading.chat/category/episodes/feed/",
     "twitter": null,
