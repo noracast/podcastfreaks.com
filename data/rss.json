@@ -634,6 +634,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "siliconvalleyrw": {
+    "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
+    "twitter": null,
+    "hashtag": null
+  },
   "snobbyfm": {
     "feed": "https://houka-go-projects.github.io/feed.xml",
     "twitter": "@snobbyfm",
