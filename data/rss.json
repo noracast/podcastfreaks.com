@@ -629,6 +629,11 @@
     "twitter": null,
     "hashtag": "#shinjukult"
   },
+  "shirokane-kougyou": {
+    "feed": "https://shirokane-kougyou.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#白金鉱業fm"
+  },
   "shock-sheets-tech": {
     "feed": "http://feeds.feedburner.com/shock-sheets-tech",
     "twitter": null,
