@@ -94,6 +94,11 @@
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
+  "barihebo": {
+    "feed": "http://sky-plant.com/podcast/rss20.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "bdpfm": {
     "feed": "http://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
@@ -389,6 +394,11 @@
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
   },
+  "meetsfm": {
+    "feed": "https://anchor.fm/s/81ca130/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "mentetsu": {
     "feed": "https://anchor.fm/s/5959ffc/podcast/rss",
     "twitter": "@mentetsu_hiroba",
@@ -398,6 +408,11 @@
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
     "twitter": null,
     "hashtag": "#mercanfm"
+  },
+  "miraitech": {
+    "feed": "https://anchor.fm/s/cdcf4e0/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "misreading": {
     "feed": "http://misreading.chat/category/episodes/feed/",
@@ -484,6 +499,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "offtopicjp": {
+    "feed": "https://anchor.fm/s/7369a14/podcast/rss",
+    "twitter": "@OffTopicJP",
+    "hashtag": null
+  },
   "omoiyarifm": {
     "feed": "http://feeds.lean-agile.fm/omoiyarifm",
     "twitter": null,
@@ -543,6 +563,11 @@
     "feed": "https://www.prototype.fm/rss",
     "twitter": "@prototype_fm",
     "hashtag": "#prototypefm"
+  },
+  "pydatajp": {
+    "feed": "https://anchor.fm/s/7b15e98/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "railsdm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
@@ -619,8 +644,18 @@
     "twitter": null,
     "hashtag": "#shinjukult"
   },
+  "shirokane-kougyou": {
+    "feed": "https://shirokane-kougyou.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#白金鉱業fm"
+  },
   "shock-sheets-tech": {
     "feed": "http://feeds.feedburner.com/shock-sheets-tech",
+    "twitter": null,
+    "hashtag": null
+  },
+  "siliconvalleyrw": {
+    "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
     "twitter": null,
     "hashtag": null
   },
