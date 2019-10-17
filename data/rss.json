@@ -884,6 +884,11 @@
     "twitter": null,
     "hashtag": "#yomefm"
   },
+  "your-cio": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "yukaneradio": {
     "feed": "https://anchor.fm/s/7660b00/podcast/rss",
     "twitter": null,
