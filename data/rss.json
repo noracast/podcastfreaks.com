@@ -844,6 +844,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "x-hack-tokyo-tech-lab": {
+    "feed": "https://anchor.fm/s/8aff854/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "x-talk": {
     "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
