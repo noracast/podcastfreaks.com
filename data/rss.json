@@ -849,6 +849,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "xrfm": {
+    "feed": "https://xrfm.github.io/feed.xml",
+    "twitter": "@xRfrn",
+    "hashtag": "#xRfm"
+  },
   "x-talk": {
     "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
