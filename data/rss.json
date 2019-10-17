@@ -44,6 +44,11 @@
     "twitter": "@ajitofm",
     "hashtag": "#ajitofm"
   },
+  "akiaki_radio": {
+    "feed": "https://anchor.fm/s/e699a48/podcast/rss",
+    "twitter": null,
+    "hashtag": "#AKIあきラジオ"
+  },
   "anitech": {
     "feed": "https://anitech.fm/feed/",
     "twitter": "@anitechfm",
