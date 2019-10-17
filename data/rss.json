@@ -429,6 +429,11 @@
     "twitter": "@migrationfm",
     "hashtag": "#migrationfm"
   },
+  "monologura": {
+    "feed": "https://anchor.fm/s/e9ee928/podcast/rss",
+    "twitter": null,
+    "hashtag": "#monologura"
+  },
   "mosa": {
     "feed": "https://mosa.fm/feed.xml",
     "twitter": "@mosafmhq",
