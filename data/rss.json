@@ -87,7 +87,7 @@
   "automagic": {
     "feed": "http://feedpress.me/automagic",
     "twitter": null,
-    "hashtag": "#automagic "
+    "hashtag": "#automagic"
   },
   "backspace": {
     "feed": "http://feeds.backspace.fm/backspacefm",
@@ -127,7 +127,7 @@
   "bootfm": {
     "feed": "https://bootfm.github.io/feed.xml",
     "twitter": "@boot_fm",
-    "hashtag": "#bootfm "
+    "hashtag": "#bootfm"
   },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
