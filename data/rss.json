@@ -44,6 +44,11 @@
     "twitter": "@ajitofm",
     "hashtag": "#ajitofm"
   },
+  "akiaki_radio": {
+    "feed": "https://anchor.fm/s/e699a48/podcast/rss",
+    "twitter": null,
+    "hashtag": "#AKIあきラジオ"
+  },
   "anitech": {
     "feed": "https://anitech.fm/feed/",
     "twitter": "@anitechfm",
@@ -87,7 +92,7 @@
   "automagic": {
     "feed": "http://feedpress.me/automagic",
     "twitter": null,
-    "hashtag": "#automagic "
+    "hashtag": "#automagic"
   },
   "backspace": {
     "feed": "http://feeds.backspace.fm/backspacefm",
@@ -127,7 +132,7 @@
   "bootfm": {
     "feed": "https://bootfm.github.io/feed.xml",
     "twitter": "@boot_fm",
-    "hashtag": "#bootfm "
+    "hashtag": "#bootfm"
   },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
@@ -339,6 +344,11 @@
     "twitter": "@iosdcjp",
     "hashtag": "#iosdcfm"
   },
+  "jammingfm": {
+    "feed": "http://jammingfm.s3-website-ap-northeast-1.amazonaws.com/jammingfm.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "jinseifm": {
     "feed": "https://kirimin.github.io/jinseifm/feed",
     "twitter": "@jinseifm",
@@ -424,6 +434,11 @@
     "twitter": "@migrationfm",
     "hashtag": "#migrationfm"
   },
+  "monologura": {
+    "feed": "https://anchor.fm/s/e9ee928/podcast/rss",
+    "twitter": null,
+    "hashtag": "#monologura"
+  },
   "mosa": {
     "feed": "https://mosa.fm/feed.xml",
     "twitter": "@mosafmhq",
@@ -508,6 +523,11 @@
     "feed": "http://feeds.lean-agile.fm/omoiyarifm",
     "twitter": null,
     "hashtag": "#omoiyarifm"
+  },
+  "omsubi": {
+    "feed": "https://anchor.fm/s/b5e36d8/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "oshigotoam": {
     "feed": "https://www.oshigotoam.com/rss",
@@ -839,6 +859,16 @@
     "twitter": null,
     "hashtag": null
   },
+  "x-hack-tokyo-tech-lab": {
+    "feed": "https://anchor.fm/s/8aff854/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
+  "xrfm": {
+    "feed": "https://xrfm.github.io/feed.xml",
+    "twitter": "@xRfrn",
+    "hashtag": "#xRfm"
+  },
   "x-talk": {
     "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
@@ -863,6 +893,11 @@
     "feed": "https://yomefm.github.io/feed.xml",
     "twitter": null,
     "hashtag": "#yomefm"
+  },
+  "your-cio": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
+    "twitter": null,
+    "hashtag": null
   },
   "yukaneradio": {
     "feed": "https://anchor.fm/s/7660b00/podcast/rss",
