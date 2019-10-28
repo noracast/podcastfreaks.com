@@ -399,6 +399,11 @@
     "twitter": "@lnlpninja",
     "hashtag": "#lnlpninja"
   },
+  "marblehatfm": {
+    "feed": "https://anchor.fm/s/b5f2908/podcast/rss",
+    "twitter": null,
+    "hashtag": "#marblehatfm"
+  },
   "mazricafm": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
     "twitter": "@mazrica_jp",
