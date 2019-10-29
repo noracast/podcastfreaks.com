@@ -474,6 +474,11 @@
     "twitter": null,
     "hashtag": "#成し遂げたいam"
   },
+  "nejimakiradio": {
+    "feed": "https://anchor.fm/s/5377cc4/podcast/rss",
+    "twitter": "@nejimakiradio1",
+    "hashtag": "#ポッドもっと"
+  },
   "ndsfm": {
     "feed": "https://nagaokadevelopersstudy.github.io/ndsfm/feed.xml",
     "twitter": null,
