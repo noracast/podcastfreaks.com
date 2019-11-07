@@ -149,6 +149,11 @@
     "twitter": null,
     "hashtag": "#clfreaks"
   },
+  "codeish-jp": {
+    "feed": "https://jp.heroku.com/podcasts/codeish-jp.rss",
+    "twitter": "@herokujp",
+    "hashtag": null
+  },
   "codelunch-fm": {
     "feed": "https://codelunch.fm/rss.xml",
     "twitter": null,
