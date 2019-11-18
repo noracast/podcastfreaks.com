@@ -35,7 +35,7 @@
     "hashtag": null
   },
   "airsap": {
-    "feed": "http://airsap.net/feed/podcast/",
+    "feed": "https://airsap.net/feed/podcast/",
     "twitter": null,
     "hashtag": "#AirSap"
   },
@@ -90,7 +90,7 @@
     "hashtag": "#アシカガCAST"
   },
   "automagic": {
-    "feed": "http://feedpress.me/automagic",
+    "feed": "https://feedpress.me/automagic",
     "twitter": null,
     "hashtag": "#automagic"
   },
@@ -100,12 +100,12 @@
     "hashtag": "#backspacefm"
   },
   "barihebo": {
-    "feed": "http://sky-plant.com/podcast/rss20.xml",
+    "feed": "https://sky-plant.com/podcast/rss20.xml",
     "twitter": null,
     "hashtag": null
   },
   "bdpfm": {
-    "feed": "http://bdpfm.jp/feed.xml",
+    "feed": "https://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
     "hashtag": "#bdpfm"
   },
@@ -145,7 +145,7 @@
     "hashtag": "#castforfun"
   },
   "clfreaks": {
-    "feed": "http://clfreaks.org/rss",
+    "feed": "https://clfreaks.org/rss",
     "twitter": null,
     "hashtag": "#clfreaks"
   },
@@ -210,7 +210,7 @@
     "hashtag": "#DevelopersCafe"
   },
   "design-academy": {
-    "feed": "http://design-academy.jp/feed/podcast/",
+    "feed": "https://design-academy.jp/feed/podcast/",
     "twitter": "@DesignAcademyJP",
     "hashtag": "#デザアカラジオ"
   },
@@ -240,7 +240,7 @@
     "hashtag": "#dosync_radio"
   },
   "elle-height": {
-    "feed": "http://feedpress.me/elle-height",
+    "feed": "https://feedpress.me/elle-height",
     "twitter": null,
     "hashtag": "#elleheight"
   },
@@ -325,7 +325,7 @@
     "hashtag": "#hbsakaba"
   },
   "hiromaeda": {
-    "feed": "http://hiromaeda.com/feed/podcast/",
+    "feed": "https://hiromaeda.com/feed/podcast/",
     "twitter": null,
     "hashtag": null
   },
@@ -445,7 +445,7 @@
     "hashtag": null
   },
   "misreading": {
-    "feed": "http://misreading.chat/category/episodes/feed/",
+    "feed": "https://misreading.chat/category/episodes/feed/",
     "twitter": null,
     "hashtag": "#misreading"
   },
@@ -465,17 +465,17 @@
     "hashtag": "#mosafm"
   },
   "mozaic": {
-    "feed": "http://feed.mozaic.fm/",
+    "feed": "https://feed.mozaic.fm/",
     "twitter": null,
     "hashtag": "#mozaicfm"
   },
   "msrs": {
-    "feed": "http://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
+    "feed": "https://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
     "twitter": null,
     "hashtag": "#MSRS"
   },
   "nanapod": {
-    "feed": "http://nanapod.kozyty.com/rss",
+    "feed": "https://nanapod.kozyty.com/rss",
     "twitter": "@nanapi_nanapod",
     "hashtag": "#nanapod"
   },
@@ -595,7 +595,7 @@
     "hashtag": "#pilotboat"
   },
   "podpatch": {
-    "feed": "http://feedpress.me/podpatch",
+    "feed": "https://feedpress.me/podpatch",
     "twitter": null,
     "hashtag": null
   },
@@ -685,7 +685,7 @@
     "hashtag": "#しがないラジオ"
   },
   "shinamonoradio": {
-    "feed": "http://shinamonoradio.github.io/feed.xml",
+    "feed": "https://shinamonoradio.github.io/feed.xml",
     "twitter": "@shinamonolab",
     "hashtag": "#品モノラジオ"
   },
@@ -785,7 +785,7 @@
     "hashtag": "#techresearchlife"
   },
   "testradio": {
-    "feed": "http://testradio.fm/feed/",
+    "feed": "https://testradio.fm/feed/",
     "twitter": null,
     "hashtag": "#testradio"
   },
@@ -830,7 +830,7 @@
     "hashtag": "#tonight_fm"
   },
   "tsujileaks": {
-    "feed": "http://www.tsujileaks.com/?feed=podcast",
+    "feed": "https://www.tsujileaks.com/?feed=podcast",
     "twitter": null,
     "hashtag": "#セキュリティのアレ"
   },
@@ -885,7 +885,7 @@
     "hashtag": null
   },
   "windows-podcast": {
-    "feed": "http://windows-podcast.com/podcast/feed",
+    "feed": "https://windows-podcast.com/podcast/feed",
     "twitter": null,
     "hashtag": "#WoodStreamのデジタル生活"
   },
