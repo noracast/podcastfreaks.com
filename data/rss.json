@@ -10,7 +10,7 @@
     "hashtag": "#ゴロゴロトーキング"
   },
   "abefm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:213089033/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:213089033/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -30,7 +30,7 @@
     "hashtag": "#agileradio"
   },
   "ai-radio-by-team-ai": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -60,7 +60,7 @@
     "hashtag": null
   },
   "antipop-fm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:188611416/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:188611416/sounds.rss",
     "twitter": null,
     "hashtag": "#antipopfm"
   },
@@ -170,7 +170,7 @@
     "hashtag": null
   },
   "conne-radi": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -200,7 +200,7 @@
     "hashtag": "#deployfm"
   },
   "devraji": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
     "twitter": null,
     "hashtag": "#デブラジ"
   },
@@ -230,7 +230,7 @@
     "hashtag": null
   },
   "dongurifm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
   },
@@ -250,12 +250,12 @@
     "hashtag": "#EMFM"
   },
   "engineer-meeting": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:117239062/sounds.rss",
     "twitter": "@engineermeeting",
     "hashtag": "#engineermeeting"
   },
   "es-FM": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:161637047/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:161637047/sounds.rss",
     "twitter": null,
     "hashtag": "#エスノエフエム"
   },
@@ -290,7 +290,7 @@
     "hashtag": "#genbafm"
   },
   "girls-do-it": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:222198750/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:222198750/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -305,12 +305,12 @@
     "hashtag": "#grantall"
   },
   "GUlab": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
   "gunosy": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
     "twitter": null,
     "hashtag": "#gunosyfm"
   },
@@ -420,7 +420,7 @@
     "hashtag": "#marblehatfm"
   },
   "mazricafm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
   },
@@ -435,7 +435,7 @@
     "hashtag": null
   },
   "mercanfm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
     "twitter": null,
     "hashtag": "#mercanfm"
   },
@@ -500,12 +500,12 @@
     "hashtag": "#ndsfm"
   },
   "nextstep": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
     "hashtag": "#nextstepfm"
   },
   "nobolycloud": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
     "twitter": null,
     "hashtag": "#nobolycloud"
   },
@@ -535,7 +535,7 @@
     "hashtag": null
   },
   "nyanyanya": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -565,12 +565,12 @@
     "hashtag": "#ossanfm"
   },
   "OSSfm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:302417970/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:302417970/sounds.rss",
     "twitter": null,
     "hashtag": "#OSSfm"
   },
   "otakumode": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:361589768/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:361589768/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -590,7 +590,7 @@
     "hashtag": "#phpondoc"
   },
   "pilotboat_cast": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:233003387/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:233003387/sounds.rss",
     "twitter": "@pilotboat_su",
     "hashtag": "#pilotboat"
   },
@@ -615,7 +615,7 @@
     "hashtag": null
   },
   "railsdm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
     "twitter": "@railsdm",
     "hashtag": "#railsdm"
   },
@@ -665,7 +665,7 @@
     "hashtag": "#rubyistclub"
   },
   "sansan-tech-podcast": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:554143311/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:554143311/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -680,7 +680,7 @@
     "hashtag": "#セキュア旅団"
   },
   "shiganai": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
     "twitter": "@shiganaiRadio",
     "hashtag": "#しがないラジオ"
   },
@@ -725,7 +725,7 @@
     "hashtag": "#soussune"
   },
   "startup-radio": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:253312552/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:253312552/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -750,7 +750,7 @@
     "hashtag": null
   },
   "takram": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
     "hashtag": "#takramcast"
   },
@@ -805,7 +805,7 @@
     "hashtag": "#Tofuにんじん"
   },
   "tofulab": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
     "twitter": "@tofulab_inc",
     "hashtag": null
   },
@@ -860,7 +860,7 @@
     "hashtag": "#obt"
   },
   "wadafm": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
     "twitter": null,
     "hashtag": "#wadafm"
   },
@@ -870,7 +870,7 @@
     "hashtag": "#wakateossan"
   },
   "wasabi": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -890,7 +890,7 @@
     "hashtag": "#WoodStreamのデジタル生活"
   },
   "wyukawa": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -930,7 +930,7 @@
     "hashtag": "#yomefm"
   },
   "your-cio": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
@@ -940,7 +940,7 @@
     "hashtag": "#ゆうかねラジオ"
   },
   "yuru28": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:637230513/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:637230513/sounds.rss",
     "twitter": "@yuru28club",
     "hashtag": "#yuru28"
   }
