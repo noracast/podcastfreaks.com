@@ -1,6 +1,6 @@
 {
   "3jumper": {
-    "feed": "http://feeds.feedburner.com/3jumper",
+    "feed": "https://feeds.feedburner.com/3jumper",
     "twitter": "@3jumper",
     "hashtag": "#3jumper"
   },
@@ -180,7 +180,7 @@
     "hashtag": "#三日月ラジオ"
   },
   "cyberspacecowboys": {
-    "feed": "http://feeds.feedburner.com/weblogs/csc",
+    "feed": "https://feeds.feedburner.com/weblogs/csc",
     "twitter": "@csc_bot",
     "hashtag": "#電カー"
   },
@@ -215,7 +215,7 @@
     "hashtag": "#デザアカラジオ"
   },
   "dex": {
-    "feed": "http://feeds.feedburner.com/dexfm",
+    "feed": "https://feeds.feedburner.com/dexfm",
     "twitter": "@dexfmpodcast",
     "hashtag": "#dexfm"
   },
@@ -350,7 +350,7 @@
     "hashtag": "#田舎fm"
   },
   "ia-podcast": {
-    "feed": "http://feeds.feedburner.com/InformationArchitectsPodcast",
+    "feed": "https://feeds.feedburner.com/InformationArchitectsPodcast",
     "twitter": null,
     "hashtag": null
   },
@@ -390,7 +390,7 @@
     "hashtag": null
   },
   "kumocast": {
-    "feed": "http://feeds.feedburner.com/tumblr/IkZP",
+    "feed": "https://feeds.feedburner.com/tumblr/IkZP",
     "twitter": "@kumocast",
     "hashtag": "#kumocast"
   },
@@ -650,7 +650,7 @@
     "hashtag": "#researchatfm"
   },
   "riywo": {
-    "feed": "http://feeds.feedburner.com/RiywosPodcast",
+    "feed": "https://feeds.feedburner.com/RiywosPodcast",
     "twitter": null,
     "hashtag": "#riywo"
   },
@@ -700,7 +700,7 @@
     "hashtag": "#白金鉱業fm"
   },
   "shock-sheets-tech": {
-    "feed": "http://feeds.feedburner.com/shock-sheets-tech",
+    "feed": "https://feeds.feedburner.com/shock-sheets-tech",
     "twitter": null,
     "hashtag": null
   },
@@ -715,7 +715,7 @@
     "hashtag": "#snobbyfm"
   },
   "sore_ha_sou": {
-    "feed": "http://feeds.feedburner.com/BiaccoRadio",
+    "feed": "https://feeds.feedburner.com/BiaccoRadio",
     "twitter": null,
     "hashtag": "#sore_ha_sou"
   },
@@ -735,7 +735,7 @@
     "hashtag": "#スティレン"
   },
   "strobofm": {
-    "feed": "http://feeds.feedburner.com/strobofm",
+    "feed": "https://feeds.feedburner.com/strobofm",
     "twitter": "@strobofm",
     "hashtag": "#strobofm"
   },
@@ -815,7 +815,7 @@
     "hashtag": null
   },
   "tokaitomori": {
-    "feed": "http://feeds.feedburner.com/podstudio/tm",
+    "feed": "https://feeds.feedburner.com/podstudio/tm",
     "twitter": null,
     "hashtag": null
   },
@@ -880,7 +880,7 @@
     "hashtag": "#washipo"
   },
   "weekly-ebook-strategy": {
-    "feed": "http://feeds.feedburner.com/WeeklyEbookStrategy",
+    "feed": "https://feeds.feedburner.com/WeeklyEbookStrategy",
     "twitter": null,
     "hashtag": null
   },
@@ -920,7 +920,7 @@
     "hashtag": null
   },
   "yatteiki": {
-    "feed": "http://feeds.feedburner.com/Yatteikifm",
+    "feed": "https://feeds.feedburner.com/Yatteikifm",
     "twitter": "@yatteikifm",
     "hashtag": "#yatteikifm"
   },
