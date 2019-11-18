@@ -355,7 +355,7 @@
     "hashtag": null
   },
   "iosdcfm": {
-    "feed": "http://iosdc.fm/rss",
+    "feed": "https://feeds.feedburner.com/iosdcfm",
     "twitter": "@iosdcjp",
     "hashtag": "#iosdcfm"
   },
