@@ -299,6 +299,11 @@
     "twitter": null,
     "hashtag": "#grantall"
   },
+  "GUlab": {
+    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "gunosy": {
     "feed": "http://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
     "twitter": null,
