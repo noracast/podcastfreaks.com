@@ -839,6 +839,11 @@
     "twitter": null,
     "hashtag": "#tcfm"
   },
+  "uchiawasecast": {
+    "feed": "https://anchor.fm/s/7fe6eb8/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "uit-inside": {
     "feed": "https://uit-inside.linecorp.com/feed.atom",
     "twitter": null,
