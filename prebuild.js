@@ -34,6 +34,7 @@ const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
 
+// TODO Backup downloads_dir just in case for error while prebuilding (twitter fething often hang up)
 // Make sure parent dir existence and its clean
 shell.rm('-rf', DOWNLOADS_DIR)
 shell.mkdir('-p', RSS_DIR)
