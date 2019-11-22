@@ -152,7 +152,7 @@ button
 
 <script>
 import moment from 'moment'
-import build_info from '~/static/downloads/build_info.json'
+import build_info from '@/static/downloads/build_info.json'
 
 export default {
   data: function() {

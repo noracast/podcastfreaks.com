@@ -40,12 +40,12 @@ div
 import axios from 'axios'
 import CalHeatMap from 'cal-heatmap'
 import d3 from 'd3'
-import xml2js from '~/lib/xml2js-promise'
+import xml2js from '@/lib/xml2js-promise'
 import moment from 'moment'
 
 export default {
   components: {
-    'cover': require('~/components/cover.vue').default
+    'cover': require('@/components/cover.vue').default
   },
   props: {
     channelKey: {

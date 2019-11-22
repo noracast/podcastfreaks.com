@@ -52,7 +52,7 @@ div.row
 <script>
 export default {
   components: {
-    'cover': require('~/components/cover.vue').default
+    'cover': require('@/components/cover.vue').default
   },
   props: {
     episode: {

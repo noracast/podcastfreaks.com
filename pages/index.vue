@@ -32,6 +32,7 @@ div.root
       p.description(v-else) No description
       button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
       button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+
 </template>
 
 <style lang="sass" scoped>
@@ -306,17 +307,17 @@ $color_new: #e100ff
 <script>
 import axios from 'axios'
 import moment from 'moment'
-import xml2js from '~/lib/xml2js-promise'
-import rss from '~/data/rss.json'
-import build_info from '~/static/downloads/build_info.json'
+import xml2js from '@/lib/xml2js-promise'
+import rss from '@/data/rss.json'
+import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 
 export default {
   components: {
-    'button-text': require('~/components/button-text.vue').default,
-    'cover': require('~/components/cover.vue').default,
-    'duration': require('~/components/duration.vue').default
+    'button-text': require('@/components/button-text.vue').default,
+    'cover': require('@/components/cover.vue').default,
+    'duration': require('@/components/duration.vue').default
   },
   head() {
     return {

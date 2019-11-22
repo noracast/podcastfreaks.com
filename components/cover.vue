@@ -10,7 +10,7 @@ div.cover(:style="styles")
 </style>
 
 <script>
-import build_info from '~/static/downloads/build_info.json'
+import build_info from '@/static/downloads/build_info.json'
 
 export default {
   props: {
