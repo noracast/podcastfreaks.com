@@ -5,7 +5,7 @@
   "author": "Naokazu Terada",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "start": "nuxt",
     "prebuild": "babel-node prebuild.js",
     "prebuild:no-twitter": "babel-node prebuild.js --no-twitter",
     "build": "nuxt generate --spa",
