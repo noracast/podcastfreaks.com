@@ -58,6 +58,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/components',
     '~/plugins/filters',
     '~/plugins/vue-clipboard2',
     '~/plugins/vue-highlightjs',

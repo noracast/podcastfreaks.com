@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   button(v-if="buttonAction=='copy'" v-clipboard:copy="text") {{ buttonText }}
-  a(v-else :href="text" target="_blank" rel="noopener") {{ buttonText }}
+  a-blank(v-else :href="text") {{ buttonText }}
   span(type="text" readonly="readonly") {{ text }}
 </template>
 

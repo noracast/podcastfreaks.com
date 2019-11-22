@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   cover.cover(:channel="channelKey" :size="0" :radius="'0'")
-  a(:href="link" target="_blank" rel="noopener")
+  a-blank(:href="link")
     h3 {{ title }}
   .description {{ description }}
   .since Since: {{ since | formatDate }}
