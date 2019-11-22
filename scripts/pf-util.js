@@ -1,6 +1,7 @@
 "use strict";
 
 import _ from 'lodash'
+import consola from 'consola'
 import moment from 'moment'
 import path from 'path'
 import sharp from 'sharp'
@@ -56,13 +57,13 @@ class Util {
       output = moment({ hour, minute, second })
     }
     else {
-      console.warn(`[prebuild warning] \`${_d}\` seems to be wrong format | ${_dist_rss}`)
+      consola.info(`\`${_d}\` seems to be wrong format | ${_dist_rss}`)
       return null
     }
 
     // フォーマットは正しいが0のものがあるため間引く
     if(output.format(_outFormat) == '00:00:00'){
-      console.warn(`[prebuild warning] \`${_d}\` means zero time | ${_dist_rss}`)
+      consola.info(`\`${_d}\` means zero time | ${_dist_rss}`)
       return null
     }
 
@@ -107,18 +108,18 @@ class Util {
                 .resize(120)
                 .toFile(ext_120, (err) => {
                   if(err){
-                    console.error('[prebuild error]', _key, err)
+                    consola.error(_key, err)
                   }
                 })
                 .resize(60)
                 .toFile(ext_60, (err) => {
                   if(err){
-                    console.error('[prebuild error]', _key, err)
+                    consola.error(_key, err)
                   }
                 })
             })
             .catch((err) => {
-              console.log('[prebuild error]', _key, err)
+              consola.log(_key, err)
             })
   }
 
