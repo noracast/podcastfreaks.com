@@ -145,8 +145,8 @@ $color_new: #e100ff
       &.VueTables__child-row
         border-top: 1px dotted #eee
         background-image: url(/img/slant-bg.png)
-        background-color: #e4e4e4
-        background-size: auto 168px
+        background-color: #fefefe
+        background-size: auto 21px
         td
           padding: 20px
           line-height: 1.8em
