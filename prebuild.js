@@ -12,7 +12,13 @@ import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
-import { RFC822 } from './scripts/constants'
+import {
+  RFC822,
+  DOWNLOADS_DIR,
+  RSS_DIR,
+  COVER_DIR,
+  BUILD_INFO
+} from './scripts/constants'
 
 // ----------------
 // Detect arguments
@@ -22,11 +28,6 @@ args.splice(0, 2) // remove not 'arg' values
 // CLI arguments list
 const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
 // ----------------
-
-const DOWNLOADS_DIR = 'static/downloads'
-const RSS_DIR       = 'static/downloads/rss'
-const COVER_DIR     = 'static/downloads/cover'
-const BUILD_INFO    = 'static/downloads/build_info.json'
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
