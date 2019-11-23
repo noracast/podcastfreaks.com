@@ -67,10 +67,20 @@ const fetchFeed = async key => {
 
   //------------------
 
-  // Download RSS
+  // Download RSS (try 3 times)
   let err = ''
-  const download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
-  if(!download){
+  let count = 1
+  let download = false
+  while (count <= 3 ) {
+    download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
+    if (download) {
+      break
+    }
+    consola.log('wget fail : ' + count)
+    await sleep(2000)
+    count--
+  }
+  if (!download) {
     error('wget', dist_rss, err)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
@@ -157,7 +167,7 @@ const fetchFeed = async key => {
 
 
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err) => { error('fetchFeed', err) })
 
   if(!NO_TWITTER){
     consola.log('Start fetching twitter data...')
