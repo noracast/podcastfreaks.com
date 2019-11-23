@@ -35,12 +35,6 @@ const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
 
-// TODO Backup downloads_dir just in case for error while prebuilding (twitter fething often hang up)
-// Make sure parent dir existence and its clean
-shell.rm('-rf', DOWNLOADS_DIR)
-shell.mkdir('-p', RSS_DIR)
-shell.mkdir('-p', COVER_DIR)
-
 let episodes_in_2weeks = []
 let latest_pubdates = []
 let channels = {}
@@ -142,6 +136,13 @@ const fetchFeed = async key => {
 }
 
 (async () => {
+
+  // TODO Backup downloads_dir just in case for error while prebuilding (twitter fething often hang up)
+  // Make sure parent dir existence and its clean
+  shell.rm('-rf', DOWNLOADS_DIR)
+  shell.mkdir('-p', RSS_DIR)
+  shell.mkdir('-p', COVER_DIR)
+
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
