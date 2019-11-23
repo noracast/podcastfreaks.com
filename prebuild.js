@@ -2,10 +2,12 @@
 
 import _ from 'lodash'
 import consola from 'consola'
+import 'date-utils'
 import fetchTwitter from './scripts/fetch-twitter'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
+import nodeCleanup from 'node-cleanup'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import serializeError from 'serialize-error'
@@ -41,6 +43,7 @@ let channels = {}
 let covers = {}
 let episodeCount = 0
 let errors = []
+let downloads_backup = null
 
 const error = function(label, rss, error){
   if(error) {
@@ -136,12 +139,22 @@ const fetchFeed = async key => {
 }
 
 (async () => {
-
-  // TODO Backup downloads_dir just in case for error while prebuilding (twitter fething often hang up)
   // Make sure parent dir existence and its clean
-  shell.rm('-rf', DOWNLOADS_DIR)
-  shell.mkdir('-p', RSS_DIR)
-  shell.mkdir('-p', COVER_DIR)
+  try {
+    await readFile(BUILD_INFO)
+    downloads_backup = `${DOWNLOADS_DIR}(backup ${new Date().toFormat('YYYYMMDD-HH24MISS')})/`
+    shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
+    shell.mkdir('-p', RSS_DIR)
+    shell.mkdir('-p', COVER_DIR)
+    consola.log(`${BUILD_INFO} exists`)
+    consola.log(` -> Create backup to ${downloads_backup}`)
+  } catch (err) {
+    shell.rm('-rf', DOWNLOADS_DIR)
+    shell.mkdir('-p', RSS_DIR)
+    shell.mkdir('-p', COVER_DIR)
+    consola.log(`${BUILD_INFO} doesn't exist`)
+  }
+
 
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
@@ -202,3 +215,14 @@ const fetchFeed = async key => {
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
 })();
 
+nodeCleanup(function (exitCode, signal) {
+  if (signal == 'SIGINT' && downloads_backup) {
+    consola.log(`Restore from backup`)
+    shell.rm('-rf', DOWNLOADS_DIR)
+    shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
+  }
+  else if (signal == 0 && downloads_backup) {
+    consola.log(`Remove backup`)
+    shell.rm('-rf', downloads_backup)
+  }
+});
