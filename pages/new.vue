@@ -56,14 +56,14 @@ h5
 <script>
 import axios from 'axios'
 import moment from 'moment'
-import xml2js from '~/lib/xml2js-promise'
-import rss from '~/data/rss.json'
-import build_info from '~/static/downloads/build_info.json'
+import xml2js from '@/lib/xml2js-promise'
+import rss from '@/data/rss.json'
+import build_info from '@/static/downloads/build_info.json'
 
 export default {
   components: {
-    'episode-row': require('~/components/episode-row.vue').default,
-    'podcast': require('~/components/podcast.vue').default
+    'episode-row': require('@/components/episode-row.vue').default,
+    'podcast': require('@/components/podcast.vue').default
   },
   head() {
     return {

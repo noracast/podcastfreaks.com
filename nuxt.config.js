@@ -51,18 +51,19 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/common'
+    '@/assets/common'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/filters',
-    '~/plugins/vue-clipboard2',
-    '~/plugins/vue-highlightjs',
-    '~/plugins/vue-responsive-components',
-    '~/plugins/vue-table-2'
+    '@/plugins/components',
+    '@/plugins/filters',
+    '@/plugins/vue-clipboard2',
+    '@/plugins/vue-highlightjs',
+    '@/plugins/vue-responsive-components',
+    '@/plugins/vue-table-2'
   ],
 
   /*

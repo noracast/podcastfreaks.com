@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 import _ from 'lodash'
 import moment from 'moment'
@@ -24,9 +24,9 @@ const twitterSearch = (params) => {
   return new Promise((resolve, reject) => {
     twitter.get('search/tweets', params, function(error, tweets, response) {
       if (error) {
-        reject(error);
+        reject(error)
       } else {
-        resolve(tweets);
+        resolve(tweets)
       }
     })
   })

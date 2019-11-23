@@ -83,5 +83,5 @@ dist
 # PWA
 sw.*
 
-/static/downloads
+/static/downloads*
 package-lock.json

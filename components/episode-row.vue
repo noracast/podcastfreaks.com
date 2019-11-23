@@ -1,7 +1,7 @@
 <template lang="pug">
 div.row
   cover.cover(:channel="episode.key" :size='30' radius='50%')
-  a.text(:href="episode.link" target="_blank" rel="noopener")
+  a-blank.text(:href="episode.link")
     span.channel {{ episode.channel_title }}
     | {{ episode.title }}
 </template>
@@ -52,7 +52,7 @@ div.row
 <script>
 export default {
   components: {
-    'cover': require('~/components/cover.vue').default
+    'cover': require('@/components/cover.vue').default
   },
   props: {
     episode: {

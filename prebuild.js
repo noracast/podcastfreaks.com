@@ -1,10 +1,13 @@
 "use strict";
 
 import _ from 'lodash'
+import consola from 'consola'
+import 'date-utils'
 import fetchTwitter from './scripts/fetch-twitter'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
+import nodeCleanup from 'node-cleanup'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import serializeError from 'serialize-error'
@@ -12,7 +15,13 @@ import shell from 'shelljs'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
-import { RFC822 } from './scripts/constants'
+import {
+  RFC822,
+  DOWNLOADS_DIR,
+  RSS_DIR,
+  COVER_DIR,
+  BUILD_INFO
+} from './scripts/constants'
 
 // ----------------
 // Detect arguments
@@ -23,20 +32,10 @@ args.splice(0, 2) // remove not 'arg' values
 const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
 // ----------------
 
-const DOWNLOADS_DIR = 'static/downloads'
-const RSS_DIR       = 'static/downloads/rss'
-const COVER_DIR     = 'static/downloads/cover'
-const BUILD_INFO    = 'static/downloads/build_info.json'
-
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
-
-// Make sure parent dir existence and its clean
-shell.rm('-rf', DOWNLOADS_DIR)
-shell.mkdir('-p', RSS_DIR)
-shell.mkdir('-p', COVER_DIR)
 
 let episodes_in_2weeks = []
 let latest_pubdates = []
@@ -44,13 +43,18 @@ let channels = {}
 let covers = {}
 let episodeCount = 0
 let errors = []
+let downloads_backup = null
 
 const error = function(label, rss, error){
-  console.error(`[prebuild error] ${label} | ${rss} | ${error}`)
-  errors.push({label, rss, error: serializeError(error)})
-}
-const log = function(text){
-  console.error(`[prebuild log] ${text}`)
+  if(error) {
+    consola.error(`${label} | ${rss} | ${error}`)
+    errors.push({label, rss, error: serializeError(error)})
+  }
+  else {
+    consola.error(`${label} | ${rss}`)
+    errors.push({label, rss})
+  }
+
 }
 
 process.on('unhandledRejection', console.dir)
@@ -63,10 +67,20 @@ const fetchFeed = async key => {
 
   //------------------
 
-  // Download RSS
+  // Download RSS (try 3 times)
   let err = ''
-  const download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
-  if(!download){
+  let count = 1
+  let download = false
+  while (count <= 3 ) {
+    download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
+    if (download) {
+      break
+    }
+    consola.log('wget fail : ' + count)
+    await sleep(2000)
+    count--
+  }
+  if (!download) {
     error('wget', dist_rss, err)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
@@ -135,11 +149,28 @@ const fetchFeed = async key => {
 }
 
 (async () => {
+  // Make sure parent dir existence and its clean
+  try {
+    await readFile(BUILD_INFO)
+    downloads_backup = `${DOWNLOADS_DIR}(backup ${new Date().toFormat('YYYYMMDD-HH24MISS')})/`
+    shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
+    shell.mkdir('-p', RSS_DIR)
+    shell.mkdir('-p', COVER_DIR)
+    consola.log(`${BUILD_INFO} exists`)
+    consola.log(` -> Create backup to ${downloads_backup}`)
+  } catch (err) {
+    shell.rm('-rf', DOWNLOADS_DIR)
+    shell.mkdir('-p', RSS_DIR)
+    shell.mkdir('-p', COVER_DIR)
+    consola.log(`${BUILD_INFO} doesn't exist`)
+  }
+
+
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
+  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err) => { error('fetchFeed', err) })
 
   if(!NO_TWITTER){
-    log('Fetching twitter data')
+    consola.log('Start fetching twitter data...')
     const accounts = {}
     for(let key in rss) {
       if(rss[key]){
@@ -167,7 +198,7 @@ const fetchFeed = async key => {
     }
   }
 
-  log('Export to list file ordered by pubDate')
+  consola.log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
@@ -178,7 +209,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  log('Download cover images serially to avoid 404')
+  consola.log('Download cover images serially to avoid 404')
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
   const data = {
@@ -194,3 +225,14 @@ const fetchFeed = async key => {
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
 })();
 
+nodeCleanup(function (exitCode, signal) {
+  if (signal == 'SIGINT' && downloads_backup) {
+    consola.log(`Restore from backup`)
+    shell.rm('-rf', DOWNLOADS_DIR)
+    shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
+  }
+  else if (signal == 0 && downloads_backup) {
+    consola.log(`Remove backup`)
+    shell.rm('-rf', downloads_backup)
+  }
+});

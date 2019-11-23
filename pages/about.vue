@@ -2,7 +2,9 @@
 .root
   h2 About
   p
-    | このサイトは、近頃流行りの日本語テック系ポッドキャストのアクティビティをまとめたサイトです。中の人は<a href="https://noracast.jp" target="_blank" rel="noopener">noracast</a>というポッドキャスト好きの３人組がポッドキャストについて話す番組をやっているので、よかったら聞いてみください。<br>
+    | このサイトは、近頃流行りの日本語テック系ポッドキャストのアクティビティをまとめたサイトです。中の人は
+    a-blank(href="https://noracast.jp") noracast
+    | というポッドキャスト好きの３人組がポッドキャストについて話す番組をやっているので、よかったら聞いてみください。<br>
     | リストへの追加・修正または削除のご希望がある場合は、
     nuxt-link(to='/request/') リクエストページ
     | から教えてください。
@@ -19,12 +21,12 @@
     | フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。
     br
     br
-    a.noborder(href="https://app.netlify.com/sites/podcastfreaks.com/deploys" target="_blank" rel="noopener")
+    a-blank.noborder(href="https://app.netlify.com/sites/podcastfreaks.com/deploys")
       img.badge(src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status")
   h3 Contribution
   p
     | このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br>
-    a(href="https://github.com/noracast/podcastfreaks.com" target="_blank" rel="noopener") https://github.com/noracast/podcastfreaks.com
+    a-blank(href="https://github.com/noracast/podcastfreaks.com") https://github.com/noracast/podcastfreaks.com
 </template>
 
 <style lang="sass" scoped>

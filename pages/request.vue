@@ -6,11 +6,11 @@
   h3 Feedに関する既知の問題
   p
     | 既知の問題は、
-    a(href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed" target="_blank" rel="noopener") こちら
+    a-blank(href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed") こちら
     | にまとめていますので、予めご一読いただけるとありがたいです。
   h3 Githubアカウントをお持ちの方へ
   p
-    a(href="https://github.com/noracast/podcastfreaks.com/blob/master/data/rss.json" target="_blank" rel="noopener") こちらのファイル
+    a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/master/data/rss.json") こちらのファイル
     | へPRを送ってもらうとさらに助かります。
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")

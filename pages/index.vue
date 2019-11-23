@@ -7,21 +7,21 @@ div.root
     template(slot="title" slot-scope="props")
       span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
-      a(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink" target="_blank" rel="noopener")
+      a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="tweets" slot-scope="props")
-      a(v-if="props.row.hashtag" :href="tweetsLink(props.row.tweets_query)" target="_blank" rel="noopener")
+      a-blank(v-if="props.row.hashtag" :href="tweetsLink(props.row.tweets_query)")
         b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
         small {{ props.row.hashtag }}
     template(slot="followers" slot-scope="props")
-      a(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)" target="_blank" rel="noopener")
+      a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
         b(v-if="props.row.followers") {{ props.row.followers }}
         small {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
-      a(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink" target="_blank" rel="noopener")
+      a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
         | {{ props.row.firstEpisodeDate | formatDate }}
       template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}
@@ -32,6 +32,7 @@ div.root
       p.description(v-else) No description
       button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
       button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+
 </template>
 
 <style lang="sass" scoped>
@@ -145,8 +146,8 @@ $color_new: #e100ff
       &.VueTables__child-row
         border-top: 1px dotted #eee
         background-image: url(/img/slant-bg.png)
-        background-color: #e4e4e4
-        background-size: auto 168px
+        background-color: #fefefe
+        background-size: auto 21px
         td
           padding: 20px
           line-height: 1.8em
@@ -306,17 +307,17 @@ $color_new: #e100ff
 <script>
 import axios from 'axios'
 import moment from 'moment'
-import xml2js from '~/lib/xml2js-promise'
-import rss from '~/data/rss.json'
-import build_info from '~/static/downloads/build_info.json'
+import xml2js from '@/lib/xml2js-promise'
+import rss from '@/data/rss.json'
+import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 
 export default {
   components: {
-    'button-text': require('~/components/button-text.vue').default,
-    'cover': require('~/components/cover.vue').default,
-    'duration': require('~/components/duration.vue').default
+    'button-text': require('@/components/button-text.vue').default,
+    'cover': require('@/components/cover.vue').default,
+    'duration': require('@/components/duration.vue').default
   },
   head() {
     return {

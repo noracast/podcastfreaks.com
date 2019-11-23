@@ -8,7 +8,7 @@ podcast(:channelKey="channelKey")
 <script>
 export default {
   components: {
-    'podcast': require('~/components/podcast.vue').default
+    'podcast': require('@/components/podcast.vue').default
   },
   async asyncData({ app, params }) {
     return {
