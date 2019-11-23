@@ -1,0 +1,20 @@
+{
+  "app-dojo": {
+    "feed": "https://app-dojo.mookmookradio.com/feed/",
+    "twitter": null,
+    "hashtag": "#mook06",
+    "reason": "end of broadcast"
+  },
+  "genba": {
+    "feed": "https://genba.fm/podcast.xml",
+    "twitter": null,
+    "hashtag": "#genbafm",
+    "reason": "domain revocation"
+  },
+  "postd": {
+    "feed": "https://postd.cc/feed/podcast/",
+    "twitter": "@POSTDcc",
+    "hashtag": null,
+    "reason": "feed not found"
+  }
+}

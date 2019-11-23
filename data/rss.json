@@ -69,11 +69,6 @@
     "twitter": null,
     "hashtag": "#aozorafm"
   },
-  "app-dojo": {
-    "feed": "https://app-dojo.mookmookradio.com/feed/",
-    "twitter": null,
-    "hashtag": "#mook06"
-  },
   "ariel": {
     "feed": "http://dev.ariel-networks.com/wp/archives/category/podcast/feed",
     "twitter": null,
@@ -283,11 +278,6 @@
     "feed": "https://anchor.fm/s/d41b3e4/podcast/rss",
     "twitter": null,
     "hashtag": null
-  },
-  "genba": {
-    "feed": "https://genba.fm/podcast.xml",
-    "twitter": null,
-    "hashtag": "#genbafm"
   },
   "girls-do-it": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:222198750/sounds.rss",
@@ -602,11 +592,6 @@
   "podpatch": {
     "feed": "https://feedpress.me/podpatch",
     "twitter": null,
-    "hashtag": null
-  },
-  "postd": {
-    "feed": "https://postd.cc/feed/podcast/",
-    "twitter": "@POSTDcc",
     "hashtag": null
   },
   "prototype-fm": {
