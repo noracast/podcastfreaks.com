@@ -57,13 +57,13 @@ class Util {
       output = moment({ hour, minute, second })
     }
     else {
-      consola.info(`\`${_d}\` seems to be wrong format | ${_dist_rss}`)
+      consola.warn(`[wrong format] \`${_d}\` | ${_dist_rss}`)
       return null
     }
 
     // フォーマットは正しいが0のものがあるため間引く
     if(output.format(_outFormat) == '00:00:00'){
-      consola.info(`\`${_d}\` means zero time | ${_dist_rss}`)
+      consola.warn(`[zero time] \`${_d}\` | ${_dist_rss}`)
       return null
     }
 

@@ -52,9 +52,6 @@ const error = function(label, rss, error){
   consola.error(`${label} | ${rss} | ${error}`)
   errors.push({label, rss, error: serializeError(error)})
 }
-const log = function(text){
-  consola.info(`${text}`)
-}
 
 process.on('unhandledRejection', console.dir)
 
@@ -142,7 +139,7 @@ const fetchFeed = async key => {
   await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err)=> { error('fetchFeed', err) })
 
   if(!NO_TWITTER){
-    log('Fetching twitter data')
+    consola.log('Start fetching twitter data...')
     const accounts = {}
     for(let key in rss) {
       if(rss[key]){
@@ -170,7 +167,7 @@ const fetchFeed = async key => {
     }
   }
 
-  log('Export to list file ordered by pubDate')
+  consola.log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
@@ -181,7 +178,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  log('Download cover images serially to avoid 404')
+  consola.log('Download cover images serially to avoid 404')
   for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
 
   const data = {
