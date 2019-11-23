@@ -49,8 +49,15 @@ let episodeCount = 0
 let errors = []
 
 const error = function(label, rss, error){
-  consola.error(`${label} | ${rss} | ${error}`)
-  errors.push({label, rss, error: serializeError(error)})
+  if(error) {
+    consola.error(`${label} | ${rss} | ${error}`)
+    errors.push({label, rss, error: serializeError(error)})
+  }
+  else {
+    consola.error(`${label} | ${rss}`)
+    errors.push({label, rss})
+  }
+
 }
 
 process.on('unhandledRejection', console.dir)
