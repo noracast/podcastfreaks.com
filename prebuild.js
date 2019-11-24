@@ -156,13 +156,11 @@ const fetchFeed = async key => {
     shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
-    consola.log(`${BUILD_INFO} exists`)
-    consola.log(` -> Create backup to ${downloads_backup}`)
+    consola.log(`-> Create backup to ${downloads_backup}`)
   } catch (err) {
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
-    consola.log(`${BUILD_INFO} doesn't exist`)
   }
 
 
@@ -227,12 +225,12 @@ const fetchFeed = async key => {
 
 nodeCleanup(function (exitCode, signal) {
   if (signal == 'SIGINT' && downloads_backup) {
-    consola.log(`Restore from backup`)
+    consola.log(`-> Restore from backup`)
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
   }
   else if (signal == 0 && downloads_backup) {
-    consola.log(`Remove backup`)
+    consola.log(`-> Remove backup`)
     shell.rm('-rf', downloads_backup)
   }
 });
