@@ -28,10 +28,14 @@ div.root
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
-      p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
-      p.description(v-else) No description
-      button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
-      button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+      .wrap
+        .info
+          p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
+          p.description(v-else) No description
+          button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
+          button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+        .episodes
+          episode-player(v-for="(ep, i) in props.row.recentEpisodes" :key="i" :episode="ep")
 
 </template>
 
@@ -145,13 +149,22 @@ $color_new: #e100ff
       &:not(.VueTables__child-row)
         border-top: 1px solid #ccc
       &.VueTables__child-row
-        border-top: 1px dotted #eee
-        background-image: url(/img/slant-bg.png)
-        background-color: #fefefe
+        border-top: 1px solid #eee
+        background-color: #222
         background-size: auto 21px
-        td
-          padding: 20px
+        color: white !important
+        >td
           line-height: 1.8em
+          padding: 0
+          >.wrap
+            display: flex
+            >.info
+              width: calc(50% - 40px)
+              padding: 20px
+            >.episodes
+              width: 50%
+              borde-left: 1px solid #333
+
         p
           max-width: calc(100vw - 30px)
           &:first-child
@@ -313,15 +326,19 @@ import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
+import { RSS_DIR } from '@/scripts/constants'
 
 export default {
   components: {
     'button-text': require('@/components/button-text.vue').default,
     'cover': require('@/components/cover.vue').default,
-    'duration': require('@/components/duration.vue').default
+    'duration': require('@/components/duration.vue').default,
+    'episode-player': require('@/components/episode-player.vue').default
   },
   data: function() {
     return {
+      rssDir: `@/${RSS_DIR}/`,
+
       // 行ごとに何度も作成しないように予め作る
       newThreshold1: moment().subtract(3, 'days').startOf('date'),
       newThreshold2: moment().subtract(30, 'days').startOf('date'),
@@ -467,6 +484,17 @@ export default {
       })
       var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
       saveAs(blob, "podcast-freaks.opml")
+    },
+    loadRecentEpisodes: async function(rss) {
+      const xml = await readFile(rss).catch(() => { return })
+      if(!xml){
+        error('readFile', dist_rss)
+        return // catch内では、fetchFeedを抜けられないのでここでreturn
+      }
+      return xml
+    },
+    play: function(audio) {
+      console.log(audio)
     }
   },
   head() {
