@@ -90,6 +90,7 @@ $color_new: #e100ff
     text-align: left
     vertical-align: top
     padding: 10px
+    outline: 0
     &:first-child:not(:last-child)
       display: none
     &:nth-child(2)
