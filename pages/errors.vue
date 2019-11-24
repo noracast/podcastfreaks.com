@@ -15,15 +15,15 @@
 import build_info from '@/static/downloads/build_info.json'
 
 export default {
-  head() {
-    return {
-      title: 'Errors | Podcast Freaks - Japanese techie podcast archive'
-    }
-  },
   data: function() {
     return {
       errors: build_info.errors
     }
   },
+  head() {
+    return {
+      title: 'Errors | Podcast Freaks - Japanese techie podcast archive'
+    }
+  }
 }
 </script>

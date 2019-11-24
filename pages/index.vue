@@ -320,11 +320,6 @@ export default {
     'cover': require('@/components/cover.vue').default,
     'duration': require('@/components/duration.vue').default
   },
-  head() {
-    return {
-      title: 'Podcast Freaks - Japanese techie podcast archive'
-    }
-  },
   data: function() {
     return {
       // 行ごとに何度も作成しないように予め作る
@@ -472,6 +467,11 @@ export default {
       })
       var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
       saveAs(blob, "podcast-freaks.opml")
+    }
+  },
+  head() {
+    return {
+      title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }
