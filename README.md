@@ -43,6 +43,12 @@ or if you want to push directly to Netlify with netlify-cli
 yarn build:skip && yarn deploy:netlify
 ```
 
+## Keep dependencies updated
+
+```sh
+yarn ncu
+yarn ncu -u
+```
 
 ## Daily build
 
