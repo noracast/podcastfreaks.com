@@ -42,24 +42,16 @@ export default {
     episode: {
       required: true,
       type: Object
-    },
-    player: {
-      required: false,
-      type: Object,
-      default: null
-    },
-    playerText: {
-      required: false,
-      type: String,
-      default: '▶'
-    },
-    timer: {
-      required: false,
-      type: Object,
-      default: null
     }
   },
-  mounted: function(){
+  data: function() {
+    return {
+      playerText: '▶',
+      player: null,
+      timer: null
+    }
+  },
+  mounted: function() {
     this.player = new Audio(this.episode.enclosure.$.url);
   },
   methods: {
