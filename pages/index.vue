@@ -1,7 +1,7 @@
 <template lang="pug">
 div.root
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
-  v-client-table(:columns="columns" :data="data" :options="options" ref="table")
+  v-client-table(:columns="columns" :data="channels" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
@@ -438,7 +438,7 @@ export default {
       //     }
       //   }
       // },
-      data: Object.values(build_info.channels)
+      channels: Object.values(build_info.channels)
     }
   },
   mounted: function(){
