@@ -1,7 +1,7 @@
 <template lang="pug">
 .episode
-  a.play(@click="play()") {{ icon }}
-  a-blank.title(href="episode.link") {{ episode.title }}
+  a.play(@click="play()") {{ playerText }}
+  a-blank.title(:href="episode.link") {{ episode.title }}
 </template>
 
 <style lang="sass" scoped>
@@ -48,7 +48,7 @@ export default {
       type: Object,
       default: null
     },
-    icon: {
+    playerText: {
       required: false,
       type: String,
       default: '▶'
@@ -66,16 +66,17 @@ export default {
     play: function(url) {
       if(this.player.paused) {
         this.player.play()
+        this.$emit('play', this)
         if(this.timer == null) {
-          this.icon = 60
+          this.playerText = 60
           let me = this
           this.timer = setInterval(function() {
             if(!me.player.paused) {
-              me.icon -= 1
-              if(me.icon <= 0) {
+              me.playerText -= 1
+              if(me.playerText <= 0) {
                 me.player.pause()
                 me.player.currentTime = 0
-                me.icon = '▶'
+                me.playerText = '▶'
                 clearInterval(me.timer)
                 me.timer = null
               }
