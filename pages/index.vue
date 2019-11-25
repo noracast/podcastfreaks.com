@@ -35,7 +35,7 @@ div.root
           button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
           button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
         .episodes
-          episode-player(v-for="(ep, i) in props.row.recentEpisodes" :key="i" :episode="ep")
+          episode-player(v-for="(ep, i) in props.row.recentEpisodes" :key="i" :episode="ep" @play="playEpisode")
 
 </template>
 
@@ -344,7 +344,6 @@ export default {
       newThreshold2: moment().subtract(30, 'days').startOf('date'),
 
       allMarked: false,
-      markedRows: [],
       columns: [
         'cover',
         'title',
@@ -356,6 +355,7 @@ export default {
         'lastEpisodeDate',
         'download'
       ],
+      markedRows: [],
       options: {
         columnsClasses: {
           cover: 'artwork',
@@ -425,19 +425,7 @@ export default {
         },
         uniqueKey: 'key'
       },
-      // customSorting: {
-      //   twitter: function (ascending) {
-      //     return function (a, b) {
-      //       var lastA = a.name[a.name.length - 1].toLowerCase();
-      //       var lastB = b.name[b.name.length - 1].toLowerCase();
-
-      //       if (ascending)
-      //           return lastA >= lastB ? 1 : -1;
-
-      //       return lastA <= lastB ? 1 : -1;
-      //     }
-      //   }
-      // },
+      currentPlayer: null,
       channels: Object.values(build_info.channels)
     }
   },
@@ -493,8 +481,11 @@ export default {
       }
       return xml
     },
-    play: function(audio) {
-      console.log(audio)
+    playEpisode: function(player) {
+      if(this.currentPlayer) {
+        this.currentPlayer.stop()
+      }
+      this.currentPlayer = player
     }
   },
   head() {

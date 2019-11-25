@@ -19,11 +19,12 @@
     justify-content: center
     align-items: center
     cursor: pointer
-    color: #7f00ff
+    color: white
+    background-color: #7f00ff
     &:hover
-      color: lighten(#7f00ff, 10)
+      background-color: lighten(#7f00ff, 10)
     &:active
-      color: lighten(#7f00ff, 20)
+      background-color: lighten(#7f00ff, 20)
   .title
     height: 60px
     width: calc(100% - 100px)
@@ -55,7 +56,14 @@ export default {
     this.player = new Audio(this.episode.enclosure.$.url);
   },
   methods: {
-    play: function(url) {
+    stop: function() {
+      this.player.pause()
+      this.player.currentTime = 0
+      this.playerText = '▶'
+      clearInterval(this.timer)
+      this.timer = null
+    },
+    play: function() {
       if(this.player.paused) {
         this.player.play()
         this.$emit('play', this)
@@ -66,18 +74,14 @@ export default {
             if(!me.player.paused) {
               me.playerText -= 1
               if(me.playerText <= 0) {
-                me.player.pause()
-                me.player.currentTime = 0
-                me.playerText = '▶'
-                clearInterval(me.timer)
-                me.timer = null
+                me.stop()
               }
             }
           }, 1000)
         }
       }
       else {
-        this.player.pause()
+        this.stop()
       }
     }
   }
