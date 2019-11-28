@@ -312,8 +312,11 @@ $color_new: #e100ff
         padding-left: 15px
     tr
       &.VueTables__child-row
-        td
-          padding: 15px
+        td > .wrap
+          flex-direction: column
+          >.episodes
+            width: 100%
+            border-top: 1px solid #333
     .description
       max-width: calc(100vw - 30px)
 </style>
