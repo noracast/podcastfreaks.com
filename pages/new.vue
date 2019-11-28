@@ -65,11 +65,6 @@ export default {
     'episode-row': require('@/components/episode-row.vue').default,
     'podcast': require('@/components/podcast.vue').default
   },
-  head() {
-    return {
-      title: 'New episodes | Podcast Freaks - Japanese techie podcast archive'
-    }
-  },
   data: function() {
     const aweekago = moment().subtract(7, 'days').startOf('date')
     let episodes_in_1weeks = []
@@ -102,6 +97,11 @@ export default {
       return __date1.getDate()==__date2.getDate() &&
         __date1.getMonth()==__date2.getMonth() &&
         __date1.getFullYear()==__date2.getFullYear()
+    }
+  },
+  head() {
+    return {
+      title: 'New episodes | Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

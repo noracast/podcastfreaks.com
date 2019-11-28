@@ -1,7 +1,7 @@
 <template lang="pug">
 div.root
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
-  v-client-table(:columns="columns" :data="data" :options="options" ref="table")
+  v-client-table(:columns="columns" :data="channels" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
@@ -28,10 +28,14 @@ div.root
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
-      p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
-      p.description(v-else) No description
-      button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
-      button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+      .wrap
+        .info
+          p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
+          p.description(v-else) No description
+          button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
+          button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+        .episodes
+          episode-player(v-for="(ep, i) in props.row.recentEpisodes" :key="i" :episode="ep" @play="playEpisode")
 
 </template>
 
@@ -145,13 +149,22 @@ $color_new: #e100ff
       &:not(.VueTables__child-row)
         border-top: 1px solid #ccc
       &.VueTables__child-row
-        border-top: 1px dotted #eee
-        background-image: url(/img/slant-bg.png)
-        background-color: #fefefe
+        border-top: 1px solid #eee
+        background-color: #222
         background-size: auto 21px
-        td
-          padding: 20px
+        color: white !important
+        >td
           line-height: 1.8em
+          padding: 0
+          >.wrap
+            display: flex
+            >.info
+              width: calc(50% - 40px)
+              padding: 20px
+            >.episodes
+              width: 50%
+              borde-left: 1px solid #333
+
         p
           max-width: calc(100vw - 30px)
           &:first-child
@@ -299,8 +312,11 @@ $color_new: #e100ff
         padding-left: 15px
     tr
       &.VueTables__child-row
-        td
-          padding: 15px
+        td > .wrap
+          flex-direction: column
+          >.episodes
+            width: 100%
+            border-top: 1px solid #333
     .description
       max-width: calc(100vw - 30px)
 </style>
@@ -313,26 +329,24 @@ import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
+import { RSS_DIR } from '@/scripts/constants'
 
 export default {
   components: {
     'button-text': require('@/components/button-text.vue').default,
     'cover': require('@/components/cover.vue').default,
-    'duration': require('@/components/duration.vue').default
-  },
-  head() {
-    return {
-      title: 'Podcast Freaks - Japanese techie podcast archive'
-    }
+    'duration': require('@/components/duration.vue').default,
+    'episode-player': require('@/components/episode-player.vue').default
   },
   data: function() {
     return {
+      rssDir: `@/${RSS_DIR}/`,
+
       // 行ごとに何度も作成しないように予め作る
       newThreshold1: moment().subtract(3, 'days').startOf('date'),
       newThreshold2: moment().subtract(30, 'days').startOf('date'),
 
       allMarked: false,
-      markedRows: [],
       columns: [
         'cover',
         'title',
@@ -344,6 +358,7 @@ export default {
         'lastEpisodeDate',
         'download'
       ],
+      markedRows: [],
       options: {
         columnsClasses: {
           cover: 'artwork',
@@ -413,20 +428,8 @@ export default {
         },
         uniqueKey: 'key'
       },
-      // customSorting: {
-      //   twitter: function (ascending) {
-      //     return function (a, b) {
-      //       var lastA = a.name[a.name.length - 1].toLowerCase();
-      //       var lastB = b.name[b.name.length - 1].toLowerCase();
-
-      //       if (ascending)
-      //           return lastA >= lastB ? 1 : -1;
-
-      //       return lastA <= lastB ? 1 : -1;
-      //     }
-      //   }
-      // },
-      data: Object.values(build_info.channels)
+      currentPlayer: null,
+      channels: Object.values(build_info.channels)
     }
   },
   mounted: function(){
@@ -472,6 +475,25 @@ export default {
       })
       var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
       saveAs(blob, "podcast-freaks.opml")
+    },
+    loadRecentEpisodes: async function(rss) {
+      const xml = await readFile(rss).catch(() => { return })
+      if(!xml){
+        error('readFile', dist_rss)
+        return // catch内では、fetchFeedを抜けられないのでここでreturn
+      }
+      return xml
+    },
+    playEpisode: function(player) {
+      if(this.currentPlayer) {
+        this.currentPlayer.stop()
+      }
+      this.currentPlayer = player
+    }
+  },
+  head() {
+    return {
+      title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

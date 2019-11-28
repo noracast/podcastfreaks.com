@@ -43,7 +43,7 @@ div
     border: 0
     outline: 0
     background: none
-    background-color: #4c4c4c
+    background-color: #000
     color: #ccc
     border-radius: 0 3px 3px 0
     padding: 0 10px

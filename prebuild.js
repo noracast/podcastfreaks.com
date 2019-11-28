@@ -141,6 +141,7 @@ const fetchFeed = async key => {
     lastEpisodeDate: moment(_.first(episodes).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
     firstEpisodeLink: _.last(episodes).link,
     lastEpisodeLink: _.first(episodes).link,
+    recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
     durationAverage: util.getDurationAverage(episodes, dist_rss),
     durationMedian: util.getDurationMedian(episodes, dist_rss),
