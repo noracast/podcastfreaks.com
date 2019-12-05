@@ -909,6 +909,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "yarukinaifm": {
+    "feed": "https://yarukinai.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#yarukinaifm"
+  },
   "yatteiki": {
     "feed": "https://feeds.feedburner.com/Yatteikifm",
     "twitter": "@yatteikifm",
