@@ -499,6 +499,11 @@
     "twitter": null,
     "hashtag": "#nextstepfm"
   },
+  "ningengaheta": {
+    "feed": "https://ningengaheta.me/feed.xml",
+    "twitter": "@ningengahetaFM",
+    "hashtag": "#ningengahetafm"
+  },
   "nobolycloud": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
     "twitter": null,
