@@ -16,5 +16,11 @@
     "twitter": "@POSTDcc",
     "hashtag": null,
     "reason": "feed not found"
+  },
+  "shock-sheets-tech": {
+    "feed": "https://feeds.feedburner.com/shock-sheets-tech",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "the website shock-sheets-tech.tumblr.com is gone"
   }
 }
