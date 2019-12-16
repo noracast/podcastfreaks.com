@@ -879,6 +879,11 @@
     "twitter": null,
     "hashtag": "#WoodStreamのデジタル生活"
   },
+  "wired-japan": {
+    "feed": "https://anchor.fm/s/c0eda60/podcast/rss",
+    "twitter": "@wired_jp",
+    "hashtag": null
+  },
   "wyukawa": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:224293172/sounds.rss",
     "twitter": null,
