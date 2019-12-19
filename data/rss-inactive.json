@@ -11,6 +11,12 @@
     "hashtag": "#genbafm",
     "reason": "domain revocation"
   },
+  "iosdcfm": {
+    "feed": "https://feeds.feedburner.com/iosdcfm",
+    "twitter": "@iosdcjp",
+    "hashtag": "#iosdcfm",
+    "reason": "domain revocation"
+  },
   "postd": {
     "feed": "https://postd.cc/feed/podcast/",
     "twitter": "@POSTDcc",
