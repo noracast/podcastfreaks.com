@@ -1,4 +1,10 @@
 {
+  "anitech": {
+    "feed": "https://anitech.fm/feed/",
+    "twitter": "@anitechfm",
+    "hashtag": "#anitechfm",
+    "reason": "end of broadcast"
+  },
   "app-dojo": {
     "feed": "https://app-dojo.mookmookradio.com/feed/",
     "twitter": null,
