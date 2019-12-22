@@ -354,11 +354,6 @@
     "twitter": null,
     "hashtag": null
   },
-  "iosdcfm": {
-    "feed": "https://feeds.feedburner.com/iosdcfm",
-    "twitter": "@iosdcjp",
-    "hashtag": "#iosdcfm"
-  },
   "jammingfm": {
     "feed": "http://jammingfm.s3-website-ap-northeast-1.amazonaws.com/jammingfm.xml",
     "twitter": null,
