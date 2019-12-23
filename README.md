@@ -8,7 +8,7 @@ https://podcastfreaks.com/
 
 ## Getting started
 
-Create `.env` file on the root directory.
+Create `.env` file at the root directory.
 
 ```
 TWITTER_CONSUMER_KEY=xxxxxxxx
