@@ -914,6 +914,11 @@
     "twitter": null,
     "hashtag": "#yomefm"
   },
+  "yomoyamafm": {
+    "feed": "https://anchor.fm/s/a0226f0/podcast/rss",
+    "twitter": "@yomoyamafm",
+    "hashtag": "#よもやまfm"
+  },
   "your-cio": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
     "twitter": null,
