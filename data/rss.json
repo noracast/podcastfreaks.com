@@ -729,6 +729,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "systemand": {
+    "feed": "https://systemand.online/feed.xml",
+    "twitter": "@system_genius",
+    "hashtag": "#systemand"
+  },
   "takram": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
