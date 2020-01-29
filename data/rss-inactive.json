@@ -29,6 +29,12 @@
     "hashtag": null,
     "reason": "feed not found"
   },
+  "railsdm": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
+    "twitter": "@railsdm",
+    "hashtag": "#railsdm",
+    "reason": "feed not found"
+  },
   "secure-brigade": {
     "feed": "https://secure-brigade.com/podcast/index.xml",
     "twitter": null,
