@@ -604,11 +604,6 @@
     "twitter": null,
     "hashtag": null
   },
-  "railsdm": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
-    "twitter": "@railsdm",
-    "hashtag": "#railsdm"
-  },
   "randomfacts": {
     "feed": "https://randomfacts.club/feed.xml",
     "twitter": null,
