@@ -933,5 +933,10 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:637230513/sounds.rss",
     "twitter": "@yuru28club",
     "hashtag": "#yuru28"
+  },
+  "CEO.FM": {
+    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
+    "twitter": "@tchikuba",
+    "hashtag": "#ceofm"
   }
 }
