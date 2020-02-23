@@ -78,7 +78,7 @@ const fetchFeed = async key => {
       break
     }
     consola.log('wget fail : ' + count)
-    await sleep(2000)
+    await sleep(2)
     count--
   }
   if (!download) {
