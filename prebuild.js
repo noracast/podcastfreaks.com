@@ -70,17 +70,20 @@ const fetchFeed = async key => {
 
   // Download RSS (try 3 times)
   let err = ''
-  let count = 1
   let download = false
-  while (count <= 3 ) {
-    download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
-    if (download) {
+  let triesCounter = 0
+  while (triesCounter < 2) {
+    try {
+      download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
       break
+    } catch (e) {
+      consola.error(e)
     }
-    consola.log('wget fail : ' + count)
+    consola.log(`wget fail : #${triesCounter}`)
     await sleep(2)
-    count--
+    triesCounter++
   }
+
   if (!download) {
     error('wget', dist_rss, err)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
