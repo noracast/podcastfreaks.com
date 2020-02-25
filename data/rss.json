@@ -314,6 +314,11 @@
     "twitter": "@exportfm",
     "hashtag": "#exportfm"
   },
+  "happyfridayeve": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:770494357/sounds.rss",
+    "twitter": "@happyfriday_eve",
+    "hashtag": "#ハピフライブ"
+  },
   "hbSAKABA": {
     "feed": "https://heartbeats.jp/hbsakaba/rss",
     "twitter": "@heartbeatsjp",
