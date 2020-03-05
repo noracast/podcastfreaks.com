@@ -109,6 +109,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      config.performance.hints = false
     },
     transpile: ['vue-responsive-components']
   }
