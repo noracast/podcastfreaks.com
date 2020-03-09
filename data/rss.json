@@ -119,6 +119,11 @@
     "twitter": "@bkkcast",
     "hashtag": "#bkkcast"
   },
+  "blogging-life": {
+    "feed": "https://www.blogging-life.com/podcast/",
+    "twitter": null,
+    "hashtag": null
+  },
   "bootfm": {
     "feed": "https://bootfm.github.io/feed.xml",
     "twitter": "@boot_fm",
