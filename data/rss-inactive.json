@@ -1,4 +1,10 @@
 {
+  "accessibility": {
+    "feed": "https://accessibility.mitsue.co.jp/rss2.rss",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "feed not found"
+  },
   "anitech": {
     "feed": "https://anitech.fm/feed/",
     "twitter": "@anitechfm",
