@@ -139,6 +139,11 @@
     "twitter": "@castforfun",
     "hashtag": "#castforfun"
   },
+  "CEO.FM": {
+    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
+    "twitter": "@tchikuba",
+    "hashtag": "#ceofm"
+  },
   "clfreaks": {
     "feed": "https://clfreaks.org/rss",
     "twitter": null,
@@ -944,9 +949,9 @@
     "twitter": "@yuru28club",
     "hashtag": "#yuru28"
   },
-  "CEO.FM": {
-    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
-    "twitter": "@tchikuba",
-    "hashtag": "#ceofm"
+  "zenkei-ai": {
+    "feed": "http://feeds.feedburner.com/ZenkeiAiPodcast",
+    "twitter": null,
+    "hashtag": null
   }
 }
