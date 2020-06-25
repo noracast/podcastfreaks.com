@@ -479,6 +479,11 @@
     "twitter": null,
     "hashtag": "#MSRS"
   },
+  "mukimuki-cloud": {
+    "feed": "https://anchor.fm/s/10161614/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "nanapod": {
     "feed": "https://nanapod.kozyty.com/rss",
     "twitter": "@nanapi_nanapod",
