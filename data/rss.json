@@ -609,6 +609,11 @@
     "twitter": "@pilotboat_su",
     "hashtag": "#pilotboat"
   },
+  "pod-de-engineer": {
+    "feed": "https://anchor.fm/s/12948d58/podcast/rss",
+    "twitter": null,
+    "hashtag": "#pod_de_engineer"
+  },
   "podpatch": {
     "feed": "https://feedpress.me/podpatch",
     "twitter": null,
