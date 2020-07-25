@@ -834,6 +834,11 @@
     "twitter": null,
     "hashtag": "#セキュリティのアレ"
   },
+  "tue-ofuro": {
+    "feed": "https://anchor.fm/s/2b3dd74c/podcast/rss",
+    "twitter": "@tue_ofuro",
+    "hashtag": "#tue_ofuro"
+  },
   "turingcomplete": {
     "feed": "https://feeds.turingcomplete.fm/tcfm",
     "twitter": null,
