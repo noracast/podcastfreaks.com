@@ -209,6 +209,11 @@
     "twitter": "@deploy_fm",
     "hashtag": "#deployfm"
   },
+  "design-academy": {
+    "feed": "https://design-academy.jp/feed/podcast/",
+    "twitter": "@DesignAcademyJP",
+    "hashtag": "#デザアカラジオ"
+  },
   "design-fm": {
     "feed": "https://anchor.fm/s/10b9e1b8/podcast/rss",
     "twitter": null,
@@ -228,11 +233,6 @@
     "feed": "https://anchor.fm/s/8585ef0/podcast/rss",
     "twitter": null,
     "hashtag": "#DevelopersCafe"
-  },
-  "design-academy": {
-    "feed": "https://design-academy.jp/feed/podcast/",
-    "twitter": "@DesignAcademyJP",
-    "hashtag": "#デザアカラジオ"
   },
   "dex": {
     "feed": "https://feeds.feedburner.com/dexfm",
