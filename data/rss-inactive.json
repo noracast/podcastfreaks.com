@@ -23,6 +23,12 @@
     "hashtag": "#genbafm",
     "reason": "domain revocation"
   },
+  "grantall": {
+    "feed": "https://grantall.fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#grantall",
+    "reason": "domain revocation"
+  },
   "iosdcfm": {
     "feed": "https://feeds.feedburner.com/iosdcfm",
     "twitter": "@iosdcjp",

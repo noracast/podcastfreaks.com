@@ -304,11 +304,6 @@
     "twitter": null,
     "hashtag": "#ごりゅごcast"
   },
-  "grantall": {
-    "feed": "https://grantall.fm/feed.xml",
-    "twitter": null,
-    "hashtag": "#grantall"
-  },
   "GUlab": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
     "twitter": null,
