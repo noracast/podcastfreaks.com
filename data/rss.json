@@ -149,11 +149,6 @@
     "twitter": "@tchikuba",
     "hashtag": "#ceofm"
   },
-  "ceo-fm": {
-    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "clfreaks": {
     "feed": "https://clfreaks.org/rss",
     "twitter": null,
@@ -968,11 +963,6 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
     "twitter": null,
     "hashtag": "#wadafm"
-  },
-  "wakateossan": {
-    "feed": "https://wakateossan.github.io/feed.xml",
-    "twitter": null,
-    "hashtag": "#wakateossan"
   },
   "wasabi": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
