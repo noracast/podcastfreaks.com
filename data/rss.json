@@ -740,7 +740,7 @@
     "hashtag": null
   },
   "rubyist-club": {
-    "feed": "http://feeds.rubyist.club/rubyistclub",
+    "feed": "https://rubyistclub.chezo.uno/feed.xml",
     "twitter": null,
     "hashtag": "#rubyistclub"
   },
