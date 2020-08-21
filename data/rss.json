@@ -1039,6 +1039,11 @@
     "twitter": "@yatteikifm",
     "hashtag": "#yatteikifm"
   },
+  "yokohamanortham": {
+    "feed": "https://anchor.fm/s/1e60bd50/podcast/rss",
+    "twitter": null,
+    "hashtag": "#yokohamanortham"
+  },
   "yome": {
     "feed": "https://yomefm.github.io/feed.xml",
     "twitter": null,
