@@ -324,11 +324,6 @@
     "twitter": "@gef_fm",
     "hashtag": "#geek_engineer"
   },
-  "genba": {
-    "feed": "https://genba.fm/podcast.xml",
-    "twitter": null,
-    "hashtag": null
-  },
   "girls-do-it": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:222198750/sounds.rss",
     "twitter": null,
@@ -628,11 +623,6 @@
     "feed": "https://anchor.fm/s/b5e36d8/podcast/rss",
     "twitter": null,
     "hashtag": null
-  },
-  "oshigotoam": {
-    "feed": "https://www.oshigotoam.com/rss",
-    "twitter": null,
-    "hashtag": "#おしごとam"
   },
   "ossanfm": {
     "feed": "https://ossan.fm/feed.xml",
