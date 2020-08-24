@@ -35,6 +35,12 @@
     "hashtag": "#iosdcfm",
     "reason": "domain revocation"
   },
+  "oshigotoam": {
+    "feed": "https://www.oshigotoam.com/rss",
+    "twitter": null,
+    "hashtag": "#おしごとam",
+    "reason": "domain revocation"
+  },
   "postd": {
     "feed": "https://postd.cc/feed/podcast/",
     "twitter": "@POSTDcc",
