@@ -35,6 +35,12 @@
     "hashtag": "#iosdcfm",
     "reason": "domain revocation"
   },
+  "omsubi": {
+    "feed": "https://anchor.fm/s/b5e36d8/podcast/rss",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "domain moved"
+  },
   "oshigotoam": {
     "feed": "https://www.oshigotoam.com/rss",
     "twitter": null,
