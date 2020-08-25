@@ -384,6 +384,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "ia-podcast": {
+    "feed": "https://feeds.feedburner.com/InformationArchitectsPodcast",
+    "twitter": null,
+    "hashtag": null
+  },
   "ie69": {
     "feed": "https://anchor.fm/s/2ffc8710/podcast/rss",
     "twitter": null,
@@ -403,11 +408,6 @@
     "feed": "https://anchor.fm/s/138b2640/podcast/rss",
     "twitter": "@interaxion",
     "hashtag": "#interaxion"
-  },
-  "ia-podcast": {
-    "feed": "https://feeds.feedburner.com/InformationArchitectsPodcast",
-    "twitter": null,
-    "hashtag": null
   },
   "jammingfm": {
     "feed": "http://jammingfm.s3-website-ap-northeast-1.amazonaws.com/jammingfm.xml",
