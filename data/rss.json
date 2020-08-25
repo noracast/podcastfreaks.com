@@ -399,6 +399,11 @@
     "twitter": "@inaka_fm",
     "hashtag": "#田舎fm"
   },
+  "interaxion": {
+    "feed": "https://anchor.fm/s/138b2640/podcast/rss",
+    "twitter": "@interaxion",
+    "hashtag": "#interaxion"
+  },
   "ia-podcast": {
     "feed": "https://feeds.feedburner.com/InformationArchitectsPodcast",
     "twitter": null,
