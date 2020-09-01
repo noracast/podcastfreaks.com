@@ -879,6 +879,11 @@
     "twitter": null,
     "hashtag": "#testradio"
   },
+  "textafm": {
+    "feed": "https://anchor.fm/s/330a9488/podcast/rss",
+    "twitter": null,
+    "hashtag": "#textafm"
+  },
   "the-potluck-cast": {
     "feed": "https://anchor.fm/s/bf3149c/podcast/rss",
     "twitter": "@ThePotluckUs",
