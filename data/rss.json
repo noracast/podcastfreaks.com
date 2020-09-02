@@ -90,7 +90,7 @@
     "hashtag": "#automagic"
   },
   "backspace": {
-    "feed": "http://feeds.backspace.fm/backspacefm",
+    "feed": "https://feeds.backspace.fm/backspacefm",
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
@@ -620,7 +620,7 @@
     "hashtag": null
   },
   "omoiyarifm": {
-    "feed": "http://feeds.lean-agile.fm/omoiyarifm",
+    "feed": "https://feeds.feedburner.com/omoiyarifm/",
     "twitter": null,
     "hashtag": "#omoiyarifm"
   },
@@ -690,7 +690,7 @@
     "hashtag": "#rfclub"
   },
   "rebuild": {
-    "feed": "http://feeds.rebuild.fm/rebuildfm",
+    "feed": "https://feeds.rebuild.fm/rebuildfm",
     "twitter": "@rebuildfm",
     "hashtag": "#rebuildfm"
   },
@@ -905,7 +905,7 @@
     "hashtag": null
   },
   "toiee": {
-    "feed": "http://feeds.soundcloud.com/users/soundcloud:users:181902102/sounds.rss",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:181902102/sounds.rss",
     "twitter": "@toiee_lab",
     "hashtag": null
   },
@@ -1070,7 +1070,7 @@
     "hashtag": "#yuru28"
   },
   "zenkei-ai": {
-    "feed": "http://feeds.feedburner.com/ZenkeiAiPodcast",
+    "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
     "twitter": null,
     "hashtag": null
   }
