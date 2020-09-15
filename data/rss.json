@@ -29,11 +29,6 @@
     "twitter": "@agileradio15",
     "hashtag": "#agileradio"
   },
-  "ai-sakaba": {
-    "feed": "https://www.omnycontent.com/d/playlist/12259a7b-698b-45f2-ba99-aae300e94d94/bb6b7ea5-143f-44e7-a7da-ab0a0031e9c0/ac8f32d3-307b-4520-a9eb-ab0a00325c20/podcast.rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "ai-radio-by-team-ai": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
     "twitter": null,
@@ -43,6 +38,11 @@
     "feed": "https://airsap.net/feed/podcast/",
     "twitter": null,
     "hashtag": "#AirSap"
+  },
+  "ai-sakaba": {
+    "feed": "https://www.omnycontent.com/d/playlist/12259a7b-698b-45f2-ba99-aae300e94d94/bb6b7ea5-143f-44e7-a7da-ab0a0031e9c0/ac8f32d3-307b-4520-a9eb-ab0a00325c20/podcast.rss",
+    "twitter": null,
+    "hashtag": null
   },
   "ajito": {
     "feed": "https://ajito.fm/index.xml",
@@ -179,13 +179,13 @@
     "twitter": null,
     "hashtag": "#cmntdrv"
   },
-  "corklab": {
-    "feed": "http://corklab.seesaa.net/index20.rdf",
+  "conne-radi": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
     "twitter": null,
     "hashtag": null
   },
-  "conne-radi": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
+  "corklab": {
+    "feed": "http://corklab.seesaa.net/index20.rdf",
     "twitter": null,
     "hashtag": null
   },
@@ -229,15 +229,15 @@
     "twitter": "@DesignputCast",
     "hashtag": null
   },
-  "devraji": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
-    "twitter": null,
-    "hashtag": "#デブラジ"
-  },
   "developerscafe": {
     "feed": "https://anchor.fm/s/8585ef0/podcast/rss",
     "twitter": null,
     "hashtag": "#DevelopersCafe"
+  },
+  "devraji": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230928617/sounds.rss",
+    "twitter": null,
+    "hashtag": "#デブラジ"
   },
   "dex": {
     "feed": "https://feeds.feedburner.com/dexfm",
@@ -444,10 +444,20 @@
     "twitter": "@jinseifm",
     "hashtag": "#jinseifm"
   },
+  "kakakikikeke": {
+    "feed": "https://kakakikikeke.com/podcast/feed",
+    "twitter": "@kakakikikeke",
+    "hashtag": null
+  },
   "kane-sandbox": {
     "feed": "https://anchor.fm/s/82469c4/podcast/rss",
     "twitter": null,
     "hashtag": "#RadioSandbox"
+  },
+  "kappa": {
+    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
+    "twitter": null,
+    "hashtag": null
   },
   "karino2": {
     "feed": "https://anchor.fm/s/68ce140/podcast/rss",
@@ -464,21 +474,6 @@
     "twitter": "@kinsukicom",
     "hashtag": null
   },
-  "kumocast": {
-    "feed": "https://feeds.feedburner.com/tumblr/IkZP",
-    "twitter": "@kumocast",
-    "hashtag": "#kumocast"
-  },
-  "kakakikikeke": {
-    "feed": "https://kakakikikeke.com/podcast/feed",
-    "twitter": "@kakakikikeke",
-    "hashtag": null
-  },
-  "kappa": {
-    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
-    "twitter": null,
-    "hashtag": null
-  },
   "kepc": {
     "feed": "https://kepc.mookmookradio.com/feed/",
     "twitter": null,
@@ -488,6 +483,11 @@
     "feed": "https://anchor.fm/s/713a0f4/podcast/rss",
     "twitter": null,
     "hashtag": null
+  },
+  "kumocast": {
+    "feed": "https://feeds.feedburner.com/tumblr/IkZP",
+    "twitter": "@kumocast",
+    "hashtag": "#kumocast"
   },
   "lnlpninja": {
     "feed": "https://anchor.fm/s/5a86bb4/podcast/rss",
@@ -534,6 +534,11 @@
     "twitter": null,
     "hashtag": "#mercanfm"
   },
+  "migrationfm": {
+    "feed": "https://migration.fm/feed.xml",
+    "twitter": "@migrationfm",
+    "hashtag": "#migrationfm"
+  },
   "miraitech": {
     "feed": "https://anchor.fm/s/cdcf4e0/podcast/rss",
     "twitter": null,
@@ -548,11 +553,6 @@
     "feed": "https://misreading.chat/category/episodes/feed/",
     "twitter": null,
     "hashtag": "#misreading"
-  },
-  "migrationfm": {
-    "feed": "https://migration.fm/feed.xml",
-    "twitter": "@migrationfm",
-    "hashtag": "#migrationfm"
   },
   "monologura": {
     "feed": "https://anchor.fm/s/e9ee928/podcast/rss",
@@ -599,15 +599,15 @@
     "twitter": null,
     "hashtag": "#成し遂げたいam"
   },
-  "nejimakiradio": {
-    "feed": "https://anchor.fm/s/5377cc4/podcast/rss",
-    "twitter": "@nejimakiradio1",
-    "hashtag": "#ポッドもっと"
-  },
   "ndsfm": {
     "feed": "https://nagaokadevelopersstudy.github.io/ndsfm/feed.xml",
     "twitter": null,
     "hashtag": "#ndsfm"
+  },
+  "nejimakiradio": {
+    "feed": "https://anchor.fm/s/5377cc4/podcast/rss",
+    "twitter": "@nejimakiradio1",
+    "hashtag": "#ポッドもっと"
   },
   "nextstep": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
@@ -619,6 +619,11 @@
     "twitter": "@ningengahetaFM",
     "hashtag": "#ningengahetafm"
   },
+  "nishikokura-hironobu": {
+    "feed": "https://anchor.fm/s/8a1f470/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "nobolycloud": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:230945921/sounds.rss",
     "twitter": null,
@@ -629,25 +634,20 @@
     "twitter": "@noedgexpodcast",
     "hashtag": "#のたた"
   },
-  "nominaga-radio": {
-    "feed": "https://anchor.fm/s/9e6932c/podcast/rss",
-    "twitter": null,
-    "hashtag": "#飲みながラジオ"
-  },
   "nomadineers": {
     "feed": "https://anchor.fm/s/c2ef00c/podcast/rss",
     "twitter": null,
     "hashtag": "#Nomadineers"
   },
+  "nominaga-radio": {
+    "feed": "https://anchor.fm/s/9e6932c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#飲みながラジオ"
+  },
   "noracast": {
     "feed": "https://noracast.jp/feed.xml",
     "twitter": "@noracast_",
     "hashtag": "#noracast"
-  },
-  "nishikokura-hironobu": {
-    "feed": "https://anchor.fm/s/8a1f470/podcast/rss",
-    "twitter": null,
-    "hashtag": null
   },
   "nyanyanya": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss",
@@ -899,30 +899,30 @@
     "twitter": "@system_genius",
     "hashtag": "#systemand"
   },
-  "takram": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
-    "twitter": null,
-    "hashtag": "#takramcast"
-  },
   "tachikawas-environmental-sound": {
     "feed": "https://tachikawa.soramugi.net/feed/podcast/tachikawas-environmental-sound",
     "twitter": null,
     "hashtag": null
+  },
+  "takram": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
+    "twitter": null,
+    "hashtag": "#takramcast"
   },
   "tanoshii-works": {
     "feed": "https://anchor.fm/s/73628cc/podcast/rss",
     "twitter": "@tanoshii_works",
     "hashtag": "#たのしいWorks"
   },
-  "tarumaefm": {
-    "feed": "https://tarumaefm.com/feed.xml",
-    "twitter": null,
-    "hashtag": null
-  },
   "taromatsumura": {
     "feed": "https://anchor.fm/s/4feb40c/podcast/rss",
     "twitter": null,
     "hashtag": "#radiotarosite"
+  },
+  "tarumaefm": {
+    "feed": "https://tarumaefm.com/feed.xml",
+    "twitter": null,
+    "hashtag": null
   },
   "techbooster": {
     "feed": "https://techbooster.org/feed/podcast/",
@@ -959,15 +959,15 @@
     "twitter": null,
     "hashtag": null
   },
-  "tofu-ninjin": {
-    "feed": "https://tofu-ninjin.netlify.com/feed.xml",
-    "twitter": null,
-    "hashtag": "#Tofuにんじん"
-  },
   "tofulab": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
     "twitter": "@tofulab_inc",
     "hashtag": null
+  },
+  "tofu-ninjin": {
+    "feed": "https://tofu-ninjin.netlify.com/feed.xml",
+    "twitter": null,
+    "hashtag": "#Tofuにんじん"
   },
   "toiee": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:181902102/sounds.rss",
@@ -1079,15 +1079,15 @@
     "twitter": "@Xtalk11",
     "hashtag": null
   },
-  "yancanfm": {
-    "feed": "https://www.yancan.tech/feed.xml",
-    "twitter": null,
-    "hashtag": "#yancanfm"
-  },
   "yabaihomepageyasan": {
     "feed": "https://yabaihomepageyasan.com/feed/podcast/",
     "twitter": null,
     "hashtag": null
+  },
+  "yancanfm": {
+    "feed": "https://www.yancan.tech/feed.xml",
+    "twitter": null,
+    "hashtag": "#yancanfm"
   },
   "yarukinaifm": {
     "feed": "https://yarukinai.fm/feed.xml",
@@ -1119,14 +1119,14 @@
     "twitter": null,
     "hashtag": null
   },
-  "you-tech": {
-    "feed": "https://anchor.fm/s/1e63b1f4/podcast/rss",
-    "twitter": "@youtech_20",
-    "hashtag": null
-  },
   "your-cio": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
     "twitter": null,
+    "hashtag": null
+  },
+  "you-tech": {
+    "feed": "https://anchor.fm/s/1e63b1f4/podcast/rss",
+    "twitter": "@youtech_20",
     "hashtag": null
   },
   "yukaneradio": {
