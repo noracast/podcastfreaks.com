@@ -435,9 +435,9 @@
     "hashtag": "#interaxion"
   },
   "jammingfm": {
-    "feed": "http://jammingfm.s3-website-ap-northeast-1.amazonaws.com/jammingfm.xml",
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:588841827/sounds.rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#jammingfm"
   },
   "jinseifm": {
     "feed": "https://kirimin.github.io/jinseifm/feed",
