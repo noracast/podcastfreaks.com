@@ -129,6 +129,11 @@
     "twitter": "@bkkcast",
     "hashtag": "#bkkcast"
   },
+  "blockchainjam": {
+    "feed": "https://blockchainjam.libsyn.com/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "blogging-life": {
     "feed": "https://www.blogging-life.com/podcast/",
     "twitter": null,
@@ -534,6 +539,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "miri-radio": {
+    "feed": "https://anchor.fm/s/e6398c8/podcast/rss",
+    "twitter": null,
+    "hashtag": "#miri_radio"
+  },
   "misreading": {
     "feed": "https://misreading.chat/category/episodes/feed/",
     "twitter": null,
@@ -793,6 +803,11 @@
     "feed": "https://ad.robotstart.jp/api/v1/feeds/382f04af/get-feeds/podcast",
     "twitter": null,
     "hashtag": null
+  },
+  "secure-fm": {
+    "feed": "https://anchor.fm/s/2607ca1c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#secure-brigade"
   },
   "serverless-now": {
     "feed": "https://serverless.fm/rss-feed/",
