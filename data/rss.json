@@ -1148,5 +1148,10 @@
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
     "twitter": null,
     "hashtag": null
+  },
+  "today-i-learned": {
+    "feed": "https://anchor.fm/s/367f0040/podcast/rss",
+    "twitter": null,
+    "hashtag": "#TodayILearnedFM"
   }
 }
