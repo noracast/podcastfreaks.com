@@ -959,6 +959,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "today-i-learned": {
+    "feed": "https://anchor.fm/s/367f0040/podcast/rss",
+    "twitter": null,
+    "hashtag": "#TodayILearnedFM"
+  },
   "tofulab": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
     "twitter": "@tofulab_inc",
@@ -1148,10 +1153,5 @@
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
     "twitter": null,
     "hashtag": null
-  },
-  "today-i-learned": {
-    "feed": "https://anchor.fm/s/367f0040/podcast/rss",
-    "twitter": null,
-    "hashtag": "#TodayILearnedFM"
   }
 }
