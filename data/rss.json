@@ -4,6 +4,11 @@
     "twitter": "@3jumper",
     "hashtag": "#3jumper"
   },
+  "46fm": {
+    "feed": "https://anchor.fm/s/292515ec/podcast/rss",
+    "twitter": "@46fm_",
+    "hashtag": "#46fm"
+  },
   "5656talking": {
     "feed": "https://anchor.fm/s/9a29938/podcast/rss",
     "twitter": null,
@@ -309,6 +314,11 @@
     "twitter": null,
     "hashtag": "#ふぁんfm"
   },
+  "ForkwellTechCast": {
+    "feed": "https://anchor.fm/s/384fa258/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ForkwellTechCast"
+  },
   "free-engineer": {
     "feed": "https://free-engineer.xrea.jp/feed/podcast",
     "twitter": null,
@@ -384,6 +394,11 @@
     "twitter": "@heartbeatsjp",
     "hashtag": "#hbsakaba"
   },
+  "hikifune.fm": {
+    "feed": "https://anchor.fm/s/8d50d4c/podcast/rss",
+    "twitter": null,
+    "hashtag": "#hikifunefm"
+  },
   "hiromaeda": {
     "feed": "https://hiromaeda.com/feed/podcast/",
     "twitter": null,
@@ -443,6 +458,11 @@
     "feed": "https://kirimin.github.io/jinseifm/feed",
     "twitter": "@jinseifm",
     "hashtag": "#jinseifm"
+  },
+  "just4fun.fm": {
+    "feed": "https://anchor.fm/s/5d5de14/podcast/rss",
+    "twitter": null,
+    "hashtag": "#just4funfm"
   },
   "kakakikikeke": {
     "feed": "https://kakakikikeke.com/podcast/feed",
@@ -933,6 +953,11 @@
     "feed": "https://anchor.fm/s/537fce4/podcast/rss",
     "twitter": null,
     "hashtag": "#techresearchlife"
+  },
+  "TensorFM": {
+    "feed": "https://anchor.fm/s/2e012c40/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "terapyon-channel-podcast": {
     "feed": "https://anchor.fm/s/14480e04/podcast/rss",
