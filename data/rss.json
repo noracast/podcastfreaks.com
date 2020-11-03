@@ -1049,6 +1049,11 @@
     "twitter": "@UniFa_JP",
     "hashtag": "#unifa_dev"
   },
+  "van-engineers": {
+    "feed": "https://anchor.fm/s/3c24e384/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "voiceofonebutton": {
     "feed": "http://radio.voiceofonebutton.net/index20.rdf",
     "twitter": "@applenewsradio",
