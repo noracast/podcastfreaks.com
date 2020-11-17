@@ -434,11 +434,6 @@
     "twitter": null,
     "hashtag": "#ie69"
   },
-  "ij-cast": {
-    "feed": "https://cast.innovator.jp.net/index.xml",
-    "twitter": "@ij_cast",
-    "hashtag": "#ijcast"
-  },
   "inakafm": {
     "feed": "https://komatatsu.github.io/inaka-fm/feed.xml",
     "twitter": "@inaka_fm",

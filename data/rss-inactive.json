@@ -29,6 +29,12 @@
     "hashtag": "#grantall",
     "reason": "domain revocation"
   },
+  "ij-cast": {
+    "feed": "https://cast.innovator.jp.net/index.xml",
+    "twitter": "@ij_cast",
+    "hashtag": "#ijcast",
+    "reason": "end of broadcast"
+  },
   "iosdcfm": {
     "feed": "https://feeds.feedburner.com/iosdcfm",
     "twitter": "@iosdcjp",
