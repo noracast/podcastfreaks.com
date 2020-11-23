@@ -84,6 +84,11 @@
     "twitter": "@arisa_dev",
     "hashtag": null
   },
+  "arkbfm": {
+    "feed": "https://anchor.fm/s/319a2820/podcast/rss",
+    "twitter": "@arkbfm",
+    "hashtag": "#arkbfm"
+  },
   "ashikagacast": {
     "feed": "https://anchor.fm/s/9231960/podcast/rss",
     "twitter": "@ashikagacast",
