@@ -1051,8 +1051,8 @@
   },
   "van-engineers": {
     "feed": "https://anchor.fm/s/3c24e384/podcast/rss",
-    "twitter": null,
-    "hashtag": null
+    "twitter": "@VanEngineersJP",
+    "hashtag": "#バンクーバーのえんじに屋"
   },
   "voiceofonebutton": {
     "feed": "http://radio.voiceofonebutton.net/index20.rdf",
