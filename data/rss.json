@@ -501,8 +501,8 @@
   },
   "koiki-fm": {
     "feed": "https://anchor.fm/s/713a0f4/podcast/rss",
-    "twitter": null,
-    "hashtag": null
+    "twitter": "@koikifm",
+    "hashtag": "#小粋fm"
   },
   "kumocast": {
     "feed": "https://feeds.feedburner.com/tumblr/IkZP",
