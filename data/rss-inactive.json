@@ -29,6 +29,12 @@
     "hashtag": "#grantall",
     "reason": "domain revocation"
   },
+  "happyfridayeve": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:770494357/sounds.rss",
+    "twitter": "@happyfriday_eve",
+    "hashtag": "#ハピフライブ",
+    "reason": "end of broadcast"
+  },
   "ij-cast": {
     "feed": "https://cast.innovator.jp.net/index.xml",
     "twitter": "@ij_cast",

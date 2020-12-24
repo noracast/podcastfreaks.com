@@ -384,11 +384,6 @@
     "twitter": "@exportfm",
     "hashtag": "#exportfm"
   },
-  "happyfridayeve": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:770494357/sounds.rss",
-    "twitter": "@happyfriday_eve",
-    "hashtag": "#ハピフライブ"
-  },
   "happy-tech-talkers-podcast": {
     "feed": "https://anchor.fm/s/2b4e09c8/podcast/rss",
     "twitter": "@httpradio",
