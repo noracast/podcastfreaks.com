@@ -23,6 +23,12 @@
     "hashtag": "#genbafm",
     "reason": "domain revocation"
   },
+  "goenboys": {
+    "feed": "https://anchor.fm/s/f94c8e8/podcast/rss",
+    "twitter": "@goenboys_canada",
+    "hashtag": "#goenboys",
+    "reason": "end of broadcast"
+  },
   "grantall": {
     "feed": "https://grantall.fm/feed.xml",
     "twitter": null,
