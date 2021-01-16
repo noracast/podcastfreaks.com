@@ -1173,5 +1173,10 @@
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
     "twitter": null,
     "hashtag": null
+  },
+  "tool": {
+    "feed": "https://radiotalk.jp/rss/0ca5aa4f4b981cb2",
+    "twitter": null,
+    "hashtag": null
   }
 }
