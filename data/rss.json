@@ -154,6 +154,11 @@
     "twitter": "@boot_fm",
     "hashtag": "#bootfm"
   },
+  "cafeai": {
+    "feed": "https://ear-s.jp/feed/podcast/ai",
+    "twitter": null,
+    "hashtag": null
+  },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
     "twitter": "@capitalPjp",
