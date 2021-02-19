@@ -10,7 +10,7 @@
     | にまとめていますので、予めご一読いただけるとありがたいです。
   h3 Githubアカウントをお持ちの方へ
   p
-    a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/master/data/rss.json") こちらのファイル
+    a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json") こちらのファイル
     | へPRを送ってもらうとさらに助かります。
   form(name="register-request" method="POST" netlify)
     input(type="hidden" name="form-name" value="register-request")
