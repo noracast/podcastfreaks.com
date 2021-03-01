@@ -236,7 +236,7 @@
   },
   "design-fm": {
     "feed": "https://anchor.fm/s/10b9e1b8/podcast/rss",
-    "twitter": null,
+    "twitter": "@DesignFM_JP",
     "hashtag": null
   },
   "designput": {
@@ -272,7 +272,7 @@
   "dokanai": {
     "feed": "https://anchor.fm/s/bafd2a4/podcast/rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#dokanai"
   },
   "dongurifm": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
@@ -597,7 +597,7 @@
   "mukimuki-cloud": {
     "feed": "https://anchor.fm/s/10161614/podcast/rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#cloud弱小"
   },
   "nanapod": {
     "feed": "https://nanapod.kozyty.com/rss",
@@ -668,6 +668,11 @@
     "feed": "https://noracast.jp/feed.xml",
     "twitter": "@noracast_",
     "hashtag": "#noracast"
+  },
+  "nounai": {
+    "feed": "https://anchor.fm/s/46da39f0/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "nyanyanya": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:100121411/sounds.rss",
@@ -837,7 +842,7 @@
   "serverworksradio": {
     "feed": "https://anchor.fm/s/27ea43c8/podcast/rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#サバワ"
   },
   "shiganai": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:294673416/sounds.rss",
@@ -867,7 +872,7 @@
   "silver-bullet-club": {
     "feed": "https://anchor.fm/s/13df46f8/podcast/rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#銀の弾丸ラジオ"
   },
   "snobbyfm": {
     "feed": "https://houka-go-projects.github.io/feed.xml",
