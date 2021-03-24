@@ -1019,6 +1019,11 @@
     "twitter": "@tonight_fm",
     "hashtag": "#tonight_fm"
   },
+  "toralabfm": {
+    "feed": "https://anchor.fm/s/46d5ea08/podcast/rss",
+    "twitter": null,
+    "hashtag": "#toralab_fm"
+  },
   "tsujileaks": {
     "feed": "https://www.tsujileaks.com/?feed=podcast",
     "twitter": null,
