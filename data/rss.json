@@ -909,6 +909,11 @@
     "twitter": "@strongxstrong_2",
     "hashtag": "#Sto2"
   },
+  "submitslife": {
+    "feed": "https://submits.life/feed.xml",
+    "twitter": "@submits_life",
+    "hashtag": "#submitslife"
+  },
   "subscriber": {
     "feed": "https://anchor.fm/s/84e2304/podcast/rss",
     "twitter": null,
