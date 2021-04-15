@@ -444,6 +444,11 @@
     "twitter": "@interaxion",
     "hashtag": "#interaxion"
   },
+  "isyumi": {
+    "feed": "https://feed.podbean.com/isyumi/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "jammingfm": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:588841827/sounds.rss",
     "twitter": null,
