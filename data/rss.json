@@ -939,6 +939,11 @@
     "twitter": null,
     "hashtag": "#takramcast"
   },
+  "tamadesignfm": {
+    "feed": "https://anchor.fm/s/216ede50/podcast/rss",
+    "twitter": "@tamadesignfm",
+    "hashtag": "#たまデザFM"
+  },
   "tanoshii-works": {
     "feed": "https://anchor.fm/s/73628cc/podcast/rss",
     "twitter": "@tanoshii_works",
