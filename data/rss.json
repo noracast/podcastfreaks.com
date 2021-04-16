@@ -444,6 +444,11 @@
     "twitter": "@interaxion",
     "hashtag": "#interaxion"
   },
+  "isyumi": {
+    "feed": "https://feed.podbean.com/isyumi/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "jammingfm": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:588841827/sounds.rss",
     "twitter": null,
@@ -739,6 +744,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "program": {
+    "feed": "https://radiotalk.jp/rss/c9506557ae909471",
+    "twitter": null,
+    "hashtag": null
+  },
   "propotype": {
     "feed": "https://propo.fm/channels/WUIGJ4FCFi9FRgL1AFy4/rss",
     "twitter": null,
@@ -938,6 +948,11 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:257554082/sounds.rss",
     "twitter": null,
     "hashtag": "#takramcast"
+  },
+  "tamadesignfm": {
+    "feed": "https://anchor.fm/s/216ede50/podcast/rss",
+    "twitter": "@tamadesignfm",
+    "hashtag": "#たまデザFM"
   },
   "tanoshii-works": {
     "feed": "https://anchor.fm/s/73628cc/podcast/rss",
