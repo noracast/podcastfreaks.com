@@ -1,4 +1,9 @@
 {
+  "10xfm": {
+    "feed": "https://anchor.fm/10xfm",
+    "twitter": null,
+    "hashtag": "#10xfm"
+  },
   "3jumper": {
     "feed": "https://feeds.feedburner.com/3jumper",
     "twitter": "@3jumper",
