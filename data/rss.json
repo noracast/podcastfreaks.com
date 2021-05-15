@@ -249,6 +249,11 @@
     "twitter": "@DesignputCast",
     "hashtag": null
   },
+  "devchat-fm": {
+    "feed": "https://anchor.fm/s/3b652dc8/podcast/rss",
+    "twitter": "@quvo_ubie",
+    "hashtag": "#devchatfm"
+  },
   "developerscafe": {
     "feed": "https://anchor.fm/s/8585ef0/podcast/rss",
     "twitter": null,
