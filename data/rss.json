@@ -379,6 +379,11 @@
     "twitter": null,
     "hashtag": "#ごりゅごcast"
   },
+  "good-to-great": {
+    "feed": "https://anchor.fm/s/11decd38/podcast/rss",
+    "twitter": "@yusuke_horie",
+    "hashtag": null
+  },
   "GUlab": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
     "twitter": null,
