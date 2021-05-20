@@ -304,6 +304,11 @@
     "twitter": "@DroidKaigi",
     "hashtag": "#droidkaigi"
   },
+  "e34-fm": {
+    "feed": "https://e34.fm/rss.xml",
+    "twitter": "@e34fm",
+    "hashtag": "#e34fm"
+  },
   "elle-height": {
     "feed": "https://feedpress.me/elle-height",
     "twitter": null,
