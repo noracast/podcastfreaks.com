@@ -819,6 +819,11 @@
     "twitter": "@researchat_fm",
     "hashtag": "#researchatfm"
   },
+  "resize-fm": {
+    "feed": "https://anchor.fm/s/416f2048/podcast/rss",
+    "twitter": "@resizefm",
+    "hashtag": "#resizefm"
+  },  
   "riywo": {
     "feed": "https://feeds.feedburner.com/RiywosPodcast",
     "twitter": null,
