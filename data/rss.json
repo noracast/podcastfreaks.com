@@ -119,6 +119,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "basuke-s-tech-talk": {
+    "feed": "https://anchor.fm/s/4cf7e15c/podcast/rss",
+    "twitter": "@basuke",
+    "hashtag": "#basuke"
+  },  
   "bdpfm": {
     "feed": "https://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
