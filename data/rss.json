@@ -509,6 +509,11 @@
     "twitter": null,
     "hashtag": "#プログラム雑談"
   },
+  "keep-alive-fm": {
+    "feed": "https://anchor.fm/s/2e9d2654/podcast/rss",
+    "twitter": null,
+    "hashtag": "#keepalivefm"
+  },  
   "kinokoru": {
     "feed": "https://anchor.fm/s/a7f362c/podcast/rss",
     "twitter": "@kinokorufm",
