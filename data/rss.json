@@ -39,6 +39,11 @@
     "twitter": "@agileradio15",
     "hashtag": "#agileradio"
   },
+  "agiletechchannel": {
+    "feed": "https://anchor.fm/s/323917a0/podcast/rss",
+    "twitter": null,
+    "hashtag": "#あじゃてくちゃんねる"
+  },  
   "ai-radio-by-team-ai": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
     "twitter": null,
