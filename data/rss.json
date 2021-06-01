@@ -43,7 +43,7 @@
     "feed": "https://anchor.fm/s/323917a0/podcast/rss",
     "twitter": null,
     "hashtag": "#あじゃてくちゃんねる"
-  },  
+  },
   "ai-radio-by-team-ai": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:102623686/sounds.rss",
     "twitter": null,
@@ -128,7 +128,7 @@
     "feed": "https://anchor.fm/s/4cf7e15c/podcast/rss",
     "twitter": "@basuke",
     "hashtag": "#basuke"
-  },  
+  },
   "bdpfm": {
     "feed": "https://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
@@ -193,6 +193,11 @@
     "feed": "https://clfreaks.org/rss",
     "twitter": null,
     "hashtag": "#clfreaks"
+  },
+  "coconuts-tech": {
+    "feed": "https://anchor.fm/s/4881bfd0/podcast/rss",
+    "twitter": "@CoconutsTech",
+    "hashtag": "#ココナッツテック"
   },
   "codeish-jp": {
     "feed": "https://jp.heroku.com/podcasts/codeish-jp.rss",
@@ -518,7 +523,7 @@
     "feed": "https://anchor.fm/s/2e9d2654/podcast/rss",
     "twitter": null,
     "hashtag": "#keepalivefm"
-  },  
+  },
   "kinokoru": {
     "feed": "https://anchor.fm/s/a7f362c/podcast/rss",
     "twitter": "@kinokorufm",
@@ -838,7 +843,7 @@
     "feed": "https://anchor.fm/s/416f2048/podcast/rss",
     "twitter": "@resizefm",
     "hashtag": "#resizefm"
-  },  
+  },
   "riywo": {
     "feed": "https://feeds.feedburner.com/RiywosPodcast",
     "twitter": null,
