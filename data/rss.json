@@ -619,6 +619,11 @@
     "twitter": null,
     "hashtag": "#misreading"
   },
+  "mitsue": {
+    "feed": "https://www.mitsue.co.jp/knowledge/tech_radio/podcast.rss",
+    "twitter": null,
+    "hashtag": "#ミツエーテックラジオ"
+  },
   "monologura": {
     "feed": "https://anchor.fm/s/e9ee928/podcast/rss",
     "twitter": null,
