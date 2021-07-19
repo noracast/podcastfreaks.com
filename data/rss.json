@@ -219,6 +219,11 @@
     "twitter": null,
     "hashtag": null
   },
+  "cookpad-design-radio": {
+    "feed": "https://anchor.fm/s/603e2d70/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },  
   "corklab": {
     "feed": "http://corklab.seesaa.net/index20.rdf",
     "twitter": null,
