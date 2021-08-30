@@ -239,6 +239,11 @@
     "twitter": "@csc_bot",
     "hashtag": "#電カー"
   },
+  "cybozudesign": {
+    "feed": "https://feed.podbean.com/cybozudesign/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "datafriday": {
     "feed": "https://anchor.fm/s/be04308/podcast/rss",
     "twitter": null,
