@@ -309,6 +309,11 @@
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
   },
+  "dot-join-fm": {
+    "feed": "https://anchor.fm/s/644ba85c/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "dosync-radio": {
     "feed": "https://anchor.fm/s/c133c40/podcast/rss",
     "twitter": "@dosync_radio",
