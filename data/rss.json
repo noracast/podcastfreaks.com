@@ -1269,6 +1269,11 @@
     "twitter": "@yurufuwaan",
     "hashtag": "#ゆるふわてとらん"
   },
+  "wantedly-engineering-podcast": {
+    "feed": "https://anchor.fm/s/64205bfc/podcast/rss",
+    "twitter": "@wantedly_dev",
+    "hashtag": null
+  },
   "zenkei-ai": {
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
     "twitter": null,
