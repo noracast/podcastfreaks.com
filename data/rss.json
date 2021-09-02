@@ -239,6 +239,11 @@
     "twitter": "@csc_bot",
     "hashtag": "#電カー"
   },
+  "cybozudesign": {
+    "feed": "https://feed.podbean.com/cybozudesign/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
   "datafriday": {
     "feed": "https://anchor.fm/s/be04308/podcast/rss",
     "twitter": null,
@@ -308,6 +313,11 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:170031062/sounds.rss",
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
+  },
+  "dot-join-fm": {
+    "feed": "https://anchor.fm/s/644ba85c/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "dosync-radio": {
     "feed": "https://anchor.fm/s/c133c40/podcast/rss",
@@ -449,6 +459,11 @@
     "twitter": null,
     "hashtag": "#hiyokoMofufm"
   },
+  "hitokuchi-pki": {
+    "feed": "https://anchor.fm/s/42b89b8c/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "hukugyo": {
     "feed": "https://anchor.fm/s/bcea1c0/podcast/rss",
     "twitter": null,
@@ -486,6 +501,11 @@
   },
   "isyumi": {
     "feed": "https://feed.podbean.com/isyumi/feed.xml",
+    "twitter": null,
+    "hashtag": null
+  },
+  "it-kei-online-daigakusei": {
+    "feed": "https://anchor.fm/s/1a23e94c/podcast/rss",
     "twitter": null,
     "hashtag": null
   },
@@ -1268,6 +1288,11 @@
     "feed": "https://anchor.fm/s/203ab1bc/podcast/rss",
     "twitter": "@yurufuwaan",
     "hashtag": "#ゆるふわてとらん"
+  },
+  "wantedly-engineering-podcast": {
+    "feed": "https://anchor.fm/s/64205bfc/podcast/rss",
+    "twitter": "@wantedly_dev",
+    "hashtag": null
   },
   "zenkei-ai": {
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
