@@ -749,6 +749,11 @@
     "twitter": "@noracast_",
     "hashtag": "#noracast"
   },
+  "normalizefm": {
+    "feed": "https://anchor.fm/s/67a9c1a0/podcast/rss",
+    "twitter": "@normalizefm",
+    "hashtag": "#normalizeFM"
+  },  
   "nounai": {
     "feed": "https://anchor.fm/s/46da39f0/podcast/rss",
     "twitter": null,
