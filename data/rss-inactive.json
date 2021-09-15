@@ -17,6 +17,12 @@
     "hashtag": "#mook06",
     "reason": "end of broadcast"
   },
+  "facast": {
+    "feed": "https://facast.net/feed.xml",
+    "twitter": "@facast_net",
+    "hashtag": "#FAcast",
+    "reason": "website is closed"
+  },
   "genba": {
     "feed": "https://genba.fm/podcast.xml",
     "twitter": null,
