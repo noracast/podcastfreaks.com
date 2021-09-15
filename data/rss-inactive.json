@@ -107,6 +107,12 @@
     "hashtag": "#セキュア旅団",
     "reason": "domain revocation"
   },
+  "serverless-now": {
+    "feed": "https://serverless.fm/rss-feed/",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "domain revocation"
+  },
   "shock-sheets-tech": {
     "feed": "https://feeds.feedburner.com/shock-sheets-tech",
     "twitter": null,

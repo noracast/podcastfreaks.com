@@ -909,11 +909,6 @@
     "twitter": null,
     "hashtag": "#secure-brigade"
   },
-  "serverless-now": {
-    "feed": "https://serverless.fm/rss-feed/",
-    "twitter": null,
-    "hashtag": null
-  },
   "serverworksradio": {
     "feed": "https://anchor.fm/s/27ea43c8/podcast/rss",
     "twitter": null,
