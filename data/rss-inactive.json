@@ -94,5 +94,11 @@
     "twitter": null,
     "hashtag": null,
     "reason": "audio not found"
+  },
+  "wadafm": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
+    "twitter": null,
+    "hashtag": "#wadafm",
+    "reason": "feed not found"
   }
 }
