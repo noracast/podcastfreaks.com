@@ -100,5 +100,11 @@
     "twitter": null,
     "hashtag": "#wadafm",
     "reason": "feed not found"
+  },
+  "yabaihomepageyasan": {
+    "feed": "https://yabaihomepageyasan.com/feed/podcast/",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "feed not found"
   }
 }
