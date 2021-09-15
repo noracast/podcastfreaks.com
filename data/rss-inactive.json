@@ -17,6 +17,12 @@
     "hashtag": "#mook06",
     "reason": "end of broadcast"
   },
+  "bitbitecoin": {
+    "feed": "https://bitbitecoin.com/feed/?lang=ja",
+    "twitter": "@bitbitecoin",
+    "hashtag": null,
+    "reason": "website is closed"
+  },
   "facast": {
     "feed": "https://facast.net/feed.xml",
     "twitter": "@facast_net",
