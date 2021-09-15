@@ -77,6 +77,12 @@
     "hashtag": "#railsdm",
     "reason": "feed not found"
   },
+  "rubyist-club": {
+    "feed": "https://rubyistclub.chezo.uno/feed.xml",
+    "twitter": null,
+    "hashtag": "#rubyistclub",
+    "reason": "feed not found"
+  },
   "secure-brigade": {
     "feed": "https://secure-brigade.com/podcast/index.xml",
     "twitter": null,
