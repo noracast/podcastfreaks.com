@@ -440,7 +440,7 @@
     "hashtag": "#httpradio"
   },
   "hbSAKABA": {
-    "feed": "https://heartbeats.jp/hbsakaba/rss",
+    "feed": "https://heartbeats.jp/hbsakaba/rss.xml",
     "twitter": "@heartbeatsjp",
     "hashtag": "#hbsakaba"
   },
