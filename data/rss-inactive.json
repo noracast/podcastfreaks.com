@@ -17,6 +17,12 @@
     "hashtag": "#mook06",
     "reason": "end of broadcast"
   },
+  "bdpfm": {
+    "feed": "https://bdpfm.jp/feed.xml",
+    "twitter": "@bdpfm",
+    "hashtag": "#bdpfm",
+    "reason": "domain revocation"
+  },
   "bitbitecoin": {
     "feed": "https://bitbitecoin.com/feed/?lang=ja",
     "twitter": "@bitbitecoin",

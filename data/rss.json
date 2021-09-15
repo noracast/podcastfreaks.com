@@ -129,11 +129,6 @@
     "twitter": "@basuke",
     "hashtag": "#basuke"
   },
-  "bdpfm": {
-    "feed": "https://bdpfm.jp/feed.xml",
-    "twitter": "@bdpfm",
-    "hashtag": "#bdpfm"
-  },
   "becochan": {
     "feed": "https://channel.becolomochi.com/feed.xml",
     "twitter": null,
