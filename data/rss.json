@@ -1,6 +1,6 @@
 {
   "10xfm": {
-    "feed": "https://anchor.fm/10xfm",
+    "feed": "https://anchor.fm/s/559fd878/podcast/rss",
     "twitter": null,
     "hashtag": "#10xfm"
   },
@@ -85,7 +85,7 @@
     "hashtag": "#aozorafm"
   },
   "ariel": {
-    "feed": "http://dev.ariel-networks.com/wp/archives/category/podcast/feed",
+    "feed": "https://dev.ariel-networks.com/wp/archives/category/podcast/feed",
     "twitter": null,
     "hashtag": null
   },
@@ -129,20 +129,10 @@
     "twitter": "@basuke",
     "hashtag": "#basuke"
   },
-  "bdpfm": {
-    "feed": "https://bdpfm.jp/feed.xml",
-    "twitter": "@bdpfm",
-    "hashtag": "#bdpfm"
-  },
   "becochan": {
     "feed": "https://channel.becolomochi.com/feed.xml",
     "twitter": null,
     "hashtag": "#becochan"
-  },
-  "bitbitecoin": {
-    "feed": "https://bitbitecoin.com/feed/?lang=ja",
-    "twitter": "@bitbitecoin",
-    "hashtag": null
   },
   "bitcoiners": {
     "feed": "https://anchor.fm/s/a8b554c/podcast/rss",
@@ -205,7 +195,7 @@
     "hashtag": null
   },
   "codelunch-fm": {
-    "feed": "https://codelunch.fm/rss.xml",
+    "feed": "https://anchor.fm/s/77d9b6c/podcast/rss",
     "twitter": null,
     "hashtag": "#codelunchfm"
   },
@@ -223,7 +213,7 @@
     "feed": "https://anchor.fm/s/603e2d70/podcast/rss",
     "twitter": null,
     "hashtag": null
-  },  
+  },
   "corklab": {
     "feed": "http://corklab.seesaa.net/index20.rdf",
     "twitter": null,
@@ -250,7 +240,7 @@
     "hashtag": null
   },
   "denkiya": {
-    "feed": "https://inst-web.com/denkiya_blog/feed",
+    "feed": "https://inst-web.com/feed",
     "twitter": "@_Coffee__",
     "hashtag": "#電器屋Walker"
   },
@@ -359,11 +349,6 @@
     "twitter": null,
     "hashtag": "#エスノエフエム"
   },
-  "facast": {
-    "feed": "https://facast.net/feed.xml",
-    "twitter": "@facast_net",
-    "hashtag": "#FAcast"
-  },
   "fan-tech": {
     "feed": "https://anchor.fm/s/11ba73c0/podcast/rss",
     "twitter": null,
@@ -440,7 +425,7 @@
     "hashtag": "#httpradio"
   },
   "hbSAKABA": {
-    "feed": "https://heartbeats.jp/hbsakaba/rss",
+    "feed": "https://heartbeats.jp/hbsakaba/rss.xml",
     "twitter": "@heartbeatsjp",
     "hashtag": "#hbsakaba"
   },
@@ -753,7 +738,7 @@
     "feed": "https://anchor.fm/s/67a9c1a0/podcast/rss",
     "twitter": "@normalizefm",
     "hashtag": "#normalizeFM"
-  },  
+  },
   "nounai": {
     "feed": "https://anchor.fm/s/46da39f0/podcast/rss",
     "twitter": null,
@@ -899,11 +884,6 @@
     "twitter": "@PitPa_jp",
     "hashtag": null
   },
-  "rubyist-club": {
-    "feed": "https://rubyistclub.chezo.uno/feed.xml",
-    "twitter": null,
-    "hashtag": "#rubyistclub"
-  },
   "sakura818uuu": {
     "feed": "https://anchor.fm/s/12fa96d4/podcast/rss",
     "twitter": null,
@@ -928,11 +908,6 @@
     "feed": "https://anchor.fm/s/2607ca1c/podcast/rss",
     "twitter": null,
     "hashtag": "#secure-brigade"
-  },
-  "serverless-now": {
-    "feed": "https://serverless.fm/rss-feed/",
-    "twitter": null,
-    "hashtag": null
   },
   "serverworksradio": {
     "feed": "https://anchor.fm/s/27ea43c8/podcast/rss",
@@ -1090,7 +1065,7 @@
     "hashtag": null
   },
   "the-startup-podcast": {
-    "feed": "https://podcast.no-new-folk.com/feed/",
+    "feed": "https://anchor.fm/s/4e5c1c48/podcast/rss",
     "twitter": null,
     "hashtag": null
   },
@@ -1179,11 +1154,6 @@
     "twitter": null,
     "hashtag": "#w2ofm"
   },
-  "wadafm": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
-    "twitter": null,
-    "hashtag": "#wadafm"
-  },
   "wasabi": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
     "twitter": null,
@@ -1227,11 +1197,6 @@
   "x-talk": {
     "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
-    "hashtag": null
-  },
-  "yabaihomepageyasan": {
-    "feed": "https://yabaihomepageyasan.com/feed/podcast/",
-    "twitter": null,
     "hashtag": null
   },
   "yancanfm": {

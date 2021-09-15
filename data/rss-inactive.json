@@ -17,6 +17,24 @@
     "hashtag": "#mook06",
     "reason": "end of broadcast"
   },
+  "bdpfm": {
+    "feed": "https://bdpfm.jp/feed.xml",
+    "twitter": "@bdpfm",
+    "hashtag": "#bdpfm",
+    "reason": "domain revocation"
+  },
+  "bitbitecoin": {
+    "feed": "https://bitbitecoin.com/feed/?lang=ja",
+    "twitter": "@bitbitecoin",
+    "hashtag": null,
+    "reason": "website is closed"
+  },
+  "facast": {
+    "feed": "https://facast.net/feed.xml",
+    "twitter": "@facast_net",
+    "hashtag": "#FAcast",
+    "reason": "website is closed"
+  },
   "genba": {
     "feed": "https://genba.fm/podcast.xml",
     "twitter": null,
@@ -77,10 +95,22 @@
     "hashtag": "#railsdm",
     "reason": "feed not found"
   },
+  "rubyist-club": {
+    "feed": "https://rubyistclub.chezo.uno/feed.xml",
+    "twitter": null,
+    "hashtag": "#rubyistclub",
+    "reason": "feed not found"
+  },
   "secure-brigade": {
     "feed": "https://secure-brigade.com/podcast/index.xml",
     "twitter": null,
     "hashtag": "#セキュア旅団",
+    "reason": "domain revocation"
+  },
+  "serverless-now": {
+    "feed": "https://serverless.fm/rss-feed/",
+    "twitter": null,
+    "hashtag": null,
     "reason": "domain revocation"
   },
   "shock-sheets-tech": {
@@ -94,5 +124,17 @@
     "twitter": null,
     "hashtag": null,
     "reason": "audio not found"
+  },
+  "wadafm": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
+    "twitter": null,
+    "hashtag": "#wadafm",
+    "reason": "feed not found"
+  },
+  "yabaihomepageyasan": {
+    "feed": "https://yabaihomepageyasan.com/feed/podcast/",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "feed not found"
   }
 }
