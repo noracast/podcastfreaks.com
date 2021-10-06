@@ -354,6 +354,11 @@
     "twitter": null,
     "hashtag": "#ふぁんfm"
   },
+  "fmfm.fm": {
+    "feed": "https://anchor.fm/s/5c16f0c4/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "ForkwellTechCast": {
     "feed": "https://anchor.fm/s/384fa258/podcast/rss",
     "twitter": null,
