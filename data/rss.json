@@ -319,6 +319,11 @@
     "twitter": "@dotlike_podcast",
     "hashtag": "#dotlike"
   },
+  "double-m2ml": {
+    "feed": "https://anchor.fm/s/5706ff0c/podcast/rss",
+    "twitter": "@double_m2ml",
+    "hashtag": "#double_m2fm"
+  },
   "droidkaigi-fm": {
     "feed": "https://droidkaigi.jp/fm/feed.xml",
     "twitter": "@DroidKaigi",
