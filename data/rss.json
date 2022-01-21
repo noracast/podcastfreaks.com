@@ -19,6 +19,31 @@
     "twitter": null,
     "hashtag": "#ゴロゴロトーキング"
   },
+  "CEO.FM": {
+    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
+    "twitter": "@tchikuba",
+    "hashtag": "#ceofm"
+  },
+  "ForkwellTechCast": {
+    "feed": "https://anchor.fm/s/384fa258/podcast/rss",
+    "twitter": null,
+    "hashtag": "#ForkwellTechCast"
+  },
+  "GUlab": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
+    "twitter": null,
+    "hashtag": null
+  },
+  "OSSfm": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:302417970/sounds.rss",
+    "twitter": null,
+    "hashtag": "#OSSfm"
+  },
+  "TensorFM": {
+    "feed": "https://anchor.fm/s/2e012c40/podcast/rss",
+    "twitter": null,
+    "hashtag": null
+  },
   "abefm": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:213089033/sounds.rss",
     "twitter": null,
@@ -49,15 +74,15 @@
     "twitter": null,
     "hashtag": null
   },
-  "airsap": {
-    "feed": "https://airsap.net/feed/podcast/",
-    "twitter": null,
-    "hashtag": "#AirSap"
-  },
   "ai-sakaba": {
     "feed": "https://www.omnycontent.com/d/playlist/12259a7b-698b-45f2-ba99-aae300e94d94/bb6b7ea5-143f-44e7-a7da-ab0a0031e9c0/ac8f32d3-307b-4520-a9eb-ab0a00325c20/podcast.rss",
     "twitter": null,
     "hashtag": null
+  },
+  "airsap": {
+    "feed": "https://airsap.net/feed/podcast/",
+    "twitter": null,
+    "hashtag": "#AirSap"
   },
   "ajito": {
     "feed": "https://ajito.fm/index.xml",
@@ -173,11 +198,6 @@
     "feed": "https://cast-for.fun/feed.xml",
     "twitter": "@castforfun",
     "hashtag": "#castforfun"
-  },
-  "CEO.FM": {
-    "feed": "https://anchor.fm/s/13047d98/podcast/rss",
-    "twitter": "@tchikuba",
-    "hashtag": "#ceofm"
   },
   "clfreaks": {
     "feed": "https://clfreaks.org/rss",
@@ -304,15 +324,15 @@
     "twitter": "@dongurifm",
     "hashtag": "#dongurifm"
   },
-  "dot-join-fm": {
-    "feed": "https://anchor.fm/s/644ba85c/podcast/rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "dosync-radio": {
     "feed": "https://anchor.fm/s/c133c40/podcast/rss",
     "twitter": "@dosync_radio",
     "hashtag": "#dosync_radio"
+  },
+  "dot-join-fm": {
+    "feed": "https://anchor.fm/s/644ba85c/podcast/rss",
+    "twitter": null,
+    "hashtag": null
   },
   "dotlike_podcast": {
     "feed": "https://dotlike.ch/feed.xml",
@@ -364,11 +384,6 @@
     "twitter": null,
     "hashtag": null
   },
-  "ForkwellTechCast": {
-    "feed": "https://anchor.fm/s/384fa258/podcast/rss",
-    "twitter": null,
-    "hashtag": "#ForkwellTechCast"
-  },
   "free-engineer": {
     "feed": "https://free-engineer.xrea.jp/feed/podcast",
     "twitter": null,
@@ -404,20 +419,15 @@
     "twitter": null,
     "hashtag": null
   },
-  "goryugocom": {
-    "feed": "https://anchor.fm/s/2e56f6c/podcast/rss",
-    "twitter": null,
-    "hashtag": "#ごりゅごcast"
-  },
   "good-to-great": {
     "feed": "https://anchor.fm/s/11decd38/podcast/rss",
     "twitter": "@yusuke_horie",
     "hashtag": null
   },
-  "GUlab": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:557063985/sounds.rss",
+  "goryugocom": {
+    "feed": "https://anchor.fm/s/2e56f6c/podcast/rss",
     "twitter": null,
-    "hashtag": null
+    "hashtag": "#ごりゅごcast"
   },
   "gunosy": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
@@ -449,15 +459,15 @@
     "twitter": null,
     "hashtag": null
   },
-  "hiyokoMofu-fm": {
-    "feed": "https://mofumofu2.github.io/hiyokoMofu-fm/feed.xml",
-    "twitter": null,
-    "hashtag": "#hiyokoMofufm"
-  },
   "hitokuchi-pki": {
     "feed": "https://anchor.fm/s/42b89b8c/podcast/rss",
     "twitter": null,
     "hashtag": null
+  },
+  "hiyokoMofu-fm": {
+    "feed": "https://mofumofu2.github.io/hiyokoMofu-fm/feed.xml",
+    "twitter": null,
+    "hashtag": "#hiyokoMofufm"
   },
   "hukugyo": {
     "feed": "https://anchor.fm/s/bcea1c0/podcast/rss",
@@ -544,6 +554,11 @@
     "twitter": null,
     "hashtag": "#keepalivefm"
   },
+  "kepc": {
+    "feed": "https://kepc.mookmookradio.com/feed/",
+    "twitter": null,
+    "hashtag": "#mook05"
+  },
   "kimagurefm": {
     "feed": "https://anchor.fm/s/31978840/podcast/rss",
     "twitter": "@kimagurefm",
@@ -558,11 +573,6 @@
     "feed": "https://anchor.fm/s/7aac524/podcast/rss",
     "twitter": "@kinsukicom",
     "hashtag": null
-  },
-  "kepc": {
-    "feed": "https://kepc.mookmookradio.com/feed/",
-    "twitter": null,
-    "hashtag": "#mook05"
   },
   "koiki-fm": {
     "feed": "https://anchor.fm/s/713a0f4/podcast/rss",
@@ -773,11 +783,6 @@
     "feed": "https://ossan.fm/feed.xml",
     "twitter": null,
     "hashtag": "#ossanfm"
-  },
-  "OSSfm": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:302417970/sounds.rss",
-    "twitter": null,
-    "hashtag": "#OSSfm"
   },
   "otakumode": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:361589768/sounds.rss",
@@ -1039,19 +1044,14 @@
     "twitter": null,
     "hashtag": null
   },
-  "techbooster": {
-    "feed": "https://techbooster.org/feed/podcast/",
-    "twitter": "@TechBooster",
-    "hashtag": null
-  },
   "tech-research": {
     "feed": "https://anchor.fm/s/537fce4/podcast/rss",
     "twitter": null,
     "hashtag": "#techresearchlife"
   },
-  "TensorFM": {
-    "feed": "https://anchor.fm/s/2e012c40/podcast/rss",
-    "twitter": null,
+  "techbooster": {
+    "feed": "https://techbooster.org/feed/podcast/",
+    "twitter": "@TechBooster",
     "hashtag": null
   },
   "terapyon-channel-podcast": {
@@ -1089,15 +1089,15 @@
     "twitter": null,
     "hashtag": "#TodayILearnedFM"
   },
-  "tofulab": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
-    "twitter": "@tofulab_inc",
-    "hashtag": null
-  },
   "tofu-ninjin": {
     "feed": "https://tofu-ninjin.netlify.com/feed.xml",
     "twitter": null,
     "hashtag": "#Tofuにんじん"
+  },
+  "tofulab": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:254871171/sounds.rss",
+    "twitter": "@tofulab_inc",
+    "hashtag": null
   },
   "toiee": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:181902102/sounds.rss",
@@ -1113,6 +1113,11 @@
     "feed": "https://tonight-fm.github.io/feed.xml",
     "twitter": "@tonight_fm",
     "hashtag": "#tonight_fm"
+  },
+  "tool": {
+    "feed": "https://radiotalk.jp/rss/0ca5aa4f4b981cb2",
+    "twitter": null,
+    "hashtag": null
   },
   "toralabfm": {
     "feed": "https://anchor.fm/s/46d5ea08/podcast/rss",
@@ -1169,6 +1174,11 @@
     "twitter": null,
     "hashtag": "#w2ofm"
   },
+  "wantedly-engineering-podcast": {
+    "feed": "https://anchor.fm/s/64205bfc/podcast/rss",
+    "twitter": "@wantedly_dev",
+    "hashtag": null
+  },
   "wasabi": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:399843516/sounds.rss",
     "twitter": null,
@@ -1204,15 +1214,15 @@
     "twitter": null,
     "hashtag": null
   },
-  "xrfm": {
-    "feed": "https://xrfm.github.io/feed.xml",
-    "twitter": "@xRfrn",
-    "hashtag": "#xRfm"
-  },
   "x-talk": {
     "feed": "https://anchor.fm/s/97c86bc/podcast/rss",
     "twitter": "@Xtalk11",
     "hashtag": null
+  },
+  "xrfm": {
+    "feed": "https://xrfm.github.io/feed.xml",
+    "twitter": "@xRfrn",
+    "hashtag": "#xRfm"
   },
   "yancanfm": {
     "feed": "https://www.yancan.tech/feed.xml",
@@ -1249,14 +1259,14 @@
     "twitter": null,
     "hashtag": null
   },
-  "your-cio": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "you-tech": {
     "feed": "https://anchor.fm/s/1e63b1f4/podcast/rss",
     "twitter": "@youtech_20",
+    "hashtag": null
+  },
+  "your-cio": {
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:201497189/sounds.rss",
+    "twitter": null,
     "hashtag": null
   },
   "yukaneradio": {
@@ -1274,18 +1284,8 @@
     "twitter": "@yurufuwaan",
     "hashtag": "#ゆるふわてとらん"
   },
-  "wantedly-engineering-podcast": {
-    "feed": "https://anchor.fm/s/64205bfc/podcast/rss",
-    "twitter": "@wantedly_dev",
-    "hashtag": null
-  },
   "zenkei-ai": {
     "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
-    "twitter": null,
-    "hashtag": null
-  },
-  "tool": {
-    "feed": "https://radiotalk.jp/rss/0ca5aa4f4b981cb2",
     "twitter": null,
     "hashtag": null
   }
