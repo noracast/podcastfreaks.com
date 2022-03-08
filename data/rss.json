@@ -874,15 +874,15 @@
     "twitter": "@rehashfm",
     "hashtag": "#rehashfm"
   },
-  "renderfm": {
-    "feed": "https://pitpa.jp/rss/renderfm",
-    "twitter": null,
-    "hashtag": null
-  },
   "remarklife": {
     "feed": "https://anchor.fm/s/e7a07c0/podcast/rss",
     "twitter": "@remark_life",
     "hashtag": "#remarklife"
+  },
+  "renderfm": {
+    "feed": "https://pitpa.jp/rss/renderfm",
+    "twitter": null,
+    "hashtag": null
   },
   "researchatfm": {
     "feed": "https://researchat.fm/feed.xml",
