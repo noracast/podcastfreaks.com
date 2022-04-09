@@ -27,7 +27,7 @@
     "consola": "^2.11.0",
     "d3": "^5.14.2",
     "file-saver": "^2.0.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nuxt": "^2.10.2",
     "opml-generator": "^1.1.1",
     "shelljs": "^0.8.5",
