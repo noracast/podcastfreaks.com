@@ -684,6 +684,11 @@
     "twitter": null,
     "hashtag": "#cloud弱小"
   },
+  "music-and-math": {
+    "feed": "https://anchor.fm/s/8e9d770c/podcast/rss",
+    "twitter": "@music_and_math",
+    "hashtag": null
+  },
   "nanapod": {
     "feed": "https://nanapod.kozyty.com/rss",
     "twitter": "@nanapi_nanapod",
