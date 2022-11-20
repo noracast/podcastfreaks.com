@@ -779,6 +779,11 @@
     "twitter": "@OffTopicJP",
     "hashtag": null
   },
+  "ogenkidesuka-fm": {
+    "feed": "https://anchor.fm/s/65c3f018/podcast/rss",
+    "twitter": null,
+    "hashtag": "#お元気ですかFM"
+  },
   "omoiyarifm": {
     "feed": "https://feeds.feedburner.com/omoiyarifm/",
     "twitter": null,
