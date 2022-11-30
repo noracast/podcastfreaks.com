@@ -1,4 +1,9 @@
 {
+  "gengokafm": {
+    "feed": "https://anchor.fm/s/8239c4c0/podcast/rss",
+    "twitter": null,
+    "hashtag": "#言語化fm"
+  },
   "10xfm": {
     "feed": "https://anchor.fm/s/559fd878/podcast/rss",
     "twitter": null,
