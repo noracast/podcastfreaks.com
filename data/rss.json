@@ -454,6 +454,11 @@
     "twitter": "@heartbeatsjp",
     "hashtag": "#hbsakaba"
   },
+  "hello-ai-forum": {
+    "feed": "https://anchor.fm/s/1a412cb4/podcast/rss",
+    "twitter": "@hello_ai_forum",
+    "hashtag": "#helloaiforum"
+  },
   "hikifune.fm": {
     "feed": "https://anchor.fm/s/8d50d4c/podcast/rss",
     "twitter": null,
@@ -1308,10 +1313,5 @@
     "feed": "https://anchor.fm/s/203ab1bc/podcast/rss",
     "twitter": "@yurufuwaan",
     "hashtag": "#ゆるふわてとらん"
-  },
-  "zenkei-ai": {
-    "feed": "https://feeds.feedburner.com/ZenkeiAiPodcast",
-    "twitter": null,
-    "hashtag": null
   }
 }
