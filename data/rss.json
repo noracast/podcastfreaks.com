@@ -514,11 +514,6 @@
     "twitter": null,
     "hashtag": "#RadioSandbox"
   },
-  "kappa": {
-    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
-    "twitter": null,
-    "hashtag": null
-  },
   "karino2": {
     "feed": "https://anchor.fm/s/68ce140/podcast/rss",
     "twitter": null,
@@ -588,11 +583,6 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
-  },
-  "meands-fm": {
-    "feed": "https://meands.fm/feed/podcast",
-    "twitter": null,
-    "hashtag": "#meands"
   },
   "meetsfm": {
     "feed": "https://anchor.fm/s/81ca130/podcast/rss",
@@ -939,11 +929,6 @@
     "twitter": null,
     "hashtag": "#shinjukult"
   },
-  "shirokane-kougyou": {
-    "feed": "https://shirokane-kougyou.fm/feed.xml",
-    "twitter": "@shirokane_fm",
-    "hashtag": "#白金鉱業fm"
-  },
   "siliconvalleyrw": {
     "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
     "twitter": null,
@@ -988,11 +973,6 @@
     "feed": "https://anchor.fm/s/a12ce9c/podcast/rss",
     "twitter": "@strongxstrong_2",
     "hashtag": "#Sto2"
-  },
-  "submitslife": {
-    "feed": "https://submits.life/feed.xml",
-    "twitter": "@submits_life",
-    "hashtag": "#submitslife"
   },
   "subscriber": {
     "feed": "https://anchor.fm/s/84e2304/podcast/rss",
