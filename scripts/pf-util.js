@@ -98,29 +98,21 @@ class Util {
   }
 
   // 画像のダウンロードとリサイズ
-  downloadAndResize(_key, _src, _dist) {
-    return wgetp(_src, {output: _dist})
-              .then(() => {
-              const ext = path.extname(_dist)
-              const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
-              const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-              sharp(_dist)
-                .resize(120)
-                .toFile(ext_120, (err) => {
-                  if(err){
-                    consola.error(_key, err)
-                  }
-                })
-                .resize(60)
-                .toFile(ext_60, (err) => {
-                  if(err){
-                    consola.error(_key, err)
-                  }
-                })
-            })
-            .catch((err) => {
-              consola.log(_key, err)
-            })
+  async downloadAndResize(_key, _src, _dist) {
+    try {
+      await wgetp(_src, {output: _dist})
+      const ext = path.extname(_dist)
+      const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
+      const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
+      await sharp(_dist).resize(120).toFile(ext_120).catch((err) => {
+        consola.error(_key, err)
+      })
+      await sharp(_dist).resize(60).toFile(ext_60).catch((err) => {
+        consola.error(_key, err)
+      })
+    } catch(err) {
+      consola.log(_key, err)
+    }
   }
 
   getEpisodesIn2Weeks(episodes, key, title) {
