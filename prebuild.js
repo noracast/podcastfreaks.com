@@ -103,6 +103,10 @@ const fetchFeed = async key => {
   }
 
   // json.rss.channel.item must be Array
+  if(!json.rss.channel.item) {
+    error('fetchFeed', dist_rss, new Error('No episodes found'))
+    return
+  }
   if(!(json.rss.channel.item instanceof Array)) {
     json.rss.channel.item = [json.rss.channel.item]
   }
@@ -126,7 +130,7 @@ const fetchFeed = async key => {
   // Get the latest episode's publish date
   latest_pubdates.push({
     id: key,
-    pubDate: episodes.pubDate
+    pubDate: episodes[0].pubDate
   })
 
   episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
