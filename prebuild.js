@@ -144,7 +144,7 @@ const fetchFeed = async key => {
   }
 
   // Get cover image urls
-  const cover_url = util.removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'))
+  const cover_url = util.removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'), src)
   if(cover_url){
     covers[key] = {
       src: cover_url,

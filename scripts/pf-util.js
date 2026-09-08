@@ -15,13 +15,21 @@ class Util {
     return this
   }
 
-  // https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
-  removeQuery(_uri) {
-    if(_uri){
-      const u = url.parse(_uri)
-      return `${u.protocol}//${u.host}${u.pathname}`
+  // クエリとフラグメントを除いた絶対URLを返す。
+  // 例) https://example.com/cover.jpg?fit=3000%2C3000 -> https://example.com/cover.jpg
+  // itunes:image の href が相対パスのフィードがあるため（例: ariel の
+  // "/wp/wp-content/uploads/powerpress/arieltan.jpg"）、_base で解決する
+  removeQuery(_uri, _base) {
+    if(!_uri) return _uri
+    try {
+      const u = new URL(_uri, _base)
+      u.search = ''
+      u.hash = ''
+      return u.toString()
+    } catch (e) {
+      consola.error('removeQuery', _uri, e.message)
+      return null
     }
-    return _uri
   }
 
   getFileServer(_item) {
