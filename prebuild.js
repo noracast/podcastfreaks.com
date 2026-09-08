@@ -2,6 +2,7 @@
 
 import _ from 'lodash'
 import consola from 'consola'
+import decodeEntities from './scripts/decode-entities'
 import 'date-utils'
 import fileExtension from 'file-extension'
 import fs from 'fs'
@@ -170,6 +171,12 @@ const fetchFeed = async key => {
 
   const channel = json.rss.channel
   const episodes = channel.item
+
+  // CDATA 内で二重にエスケープされているフィードがあるため、ここで一度だけ戻す
+  // （例: regonn&curry.fm のように "&amp;" が画面にそのまま出てしまう）
+  channel.title = decodeEntities(channel.title)
+  episodes.forEach(ep => { if(ep) ep.title = decodeEntities(ep.title) })
+
   const title = channel.title
 
   // count episodes
