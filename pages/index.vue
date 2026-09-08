@@ -26,7 +26,8 @@ div.root
           small {{ props.row.twitter }}
     template(slot="fileServer" slot-scope="props")
       .clip
-        small {{ props.row.fileServer }}
+        //- 省略された場合に全体を確認できるよう title 属性を付ける
+        small(:title="props.row.fileServer") {{ props.row.fileServer }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
