@@ -92,17 +92,19 @@ class Util {
     return durations
   }
 
-  // 平均値
-  getDurationAverage(_items, _dist_rss) {
-    let durations = this.getDurations(_items, _dist_rss)
-    const totalDurations = durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(durations[0]))
-    return (durations.length == 0) ? null : moment.utc(totalDurations.asMilliseconds()/durations.length).format('HH:mm:ss')
+  // 平均値。getDurations の結果を受け取る
+  getDurationAverage(_durations) {
+    if(_durations.length == 0) return null
+    const totalDurations = _durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(_durations[0]))
+    return moment.utc(totalDurations.asMilliseconds()/_durations.length).format('HH:mm:ss')
   }
 
-  // 中央値
-  getDurationMedian(_items, _dist_rss) {
-    let durations = this.getDurations(_items, _dist_rss).sort()
-    return (durations.length == 0) ? null : durations[Math.ceil(durations.length/2)]
+  // 中央値。getDurations の結果を受け取る
+  getDurationMedian(_durations) {
+    if(_durations.length == 0) return null
+    // sort は破壊的なので、渡された配列には触れない
+    const durations = [..._durations].sort()
+    return durations[Math.ceil(durations.length/2)]
   }
 
   // 画像のダウンロードとリサイズ

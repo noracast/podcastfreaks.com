@@ -183,6 +183,9 @@ const fetchFeed = async key => {
 
   episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
 
+  // 平均と中央値で同じ解析を2度走らせない（警告も2回出ていた）
+  const durations = util.getDurations(episodes, dist_rss)
+
   // Save data
   channels[key] = {
     key,
@@ -199,8 +202,8 @@ const fetchFeed = async key => {
     lastEpisodeLink: _.first(episodes).link,
     recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
-    durationAverage: util.getDurationAverage(episodes, dist_rss),
-    durationMedian: util.getDurationMedian(episodes, dist_rss),
+    durationAverage: util.getDurationAverage(durations),
+    durationMedian: util.getDurationMedian(durations),
     desciprtion: channel.description ? channel.description : null
   }
 }
