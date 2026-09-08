@@ -12,6 +12,7 @@ import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import serializeError from 'serialize-error'
 import shell from 'shelljs'
+import { sleep } from 'sleep'
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
@@ -31,8 +32,6 @@ args.splice(0, 2) // remove not 'arg' values
 // CLI arguments list
 const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
 // ----------------
-
-const sleep = sec => new Promise(resolve => setTimeout(resolve, sec * 1000))
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)

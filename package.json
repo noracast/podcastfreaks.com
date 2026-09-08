@@ -68,6 +68,7 @@
     "sass-loader": "^8.0.0",
     "serialize-error": "^5.0.0",
     "sharp": "^0.23.3",
+    "sleep": "^6.1.0",
     "twitter": "^1.7.1",
     "twitter-followers-count": "^1.0.6",
     "vue-loader": "^15.7.2",
