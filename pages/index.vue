@@ -149,6 +149,10 @@ $sort_icon_width: 1.6em
         >td
           line-height: 1.8em
           padding: 0
+          // colspan で全列にまたがるため、内容の幅が他の列の幅計算に影響し、
+          // 子行を開くたびに列の位置がずれてしまう。
+          // 幅の要求を出さないようにする（描画幅は colspan により全幅になる）
+          width: 0
           >.wrap
             display: flex
             >.info
