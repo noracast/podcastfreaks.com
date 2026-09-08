@@ -6,7 +6,7 @@ import moment from 'moment'
 import path from 'path'
 import sharp from 'sharp'
 import url from 'url'
-import wgetp from 'node-wget-promise'
+import wgetp from './wget-with-timeout'
 import { RFC822 } from './constants'
 
 class Util {

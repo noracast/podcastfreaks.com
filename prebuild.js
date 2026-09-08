@@ -3,7 +3,6 @@
 import _ from 'lodash'
 import consola from 'consola'
 import 'date-utils'
-import fetchTwitter from './scripts/fetch-twitter'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
@@ -12,8 +11,7 @@ import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import { serializeError } from 'serialize-error'
 import shell from 'shelljs'
-const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
-import wget from 'node-wget-promise'
+import wget from './scripts/wget-with-timeout'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
 import {
@@ -24,14 +22,44 @@ import {
   BUILD_INFO
 } from './scripts/constants'
 
-// ----------------
-// Detect arguments
-const args = process.argv.slice() // copy
-args.splice(0, 2) // remove not 'arg' values
+const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 
-// CLI arguments list
-const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetching
-// ----------------
+// RSS の同時ダウンロード数。全件を一斉に投げるとソケットを取れないリクエストが
+// 通信を始める前にタイムアウトしてしまうため、ワーカープールで絞る
+const CONCURRENCY = 20
+
+// RSS 取得の試行回数と、リトライ前に待つ秒数
+const MAX_TRIES = 3
+const RETRY_WAIT = 2
+
+// 存在しないホストや 404 はリトライしても結果が変わらないので、
+// 一時的な失敗（レート制限による 400、切断、タイムアウトなど）だけを再試行する
+const isRetriable = (e) => {
+  const message = String((e && e.message) || e || '')
+  if (/getaddrinfo|ENOTFOUND/.test(message)) return false
+  if (/protocol should be http or https/.test(message)) return false
+  const status = message.match(/unhandled status: (\d+)/)
+  if (status) return status[1] !== '404' && status[1] !== '410'
+  return true
+}
+
+// Promise.allSettled と同じ形の結果を返しつつ、同時実行数を limit までに制限する
+const allSettledWithLimit = async (items, task, limit) => {
+  const results = new Array(items.length)
+  let cursor = 0
+  const worker = async () => {
+    while (cursor < items.length) {
+      const i = cursor++
+      try {
+        results[i] = { status: 'fulfilled', value: await task(items[i]) }
+      } catch (reason) {
+        results[i] = { status: 'rejected', reason }
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker))
+  return results
+}
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
@@ -68,20 +96,18 @@ const fetchFeed = async key => {
 
   //------------------
 
-  // Download RSS (try 3 times)
+  // Download RSS
+  // 元の実装は .catch() が reject を握り潰していたため await が throw せず、
+  // 常に break に到達して1回しか試行していなかった
   let err = ''
   let download = false
-  let triesCounter = 0
-  while (triesCounter < 2) {
-    try {
-      download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
-      break
-    } catch (e) {
-      consola.error(e)
-    }
-    consola.log(`wget fail : #${triesCounter}`)
-    await sleep(2)
-    triesCounter++
+  for (let tries = 1; tries <= MAX_TRIES; tries++) {
+    err = ''
+    download = await wget(src, { output: dist_rss }).catch((e) => { err = e; return false })
+    if (download) break
+    if (tries === MAX_TRIES || !isRetriable(err)) break
+    consola.log(`wget retry #${tries} | ${dist_rss} | ${err}`)
+    await sleep(RETRY_WAIT)
   }
 
   if (!download) {
@@ -179,45 +205,15 @@ const fetchFeed = async key => {
   }
 
 
-  // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
   // Promise.all だと1件でも reject した時点で残りを待たずに先へ進んでしまい、
-  // 集計が途中の状態で出力されるため allSettled を使う
+  // 集計が途中の状態で出力されるため、全件の完了を待って個別に記録する
   const keys = Object.keys(rss)
-  const results = await Promise.allSettled(keys.map(key => fetchFeed(key)))
+  const results = await allSettledWithLimit(keys, fetchFeed, CONCURRENCY)
   results.forEach((result, i) => {
     if(result.status === 'rejected') {
       error('fetchFeed', keys[i], result.reason)
     }
   })
-
-  if(!NO_TWITTER){
-    consola.log('Start fetching twitter data...')
-    const accounts = {}
-    for(let key in rss) {
-      if(rss[key]){
-        if(rss[key].twitter) {
-          accounts[key] = {
-            twitter: rss[key].twitter.replace('@','')
-          }
-        }
-        if(rss[key].hashtag) {
-          if(!accounts[key]) {
-            accounts[key] = {}
-          }
-          accounts[key]['hashtag'] = rss[key].hashtag
-        }
-      }
-    }
-    const twitterData = await fetchTwitter(accounts)
-    for(let key in twitterData) {
-      // Ignore if key is not exist in channels (maybe it couldn't get with error)
-      if(channels[key]){
-        for(let prop in twitterData[key]){
-          channels[key][prop] = twitterData[key][prop]
-        }
-      }
-    }
-  }
 
   consola.log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
@@ -244,6 +240,10 @@ const fetchFeed = async key => {
 
   // Save to file
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
+  // タイムアウトで打ち切った wget のソケットが残っているとプロセスが終了しないため、
+  // ここで明示的に終了する
+  process.exit(0)
 })();
 
 nodeCleanup(function (exitCode, signal) {

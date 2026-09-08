@@ -12,13 +12,11 @@ div.root
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
-    template(slot="tweets" slot-scope="props")
-      a-blank(v-if="props.row.hashtag" :href="tweetsLink(props.row.tweets_query)")
-        b(v-if="props.row.tweets") {{ props.row.tweets | addPlus }}
+    template(slot="hashtag" slot-scope="props")
+      a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
         small {{ props.row.hashtag }}
-    template(slot="followers" slot-scope="props")
+    template(slot="twitter" slot-scope="props")
       a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
-        b(v-if="props.row.followers") {{ props.row.followers }}
         small {{ props.row.twitter }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
@@ -100,8 +98,8 @@ $color_new: #e100ff
     &:nth-child(2)
       padding-left: 20px
     &.duration,
-    &.tweets,
-    &.followers
+    &.hashtag,
+    &.twitter
       text-align: center
   thead
     color: #ccc
@@ -122,13 +120,9 @@ $color_new: #e100ff
         cursor: pointer
         &:hover
           color: lighten(#444, 10%)
-    td.followers,
-    td.tweets
+    td.hashtag,
+    td.twitter
       text-align: center
-      b
-        font-weight: 500
-        display: block
-        font-size: 18px
       small
         display: block
         font-size: 10px
@@ -274,10 +268,6 @@ $color_new: #e100ff
         font-size: 11px
       td.total
         font-size: 14px
-      td.followers,
-      td.tweets
-        b
-          font-size: 14px
     button
       font-size: 10px
     .download
@@ -352,8 +342,8 @@ export default {
         'title',
         'total',
         'durationMedian',
-        'tweets',
-        'followers',
+        'hashtag',
+        'twitter',
         'firstEpisodeDate',
         'lastEpisodeDate',
         'download'
@@ -363,8 +353,8 @@ export default {
         columnsClasses: {
           cover: 'artwork',
           title: 'title',
-          tweets: 'tweets',
-          followers: 'followers',
+          hashtag: 'hashtag',
+          twitter: 'twitter',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
@@ -378,8 +368,8 @@ export default {
         headings: {
           cover: '▽ Click',
           title: 'Title',
-          followers: 'Twitter followers',
-          tweets: 'Tweets in a week',
+          twitter: 'Twitter',
+          hashtag: 'Hashtag',
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
@@ -400,21 +390,18 @@ export default {
         headingsTooltips: {
           title: 'クリックすると詳細情報が確認できます',
           durationMedian: '収録時間の中央値',
-          followers: '番組公式Twitterアカウントのフォロワー数',
+          twitter: '番組公式Twitterアカウント',
+          hashtag: '番組のハッシュタグ',
           download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
           'title',
-          'followers',
-          'tweets',
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
           'durationMedian'
         ],
         descOrderColumns: [
-          'followers',
-          'tweets',
           'total',
           'lastEpisodeDate',
           'durationMedian'
@@ -438,13 +425,13 @@ export default {
     },
     twitterLink: function(str) {
       if(str != null) {
-        return `https://twitter.com/${str.replace('@','')}`
+        return `https://x.com/${str.replace('@','')}`
       }
       return ''
     },
-    tweetsLink: function(query) {
-      if(query != null) {
-        return `https://twitter.com/search?q=${query.replace('#','%23')}`
+    hashtagLink: function(hashtag) {
+      if(hashtag != null) {
+        return `https://x.com/search?q=${encodeURIComponent(hashtag)}`
       }
       return ''
     },
