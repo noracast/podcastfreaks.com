@@ -5,9 +5,10 @@ import consola from 'consola'
 import moment from 'moment'
 import path from 'path'
 import sharp from 'sharp'
-import url from 'url'
 import wgetp from './wget-with-timeout'
 import parsePubDate from './parse-pub-date'
+
+const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
 
 class Util {
 
@@ -32,13 +33,27 @@ class Util {
     }
   }
 
-  getFileServer(_item) {
-    var fileServer = null
-    if(_.has(_item, 'enclosure.$.url')){
-      const u = url.parse(_item.enclosure.$.url)
-      return `${u.protocol}//${u.host}`
-    }
-    return null
+  // 音声ファイルの配信元ホスト名を返す。
+  // 以前は単一のエピソードを受け取る想定だったが、呼び出し側は配列を渡しており
+  // _.has(配列, 'enclosure.$.url') が常に false になるため必ず null を返していた。
+  //
+  // 途中で配信サービスを移行している番組があるので、最頻のホストを採用する
+  getFileServer(_items) {
+    const counts = {}
+    asArray(_items).forEach(ep => {
+      const src = _.get(ep, 'enclosure.$.url')
+      if(!src) return
+      try {
+        const host = new URL(src).hostname
+        counts[host] = (counts[host] || 0) + 1
+      } catch (e) {
+        // URL として解釈できないものは無視する
+      }
+    })
+
+    const hosts = Object.keys(counts)
+    if(hosts.length === 0) return null
+    return hosts.reduce((a, b) => counts[b] > counts[a] ? b : a)
   }
 
   // 解析できたら 'HH:mm:ss' の文字列、できなければ理由を表す文字列

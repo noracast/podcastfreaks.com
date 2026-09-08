@@ -21,6 +21,8 @@ div.root
     template(slot="twitter" slot-scope="props")
       a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
         small {{ props.row.twitter }}
+    template(slot="fileServer" slot-scope="props")
+      small {{ props.row.fileServer }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
@@ -122,7 +124,8 @@ $sort_icon_width: 1.6em
         &:hover
           color: lighten(#444, 10%)
     td.hashtag,
-    td.twitter
+    td.twitter,
+    td.file-server
       small
         display: block
         font-size: 10px
@@ -350,6 +353,7 @@ export default {
         'title',
         'hashtag',
         'twitter',
+        'fileServer',
         'durationMedian',
         'total',
         'firstEpisodeDate',
@@ -363,6 +367,7 @@ export default {
           title: 'title',
           hashtag: 'hashtag',
           twitter: 'twitter',
+          fileServer: 'file-server',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
@@ -378,6 +383,7 @@ export default {
           title: 'Title',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
+          fileServer: 'Hosting',
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
@@ -400,6 +406,7 @@ export default {
           durationMedian: '収録時間の中央値',
           twitter: '番組公式Twitterアカウント',
           hashtag: '番組のハッシュタグ',
+          fileServer: '音声ファイルの配信元',
           download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
