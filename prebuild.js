@@ -23,6 +23,15 @@ import {
   BUILD_INFO
 } from './scripts/constants'
 
+// consola の既定 reporter は error / warn をバッジ表示にするため、
+// メッセージの前後に空行が入って読みにくい。バッジを使わずに1行で出す
+class CompactReporter extends consola.FancyReporter {
+  formatLogObj(logObj, opts) {
+    return super.formatLogObj({ ...logObj, badge: false }, opts)
+  }
+}
+consola.setReporters([new CompactReporter()])
+
 const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 
 // 実体参照になっていない & を &amp; に直す。
