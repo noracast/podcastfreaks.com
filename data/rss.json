@@ -144,11 +144,6 @@
     "twitter": "@backspacefm",
     "hashtag": "#backspacefm"
   },
-  "barihebo": {
-    "feed": "https://sky-plant.com/podcast/rss20.xml",
-    "twitter": null,
-    "hashtag": null
-  },
   "basuke-s-tech-talk": {
     "feed": "https://anchor.fm/s/4cf7e15c/podcast/rss",
     "twitter": "@basuke",
@@ -179,11 +174,6 @@
     "twitter": "@boot_fm",
     "hashtag": "#bootfm"
   },
-  "cafeai": {
-    "feed": "https://ear-s.jp/feed/podcast/ai",
-    "twitter": null,
-    "hashtag": null
-  },
   "capitalp": {
     "feed": "https://capitalp.jp/feed/podcast",
     "twitter": "@capitalPjp",
@@ -198,11 +188,6 @@
     "feed": "https://anchor.fm/s/4881bfd0/podcast/rss",
     "twitter": "@CoconutsTech",
     "hashtag": "#ココナッツテック"
-  },
-  "codeish-jp": {
-    "feed": "https://jp.heroku.com/podcasts/codeish-jp.rss",
-    "twitter": "@herokujp",
-    "hashtag": null
   },
   "codelunch-fm": {
     "feed": "https://anchor.fm/s/77d9b6c/podcast/rss",
@@ -253,11 +238,6 @@
     "feed": "https://takattata.github.io/deployfm/feed.xml",
     "twitter": "@deploy_fm",
     "hashtag": "#deployfm"
-  },
-  "design-academy": {
-    "feed": "https://design-academy.jp/feed/podcast/",
-    "twitter": "@DesignAcademyJP",
-    "hashtag": "#デザアカラジオ"
   },
   "design-fm": {
     "feed": "https://anchor.fm/s/10b9e1b8/podcast/rss",
@@ -494,11 +474,6 @@
     "twitter": null,
     "hashtag": "#jammingfm"
   },
-  "jinseifm": {
-    "feed": "https://kirimin.github.io/jinseifm/feed",
-    "twitter": "@jinseifm",
-    "hashtag": "#jinseifm"
-  },
   "just4fun.fm": {
     "feed": "https://anchor.fm/s/5d5de14/podcast/rss",
     "twitter": null,
@@ -564,11 +539,6 @@
     "twitter": null,
     "hashtag": "#マチマチFM"
   },
-  "magicalfm": {
-    "feed": "https://magical.fm/feed",
-    "twitter": "@magical_fm",
-    "hashtag": "#magicalfm"
-  },
   "marblehatfm": {
     "feed": "https://anchor.fm/s/b5f2908/podcast/rss",
     "twitter": null,
@@ -598,11 +568,6 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:233832821/sounds.rss",
     "twitter": null,
     "hashtag": "#mercanfm"
-  },
-  "migrationfm": {
-    "feed": "https://migration.fm/feed.xml",
-    "twitter": "@migrationfm",
-    "hashtag": "#migrationfm"
   },
   "miraitech": {
     "feed": "https://anchor.fm/s/cdcf4e0/podcast/rss",
@@ -644,20 +609,10 @@
     "twitter": null,
     "hashtag": "#MSRS"
   },
-  "mukimuki-cloud": {
-    "feed": "https://anchor.fm/s/10161614/podcast/rss",
-    "twitter": null,
-    "hashtag": "#cloud弱小"
-  },
   "music-and-math": {
     "feed": "https://anchor.fm/s/8e9d770c/podcast/rss",
     "twitter": "@music_and_math",
     "hashtag": null
-  },
-  "nanapod": {
-    "feed": "https://nanapod.kozyty.com/rss",
-    "twitter": "@nanapi_nanapod",
-    "hashtag": "#nanapod"
   },
   "nanashisan-no-podcast": {
     "feed": "https://feeds.buzzsprout.com/1154831.rss",
@@ -688,11 +643,6 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:281879883/sounds.rss",
     "twitter": null,
     "hashtag": "#nextstepfm"
-  },
-  "ningengaheta": {
-    "feed": "https://ningengaheta.me/feed.xml",
-    "twitter": "@ningengahetaFM",
-    "hashtag": "#ningengahetafm"
   },
   "nishikokura-hironobu": {
     "feed": "https://anchor.fm/s/8a1f470/podcast/rss",
@@ -854,11 +804,6 @@
     "twitter": "@remark_life",
     "hashtag": "#remarklife"
   },
-  "renderfm": {
-    "feed": "https://pitpa.jp/rss/renderfm",
-    "twitter": null,
-    "hashtag": null
-  },
   "researchatfm": {
     "feed": "https://researchat.fm/feed.xml",
     "twitter": "@researchat_fm",
@@ -929,11 +874,6 @@
     "twitter": null,
     "hashtag": "#shinjukult"
   },
-  "siliconvalleyrw": {
-    "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
-    "twitter": null,
-    "hashtag": null
-  },
   "silver-bullet-club": {
     "feed": "https://anchor.fm/s/13df46f8/podcast/rss",
     "twitter": null,
@@ -983,11 +923,6 @@
     "feed": "https://anchor.fm/s/9010910/podcast/rss",
     "twitter": null,
     "hashtag": null
-  },
-  "systemand": {
-    "feed": "https://systemand.online/feed.xml",
-    "twitter": "@system_genius",
-    "hashtag": "#systemand"
   },
   "tachikawas-environmental-sound": {
     "feed": "https://tachikawa.soramugi.net/feed/podcast/tachikawas-environmental-sound",
@@ -1128,11 +1063,6 @@
     "feed": "https://podcast.unifa-e.com/feed.xml",
     "twitter": "@UniFa_JP",
     "hashtag": "#unifa_dev"
-  },
-  "van-engineers": {
-    "feed": "https://anchor.fm/s/3c24e384/podcast/rss",
-    "twitter": "@VanEngineersJP",
-    "hashtag": "#バンクーバーのえんじに屋"
   },
   "voiceofonebutton": {
     "feed": "http://radio.voiceofonebutton.net/index20.rdf",

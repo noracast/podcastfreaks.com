@@ -246,8 +246,8 @@ const fetchFeed = async key => {
   // Save to file
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
 
-  // タイムアウトで打ち切った wget のソケットが残っているとプロセスが終了しないため、
-  // ここで明示的に終了する
+  // 念のため明示的に終了する。ダウンロード側でソケットは destroy しているが、
+  // 取りこぼしがあるとプロセスが終了せずビルドが止まってしまうため
   process.exit(0)
 })();
 

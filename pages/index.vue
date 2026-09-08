@@ -344,10 +344,10 @@ export default {
       columns: [
         'cover',
         'title',
-        'durationMedian',
-        'total',
         'hashtag',
         'twitter',
+        'durationMedian',
+        'total',
         'firstEpisodeDate',
         'lastEpisodeDate',
         'download'

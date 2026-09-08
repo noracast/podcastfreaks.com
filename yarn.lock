@@ -10957,11 +10957,6 @@ node-source-walk@^4.0.0, node-source-walk@^4.2.0, node-source-walk@^4.2.2:
   dependencies:
     "@babel/parser" "^7.0.0"
 
-node-wget-promise@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/node-wget-promise/-/node-wget-promise-0.1.6.tgz#d62c61d77aea6d3a084cad38602163de23a0f67d"
-  integrity sha512-EB1aleH7rp+rjdZRugezC8Nk7QJ6uXueYDUumFXkXQy7Z3HoW+0G6/cxjVMSmQHZmt4TC7xdpleOYnw65/ciLw==
-
 noop2@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/noop2/-/noop2-2.0.0.tgz#4b636015e9882b54783c02b412f699d8c5cd0a5b"

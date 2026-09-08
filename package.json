@@ -59,7 +59,6 @@
     "lodash": "^4.17.19",
     "netlify-cli": "^2.21.0",
     "node-cleanup": "^2.1.2",
-    "node-wget-promise": "^0.1.6",
     "path": "^0.12.7",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
