@@ -249,6 +249,18 @@ $sort_icon_width: 1.6em
     cursor: pointer
     &:hover
       color: #7f00ff
+  // Hosting の見出しは配信サービスで絞り込むプルダウンになっている。
+  // 他の見出しと同じ見た目に寄せる
+  .hosting-filter
+    font: inherit
+    color: inherit
+    background: transparent
+    border: 0
+    padding: 0
+    cursor: pointer
+    max-width: 100%
+    &:hover
+      color: #7f00ff
   // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
   // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
   // ソートするたびに見出しの位置がずれる
@@ -383,7 +395,24 @@ export default {
           title: 'Title',
           twitter: 'Twitter',
           hashtag: 'Hashtag',
-          fileServer: 'Hosting',
+          // 配信サービスで絞り込めるようプルダウンにする。
+          // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
+          // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
+          fileServer: (h) => {
+            return h('select', {
+              class: 'hosting-filter',
+              on: {
+                change: (event) => this.filterByHosting(event),
+                // 見出しのクリック（並べ替え）を誘発させない
+                click: (event) => event.stopPropagation()
+              }
+            }, [
+              h('option', { domProps: { value: '' } }, 'Hosting'),
+              ...this.hostingOptions.map(o =>
+                h('option', { domProps: { value: o.host } }, `${o.host} (${o.count})`)
+              )
+            ])
+          },
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
@@ -433,12 +462,30 @@ export default {
       channels: Object.values(build_info.channels)
     }
   },
+  computed: {
+    // Hosting のプルダウンに出す選択肢。番組数の多い順に並べる
+    hostingOptions: function() {
+      const counts = {}
+      this.channels.forEach(c => {
+        if(c.fileServer) counts[c.fileServer] = (counts[c.fileServer] || 0) + 1
+      })
+      return Object.keys(counts)
+        .map(host => ({ host, count: counts[host] }))
+        .sort((a, b) => b.count - a.count || a.host.localeCompare(b.host))
+    }
+  },
   mounted: function(){
     this.toggleAllCheckbox()
   },
   methods: {
     toggleChildRow: function(key){
       this.$refs.table.toggleChildRow(key)
+    },
+    filterByHosting: function(event) {
+      this.$refs.table.setFilter(event.target.value)
+      // 絞り込み中の値は検索ボックスに出るので、見出しは "Hosting" に戻す。
+      // 選択したままだと、検索ボックスを手で書き換えたときに食い違ってしまう
+      event.target.value = ''
     },
     twitterLink: function(str) {
       if(str != null) {
