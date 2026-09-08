@@ -411,6 +411,8 @@ export default {
         },
         sortable: [
           'title',
+          'hashtag',
+          'twitter',
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
