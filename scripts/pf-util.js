@@ -136,7 +136,8 @@ class Util {
       await sharp(_dist).resize(60).toFile(ext_60)
       return true
     } catch(err) {
-      consola.warn(`カバー画像を取得できませんでした | ${_key} | ${err.message || err}`)
+      // メッセージ自体に改行を含むエラーがあるため1行にまとめる
+      consola.warn(`カバー画像を取得できませんでした | ${_key} | ${String(err.message || err).replace(/\s+/g, ' ').trim()}`)
       return false
     }
   }

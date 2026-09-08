@@ -32,6 +32,9 @@ class CompactReporter extends consola.FancyReporter {
 }
 consola.setReporters([new CompactReporter()])
 
+// OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
+const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()
+
 const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 
 // 実体参照になっていない & を &amp; に直す。
@@ -96,7 +99,7 @@ let downloads_backup = null
 
 const error = function(label, rss, error){
   if(error) {
-    consola.error(`${label} | ${rss} | ${error}`)
+    consola.error(`${label} | ${rss} | ${oneLine(error)}`)
     errors.push({label, rss, error: serializeError(error)})
   }
   else {
@@ -126,7 +129,7 @@ const fetchFeed = async key => {
     download = await wget(src, { output: dist_rss }).catch((e) => { err = e; return false })
     if (download) break
     if (tries === MAX_TRIES || !isRetriable(err)) break
-    consola.log(`再試行 ${tries}/${MAX_TRIES-1} | ${dist_rss} | ${err}`)
+    consola.log(`再試行 ${tries}/${MAX_TRIES-1} | ${dist_rss} | ${oneLine(err)}`)
     await sleep(RETRY_WAIT)
   }
 
