@@ -6,7 +6,8 @@ div.root
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       .clip
-        span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
+        //- 省略された場合に全体を確認できるよう title 属性を付ける
+        span(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
@@ -19,14 +20,13 @@ div.root
     template(slot="hashtag" slot-scope="props")
       .clip
         a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
-          small {{ props.row.hashtag }}
+          small(:title="props.row.hashtag") {{ props.row.hashtag }}
     template(slot="twitter" slot-scope="props")
       .clip
         a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
-          small {{ props.row.twitter }}
+          small(:title="props.row.twitter") {{ props.row.twitter }}
     template(slot="fileServer" slot-scope="props")
       .clip
-        //- 省略された場合に全体を確認できるよう title 属性を付ける
         small(:title="props.row.fileServer") {{ props.row.fileServer }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
@@ -157,6 +157,10 @@ $sort_icon_width: 1.6em
         top: 0
         left: 0
         right: 0
+      // a でくるまれている列は実際の文字が中の small にあるため、
+      // 外側だけに指定すると「…」が出ずに切り落とされてしまう
+      >*,
+      small
         display: block
         overflow: hidden
         text-overflow: ellipsis
