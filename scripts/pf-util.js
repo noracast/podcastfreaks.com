@@ -41,7 +41,10 @@ class Util {
     return null
   }
 
-  getDuration(_d, _dist_rss, _outFormat = 'HH:mm:ss') {
+  // 解析できたら 'HH:mm:ss' の文字列、できなければ理由を表す文字列
+  // （'wrong-format' / 'zero'）を返す。番組ごとにまとめて警告するため、
+  // ここではログを出さない
+  getDuration(_d, _outFormat = 'HH:mm:ss') {
     var output = null
     // XX:XX:XX (correct format)
     if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(_d)) {
@@ -65,30 +68,36 @@ class Util {
       output = moment({ hour, minute, second })
     }
     else {
-      consola.warn(`[wrong format] \`${_d}\` | ${_dist_rss}`)
-      return null
+      return 'wrong-format'
     }
 
     // フォーマットは正しいが0のものがあるため間引く
-    if(output.format(_outFormat) == '00:00:00'){
-      consola.warn(`[zero time] \`${_d}\` | ${_dist_rss}`)
-      return null
-    }
+    if(output.format(_outFormat) == '00:00:00') return 'zero'
 
     return output.format(_outFormat)
   }
 
   getDurations(_items, _dist_rss) {
-    let durations = []
-    let self = this
-    _items.forEach(function(ep, index) {
-      if(ep && ep['itunes:duration'] != null && ep['itunes:duration'] != ''){
-        var val = self.getDuration(ep['itunes:duration'], _dist_rss)
-        if(val){
-          durations.push(val)
-        }
-      }
+    const durations = []
+    const skipped = { 'zero': [], 'wrong-format': [] }
+
+    _items.forEach(ep => {
+      if(!ep || ep['itunes:duration'] == null || ep['itunes:duration'] == '') return
+      const raw = ep['itunes:duration']
+      const val = this.getDuration(raw)
+      if(skipped[val]) skipped[val].push(raw)
+      else durations.push(val)
     })
+
+    // エピソードごとに出すとログが埋まるので、番組ごとに1行にまとめる
+    const reasons = []
+    if(skipped['zero'].length) reasons.push(`収録時間が0: ${skipped['zero'].length}話`)
+    if(skipped['wrong-format'].length) {
+      const samples = [...new Set(skipped['wrong-format'])].slice(0, 3).map(v => `\`${v}\``).join(', ')
+      reasons.push(`形式が不正: ${skipped['wrong-format'].length}話 (${samples})`)
+    }
+    if(reasons.length) consola.warn(`収録時間を集計できないエピソードがあります | ${_dist_rss} | ${reasons.join(' / ')}`)
+
     return durations
   }
 
@@ -127,7 +136,7 @@ class Util {
       await sharp(_dist).resize(60).toFile(ext_60)
       return true
     } catch(err) {
-      consola.log(_key, err)
+      consola.warn(`カバー画像を取得できませんでした | ${_key} | ${err.message || err}`)
       return false
     }
   }

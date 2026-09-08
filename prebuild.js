@@ -117,7 +117,7 @@ const fetchFeed = async key => {
     download = await wget(src, { output: dist_rss }).catch((e) => { err = e; return false })
     if (download) break
     if (tries === MAX_TRIES || !isRetriable(err)) break
-    consola.log(`wget retry #${tries} | ${dist_rss} | ${err}`)
+    consola.log(`再試行 ${tries}/${MAX_TRIES-1} | ${dist_rss} | ${err}`)
     await sleep(RETRY_WAIT)
   }
 
@@ -138,7 +138,7 @@ const fetchFeed = async key => {
   let json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
     json = await xmlToJSON(escapeBareAmpersands(xml)).catch(() => { return })
-    if(json) consola.warn(`Recovered from invalid XML | ${dist_rss}`)
+    if(json) consola.warn(`不正な XML を補正して読み込みました | ${dist_rss}`)
   }
   if(!json){
     error('xmlToJSON', dist_rss)
@@ -216,6 +216,8 @@ const fetchFeed = async key => {
 }
 
 (async () => {
+  const startedAt = Date.now()
+
   // Make sure parent dir existence and its clean
   try {
     await readFile(BUILD_INFO)
@@ -223,7 +225,7 @@ const fetchFeed = async key => {
     shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
-    consola.log(`-> Create backup to ${downloads_backup}`)
+    consola.log(`前回の内容を退避しました: ${downloads_backup}`)
   } catch (err) {
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mkdir('-p', RSS_DIR)
@@ -234,6 +236,7 @@ const fetchFeed = async key => {
   // Promise.all だと1件でも reject した時点で残りを待たずに先へ進んでしまい、
   // 集計が途中の状態で出力されるため、全件の完了を待って個別に記録する
   const keys = Object.keys(rss)
+  consola.log(`[1/3] RSS を取得します（${keys.length}件 / 同時${CONCURRENCY}件）`)
   const results = await allSettledWithLimit(keys, fetchFeed, CONCURRENCY)
   results.forEach((result, i) => {
     if(result.status === 'rejected') {
@@ -241,7 +244,6 @@ const fetchFeed = async key => {
     }
   })
 
-  consola.log('Export to list file ordered by pubDate')
   latest_pubdates.sort(function(a, b) {
     return new Date(b.pubDate) - new Date(a.pubDate)
   })
@@ -252,7 +254,7 @@ const fetchFeed = async key => {
     return element.id;
   });
 
-  consola.log('Download cover images serially to avoid 404')
+  consola.log(`[2/3] カバー画像を取得します（${Object.keys(covers).length}件 / 404 を避けるため直列）`)
   for(let key of Object.keys(covers)) {
     const downloaded = await util.downloadAndResize(key, covers[key].src, covers[key].dist)
     // 取得に失敗したカバーはファイルが存在せず画像が壊れるので、参照を外して
@@ -270,7 +272,15 @@ const fetchFeed = async key => {
   }
 
   // Save to file
+  consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
+  const elapsed = Math.round((Date.now() - startedAt) / 1000)
+  consola.success(
+    `完了: ${Object.keys(channels).length}/${keys.length}番組 / ` +
+    `${episodeCount}エピソード / 取得できなかった番組 ${errors.length}件 / ` +
+    `所要 ${Math.floor(elapsed/60)}分${String(elapsed%60).padStart(2, '0')}秒`
+  )
 
   // 念のため明示的に終了する。ダウンロード側でソケットは destroy しているが、
   // 取りこぼしがあるとプロセスが終了せずビルドが止まってしまうため
@@ -284,12 +294,12 @@ nodeCleanup(function (exitCode) {
   if (!downloads_backup) return
 
   if (exitCode === 0) {
-    consola.log(`-> Remove backup`)
+    consola.log(`退避した前回の内容を削除しました`)
     shell.rm('-rf', downloads_backup)
   }
   else {
     // 中断・異常終了時は取得途中のデータを残さず、前回の内容へ戻す
-    consola.log(`-> Restore from backup`)
+    consola.log(`中断されたため、退避した前回の内容へ戻します`)
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
   }
