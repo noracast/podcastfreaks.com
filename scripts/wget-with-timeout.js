@@ -3,6 +3,7 @@
 import fs from 'fs'
 import http from 'http'
 import https from 'https'
+import zlib from 'zlib'
 
 // 無通信が続いた場合に打ち切るまでの時間（ミリ秒）
 export const WGET_TIMEOUT = 30000
@@ -21,6 +22,7 @@ const USER_AGENT = 'podcastfreaks.com/2.0 (+https://podcastfreaks.com/)'
 //   「protocol should be http or https」で落ちる（例: airsap, ariel）
 // - 301 / 302 / 307 しか追わず、308 / 303 は「unhandled status」として失敗扱い
 // - User-Agent を送れない
+// - Content-Encoding を無視して圧縮されたまま保存してしまう
 //
 // タイムアウトは総時間ではなく無通信時間で計る。総時間で打ち切ると、RSS が巨大で
 // 単に時間のかかっているフィード（backspace.fm など）まで巻き添えになるため。
@@ -70,8 +72,13 @@ function download(src, options, timeout, redirectsLeft) {
       const fileSize = parseInt(res.headers['content-length'], 10) || 0
       let downloadedSize = 0
 
+      // Accept-Encoding は送っていないが、それでも圧縮して返すサーバーがある
+      // （例: radiotalk.jp）。そのまま保存すると XML として読めないので伸長する
+      const decompressor = createDecompressor(res.headers['content-encoding'])
+      const body = decompressor ? res.pipe(decompressor) : res
+
       const writeStream = fs.createWriteStream(options.output)
-      res.pipe(writeStream)
+      body.pipe(writeStream)
 
       if (options.onStart) options.onStart(res.headers)
 
@@ -86,10 +93,9 @@ function download(src, options, timeout, redirectsLeft) {
         }
       })
 
-      res.on('error', err => {
-        writeStream.destroy()
-        reject(err)
-      })
+      const fail = err => { writeStream.destroy(); reject(err) }
+      res.on('error', fail)
+      if (decompressor) decompressor.on('error', fail)
 
       writeStream.on('error', reject)
       writeStream.on('finish', () => resolve({ headers: res.headers, fileSize }))
@@ -103,4 +109,18 @@ function download(src, options, timeout, redirectsLeft) {
     req.on('error', reject)
     req.end()
   })
+}
+
+function createDecompressor(contentEncoding) {
+  switch (String(contentEncoding || '').toLowerCase()) {
+    case 'gzip':
+    case 'x-gzip':
+      return zlib.createGunzip()
+    case 'deflate':
+      return zlib.createInflate()
+    case 'br':
+      return zlib.createBrotliDecompress()
+    default:
+      return null
+  }
 }
