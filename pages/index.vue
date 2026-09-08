@@ -76,7 +76,7 @@ $color_new: #e100ff
     left: calc(50% - 8px)
     transform: rotate(19deg)
 
-.root /deep/
+.root ::v-deep
   padding-top: 20px
   padding-bottom: 20px
   -webkit-overflow-scrolling: touch
@@ -264,7 +264,7 @@ $color_new: #e100ff
       margin-left: 0
 
 .small
-  .root /deep/
+  .root ::v-deep
     padding-top: 15px
     padding-bottom: 15px
     table

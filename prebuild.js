@@ -10,9 +10,9 @@ import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
-import serializeError from 'serialize-error'
+import { serializeError } from 'serialize-error'
 import shell from 'shelljs'
-import { sleep } from 'sleep'
+const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
@@ -103,6 +103,10 @@ const fetchFeed = async key => {
   }
 
   // json.rss.channel.item must be Array
+  if(!json.rss.channel.item) {
+    error('fetchFeed', dist_rss, new Error('No episodes found'))
+    return
+  }
   if(!(json.rss.channel.item instanceof Array)) {
     json.rss.channel.item = [json.rss.channel.item]
   }
@@ -126,7 +130,7 @@ const fetchFeed = async key => {
   // Get the latest episode's publish date
   latest_pubdates.push({
     id: key,
-    pubDate: episodes.pubDate
+    pubDate: episodes[0].pubDate
   })
 
   episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
