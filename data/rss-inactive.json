@@ -47,6 +47,12 @@
     "hashtag": null,
     "reason": "feed not found"
   },
+  "cyberspacecowboys": {
+    "feed": "https://feeds.feedburner.com/weblogs/csc",
+    "twitter": "@csc_bot",
+    "hashtag": "#電カー",
+    "reason": "website is closed"
+  },
   "design-academy": {
     "feed": "https://design-academy.jp/feed/podcast/",
     "twitter": "@DesignAcademyJP",
@@ -111,6 +117,12 @@
     "feed": "https://migration.fm/feed.xml",
     "twitter": "@migrationfm",
     "hashtag": "#migrationfm",
+    "reason": "feed not found"
+  },
+  "msrs": {
+    "feed": "https://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
+    "twitter": null,
+    "hashtag": "#MSRS",
     "reason": "feed not found"
   },
   "mukimuki-cloud": {

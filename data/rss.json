@@ -165,7 +165,7 @@
     "hashtag": null
   },
   "blogging-life": {
-    "feed": "https://www.blogging-life.com/podcast/",
+    "feed": "https://www.blogging-life.com/feed/podcast",
     "twitter": null,
     "hashtag": null
   },
@@ -213,11 +213,6 @@
     "feed": "https://anchor.fm/s/b0e4c40/podcast/rss",
     "twitter": null,
     "hashtag": "#三日月ラジオ"
-  },
-  "cyberspacecowboys": {
-    "feed": "https://feeds.feedburner.com/weblogs/csc",
-    "twitter": "@csc_bot",
-    "hashtag": "#電カー"
   },
   "cybozudesign": {
     "feed": "https://feed.podbean.com/cybozudesign/feed.xml",
@@ -604,11 +599,6 @@
     "twitter": null,
     "hashtag": "#mozaicfm"
   },
-  "msrs": {
-    "feed": "https://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
-    "twitter": null,
-    "hashtag": "#MSRS"
-  },
   "music-and-math": {
     "feed": "https://anchor.fm/s/8e9d770c/podcast/rss",
     "twitter": "@music_and_math",
@@ -795,7 +785,7 @@
     "hashtag": "#regonn_curry_fm"
   },
   "rehashfm": {
-    "feed": "https://rehash.fm/feed.xml",
+    "feed": "https://feeds.podcastics.com/podcastics/podcasts/rss/5199_2a7b208397764ef47f4ce403a9bbc9b0.rss",
     "twitter": "@rehashfm",
     "hashtag": "#rehashfm"
   },

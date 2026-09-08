@@ -24,6 +24,16 @@ import {
 
 const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 
+// 実体参照になっていない & を &amp; に直す。
+// フィード側の XML が壊れていることがあるため（例: fukabori.fm の
+// "Weights & Biases"）、解析に失敗したときのフォールバックとしてのみ使う。
+// CDATA セクション内の & は実体参照として解釈されないので対象外にする
+const escapeBareAmpersands = (xml) =>
+  String(xml)
+    .split(/(<!\[CDATA\[[\s\S]*?\]\]>)/)
+    .map((part, i) => i % 2 ? part : part.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]*|#[0-9]+|#x[0-9a-fA-F]+);)/g, '&amp;'))
+    .join('')
+
 // RSS の同時ダウンロード数。全件を一斉に投げるとソケットを取れないリクエストが
 // 通信を始める前にタイムアウトしてしまうため、ワーカープールで絞る
 const CONCURRENCY = 20
@@ -122,7 +132,13 @@ const fetchFeed = async key => {
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
-  const json = await xmlToJSON(xml).catch(() => { return })
+  // まず素直に解析し、失敗したときだけ最小限の補正をしてやり直す。
+  // 正常なフィードには一切手を加えない
+  let json = await xmlToJSON(xml).catch(() => { return })
+  if(!json){
+    json = await xmlToJSON(escapeBareAmpersands(xml)).catch(() => { return })
+    if(json) consola.warn(`Recovered from invalid XML | ${dist_rss}`)
+  }
   if(!json){
     error('xmlToJSON', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
