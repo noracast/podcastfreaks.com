@@ -7,6 +7,7 @@ import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
+import parsePubDate from './scripts/parse-pub-date'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import { serializeError } from 'serialize-error'
@@ -15,7 +16,6 @@ import wget from './scripts/wget-with-timeout'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
 import {
-  RFC822,
   DOWNLOADS_DIR,
   RSS_DIR,
   COVER_DIR,
@@ -177,8 +177,8 @@ const fetchFeed = async key => {
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
-    firstEpisodeDate: moment(_.last(episodes).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
-    lastEpisodeDate: moment(_.first(episodes).pubDate, RFC822).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+    firstEpisodeDate: parsePubDate(_.last(episodes).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+    lastEpisodeDate: parsePubDate(_.first(episodes).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
     firstEpisodeLink: _.last(episodes).link,
     lastEpisodeLink: _.first(episodes).link,
     recentEpisodes: _.take(episodes, 5),

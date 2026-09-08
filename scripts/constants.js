@@ -1,4 +1,3 @@
-export const RFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ'
 export const DOWNLOADS_DIR = 'static/downloads'
 export const RSS_DIR = 'static/downloads/rss'
 export const COVER_DIR = 'static/downloads/cover'

@@ -7,7 +7,7 @@ import path from 'path'
 import sharp from 'sharp'
 import url from 'url'
 import wgetp from './wget-with-timeout'
-import { RFC822 } from './constants'
+import parsePubDate from './parse-pub-date'
 
 class Util {
 
@@ -120,7 +120,7 @@ class Util {
     // Add channel info into each episodes
     let res = episodes.filter((element, index, array) => {
       // RSS date format is RFC-822
-      return moment(element.pubDate, RFC822).isAfter(twoweeksago)
+      return parsePubDate(element.pubDate).isAfter(twoweeksago)
     })
     res.forEach( el => {
       el['key'] = key
