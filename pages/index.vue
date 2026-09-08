@@ -95,6 +95,9 @@ $sort_icon_width: 1.6em
     width: 100%
   th
     white-space: nowrap
+    // Hosting の見出しに重ねる select の基準にする。
+    // 他の見出しはセル全体がクリック領域なので、それに合わせる
+    position: relative
   th,td
     text-align: left
     vertical-align: top
@@ -253,7 +256,6 @@ $sort_icon_width: 1.6em
   // ラベルの上に透明な select を重ねることで、見出しの文言を変えずに
   // ネイティブのプルダウンを使う
   .hosting-filter
-    position: relative
     display: inline-block
     cursor: pointer
     &:hover
@@ -262,6 +264,7 @@ $sort_icon_width: 1.6em
     &.is-active
       color: #7f00ff
       font-weight: bold
+    // th を基準に、セル全体を覆う
     select
       position: absolute
       top: 0
