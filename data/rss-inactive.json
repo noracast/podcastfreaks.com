@@ -197,6 +197,12 @@
     "hashtag": "#systemand",
     "reason": "domain revocation"
   },
+  "tachikawas-environmental-sound": {
+    "feed": "https://tachikawa.soramugi.net/feed/podcast/tachikawas-environmental-sound",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "certificate hostname mismatch"
+  },
   "tommie_nico": {
     "feed": "http://podcast.tommie2.info/co9320/rss.xml",
     "twitter": null,
