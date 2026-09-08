@@ -8,6 +8,7 @@
     "ncu": "npx npm-check-updates",
     "start": "nuxt",
     "prebuild": "babel-node prebuild.js",
+    "validate": "babel-node scripts/validate.js",
     "build": "nuxt generate --spa",
     "build:skip": "nuxt generate --spa",
     "deploy": "netlify deploy --dir=dist --prod",

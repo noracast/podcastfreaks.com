@@ -14,6 +14,7 @@ import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
 import { serializeError } from 'serialize-error'
 import shell from 'shelljs'
+import validateRssJson from './scripts/validate-rss-json'
 import wget from './scripts/wget-with-timeout'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
@@ -21,7 +22,9 @@ import {
   DOWNLOADS_DIR,
   RSS_DIR,
   COVER_DIR,
-  BUILD_INFO
+  BUILD_INFO,
+  RSS_JSON,
+  RSS_INACTIVE_JSON
 } from './scripts/constants'
 
 // consola の既定 reporter は error / warn をバッジ表示にするため、
@@ -238,6 +241,15 @@ const fetchFeed = async key => {
 
 (async () => {
   const startedAt = Date.now()
+
+  // 重複したまま取得しても無駄になるので、通信を始める前に検証する
+  const validation = validateRssJson(RSS_JSON, RSS_INACTIVE_JSON)
+  validation.warnings.forEach(message => consola.warn(`${RSS_JSON} | ${message}`))
+  if(validation.errors.length){
+    validation.errors.forEach(message => consola.error(`${RSS_JSON} | ${message}`))
+    consola.error(`${RSS_JSON} の重複を解消してから実行してください`)
+    process.exit(1)
+  }
 
   // Make sure parent dir existence and its clean
   try {
