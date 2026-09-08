@@ -36,6 +36,17 @@ consola.setReporters([new CompactReporter()])
 // OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
 const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()
 
+// 表示用のタイトルを整える。
+// - CDATA 内で二重にエスケープされているフィードがあるため実体参照を戻す
+//   （例: regonn&curry.fm の "&amp;" が画面にそのまま出てしまう）
+// - 改行や連続空白、前後の空白が入っているフィードがあるため詰める
+//   （例: datafriday の "Data Friday\n-日常に潜むよしなしごと-"、
+//     design-fm の先頭の空白）
+const cleanTitle = (value) => {
+  const decoded = decodeEntities(value)
+  return typeof decoded === 'string' ? decoded.replace(/\s+/g, ' ').trim() : decoded
+}
+
 const sleep = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
 
 // 実体参照になっていない & を &amp; に直す。
@@ -184,10 +195,8 @@ const fetchFeed = async key => {
 
   const episodes = channel.item
 
-  // CDATA 内で二重にエスケープされているフィードがあるため、ここで一度だけ戻す
-  // （例: regonn&curry.fm のように "&amp;" が画面にそのまま出てしまう）
-  channel.title = decodeEntities(channel.title)
-  episodes.forEach(ep => { if(ep) ep.title = decodeEntities(ep.title) })
+  channel.title = cleanTitle(channel.title)
+  episodes.forEach(ep => { if(ep) ep.title = cleanTitle(ep.title) })
 
   const title = channel.title
 
