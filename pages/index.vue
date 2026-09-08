@@ -452,6 +452,19 @@ export default {
           'lastEpisodeDate',
           'durationMedian'
         ],
+        // 実際の判定は filterAlgorithm.title でまとめて行うため、
+        // 検索対象の列は1つだけにしておく
+        filterable: ['title'],
+        filterAlgorithm: {
+          // 既定の実装はクエリ全体を1つの文字列として部分一致させるため、
+          // 「anchor キマグレエフエム」のように複数語で絞り込めなかった。
+          // スペース区切りの語をすべて含む行だけを残す（AND 検索）
+          title: (row, query) => {
+            const terms = String(query).toLowerCase().split(/\s+/).filter(t => t)
+            if(!terms.length) return true
+            return terms.every(term => this.searchableText(row).includes(term))
+          }
+        },
         texts: {
           filter: '',
           filterPlaceholder: 'Search'
@@ -486,6 +499,25 @@ export default {
       // 絞り込み中の値は検索ボックスに出るので、見出しは "Hosting" に戻す。
       // 選択したままだと、検索ボックスを手で書き換えたときに食い違ってしまう
       event.target.value = ''
+    },
+    // 検索対象にする文字列。画面に出ている値で絞り込めるよう、
+    // 日付は表示と同じ YYYY.MM.DD の形にしてから含める
+    searchableText: function(row) {
+      if(!this._searchableCache) this._searchableCache = {}
+      if(this._searchableCache[row.key] == null) {
+        this._searchableCache[row.key] = [
+          row.key,
+          row.title,
+          row.hashtag,
+          row.twitter,
+          row.fileServer,
+          row.durationMedian,
+          row.total,
+          this.$options.filters.formatDate(row.firstEpisodeDate),
+          this.$options.filters.formatDate(row.lastEpisodeDate)
+        ].filter(v => v != null && v !== '').join(' ').toLowerCase()
+      }
+      return this._searchableCache[row.key]
     },
     twitterLink: function(str) {
       if(str != null) {
