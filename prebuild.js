@@ -102,6 +102,12 @@ const fetchFeed = async key => {
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
+  // Atom フィードやエラーページを掴んだ場合 json.rss が存在しない
+  if(!_.get(json, 'rss.channel')) {
+    error('fetchFeed', dist_rss, new Error('No <rss><channel> found'))
+    return
+  }
+
   // json.rss.channel.item must be Array
   if(!json.rss.channel.item) {
     error('fetchFeed', dist_rss, new Error('No episodes found'))
@@ -174,7 +180,15 @@ const fetchFeed = async key => {
 
 
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err) => { error('fetchFeed', err) })
+  // Promise.all だと1件でも reject した時点で残りを待たずに先へ進んでしまい、
+  // 集計が途中の状態で出力されるため allSettled を使う
+  const keys = Object.keys(rss)
+  const results = await Promise.allSettled(keys.map(key => fetchFeed(key)))
+  results.forEach((result, i) => {
+    if(result.status === 'rejected') {
+      error('fetchFeed', keys[i], result.reason)
+    }
+  })
 
   if(!NO_TWITTER){
     consola.log('Start fetching twitter data...')

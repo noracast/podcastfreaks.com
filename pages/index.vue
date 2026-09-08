@@ -384,18 +384,15 @@ export default {
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
           durationMedian: 'Duration',
-          download: function(h){
-            const self = this;
+          // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
+          // 通常の function だと this がページコンポーネントにならない。
+          // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
+          download: (h) => {
             return h('input', {
-              attrs: { type: 'checkbox', checked: true},
-              domProps: { value: self.value },
+              attrs: { type: 'checkbox', checked: true },
               class: 'form-control check-all',
               on: {
-                change: self.toggleAllCheckbox,
-                input: function(event) {
-                  self.value = event.target.value
-                  self.$emit('input', event.target.value)
-                }
+                change: this.toggleAllCheckbox
               }
             })
           }
