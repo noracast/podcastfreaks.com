@@ -8,6 +8,7 @@ import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
+import normalizeFeed from './scripts/normalize-feed'
 import parsePubDate from './scripts/parse-pub-date'
 import PFUtil from './scripts/pf-util'
 import rss from './data/rss.json'
@@ -157,23 +158,23 @@ const fetchFeed = async key => {
     return // catch内では、fetchFeedを抜けられないのでここでreturn
   }
 
-  // Atom フィードやエラーページを掴んだ場合 json.rss が存在しない
-  if(!_.get(json, 'rss.channel')) {
-    error('fetchFeed', dist_rss, new Error('No <rss><channel> found'))
+  // RSS 2.0 と Atom を同じ形に揃える。エラーページを掴んだ場合もここで弾かれる
+  const channel = normalizeFeed(json)
+  if(!channel) {
+    error('fetchFeed', dist_rss, new Error('RSS でも Atom でもありません'))
     return
   }
 
-  // json.rss.channel.item must be Array
-  if(!json.rss.channel.item) {
+  if(!channel.item || (channel.item instanceof Array && channel.item.length === 0)) {
     error('fetchFeed', dist_rss, new Error('No episodes found'))
     return
   }
-  if(!(json.rss.channel.item instanceof Array)) {
-    json.rss.channel.item = [json.rss.channel.item]
+  if(!(channel.item instanceof Array)) {
+    channel.item = [channel.item]
   }
 
   // Get cover image urls
-  const cover_url = util.removeQuery(_.get(json, 'rss.channel[itunes:image].$.href') || _.get(json, 'rss.channel[itunes:image].href') || _.get(json, 'rss.channel.image.url'), src)
+  const cover_url = util.removeQuery(_.get(channel, '[itunes:image].$.href') || _.get(channel, '[itunes:image].href') || _.get(channel, 'image.url'), src)
   if(cover_url){
     covers[key] = {
       src: cover_url,
@@ -181,7 +182,6 @@ const fetchFeed = async key => {
     }
   }
 
-  const channel = json.rss.channel
   const episodes = channel.item
 
   // CDATA 内で二重にエスケープされているフィードがあるため、ここで一度だけ戻す

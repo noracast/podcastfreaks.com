@@ -14,11 +14,16 @@ import moment from 'moment'
 //    （例: kakakikikeke の "Tue, 30 Oct 2024" は実際には水曜日）
 //
 // moment.RFC_2822 はタイムゾーン名を正しく扱えるのでまずこれで解析し、
-// 曜日の矛盾で失敗した場合だけ曜日を落として解析し直す。
+// 次に Atom の RFC3339（ISO 8601）を試し、
+// 最後に曜日の矛盾で失敗したものを曜日を落として解析し直す。
 // RFC2822 では曜日は省略可能なため、落としても解析できる。
 export default function parsePubDate(value) {
   const parsed = moment(value, moment.RFC_2822)
   if (parsed.isValid()) return parsed
+
+  // Atom の日付は RFC3339（ISO 8601）
+  const iso = moment(value, moment.ISO_8601, true)
+  if (iso.isValid()) return iso
 
   return moment(String(value).replace(/^\s*[A-Za-z]{3},\s*/, ''), moment.RFC_2822)
 }
