@@ -227,7 +227,12 @@ const fetchFeed = async key => {
   });
 
   consola.log('Download cover images serially to avoid 404')
-  for(let key of Object.keys(covers)) await util.downloadAndResize(key, covers[key].src, covers[key].dist)
+  for(let key of Object.keys(covers)) {
+    const downloaded = await util.downloadAndResize(key, covers[key].src, covers[key].dist)
+    // 取得に失敗したカバーはファイルが存在せず画像が壊れるので、参照を外して
+    // cover.vue のプレースホルダー表示に切り替える
+    if(!downloaded && channels[key]) channels[key].cover = null
+  }
 
   const data = {
     load_order,
@@ -246,14 +251,20 @@ const fetchFeed = async key => {
   process.exit(0)
 })();
 
-nodeCleanup(function (exitCode, signal) {
-  if (signal == 'SIGINT' && downloads_backup) {
+// node-cleanup は正常終了時に (exitCode, null)、シグナルによる終了時に (null, signal)
+// で呼ばれる。以前は成功条件を signal == 0 としていたため（正常終了時 signal は null）
+// この分岐が一度も実行されず、バックアップが削除されずに溜まり続けていた
+nodeCleanup(function (exitCode) {
+  if (!downloads_backup) return
+
+  if (exitCode === 0) {
+    consola.log(`-> Remove backup`)
+    shell.rm('-rf', downloads_backup)
+  }
+  else {
+    // 中断・異常終了時は取得途中のデータを残さず、前回の内容へ戻す
     consola.log(`-> Restore from backup`)
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
-  }
-  else if (signal == 0 && downloads_backup) {
-    consola.log(`-> Remove backup`)
-    shell.rm('-rf', downloads_backup)
   }
 });

@@ -98,20 +98,20 @@ class Util {
   }
 
   // 画像のダウンロードとリサイズ
+  // 成功したら true、ダウンロードまたはリサイズに失敗したら false を返す。
+  // 呼び出し側はこれを見て、存在しない画像への参照を外す
   async downloadAndResize(_key, _src, _dist) {
     try {
       await wgetp(_src, {output: _dist})
       const ext = path.extname(_dist)
       const ext_120 = _dist.replace(ext, ext.replace('.', '-120.'))
       const ext_60 = _dist.replace(ext, ext.replace('.', '-60.'))
-      await sharp(_dist).resize(120).toFile(ext_120).catch((err) => {
-        consola.error(_key, err)
-      })
-      await sharp(_dist).resize(60).toFile(ext_60).catch((err) => {
-        consola.error(_key, err)
-      })
+      await sharp(_dist).resize(120).toFile(ext_120)
+      await sharp(_dist).resize(60).toFile(ext_60)
+      return true
     } catch(err) {
       consola.log(_key, err)
+      return false
     }
   }
 

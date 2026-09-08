@@ -10,6 +10,9 @@ div.root
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
         | {{ props.row.lastEpisodeDate | formatDate }}
+      span.date(v-else)
+        span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
+        | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="hashtag" slot-scope="props")
@@ -22,7 +25,9 @@ div.root
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
         | {{ props.row.firstEpisodeDate | formatDate }}
-      template(v-else="props.row.firstEpisodeLink") {{ props.row.firstEpisodeDate | formatDate }}
+      span.date(v-else)
+        span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
+        | {{ props.row.firstEpisodeDate | formatDate }}
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
@@ -39,6 +44,8 @@ div.root
 
 <style lang="sass" scoped>
 $color_new: #e100ff
+// ソートアイコンの占有幅。ラベルの位置合わせにも使う
+$sort_icon_width: 1.6em
 
 .download
   margin-right: 20px
@@ -86,8 +93,6 @@ $color_new: #e100ff
     width: 100%
   th
     white-space: nowrap
-    &.last
-      text-align: right
   th,td
     text-align: left
     vertical-align: top
@@ -97,10 +102,6 @@ $color_new: #e100ff
       display: none
     &:nth-child(2)
       padding-left: 20px
-    &.duration,
-    &.hashtag,
-    &.twitter
-      text-align: center
   thead
     color: #ccc
     font-size: 12px
@@ -122,21 +123,19 @@ $color_new: #e100ff
           color: lighten(#444, 10%)
     td.hashtag,
     td.twitter
-      text-align: center
       small
         display: block
         font-size: 10px
         color: #ccc
     td.total
-      text-align: right
       font-size: 18px
     td.last,
     td.first
-      >a
+      >a,
+      >.date
         position: relative
         display: flex
         align-items: center
-        justify-content: flex-end
     tr
       &:first-child
         border-top: 1px solid #ccc
@@ -243,15 +242,20 @@ $color_new: #e100ff
     cursor: pointer
     &:hover
       color: #7f00ff
+  // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
+  // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
+  // ソートするたびに見出しの位置がずれる
+  .VueTables__sort-icon
+    display: inline-block
+    width: $sort_icon_width
+    text-align: right
   .glyphicon-chevron-down
     &:before
       content: '▼'
-      margin-left: 10px
       font-size: 0.7em
   .glyphicon-chevron-up
     &:before
       content: '▲'
-      margin-left: 10px
       font-size: 0.7em
   .VuePagination
     .text-center
@@ -340,8 +344,8 @@ export default {
       columns: [
         'cover',
         'title',
-        'total',
         'durationMedian',
+        'total',
         'hashtag',
         'twitter',
         'firstEpisodeDate',
