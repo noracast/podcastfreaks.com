@@ -102,9 +102,16 @@ class Util {
   // 中央値。getDurations の結果を受け取る
   getDurationMedian(_durations) {
     if(_durations.length == 0) return null
-    // sort は破壊的なので、渡された配列には触れない
+    // sort は破壊的なので、渡された配列には触れない。
+    // 値は HH:mm:ss にゼロ埋めされているため辞書順の比較でよい
     const durations = [..._durations].sort()
-    return durations[Math.ceil(durations.length/2)]
+
+    const half = Math.floor(durations.length/2)
+    if(durations.length % 2) return durations[half]
+
+    // 偶数個のときは中央2つの平均をとる
+    const ms = (moment.duration(durations[half-1]).asMilliseconds() + moment.duration(durations[half]).asMilliseconds()) / 2
+    return moment.utc(ms).format('HH:mm:ss')
   }
 
   // 画像のダウンロードとリサイズ
