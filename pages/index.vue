@@ -5,7 +5,8 @@ div.root
     template(slot="cover" slot-scope="props")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
-      span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
+      .clip
+        span(@click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
@@ -16,13 +17,16 @@ div.root
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="hashtag" slot-scope="props")
-      a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
-        small {{ props.row.hashtag }}
+      .clip
+        a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
+          small {{ props.row.hashtag }}
     template(slot="twitter" slot-scope="props")
-      a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
-        small {{ props.row.twitter }}
+      .clip
+        a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
+          small {{ props.row.twitter }}
     template(slot="fileServer" slot-scope="props")
-      small {{ props.row.fileServer }}
+      .clip
+        small {{ props.row.fileServer }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
@@ -98,6 +102,8 @@ $sort_icon_width: 1.6em
     // Hosting の見出しに重ねる select の基準にする。
     // 他の見出しはセル全体がクリック領域なので、それに合わせる
     position: relative
+    &.title
+      width: 40%
   th,td
     text-align: left
     vertical-align: top
@@ -133,6 +139,30 @@ $sort_icon_width: 1.6em
         display: block
         font-size: 10px
         color: #ccc
+    // 長いタイトルやホスト名で折り返して行の高さが変わらないよう、1行に省略する。
+    //
+    // 中身をそのまま nowrap にすると、その幅が列幅の下限になってしまい
+    // テーブルが画面幅に収まらず横スクロールしてしまう。
+    // .clip で1階層くるみ、中身を絶対配置にすることで列幅の計算から外す。
+    // これで「画面幅に応じて伸縮する」と「1行に省略する」が両立する
+    .clip
+      position: relative
+      // 絶対配置にした中身は高さを持たないので、ここで1行分を確保する
+      height: 1.4em
+      // 幅を主張しなくなるため、狭くなりすぎない下限を決めておく
+      min-width: 60px
+      >*
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        display: block
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+    // タイトルは可変幅の主役なので、優先的に幅を取る
+    td.title
+      width: 40%
     td.total
       font-size: 18px
     td.last,
