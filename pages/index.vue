@@ -250,17 +250,26 @@ $sort_icon_width: 1.6em
     &:hover
       color: #7f00ff
   // Hosting の見出しは配信サービスで絞り込むプルダウンになっている。
-  // 他の見出しと同じ見た目に寄せる
+  // ラベルの上に透明な select を重ねることで、見出しの文言を変えずに
+  // ネイティブのプルダウンを使う
   .hosting-filter
-    font: inherit
-    color: inherit
-    background: transparent
-    border: 0
-    padding: 0
+    position: relative
+    display: inline-block
     cursor: pointer
-    max-width: 100%
     &:hover
       color: #7f00ff
+    // 絞り込み中であることが分かるようにする
+    &.is-active
+      color: #7f00ff
+      font-weight: bold
+    select
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      opacity: 0
+      cursor: pointer
   // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
   // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
   // ソートするたびに見出しの位置がずれる
@@ -343,6 +352,12 @@ import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
+import { Event as VueTablesEvent } from 'vue-tables-2'
+
+// 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
+// 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
+const HOSTING_MIN_COUNT = 2
+const OTHER_HOSTING = '__other__'
 
 export default {
   components: {
@@ -360,6 +375,7 @@ export default {
       newThreshold2: moment().subtract(30, 'days').startOf('date'),
 
       allMarked: false,
+      hostingFilter: '',
       columns: [
         'cover',
         'title',
@@ -399,18 +415,25 @@ export default {
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
           fileServer: (h) => {
-            return h('select', {
-              class: 'hosting-filter',
-              on: {
-                change: (event) => this.filterByHosting(event),
-                // 見出しのクリック（並べ替え）を誘発させない
-                click: (event) => event.stopPropagation()
-              }
+            // ラベルは "Hosting" のまま固定し、透明な select を重ねる。
+            // select 自体に文字を出すと、絞り込み中に見出しの文言が変わってしまう
+            return h('span', {
+              class: ['hosting-filter', { 'is-active': !!this.hostingFilter }]
             }, [
-              h('option', { domProps: { value: '' } }, 'Hosting'),
-              ...this.hostingOptions.map(o =>
-                h('option', { domProps: { value: o.host } }, `${o.host} (${o.count})`)
-              )
+              'Hosting',
+              h('select', {
+                domProps: { value: this.hostingFilter },
+                on: {
+                  change: (event) => this.filterByHosting(event.target.value),
+                  // 見出しのクリック（並べ替え）を誘発させない
+                  click: (event) => event.stopPropagation()
+                }
+              }, [
+                h('option', { domProps: { value: '' } }, 'すべて'),
+                ...this.hostingOptions.map(o =>
+                  h('option', { domProps: { value: o.value } }, `${o.label} (${o.count})`)
+                )
+              ])
             ])
           },
           total: 'Episodes',
@@ -452,6 +475,16 @@ export default {
           'lastEpisodeDate',
           'durationMedian'
         ],
+        // 検索ボックスとは独立したフィルタ。両方を同時に効かせられる
+        customFilters: [
+          {
+            name: 'hosting',
+            callback: (row, value) => {
+              if(value === OTHER_HOSTING) return this.minorHostings.includes(row.fileServer)
+              return row.fileServer === value
+            }
+          }
+        ],
         // 実際の判定は filterAlgorithm.title でまとめて行うため、
         // 検索対象の列は1つだけにしておく
         filterable: ['title'],
@@ -476,15 +509,28 @@ export default {
     }
   },
   computed: {
-    // Hosting のプルダウンに出す選択肢。番組数の多い順に並べる
-    hostingOptions: function() {
+    hostingCounts: function() {
       const counts = {}
       this.channels.forEach(c => {
         if(c.fileServer) counts[c.fileServer] = (counts[c.fileServer] || 0) + 1
       })
-      return Object.keys(counts)
-        .map(host => ({ host, count: counts[host] }))
-        .sort((a, b) => b.count - a.count || a.host.localeCompare(b.host))
+      return counts
+    },
+    // 1番組しか使っていないホスト（自前配信とみなすもの）
+    minorHostings: function() {
+      return Object.keys(this.hostingCounts).filter(h => this.hostingCounts[h] < HOSTING_MIN_COUNT)
+    },
+    // Hosting のプルダウンに出す選択肢。番組数の多い順に並べ、末尾に「その他」を置く
+    hostingOptions: function() {
+      const options = Object.keys(this.hostingCounts)
+        .filter(h => this.hostingCounts[h] >= HOSTING_MIN_COUNT)
+        .map(host => ({ value: host, label: host, count: this.hostingCounts[host] }))
+        .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value))
+
+      const otherCount = this.minorHostings.reduce((sum, h) => sum + this.hostingCounts[h], 0)
+      if(otherCount) options.push({ value: OTHER_HOSTING, label: 'その他（自前配信など）', count: otherCount })
+
+      return options
     }
   },
   mounted: function(){
@@ -494,11 +540,11 @@ export default {
     toggleChildRow: function(key){
       this.$refs.table.toggleChildRow(key)
     },
-    filterByHosting: function(event) {
-      this.$refs.table.setFilter(event.target.value)
-      // 絞り込み中の値は検索ボックスに出るので、見出しは "Hosting" に戻す。
-      // 選択したままだと、検索ボックスを手で書き換えたときに食い違ってしまう
-      event.target.value = ''
+    filterByHosting: function(value) {
+      this.hostingFilter = value
+      // customFilters はイベントバス経由で値を渡す。
+      // 検索ボックス（query）とは別に保持されるので、両方を同時に効かせられる
+      VueTablesEvent.$emit('vue-tables.filter::hosting', value)
     },
     // 検索対象にする文字列。画面に出ている値で絞り込めるよう、
     // 日付は表示と同じ YYYY.MM.DD の形にしてから含める
