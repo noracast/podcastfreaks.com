@@ -17,6 +17,12 @@
     "hashtag": "#mook06",
     "reason": "end of broadcast"
   },
+  "barihebo": {
+    "feed": "https://sky-plant.com/podcast/rss20.xml",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "domain revocation"
+  },
   "bdpfm": {
     "feed": "https://bdpfm.jp/feed.xml",
     "twitter": "@bdpfm",
@@ -28,6 +34,24 @@
     "twitter": "@bitbitecoin",
     "hashtag": null,
     "reason": "website is closed"
+  },
+  "cafeai": {
+    "feed": "https://ear-s.jp/feed/podcast/ai",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "domain revocation"
+  },
+  "codeish-jp": {
+    "feed": "https://jp.heroku.com/podcasts/codeish-jp.rss",
+    "twitter": "@herokujp",
+    "hashtag": null,
+    "reason": "feed not found"
+  },
+  "design-academy": {
+    "feed": "https://design-academy.jp/feed/podcast/",
+    "twitter": "@DesignAcademyJP",
+    "hashtag": "#デザアカラジオ",
+    "reason": "domain revocation"
   },
   "facast": {
     "feed": "https://facast.net/feed.xml",
@@ -71,6 +95,42 @@
     "hashtag": "#iosdcfm",
     "reason": "domain revocation"
   },
+  "jinseifm": {
+    "feed": "https://kirimin.github.io/jinseifm/feed",
+    "twitter": "@jinseifm",
+    "hashtag": "#jinseifm",
+    "reason": "feed not found"
+  },
+  "magicalfm": {
+    "feed": "https://magical.fm/feed",
+    "twitter": "@magical_fm",
+    "hashtag": "#magicalfm",
+    "reason": "feed not found"
+  },
+  "migrationfm": {
+    "feed": "https://migration.fm/feed.xml",
+    "twitter": "@migrationfm",
+    "hashtag": "#migrationfm",
+    "reason": "feed not found"
+  },
+  "mukimuki-cloud": {
+    "feed": "https://anchor.fm/s/10161614/podcast/rss",
+    "twitter": null,
+    "hashtag": "#cloud弱小",
+    "reason": "feed not found"
+  },
+  "nanapod": {
+    "feed": "https://nanapod.kozyty.com/rss",
+    "twitter": "@nanapi_nanapod",
+    "hashtag": "#nanapod",
+    "reason": "domain revocation"
+  },
+  "ningengaheta": {
+    "feed": "https://ningengaheta.me/feed.xml",
+    "twitter": "@ningengahetaFM",
+    "hashtag": "#ningengahetafm",
+    "reason": "domain revocation"
+  },
   "omsubi": {
     "feed": "https://anchor.fm/s/b5e36d8/podcast/rss",
     "twitter": null,
@@ -93,6 +153,12 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:256629082/sounds.rss",
     "twitter": "@railsdm",
     "hashtag": "#railsdm",
+    "reason": "feed not found"
+  },
+  "renderfm": {
+    "feed": "https://pitpa.jp/rss/renderfm",
+    "twitter": null,
+    "hashtag": null,
     "reason": "feed not found"
   },
   "rubyist-club": {
@@ -119,11 +185,29 @@
     "hashtag": null,
     "reason": "the website shock-sheets-tech.tumblr.com is gone"
   },
+  "siliconvalleyrw": {
+    "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "feed not found"
+  },
+  "systemand": {
+    "feed": "https://systemand.online/feed.xml",
+    "twitter": "@system_genius",
+    "hashtag": "#systemand",
+    "reason": "domain revocation"
+  },
   "tommie_nico": {
     "feed": "http://podcast.tommie2.info/co9320/rss.xml",
     "twitter": null,
     "hashtag": null,
     "reason": "audio not found"
+  },
+  "van-engineers": {
+    "feed": "https://anchor.fm/s/3c24e384/podcast/rss",
+    "twitter": "@VanEngineersJP",
+    "hashtag": "#バンクーバーのえんじに屋",
+    "reason": "feed not found"
   },
   "wadafm": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:134132881/sounds.rss",
