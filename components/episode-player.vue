@@ -7,9 +7,10 @@
         rect(x="14" y="5" width="4" height="14" rx="1")
       path(v-else fill="currentColor" d="M8 5.5v13l11-6.5z")
 
-  //- タイトルの箱がそのままシークバー。背景の伸びが再生位置を表す
-  .seek(
-    ref="seek"
+  //- 再生ボタンより右がまるごとシークバー。背景の伸びが再生位置を表す。
+  //- 操作ボタンもこの中に置き、押されたときはシークしない
+  .track(
+    ref="track"
     role="slider"
     :aria-label="`${episode.title} の再生位置`"
     :aria-valuemin="0"
@@ -23,30 +24,30 @@
     .progress(:style="{ width: progressPercent }")
     span.text {{ episode.title }}
 
-  .controls
-    button(@click="toStart" title="先頭に戻る" aria-label="先頭に戻る")
-      svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
-        g(fill="currentColor")
-          rect(x="5" y="6" width="2.5" height="12" rx="1")
-          path(d="M19 6.5v11L9.5 12z")
-    button.sec(@click="skip(-10)" title="10秒もどす" aria-label="10秒もどす") −10
-    button.sec(@click="skip(10)" title="10秒すすめる" aria-label="10秒すすめる") +10
-    button(@click="stop" title="停止" aria-label="停止")
-      svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
-        rect(x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor")
-    button.rate(@click="cycleRate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`") {{ rate }}×
-    a-blank.open(:href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く")
-      svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
-        g(fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round")
-          path(d="M14 5h5v5")
-          path(d="M19 5l-8 8")
-          path(d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10")
+    .controls
+      button(@click="toStart" title="先頭に戻る" aria-label="先頭に戻る")
+        svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
+          g(fill="currentColor")
+            rect(x="5" y="6" width="2.5" height="12" rx="1")
+            path(d="M19 6.5v11L9.5 12z")
+      button.sec(@click="skip(-10)" title="10秒もどす" aria-label="10秒もどす") −10
+      button.sec(@click="skip(10)" title="10秒すすめる" aria-label="10秒すすめる") +10
+      button.rate(@click="cycleRate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`") {{ rate }}×
+      a-blank.open(:href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く")
+        svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
+          g(fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round")
+            path(d="M14 5h5v5")
+            path(d="M19 5l-8 8")
+            path(d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10")
 
-  .time
-    span.now {{ formattedCurrent }}
-    span.total
-      span.sep /
-      | {{ formattedDuration }}
+    //- 操作していないうちは長さだけ出す。タイトルに幅を譲る
+    .time
+      template(v-if="isActive")
+        span.now {{ formattedCurrent }}
+        span.total
+          span.sep /
+          | {{ formattedDuration }}
+      template(v-else) {{ formattedDuration }}
 </template>
 
 <style lang="sass" scoped>
@@ -79,15 +80,15 @@ $accent: #7f00ff
     &:active
       background-color: color.adjust($accent, $lightness: 20%)
 
-  // タイトルの箱ぜんぶがシークバー。押した位置へ飛び、そのまま動かすと
-  // つまみを持っているように追従する
-  .seek
+  // 再生ボタンより右がまるごとシークバー。押した位置へ飛び、
+  // そのまま動かすとつまみを持っているように追従する
+  .track
     flex: 1
     min-width: 0
     position: relative
     display: flex
     align-items: center
-    padding: 0 20px
+    padding-left: 20px
     cursor: pointer
     overflow: hidden
     touch-action: none
@@ -101,81 +102,80 @@ $accent: #7f00ff
       bottom: 0
       width: 0
       background-color: rgba(127, 0, 255, 0.35)
-      // つまみを動かしている最中は追従を優先し、なめらかさは求めない
       pointer-events: none
-    .text
+    // 背景の伸びより手前に置く
+    >*
       position: relative
+    .text
+      flex: 1
+      min-width: 0
       color: #aaa
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
 
-  .time
-    flex: none
-    display: flex
-    align-items: center
-    padding: 0 10px 0 8px
-    color: #777
-    font-size: 11px
-    // 数字の幅を揃えて、再生中に左右へ揺れないようにする
-    font-variant-numeric: tabular-nums
-    white-space: nowrap
-    .sep
-      padding: 0 3px
-
-  // 再生していないうちは出さない。場所は空けたままにして、
-  // 押した瞬間に行の中身がずれないようにする
-  .controls
-    flex: none
-    display: flex
-    align-items: center
-    opacity: 0
-    pointer-events: none
-    transition: opacity 0.2s
-    >*
-      background: none
-      border: 0
-      padding: 0
-      border-radius: 0
-      min-width: 0
-      margin-left: 6px
-      width: 24px
-      height: 24px
+    .time
+      flex: none
       display: flex
       align-items: center
-      justify-content: center
-      color: #888
+      padding: 0 20px 0 8px
+      color: #777
       font-size: 11px
-      cursor: pointer
-      &:hover
-        color: #fff
-    >.sec,
-    >.rate
-      width: 28px
+      // 数字の幅を揃えて、再生中に左右へ揺れないようにする
       font-variant-numeric: tabular-nums
+      white-space: nowrap
+      .sep
+        padding: 0 3px
 
-  &.is-active .controls
-    opacity: 1
-    pointer-events: auto
+    // 再生していないうちは場所ごと空ける。
+    // 操作が出ていないときは、その幅をタイトルに使いたい
+    .controls
+      flex: none
+      display: none
+      align-items: center
+      >*
+        background: none
+        border: 0
+        padding: 0
+        border-radius: 0
+        min-width: 0
+        margin-left: 6px
+        width: 24px
+        height: 24px
+        display: flex
+        align-items: center
+        justify-content: center
+        color: #888
+        font-size: 11px
+        // シーク操作ではなくボタンとして押せることを示す
+        cursor: pointer
+        &:hover
+          color: #fff
+      >.sec,
+      >.rate
+        width: 28px
+        font-variant-numeric: tabular-nums
+
+  &.is-active .track .controls
+    display: flex
 
 // 狭い画面ではタイトルの幅が残らないので、時間と操作ボタンを詰める。
 // 全体の長さは再生前にも出ているので、再生中は今の位置だけで足りる
 @media (max-width: 810px)
   .episode
-    .time
-      padding: 0 6px 0 4px
-      .total
-        display: none
-    .controls
-      >*
-        margin-left: 2px
-        width: 22px
-      >.sec,
-      >.rate
-        width: 26px
-  .episode:not(.is-active)
-    .time .total
-      display: inline
+    .track
+      padding-left: 10px
+      .time
+        padding: 0 10px 0 4px
+        .total
+          display: none
+      .controls
+        >*
+          margin-left: 2px
+          width: 22px
+        >.sec,
+        >.rate
+          width: 26px
 </style>
 
 <script>
@@ -277,7 +277,8 @@ export default {
       this.player.currentTime = 0
     },
 
-    // 一覧側が「他のエピソードを止める」ために呼ぶ
+    // 一覧側が「他のエピソードを止める」ために呼ぶ。
+    // 画面には停止ボタンは置いていない（先頭に戻して一時停止すれば足りる）
     stop: function() {
       if(!this.player) return
       this.player.pause()
@@ -315,25 +316,28 @@ export default {
 
     // シークバーの操作。押した位置へ飛び、離すまで指（カーソル）に追従する
     seekToPointer: function(event) {
-      const rect = this.$refs.seek.getBoundingClientRect()
+      const rect = this.$refs.track.getBoundingClientRect()
       if(!rect.width || !isFinite(this.duration)) return
       const ratio = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width))
       this.seekTo(this.duration * ratio)
     },
     onPointerDown: function(event) {
       if(!this.player) return
+      // 操作ボタンはシークバーの上に載っている。押されたのがボタンなら
+      // そちらの操作なので、再生位置は動かさない
+      if(event.target.closest && event.target.closest('.controls')) return
       this.seekToPointer(event)
-      this.$refs.seek.addEventListener('pointermove', this.seekToPointer)
-      this.$refs.seek.addEventListener('pointerup', this.releasePointer)
-      this.$refs.seek.addEventListener('pointercancel', this.releasePointer)
+      this.$refs.track.addEventListener('pointermove', this.seekToPointer)
+      this.$refs.track.addEventListener('pointerup', this.releasePointer)
+      this.$refs.track.addEventListener('pointercancel', this.releasePointer)
       // 要素の外へ出ても追従させる
-      if(this.$refs.seek.setPointerCapture) this.$refs.seek.setPointerCapture(event.pointerId)
+      if(this.$refs.track.setPointerCapture) this.$refs.track.setPointerCapture(event.pointerId)
     },
     releasePointer: function() {
-      if(!this.$refs.seek) return
-      this.$refs.seek.removeEventListener('pointermove', this.seekToPointer)
-      this.$refs.seek.removeEventListener('pointerup', this.releasePointer)
-      this.$refs.seek.removeEventListener('pointercancel', this.releasePointer)
+      if(!this.$refs.track) return
+      this.$refs.track.removeEventListener('pointermove', this.seekToPointer)
+      this.$refs.track.removeEventListener('pointerup', this.releasePointer)
+      this.$refs.track.removeEventListener('pointercancel', this.releasePointer)
     },
     onKeydown: function(event) {
       const step = { ArrowLeft: -10, ArrowRight: 10, ArrowDown: -10, ArrowUp: 10 }[event.key]
