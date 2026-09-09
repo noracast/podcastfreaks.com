@@ -1,8 +1,13 @@
 <template lang="pug">
 div
-  button(v-if="buttonAction=='copy'" v-clipboard:copy="text") {{ buttonText }}
-  a-blank(v-else :href="text") {{ buttonText }}
-  span(type="text" readonly="readonly") {{ text }}
+  button.action(v-if="buttonAction=='copy'" v-clipboard:copy="text") {{ buttonText }}
+  a-blank.action(v-else :href="text") {{ buttonText }}
+  //- URL そのものも開けるようにする。ボタンが「コピー」のときは
+  //- ここからしか開けないため
+  a-blank.value(:href="text")
+    //- flex の直下のテキストには text-overflow が効かないため、
+    //- 省略を受け持つ要素を1つ挟む
+    span {{ text }}
 </template>
 
 <style lang="sass" scoped>
@@ -16,8 +21,7 @@ div
     margin-bottom: 10px
   &:first-child
     margin-top: 0
-  >button,
-  >a
+  >.action
     color: white
     font-size: 10px
     font-weight: bold
@@ -40,20 +44,26 @@ div
       &:active
         background-color: color.adjust(#7f00ff, $lightness: 20%)
 
-  span
+  >.value
     height: 100%
     border: 0
     outline: 0
-    background: none
     background-color: #000
     color: #ccc
     border-radius: 0 3px 3px 0
     padding: 0 10px
     margin: 0
     font-size: 11px
-    white-space: nowrap
     display: flex
     align-items: center
+    // 長いURLで子行からはみ出さないよう、収まらない分は省略する
+    min-width: 0
+    span
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+    &:hover
+      color: #fff
 </style>
 
 <script>
