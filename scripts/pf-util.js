@@ -19,9 +19,16 @@ const enclosureUrls = (episode) =>
     .map(enclosure => _.get(enclosure, '$.url'))
     .filter(url => !!url)
 
-// 更新頻度を求めるときに見る直近エピソード数。
+// 更新頻度を求めるときに見る直近の「更新した日」の数。
 // 少なすぎると1回の休みで大きく振れ、多すぎると昔の頻度に引きずられる
 const SAMPLE_SIZE_FOR_INTERVAL = 12
+
+// Netlify のビルドは UTC で走るため、実行環境のタイムゾーンで日を切ると
+// 結果が変わってしまう。日本時間の日付に固定する（CLAUDE.md）。
+// 1970-01-01 からの通し日数を返す
+const JST_OFFSET_MS = 9 * 60 * 60 * 1000
+const DAY_MS = 24 * 60 * 60 * 1000
+const toJstDayNumber = (ms) => Math.floor((ms + JST_OFFSET_MS) / DAY_MS)
 
 class Util {
 
@@ -163,20 +170,30 @@ class Util {
     return moment.utc(ms).format('HH:mm:ss')
   }
 
-  // 更新頻度。直近のエピソードの投稿間隔の中央値を日数で返す。
+  // 更新頻度。直近の「更新した日」の間隔の中央値を日数で返す。
   //
   // - 平均ではなく中央値にするのは、長期の休止や、開始時にまとめて投稿された
   //   エピソードがあると平均が大きく歪むため
   // - 全期間ではなく直近だけを見るのは、「昔どうだったか」ではなく
   //   「今どのくらいの間隔で出ているか」を知りたいため
+  // - エピソードではなく日を数えるのは、同じ日にまとめて投稿された番組が
+  //   間隔0日、つまり「毎日」と判定されてしまうため。配信元を移行したときの
+  //   一括投稿や、収録済みの回をまとめて公開した場合に起きる
+  //   （例: abefm は全5話が同じ時刻、meetsfm は4話が7分の間に並ぶ）
   getUpdateInterval(_items, _sampleSize = SAMPLE_SIZE_FOR_INTERVAL) {
-    const times = asArray(_items)
-      .slice(0, _sampleSize)
+    const times = _(asArray(_items))
       .map(ep => ep && parsePubDate(ep.pubDate))
       .filter(date => date && date.isValid())
       .map(date => date.valueOf())
       // フィードの並び順は基本的に新しい順だが、保証はされていないので揃える
       .sort((a, b) => b - a)
+      // 同じ日に投稿された話は1回の更新として数える。
+      // 日でまとめたあとの間隔は実際の時刻から測る。日数に丸めてしまうと
+      // 9.7日の番組が10日になって「毎週」から「隔週」へ移るなど、
+      // 境界に乗った番組の表示が変わってしまう
+      .uniqBy(toJstDayNumber)
+      .take(_sampleSize)
+      .value()
 
     if(times.length < 2) return null
 

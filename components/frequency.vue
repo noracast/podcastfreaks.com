@@ -1,6 +1,6 @@
 <template lang="pug">
 span(v-if="level" :class="level.name" :title="tooltip") {{ level.label }}
-span(v-else v-text="'N/A'" title="エピソードが1話しかないため算出できません")
+span(v-else v-text="'N/A'" title="更新した日が1日分しかないため算出できません")
 </template>
 
 <style lang="sass" scoped>
@@ -42,7 +42,7 @@ import { frequencyLevel } from '@/lib/frequency-label'
 
 export default {
   props: {
-    // 直近エピソードの投稿間隔の中央値（日）。prebuild で算出している
+    // 直近の更新日の間隔の中央値（日）。prebuild で算出している
     interval: {
       type: Number,
       default: null
@@ -54,7 +54,7 @@ export default {
     },
     tooltip() {
       if(this.interval == null) return null
-      return `直近の投稿間隔の中央値: ${this.interval}日`
+      return `直近の更新間隔の中央値: ${this.interval}日`
     }
   }
 }
