@@ -429,7 +429,6 @@ $sort_icon_width: 1.6em
 
 <script>
 import axios from 'axios'
-import moment from 'moment'
 import xml2js from '@/lib/xml2js-promise'
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
@@ -437,6 +436,7 @@ import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
+import { jst, jstDate } from '@/lib/jst'
 import { Event as VueTablesEvent } from 'vue-tables-2'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
@@ -456,11 +456,14 @@ export default {
     return {
       rssDir: `@/${RSS_DIR}/`,
 
-      // 行ごとに何度も作成しないように予め作る
-      newThreshold1: moment().subtract(3, 'days').startOf('date'),
-      newThreshold2: moment().subtract(30, 'days').startOf('date'),
+      // 行ごとに何度も作成しないように予め作る。
+      // moment() ではなくビルド時刻を基準にするのは、実行時のタイムゾーンで
+      // 判定が変わると、UTC で事前レンダリングした結果と閲覧者のブラウザで
+      // バッジの有無が食い違い、ハイドレーションが無駄にやり直されるため
+      newThreshold1: jst(build_info.updated).subtract(3, 'days').startOf('date'),
+      newThreshold2: jst(build_info.updated).subtract(30, 'days').startOf('date'),
       // サイトへの登録が新しいと見なす範囲
-      addedThreshold: moment().subtract(30, 'days').startOf('date'),
+      addedThreshold: jst(build_info.updated).subtract(30, 'days').startOf('date'),
 
       allMarked: false,
       hostingFilter: '',
@@ -686,13 +689,13 @@ export default {
       this.allMarked = !this.allMarked
     },
     isIn: function(date, threshold){
-      return moment(date, 'YYYY.MM.DD').isAfter(threshold)
+      return jstDate(date, 'YYYY.MM.DD').isAfter(threshold)
     },
     // サイトへの登録が最近かどうか。added-at.json の日付は YYYY-MM-DD なので、
     // 表示用の YYYY.MM.DD を前提にした isIn とは分けている
     isRecentlyAdded: function(date){
       if(!date) return false
-      return moment(date, 'YYYY-MM-DD').isAfter(this.addedThreshold)
+      return jstDate(date, 'YYYY-MM-DD').isAfter(this.addedThreshold)
     },
     downloadOpml: function(){
       const header = {

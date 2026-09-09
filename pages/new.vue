@@ -63,6 +63,7 @@ h5
 import axios from 'axios'
 import moment from 'moment'
 import xml2js from '@/lib/xml2js-promise'
+import { jst } from '@/lib/jst'
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 
@@ -72,11 +73,14 @@ export default {
     'podcast': require('@/components/podcast.vue').default
   },
   data: function() {
-    const aweekago = moment().subtract(7, 'days').startOf('date')
+    // ビルド時刻を基準に、日本時間で「今週」と「先週」に振り分ける。
+    // moment() を使うと実行のたびに基準が変わり、UTC のビルドサーバーと
+    // JST の閲覧者で件数が食い違ってハイドレーションが壊れる
+    const aweekago = jst(build_info.updated).subtract(7, 'days').startOf('date')
     let episodes_in_1weeks = []
     let episodes_in_2weeks = []
     build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(moment(item.pubDate).isAfter(aweekago)){
+      if(jst(item.pubDate).isAfter(aweekago)){
         episodes_in_1weeks.push(item)
       }
       else {
@@ -93,16 +97,12 @@ export default {
   },
   methods: {
     date: function(_date) {
-      console.log(_date)
       moment.locale('ja')
-      return moment(_date).format('M/D(ddd)')
+      return jst(_date).format('M/D(ddd)')
     },
+    // 日付の区切り線を出すかの判定。表示と同じ日本時間で比べる
     isSame: function(_date1, _date2) {
-      const __date1 = new Date(_date1)
-      const __date2 = new Date(_date2)
-      return __date1.getDate()==__date2.getDate() &&
-        __date1.getMonth()==__date2.getMonth() &&
-        __date1.getFullYear()==__date2.getFullYear()
+      return jst(_date1).isSame(jst(_date2), 'day')
     }
   },
   head() {
