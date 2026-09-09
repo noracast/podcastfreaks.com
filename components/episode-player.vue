@@ -1,5 +1,5 @@
 <template lang="pug">
-.episode(:class="{ 'is-active': isActive }")
+.episode(:class="{ 'is-active': isActive, 'is-playing': playing }")
   button.play(@click="toggle" :title="playing ? '一時停止' : '再生'" :aria-label="playing ? '一時停止' : '再生'")
     svg(viewBox="0 0 24 24" width="18" height="18" aria-hidden="true")
       g(v-if="playing" fill="currentColor")
@@ -164,7 +164,10 @@ $accent: #7f00ff
   &.is-active
     .track .controls
       display: flex
-    // 聴いている回がどれか、並びの中で見て分かるようにする
+
+  // 今鳴っている回がどれか、並びの中で見て分かるようにする。
+  // 止めているものは明るくしない（シークしただけの回まで光ってしまう）
+  &.is-playing
     .track .text
       color: #fff
 
