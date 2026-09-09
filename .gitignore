@@ -92,5 +92,8 @@ package-lock.json
 # 必要な人は下記を1回実行すれば同じ状態になる:
 #   npx skills add netlify/context-and-tools --skill '*' --yes
 /.agents/
-/.claude/skills/
 /skills-lock.json
+# インストールしたスキル（.agents へのシンボリックリンク）は追跡しないが、
+# このリポジトリで管理するスキルは追跡する
+/.claude/skills/*
+!/.claude/skills/feed-triage/

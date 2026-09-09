@@ -1,0 +1,81 @@
+# 公開中のサイトの状態を毎日見て、問題があれば issue にする。
+#
+# 毎日のビルドが失敗し続けていても誰も気づかない、という状態が長く続いた。
+# ビルドの成否だけでなく「ビルドは通っているが中身がおかしい」（取得できない
+# フィード、ポッドキャストでないフィード）も拾う。
+#
+# issue は毎回新しく立てず、1つを使い回して本文を更新する。毎日新規に立てると
+# 流れてしまい、結局気づかなくなるため。問題が解消したら自動で閉じる。
+#
+# 判定は公開中の build_info.json を読むだけで、依存のインストールも
+# リポジトリのチェックアウト内容も必要としない。
+
+name: サイトの状態を見張る
+
+on:
+  schedule:
+    # 毎日 00:30 JST。日次ビルド（00:00 JST に IFTTT から Netlify を叩く）の後
+    - cron: '30 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  ISSUE_TITLE: 'サイトの状態: 対応が必要な項目があります'
+  ISSUE_LABEL: site-health
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 状態を調べる
+        id: check
+        run: |
+          if REPORT=$(node scripts/check-site-health.js); then
+            echo "has_problems=false" >> "$GITHUB_OUTPUT"
+          else
+            status=$?
+            if [ "$status" != "1" ]; then
+              echo "判定そのものに失敗しました（exit $status）"
+              echo "$REPORT"
+              exit "$status"
+            fi
+            echo "has_problems=true" >> "$GITHUB_OUTPUT"
+          fi
+          {
+            echo 'report<<REPORT_EOF'
+            echo "$REPORT"
+            echo 'REPORT_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: issue を作るか更新する
+        if: steps.check.outputs.has_problems == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPORT: ${{ steps.check.outputs.report }}
+        run: |
+          number=$(gh issue list --label "$ISSUE_LABEL" --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body "$REPORT"
+            echo "issue #$number を更新しました"
+          else
+            gh label create "$ISSUE_LABEL" --description "サイトの状態の見張り" --color FBCA04 --force
+            gh issue create --title "$ISSUE_TITLE" --label "$ISSUE_LABEL" --body "$REPORT"
+          fi
+
+      - name: 解消していれば issue を閉じる
+        if: steps.check.outputs.has_problems == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          number=$(gh issue list --label "$ISSUE_LABEL" --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue close "$number" --comment "問題が解消したため自動で閉じます。"
+            echo "issue #$number を閉じました"
+          else
+            echo "問題はありません"
+          fi
