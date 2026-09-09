@@ -4,11 +4,10 @@
     | 直近のビルドで見つかった問題です。
     | フィードを直せる方に見ていただけるよう、検知したものはすべて出しています。
 
-  section
+  section(v-if="errors.length")
     h2 取得できなかった番組
     p.count {{ errors.length }}件
-    p.empty(v-if="errors.length === 0") ありません
-    ul.list(v-else)
+    ul.list
       li(v-for="item in errors" :key="item.rss")
         .key {{ item.key }}
         .message {{ item.message }}
@@ -25,7 +24,7 @@
         .message {{ item.message }}
         a.feed(v-if="item.feed" :href="item.feed" target="_blank" rel="noopener") {{ item.feed }}
 
-  p.empty(v-if="errors.length === 0 && warningGroups.length === 0") 問題は見つかりませんでした。
+  p.empty(v-if="errors.length === 0 && warningGroups.length === 0") 今回のビルドでは問題は見つかりませんでした。
 
   details.raw
     summary 生データ

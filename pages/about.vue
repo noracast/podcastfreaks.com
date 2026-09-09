@@ -23,6 +23,12 @@
     br
     a-blank.noborder(href="https://app.netlify.com/sites/podcastfreaks.com/deploys")
       img.badge(src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status")
+  h3 フィードの取得状況
+  p
+    | 毎日のビルドで見つかった問題は
+    nuxt-link(to='/errors/') Errors ページ
+    | に出しています。取得できなかった番組のほか、収録時間やカバー画像を読み取れなかった番組も挙げています。<br>
+    | ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。原因が分からない場合はリクエストページからお知らせください。
   h3 Contribution
   p
     | このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br>
