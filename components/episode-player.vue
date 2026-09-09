@@ -32,7 +32,9 @@
             path(d="M19 6.5v11L9.5 12z")
       button.sec(@click="skip(-10)" title="10秒もどす" aria-label="10秒もどす") −10
       button.sec(@click="skip(10)" title="10秒すすめる" aria-label="10秒すすめる") +10
-      button.rate(@click="cycleRate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`") {{ rate }}×
+      //- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
+      //- 小文字の x はベースラインに乗るので、数字と下が揃う
+      button.rate(@click="cycleRate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`") {{ rate }}x
       a-blank.open(:href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く")
         svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
           g(fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round")
@@ -69,6 +71,7 @@ $accent: #7f00ff
     // レイアウトのグローバルな button の指定（角丸・余白・最小幅）を打ち消す
     border-radius: 0
     min-width: 0
+    // シークバーの上に載っているが、これは押すボタン
     cursor: pointer
     color: white
     background-color: $accent
@@ -89,7 +92,8 @@ $accent: #7f00ff
     display: flex
     align-items: center
     padding-left: 20px
-    cursor: pointer
+    // 左右に動かして位置を変えられることを、カーソルの形で示す
+    cursor: col-resize
     overflow: hidden
     touch-action: none
     &:focus-visible
@@ -113,6 +117,7 @@ $accent: #7f00ff
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
+      transition: color 0.2s
 
     .time
       flex: none
@@ -156,8 +161,12 @@ $accent: #7f00ff
         width: 28px
         font-variant-numeric: tabular-nums
 
-  &.is-active .track .controls
-    display: flex
+  &.is-active
+    .track .controls
+      display: flex
+    // 聴いている回がどれか、並びの中で見て分かるようにする
+    .track .text
+      color: #fff
 
 // 狭い画面ではタイトルの幅が残らないので、時間と操作ボタンを詰める。
 // 全体の長さは再生前にも出ているので、再生中は今の位置だけで足りる
@@ -182,18 +191,6 @@ $accent: #7f00ff
 // 再生速度の候補。押すたびに次へ送る
 const RATES = [1, 1.25, 1.5, 2]
 
-// 1つのエピソードに複数の enclosure を並べるフィードがあり、その場合
-// xml2js は配列を返す（scripts/pf-util.js の enclosureUrls と同じ事情）
-const audioUrl = (episode) => {
-  const list = episode && episode.enclosure
-  const enclosures = list == null ? [] : (Array.isArray(list) ? list : [list])
-  for(const enclosure of enclosures) {
-    const url = enclosure && enclosure.$ && enclosure.$.url
-    if(url) return url
-  }
-  return null
-}
-
 const formatTime = (seconds) => {
   if(!isFinite(seconds) || seconds < 0) return '--:--'
   const total = Math.floor(seconds)
@@ -216,7 +213,9 @@ export default {
       player: null,
       playing: false,
       currentTime: 0,
-      duration: NaN,
+      // 再生前はフィードに書かれている長さを使う。
+      // 実際に読み込めたら、そちらの値で置き換える
+      duration: this.episode.duration == null ? NaN : this.episode.duration,
       rate: 1
     }
   },
@@ -236,18 +235,6 @@ export default {
       return formatTime(this.duration)
     }
   },
-  mounted: function() {
-    const url = audioUrl(this.episode)
-    if(!url) return
-    this.player = new Audio(url)
-    // 長さだけ先に読む。音声そのものは再生するまで取りに行かない
-    this.player.preload = 'metadata'
-    this.player.addEventListener('loadedmetadata', this.onLoadedMetadata)
-    this.player.addEventListener('timeupdate', this.onTimeUpdate)
-    this.player.addEventListener('play', this.onPlay)
-    this.player.addEventListener('pause', this.onPause)
-    this.player.addEventListener('ended', this.onEnded)
-  },
   beforeDestroy: function() {
     if(!this.player) return
     this.player.pause()
@@ -259,6 +246,22 @@ export default {
     this.releasePointer()
   },
   methods: {
+    // 音声は押されるまで用意しない。
+    // 1000話を超える番組があり、行を開いた時点で全部を読みに行くと
+    // それだけで大量の通信が走ってしまう。
+    // 長さはフィードの値で先に出しているので、これで困らない
+    preparePlayer: function() {
+      if(this.player) return this.player
+      if(!this.episode.url) return null
+      this.player = new Audio(this.episode.url)
+      this.player.playbackRate = this.rate
+      this.player.addEventListener('loadedmetadata', this.onLoadedMetadata)
+      this.player.addEventListener('timeupdate', this.onTimeUpdate)
+      this.player.addEventListener('play', this.onPlay)
+      this.player.addEventListener('pause', this.onPause)
+      this.player.addEventListener('ended', this.onEnded)
+      return this.player
+    },
     onLoadedMetadata: function() {
       this.duration = this.player.duration
     },
@@ -286,7 +289,7 @@ export default {
       this.currentTime = 0
     },
     toggle: function() {
-      if(!this.player) return
+      if(!this.preparePlayer()) return
       if(this.player.paused) {
         this.player.play()
         // 同時に鳴らないよう、他に鳴っているものを止めてもらう
@@ -307,7 +310,7 @@ export default {
       if(this.player) this.player.playbackRate = this.rate
     },
     seekTo: function(seconds) {
-      if(!this.player) return
+      if(!this.preparePlayer()) return
       const max = isFinite(this.duration) ? this.duration : Infinity
       const time = Math.max(0, Math.min(seconds, max))
       this.player.currentTime = time
@@ -322,7 +325,7 @@ export default {
       this.seekTo(this.duration * ratio)
     },
     onPointerDown: function(event) {
-      if(!this.player) return
+      if(!this.preparePlayer()) return
       // 操作ボタンはシークバーの上に載っている。押されたのがボタンなら
       // そちらの操作なので、再生位置は動かさない
       if(event.target.closest && event.target.closest('.controls')) return

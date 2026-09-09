@@ -84,6 +84,11 @@ class Util {
     return hosts.reduce((a, b) => counts[b] > counts[a] ? b : a)
   }
 
+  // エピソードの音声ファイルのURL。複数ある場合は先頭を使う
+  audioUrl(_episode) {
+    return enclosureUrls(_episode)[0] || null
+  }
+
   // 音声（enclosure）を持つエピソードの数。
   //
   // フィードとして解析できてエピソードもあるのに、音声を1つも持たない

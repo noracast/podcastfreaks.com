@@ -15,13 +15,17 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
 
 ## 生成物とデータ
 
-- `static/downloads/`（RSS・カバー画像・`build_info.json`・`episodes.json`）は
+- `static/downloads/`（RSS・カバー画像・`build_info.json`・`episodes/`）は
   `yarn prebuild` が生成する。gitignore 対象。ページは `build_info.json` を
   ビルド時に import するので、無いと中身のないサイトになる
-- 直近のエピソードは `build_info.json` ではなく `episodes.json` に置く。
-  一覧で行を開いたときにしか使わないのに、`build_info.json` 全体の9割を
-  占めていたため。一覧は表示が済んだあと裏で読み込む（`pages/index.vue` の
-  `prefetchEpisodes`）ので、ここに何かを足すときは初期表示に載るかどうかを見る
+- エピソードは `build_info.json` ではなく `episodes/<key>.json` に番組ごとに
+  置く。一覧で行を開いたときにしか使わないのに、`build_info.json` 全体の9割を
+  占めていたため。一覧は行を開いた時点でその番組のぶんだけ読む
+  （`pages/index.vue` の `loadEpisodes`）ので、`build_info.json` に何かを
+  足すときは初期表示に載るかどうかを見る
+- エピソードは1番組で1300話を超えることがある。一覧は30話ずつ描き、
+  音声は再生を押すまで作らない（`components/episode-player.vue` の
+  `preparePlayer`）。長さはフィードの `itunes:duration` から出している
 - `yarn build` は npm のライフサイクルで `prebuild` を自動実行する。飛ばすなら
   `yarn build:skip`
 - `data/added-at.json`（番組の登録日）と `data/apple-podcasts.json`（Apple Podcasts の

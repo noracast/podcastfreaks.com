@@ -51,18 +51,29 @@ div.root
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
       .wrap
-        .info
-          p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
-          p.description(v-else) No description
-          button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
-          button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
-        //- 直近のエピソードは別ファイルにあり、表示が済んだあと裏で読み込む。
-        //- 読み終わる前に開かれたときのために、そのあいだの表示を用意しておく
-        .episodes
-          template(v-if="recentEpisodes[props.row.key]")
-            episode-player(v-for="(ep, i) in recentEpisodes[props.row.key]" :key="i" :episode="ep" @play="playEpisode")
-          p.episodes-status(v-else-if="episodesFailed") エピソードを読み込めませんでした
-          p.episodes-status(v-else) エピソードを読み込んでいます…
+        //- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
+        //- 端に着いたときに位置が食い違う
+        .column
+          .info(@scroll="onColumnScroll")
+            p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
+            p.description(v-else) No description
+            button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
+            button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+          //- まだ下に続きがあることを示す影
+          .scroll-fade
+        //- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む
+        .column
+          .episodes(@scroll="onEpisodesScroll(props.row.key, $event)")
+            template(v-if="episodes[props.row.key]")
+              episode-player(
+                v-for="(ep, i) in visibleEpisodes(props.row.key)"
+                :key="i"
+                :episode="ep"
+                @play="playEpisode"
+              )
+            p.episodes-status(v-else-if="episodesFailed[props.row.key]") エピソードを読み込めませんでした
+            p.episodes-status(v-else) エピソードを読み込んでいます…
+          .scroll-fade
 
 </template>
 
@@ -70,6 +81,8 @@ div.root
 @use 'sass:color'
 
 $color_new: #e100ff
+// 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px）
+$child_row_height: 305px
 // ソートアイコンの占有幅。ラベルの位置合わせにも使う
 $sort_icon_width: 1.6em
 
@@ -313,17 +326,45 @@ $sort_icon_width: 1.6em
             // 幅を要求せず、セルいっぱいに広げる
             width: 0
             min-width: 100%
-            >.info
-              width: calc(50% - 40px)
-              padding: 20px
-            >.episodes
+            // 中身の量で高さが変わると、開くたびに一覧が大きく動く。
+            // エピソード5話ぶんに固定し、はみ出す分は各列でスクロールさせる
+            height: $child_row_height
+            >.column
+              position: relative
               width: 50%
-              borde-left: 1px solid #333
-              // 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない
-              .episodes-status
+              height: 100%
+              // 中身の最小幅を外へ出さない
+              min-width: 0
+              // エピソードが少ない番組でも左右の区切りが分かるようにする
+              &:last-child
+                border-left: 1px solid #333
+              >.info,
+              >.episodes
+                height: 100%
+                overflow-y: auto
+              >.info
                 padding: 20px
-                color: #999
-                font-size: 12px
+                box-sizing: border-box
+              >.episodes
+                // 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない
+                .episodes-status
+                  padding: 20px
+                  color: #999
+                  font-size: 12px
+              // まだ下に続きがあるあいだ、列の下端をうっすら暗くして示す。
+              // 中身の上に重ねる（背景に敷くと再生ボタンの色に隠れてしまう）
+              >.scroll-fade
+                position: absolute
+                left: 0
+                right: 0
+                bottom: 0
+                height: 28px
+                pointer-events: none
+                background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55))
+                opacity: 0
+                transition: opacity 0.2s
+              >.can-scroll-down + .scroll-fade
+                opacity: 1
 
         p
           max-width: calc(100vw - 30px)
@@ -501,13 +542,28 @@ $sort_icon_width: 1.6em
     th,td
       &:nth-child(2)
         padding-left: 15px
-    tr
+    // 広い画面側の指定（tbody tr.VueTables__child-row > td > .wrap）と
+    // 同じ強さにしておく。弱いとメディアクエリの中でも上書きできない
+    tbody tr
       &.VueTables__child-row
-        td > .wrap
+        >td > .wrap
           flex-direction: column
-          >.episodes
-            width: 100%
-            border-top: 1px solid #333
+          // 縦に積むぶん高さは伸びるが、説明の長い番組だと一覧が
+          // 大きく動いてしまう。上下それぞれ5話ぶんまでに収める
+          height: auto
+          >.column
+            width: auto
+            height: auto
+            max-height: $child_row_height
+            &:last-child
+              border-left: 0
+              border-top: 1px solid #333
+            >.info,
+            >.episodes
+              max-height: $child_row_height
+              height: auto
+            >.episodes
+              height: $child_row_height
     .description
       max-width: calc(100vw - 30px)
 </style>
@@ -526,6 +582,9 @@ import { Event as VueTablesEvent } from 'vue-tables-2'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
 // 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
+// 一度に描くエピソードの数。下まで見たらこの数ずつ足していく
+const EPISODES_PER_CHUNK = 30
+
 const HOSTING_MIN_COUNT = 2
 const OTHER_HOSTING = '__other__'
 
@@ -578,6 +637,9 @@ export default {
           durationMedian: 'duration',
           updateInterval: 'frequency'
         },
+        // 列幅は内容に合わせて決めている。手で変えられると崩れるうえ、
+        // 見出しの境目にカーソルを乗せたときの左右矢印が紛らわしい
+        resizableColumns: false,
         orderBy: {
           ascending: false,
           column: 'lastEpisodeDate'
@@ -690,9 +752,12 @@ export default {
       },
       currentPlayer: null,
       channels: Object.values(build_info.channels),
-      // 番組キー -> 直近のエピソード。mounted のあとに読み込む
-      recentEpisodes: {},
-      episodesFailed: false
+      // 番組キー -> その番組の全エピソード。行を開いた時点で読み込む
+      episodes: {},
+      episodesFailed: {},
+      // 番組キー -> いま描画している件数。1000話を超える番組があるため、
+      // 開いた瞬間に全部は描かず、下まで見たら足していく
+      episodesShown: {}
     }
   },
   computed: {
@@ -722,29 +787,62 @@ export default {
   },
   mounted: function(){
     this.toggleAllCheckbox()
-    this.prefetchEpisodes()
+    window.addEventListener('resize', this.refreshScrollFades)
+  },
+  beforeDestroy: function(){
+    window.removeEventListener('resize', this.refreshScrollFades)
   },
   methods: {
-    // 直近のエピソードを裏で読み込んでおく。
+    // エピソードは番組ごとのファイルに分けてある。
     //
-    // 以前は build_info.json に入れてページのバンドルに同梱していたが、
-    // 全体3.07MBのうち2.73MB（9割）をこれが占めていた。使うのは行を
-    // 開いたときだけなので、最初の表示には載せない。
-    //
-    // ただし「開いたときに読みに行く」とそこで待たされるので、
-    // 表示が済んで手が空いたタイミングで先に読んでおく。
-    // requestIdleCallback が無いブラウザ（Safari）は setTimeout で代用する
-    prefetchEpisodes: function() {
-      const load = () => {
-        axios.get('/downloads/episodes.json')
-          .then(res => { this.recentEpisodes = res.data })
-          .catch(() => { this.episodesFailed = true })
-      }
-      if(window.requestIdleCallback) window.requestIdleCallback(load, { timeout: 3000 })
-      else setTimeout(load, 1000)
+    // 以前は build_info.json に全番組の直近5話を入れてページのバンドルに
+    // 同梱していたが、全体3.07MBのうち2.73MB（9割）をこれが占めていた。
+    // 全話を扱うようになったので、開いた番組のぶんだけ読みに行く
+    loadEpisodes: function(key) {
+      if(this.episodes[key]) return
+      this.$set(this.episodesFailed, key, false)
+      axios.get(`/downloads/episodes/${encodeURIComponent(key)}.json`)
+        .then(res => {
+          this.$set(this.episodes, key, res.data)
+          this.$set(this.episodesShown, key, EPISODES_PER_CHUNK)
+          this.$nextTick(this.refreshScrollFades)
+        })
+        .catch(() => { this.$set(this.episodesFailed, key, true) })
     },
+    visibleEpisodes: function(key) {
+      const all = this.episodes[key] || []
+      return all.slice(0, this.episodesShown[key] || EPISODES_PER_CHUNK)
+    },
+    // 下まで見たら続きを描く。1000話を超える番組があるため、
+    // 開いた瞬間に全部描くと固まってしまう
+    onEpisodesScroll: function(key, event) {
+      this.onColumnScroll(event)
+      const el = event.target
+      if(el.scrollTop + el.clientHeight < el.scrollHeight - 200) return
+      const all = this.episodes[key] || []
+      const shown = this.episodesShown[key] || EPISODES_PER_CHUNK
+      if(shown >= all.length) return
+      this.$set(this.episodesShown, key, shown + EPISODES_PER_CHUNK)
+      this.$nextTick(this.refreshScrollFades)
+    },
+
+    // まだ下に続きがある列にだけ影を出す。
+    // 子行は開くたびに作り直されるので、Vue の状態には持たずクラスで付ける
+    onColumnScroll: function(event) {
+      this.markScrollFade(event.target)
+    },
+    markScrollFade: function(el) {
+      el.classList.toggle('can-scroll-down', el.scrollTop + el.clientHeight < el.scrollHeight - 1)
+    },
+    refreshScrollFades: function() {
+      document.querySelectorAll('.VueTables__child-row .info, .VueTables__child-row .episodes')
+        .forEach(this.markScrollFade)
+    },
+
     toggleChildRow: function(key){
+      this.loadEpisodes(key)
       this.$refs.table.toggleChildRow(key)
+      this.$nextTick(this.refreshScrollFades)
     },
     filterByHosting: function(value) {
       this.hostingFilter = value

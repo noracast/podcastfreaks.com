@@ -24,7 +24,7 @@ import {
   RSS_DIR,
   COVER_DIR,
   BUILD_INFO,
-  EPISODES_JSON,
+  EPISODES_DIR,
   RSS_JSON,
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
@@ -109,6 +109,15 @@ const allSettledWithLimit = async (items, task, limit) => {
 }
 
 const util = new PFUtil()
+
+// itunes:duration を秒にする。読み取れないものは null
+const durationSeconds = (raw) => {
+  if(raw == null || raw === '') return null
+  const hhmmss = util.getDuration(raw)
+  if(!/^\d{2}:\d{2}:\d{2}$/.test(hhmmss)) return null
+  const [h, m, sec] = hhmmss.split(':').map(Number)
+  return h * 3600 + m * 60 + sec
+}
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
@@ -116,8 +125,6 @@ const writeFile = promisify(fs.writeFile)
 let episodes_in_2weeks = []
 let latest_pubdates = []
 let channels = {}
-// 行を開いたときだけ使う直近エピソード。build_info.json とは別に書き出す
-let recentEpisodes = {}
 let covers = {}
 let episodeCount = 0
 let errors = []
@@ -277,8 +284,16 @@ const fetchFeed = async key => {
   // 平均と中央値で同じ解析を2度走らせない（警告も2回出ていた）
   const durations = util.getDurations(episodes, dist_rss)
 
-  // 一覧の初期表示には要らないので、build_info.json ではなく別ファイルへ回す
-  recentEpisodes[key] = _.take(episodes, 5)
+  // 一覧の初期表示には要らないので、番組ごとの別ファイルへ回す。
+  // 行を開いたときに、その番組のぶんだけ読み込む
+  await writeFile(`${EPISODES_DIR}/${key}.json`, JSON.stringify(episodes.map(ep => ({
+    title: ep.title,
+    link: ep.link || null,
+    pubDate: ep.pubDate,
+    url: util.audioUrl(ep),
+    // 再生前に長さを出せるようにしておく。音声を読みに行かずに済む
+    duration: durationSeconds(ep['itunes:duration'])
+  }))), 'utf8')
 
   // Save data
   channels[key] = {
@@ -323,11 +338,13 @@ const fetchFeed = async key => {
     shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
+    shell.mkdir('-p', EPISODES_DIR)
     consola.log(`前回の内容を退避しました: ${downloads_backup}`)
   } catch (err) {
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
+    shell.mkdir('-p', EPISODES_DIR)
   }
 
 
@@ -388,11 +405,8 @@ const fetchFeed = async key => {
   }
 
   // Save to file
-  consola.log(`[3/3] ${BUILD_INFO} と ${EPISODES_JSON} を書き出します`)
+  consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
-  // 取得できた番組の分だけ書き出す。失敗した番組の古いエピソードが残ると、
-  // 一覧に出ていない番組のデータを配ることになるため
-  await writeFile(EPISODES_JSON, JSON.stringify(_.pick(recentEpisodes, Object.keys(channels))), 'utf8')
 
   const elapsed = Math.round((Date.now() - startedAt) / 1000)
   consola.success(
