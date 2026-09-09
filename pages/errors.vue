@@ -9,7 +9,7 @@
     p.count {{ errors.length }}件
     ul.list
       li(v-for="item in errors" :key="item.rss")
-        .key {{ item.key }}
+        .name {{ item.name }}
         .message {{ item.message }}
         a.feed(v-if="item.feed" :href="item.feed" target="_blank" rel="noopener") {{ item.feed }}
 
@@ -20,7 +20,7 @@
     p.count {{ group.items.length }}件
     ul.list
       li(v-for="item in group.items" :key="item.rss + item.message")
-        .key {{ item.key }}
+        .name {{ item.name }}
         .message {{ item.message }}
         a.feed(v-if="item.feed" :href="item.feed" target="_blank" rel="noopener") {{ item.feed }}
 
@@ -61,7 +61,7 @@
       border-top: 1px solid #eee
       &:last-child
         border-bottom: 1px solid #eee
-    .key
+    .name
       font-weight: bold
       font-size: 14px
     .message
@@ -98,9 +98,12 @@ const keyOf = (path) => String(path || '').replace(/^.*\//, '').replace(/\.rss$/
 
 const decorate = (item, message) => {
   const key = keyOf(item.rss)
+  const channel = build_info.channels[key]
   return {
     rss: item.rss,
-    key,
+    // 番組名で出す。取得できなかった番組はフィードを読めていないので
+    // 名前が分からない。その場合だけ登録キーで出す
+    name: (channel && channel.title) || key,
     message,
     feed: rss[key] ? rss[key].feed : null
   }
