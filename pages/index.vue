@@ -193,8 +193,48 @@ $sort_icon_width: 1.6em
               display: flex
               align-items: center
               margin-left: 16px
+              >*
+                position: relative
               >*:not(:first-child)
                 margin-left: 6px
+              // ホバーしたアイコンの右横に、その名前を出す。
+              //
+              // アイコンだけでは何のリンクか分からず、リンク先を開くまで
+              // 確かめられなかった。行の高さと列の幅を変えたくないので、
+              // 絶対配置にして並びの計算から外す。
+              // 隣のアイコンに重なるため、行と同じ色の背景を敷いて隠す
+              .label
+                position: absolute
+                left: 100%
+                top: 50%
+                margin-left: 4px
+                padding-right: 4px
+                background-color: #fff
+                color: #888
+                font-size: 11px
+                font-weight: normal
+                // 行間は文字の高さぴったりにする。既定（normal）だと
+                // 日本語フォントの大きな行送りのぶん箱が上下に広がり、
+                // 箱の中央で揃えてもアイコンに対して文字がずれて見える
+                line-height: 1
+                white-space: nowrap
+                pointer-events: none
+                opacity: 0
+                // 少し右から滑り込ませる
+                transform: translate(-4px, -50%)
+                transition: opacity 0.2s, transform 0.2s
+              // @ と # は字形が四角い枠いっぱいに広がらないぶん、
+              // Podcast アイコンより間隔を詰めた方が一体に読める
+              >.x .label,
+              >.hashtag .label
+                margin-left: 1px
+              // 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
+              // ホバー中のものを前に出して、ラベルの背景で隠せるようにする
+              >*:hover
+                z-index: 1
+                .label
+                  opacity: 1
+                  transform: translate(0, -50%)
 
 
       span

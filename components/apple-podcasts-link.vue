@@ -9,6 +9,8 @@ a-blank.apple(:href="url" title="Apple Podcasts で開く")
       path(d="M15.8 8.2a5.4 5.4 0 0 1 0 7.6")
       path(d="M5 19a9.9 9.9 0 0 1 0-14")
       path(d="M19 5a9.9 9.9 0 0 1 0 14")
+  //- ホバーしたときだけ右横に出る名前。見た目は pages/index.vue の .links で指定する
+  span.label Apple Podcasts
 </template>
 
 <style lang="sass" scoped>

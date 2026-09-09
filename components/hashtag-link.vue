@@ -9,6 +9,8 @@ a-blank.hashtag(:href="url" :title="`${hashtag} を X で検索`")
       path(d="M3.9 15.2h14.4")
       path(d="M10.5 4.3 8.7 20.3")
       path(d="M16.4 4.3 14.6 20.3")
+  //- ホバーしたときだけ右横に出る名前。見た目は pages/index.vue の .links で指定する
+  span.label {{ tag }}
 </template>
 
 <style lang="sass" scoped>
@@ -34,6 +36,10 @@ export default {
     }
   },
   computed: {
+    // 先頭の # は字形の方で表しているので、名前からは外す
+    tag() {
+      return this.hashtag.replace('#', '')
+    },
     url() {
       return `https://x.com/search?q=${encodeURIComponent(this.hashtag)}`
     }

@@ -10,6 +10,8 @@ a-blank.x(:href="url" :title="`${account} を X で開く`")
     g(fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round")
       circle(cx="11.7" cy="12.4" r="3.5")
       path(d="M15.2 8.9v5.6c0 1.4.9 2.2 2.1 2.2 2.1 0 3.5-2 3.5-4.9 0-4.7-3.4-8-8.2-8-4.9 0-8.6 3.8-8.6 8.8 0 5 3.7 8.6 9 8.6 1.7 0 3.2-.3 4.5-.9")
+  //- ホバーしたときだけ右横に出る名前。見た目は pages/index.vue の .links で指定する
+  span.label {{ handle }}
 </template>
 
 <style lang="sass" scoped>
@@ -35,8 +37,12 @@ export default {
     }
   },
   computed: {
+    // 先頭の @ は字形の方で表しているので、名前からは外す
+    handle() {
+      return this.account.replace('@', '')
+    },
     url() {
-      return `https://x.com/${this.account.replace('@', '')}`
+      return `https://x.com/${this.handle}`
     }
   }
 }
