@@ -6,6 +6,8 @@ div
 </template>
 
 <style lang="sass" scoped>
+@use 'sass:color'
+
 div
   display: flex
   align-items: center
@@ -34,9 +36,9 @@ div
     flex-shrink: 0
     &:not([disabled])
       &:hover
-        background-color: lighten(#7f00ff, 10)
+        background-color: color.adjust(#7f00ff, $lightness: 10%)
       &:active
-        background-color: lighten(#7f00ff, 20)
+        background-color: color.adjust(#7f00ff, $lightness: 20%)
 
   span
     height: 100%

@@ -5,6 +5,8 @@
 </template>
 
 <style lang="sass" scoped>
+@use 'sass:color'
+
 .episode
   height: 60px
   display: flex
@@ -22,9 +24,9 @@
     color: white
     background-color: #7f00ff
     &:hover
-      background-color: lighten(#7f00ff, 10)
+      background-color: color.adjust(#7f00ff, $lightness: 10%)
     &:active
-      background-color: lighten(#7f00ff, 20)
+      background-color: color.adjust(#7f00ff, $lightness: 20%)
   .title
     height: 60px
     width: calc(100% - 100px)

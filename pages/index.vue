@@ -50,6 +50,8 @@ div.root
 </template>
 
 <style lang="sass" scoped>
+@use 'sass:color'
+
 $color_new: #e100ff
 // ソートアイコンの占有幅。ラベルの位置合わせにも使う
 $sort_icon_width: 1.6em
@@ -132,7 +134,7 @@ $sort_icon_width: 1.6em
       span
         cursor: pointer
         &:hover
-          color: lighten(#444, 10%)
+          color: color.adjust(#444, $lightness: 10%)
     td.hashtag,
     td.twitter,
     td.file-server

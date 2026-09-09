@@ -32,6 +32,8 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
 </template>
 
 <style lang='sass'>
+@use 'sass:color'
+
 header
   height: 80px
   background: linear-gradient(90deg, #7f00ff, #e100ff)
@@ -89,9 +91,9 @@ button
     cursor: not-allowed
   &:not([disabled])
     &:hover
-      background-color: lighten(#7f00ff, 10)
+      background-color: color.adjust(#7f00ff, $lightness: 10%)
     &:active
-      background-color: lighten(#7f00ff, 20)
+      background-color: color.adjust(#7f00ff, $lightness: 20%)
 
 .stats
   margin-right: 0

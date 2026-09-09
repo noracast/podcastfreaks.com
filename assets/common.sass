@@ -1,3 +1,4 @@
+@use 'sass:color'
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css)
 
 $black: #444
@@ -12,7 +13,7 @@ a
   transition-duration: 0.2s
   &:hover
     transition-duration: 0.2s
-    color: lighten($black, 10%)
+    color: color.adjust($black, $lightness: 10%)
 
 p
   font-size: 13px
