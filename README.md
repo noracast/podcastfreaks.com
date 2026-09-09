@@ -54,5 +54,16 @@ Ref: https://qiita.com/hiropy0123/items/2e8d14ea66b78ab64847
 
 - You can create another podcast archives by replacing `data/rss.json` file yourself.
 - If you want remove feeds from `data/rss.json`, not only removing it but also move it into `data/rss-inactive.json` with reason.
+- If a podcast has no Apple Podcasts link on the site, you can add it to `data/apple-podcasts.json`:
+
+  ```json
+  "backspace": {
+    "id": 830709730,
+    "url": "https://podcasts.apple.com/jp/podcast/backspace-fm/id830709730",
+    "source": "manual"
+  }
+  ```
+
+  Links are collected automatically by matching the feed URL against the iTunes Search API. About a quarter of the shows are registered on Apple with a different feed URL (host migration, FeedBurner, …), so they cannot be matched — matching by show name instead would link to the wrong podcast. Entries with `"source": "manual"` are never touched by the automation.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/noracast/podcastfreaks.com)

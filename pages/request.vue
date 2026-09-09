@@ -8,6 +8,13 @@
     | 既知の問題は、
     a-blank(href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed") こちら
     | にまとめていますので、予めご一読いただけるとありがたいです。
+  h3 Apple Podcastsのリンクについて
+  p
+    | 一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。
+    br
+    | リンクが出ていない番組がありましたら、そのApple PodcastsのURLをMessageの欄に書いて送ってください。Githubアカウントをお持ちの方は
+    a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json") こちらのファイル
+    | へPRを送っていただけると確実です。
   h3 Githubアカウントをお持ちの方へ
   p
     a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json") こちらのファイル
