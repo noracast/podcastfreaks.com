@@ -233,6 +233,7 @@ const fetchFeed = async key => {
     lastEpisodeLink: _.first(episodes).link,
     recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
+    updateInterval: util.getUpdateInterval(episodes),
     durationAverage: util.getDurationAverage(durations),
     durationMedian: util.getDurationMedian(durations),
     desciprtion: channel.description ? channel.description : null

@@ -17,6 +17,8 @@ div.root
         | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
+    template(slot="updateInterval" slot-scope="props")
+      frequency(:interval="props.row.updateInterval")
     template(slot="hashtag" slot-scope="props")
       .clip
         a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
@@ -392,6 +394,7 @@ import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
+import frequencyLabel from '@/lib/frequency-label'
 import { Event as VueTablesEvent } from 'vue-tables-2'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
@@ -404,7 +407,8 @@ export default {
     'button-text': require('@/components/button-text.vue').default,
     'cover': require('@/components/cover.vue').default,
     'duration': require('@/components/duration.vue').default,
-    'episode-player': require('@/components/episode-player.vue').default
+    'episode-player': require('@/components/episode-player.vue').default,
+    'frequency': require('@/components/frequency.vue').default
   },
   data: function() {
     return {
@@ -423,6 +427,7 @@ export default {
         'twitter',
         'fileServer',
         'durationMedian',
+        'updateInterval',
         'total',
         'firstEpisodeDate',
         'lastEpisodeDate',
@@ -439,7 +444,8 @@ export default {
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
-          durationMedian: 'duration'
+          durationMedian: 'duration',
+          updateInterval: 'frequency'
         },
         orderBy: {
           ascending: false,
@@ -480,6 +486,7 @@ export default {
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
           durationMedian: 'Duration',
+          updateInterval: 'Frequency',
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // 通常の function だと this がページコンポーネントにならない。
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
@@ -496,6 +503,7 @@ export default {
         headingsTooltips: {
           title: 'クリックすると詳細情報が確認できます',
           durationMedian: '収録時間の中央値',
+          updateInterval: '直近の更新間隔から求めたおおよその頻度',
           twitter: '番組公式Twitterアカウント',
           hashtag: '番組のハッシュタグ',
           fileServer: '音声ファイルの配信元',
@@ -508,13 +516,24 @@ export default {
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
-          'durationMedian'
+          'durationMedian',
+          'updateInterval'
         ],
         descOrderColumns: [
           'total',
           'lastEpisodeDate',
           'durationMedian'
         ],
+        customSorting: {
+          // 算出できない番組（N/A）は昇順・降順どちらでも末尾にまとめる。
+          // 既定の比較では null が数値の間に紛れ、N/A が飛び飛びに現れてしまう
+          updateInterval: (ascending) => (a, b) => {
+            if(a.updateInterval == null && b.updateInterval == null) return 0
+            if(a.updateInterval == null) return 1
+            if(b.updateInterval == null) return -1
+            return ascending ? a.updateInterval - b.updateInterval : b.updateInterval - a.updateInterval
+          }
+        },
         // 検索ボックスとは独立したフィルタ。両方を同時に効かせられる
         customFilters: [
           {
@@ -598,6 +617,7 @@ export default {
           row.twitter,
           row.fileServer,
           row.durationMedian,
+          frequencyLabel(row.updateInterval),
           row.total,
           this.$options.filters.formatDate(row.firstEpisodeDate),
           this.$options.filters.formatDate(row.lastEpisodeDate)

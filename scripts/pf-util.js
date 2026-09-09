@@ -10,6 +10,10 @@ import parsePubDate from './parse-pub-date'
 
 const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
 
+// 更新頻度を求めるときに見る直近エピソード数。
+// 少なすぎると1回の休みで大きく振れ、多すぎると昔の頻度に引きずられる
+const SAMPLE_SIZE_FOR_INTERVAL = 12
+
 class Util {
 
   constructor() {
@@ -136,6 +140,38 @@ class Util {
     // 偶数個のときは中央2つの平均をとる
     const ms = (moment.duration(durations[half-1]).asMilliseconds() + moment.duration(durations[half]).asMilliseconds()) / 2
     return moment.utc(ms).format('HH:mm:ss')
+  }
+
+  // 更新頻度。直近のエピソードの投稿間隔の中央値を日数で返す。
+  //
+  // - 平均ではなく中央値にするのは、長期の休止や、開始時にまとめて投稿された
+  //   エピソードがあると平均が大きく歪むため
+  // - 全期間ではなく直近だけを見るのは、「昔どうだったか」ではなく
+  //   「今どのくらいの間隔で出ているか」を知りたいため
+  getUpdateInterval(_items, _sampleSize = SAMPLE_SIZE_FOR_INTERVAL) {
+    const times = asArray(_items)
+      .slice(0, _sampleSize)
+      .map(ep => ep && parsePubDate(ep.pubDate))
+      .filter(date => date && date.isValid())
+      .map(date => date.valueOf())
+      // フィードの並び順は基本的に新しい順だが、保証はされていないので揃える
+      .sort((a, b) => b - a)
+
+    if(times.length < 2) return null
+
+    const intervals = []
+    for(let i = 0; i < times.length - 1; i++) {
+      intervals.push(moment.duration(times[i] - times[i+1]).asDays())
+    }
+    intervals.sort((a, b) => a - b)
+
+    const half = Math.floor(intervals.length/2)
+    const median = intervals.length % 2
+      ? intervals[half]
+      : (intervals[half-1] + intervals[half]) / 2
+
+    // 0.1日（約2.4時間）より細かい差は表示にも判定にも使わない
+    return Math.round(median * 10) / 10
   }
 
   // 画像のダウンロードとリサイズ
