@@ -19,7 +19,13 @@ Responsive.root(:breakpoints="{small: el => el.width <= 900}")
           episode-row(:episode="val" :class="{ small: el.is.small }")
 </template>
 
-<style lang="sass">
+<!--
+  スコープを付けている。以前はスコープなしで .date { position: absolute; padding: 5px 20px }
+  などがグローバルに漏れ、一覧ページ（pages/index.vue）でリンクを持たない番組の
+  日付が20pxずれる、位置が飛ぶ、といった不具合を起こしていた。
+  episode-row はコンポーネントのルート要素にスコープが付くため .row.small は今までどおり効く
+-->
+<style lang="sass" scoped>
 .root
   padding-top: 0
 .border
