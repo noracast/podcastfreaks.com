@@ -8,6 +8,7 @@ import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
+import path from 'path'
 import normalizeFeed from './scripts/normalize-feed'
 import parsePubDate from './scripts/parse-pub-date'
 import PFUtil from './scripts/pf-util'
@@ -66,6 +67,11 @@ const escapeBareAmpersands = (xml) =>
 // 通信を始める前にタイムアウトしてしまうため、ワーカープールで絞る
 const CONCURRENCY = 20
 
+// 前回より取得できた番組がこの割合を下回ったら、異常とみなしてビルドを止める。
+// 数件の失敗は日常的に起きる（直近の本番ビルドでも235件中3件が失敗している）ので、
+// 「大量に取りこぼしたとき」だけ止まるように余裕を持たせる
+const MIN_CHANNEL_RATIO = 0.8
+
 // RSS 取得の試行回数と、リトライ前に待つ秒数
 const MAX_TRIES = 3
 const RETRY_WAIT = 2
@@ -122,6 +128,18 @@ const error = function(label, rss, error){
     errors.push({label, rss})
   }
 
+}
+
+// 退避した前回の内容から番組数を読む。比較できないときは null を返す
+const previousChannelCount = async () => {
+  if(!downloads_backup) return null
+  const json = await readFile(`${downloads_backup}${path.basename(BUILD_INFO)}`, 'utf8').catch(() => { return })
+  if(!json) return null
+  try {
+    return Object.keys(JSON.parse(json).channels || {}).length
+  } catch (e) {
+    return null
+  }
 }
 
 process.on('unhandledRejection', console.dir)
@@ -294,6 +312,23 @@ const fetchFeed = async key => {
     // 取得に失敗したカバーはファイルが存在せず画像が壊れるので、参照を外して
     // cover.vue のプレースホルダー表示に切り替える
     if(!downloaded && channels[key]) channels[key].cover = null
+  }
+
+  // 取得結果が明らかにおかしいときは、書き出さずに異常終了する。
+  //
+  // netlify.toml のビルドコマンドは `yarn prebuild && nuxt generate --spa` なので、
+  // ここで止めればサイトの生成まで進まない。以前は全件失敗しても exit 0 で終わり、
+  // 中身が空の build_info.json でサイトが生成されうる状態だった。
+  // 異常終了時は nodeCleanup が退避した前回の内容へ戻すため、取得済みのデータも守られる
+  const fetched = Object.keys(channels).length
+  if(fetched === 0) {
+    consola.error(`1番組も取得できませんでした（${keys.length}件すべて失敗）。${BUILD_INFO} は更新しません`)
+    process.exit(1)
+  }
+  const previous = await previousChannelCount()
+  if(previous && fetched < previous * MIN_CHANNEL_RATIO) {
+    consola.error(`取得できた番組が前回より大幅に減りました（前回 ${previous}番組 → 今回 ${fetched}番組）。${BUILD_INFO} は更新しません`)
+    process.exit(1)
   }
 
   const data = {
