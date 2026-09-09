@@ -96,6 +96,24 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    loaders: {
+      // Dart Sass の legacy JS API は 2.0 で削除予定で、使うたびに非推奨警告が出る。
+      // 古い API を呼んでいるのは sass-loader で、modern API に対応した
+      // sass-loader 14 以降は webpack 5 を要求するため Nuxt 2 では使えない。
+      // こちらで消しようがない警告がビルドログを何十行も埋め、他の警告が
+      // 埋もれてしまうので、この1件だけ黙らせる（他の非推奨警告は今までどおり出る）。
+      // Nuxt を 3 に上げる際にこの指定は不要になる
+      sass: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api']
+        }
+      },
+      scss: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api']
+        }
+      }
+    },
     /*
     ** You can extend webpack config here
     */
