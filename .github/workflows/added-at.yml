@@ -1,0 +1,48 @@
+# data/rss.json に番組が追加されたら、その追加日を data/added-at.json に記録する。
+#
+# 追加日は「data/rss.json にそのキーが初めて現れたコミットの日付」なので、
+# 完全な履歴（fetch-depth: 0）があれば毎回導出できる。取りこぼしても
+# 次の実行で作り直されるため、自己修復する。
+#
+# GITHUB_TOKEN によるコミットはワークフローを再トリガーしないので、
+# ここでの push がこのワークフロー自身を呼び戻すことはない。
+# Netlify のビルドは走るので、記録した追加日がサイトへ反映される。
+#
+# Ref: https://github.com/noracast/podcastfreaks.com/issues/50
+
+name: 番組の追加日を記録する
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/rss.json']
+  # 取りこぼしたときに手動で流せるようにしておく
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # 追加日を git 履歴から導出するため、浅いクローンでは足りない
+          fetch-depth: 0
+
+      # スクリプトは依存なしの素の Node で書いてあるので、yarn install は要らない
+      - name: 追加日を作り直す
+        run: node scripts/update-added-at-cli.js
+
+      - name: 変更があればコミットする
+        run: |
+          if git diff --quiet data/added-at.json; then
+            echo "変更はありません"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/added-at.json
+          git commit -m '番組の追加日を記録する'
+          git push

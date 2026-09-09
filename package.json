@@ -9,6 +9,7 @@
     "start": "nuxt",
     "prebuild": "babel-node prebuild.js",
     "validate": "babel-node scripts/validate.js",
+    "added-at": "node scripts/update-added-at-cli.js",
     "build": "nuxt generate",
     "build:skip": "nuxt generate",
     "deploy": "netlify deploy --dir=dist --prod",

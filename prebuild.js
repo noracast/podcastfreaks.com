@@ -25,7 +25,8 @@ import {
   COVER_DIR,
   BUILD_INFO,
   RSS_JSON,
-  RSS_INACTIVE_JSON
+  RSS_INACTIVE_JSON,
+  ADDED_AT_JSON
 } from './scripts/constants'
 
 // consola の既定 reporter は error / warn をバッジ表示にするため、
@@ -142,6 +143,17 @@ const previousChannelCount = async () => {
   }
 }
 
+// 各番組がサイトに登録された日。GitHub Actions が git 履歴から記録している。
+// まだ生成されていないリポジトリでもビルドは通したいので、無ければ空で進める
+const addedAt = (() => {
+  try {
+    return JSON.parse(fs.readFileSync(ADDED_AT_JSON, 'utf8'))
+  } catch (e) {
+    consola.warn(`${ADDED_AT_JSON} を読めませんでした。追加日なしで続行します`)
+    return {}
+  }
+})()
+
 process.on('unhandledRejection', console.dir)
 
 const fetchFeed = async key => {
@@ -251,6 +263,7 @@ const fetchFeed = async key => {
     lastEpisodeLink: _.first(episodes).link,
     recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
+    addedAt: addedAt[key] || null,
     updateInterval: util.getUpdateInterval(episodes),
     durationAverage: util.getDurationAverage(durations),
     durationMedian: util.getDurationMedian(durations),

@@ -5,9 +5,14 @@ div.root
     template(slot="cover" slot-scope="props")
       cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
     template(slot="title" slot-scope="props")
-      .clip
-        //- 省略された場合に全体を確認できるよう title 属性を付ける
-        span(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
+      .title-cell
+        .clip
+          //- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
+          //- 省略は内側の .text が受け持つので、バッジは省略に巻き込まれない
+          span.value
+            span.new(v-if="isRecentlyAdded(props.row.addedAt)" :title="`${props.row.addedAt} に登録`") New!
+            //- 省略された場合に全体を確認できるよう title 属性を付ける
+            span.text(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         //- .value を基準にして、バッジを日付の右上に置く
@@ -145,6 +150,25 @@ $sort_icon_width: 1.6em
     td.title
       font-weight: bold
       font-size: 15px
+      // 日付の列と同じ仕組みで、タイトルの文字列の右上に吹き出しを浮かせる。
+      //
+      // .clip の既定では中身が左右いっぱいに広がるため、そのままだと
+      // 「文字列の右端」が取れない。.value を右に伸ばさず（right: auto）、
+      // 列幅までに収まる範囲で文字幅に沿わせることで、短いタイトルでも
+      // バッジが文字のすぐ右上に付く。
+      // 省略は内側の .text が受け持ち、.value は overflow を切らないので
+      // 上にはみ出すバッジが欠けない
+      .title-cell
+        .clip
+          >.value
+            right: auto
+            max-width: 100%
+            overflow: visible
+            .text
+              display: block
+              overflow: hidden
+              text-overflow: ellipsis
+              white-space: nowrap
 
       span
         cursor: pointer
@@ -435,6 +459,8 @@ export default {
       // 行ごとに何度も作成しないように予め作る
       newThreshold1: moment().subtract(3, 'days').startOf('date'),
       newThreshold2: moment().subtract(30, 'days').startOf('date'),
+      // サイトへの登録が新しいと見なす範囲
+      addedThreshold: moment().subtract(30, 'days').startOf('date'),
 
       allMarked: false,
       hostingFilter: '',
@@ -661,6 +687,12 @@ export default {
     },
     isIn: function(date, threshold){
       return moment(date, 'YYYY.MM.DD').isAfter(threshold)
+    },
+    // サイトへの登録が最近かどうか。added-at.json の日付は YYYY-MM-DD なので、
+    // 表示用の YYYY.MM.DD を前提にした isIn とは分けている
+    isRecentlyAdded: function(date){
+      if(!date) return false
+      return moment(date, 'YYYY-MM-DD').isAfter(this.addedThreshold)
     },
     downloadOpml: function(){
       const header = {
