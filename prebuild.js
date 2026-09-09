@@ -26,7 +26,8 @@ import {
   BUILD_INFO,
   RSS_JSON,
   RSS_INACTIVE_JSON,
-  ADDED_AT_JSON
+  ADDED_AT_JSON,
+  APPLE_PODCASTS_JSON
 } from './scripts/constants'
 
 // consola の既定 reporter は error / warn をバッジ表示にするため、
@@ -143,16 +144,22 @@ const previousChannelCount = async () => {
   }
 }
 
-// 各番組がサイトに登録された日。GitHub Actions が git 履歴から記録している。
-// まだ生成されていないリポジトリでもビルドは通したいので、無ければ空で進める
-const addedAt = (() => {
+// GitHub Actions が用意する補助データ。まだ生成されていないリポジトリでも
+// ビルドは通したいので、読めなければ空で進める
+const readOptionalJson = (path, label) => {
   try {
-    return JSON.parse(fs.readFileSync(ADDED_AT_JSON, 'utf8'))
+    return JSON.parse(fs.readFileSync(path, 'utf8'))
   } catch (e) {
-    consola.warn(`${ADDED_AT_JSON} を読めませんでした。追加日なしで続行します`)
+    consola.warn(`${path} を読めませんでした。${label}なしで続行します`)
     return {}
   }
-})()
+}
+
+// 各番組がサイトに登録された日（git 履歴から記録）
+const addedAt = readOptionalJson(ADDED_AT_JSON, '追加日')
+
+// 各番組の Apple Podcasts のリンク
+const applePodcasts = readOptionalJson(APPLE_PODCASTS_JSON, 'Apple Podcasts のリンク')
 
 process.on('unhandledRejection', console.dir)
 
@@ -264,6 +271,7 @@ const fetchFeed = async key => {
     recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
     addedAt: addedAt[key] || null,
+    applePodcasts: (applePodcasts[key] && applePodcasts[key].url) || null,
     updateInterval: util.getUpdateInterval(episodes),
     durationAverage: util.getDurationAverage(durations),
     durationMedian: util.getDurationMedian(durations),
