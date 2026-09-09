@@ -143,6 +143,12 @@
     "hashtag": "#nanapod",
     "reason": "domain revocation"
   },
+  "nanashisan-no-podcast": {
+    "feed": "https://feeds.buzzsprout.com/1154831.rss",
+    "twitter": null,
+    "hashtag": null,
+    "reason": "end of broadcast"
+  },
   "ningengaheta": {
     "feed": "https://ningengaheta.me/feed.xml",
     "twitter": "@ningengahetaFM",

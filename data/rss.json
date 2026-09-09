@@ -599,11 +599,6 @@
     "twitter": "@music_and_math",
     "hashtag": null
   },
-  "nanashisan-no-podcast": {
-    "feed": "https://feeds.buzzsprout.com/1154831.rss",
-    "twitter": null,
-    "hashtag": null
-  },
   "narabazu": {
     "feed": "https://narabazu.com/feed",
     "twitter": "@narabazu",
@@ -745,7 +740,7 @@
     "hashtag": null
   },
   "prototype-fm": {
-    "feed": "https://www.prototype.fm/rss",
+    "feed": "https://feeds.acast.com/public/shows/prototypefm",
     "twitter": "@prototype_fm",
     "hashtag": "#prototypefm"
   },
@@ -820,7 +815,7 @@
     "hashtag": null
   },
   "sansan-tech-podcast": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:554143311/sounds.rss",
+    "feed": "https://anchor.fm/s/106c93ff4/podcast/rss",
     "twitter": null,
     "hashtag": null
   },
