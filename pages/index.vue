@@ -10,11 +10,14 @@ div.root
         span(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
     template(slot="lastEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
-        span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
-        | {{ props.row.lastEpisodeDate | formatDate }}
+        //- .value を基準にして、バッジを日付の右上に置く
+        span.value
+          span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
+          | {{ props.row.lastEpisodeDate | formatDate }}
       span.date(v-else)
-        span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
-        | {{ props.row.lastEpisodeDate | formatDate }}
+        span.value
+          span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
+          | {{ props.row.lastEpisodeDate | formatDate }}
     template(slot="durationMedian" slot-scope="props")
       duration(:duration="props.row.durationMedian")
     template(slot="updateInterval" slot-scope="props")
@@ -32,11 +35,13 @@ div.root
         small(:title="props.row.fileServer") {{ props.row.fileServer }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
-        span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
-        | {{ props.row.firstEpisodeDate | formatDate }}
+        span.value
+          span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
+          | {{ props.row.firstEpisodeDate | formatDate }}
       span.date(v-else)
-        span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
-        | {{ props.row.firstEpisodeDate | formatDate }}
+        span.value
+          span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
+          | {{ props.row.firstEpisodeDate | formatDate }}
     template(slot="download" slot-scope="props")
       input(type="checkbox" :value="props.row.key" v-model="markedRows")
     template(slot="child_row" slot-scope="props")
@@ -65,6 +70,11 @@ $sort_icon_width: 1.6em
   top: 20px
   right: 0
 
+// 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
+//
+// 以前は top: -40px / right: -30px だったが、行の高さが変わったことで
+// 上の行に食い込み、さらに右へはみ出して隣の列に重なっていた。
+// 自分の行の中に収まる位置に直し、指す対象の真上に置く
 .new
   $color: #f7ff00
   background: $color
@@ -76,11 +86,13 @@ $sort_icon_width: 1.6em
   width: 50px
   height: 20px
   border-radius: 10px
-  margin-right: 7px
-  position: absolute
-  top: -40px
-  right: -30px
   color: #47525d
+  position: absolute
+  // 行の区切り線ではなく、指し示す文字列のすぐ上に置く。
+  // 吹き出し自体は文字に被せず、▼ の先だけが少し重なる。
+  // 左右は文字列の右端を基準にして、少し右へずらす
+  top: -23px
+  right: -30px
   &:after
     content: '▼'
     font-size: 12px
@@ -133,6 +145,7 @@ $sort_icon_width: 1.6em
     td.title
       font-weight: bold
       font-size: 15px
+
       span
         cursor: pointer
         &:hover
@@ -178,9 +191,14 @@ $sort_icon_width: 1.6em
     td.first
       >a,
       >.date
+        // /new ページの非スコープなスタイルに .date { position: absolute } があり、
+        // ここで打ち消さないと日付がページ上部へ飛ぶ
         position: relative
         display: flex
         align-items: center
+      // 日付の文字列そのものを基準にして、その右上にバッジを置く
+      .value
+        position: relative
     tr
       &:first-child
         border-top: 1px solid #ccc
