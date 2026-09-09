@@ -307,6 +307,12 @@ $sort_icon_width: 1.6em
           width: 0
           >.wrap
             display: flex
+            // td の width: 0 だけでは足りない。中身（長いエピソード名など）の
+            // 最小幅がセルの幅として要求され、開く行によってテーブルが広がって
+            // 横スクロールが出たり出なかったりしていた。
+            // 幅を要求せず、セルいっぱいに広げる
+            width: 0
+            min-width: 100%
             >.info
               width: calc(50% - 40px)
               padding: 20px
@@ -806,7 +812,9 @@ export default {
       return xml
     },
     playEpisode: function(player) {
-      if(this.currentPlayer) {
+      // 一時停止から再開したときは自分自身が渡ってくる。
+      // そこで止めてしまうと、押した直後に停止してしまう
+      if(this.currentPlayer && this.currentPlayer !== player) {
         this.currentPlayer.stop()
       }
       this.currentPlayer = player
