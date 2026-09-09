@@ -126,6 +126,13 @@ $sort_icon_width: 1.6em
     position: relative
     &.title
       width: 40%
+  // 画面が広いとき、余った幅をアートワークの列が吸ってしまい、
+  // カバー画像とタイトルの間が間延びする。width: 1% で内容
+  // （カバー画像60px＋左右のpadding）の幅に張り付かせて固定する
+  th.artwork,
+  td.artwork
+    width: 1%
+    white-space: nowrap
   th,td
     text-align: left
     vertical-align: top
