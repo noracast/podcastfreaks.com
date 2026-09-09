@@ -20,8 +20,10 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
   中身のないサイトになる
 - `yarn build` は npm のライフサイクルで `prebuild` を自動実行する。飛ばすなら
   `yarn build:skip`
-- `data/added-at.json`（番組の登録日）は GitHub Actions が git 履歴から生成する。
-  手で編集しない
+- `data/added-at.json`（番組の登録日）と `data/apple-podcasts.json`（Apple Podcasts の
+  リンク）は GitHub Actions が生成する。手で編集するのは後者の `"source": "manual"`
+  の項目だけ
+- フィードのエラーや警告への対処は `.claude/skills/feed-triage/` にまとめてある
 
 ## 依存関係
 

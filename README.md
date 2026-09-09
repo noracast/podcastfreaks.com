@@ -64,6 +64,41 @@ https://podcastfreaks.com/?ga-optout=0   解除する
 
 GA4 の管理画面にも内部トラフィックの除外がありますが、そちらは IP ベースでモバイル回線や外出先では効かないため、ブラウザ単位のこの方式を使っています。
 
+## 自動化
+
+GitHub Actions が3つ動いています。いずれも依存のインストールや追加のトークンを必要としません（`GITHUB_TOKEN` のみ）。
+
+| ワークフロー | いつ動くか | すること |
+|---|---|---|
+| 番組の追加日を記録する | `data/rss.json` の変更時 | git 履歴から各番組の登録日を求め、`data/added-at.json` を作り直してコミットする |
+| Apple Podcasts のリンクを記録する | `data/rss.json` の変更時 | iTunes の検索APIとフィードURLを突き合わせ、`data/apple-podcasts.json` を更新してコミットする |
+| サイトの状態を見張る | 毎日 00:30 JST | 公開中の `build_info.json` を見て、問題があれば issue を作る／更新する |
+
+`data/added-at.json` と `data/apple-podcasts.json` は Actions が管理するので、手で編集しません（例外は `apple-podcasts.json` の `"source": "manual"` の項目）。
+
+### サイトの状態の見張り
+
+日次ビルドが失敗し続けても誰も気づかない状態が長く続いたため、気づく仕組みを入れています。判定は3つです。
+
+- ビルドが36時間以上更新されていない（日次ビルドが止まっている）
+- フィードを取得できない番組がある
+- 音声を持たない番組がある（記事用のフィードを登録している、ドメインが第三者に取得された、など）
+
+問題があれば `site-health` ラベルの issue を作り、以降は**同じ issue の本文を更新**します（毎日新しく立てると流れてしまうため）。解消すると自動で閉じます。
+
+issue が立ったあとの調べ方と直し方は `.claude/skills/feed-triage/SKILL.md` にまとめてあります。
+
+### ローカルで実行する
+
+```sh
+yarn validate        # data/rss.json の重複を調べる（prebuild でも自動で走る）
+yarn health          # 公開中のサイトの状態を調べる
+yarn added-at        # data/added-at.json を作り直す
+yarn apple-podcasts  # data/apple-podcasts.json を更新する（--refresh で全件調べ直す）
+```
+
+直近のビルドのエラーと警告は https://podcastfreaks.com/errors/ でも見られます。
+
 ## フォーム
 
 [!] フォームの項目は `static/form.html` と揃える必要があります。
