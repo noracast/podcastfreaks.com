@@ -59,8 +59,9 @@ div.root
             p.description(v-else) No description
             button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
             button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
-          //- まだ下に続きがあることを示す影
-          .scroll-fade
+          //- 上下にまだ続きがあることを示す影
+          .scroll-fade.top
+          .scroll-fade.bottom
         //- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む
         .column
           .episodes(@scroll="onEpisodesScroll(props.row.key, $event)")
@@ -73,7 +74,8 @@ div.root
               )
             p.episodes-status(v-else-if="episodesFailed[props.row.key]") エピソードを読み込めませんでした
             p.episodes-status(v-else) エピソードを読み込んでいます…
-          .scroll-fade
+          .scroll-fade.top
+          .scroll-fade.bottom
 
 </template>
 
@@ -359,19 +361,24 @@ $sort_icon_width: 1.6em
                   padding: 20px
                   color: #999
                   font-size: 12px
-              // まだ下に続きがあるあいだ、列の下端をうっすら暗くして示す。
+              // まだ続きがある側の端をうっすら暗くして、スクロールできることを示す。
               // 中身の上に重ねる（背景に敷くと再生ボタンの色に隠れてしまう）
               >.scroll-fade
                 position: absolute
                 left: 0
                 right: 0
-                bottom: 0
                 height: 28px
                 pointer-events: none
-                background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55))
                 opacity: 0
                 transition: opacity 0.2s
-              >.can-scroll-down + .scroll-fade
+                &.top
+                  top: 0
+                  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0))
+                &.bottom
+                  bottom: 0
+                  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55))
+              >.can-scroll-up ~ .scroll-fade.top,
+              >.can-scroll-down ~ .scroll-fade.bottom
                 opacity: 1
 
         p
@@ -562,14 +569,18 @@ $sort_icon_width: 1.6em
           >.column
             width: auto
             height: auto
-            max-height: $child_row_height
+            // 縦に積むと上下の関係で続きがあることは分かるので、影は出さない
+            >.scroll-fade
+              display: none
             &:last-child
               border-left: 0
               border-top: 1px solid #333
-            >.info,
-            >.episodes
-              max-height: $child_row_height
+            // 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
+            // 増えると、ページ全体のスクロールと取り合いになって扱いづらい
+            >.info
               height: auto
+              max-height: none
+              overflow-y: visible
             >.episodes
               height: $child_row_height
     .description
@@ -843,6 +854,7 @@ export default {
       this.markScrollFade(event.target)
     },
     markScrollFade: function(el) {
+      el.classList.toggle('can-scroll-up', el.scrollTop > 1)
       el.classList.toggle('can-scroll-down', el.scrollTop + el.clientHeight < el.scrollHeight - 1)
     },
     refreshScrollFades: function() {
