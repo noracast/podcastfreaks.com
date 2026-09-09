@@ -27,20 +27,23 @@ span
     // 「分」と詰まって見えるので少し離す
     &.plus
       margin-left: 2px
+  // 収録時間が短いほど鮮やかで濃くする（短いものほど聴き始めやすいため）。
+  // 色相は青（216度）に固定し、彩度 88%→14%、明度 56%→44% で段階を作る。
+  // Frequency（赤・355度）も同じ作りで、どちらも先頭が最も鮮やか
   &.min15
-    background-color: #6BEE59
+    background-color: #2C7BF2
   &.min30
-    background-color: #49EC6D
+    background-color: #3378E1
   &.min45
-    background-color: #3AEB9D
+    background-color: #3B76CE
   &.min60
-    background-color: #2BE9D7
+    background-color: #4474BB
   &.min90
-    background-color: #1CB5E8
+    background-color: #5072A5
   &.min120
-    background-color: #0E67E6
+    background-color: #597091
   &.min120plus
-    background-color: #0010E5
+    background-color: #606D80
 </style>
 
 <script>
