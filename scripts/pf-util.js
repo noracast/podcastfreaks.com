@@ -10,6 +10,15 @@ import parsePubDate from './parse-pub-date'
 
 const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
 
+// エピソードが持つ音声ファイルのURL。
+// 1つのエピソードに複数の enclosure を並べるフィードがあり
+// （weekly-ebook-strategy は1話に5〜6個）、その場合 xml2js は配列を返す。
+// enclosure.$.url だけを見ると、そうしたフィードを丸ごと取りこぼす
+const enclosureUrls = (episode) =>
+  asArray(episode && episode.enclosure)
+    .map(enclosure => _.get(enclosure, '$.url'))
+    .filter(url => !!url)
+
 // 更新頻度を求めるときに見る直近エピソード数。
 // 少なすぎると1回の休みで大きく振れ、多すぎると昔の頻度に引きずられる
 const SAMPLE_SIZE_FOR_INTERVAL = 12
@@ -45,19 +54,31 @@ class Util {
   getFileServer(_items) {
     const counts = {}
     asArray(_items).forEach(ep => {
-      const src = _.get(ep, 'enclosure.$.url')
-      if(!src) return
-      try {
-        const host = new URL(src).hostname
-        counts[host] = (counts[host] || 0) + 1
-      } catch (e) {
-        // URL として解釈できないものは無視する
-      }
+      enclosureUrls(ep).forEach(src => {
+        try {
+          const host = new URL(src).hostname
+          counts[host] = (counts[host] || 0) + 1
+        } catch (e) {
+          // URL として解釈できないものは無視する
+        }
+      })
     })
 
     const hosts = Object.keys(counts)
     if(hosts.length === 0) return null
     return hosts.reduce((a, b) => counts[b] > counts[a] ? b : a)
+  }
+
+  // 音声（enclosure）を持つエピソードの数。
+  //
+  // フィードとして解析できてエピソードもあるのに、音声を1つも持たない
+  // ものがある。記事用のフィードを登録してしまっている場合と、
+  // ドメインが第三者に取得されて別サイトのフィードに変わっている場合がある
+  // （kumocast はアダルトサイトのフィードに変わっていた）。
+  //
+  // Ref: https://github.com/noracast/podcastfreaks.com/issues/48
+  countEpisodesWithAudio(_items) {
+    return asArray(_items).filter(ep => enclosureUrls(ep).length > 0).length
   }
 
   // 解析できたら 'HH:mm:ss' の文字列、できなければ理由を表す文字列

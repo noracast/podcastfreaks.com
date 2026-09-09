@@ -118,6 +118,7 @@ let channels = {}
 let covers = {}
 let episodeCount = 0
 let errors = []
+let warnings = []
 let downloads_backup = null
 
 const error = function(label, rss, error){
@@ -160,6 +161,14 @@ const addedAt = readOptionalJson(ADDED_AT_JSON, '追加日')
 
 // 各番組の Apple Podcasts のリンク
 const applePodcasts = readOptionalJson(APPLE_PODCASTS_JSON, 'Apple Podcasts のリンク')
+
+// ビルドは止めないが、放っておくと問題になるもの。
+// build_info.json に残して /errors から見えるようにし、
+// 毎日のビルドで気づけるようにする
+const warn = function(label, rss, message){
+  consola.warn(`${label} | ${rss} | ${message}`)
+  warnings.push({label, rss, message})
+}
 
 process.on('unhandledRejection', console.dir)
 
@@ -222,6 +231,14 @@ const fetchFeed = async key => {
   }
   if(!(channel.item instanceof Array)) {
     channel.item = [channel.item]
+  }
+
+  // フィードとして解析でき、エピソードもあるのに音声を1つも持たないものがある。
+  // 記事用のフィードを登録している場合と、ドメインが第三者に取得されて
+  // 別サイトのフィードに変わっている場合がある。
+  // まずは警告として記録し、内容を確認してから扱いを決める（#48）
+  if(util.countEpisodesWithAudio(channel.item) === 0) {
+    warn('podcastCheck', dist_rss, `音声を持つエピソードがありません（${channel.item.length}話）。ポッドキャストのフィードではない可能性があります`)
   }
 
   // Get cover image urls
@@ -358,7 +375,8 @@ const fetchFeed = async key => {
     channels,
     updated: new Date(),
     episodeCount,
-    errors
+    errors,
+    warnings
   }
 
   // Save to file
@@ -369,6 +387,7 @@ const fetchFeed = async key => {
   consola.success(
     `完了: ${Object.keys(channels).length}/${keys.length}番組 / ` +
     `${episodeCount}エピソード / 取得できなかった番組 ${errors.length}件 / ` +
+    `要確認 ${warnings.length}件 / ` +
     `所要 ${Math.floor(elapsed/60)}分${String(elapsed%60).padStart(2, '0')}秒`
   )
 
