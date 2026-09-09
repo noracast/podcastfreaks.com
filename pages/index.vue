@@ -404,6 +404,14 @@ $sort_icon_width: 1.6em
         font-size: 11px
       td.total
         font-size: 14px
+      // 画面が狭いと、他の列に押されてタイトルが数文字しか出ない
+      // （実測で文字に割り当てられる幅が10pxだった）。
+      // テーブルはもともと横スクロールするので、読める幅を先に確保する
+      td.title .clip
+        min-width: 180px
+      // タイトルとアイコン群の間隔も、広い画面ほど要らない
+      td.title .title-cell .links
+        margin-left: 8px
     button
       font-size: 10px
     .download
