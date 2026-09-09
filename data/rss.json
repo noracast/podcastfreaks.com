@@ -180,7 +180,7 @@
     "hashtag": "#capitalp"
   },
   "clfreaks": {
-    "feed": "https://clfreaks.org/rss",
+    "feed": "https://feeds.feedburner.com/clfreaks",
     "twitter": null,
     "hashtag": "#clfreaks"
   },
@@ -225,7 +225,7 @@
     "hashtag": null
   },
   "denkiya": {
-    "feed": "https://inst-web.com/feed",
+    "feed": "https://anchor.fm/s/f7030d70/podcast/rss",
     "twitter": "@_Coffee__",
     "hashtag": "#電器屋Walker"
   },
