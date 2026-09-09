@@ -3,9 +3,11 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
   .wrapper(slot-scope="el" :class="{ small: el.is.small }")
     header
       .brand
-        h1
-          nuxt-link(to='/') Podcast Freaks
-        p.lead テック系ポッドキャストまとめ
+        //- タイトルとリード文をまとめて1つのリンクにする。
+        //- どちらもトップへ戻る同じリンクなので、範囲を分けると紛らわしい
+        nuxt-link(to='/')
+          h1 Podcast Freaks
+          p.lead テック系ポッドキャストまとめ
       nav
         nuxt-link(to='/about/') About
         nuxt-link(to='/new/') New episodes
@@ -50,28 +52,24 @@ header
     &:hover
       color: #fff
       opacity: 0.5
-// タイトルとリード文を縦に並べ、2つまとめてヘッダーの中央に置く
+// タイトルとリード文を縦に並べ、2つまとめてヘッダーの中央に置く。
+// 全体が1つのリンクなので、縦に並べる指定はリンク側に持たせる
 .brand
   float: left
-  display: -webkit-flex
-  -webkit-flex-direction: column
-  -webkit-justify-content: center
-  display: flex
-  flex-direction: column
-  justify-content: center
   height: 100%
+  >a
+    display: -webkit-flex
+    -webkit-flex-direction: column
+    -webkit-justify-content: center
+    display: flex
+    flex-direction: column
+    justify-content: center
+    height: 100%
 h1
   margin: 0
-  // h1 の文字サイズ（32px）に対してリンクの文字は小さいため、そのままだと
-  // 大きい行ボックスのベースラインに乗って下にずれる。
-  // flex にしてリンク自体を中央に置く（.brand で包む前からの挙動を保つ）
-  display: -webkit-flex
-  -webkit-align-items: center
-  display: flex
-  align-items: center
   line-height: 1.2
-  a
-    font-size: 22px
+  // 文字を直接持つようになったので、h1 の既定（2em）ではなくここで指定する
+  font-size: 22px
 .lead
   margin: 3px 0 0
   color: #fff
@@ -147,8 +145,7 @@ button
     padding-right: 0
     height: 70px
     h1
-      a
-        font-size: 13px
+      font-size: 13px
     nav
       float: right
       margin-left: 15px
