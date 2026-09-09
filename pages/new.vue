@@ -1,6 +1,9 @@
 <template lang="pug">
-Responsive.root(:breakpoints="{small: el => el.width <= 900}")
-  div(slot-scope="el" :class="{ small: el.is.small }")
+//- 狭い画面の切り替えは CSS のメディアクエリで行う。
+//- Responsive は幅を測るまで中身を visibility: hidden で隠すため、
+//- 事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった
+.root
+  div
     template(v-if="episodes_in_1weeks.length")
       h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
       .this-week
@@ -8,7 +11,7 @@ Responsive.root(:breakpoints="{small: el => el.width <= 900}")
           //- 違う日だったら
           .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
             span.date(v-text="date(val.pubDate)")
-          episode-row(:episode="val" :class="{ small: el.is.small }")
+          episode-row(:episode="val")
     template(v-if="episodes_in_2weeks.length")
       h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
       .last-week
@@ -16,14 +19,14 @@ Responsive.root(:breakpoints="{small: el => el.width <= 900}")
           //- 違う日だったら
           .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
             span.date(v-text="date(val.pubDate)")
-          episode-row(:episode="val" :class="{ small: el.is.small }")
+          episode-row(:episode="val")
 </template>
 
 <!--
   スコープを付けている。以前はスコープなしで .date { position: absolute; padding: 5px 20px }
   などがグローバルに漏れ、一覧ページ（pages/index.vue）でリンクを持たない番組の
   日付が20pxずれる、位置が飛ぶ、といった不具合を起こしていた。
-  episode-row はコンポーネントのルート要素にスコープが付くため .row.small は今までどおり効く
+  episode-row はコンポーネントのルート要素にスコープが付くため .row への指定は今までどおり効く
 -->
 <style lang="sass" scoped>
 .root
@@ -41,7 +44,11 @@ Responsive.root(:breakpoints="{small: el => el.width <= 900}")
   height: 30px
   line-height: 30px
 
-div.small
+h5
+  padding: 0 20px
+
+// 900px は Responsive で測っていたときの境界をそのまま引き継いだもの
+@media (max-width: 900px)
   .border
     height: auto
     margin-left: -20px
@@ -53,10 +60,8 @@ div.small
     position: relative
     margin-left: 20px
     padding-left: 10px
-h5
-  padding: 0 20px
-.row.small
-  padding-left: 20px
+  .row
+    padding-left: 20px
 </style>
 
 <script>

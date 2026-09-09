@@ -38,7 +38,12 @@ div.row
       border-radius: 3px
       margin-right: 10px
 
-  &.small
+
+// 900px は pages/new.vue の境界と揃える。
+// 以前は Responsive が測った幅から .small を付けていたが、幅が分かるまで
+// ページ全体が隠れてしまうため、メディアクエリで判定する
+@media (max-width: 900px)
+  div.row
     margin-left: 10px
     .cover
       width: 30px

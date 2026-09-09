@@ -1,41 +1,45 @@
 <template lang='pug'>
-Responsive(:breakpoints="{small: el => el.width <= 810}")
-  .wrapper(slot-scope="el" :class="{ small: el.is.small }")
-    header
-      .brand
-        //- タイトルとリード文をまとめて1つのリンクにする。
-        //- どちらもトップへ戻る同じリンクなので、範囲を分けると紛らわしい
-        nuxt-link(to='/')
-          h1 Podcast Freaks
-          p.lead テック系ポッドキャストまとめ
-      nav
-        nuxt-link(to='/about/') About
-        nuxt-link(to='/new/') New episodes
-        nuxt-link(to='/request/') Request
-      .stats.channels
+//- 狭い画面の切り替えは CSS のメディアクエリで行う。
+//- 以前は Responsive コンポーネントで要素幅を測っていたが、幅が分かるまで
+//- 中身を visibility: hidden で隠す作りのため、事前レンダリング済みの HTML が
+//- JS を読み終えるまで表示されず、最初の表示が白いままだった。
+//- 対象はページ全幅の要素なので、要素幅で測る必要はない
+.wrapper
+  header
+    .brand
+      //- タイトルとリード文をまとめて1つのリンクにする。
+      //- どちらもトップへ戻る同じリンクなので、範囲を分けると紛らわしい
+      nuxt-link(to='/')
+        h1 Podcast Freaks
+        p.lead テック系ポッドキャストまとめ
+    nav
+      nuxt-link(to='/about/') About
+      nuxt-link(to='/new/') New episodes
+      nuxt-link(to='/request/') Request
+    .stats.channels
+      span {{ channelCount }}
+      span channels
+    .stats.episodes
+      span {{ episodeCount }}
+      span episodes
+    .stats.update
+      span {{ updatedDate }}
+      span {{ updatedTime }} updated
+    //- アクセス解析から外れているときだけ出る印。
+    //- 除外は localStorage に持つのでブラウザごと。他の人には出ない
+    .ga-optout(title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください") 計測オフ
+  .main
+    .sp_stats
+      .channels
         span {{ channelCount }}
         span channels
-      .stats.episodes
+      .episodes
         span {{ episodeCount }}
         span episodes
-      .stats.update
-        span {{ updatedDate }}
-        span {{ updatedTime }} updated
-      //- アクセス解析から外れているときだけ出る印。
-      //- 除外は localStorage に持つのでブラウザごと。他の人には出ない
-      .ga-optout(title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください") 計測オフ
-    .main
-      .sp_stats
-        .channels
-          span {{ channelCount }}
-          span channels
-        .episodes
-          span {{ episodeCount }}
-          span episodes
-        .update
-          span {{ updatedDate }} {{ updatedTime }}
-          span updated
-      nuxt
+      .update
+        span {{ updatedDate }} {{ updatedTime }}
+        span updated
+    nuxt
 </template>
 
 <style lang='sass'>
@@ -157,42 +161,44 @@ button
     font-size: 16px
   >span:nth-child(2)
     font-size: 10px
-.wrapper.small
-  header
-    padding-left: 15px
-    padding-right: 0
-    height: 70px
-    h1
-      font-size: 13px
-    nav
-      float: right
-      margin-left: 15px
-      font-size: 10px
-      a
-        font-size: 10px
-      a:not(:first-child)
-        margin-left: 10px
-    .lead
-      display: none
-    .stats
-      display: none
-  .sp_stats
-    background: linear-gradient(90deg, #7f00ff, #e100ff)
-    font-size: 10px
-    color: white
-    display: flex
-    align-items: center
-    height: 30px
-    padding-top: 10px
-    padding-bottom: 10px
-    border-top: 1px solid rgba(255,255,255,0.4)
-    >div
-      display: flex
-      flex-direction: column
+// 810px は Responsive で測っていたときの境界をそのまま引き継いだもの
+@media (max-width: 810px)
+  .wrapper
+    header
       padding-left: 15px
-      margin-right: 15px
-      &:not(:first-child)
-        border-left: 1px solid rgba(255,255,255,0.4)
+      padding-right: 0
+      height: 70px
+      h1
+        font-size: 13px
+      nav
+        float: right
+        margin-left: 15px
+        font-size: 10px
+        a
+          font-size: 10px
+        a:not(:first-child)
+          margin-left: 10px
+      .lead
+        display: none
+      .stats
+        display: none
+    .sp_stats
+      background: linear-gradient(90deg, #7f00ff, #e100ff)
+      font-size: 10px
+      color: white
+      display: flex
+      align-items: center
+      height: 30px
+      padding-top: 10px
+      padding-bottom: 10px
+      border-top: 1px solid rgba(255,255,255,0.4)
+      >div
+        display: flex
+        flex-direction: column
+        padding-left: 15px
+        margin-right: 15px
+        &:not(:first-child)
+          border-left: 1px solid rgba(255,255,255,0.4)
 
 </style>
 

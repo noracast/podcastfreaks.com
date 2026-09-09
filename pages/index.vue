@@ -393,7 +393,8 @@ $sort_icon_width: 1.6em
     .text-center
       margin-left: 0
 
-.small
+// 810px は layouts/default.vue の境界と揃える
+@media (max-width: 810px)
   .root ::v-deep
     padding-top: 15px
     padding-bottom: 15px
