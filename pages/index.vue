@@ -13,6 +13,14 @@ div.root
             span.new(v-if="isRecentlyAdded(props.row.addedAt)" :title="`${props.row.addedAt} に登録`") New!
             //- 省略された場合に全体を確認できるよう title 属性を付ける
             span.text(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
+            //- タイトルの後ろに並べる外部リンク。
+            //- Apple 側と登録フィードURLが違う番組は自動で特定できないため、
+            //- Apple Podcasts のリンクを持たない番組がある
+            //- （data/apple-podcasts.json に手で足せる）
+            span.links
+              apple-podcasts-link(v-if="props.row.applePodcasts" :url="props.row.applePodcasts")
+              x-link(v-if="props.row.twitter" :account="props.row.twitter")
+              hashtag-link(v-if="props.row.hashtag" :hashtag="props.row.hashtag")
     template(slot="lastEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
         //- .value を基準にして、バッジを日付の右上に置く
@@ -27,14 +35,6 @@ div.root
       duration(:duration="props.row.durationMedian")
     template(slot="updateInterval" slot-scope="props")
       frequency(:interval="props.row.updateInterval")
-    template(slot="hashtag" slot-scope="props")
-      .clip
-        a-blank(v-if="props.row.hashtag" :href="hashtagLink(props.row.hashtag)")
-          small(:title="props.row.hashtag") {{ props.row.hashtag }}
-    template(slot="twitter" slot-scope="props")
-      .clip
-        a-blank(v-if="props.row.twitter" :href="twitterLink(props.row.twitter)")
-          small(:title="props.row.twitter") {{ props.row.twitter }}
     template(slot="fileServer" slot-scope="props")
       .clip
         small(:title="props.row.fileServer") {{ props.row.fileServer }}
@@ -164,18 +164,31 @@ $sort_icon_width: 1.6em
             right: auto
             max-width: 100%
             overflow: visible
+            // タイトルとアップルマークを横に並べる。
+            // 幅が足りないときに縮むのはタイトル側だけにしたいので、
+            // .text に min-width: 0 を与えて flex の既定を外す
+            display: flex
+            align-items: center
             .text
-              display: block
+              min-width: 0
               overflow: hidden
               text-overflow: ellipsis
               white-space: nowrap
+            // タイトルの後ろに並べる外部リンク。
+            // 幅が足りないときに縮むのはタイトル側だけなので、ここは固定
+            .links
+              flex: none
+              display: flex
+              align-items: center
+              margin-left: 16px
+              >*:not(:first-child)
+                margin-left: 6px
+
 
       span
         cursor: pointer
         &:hover
           color: color.adjust(#444, $lightness: 10%)
-    td.hashtag,
-    td.twitter,
     td.file-server
       small
         display: block
@@ -450,7 +463,10 @@ export default {
     'cover': require('@/components/cover.vue').default,
     'duration': require('@/components/duration.vue').default,
     'episode-player': require('@/components/episode-player.vue').default,
-    'frequency': require('@/components/frequency.vue').default
+    'frequency': require('@/components/frequency.vue').default,
+    'apple-podcasts-link': require('@/components/apple-podcasts-link.vue').default,
+    'x-link': require('@/components/x-link.vue').default,
+    'hashtag-link': require('@/components/hashtag-link.vue').default
   },
   data: function() {
     return {
@@ -470,8 +486,6 @@ export default {
       columns: [
         'cover',
         'title',
-        'hashtag',
-        'twitter',
         'fileServer',
         'durationMedian',
         'updateInterval',
@@ -485,8 +499,6 @@ export default {
         columnsClasses: {
           cover: 'artwork',
           title: 'title',
-          hashtag: 'hashtag',
-          twitter: 'twitter',
           fileServer: 'file-server',
           total: 'total',
           firstEpisodeDate: 'first',
@@ -502,8 +514,6 @@ export default {
         headings: {
           cover: '▽ Click',
           title: 'Title',
-          twitter: 'Twitter',
-          hashtag: 'Hashtag',
           // 配信サービスで絞り込めるようプルダウンにする。
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
@@ -551,15 +561,11 @@ export default {
           title: 'クリックすると詳細情報が確認できます',
           durationMedian: '収録時間の中央値',
           updateInterval: '直近の更新間隔から求めたおおよその頻度',
-          twitter: '番組公式Twitterアカウント',
-          hashtag: '番組のハッシュタグ',
           fileServer: '音声ファイルの配信元',
           download: 'ダウンロードするためにチェックしてください'
         },
         sortable: [
           'title',
-          'hashtag',
-          'twitter',
           'total',
           'firstEpisodeDate',
           'lastEpisodeDate',
@@ -671,18 +677,6 @@ export default {
         ].filter(v => v != null && v !== '').join(' ').toLowerCase()
       }
       return this._searchableCache[row.key]
-    },
-    twitterLink: function(str) {
-      if(str != null) {
-        return `https://x.com/${str.replace('@','')}`
-      }
-      return ''
-    },
-    hashtagLink: function(hashtag) {
-      if(hashtag != null) {
-        return `https://x.com/search?q=${encodeURIComponent(hashtag)}`
-      }
-      return ''
     },
     toggleAllCheckbox: function() {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
