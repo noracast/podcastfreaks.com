@@ -33,9 +33,21 @@ curl -sL "$(node -e "console.log(require('./data/rss.json')['<key>'].feed)")" | 
 
 ## 2. 症状ごとの対処
 
-### フィードが取得できない（`wget` / `getaddrinfo ENOTFOUND` / 404）
+### フィードが取得できない（`wget` / `getaddrinfo ENOTFOUND` / 404 / `EPROTO`）
 
-ドメインが失効しているか、配信元を移行した可能性が高い。
+ドメインが失効しているか、配信元を移行した可能性が高い。**失効と決めつける前に、まずドメインが生きているか確かめる。**
+
+```sh
+# HTTP で叩く。移行していればリダイレクト先に配信元が出る
+curl -sI --max-time 20 http://<ドメイン>/ | head
+
+# 名前が引けるか（サンドボックスでは dig が通らないので DNS over HTTPS を使う）
+curl -s -H 'accept: application/dns-json' "https://dns.google/resolve?name=<ドメイン>&type=A"
+```
+
+`prototype-fm` は HTTPS だと `EPROTO: tlsv1 alert internal error` で全滅していたが、**HTTP で叩くと Acast へ301していた**（ 20fe9bf ）。HTTPS のリダイレクタだけが壊れている状態で、ドメインは生きていた。TLS エラーを見てすぐ登録解除しない。
+
+移行先が分からなければ、次を試す。
 
 1. 番組の公式サイトや X を見て、移行先のフィードを探す
 2. Apple Podcasts に登録があれば、そこから正しいフィードを辿れることがある
@@ -57,7 +69,17 @@ curl -s "https://itunes.apple.com/search?media=podcast&country=JP&limit=10&term=
 
 ### `No episodes found`
 
-フィードは取得できるがエピソードが無い。一時的な場合もあるので、**まず数日様子を見る**。続くようなら上と同じ手順で移行先を探す。
+フィードは取得できるがエピソードが無い。一時的な場合もあるので、**まず数日様子を見る**。続くようなら、番組が終わったのか、配信元を移して古いフィードが空になったのかを見分ける。
+
+- **終わった** — Apple のページが404になっていれば、ほぼ終了。`nanashisan-no-podcast` は中身が空（1765バイト）で Apple も404だった（ 20fe9bf ）
+- **移行した** — 上と同じ手順で移行先を探す。`sansan-tech-podcast` は SoundCloud のフィードが空になり、Anchor へ移っていた（ 20fe9bf ）
+
+**移行先を見つけたら、同じ番組かどうかを必ず裏取りする。番組名で判断しない**（改名していることがある。「Sansan Tech Podcast」→「Sansan Tech Radio」）。最新エピソードのタイトルが一致するかで確かめるのが確実。
+
+```sh
+# ユーザーから Spotify のURLをもらった場合、oEmbed で最新エピソードのタイトルが取れる
+curl -s "https://open.spotify.com/oembed?url=<Spotify のURL>" | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>console.log(JSON.parse(d).title))"
+```
 
 ## 3. 直し方
 

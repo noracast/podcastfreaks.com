@@ -30,3 +30,18 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
 Node は `.node-version` の 20.11.0 に固定。Nuxt 2 と古い依存があるため上げない。
 新しい Node が要るツール（`npx skills` など）は `NODENV_VERSION=24.16.0` を付けて
 その場だけ切り替える。
+
+## コミットメッセージをファイルで渡すとき
+
+`git commit -F` に渡すファイルは、`$TMPDIR/msg.txt` のような汎用名にしない。
+zsh は noclobber が効いていて、同名のファイルが残っていると `cat > file` が
+`file exists` で失敗する。それでも後続の `git commit -F` は成功してしまうため、
+**別セッションが残した古いメッセージでコミットされる**（前例あり）。
+
+固有の名前を付けて、`>|` で上書きする。
+
+```sh
+cat >| "$TMPDIR/pf-<内容>-msg.txt" <<'MSG'
+...
+MSG
+```
