@@ -65,6 +65,7 @@ module.exports = {
   plugins: [
     '@/plugins/components',
     '@/plugins/filters',
+    '@/plugins/gtag.client',
     '@/plugins/vue-clipboard2',
     '@/plugins/vue-highlightjs',
     '@/plugins/vue-responsive-components',
@@ -78,7 +79,6 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    ['@nuxtjs/google-analytics', { id: 'UA-126960237-2' }],
     '@nuxtjs/pwa',
   ],
   // PWAのマニフェスト

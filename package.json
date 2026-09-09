@@ -47,7 +47,6 @@
     "@babel/preset-env": "^7.7.4",
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/google-analytics": "^2.2.1",
     "@nuxtjs/pwa": "^3.0.0-beta.14",
     "babel-eslint": "^10.0.3",
     "cross-env": "^6.0.3",
