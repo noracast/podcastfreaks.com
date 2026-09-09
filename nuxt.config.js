@@ -1,7 +1,12 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  // 各ページを事前レンダリングして HTML として出力する（フルスタティック）。
+  // 以前は mode: 'universal' と nuxt generate --spa の組み合わせで、
+  // 中身が空の HTML と 200.html のフォールバックだけを返していたため、
+  // クローラーやシェア時のプレビューから一覧の中身が見えていなかった。
+  // ssr は target: 'static' の既定（true）に任せる
+  target: 'static',
 
   env: {
     TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
