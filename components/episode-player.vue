@@ -95,7 +95,8 @@ $accent: #7f00ff
     // 左右に動かして位置を変えられることを、カーソルの形で示す
     cursor: col-resize
     overflow: hidden
-    touch-action: none
+    // 縦に動かしたときはスクロールさせ、横だけこちらで受け取る
+    touch-action: pan-y
     &:focus-visible
       outline: 1px solid $accent
       outline-offset: -1px
@@ -194,6 +195,11 @@ $accent: #7f00ff
 // 再生速度の候補。押すたびに次へ送る
 const RATES = [1, 1.25, 1.5, 2]
 
+// 指で横へこれだけ動かしたら、スクロールではなくシークとみなす
+const SEEK_DRAG_THRESHOLD = 8
+// これ未満の動きで離したら、その場を叩いたとみなす
+const TAP_SLOP = 8
+
 const formatTime = (seconds) => {
   if(!isFinite(seconds) || seconds < 0) return '--:--'
   const total = Math.floor(seconds)
@@ -221,6 +227,10 @@ export default {
       duration: this.episode.duration == null ? NaN : this.episode.duration,
       rate: 1
     }
+  },
+  created: function() {
+    // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
+    this.pointer = null
   },
   computed: {
     // 再生中か、途中で止めてあるとき。操作ボタンはこのときだけ出す
@@ -320,7 +330,12 @@ export default {
       this.currentTime = time
     },
 
-    // シークバーの操作。押した位置へ飛び、離すまで指（カーソル）に追従する
+    // シークバーの操作。
+    //
+    // 指の場合は、触れた時点では動かさない。子行を開いた状態で下へ
+    // スクロールしようとしただけで再生位置が飛んでしまうため。
+    // 横に動かし始めたときと、その場で軽く叩いたときだけ位置を変える。
+    // 縦に動かしたときはブラウザに任せる（touch-action: pan-y）
     seekToPointer: function(event) {
       const rect = this.$refs.track.getBoundingClientRect()
       if(!rect.width || !isFinite(this.duration)) return
@@ -332,17 +347,57 @@ export default {
       // 操作ボタンはシークバーの上に載っている。押されたのがボタンなら
       // そちらの操作なので、再生位置は動かさない
       if(event.target.closest && event.target.closest('.controls')) return
-      this.seekToPointer(event)
-      this.$refs.track.addEventListener('pointermove', this.seekToPointer)
-      this.$refs.track.addEventListener('pointerup', this.releasePointer)
+
+      // マウスは押した時点で動かして構わない。スクロールと取り合わないため
+      const byMouse = event.pointerType === 'mouse'
+      this.pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, seeking: byMouse }
+      // 先に受け取る用意をしてから動かす
+      this.$refs.track.addEventListener('pointermove', this.onPointerMove)
+      this.$refs.track.addEventListener('pointerup', this.onPointerUp)
       this.$refs.track.addEventListener('pointercancel', this.releasePointer)
-      // 要素の外へ出ても追従させる
-      if(this.$refs.track.setPointerCapture) this.$refs.track.setPointerCapture(event.pointerId)
+      if(byMouse) {
+        this.seekToPointer(event)
+        this.capturePointer(event)
+      }
+    },
+    onPointerMove: function(event) {
+      const pointer = this.pointer
+      if(!pointer || event.pointerId !== pointer.id) return
+      if(!pointer.seeking) {
+        const dx = Math.abs(event.clientX - pointer.x)
+        const dy = Math.abs(event.clientY - pointer.y)
+        // 横へはっきり動いたときだけシークに入る
+        if(dx < SEEK_DRAG_THRESHOLD || dx <= dy) return
+        pointer.seeking = true
+        this.capturePointer(event)
+      }
+      this.seekToPointer(event)
+    },
+    onPointerUp: function(event) {
+      const pointer = this.pointer
+      if(pointer && !pointer.seeking) {
+        const dx = Math.abs(event.clientX - pointer.x)
+        const dy = Math.abs(event.clientY - pointer.y)
+        // ほとんど動かさずに離した＝その位置を指したとみなす
+        if(dx < TAP_SLOP && dy < TAP_SLOP) this.seekToPointer(event)
+      }
+      this.releasePointer()
+    },
+    // 要素の外へ出ても追従させる
+    capturePointer: function(event) {
+      const track = this.$refs.track
+      if(!track || !track.setPointerCapture) return
+      try {
+        track.setPointerCapture(event.pointerId)
+      } catch(e) {
+        // 実際のポインタでないときは掴めない。追従できないだけで動作は続く
+      }
     },
     releasePointer: function() {
+      this.pointer = null
       if(!this.$refs.track) return
-      this.$refs.track.removeEventListener('pointermove', this.seekToPointer)
-      this.$refs.track.removeEventListener('pointerup', this.releasePointer)
+      this.$refs.track.removeEventListener('pointermove', this.onPointerMove)
+      this.$refs.track.removeEventListener('pointerup', this.onPointerUp)
       this.$refs.track.removeEventListener('pointercancel', this.releasePointer)
     },
     onKeydown: function(event) {
