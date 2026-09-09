@@ -19,8 +19,13 @@
   p
     a-blank(href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json") こちらのファイル
     | へPRを送ってもらうとさらに助かります。
-  form(name="register-request" method="POST" netlify)
+  form(name="register-request" method="POST" netlify data-netlify-honeypot="bot-field")
     input(type="hidden" name="form-name" value="register-request")
+    //- スパム対策の隠しフィールド。人には見えないので、値が入っていたら
+    //- bot と判断されて送信が弾かれる。static/form.html 側にも同じ項目が要る
+    p(hidden)
+      label 入力しないでください
+        input(name="bot-field")
     label(for="feed") RSS feed
     small 番組のRSSフィードURI
     br
