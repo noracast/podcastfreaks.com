@@ -2,8 +2,10 @@
 Responsive(:breakpoints="{small: el => el.width <= 810}")
   .wrapper(slot-scope="el" :class="{ small: el.is.small }")
     header
-      h1
-        nuxt-link(to='/') Podcast Freaks
+      .brand
+        h1
+          nuxt-link(to='/') Podcast Freaks
+        p.lead テック系ポッドキャストまとめ
       nav
         nuxt-link(to='/about/') About
         nuxt-link(to='/new/') New episodes
@@ -48,16 +50,37 @@ header
     &:hover
       color: #fff
       opacity: 0.5
-h1
+// タイトルとリード文を縦に並べ、2つまとめてヘッダーの中央に置く
+.brand
   float: left
+  display: -webkit-flex
+  -webkit-flex-direction: column
+  -webkit-justify-content: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  height: 100%
+h1
+  margin: 0
+  // h1 の文字サイズ（32px）に対してリンクの文字は小さいため、そのままだと
+  // 大きい行ボックスのベースラインに乗って下にずれる。
+  // flex にしてリンク自体を中央に置く（.brand で包む前からの挙動を保つ）
   display: -webkit-flex
   -webkit-align-items: center
   display: flex
   align-items: center
-  margin: 0
-  height: 100%
+  line-height: 1.2
   a
     font-size: 22px
+.lead
+  margin: 3px 0 0
+  color: #fff
+  font-size: 11px
+  line-height: 1.2
+  // 小さい文字なので少し字間を空けて読みやすくする
+  letter-spacing: 0.05em
+  // タイトルより一段引いた見え方にする
+  opacity: 0.8
 h2:first-child
   margin-top: 0
 nav
@@ -106,7 +129,11 @@ button
   justify-content: center
   transition-duration: 0.2s
   flex-shrink: 1
-  &:nth-of-type(1)
+  // 3つの stats をまとめて右端へ寄せる。
+  // 以前は :nth-of-type(1) で先頭を指していたが、これは同じ要素名の中での
+  // 順番を見るため、ヘッダーに div を1つ足しただけで外れてしまう。
+  // クラスで指定して DOM の変更に左右されないようにする
+  &.channels
     margin-left: auto
   &:not(:last-child)
     margin-right: 20px
@@ -130,6 +157,8 @@ button
         font-size: 10px
       a:not(:first-child)
         margin-left: 10px
+    .lead
+      display: none
     .stats
       display: none
   .sp_stats
