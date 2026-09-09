@@ -3,7 +3,7 @@ div.root
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
   v-client-table(:columns="columns" :data="channels" :options="options" ref="table")
     template(slot="cover" slot-scope="props")
-      cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key)" title="Click to show detail")
+      cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key, $event)" title="Click to show detail")
     template(slot="title" slot-scope="props")
       .title-cell
         .clip
@@ -12,7 +12,7 @@ div.root
           span.value
             span.new(v-if="isRecentlyAdded(props.row.addedAt)" :title="`${props.row.addedAt} に登録`") New!
             //- 省略された場合に全体を確認できるよう title 属性を付ける
-            span.text(:title="props.row.title" @click.self="toggleChildRow(props.row.key)") {{ props.row.title }}
+            span.text(:title="props.row.title" @click.self="toggleChildRow(props.row.key, $event)") {{ props.row.title }}
             //- タイトルの後ろに並べる外部リンク。
             //- Apple 側と登録フィードURLが違う番組は自動で特定できないため、
             //- Apple Podcasts のリンクを持たない番組がある
@@ -83,6 +83,12 @@ div.root
 $color_new: #e100ff
 // 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px）
 $child_row_height: 305px
+
+@keyframes child-row-in
+  from
+    opacity: 0
+  to
+    opacity: 1
 // ソートアイコンの占有幅。ラベルの位置合わせにも使う
 $sort_icon_width: 1.6em
 
@@ -320,6 +326,8 @@ $sort_icon_width: 1.6em
           width: 0
           >.wrap
             display: flex
+            // 高さが動くのに合わせて、中身も淡く出す
+            animation: child-row-in 0.22s ease-out
             // td の width: 0 だけでは足りない。中身（長いエピソード名など）の
             // 最小幅がセルの幅として要求され、開く行によってテーブルが広がって
             // 横スクロールが出たり出なかったりしていた。
@@ -585,6 +593,9 @@ import { Event as VueTablesEvent } from 'vue-tables-2'
 // 一度に描くエピソードの数。下まで見たらこの数ずつ足していく
 const EPISODES_PER_CHUNK = 30
 
+// 子行を開け閉めするときの長さ
+const CHILD_ROW_ANIM_MS = 220
+
 const HOSTING_MIN_COUNT = 2
 const OTHER_HOSTING = '__other__'
 
@@ -839,10 +850,71 @@ export default {
         .forEach(this.markScrollFade)
     },
 
-    toggleChildRow: function(key){
+    // 子行の開け閉め。高さを 0 と実際の高さのあいだで動かす。
+    //
+    // 中身によって高さが変わる（狭い画面では番組情報の量で決まる）ため、
+    // CSS だけでは書けない。開いたあとに測った高さへ動かし、
+    // 終わったら指定を外して元の指定（auto や5話ぶん）へ戻す
+    toggleChildRow: function(key, event){
+      const tr = event && event.target && event.target.closest ? event.target.closest('tr') : null
+      const wrapOf = (row) => {
+        const next = row && row.nextElementSibling
+        return next && next.classList.contains('VueTables__child-row') ? next.querySelector('.wrap') : null
+      }
+      const openedWrap = wrapOf(tr)
+
+      // 開いている場合は、畳んでから行を消す
+      if(openedWrap) {
+        this.collapseChildRow(openedWrap, () => this.$refs.table.toggleChildRow(key))
+        return
+      }
+
       this.loadEpisodes(key)
       this.$refs.table.toggleChildRow(key)
-      this.$nextTick(this.refreshScrollFades)
+      this.$nextTick(() => {
+        this.expandChildRow(wrapOf(tr))
+        this.refreshScrollFades()
+      })
+    },
+    expandChildRow: function(wrap) {
+      if(!wrap) return
+      const height = wrap.getBoundingClientRect().height
+      wrap.style.overflow = 'hidden'
+      wrap.style.height = '0px'
+      // 0 を一度反映させてから動かす
+      wrap.getBoundingClientRect()
+      wrap.style.transition = `height ${CHILD_ROW_ANIM_MS}ms ease-out`
+      wrap.style.height = `${height}px`
+      this.afterHeightAnimation(wrap, () => {
+        wrap.style.transition = ''
+        wrap.style.height = ''
+        wrap.style.overflow = ''
+      })
+    },
+    collapseChildRow: function(wrap, done) {
+      wrap.style.overflow = 'hidden'
+      wrap.style.height = `${wrap.getBoundingClientRect().height}px`
+      wrap.getBoundingClientRect()
+      wrap.style.transition = `height ${CHILD_ROW_ANIM_MS}ms ease-in`
+      wrap.style.height = '0px'
+      this.afterHeightAnimation(wrap, done)
+    },
+    // transitionend は中の要素からも上がってくるので、高さの分だけ拾う。
+    // 何かの拍子に来なかったときのために時間でも打ち切る
+    afterHeightAnimation: function(wrap, done) {
+      let finished = false
+      const finish = () => {
+        if(finished) return
+        finished = true
+        wrap.removeEventListener('transitionend', onEnd)
+        done()
+      }
+      const onEnd = (e) => {
+        if(e.target !== wrap || e.propertyName !== 'height') return
+        finish()
+      }
+      wrap.addEventListener('transitionend', onEnd)
+      setTimeout(finish, CHILD_ROW_ANIM_MS + 50)
     },
     filterByHosting: function(value) {
       this.hostingFilter = value
