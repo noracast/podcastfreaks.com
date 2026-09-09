@@ -162,13 +162,16 @@ const addedAt = readOptionalJson(ADDED_AT_JSON, '追加日')
 // 各番組の Apple Podcasts のリンク
 const applePodcasts = readOptionalJson(APPLE_PODCASTS_JSON, 'Apple Podcasts のリンク')
 
-// ビルドは止めないが、放っておくと問題になるもの。
-// build_info.json に残して /errors から見えるようにし、
-// 毎日のビルドで気づけるようにする
+// ビルドは止めないが、直せるなら直したいもの。
+// フィードの提供者に見て直してもらえるよう、見つけたものはすべて
+// build_info.json に残して /errors から見えるようにする
 const warn = function(label, rss, message){
   consola.warn(`${label} | ${rss} | ${message}`)
   warnings.push({label, rss, message})
 }
+
+// pf-util の中で見つかる問題も同じ場所に集める
+util.onWarn = warn
 
 process.on('unhandledRejection', console.dir)
 
@@ -211,7 +214,7 @@ const fetchFeed = async key => {
   let json = await xmlToJSON(xml).catch(() => { return })
   if(!json){
     json = await xmlToJSON(escapeBareAmpersands(xml)).catch(() => { return })
-    if(json) consola.warn(`不正な XML を補正して読み込みました | ${dist_rss}`)
+    if(json) warn('xmlFix', dist_rss, '不正な XML を書き換えて読み込みました。フィードを直すのが望ましいです')
   }
   if(!json){
     error('xmlToJSON', dist_rss)
@@ -301,7 +304,7 @@ const fetchFeed = async key => {
 
   // 重複したまま取得しても無駄になるので、通信を始める前に検証する
   const validation = validateRssJson(RSS_JSON, RSS_INACTIVE_JSON)
-  validation.warnings.forEach(message => consola.warn(`${RSS_JSON} | ${message}`))
+  validation.warnings.forEach(message => warn('validate', RSS_JSON, message))
   if(validation.errors.length){
     validation.errors.forEach(message => consola.error(`${RSS_JSON} | ${message}`))
     consola.error(`${RSS_JSON} の重複を解消してから実行してください`)

@@ -59,23 +59,33 @@ async function checkSiteHealth(url = BUILD_INFO_URL) {
     })
   }
 
+  // 警告のうち、こちらで扱いを決める必要があるものだけを issue にする。
+  // 収録時間の欠けやカバー画像の失敗はフィード側の不備で、こちらでは直せない。
+  // 毎日 issue が立ったままになると肝心の変化に気づけなくなるため、
+  // /errors には出しつつ issue には参考として並べるだけにする
   const warnings = info.warnings || []
-  if (warnings.length) {
+  const needsDecision = warnings.filter(w => w.label === 'podcastCheck')
+  if (needsDecision.length) {
     problems.push({
       kind: 'warnings',
-      title: `ポッドキャストのフィードでない可能性がある番組が ${warnings.length}件あります`,
-      detail: warnings.map(w => `- \`${keyOf(w.rss)}\` — ${w.message}`).join('\n')
+      title: `ポッドキャストのフィードでない可能性がある番組が ${needsDecision.length}件あります`,
+      detail: needsDecision.map(w => `- \`${keyOf(w.rss)}\` — ${w.message}`).join('\n')
     })
   }
 
-  return { problems, info }
+  return { problems, info, otherWarnings: warnings.filter(w => w.label !== 'podcastCheck') }
 }
 
-const buildReport = ({ problems, info }) => {
+const buildReport = ({ problems, info, otherWarnings = [] }) => {
   const lines = ['毎日のビルド結果を見て、対応が必要そうなものをまとめています。', '']
   problems.forEach(p => {
     lines.push(`### ${p.title}`, '', p.detail, '')
   })
+  if (otherWarnings.length) {
+    lines.push(`### 参考: フィード側で直せる警告が ${otherWarnings.length}件あります`, '',
+      'こちらの対応は要りません。番組の提供者に伝えられると直るかもしれないものです。', '',
+      otherWarnings.map(w => `- \`${keyOf(w.rss)}\` — ${w.message}`).join('\n'), '')
+  }
   if (info) {
     lines.push('---', '',
       `番組 ${Object.keys(info.channels || {}).length}件 / エピソード ${info.episodeCount}件 / ` +

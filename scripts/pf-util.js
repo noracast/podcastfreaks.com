@@ -33,7 +33,15 @@ const toJstDayNumber = (ms) => Math.floor((ms + JST_OFFSET_MS) / DAY_MS)
 class Util {
 
   constructor() {
+    // 見つけた問題の受け取り先。prebuild が build_info.json に残して
+    // /errors から見えるようにするために差し替える。
+    // 単体で使うときのために、既定ではログに出すだけにしておく
+    this.onWarn = (label, rss, message) => consola.warn(`${label} | ${rss} | ${message}`)
     return this
+  }
+
+  warn(label, rss, message) {
+    this.onWarn(label, rss, message)
   }
 
   // クエリとフラグメントを除いた絶対URLを返す。
@@ -143,7 +151,7 @@ class Util {
       const samples = [...new Set(skipped['wrong-format'])].slice(0, 3).map(v => `\`${v}\``).join(', ')
       reasons.push(`形式が不正: ${skipped['wrong-format'].length}話 (${samples})`)
     }
-    if(reasons.length) consola.warn(`収録時間を集計できないエピソードがあります | ${_dist_rss} | ${reasons.join(' / ')}`)
+    if(reasons.length) this.warn('durationCheck', _dist_rss, `収録時間を読み取れないエピソードがあります（${reasons.join(' / ')}）`)
 
     return durations
   }
@@ -226,7 +234,7 @@ class Util {
       return true
     } catch(err) {
       // メッセージ自体に改行を含むエラーがあるため1行にまとめる
-      consola.warn(`カバー画像を取得できませんでした | ${_key} | ${String(err.message || err).replace(/\s+/g, ' ').trim()}`)
+      this.warn('coverImage', _key, `カバー画像を取得できませんでした（${String(err.message || err).replace(/\s+/g, ' ').trim()}）`)
       return false
     }
   }
