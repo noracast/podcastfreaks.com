@@ -38,7 +38,10 @@ export default {
         'border-radius': this.radius
       }
       if(build_info.channels[this.channel].cover){
-        const image_url = build_info.channels[this.channel].cover.replace(/\.(.*)/,`${suffix}.$1`)
+        // 拡張子の直前にサイズを挿し込む。最初のドットにマッチさせると
+        // キーにドットを含む番組（yota.fm, CEO.FM など）で
+        // "yota-120.fm.jpg" のような存在しないURLになってしまう
+        const image_url = build_info.channels[this.channel].cover.replace(/\.([^.]+)$/,`${suffix}.$1`)
         style['background-image'] = `url(${image_url})`
       }
       else {
