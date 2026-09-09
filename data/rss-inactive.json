@@ -107,6 +107,12 @@
     "hashtag": "#jinseifm",
     "reason": "feed not found"
   },
+  "kumocast": {
+    "feed": "https://feeds.feedburner.com/tumblr/IkZP",
+    "twitter": "@kumocast",
+    "hashtag": "#kumocast",
+    "reason": "domain revocation"
+  },
   "magicalfm": {
     "feed": "https://magical.fm/feed",
     "twitter": "@magical_fm",
