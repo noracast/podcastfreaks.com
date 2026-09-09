@@ -32,6 +32,13 @@ const storage = {
   }
 }
 
+// 除外中であることを画面から分かるようにする。
+// レイアウト側は html[data-ga-optout] を見て印を出す（CSS だけで完結する）
+const markOptout = (optout) => {
+  if (optout) document.documentElement.setAttribute('data-ga-optout', '1')
+  else document.documentElement.removeAttribute('data-ga-optout')
+}
+
 const applyOptoutParam = () => {
   const value = new URLSearchParams(window.location.search).get(OPTOUT_KEY)
   if (value === '1') {
@@ -47,8 +54,11 @@ const applyOptoutParam = () => {
 export default ({ app }) => {
   applyOptoutParam()
 
+  const optout = !!storage.get(OPTOUT_KEY)
+  markOptout(optout)
+
   // 除外中は gtag.js 自体を読み込まない
-  if (storage.get(OPTOUT_KEY)) return
+  if (optout) return
 
   window.dataLayer = window.dataLayer || []
   const gtag = function() { window.dataLayer.push(arguments) }

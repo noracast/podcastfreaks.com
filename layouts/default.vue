@@ -21,6 +21,9 @@ Responsive(:breakpoints="{small: el => el.width <= 810}")
       .stats.update
         span {{ updatedDate }}
         span {{ updatedTime }} updated
+      //- アクセス解析から外れているときだけ出る印。
+      //- 除外は localStorage に持つのでブラウザごと。他の人には出ない
+      .ga-optout(title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください") 計測オフ
     .main
       .sp_stats
         .channels
@@ -93,6 +96,21 @@ nav
     color: #fff
   a:not(:first-child)
     margin-left: 2em
+// アクセス解析の除外中だけ出す。既定では隠しておき、
+// プラグインが html に付ける data-ga-optout で表示を切り替える
+.ga-optout
+  display: none
+  margin-left: 15px
+  padding: 3px 8px
+  border-radius: 3px
+  font-size: 10px
+  color: rgba(255,255,255,0.9)
+  border: 1px solid rgba(255,255,255,0.5)
+  white-space: nowrap
+  cursor: help
+html[data-ga-optout] .ga-optout
+  display: block
+
 .sp_stats
   display: none
 button
