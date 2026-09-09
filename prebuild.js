@@ -24,6 +24,7 @@ import {
   RSS_DIR,
   COVER_DIR,
   BUILD_INFO,
+  EPISODES_JSON,
   RSS_JSON,
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
@@ -115,6 +116,8 @@ const writeFile = promisify(fs.writeFile)
 let episodes_in_2weeks = []
 let latest_pubdates = []
 let channels = {}
+// 行を開いたときだけ使う直近エピソード。build_info.json とは別に書き出す
+let recentEpisodes = {}
 let covers = {}
 let episodeCount = 0
 let errors = []
@@ -274,6 +277,9 @@ const fetchFeed = async key => {
   // 平均と中央値で同じ解析を2度走らせない（警告も2回出ていた）
   const durations = util.getDurations(episodes, dist_rss)
 
+  // 一覧の初期表示には要らないので、build_info.json ではなく別ファイルへ回す
+  recentEpisodes[key] = _.take(episodes, 5)
+
   // Save data
   channels[key] = {
     key,
@@ -288,7 +294,6 @@ const fetchFeed = async key => {
     lastEpisodeDate: parsePubDate(_.first(episodes).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
     firstEpisodeLink: _.last(episodes).link,
     lastEpisodeLink: _.first(episodes).link,
-    recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
     addedAt: addedAt[key] || null,
     applePodcasts: (applePodcasts[key] && applePodcasts[key].url) || null,
@@ -383,8 +388,11 @@ const fetchFeed = async key => {
   }
 
   // Save to file
-  consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
+  consola.log(`[3/3] ${BUILD_INFO} と ${EPISODES_JSON} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+  // 取得できた番組の分だけ書き出す。失敗した番組の古いエピソードが残ると、
+  // 一覧に出ていない番組のデータを配ることになるため
+  await writeFile(EPISODES_JSON, JSON.stringify(_.pick(recentEpisodes, Object.keys(channels))), 'utf8')
 
   const elapsed = Math.round((Date.now() - startedAt) / 1000)
   consola.success(

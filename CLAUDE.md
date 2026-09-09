@@ -15,9 +15,13 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
 
 ## 生成物とデータ
 
-- `static/downloads/`（RSS・カバー画像・`build_info.json` 約3MB）は `yarn prebuild`
-  が生成する。gitignore 対象。ページはこれをビルド時に import するので、無いと
-  中身のないサイトになる
+- `static/downloads/`（RSS・カバー画像・`build_info.json`・`episodes.json`）は
+  `yarn prebuild` が生成する。gitignore 対象。ページは `build_info.json` を
+  ビルド時に import するので、無いと中身のないサイトになる
+- 直近のエピソードは `build_info.json` ではなく `episodes.json` に置く。
+  一覧で行を開いたときにしか使わないのに、`build_info.json` 全体の9割を
+  占めていたため。一覧は表示が済んだあと裏で読み込む（`pages/index.vue` の
+  `prefetchEpisodes`）ので、ここに何かを足すときは初期表示に載るかどうかを見る
 - `yarn build` は npm のライフサイクルで `prebuild` を自動実行する。飛ばすなら
   `yarn build:skip`
 - `data/added-at.json`（番組の登録日）と `data/apple-podcasts.json`（Apple Podcasts の

@@ -56,8 +56,13 @@ div.root
           p.description(v-else) No description
           button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
           button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
+        //- 直近のエピソードは別ファイルにあり、表示が済んだあと裏で読み込む。
+        //- 読み終わる前に開かれたときのために、そのあいだの表示を用意しておく
         .episodes
-          episode-player(v-for="(ep, i) in props.row.recentEpisodes" :key="i" :episode="ep" @play="playEpisode")
+          template(v-if="recentEpisodes[props.row.key]")
+            episode-player(v-for="(ep, i) in recentEpisodes[props.row.key]" :key="i" :episode="ep" @play="playEpisode")
+          p.episodes-status(v-else-if="episodesFailed") エピソードを読み込めませんでした
+          p.episodes-status(v-else) エピソードを読み込んでいます…
 
 </template>
 
@@ -268,6 +273,11 @@ $sort_icon_width: 1.6em
             >.episodes
               width: 50%
               borde-left: 1px solid #333
+              // 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない
+              .episodes-status
+                padding: 20px
+                color: #999
+                font-size: 12px
 
         p
           max-width: calc(100vw - 30px)
@@ -633,7 +643,10 @@ export default {
         uniqueKey: 'key'
       },
       currentPlayer: null,
-      channels: Object.values(build_info.channels)
+      channels: Object.values(build_info.channels),
+      // 番組キー -> 直近のエピソード。mounted のあとに読み込む
+      recentEpisodes: {},
+      episodesFailed: false
     }
   },
   computed: {
@@ -663,8 +676,27 @@ export default {
   },
   mounted: function(){
     this.toggleAllCheckbox()
+    this.prefetchEpisodes()
   },
   methods: {
+    // 直近のエピソードを裏で読み込んでおく。
+    //
+    // 以前は build_info.json に入れてページのバンドルに同梱していたが、
+    // 全体3.07MBのうち2.73MB（9割）をこれが占めていた。使うのは行を
+    // 開いたときだけなので、最初の表示には載せない。
+    //
+    // ただし「開いたときに読みに行く」とそこで待たされるので、
+    // 表示が済んで手が空いたタイミングで先に読んでおく。
+    // requestIdleCallback が無いブラウザ（Safari）は setTimeout で代用する
+    prefetchEpisodes: function() {
+      const load = () => {
+        axios.get('/downloads/episodes.json')
+          .then(res => { this.recentEpisodes = res.data })
+          .catch(() => { this.episodesFailed = true })
+      }
+      if(window.requestIdleCallback) window.requestIdleCallback(load, { timeout: 3000 })
+      else setTimeout(load, 1000)
+    },
     toggleChildRow: function(key){
       this.$refs.table.toggleChildRow(key)
     },
