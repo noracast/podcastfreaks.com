@@ -69,24 +69,24 @@
                 <div class="clip">
                   <!-- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
                        実際のホスト名はツールチップで確認できる -->
-                  <small :title="row.fileServer">{{ row.fileServer | hosting }}</small>
+                  <small :title="row.fileServer">{{ hostingLabel(row.fileServer) }}</small>
                 </div>
               </td>
               <td class="last">
                 <a-blank v-if="row.lastEpisodeLink" :href="row.lastEpisodeLink">
                   <!-- .value を基準にして、バッジを日付の右上に置く -->
-                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ row.lastEpisodeDate | formatDate }}</span>
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
                 </a-blank>
                 <span v-else class="date">
-                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ row.lastEpisodeDate | formatDate }}</span>
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
                 </span>
               </td>
               <td class="first">
                 <a-blank v-if="row.firstEpisodeLink" :href="row.firstEpisodeLink">
-                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ row.firstEpisodeDate | formatDate }}</span>
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
                 </a-blank>
                 <span v-else class="date">
-                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ row.firstEpisodeDate | formatDate }}</span>
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
                 </span>
               </td>
               <td class="total">{{ row.total }}</td>
@@ -894,6 +894,7 @@ import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
+import formatDate from '@/lib/format-date'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
 // 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
@@ -928,9 +929,6 @@ const compareBy = (key, ascending) => (a, b) => {
 const OTHER_HOSTING = '__other__'
 
 export default {
-  filters: {
-    hosting: hostingLabel
-  },
   components: {
     'button-text': require('@/components/button-text.vue').default,
     'cover': require('@/components/cover.vue').default,
@@ -1106,6 +1104,11 @@ export default {
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
   methods: {
+    // テンプレートから呼ぶために methods に載せる。
+    // どちらも this を見ない素の関数
+    formatDate,
+    hostingLabel,
+
     updateHasHiddenColumns: function(){
       this.hasHiddenColumns = this.columnsMedia.matches
     },
@@ -1280,8 +1283,8 @@ export default {
           row.durationMedian,
           frequencyLabel(row.updateInterval),
           row.total,
-          this.$options.filters.formatDate(row.firstEpisodeDate),
-          this.$options.filters.formatDate(row.lastEpisodeDate)
+          formatDate(row.firstEpisodeDate),
+          formatDate(row.lastEpisodeDate)
         ].filter(v => v != null && v !== '').join(' ').toLowerCase()
       }
       return this._searchableCache[row.key]
