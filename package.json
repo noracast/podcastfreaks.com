@@ -4,6 +4,7 @@
   "description": "Podcast Freaks - Japanese techie podcast archive",
   "author": "Naokazu Terada",
   "private": true,
+  "type": "module",
   "scripts": {
     "ncu": "npx npm-check-updates",
     "start": "nuxt",

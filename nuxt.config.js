@@ -1,6 +1,10 @@
-const pkg = require('./package')
+import { readFileSync } from 'fs'
 
-module.exports = {
+// 説明文を package.json から借りている。ESM で JSON を import するには
+// import attributes が要るので、ここは fs で読む
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
+
+export default {
   // 各ページを事前レンダリングして HTML として出力する（フルスタティック）。
   // 以前は mode: 'universal' と nuxt generate --spa の組み合わせで、
   // 中身が空の HTML と 200.html のフォールバックだけを返していたため、

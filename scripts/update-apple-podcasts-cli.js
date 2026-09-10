@@ -5,7 +5,7 @@
 //   yarn apple-podcasts              未登録の番組だけ調べる
 //   yarn apple-podcasts --refresh    自動取得分を全て調べ直す
 
-const updateApplePodcasts = require('./update-apple-podcasts')
+import updateApplePodcasts from './update-apple-podcasts.js'
 
 const refresh = process.argv.includes('--refresh')
 const { total, resolved, manual, added, notFound, changed, path } = updateApplePodcasts({ refresh })

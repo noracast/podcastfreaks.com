@@ -5,7 +5,7 @@
 //   yarn added-at            （ローカル）
 //   node scripts/update-added-at-cli.js  （CI。依存のインストール不要）
 
-const updateAddedAt = require('./update-added-at')
+import updateAddedAt from './update-added-at.js'
 
 const { total, resolved, missing, changed, path } = updateAddedAt()
 

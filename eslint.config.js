@@ -3,9 +3,6 @@
 // 以前は nuxt.config.js の build.extend で eslint-loader を挟み、開発サーバーの
 // 保存時にも lint していた。eslint-loader は廃止されているので外し、lint は
 // yarn lint に一本化する。
-//
-// package.json に "type" を置いていないので、この設定は .mjs にして
-// import で書く（.js のままだと CommonJS として読まれる）。
 
 import pluginVue from 'eslint-plugin-vue'
 

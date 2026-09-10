@@ -17,8 +17,8 @@
 //
 // Ref: https://github.com/noracast/podcastfreaks.com/issues/50
 
-const { execFileSync } = require('child_process')
-const fs = require('fs')
+import { execFileSync } from 'child_process'
+import fs from 'fs'
 
 const RSS_JSON = 'data/rss.json'
 const ADDED_AT_JSON = 'data/added-at.json'
@@ -63,4 +63,4 @@ function updateAddedAt() {
   return { total: keys.length, resolved: Object.keys(addedAt).length, missing, changed, path: ADDED_AT_JSON }
 }
 
-module.exports = updateAddedAt
+export default updateAddedAt

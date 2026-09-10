@@ -20,8 +20,8 @@
 //
 // Ref: https://github.com/noracast/podcastfreaks.com/issues/41
 
-const { execFileSync } = require('child_process')
-const fs = require('fs')
+import { execFileSync } from 'child_process'
+import fs from 'fs'
 
 const RSS_JSON = 'data/rss.json'
 const APPLE_JSON = 'data/apple-podcasts.json'
@@ -115,4 +115,4 @@ function updateApplePodcasts({ refresh = false } = {}) {
   }
 }
 
-module.exports = updateApplePodcasts
+export default updateApplePodcasts

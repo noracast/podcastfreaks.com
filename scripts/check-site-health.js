@@ -95,9 +95,10 @@ const buildReport = ({ problems, info, otherWarnings = [] }) => {
   return lines.join('\n')
 }
 
-module.exports = { checkSiteHealth, buildReport, BUILD_INFO_URL }
+export { checkSiteHealth, buildReport, BUILD_INFO_URL }
 
-if (require.main === module) {
+// このファイルを直接叩いたときだけ実行する（import されたときは動かさない）
+if (import.meta.main) {
   checkSiteHealth().then(result => {
     const { problems } = result
     if (process.argv.includes('--json')) {
