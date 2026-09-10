@@ -243,10 +243,6 @@ export default {
       rate: 1
     }
   },
-  created: function() {
-    // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
-    this.pointer = null
-  },
   computed: {
     // 再生中か、途中で止めてあるとき。操作ボタンはこのときだけ出す
     isActive: function() {
@@ -262,6 +258,10 @@ export default {
     formattedDuration: function() {
       return formatTime(this.duration)
     }
+  },
+  created: function() {
+    // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
+    this.pointer = null
   },
   beforeDestroy: function() {
     if(!this.player) return
