@@ -6,7 +6,8 @@ span(v-else v-text="'N/A'" title="更新した日が1日分しかないため算
 <style lang="sass" scoped>
 span
   background-color: #ededed
-  color: white
+  // 背景が明るいので文字は濃く。緑を暗くした色にして、地の色となじませる
+  color: #154725
   font-weight: bold
   // Duration と同じ幅に揃える。一番長い「週2〜3」も12pxなら収まる
   width: 60px
@@ -17,24 +18,26 @@ span
   line-height: 23px
   text-align: center
   font-size: 12px
-  // Duration と同じ作り。更新頻度が高いほど鮮やかで濃くする。
-  // 色相は赤（355度）に固定し、彩度 88%→14%、明度 56%→44% で段階を作る。
-  // Duration は青（216度）で、収録時間が短いほど鮮やか。
-  // どちらも先頭が最も鮮やかで、末尾へ向かってくすんでいく
+  // Duration と同じく、更新頻度が高いほど鮮やか。
+  // 色相は緑（140度）に固定し、彩度 88%→14% で段階を作る。
+  // 明度は 55%→82% と上げていくので、末尾へ向かって淡くなる
+  // （緑を暗くすると沈んで見えるため、暗くではなく淡くする）。
+  // 全段とも濃い文字が乗るので、文字色は入れ替わらない。
+  // Duration は青緑・白文字で、寒色と暖色で対にしている
   &.daily
-    background-color: #F22C3D
+    background-color: #27F26A
   &.semiweekly
-    background-color: #E13341
+    background-color: #4BE57E
   &.weekly
-    background-color: #CE3B47
+    background-color: #6CDA91
   &.biweekly
-    background-color: #BB444E
+    background-color: #89D4A2
   &.monthly
-    background-color: #A55057
+    background-color: #A2D2B2
   &.quarterly
-    background-color: #91595E
+    background-color: #B8D3C1
   &.rarely
-    background-color: #806063
+    background-color: #CBD8CF
 </style>
 
 <script>
