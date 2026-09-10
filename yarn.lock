@@ -2544,11 +2544,6 @@ array-buffer-byte-length@^1.0.1, array-buffer-byte-length@^1.0.2:
     call-bound "^1.0.3"
     is-array-buffer "^3.0.5"
 
-array-intersect@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/array-intersect/-/array-intersect-0.0.1.tgz#6ed6f2933e6811919f435492b087f6ccb67956b4"
-  integrity sha512-n7+bHor4z+uofaUyLmUD9H/yEkDFsIHXQVRcK4xLpHgnpkVQA2lkaMTPNg0T3J0tCEVb6oACxeyTmCtspd+BBA==
-
 array-union@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
@@ -2661,11 +2656,6 @@ axios@^1.20.0:
     https-proxy-agent "^5.0.1"
     proxy-from-env "^2.1.0"
 
-babel-helper-vue-jsx-merge-props@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
-  integrity sha512-gsLiKK7Qrb7zYJNgiXKpXblxbV5ffSwR0f5whkPAaBAR4fhi6bwRZxX9wBlIc5M/v8CCkXUbXZL4N/nSE97cqg==
-
 babel-loader@^8.3.0:
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.4.1.tgz#6ccb75c66e62c3b144e1c5f2eaec5b8f6c08c675"
@@ -2675,11 +2665,6 @@ babel-loader@^8.3.0:
     loader-utils "^2.0.4"
     make-dir "^3.1.0"
     schema-utils "^2.6.5"
-
-babel-plugin-add-module-exports@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-add-module-exports/-/babel-plugin-add-module-exports-0.2.1.tgz#9ae9a1f4a8dc67f0cdec4f4aeda1e43a5ff65e25"
-  integrity sha512-3AN/9V/rKuv90NG65m4tTHsI04XrCKsWbztIcW7a8H5iIN7WlvWucRtVV0V/rT4QvtA11n5Vmp20fLwfMWqp6g==
 
 babel-plugin-polyfill-corejs2@^0.4.14, babel-plugin-polyfill-corejs2@^0.4.15:
   version "0.4.16"
@@ -3822,7 +3807,7 @@ de-indent@^1.0.2:
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
   integrity sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==
 
-debounce@^1.1, debounce@^1.2.1:
+debounce@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
   integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
@@ -6024,11 +6009,6 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==
 
-lodash.clonedeep@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
-  integrity sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==
-
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -6232,11 +6212,6 @@ merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
-
-merge@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/merge/-/merge-2.1.1.tgz#59ef4bf7e0b3e879186436e8481c06a6c162ca98"
-  integrity sha512-jz+Cfrg9GWOZbQAnDQ4hlVnQky+341Yk5ru8bZSe6sIDTCIg8n9i/u7hSQGSVOF3C7lH6mGtqjkiT9G4wFLL0w==
 
 micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
@@ -9560,16 +9535,6 @@ vue-no-ssr@^1.1.1:
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
 
-vue-pagination-2@^3.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/vue-pagination-2/-/vue-pagination-2-3.1.0.tgz#2350d7d5965d82b47c7086831044b5a2e364e11b"
-  integrity sha512-gySZMsQq7DQ++tQ3FinQ8jr4n/lwJx1Qo5T5BXwacdYwDui9bH1tmx29Ob1sZ/gq3BTFwfuJasLLKg6BRDxpYg==
-  dependencies:
-    babel-plugin-add-module-exports "^0.2.1"
-    merge "^2.1.1"
-    vue ">=2.0.0"
-    vuex "^2.0.0"
-
 vue-router@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.6.5.tgz#95847d52b9a7e3f1361cb605c8e6441f202afad8"
@@ -9597,19 +9562,6 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-tables-2@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/vue-tables-2/-/vue-tables-2-2.3.5.tgz#d31d522922178b67b55359f582894f9c037d062e"
-  integrity sha512-Oq1Nrq6EkjEbSTEvqTKPFInrTrav34KBZARNDFtvu8nDItw9D+S/y/lTbmNapPiNxaGuXPYef10lqOJp02hONg==
-  dependencies:
-    array-intersect "^0.0.1"
-    babel-helper-vue-jsx-merge-props "^2.0.3"
-    debounce "^1.1"
-    lodash.clonedeep "^4.5.0"
-    merge "^2.1.1"
-    vue "^2.6.10"
-    vue-pagination-2 "^3.0"
-
 vue-template-compiler@^2.6.14, vue-template-compiler@^2.7.16:
   version "2.7.16"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.7.16.tgz#c81b2d47753264c77ac03b9966a46637482bb03b"
@@ -9623,18 +9575,13 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@2.7.16, vue@>=2.0.0, vue@^2.6.10, vue@^2.7.16:
+vue@2.7.16, vue@^2.7.16:
   version "2.7.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.7.16.tgz#98c60de9def99c0e3da8dae59b304ead43b967c9"
   integrity sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==
   dependencies:
     "@vue/compiler-sfc" "2.7.16"
     csstype "^3.1.0"
-
-vuex@^2.0.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-2.5.0.tgz#20f0265ade6c9a5ac6724a405d3ffdb4726c9741"
-  integrity sha512-5oJPOJySBgSgSzoeO+gZB/BbN/XsapgIF6tz34UwJqnGZMQurzIO3B4KIBf862gfc9ya+oduY5sSkq+5/oOilQ==
 
 vuex@^3.6.2:
   version "3.6.2"

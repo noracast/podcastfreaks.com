@@ -1,112 +1,144 @@
 <template>
   <div class="root" :class="{ 'show-all-columns': showAllColumns }">
-    <button ref="downloadBtn" class="download" :disabled="markedRows.length == 0" @click="downloadOpml">Download OPML</button>
-    <!-- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
-         文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない -->
-    <button v-if="hasHiddenColumns" class="toggle-columns" @click="toggleAllColumns">{{ showAllColumns ? 'Compact' : 'All columns' }}</button>
-    <!-- 子行の開け閉めは行のどこを押しても効く（onRowClick）。
-         行の中のリンクやチェックボックスは、そのまま働かせる -->
-    <v-client-table ref="table" :columns="columns" :data="channels" :options="options" @row-click="onRowClick">
-      <template slot="title" slot-scope="props">
-        <div class="title-cell">
-          <!-- カバー画像はもともと別の列だったが、見出しが2つに割れて
-               片方が空欄になり収まりが悪かったので、この列に入れた -->
-          <cover class="cover" :channel="props.row.key" />
-          <div class="clip">
-            <!-- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
-                 省略は内側の .text が受け持つので、バッジは省略に巻き込まれない -->
-            <span class="value">
-              <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
-              <span v-if="isRecentlyAdded(props.row.addedAt)" class="new" :title="`${props.row.addedAt} に登録`">New!</span>
-              <span class="text" :title="props.row.title">{{ props.row.title }}</span>
-              <!-- タイトルの後ろに並べる外部リンク。
-                   Apple 側と登録フィードURLが違う番組は自動で特定できないため、
-                   Apple Podcasts のリンクを持たない番組がある
-                   （data/apple-podcasts.json に手で足せる） -->
-              <span class="links">
-                <apple-podcasts-link v-if="props.row.applePodcasts" :url="props.row.applePodcasts" />
-                <x-link v-if="props.row.twitter" :account="props.row.twitter" />
-                <hashtag-link v-if="props.row.hashtag" :hashtag="props.row.hashtag" />
-              </span>
-            </span>
-          </div>
-        </div>
-      </template>
-      <template slot="lastEpisodeDate" slot-scope="props">
-        <a-blank v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink">
-          <!-- .value を基準にして、バッジを日付の右上に置く -->
-          <span class="value"><span v-if="isIn(props.row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ props.row.lastEpisodeDate | formatDate }}</span>
-        </a-blank>
-        <span v-else class="date">
-          <span class="value"><span v-if="isIn(props.row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ props.row.lastEpisodeDate | formatDate }}</span>
-        </span>
-      </template>
-      <template slot="durationMedian" slot-scope="props">
-        <duration :duration="props.row.durationMedian" />
-      </template>
-      <template slot="updateInterval" slot-scope="props">
-        <frequency :interval="props.row.updateInterval" />
-      </template>
-      <template slot="fileServer" slot-scope="props">
-        <div class="clip">
-          <!-- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
-               実際のホスト名はツールチップで確認できる -->
-          <small :title="props.row.fileServer">{{ props.row.fileServer | hosting }}</small>
-        </div>
-      </template>
-      <template slot="firstEpisodeDate" slot-scope="props">
-        <a-blank v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink">
-          <span class="value"><span v-if="isIn(props.row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ props.row.firstEpisodeDate | formatDate }}</span>
-        </a-blank>
-        <span v-else class="date">
-          <span class="value"><span v-if="isIn(props.row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ props.row.firstEpisodeDate | formatDate }}</span>
-        </span>
-      </template>
-      <template slot="download" slot-scope="props">
-        <input v-model="markedRows" type="checkbox" :value="props.row.key">
-      </template>
-      <template slot="child_row" slot-scope="props">
-        <div class="wrap">
-          <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
-               端に着いたときに位置が食い違う -->
-          <div class="column">
-            <div class="info" @scroll="onColumnScroll">
-              <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
-                   v-html で出すが、中身は prebuild.js の sanitizeDescription で
-                   許可したタグと属性だけに濾してある（配信者が自由に書ける入力
-                   なので、ここまで来た時点で信用できる形にしておく）。
-                   もとは v-html.raw と書いてあったが、.raw という修飾子は
-                   Vue に無く、黙って無視されていた -->
-              <!-- eslint-disable-next-line vue/no-v-html -->
-              <p v-if="props.row.desciprtion" class="description" v-html="props.row.desciprtion" />
-              <p v-else class="description">No description</p>
-              <button-text v-if="props.row.link" :text="props.row.link" :button-text="'Open Web'" button-action="'open'" />
-              <button-text :text="props.row.feed" :button-text="'Copy RSS'" />
-            </div>
-            <!-- 上下にまだ続きがあることを示す影 -->
-            <div class="scroll-fade top" />
-            <div class="scroll-fade bottom" />
-          </div>
-          <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
-          <div class="column">
-            <div class="episodes" @scroll="onEpisodesScroll(props.row.key, $event)">
-              <template v-if="episodes[props.row.key]">
-                <episode-player
-                  v-for="(ep, i) in visibleEpisodes(props.row.key)"
-                  :key="i"
-                  :episode="ep"
-                  @play="playEpisode"
-                />
-              </template>
-              <p v-else-if="episodesFailed[props.row.key]" class="episodes-status">エピソードを読み込めませんでした</p>
-              <p v-else class="episodes-status">Loading…</p>
-            </div>
-            <div class="scroll-fade top" />
-            <div class="scroll-fade bottom" />
-          </div>
-        </div>
-      </template>
-    </v-client-table>
+    <!-- 検索と操作ボタン。狭い画面では上下に分かれる（<style> の @media） -->
+    <div class="tools">
+      <input v-model="query" class="search" type="search" placeholder="Search">
+      <div class="actions">
+        <button ref="downloadBtn" class="download" :disabled="markedRows.length == 0" @click="downloadOpml">Download OPML</button>
+        <!-- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
+             文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない -->
+        <button v-if="hasHiddenColumns" class="toggle-columns" @click="toggleAllColumns">{{ showAllColumns ? 'Compact' : 'All columns' }}</button>
+      </div>
+    </div>
+
+    <!-- 列を全部出すと画面に収まらないので、表ごと横スクロールさせる -->
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th
+              v-for="col in columns"
+              :key="col.key"
+              :class="[col.class, { sortable: col.sortable }]"
+              :title="col.tooltip"
+              @click="sortBy(col)"
+            >
+              <!-- 全選択。押すたびに全部入る／全部外れる -->
+              <input v-if="col.key === 'download'" type="checkbox" checked class="check-all" @change="toggleAllCheckbox">
+              <!-- ラベルは "Hosting" のまま固定し、透明な select を重ねる。
+                   select 自体に文字を出すと、絞り込み中に見出しの文言が変わってしまう -->
+              <span v-else-if="col.filter" class="hosting-filter" :class="{ 'is-active': !!hostingFilter }">{{ col.label }}<select :value="hostingFilter" @change="filterByHosting($event.target.value)" @click.stop>
+                <option value="">すべて</option>
+                <option v-for="o in hostingOptions" :key="o.value" :value="o.value">{{ o.label }} ({{ o.count }})</option>
+              </select></span>
+              <template v-else>{{ col.label }}<span class="sort-icon">{{ sortIcon(col) }}</span></template>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="row in sortedChannels">
+            <!-- 子行の開け閉めは行のどこを押しても効く。
+                 行の中のリンクや操作部品は、それぞれの働きを優先する -->
+            <tr :key="row.key" class="row" @click="onRowClick(row, $event)">
+              <td class="title">
+                <div class="title-cell">
+                  <!-- カバー画像はもともと別の列だったが、見出しが2つに割れて
+                       片方が空欄になり収まりが悪かったので、この列に入れた -->
+                  <cover class="cover" :channel="row.key" />
+                  <div class="clip">
+                    <!-- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
+                         省略は内側の .text が受け持つので、バッジは省略に巻き込まれない -->
+                    <span class="value">
+                      <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
+                      <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="`${row.addedAt} に登録`">New!</span>
+                      <span class="text" :title="row.title">{{ row.title }}</span>
+                      <!-- タイトルの後ろに並べる外部リンク。
+                           Apple 側と登録フィードURLが違う番組は自動で特定できないため、
+                           Apple Podcasts のリンクを持たない番組がある
+                           （data/apple-podcasts.json に手で足せる） -->
+                      <span class="links">
+                        <apple-podcasts-link v-if="row.applePodcasts" :url="row.applePodcasts" />
+                        <x-link v-if="row.twitter" :account="row.twitter" />
+                        <hashtag-link v-if="row.hashtag" :hashtag="row.hashtag" />
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td class="file-server">
+                <div class="clip">
+                  <!-- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
+                       実際のホスト名はツールチップで確認できる -->
+                  <small :title="row.fileServer">{{ row.fileServer | hosting }}</small>
+                </div>
+              </td>
+              <td class="last">
+                <a-blank v-if="row.lastEpisodeLink" :href="row.lastEpisodeLink">
+                  <!-- .value を基準にして、バッジを日付の右上に置く -->
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ row.lastEpisodeDate | formatDate }}</span>
+                </a-blank>
+                <span v-else class="date">
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ row.lastEpisodeDate | formatDate }}</span>
+                </span>
+              </td>
+              <td class="first">
+                <a-blank v-if="row.firstEpisodeLink" :href="row.firstEpisodeLink">
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ row.firstEpisodeDate | formatDate }}</span>
+                </a-blank>
+                <span v-else class="date">
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ row.firstEpisodeDate | formatDate }}</span>
+                </span>
+              </td>
+              <td class="total">{{ row.total }}</td>
+              <td class="frequency"><frequency :interval="row.updateInterval" /></td>
+              <td class="duration"><duration :duration="row.durationMedian" /></td>
+              <td class="check"><input v-model="markedRows" type="checkbox" :value="row.key"></td>
+            </tr>
+            <tr v-if="openedKey === row.key" :key="`${row.key}--child`" class="child-row">
+              <td :colspan="columns.length">
+                <div :ref="`wrap-${row.key}`" class="wrap">
+                  <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
+                       端に着いたときに位置が食い違う -->
+                  <div class="column">
+                    <div class="info" @scroll="onColumnScroll">
+                      <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
+                           v-html で出すが、中身は prebuild.js の sanitizeDescription で
+                           許可したタグと属性だけに濾してある -->
+                      <!-- eslint-disable-next-line vue/no-v-html -->
+                      <p v-if="row.desciprtion" class="description" v-html="row.desciprtion" />
+                      <p v-else class="description">No description</p>
+                      <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" />
+                      <button-text :text="row.feed" :button-text="'Copy RSS'" />
+                    </div>
+                    <!-- 上下にまだ続きがあることを示す影 -->
+                    <div class="scroll-fade top" />
+                    <div class="scroll-fade bottom" />
+                  </div>
+                  <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
+                  <div class="column">
+                    <div class="episodes" @scroll="onEpisodesScroll(row.key, $event)">
+                      <template v-if="episodes[row.key]">
+                        <episode-player
+                          v-for="(ep, i) in visibleEpisodes(row.key)"
+                          :key="i"
+                          :episode="ep"
+                          @play="playEpisode"
+                        />
+                      </template>
+                      <p v-else-if="episodesFailed[row.key]" class="episodes-status">エピソードを読み込めませんでした</p>
+                      <p v-else class="episodes-status">Loading…</p>
+                    </div>
+                    <div class="scroll-fade top" />
+                    <div class="scroll-fade bottom" />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+      <p v-if="!sortedChannels.length" class="no-result">該当する番組はありません</p>
+    </div>
   </div>
 </template>
 
@@ -121,11 +153,7 @@
   }
 }
 .download {
-  margin-right: 20px;
-  position: absolute;
   width: 150px;
-  top: 20px;
-  right: 0;
   /* ヘッダーと同じ背景。普段はヘッダーと同じだけ透かし、ホバーで
      透けを止めて色をはっきりさせる */
   background-color: transparent;
@@ -169,9 +197,6 @@
 /* 隠れている列を出すための切り替え。Download OPML の左に置く。
    普段は目立たせず、押した状態のときだけ色を付ける */
 .toggle-columns {
-  position: absolute;
-  top: 20px;
-  right: 190px;
   /* Download OPML と高さを揃える（実測 34px。padding 10px×2 ＋ 文字 14px） */
   height: 34px;
   padding: 0 12px;
@@ -242,9 +267,7 @@
     border-spacing: 0;
     width: 100%;
   }
-  /* 並べ替え中の th は class が "titletitle-sorted-asc" のようにひと続きになり、
-     .title では拾えなくなる（vue-tables-2 が区切りなしで継ぎ足すため）。
-     並べ替えても幅や配置が変わらないよう、th は部分一致で指定する */
+  /* th のクラスは列の定義（columns の class）がそのまま入る */
   & th {
     white-space: nowrap;
     /* Hosting の見出しに重ねる select の基準にする。
@@ -255,7 +278,7 @@
        （下の width: 1%）。余った幅はこの2つに、この比で配られる。
        Hosting は中身（.clip）が絶対配置で幅を主張しないため、狭いときは
        .clip の min-width（60px）まで縮み、広いときはホスト名が読める幅まで伸びる */
-    &[class*="title"] {
+    &.title {
       width: 80%;
     }
     /* 余りに応じて伸び縮みする。
@@ -273,7 +296,7 @@
      比例して配られてしまう（width: 115px と書いても135pxになった）。min-width も
      同じように扱われる。伸びを確実に止められるのは width: 1%（できるだけ狭く）で、
      このとき列は内容の幅ちょうどに張り付く */
-  & th[class*="total"], td.total, th[class*="first"], td.first, th[class*="last"], td.last, th[class*="frequency"], td.frequency, th[class*="duration"], td.duration {
+  & th.total, td.total, th.first, td.first, th.last, td.last, th.frequency, td.frequency, th.duration, td.duration {
     width: 1%;
     white-space: nowrap;
   }
@@ -281,9 +304,7 @@
      詰めると隣の列へはみ出すので、そのぶんの余白を右に足す。
      
      吹き出しがあるのは td の側だけなので、th には足さない。th に足すと
-     First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う
-     （並べ替え中の th は class が "lastlastEpisodeDate-sorted-desc" と
-     ひと続きになり .last では拾えないため、th 側は指定が効いたり効かなかったりする） */
+     First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う */
   & td.first, td.last {
     padding-right: 30px;
   }
@@ -298,10 +319,7 @@
     vertical-align: top;
     padding: 10px;
     outline: 0;
-    &:first-child:not(:last-child) {
-      display: none;
-    }
-    &:nth-child(2) {
+    &:first-child {
       padding-left: 20px;
     }
   }
@@ -314,8 +332,8 @@
   }
   & tbody {
     /* 行のどこを押しても子行が開くので、行全体を押せるものとして見せる。
-       子行（.VueTables__child-row）は別の tr なので、ここには当たらない */
-    & tr.VueTables__row {
+       子行（.child-row）は別の tr なので、ここには当たらない */
+    & tr.row {
       cursor: pointer;
       transition: background-color 0.15s;
       &:hover {
@@ -502,10 +520,10 @@
       &:first-child {
         border-top: 1px solid #ccc;
       }
-      &:not(.VueTables__child-row) {
+      &:not(.child-row) {
         border-top: 1px solid #ccc;
       }
-      &.VueTables__child-row {
+      &.child-row {
         border-top: 1px solid #eee;
         background-color: #222;
         background-size: auto 21px;
@@ -596,66 +614,50 @@
       min-width: initial;
     }
   }
-  .VueTables {
-    .row {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    .table-responsive {
-      overflow: auto;
-      width: 100%;
-      margin-top: 15px;
-    }
-  }
-  .VueTables__search-field {
+  /* 検索欄とボタンを1本の帯に並べる。ボタンは右端に寄せる */
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
     margin-bottom: 20px;
-    & input {
-      padding: 8px;
-      outline: none;
-      font-size: 13px;
-      border: 1px solid #ddd;
-      width: 300px;
-      &:placeholder-shown {
-        color: #ccc;
-      }
-      &::-webkit-input-placeholder {
-        color: #ccc;
-      }
-      &::-moz-placeholder {
-        color: #ccc;
-      }
+  }
+  .search {
+    padding: 8px;
+    outline: none;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    width: 300px;
+    &:placeholder-shown {
+      color: #ccc;
+    }
+    &::-webkit-input-placeholder {
+      color: #ccc;
+    }
+    &::-moz-placeholder {
+      color: #ccc;
     }
   }
-  .VueTables__search {
-    float: left;
-    width: calc(100% - 270px);
+  .actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 右端に Download OPML、その左に All columns。
+       狭い画面では並びが逆になる（下の @media） */
+    flex-direction: row-reverse;
   }
-  .VueTables__columns-dropdown {
-    float: right;
-    width: 100px;
-    .dropdown-menu {
-      position: absolute;
-      right: 20px;
-      padding: 15px;
-      margin-top: 6px;
-      margin-bottom: 0;
-      background: #050935;
-      border-radius: 3px;
-      list-style: none;
-      z-index: 10;
-      & a {
-        color: white;
-        font-size: 12px;
-      }
-      & input[type=checkbox] {
-        margin-right: 1em;
-      }
-    }
+  /* 列を全部出すと画面に収まらないので、表ごと横に流す */
+  .table-scroll {
+    overflow: auto;
+    width: 100%;
   }
-  .VueTables__limit {
-    display: none;
+  .no-result {
+    padding: 40px 20px;
+    color: #999;
+    font-size: 13px;
   }
-  .VueTables__sortable {
+  & th.sortable {
     cursor: pointer;
     &:hover {
       color: #7f00ff;
@@ -689,7 +691,7 @@
   /* ソートアイコンの span はソート中かどうかに関わらず描画されるが、
      ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
      ソートするたびに見出しの位置がずれる */
-  .VueTables__sort-icon {
+  .sort-icon {
     display: inline-block;
     /* ソートアイコンの占有幅。ラベルの位置合わせにも使う。
        字そのものは8.4pxしかないので、1.6em（19px）では見出しの右に10px近い
@@ -727,21 +729,21 @@
    外れ、また出てくる、という往復になる。境界は固定にしている。
 
    .show-all-columns は「All columns」を押した状態。
-   表は .table-responsive が overflow: auto なので、そのまま横スクロールになる */
+   表は .table-scroll が overflow: auto なので、そのまま横スクロールになる */
 @media (max-width: 1100px) {
-  .root:not(.show-all-columns) ::v-deep th[class*="file-server"],
+  .root:not(.show-all-columns) ::v-deep th.file-server,
   .root:not(.show-all-columns) ::v-deep td.file-server {
     display: none;
   }
   /* 全部出したときは画面に収まらない。この表は幅に応じて縮む作りなので、
      何もしないと Channel が潰れるだけで横スクロールにならない。
-     1100px の見え方を保ったまま溢れさせて、.table-responsive に流させる */
+     1100px の見え方を保ったまま溢れさせて、.table-scroll に流させる */
   .root.show-all-columns ::v-deep table {
     min-width: 1100px;
   }
 }
 @media (max-width: 950px) {
-  .root:not(.show-all-columns) ::v-deep th[class*="first"],
+  .root:not(.show-all-columns) ::v-deep th.first,
   .root:not(.show-all-columns) ::v-deep td.first {
     display: none;
   }
@@ -750,7 +752,7 @@
    ヘッダーの切り替え（900px）とは別の系列なので、揃えずに残してある。
    iPad の縦（834px）では Episodes まで出したい */
 @media (max-width: 810px) {
-  .root:not(.show-all-columns) ::v-deep th[class*="total"],
+  .root:not(.show-all-columns) ::v-deep th.total,
   .root:not(.show-all-columns) ::v-deep td.total {
     display: none;
   }
@@ -809,56 +811,40 @@
       vertical-align: top;
     }
     .download {
-      position: relative;
-      margin-left: 15px;
-      margin-right: 0;
-      top: initial;
-      left: initial;
       height: 38px;
     }
-    /* Download OPML の右。高さも向こうに合わせる */
+    /* Download OPML と高さを合わせる */
     .toggle-columns {
-      position: relative;
-      top: initial;
-      right: initial;
       height: 38px;
-      margin-left: 10px;
     }
-    .VueTables {
-      margin-top: 15px;
-      .row {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
+    /* 横に並べる幅が無いので、ボタンを上、検索を下に積む */
+    .tools {
+      flex-direction: column-reverse;
+      align-items: stretch;
+      gap: 15px;
+      padding: 0 15px;
+      margin-bottom: 15px;
     }
-    .VueTables__columns-dropdown {
-      .dropdown-menu {
-        right: 15px;
-      }
+    .search {
+      width: auto;
+      padding: 9px;
+      font-size: 16px;
     }
-    .VueTables__search {
-      width: 100%;
-    }
-    .VueTables__search-field {
-      margin-bottom: 0;
-      & input {
-        width: calc(100% - 20px);
-        padding: 9px;
-        font-size: 16px;
-      }
-    }
-    .VueTables__columns-dropdown {
-      clear: left;
+    .actions {
+      /* 広い画面と違い、Download OPML を左端に置く */
+      flex-direction: row;
+      margin-left: 0;
+      margin-right: auto;
     }
     & th,td {
-      &:nth-child(2) {
+      &:first-child {
         padding-left: 15px;
       }
     }
-    /* 広い画面側の指定（tbody tr.VueTables__child-row > td > .wrap）と
-       同じ強さにしておく。弱いとメディアクエリの中でも上書きできない */
+    /* 広い画面側の指定（tbody tr.child-row > td > .wrap）と同じ強さに
+       しておく。弱いとメディアクエリの中でも上書きできない */
     & tbody tr {
-      &.VueTables__child-row {
+      &.child-row {
         >td > .wrap {
           flex-direction: column;
           /* 縦に積むぶん高さは伸びるが、説明の長い番組だと一覧が
@@ -906,7 +892,6 @@ import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
-import { Event as VueTablesEvent } from 'vue-tables-2'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
 // 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
@@ -920,6 +905,24 @@ const CHILD_ROW_ANIM_MS = 220
 const SHOW_ALL_COLUMNS_KEY = 'pf-show-all-columns'
 
 const HOSTING_MIN_COUNT = 2
+
+// 値の比べ方。vue-tables-2 の既定と同じ挙動にしてある。
+//
+//   - 空や null は '' として扱う（Duration や Frequency の N/A がこれ）
+//   - 文字列は小文字に揃えてから比べる
+//   - 同じ値でも 0 を返さず、必ずどちらかに倒す
+//
+// 最後のひとつは Array#sort の作法から外れているが、直すと同じ値の行
+// （同じ日付、同じ話数）の並びが変わってしまう。表の見え方を変えない
+// ことを優先して、そのまま持ってきた
+const compareBy = (key, ascending) => (a, b) => {
+  let x = a[key] || ''
+  let y = b[key] || ''
+  const dir = ascending ? 1 : -1
+  if(typeof x === 'string') x = x.toLowerCase()
+  if(typeof y === 'string') y = y.toLowerCase()
+  return x > y ? dir : -dir
+}
 const OTHER_HOSTING = '__other__'
 
 export default {
@@ -957,149 +960,41 @@ export default {
       showAllColumns: false,
       // 隠れている列があるか。無いときは切り替えボタンを出さない
       hasHiddenColumns: false,
-      // 並び順は「番組 → どこで配信 → 最新回 → 初回 → 何話 → 中身の傾向」。
-      // 画面が狭いときは fileServer → firstEpisodeDate → total の順に隠す
-      // （<style> の @media を参照）
+      // 列の定義。並び順は「番組 → どこで配信 → 最新回 → 初回 → 何話 →
+      // 中身の傾向」。画面が狭いときは fileServer → firstEpisodeDate →
+      // total の順に隠す（<style> の @media を参照）
+      //
+      // desc は「見出しを最初に押したときに降順から始める」列。
+      // 日付や話数は、多い方・新しい方から見たいので降順から入る
       columns: [
-        'title',
-        'fileServer',
-        'lastEpisodeDate',
-        'firstEpisodeDate',
-        'total',
-        'updateInterval',
-        'durationMedian',
-        'download'
+        { key: 'title', label: 'Channel', class: 'title', sortable: true,
+          tooltip: '行をクリックすると、番組の説明とエピソードが開きます' },
+        // 配信サービスで絞り込めるよう、見出しをプルダウンにしている
+        { key: 'fileServer', label: 'Hosting', class: 'file-server', filter: true,
+          tooltip: '音声ファイルの配信元' },
+        { key: 'lastEpisodeDate', label: 'Last episode', class: 'last', sortable: true, desc: true },
+        { key: 'firstEpisodeDate', label: 'First episode', class: 'first', sortable: true },
+        { key: 'total', label: 'Episodes', class: 'total', sortable: true, desc: true },
+        // 取りうる値の一覧は About に1か所だけ置く。そこへの入口は
+        // 各行のバッジ自体（components/duration.vue, frequency.vue）
+        { key: 'updateInterval', label: 'Frequency', class: 'frequency', sortable: true,
+          tooltip: '直近の更新間隔から求めたおおよその頻度' },
+        { key: 'durationMedian', label: 'Duration', class: 'duration', sortable: true, desc: true,
+          tooltip: '収録時間の中央値' },
+        // 幅を止めるために名前を付ける。OPML のボタン（button.download）と
+        // 紛れないよう、別の名前にしている
+        { key: 'download', label: '', class: 'check',
+          tooltip: 'ダウンロードするためにチェックしてください' }
       ],
       markedRows: [],
-      options: {
-        columnsClasses: {
-          title: 'title',
-          fileServer: 'file-server',
-          total: 'total',
-          firstEpisodeDate: 'first',
-          lastEpisodeDate: 'last',
-          durationMedian: 'duration',
-          updateInterval: 'frequency',
-          // 幅を止めるために名前を付ける。OPML のボタン（button.download）と
-          // 紛れないよう、別の名前にしている
-          download: 'check'
-        },
-        // 列幅は内容に合わせて決めている。手で変えられると崩れるうえ、
-        // 見出しの境目にカーソルを乗せたときの左右矢印が紛らわしい
-        resizableColumns: false,
-        orderBy: {
-          ascending: false,
-          column: 'lastEpisodeDate'
-        },
-        perPage: 9999,
-        headings: {
-          // ヘッダーの数字が「233 channels / 23801 episodes」と名乗っているので、
-          // 番組を指す語はサイト全体で channel に揃える。隣の Episodes とも対になる
-          title: 'Channel',
-          // 配信サービスで絞り込めるようプルダウンにする。
-          // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
-          // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
-          fileServer: (h) => {
-            // ラベルは "Hosting" のまま固定し、透明な select を重ねる。
-            // select 自体に文字を出すと、絞り込み中に見出しの文言が変わってしまう
-            return h('span', {
-              class: ['hosting-filter', { 'is-active': !!this.hostingFilter }]
-            }, [
-              'Hosting',
-              h('select', {
-                domProps: { value: this.hostingFilter },
-                on: {
-                  change: (event) => this.filterByHosting(event.target.value),
-                  // 見出しのクリック（並べ替え）を誘発させない
-                  click: (event) => event.stopPropagation()
-                }
-              }, [
-                h('option', { domProps: { value: '' } }, 'すべて'),
-                ...this.hostingOptions.map(o =>
-                  h('option', { domProps: { value: o.value } }, `${o.label} (${o.count})`)
-                )
-              ])
-            ])
-          },
-          total: 'Episodes',
-          firstEpisodeDate: 'First episode',
-          lastEpisodeDate: 'Last episode',
-          // 取りうる値の一覧は About に1か所だけ置く。そこへの入口は
-          // 各行のバッジ自体（components/duration.vue, frequency.vue）
-          durationMedian: 'Duration',
-          updateInterval: 'Frequency',
-          // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
-          // 通常の function だと this がページコンポーネントにならない。
-          // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
-          download: (h) => {
-            return h('input', {
-              attrs: { type: 'checkbox', checked: true },
-              class: 'form-control check-all',
-              on: {
-                change: this.toggleAllCheckbox
-              }
-            })
-          }
-        },
-        headingsTooltips: {
-          title: '行をクリックすると、番組の説明とエピソードが開きます',
-          durationMedian: '収録時間の中央値',
-          updateInterval: '直近の更新間隔から求めたおおよその頻度',
-          fileServer: '音声ファイルの配信元',
-          download: 'ダウンロードするためにチェックしてください'
-        },
-        sortable: [
-          'title',
-          'total',
-          'firstEpisodeDate',
-          'lastEpisodeDate',
-          'durationMedian',
-          'updateInterval'
-        ],
-        descOrderColumns: [
-          'total',
-          'lastEpisodeDate',
-          'durationMedian'
-        ],
-        customSorting: {
-          // 算出できない番組（N/A）は昇順・降順どちらでも末尾にまとめる。
-          // 既定の比較では null が数値の間に紛れ、N/A が飛び飛びに現れてしまう
-          updateInterval: (ascending) => (a, b) => {
-            if(a.updateInterval == null && b.updateInterval == null) return 0
-            if(a.updateInterval == null) return 1
-            if(b.updateInterval == null) return -1
-            return ascending ? a.updateInterval - b.updateInterval : b.updateInterval - a.updateInterval
-          }
-        },
-        // 検索ボックスとは独立したフィルタ。両方を同時に効かせられる
-        customFilters: [
-          {
-            name: 'hosting',
-            callback: (row, value) => {
-              if(value === OTHER_HOSTING) return this.minorHostings.includes(row.fileServer)
-              return row.fileServer === value
-            }
-          }
-        ],
-        // 実際の判定は filterAlgorithm.title でまとめて行うため、
-        // 検索対象の列は1つだけにしておく
-        filterable: ['title'],
-        filterAlgorithm: {
-          // 既定の実装はクエリ全体を1つの文字列として部分一致させるため、
-          // 「anchor キマグレエフエム」のように複数語で絞り込めなかった。
-          // スペース区切りの語をすべて含む行だけを残す（AND 検索）
-          title: (row, query) => {
-            const terms = String(query).toLowerCase().split(/\s+/).filter(t => t)
-            if(!terms.length) return true
-            return terms.every(term => this.searchableText(row).includes(term))
-          }
-        },
-        texts: {
-          filter: '',
-          filterPlaceholder: 'Search'
-        },
-        uniqueKey: 'key'
-      },
+
+      // 検索欄の文字列
+      query: '',
+      // 並べ替えの状態。既定は最新回の新しい順
+      sortKey: 'lastEpisodeDate',
+      sortAscending: false,
+      // 開いている子行の番組キー。一度に1つだけ開く
+      openedKey: null,
       currentPlayer: null,
       channels: Object.values(build_info.channels),
       // 番組キー -> その番組の全エピソード。行を開いた時点で読み込む
@@ -1111,6 +1006,49 @@ export default {
     }
   },
   computed: {
+    // 検索と Hosting の絞り込みを両方かけた行
+    filteredChannels: function() {
+      const terms = String(this.query).toLowerCase().split(/\s+/).filter(t => t)
+      const hosting = this.hostingFilter
+
+      return this.channels.filter(row => {
+        if(hosting) {
+          const matched = hosting === OTHER_HOSTING
+            ? this.minorHostings.includes(row.fileServer)
+            : row.fileServer === hosting
+          if(!matched) return false
+        }
+        // スペース区切りの語をすべて含む行だけを残す（AND 検索）。
+        // 1つの文字列として部分一致させると、「anchor キマグレエフエム」の
+        // ように配信元と番組名をまたいだ絞り込みができない
+        return terms.every(term => this.searchableText(row).includes(term))
+      })
+    },
+
+    // 並べ替えたあとの行。表に出すのはこれ
+    sortedChannels: function() {
+      const key = this.sortKey
+      const ascending = this.sortAscending
+      const rows = this.filteredChannels.slice()
+
+      if(key === 'updateInterval') {
+        // 算出できない番組（N/A）は昇順・降順どちらでも末尾にまとめる。
+        // 素直に比べると null が数値の間に紛れ、N/A が飛び飛びに現れる
+        rows.sort((a, b) => {
+          if(a.updateInterval == null && b.updateInterval == null) return 0
+          if(a.updateInterval == null) return 1
+          if(b.updateInterval == null) return -1
+          return ascending
+            ? a.updateInterval - b.updateInterval
+            : b.updateInterval - a.updateInterval
+        })
+        return rows
+      }
+
+      rows.sort(compareBy(key, ascending))
+      return rows
+    },
+
     hostingCounts: function() {
       const counts = {}
       this.channels.forEach(c => {
@@ -1224,7 +1162,7 @@ export default {
       el.classList.toggle('can-scroll-down', el.scrollTop + el.clientHeight < el.scrollHeight - 1)
     },
     refreshScrollFades: function() {
-      document.querySelectorAll('.VueTables__child-row .info, .VueTables__child-row .episodes')
+      document.querySelectorAll('.child-row .info, .child-row .episodes')
         .forEach(this.markScrollFade)
     },
 
@@ -1237,32 +1175,50 @@ export default {
     // ただし行の中のリンクや操作部品は、それぞれの働きを優先する
     // （Apple Podcasts / X / ハッシュタグ、エピソードへのリンク、
     //   Hosting の絞り込み、OPML のチェックボックス）
-    onRowClick: function({ row, event }){
+    onRowClick: function(row, event){
       const target = event && event.target
       if(!target || !target.closest) return
       if(target.closest('a, input, select, button, label')) return
-      this.toggleChildRow(row.key, event)
+      this.toggleChildRow(row.key)
     },
-    toggleChildRow: function(key, event){
-      const tr = event && event.target && event.target.closest ? event.target.closest('tr') : null
-      const wrapOf = (row) => {
-        const next = row && row.nextElementSibling
-        return next && next.classList.contains('VueTables__child-row') ? next.querySelector('.wrap') : null
-      }
-      const openedWrap = wrapOf(tr)
-
+    // 開いている子行の .wrap。ref は v-for の中なので配列で返る
+    childWrap: function(key) {
+      const found = this.$refs['wrap-' + key]
+      return Array.isArray(found) ? found[0] : found
+    },
+    toggleChildRow: function(key){
       // 開いている場合は、畳んでから行を消す
-      if(openedWrap) {
-        this.collapseChildRow(openedWrap, () => this.$refs.table.toggleChildRow(key))
+      if(this.openedKey === key) {
+        const wrap = this.childWrap(key)
+        if(wrap) this.collapseChildRow(wrap, () => { this.openedKey = null })
+        else this.openedKey = null
         return
       }
 
       this.loadEpisodes(key)
-      this.$refs.table.toggleChildRow(key)
+      this.openedKey = key
       this.$nextTick(() => {
-        this.expandChildRow(wrapOf(tr))
+        this.expandChildRow(this.childWrap(key))
         this.refreshScrollFades()
       })
+    },
+    // 見出しを押したときの並べ替え。同じ列をもう一度押すと向きが変わる
+    sortBy: function(col){
+      if(!col.sortable) return
+      if(this.sortKey === col.key) {
+        this.sortAscending = !this.sortAscending
+      }
+      else {
+        this.sortKey = col.key
+        // 列によって、最初に見たい向きが違う。日付や話数は多い方・
+        // 新しい方から入る
+        this.sortAscending = !col.desc
+      }
+    },
+    // 見出しに出す並べ替えの印。ソート中の列にだけ入る
+    sortIcon: function(col){
+      if(this.sortKey !== col.key) return ''
+      return this.sortAscending ? '▲' : '▼'
     },
     expandChildRow: function(wrap) {
       if(!wrap) return
@@ -1306,9 +1262,6 @@ export default {
     },
     filterByHosting: function(value) {
       this.hostingFilter = value
-      // customFilters はイベントバス経由で値を渡す。
-      // 検索ボックス（query）とは別に保持されるので、両方を同時に効かせられる
-      VueTablesEvent.$emit('vue-tables.filter::hosting', value)
     },
     // 検索対象にする文字列。画面に出ている値で絞り込めるよう、
     // 日付は表示と同じ YYYY.MM.DD の形にしてから含める
