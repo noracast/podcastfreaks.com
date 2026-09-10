@@ -1,55 +1,68 @@
-<template lang="pug">
-.episode(:class="{ 'is-active': isActive, 'is-playing': playing }")
-  button.play(@click="toggle" :title="playing ? '一時停止' : '再生'" :aria-label="playing ? '一時停止' : '再生'")
-    svg(viewBox="0 0 24 24" width="18" height="18" aria-hidden="true")
-      g(v-if="playing" fill="currentColor")
-        rect(x="6" y="5" width="4" height="14" rx="1")
-        rect(x="14" y="5" width="4" height="14" rx="1")
-      path(v-else fill="currentColor" d="M8 5.5v13l11-6.5z")
+<template>
+  <div class="episode" :class="{ 'is-active': isActive, 'is-playing': playing }">
+    <button class="play" :title="playing ? '一時停止' : '再生'" :aria-label="playing ? '一時停止' : '再生'" @click="toggle">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <g v-if="playing" fill="currentColor">
+          <rect x="6" y="5" width="4" height="14" rx="1" />
+          <rect x="14" y="5" width="4" height="14" rx="1" />
+        </g>
+        <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
+      </svg>
+    </button>
 
-  //- 再生ボタンより右がまるごとシークバー。背景の伸びが再生位置を表す。
-  //- 操作ボタンもこの中に置き、押されたときはシークしない
-  .track(
-    ref="track"
-    role="slider"
-    :aria-label="`${episode.title} の再生位置`"
-    :aria-valuemin="0"
-    :aria-valuemax="Math.round(duration)"
-    :aria-valuenow="Math.round(currentTime)"
-    :aria-valuetext="`${formattedCurrent} / ${formattedDuration}`"
-    tabindex="0"
-    @pointerdown="onPointerDown"
-    @keydown="onKeydown"
-  )
-    .progress(:style="{ width: progressPercent }")
-    span.text {{ episode.title }}
+    <!-- 再生ボタンより右がまるごとシークバー。背景の伸びが再生位置を表す。
+         操作ボタンもこの中に置き、押されたときはシークしない -->
+    <div
+      ref="track"
+      role="slider"
+      :aria-label="`${episode.title} の再生位置`"
+      :aria-valuemin="0"
+      :aria-valuemax="Math.round(duration)"
+      :aria-valuenow="Math.round(currentTime)"
+      :aria-valuetext="`${formattedCurrent} / ${formattedDuration}`"
+      tabindex="0"
+      class="track"
+      @pointerdown="onPointerDown"
+      @keydown="onKeydown"
+    >
+      <div class="progress" :style="{ width: progressPercent }" />
+      <span class="text">{{ episode.title }}</span>
 
-    .controls
-      button(@click="toStart" title="先頭に戻る" aria-label="先頭に戻る")
-        svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
-          g(fill="currentColor")
-            rect(x="5" y="6" width="2.5" height="12" rx="1")
-            path(d="M19 6.5v11L9.5 12z")
-      button.sec(@click="skip(-10)" title="10秒もどす" aria-label="10秒もどす") −10
-      button.sec(@click="skip(10)" title="10秒すすめる" aria-label="10秒すすめる") +10
-      //- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
-      //- 小文字の x はベースラインに乗るので、数字と下が揃う
-      button.rate(@click="cycleRate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`") {{ rate }}x
-      a-blank.open(:href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く")
-        svg(viewBox="0 0 24 24" width="14" height="14" aria-hidden="true")
-          g(fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round")
-            path(d="M14 5h5v5")
-            path(d="M19 5l-8 8")
-            path(d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10")
+      <div class="controls">
+        <button title="先頭に戻る" aria-label="先頭に戻る" @click="toStart">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <g fill="currentColor">
+              <rect x="5" y="6" width="2.5" height="12" rx="1" />
+              <path d="M19 6.5v11L9.5 12z" />
+            </g>
+          </svg>
+        </button>
+        <button class="sec" title="10秒もどす" aria-label="10秒もどす" @click="skip(-10)">−10</button>
+        <button class="sec" title="10秒すすめる" aria-label="10秒すすめる" @click="skip(10)">+10</button>
+        <!-- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
+             小文字の x はベースラインに乗るので、数字と下が揃う -->
+        <button class="rate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`" @click="cycleRate">{{ rate }}x</button>
+        <a-blank class="open" :href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M14 5h5v5" />
+              <path d="M19 5l-8 8" />
+              <path d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10" />
+            </g>
+          </svg>
+        </a-blank>
+      </div>
 
-    //- 操作していないうちは長さだけ出す。タイトルに幅を譲る
-    .time
-      template(v-if="isActive")
-        span.now {{ formattedCurrent }}
-        span.total
-          span.sep /
-          | {{ formattedDuration }}
-      template(v-else) {{ formattedDuration }}
+      <!-- 操作していないうちは長さだけ出す。タイトルに幅を譲る -->
+      <div class="time">
+        <template v-if="isActive">
+          <span class="now">{{ formattedCurrent }}</span>
+          <span class="total"><span class="sep">/</span>{{ formattedDuration }}</span>
+        </template>
+        <template v-else>{{ formattedDuration }}</template>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>

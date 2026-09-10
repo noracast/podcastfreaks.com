@@ -1,35 +1,45 @@
-<template lang="pug">
-.root
-  p.lead
-    | 直近のビルドで見つかった問題です。
-    | フィードを直せる方に見ていただけるよう、検知したものはすべて出しています。
+<template>
+  <div class="root">
+    <p class="lead">直近のビルドで見つかった問題です。フィードを直せる方に見ていただけるよう、検知したものはすべて出しています。</p>
 
-  section(v-if="errors.length")
-    h2 取得できなかった番組
-    p.count {{ errors.length }}件
-    ul.list
-      li(v-for="item in errors" :key="item.rss")
-        .name {{ item.name }}
-        .message {{ item.message }}
-        a.feed(v-if="item.feed" :href="item.feed" target="_blank" rel="noopener") {{ item.feed }}
+    <section v-if="errors.length">
+      <h2>取得できなかった番組</h2>
+      <p class="count">{{ errors.length }}件</p>
+      <ul class="list">
+        <li v-for="item in errors" :key="item.rss">
+          <div class="name">{{ item.name }}</div>
+          <div class="message">{{ item.message }}</div>
+          <a v-if="item.feed" class="feed" :href="item.feed" target="_blank" rel="noopener">{{ item.feed }}</a>
+        </li>
+      </ul>
+    </section>
 
-  //- ビルドは通るが、直せるなら直したいもの。
-  //- 音声を持たないフィード、収録時間の書式、カバー画像、壊れた XML など
-  section(v-for="group in warningGroups" :key="group.label")
-    h2 {{ group.title }}
-    p.count {{ group.items.length }}件
-    ul.list
-      li(v-for="item in group.items" :key="item.rss + item.message")
-        .name {{ item.name }}
-        .message {{ item.message }}
-        a.feed(v-if="item.feed" :href="item.feed" target="_blank" rel="noopener") {{ item.feed }}
+    <!-- ビルドは通るが、直せるなら直したいもの。
+         音声を持たないフィード、収録時間の書式、カバー画像、壊れた XML など -->
+    <section v-for="group in warningGroups" :key="group.label">
+      <h2>{{ group.title }}</h2>
+      <p class="count">{{ group.items.length }}件</p>
+      <ul class="list">
+        <li v-for="item in group.items" :key="item.rss + item.message">
+          <div class="name">{{ item.name }}</div>
+          <div class="message">{{ item.message }}</div>
+          <a v-if="item.feed" class="feed" :href="item.feed" target="_blank" rel="noopener">{{ item.feed }}</a>
+        </li>
+      </ul>
+    </section>
 
-  p.empty(v-if="errors.length === 0 && warningGroups.length === 0") 今回のビルドでは問題は見つかりませんでした。
+    <p v-if="errors.length === 0 && warningGroups.length === 0" class="empty">今回のビルドでは問題は見つかりませんでした。</p>
 
-  details.raw
-    summary 生データ
-    pre(v-highlightjs)
-      code.javascript(v-html="raw")
+    <details class="raw">
+      <summary>生データ</summary>
+      <!-- pre の中は空白がそのまま出るので、code は続けて書く。
+           中身は prebuild が作った JSON。色を付けるために v-html で流し込んで
+           いるが、message にはフィード側から来た文字列（取得エラーの本文など）が
+           混じるため、本来はエスケープして出すべきところ -->
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <pre v-highlightjs><code class="javascript" v-html="raw" /></pre>
+    </details>
+  </div>
 </template>
 
 <style scoped>

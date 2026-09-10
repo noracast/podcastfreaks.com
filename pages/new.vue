@@ -1,25 +1,39 @@
-<template lang="pug">
-//- 狭い画面の切り替えは CSS のメディアクエリで行う。
-//- Responsive は幅を測るまで中身を visibility: hidden で隠すため、
-//- 事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった
-.root
-  div
-    template(v-if="episodes_in_1weeks.length")
-      h5 今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes
-      .this-week
-        template(v-for="(val, idx) in episodes_in_1weeks")
-          //- 違う日だったら
-          .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)")
-            span.date(v-text="date(val.pubDate)")
-          episode-row(:episode="val")
-    template(v-if="episodes_in_2weeks.length")
-      h5 先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes
-      .last-week
-        template(v-for="(val, idx) in episodes_in_2weeks")
-          //- 違う日だったら
-          .border(v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)")
-            span.date(v-text="date(val.pubDate)")
-          episode-row(:episode="val")
+<template>
+  <!-- 狭い画面の切り替えは CSS のメディアクエリで行う。
+       Responsive は幅を測るまで中身を visibility: hidden で隠すため、
+       事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
+  <div class="root">
+    <div>
+      <template v-if="episodes_in_1weeks.length">
+        <h5>今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes</h5>
+        <div class="this-week">
+          <template v-for="(val, idx) in episodes_in_1weeks">
+            <!-- 違う日だったら。
+                 key は並び順そのもの。この一覧はビルド時に決まって、
+                 あとから並べ替えも差し込みもしないので添字でよい -->
+            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)" :key="`date-${idx}`" class="border">
+              <span class="date" v-text="date(val.pubDate)" />
+            </div>
+            <episode-row :key="`episode-${idx}`" :episode="val" />
+          </template>
+        </div>
+      </template>
+      <template v-if="episodes_in_2weeks.length">
+        <h5>先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes</h5>
+        <div class="last-week">
+          <template v-for="(val, idx) in episodes_in_2weeks">
+            <!-- 違う日だったら。
+                 key は並び順そのもの。この一覧はビルド時に決まって、
+                 あとから並べ替えも差し込みもしないので添字でよい -->
+            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)" :key="`date-${idx}`" class="border">
+              <span class="date" v-text="date(val.pubDate)" />
+            </div>
+            <episode-row :key="`episode-${idx}`" :episode="val" />
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
 </template>
 
 <!--

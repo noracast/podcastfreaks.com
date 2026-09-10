@@ -1,101 +1,95 @@
-<template lang="pug">
-.root
-  h2 About
-  p
-    | このサイトは、近頃流行りの日本語テック系ポッドキャストのアクティビティをまとめたサイトです。中の人は
-    a-blank(href="https://noracast.jp") noracast
-    | というポッドキャスト好きの３人組がポッドキャストについて話す番組をやっているので、よかったら聞いてみください。<br>
-    | リストへの追加・修正または削除のご希望がある場合は、
-    nuxt-link(to='/request/') リクエストページ
-    | から教えてください。
-  h3 ざっくりとした仕組みの解説
-  p
-    | 手動で登録しているのは、フィードURLと、公式X、公式ハッシュタグの３つで、残りの情報は取得したデータを元に作っています。
-    | フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。
-    br
-    br
-    a-blank.noborder(href="https://app.netlify.com/sites/podcastfreaks.com/deploys")
-      img.badge(src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status")
-  h3 フィードの取得状況
-  p
-    | 毎日のビルドで見つかった問題は
-    nuxt-link(to='/errors/') Errors ページ
-    | に出しています。取得できなかった番組のほか、収録時間やカバー画像を読み取れなかった番組も挙げています。<br>
-    | ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。原因が分からない場合はリクエストページからお知らせください。
-  h3 Duration と Frequency の見方
-  p
-    | 一覧の Duration と Frequency は、番組ごとに求めた値をおおまかな段階に丸めて出しています。取りうる値は次のとおりです。
-  h4#duration Duration
-  p.note 各エピソードの収録時間（RSSの itunes:duration）の中央値です。短いものほど濃い青にしています。
-  ul.legend
-    li
-      duration(duration="00:10:00")
-      span 〜15分00秒
-    li
-      duration(duration="00:25:00")
-      span 15分を超えて30分まで
-    li
-      duration(duration="00:40:00")
-      span 30分を超えて45分まで
-    li
-      duration(duration="00:50:00")
-      span 45分を超えて1時間未満
-    li
-      duration(duration="01:10:00")
-      span 1時間から1時間29分まで
-    li
-      duration(duration="01:45:00")
-      span 1時間30分から1時間59分まで
-    li
-      duration(duration="02:30:00")
-      span 2時間以上
-    li
-      duration
-      span 収録時間を読み取れなかった番組
-  h4#frequency Frequency
-  p.note 直近の更新日の間隔の中央値です。更新が多いものほど鮮やかな緑にしています。
-  ul.legend
-    li
-      frequency(:interval="1")
-      span 2日未満
-    li
-      frequency(:interval="3")
-      span 2日から4日
-    li
-      frequency(:interval="7")
-      span 5日から9日
-    li
-      frequency(:interval="14")
-      span 10日から17日
-    li
-      frequency(:interval="30")
-      span 18日から44日
-    li
-      frequency(:interval="60")
-      span 45日から119日
-    li
-      frequency(:interval="200")
-      span 120日以上
-    li
-      frequency
-      span 更新した日が1日分しかなく、間隔を求められなかった番組
-  h3 X アカウントについて
-  p
-    | MCの方個人のXアカウントですと、番組以外の情報が混ざってしまいやすいので、番組公式のものに限っています。<br>
-  h3 OPMLダウンロード
-  p
-    | トップページから、書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLファイルがダウンロードできます。<br>
-    | MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。
-  h3 音声の再生について
-  p
-    | このサイトで再生する音声は、預かったり中継したりせず、各番組の配信サーバーにあるファイルをブラウザから直接再生しています。配信元のログにはお聴きの方のアクセスがそのまま残るので、ここでの再生は各番組の統計に計上されます。フィードに書かれたURLは計測用のものも含めて一切書き換えていません。ファイルの保存機能は用意していません。<br>
-    | フィードに掲載拒否（itunes:block / podcast:block）が指定されている番組は、一覧に出していません。掲載を止めたい場合は、フィードでの指定のほか、
-    nuxt-link(to='/request/') リクエストページ
-    | からもお知らせいただけます。
-  h3 Contribution
-  p
-    | このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br>
-    a-blank(href="https://github.com/noracast/podcastfreaks.com") https://github.com/noracast/podcastfreaks.com
+<template>
+  <div class="root">
+    <h2>About</h2>
+    <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
+    <p>このサイトは、近頃流行りの日本語テック系ポッドキャストのアクティビティをまとめたサイトです。中の人は<a-blank href="https://noracast.jp">noracast</a-blank>というポッドキャスト好きの３人組がポッドキャストについて話す番組をやっているので、よかったら聞いてみください。<br>リストへの追加・修正または削除のご希望がある場合は、<nuxt-link to="/request/">リクエストページ</nuxt-link>から教えてください。</p>
+    <h3>ざっくりとした仕組みの解説</h3>
+    <p>手動で登録しているのは、フィードURLと、公式X、公式ハッシュタグの３つで、残りの情報は取得したデータを元に作っています。フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。<br><br><a-blank class="noborder" href="https://app.netlify.com/sites/podcastfreaks.com/deploys"><img class="badge" src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status"></a-blank></p>
+    <h3>フィードの取得状況</h3>
+    <p>毎日のビルドで見つかった問題は<nuxt-link to="/errors/">Errors ページ</nuxt-link>に出しています。取得できなかった番組のほか、収録時間やカバー画像を読み取れなかった番組も挙げています。<br>ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。原因が分からない場合はリクエストページからお知らせください。</p>
+    <h3>Duration と Frequency の見方</h3>
+    <p>一覧の Duration と Frequency は、番組ごとに求めた値をおおまかな段階に丸めて出しています。取りうる値は次のとおりです。</p>
+    <h4 id="duration">Duration</h4>
+    <p class="note">各エピソードの収録時間（RSSの itunes:duration）の中央値です。短いものほど濃い青にしています。</p>
+    <ul class="legend">
+      <li>
+        <duration duration="00:10:00" />
+        <span>〜15分00秒</span>
+      </li>
+      <li>
+        <duration duration="00:25:00" />
+        <span>15分を超えて30分まで</span>
+      </li>
+      <li>
+        <duration duration="00:40:00" />
+        <span>30分を超えて45分まで</span>
+      </li>
+      <li>
+        <duration duration="00:50:00" />
+        <span>45分を超えて1時間未満</span>
+      </li>
+      <li>
+        <duration duration="01:10:00" />
+        <span>1時間から1時間29分まで</span>
+      </li>
+      <li>
+        <duration duration="01:45:00" />
+        <span>1時間30分から1時間59分まで</span>
+      </li>
+      <li>
+        <duration duration="02:30:00" />
+        <span>2時間以上</span>
+      </li>
+      <li>
+        <duration />
+        <span>収録時間を読み取れなかった番組</span>
+      </li>
+    </ul>
+    <h4 id="frequency">Frequency</h4>
+    <p class="note">直近の更新日の間隔の中央値です。更新が多いものほど鮮やかな緑にしています。</p>
+    <ul class="legend">
+      <li>
+        <frequency :interval="1" />
+        <span>2日未満</span>
+      </li>
+      <li>
+        <frequency :interval="3" />
+        <span>2日から4日</span>
+      </li>
+      <li>
+        <frequency :interval="7" />
+        <span>5日から9日</span>
+      </li>
+      <li>
+        <frequency :interval="14" />
+        <span>10日から17日</span>
+      </li>
+      <li>
+        <frequency :interval="30" />
+        <span>18日から44日</span>
+      </li>
+      <li>
+        <frequency :interval="60" />
+        <span>45日から119日</span>
+      </li>
+      <li>
+        <frequency :interval="200" />
+        <span>120日以上</span>
+      </li>
+      <li>
+        <frequency />
+        <span>更新した日が1日分しかなく、間隔を求められなかった番組</span>
+      </li>
+    </ul>
+    <h3>X アカウントについて</h3>
+    <p>MCの方個人のXアカウントですと、番組以外の情報が混ざってしまいやすいので、番組公式のものに限っています。<br></p>
+    <h3>OPMLダウンロード</h3>
+    <p>トップページから、書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLファイルがダウンロードできます。<br>MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。</p>
+    <h3>音声の再生について</h3>
+    <p>このサイトで再生する音声は、預かったり中継したりせず、各番組の配信サーバーにあるファイルをブラウザから直接再生しています。配信元のログにはお聴きの方のアクセスがそのまま残るので、ここでの再生は各番組の統計に計上されます。フィードに書かれたURLは計測用のものも含めて一切書き換えていません。ファイルの保存機能は用意していません。<br>フィードに掲載拒否（itunes:block / podcast:block）が指定されている番組は、一覧に出していません。掲載を止めたい場合は、フィードでの指定のほか、<nuxt-link to="/request/">リクエストページ</nuxt-link>からもお知らせいただけます。</p>
+    <h3>Contribution</h3>
+    <p>このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br><a-blank href="https://github.com/noracast/podcastfreaks.com">https://github.com/noracast/podcastfreaks.com</a-blank></p>
+  </div>
 </template>
 
 <style scoped>

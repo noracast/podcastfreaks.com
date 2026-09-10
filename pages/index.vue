@@ -1,91 +1,110 @@
-<template lang="pug">
-div.root(:class="{ 'show-all-columns': showAllColumns }")
-  button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
-  //- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
-  //- 文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない
-  button.toggle-columns(v-if="hasHiddenColumns" @click="toggleAllColumns")
-    | {{ showAllColumns ? 'Compact' : 'All columns' }}
-  //- 子行の開け閉めは行のどこを押しても効く（onRowClick）。
-  //- 行の中のリンクやチェックボックスは、そのまま働かせる
-  v-client-table(:columns="columns" :data="channels" :options="options" ref="table" @row-click="onRowClick")
-    template(slot="title" slot-scope="props")
-      .title-cell
-        //- カバー画像はもともと別の列だったが、見出しが2つに割れて
-        //- 片方が空欄になり収まりが悪かったので、この列に入れた
-        cover.cover(:channel="props.row.key")
-        .clip
-          //- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
-          //- 省略は内側の .text が受け持つので、バッジは省略に巻き込まれない
-          span.value
-            span.new(v-if="isRecentlyAdded(props.row.addedAt)" :title="`${props.row.addedAt} に登録`") New!
-            //- 省略された場合に全体を確認できるよう title 属性を付ける
-            span.text(:title="props.row.title") {{ props.row.title }}
-            //- タイトルの後ろに並べる外部リンク。
-            //- Apple 側と登録フィードURLが違う番組は自動で特定できないため、
-            //- Apple Podcasts のリンクを持たない番組がある
-            //- （data/apple-podcasts.json に手で足せる）
-            span.links
-              apple-podcasts-link(v-if="props.row.applePodcasts" :url="props.row.applePodcasts")
-              x-link(v-if="props.row.twitter" :account="props.row.twitter")
-              hashtag-link(v-if="props.row.hashtag" :hashtag="props.row.hashtag")
-    template(slot="lastEpisodeDate" slot-scope="props")
-      a-blank(v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink")
-        //- .value を基準にして、バッジを日付の右上に置く
-        span.value
-          span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
-          | {{ props.row.lastEpisodeDate | formatDate }}
-      span.date(v-else)
-        span.value
-          span.new(v-if="isIn(props.row.lastEpisodeDate, newThreshold1)") New!
-          | {{ props.row.lastEpisodeDate | formatDate }}
-    template(slot="durationMedian" slot-scope="props")
-      duration(:duration="props.row.durationMedian")
-    template(slot="updateInterval" slot-scope="props")
-      frequency(:interval="props.row.updateInterval")
-    template(slot="fileServer" slot-scope="props")
-      .clip
-        //- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
-        //- 実際のホスト名はツールチップで確認できる
-        small(:title="props.row.fileServer") {{ props.row.fileServer | hosting }}
-    template(slot="firstEpisodeDate" slot-scope="props")
-      a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
-        span.value
-          span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
-          | {{ props.row.firstEpisodeDate | formatDate }}
-      span.date(v-else)
-        span.value
-          span.new(v-if="isIn(props.row.firstEpisodeDate, newThreshold2)") New!
-          | {{ props.row.firstEpisodeDate | formatDate }}
-    template(slot="download" slot-scope="props")
-      input(type="checkbox" :value="props.row.key" v-model="markedRows")
-    template(slot="child_row" slot-scope="props")
-      .wrap
-        //- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
-        //- 端に着いたときに位置が食い違う
-        .column
-          .info(@scroll="onColumnScroll")
-            p.description(v-if="props.row.desciprtion" v-html.raw="props.row.desciprtion")
-            p.description(v-else) No description
-            button-text(v-if="props.row.link" :text="props.row.link" :buttonText="'Open Web'" buttonAction="'open'")
-            button-text(:text="props.row.feed" :buttonText="'Copy RSS'")
-          //- 上下にまだ続きがあることを示す影
-          .scroll-fade.top
-          .scroll-fade.bottom
-        //- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む
-        .column
-          .episodes(@scroll="onEpisodesScroll(props.row.key, $event)")
-            template(v-if="episodes[props.row.key]")
-              episode-player(
-                v-for="(ep, i) in visibleEpisodes(props.row.key)"
-                :key="i"
-                :episode="ep"
-                @play="playEpisode"
-              )
-            p.episodes-status(v-else-if="episodesFailed[props.row.key]") エピソードを読み込めませんでした
-            p.episodes-status(v-else) Loading…
-          .scroll-fade.top
-          .scroll-fade.bottom
-
+<template>
+  <div class="root" :class="{ 'show-all-columns': showAllColumns }">
+    <button ref="downloadBtn" class="download" :disabled="markedRows.length == 0" @click="downloadOpml">Download OPML</button>
+    <!-- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
+         文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない -->
+    <button v-if="hasHiddenColumns" class="toggle-columns" @click="toggleAllColumns">{{ showAllColumns ? 'Compact' : 'All columns' }}</button>
+    <!-- 子行の開け閉めは行のどこを押しても効く（onRowClick）。
+         行の中のリンクやチェックボックスは、そのまま働かせる -->
+    <v-client-table ref="table" :columns="columns" :data="channels" :options="options" @row-click="onRowClick">
+      <template slot="title" slot-scope="props">
+        <div class="title-cell">
+          <!-- カバー画像はもともと別の列だったが、見出しが2つに割れて
+               片方が空欄になり収まりが悪かったので、この列に入れた -->
+          <cover class="cover" :channel="props.row.key" />
+          <div class="clip">
+            <!-- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
+                 省略は内側の .text が受け持つので、バッジは省略に巻き込まれない -->
+            <span class="value">
+              <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
+              <span v-if="isRecentlyAdded(props.row.addedAt)" class="new" :title="`${props.row.addedAt} に登録`">New!</span>
+              <span class="text" :title="props.row.title">{{ props.row.title }}</span>
+              <!-- タイトルの後ろに並べる外部リンク。
+                   Apple 側と登録フィードURLが違う番組は自動で特定できないため、
+                   Apple Podcasts のリンクを持たない番組がある
+                   （data/apple-podcasts.json に手で足せる） -->
+              <span class="links">
+                <apple-podcasts-link v-if="props.row.applePodcasts" :url="props.row.applePodcasts" />
+                <x-link v-if="props.row.twitter" :account="props.row.twitter" />
+                <hashtag-link v-if="props.row.hashtag" :hashtag="props.row.hashtag" />
+              </span>
+            </span>
+          </div>
+        </div>
+      </template>
+      <template slot="lastEpisodeDate" slot-scope="props">
+        <a-blank v-if="props.row.lastEpisodeLink" :href="props.row.lastEpisodeLink">
+          <!-- .value を基準にして、バッジを日付の右上に置く -->
+          <span class="value"><span v-if="isIn(props.row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ props.row.lastEpisodeDate | formatDate }}</span>
+        </a-blank>
+        <span v-else class="date">
+          <span class="value"><span v-if="isIn(props.row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ props.row.lastEpisodeDate | formatDate }}</span>
+        </span>
+      </template>
+      <template slot="durationMedian" slot-scope="props">
+        <duration :duration="props.row.durationMedian" />
+      </template>
+      <template slot="updateInterval" slot-scope="props">
+        <frequency :interval="props.row.updateInterval" />
+      </template>
+      <template slot="fileServer" slot-scope="props">
+        <div class="clip">
+          <!-- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
+               実際のホスト名はツールチップで確認できる -->
+          <small :title="props.row.fileServer">{{ props.row.fileServer | hosting }}</small>
+        </div>
+      </template>
+      <template slot="firstEpisodeDate" slot-scope="props">
+        <a-blank v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink">
+          <span class="value"><span v-if="isIn(props.row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ props.row.firstEpisodeDate | formatDate }}</span>
+        </a-blank>
+        <span v-else class="date">
+          <span class="value"><span v-if="isIn(props.row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ props.row.firstEpisodeDate | formatDate }}</span>
+        </span>
+      </template>
+      <template slot="download" slot-scope="props">
+        <input v-model="markedRows" type="checkbox" :value="props.row.key">
+      </template>
+      <template slot="child_row" slot-scope="props">
+        <div class="wrap">
+          <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
+               端に着いたときに位置が食い違う -->
+          <div class="column">
+            <div class="info" @scroll="onColumnScroll">
+              <!-- 番組の説明はフィードに書かれた HTML をそのまま出している。
+                   もとは v-html.raw と書いてあったが、.raw という修飾子は
+                   Vue に無く、黙って無視されていた -->
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <p v-if="props.row.desciprtion" class="description" v-html="props.row.desciprtion" />
+              <p v-else class="description">No description</p>
+              <button-text v-if="props.row.link" :text="props.row.link" :button-text="'Open Web'" button-action="'open'" />
+              <button-text :text="props.row.feed" :button-text="'Copy RSS'" />
+            </div>
+            <!-- 上下にまだ続きがあることを示す影 -->
+            <div class="scroll-fade top" />
+            <div class="scroll-fade bottom" />
+          </div>
+          <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
+          <div class="column">
+            <div class="episodes" @scroll="onEpisodesScroll(props.row.key, $event)">
+              <template v-if="episodes[props.row.key]">
+                <episode-player
+                  v-for="(ep, i) in visibleEpisodes(props.row.key)"
+                  :key="i"
+                  :episode="ep"
+                  @play="playEpisode"
+                />
+              </template>
+              <p v-else-if="episodesFailed[props.row.key]" class="episodes-status">エピソードを読み込めませんでした</p>
+              <p v-else class="episodes-status">Loading…</p>
+            </div>
+            <div class="scroll-fade top" />
+            <div class="scroll-fade bottom" />
+          </div>
+        </div>
+      </template>
+    </v-client-table>
+  </div>
 </template>
 
 <style scoped>

@@ -1,45 +1,57 @@
-<template lang='pug'>
-//- 狭い画面の切り替えは CSS のメディアクエリで行う。
-//- 以前は Responsive コンポーネントで要素幅を測っていたが、幅が分かるまで
-//- 中身を visibility: hidden で隠す作りのため、事前レンダリング済みの HTML が
-//- JS を読み終えるまで表示されず、最初の表示が白いままだった。
-//- 対象はページ全幅の要素なので、要素幅で測る必要はない
-.wrapper
-  header
-    .brand
-      //- タイトルとリード文をまとめて1つのリンクにする。
-      //- どちらもトップへ戻る同じリンクなので、範囲を分けると紛らわしい
-      nuxt-link(to='/')
-        h1 Podcast Freaks
-        p.lead テック系ポッドキャストまとめ
-    nav
-      nuxt-link(to='/about/') About
-      nuxt-link(to='/new/') New episodes
-      nuxt-link(to='/request/') Request
-    .stats.channels
-      span {{ channelCount }}
-      span channels
-    .stats.episodes
-      span {{ episodeCount }}
-      span episodes
-    .stats.update
-      span {{ updatedDate }}
-      span {{ updatedTime }} updated
-    //- アクセス解析から外れているときだけ出る印。
-    //- 除外は localStorage に持つのでブラウザごと。他の人には出ない
-    .ga-optout(title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください") 計測オフ
-  .main
-    .sp_stats
-      .channels
-        span {{ channelCount }}
-        span channels
-      .episodes
-        span {{ episodeCount }}
-        span episodes
-      .update
-        span {{ updatedDate }} {{ updatedTime }}
-        span updated
-    nuxt
+<template>
+  <!-- 狭い画面の切り替えは CSS のメディアクエリで行う。
+       以前は Responsive コンポーネントで要素幅を測っていたが、幅が分かるまで
+       中身を visibility: hidden で隠す作りのため、事前レンダリング済みの HTML が
+       JS を読み終えるまで表示されず、最初の表示が白いままだった。
+       対象はページ全幅の要素なので、要素幅で測る必要はない -->
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <!-- タイトルとリード文をまとめて1つのリンクにする。
+             どちらもトップへ戻る同じリンクなので、範囲を分けると紛らわしい -->
+        <nuxt-link to="/">
+          <h1>Podcast Freaks</h1>
+          <p class="lead">テック系ポッドキャストまとめ</p>
+        </nuxt-link>
+      </div>
+      <!-- リンクの間に改行を入れると、出力に半角空白が入って間隔が変わる -->
+      <nav>
+        <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/new/">New episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
+      </nav>
+      <div class="stats channels">
+        <span>{{ channelCount }}</span>
+        <span>channels</span>
+      </div>
+      <div class="stats episodes">
+        <span>{{ episodeCount }}</span>
+        <span>episodes</span>
+      </div>
+      <div class="stats update">
+        <span>{{ updatedDate }}</span>
+        <span>{{ updatedTime }} updated</span>
+      </div>
+      <!-- アクセス解析から外れているときだけ出る印。
+           除外は localStorage に持つのでブラウザごと。他の人には出ない -->
+      <div class="ga-optout" title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください">計測オフ</div>
+    </header>
+    <div class="main">
+      <div class="sp_stats">
+        <div class="channels">
+          <span>{{ channelCount }}</span>
+          <span>channels</span>
+        </div>
+        <div class="episodes">
+          <span>{{ episodeCount }}</span>
+          <span>episodes</span>
+        </div>
+        <div class="update">
+          <span>{{ updatedDate }} {{ updatedTime }}</span>
+          <span>updated</span>
+        </div>
+      </div>
+      <nuxt />
+    </div>
+  </div>
 </template>
 
 <style>
