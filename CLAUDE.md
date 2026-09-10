@@ -50,6 +50,7 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
   リンク）は GitHub Actions が生成する。手で編集するのは後者の `"source": "manual"`
   の項目だけ
 - フィードのエラーや警告への対処は `.claude/skills/feed-triage/` にまとめてある
+- 番組を新しく登録する手順は `.claude/skills/add-channel/` にまとめてある
 
 ## 依存関係
 

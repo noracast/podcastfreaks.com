@@ -125,6 +125,7 @@ yarn apple-podcasts  # data/apple-podcasts.json を更新する（--refresh で�
 ## Contributing
 
 - `data/rss.json` を差し替えれば、別のポッドキャストのまとめサイトを作れます。
+- 番組を登録するときの手順（フィードの探し方と検証）は `.claude/skills/add-channel/SKILL.md` にまとめてあります。
 - `data/rss.json` からフィードを外すときは、削除するだけでなく、理由を添えて `data/rss-inactive.json` へ移してください。
 - Apple Podcasts へのリンクが出ていない番組があれば、`data/apple-podcasts.json` に足せます。
 

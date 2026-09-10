@@ -97,3 +97,4 @@ package-lock.json
 # このリポジトリで管理するスキルは追跡する
 /.claude/skills/*
 !/.claude/skills/feed-triage/
+!/.claude/skills/add-channel/
