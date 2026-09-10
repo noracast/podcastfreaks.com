@@ -45,8 +45,6 @@
     "file-extension": "^4.0.5",
     "lodash": "^4.18.1",
     "node-cleanup": "^2.1.2",
-    "pug": "^2.0.4",
-    "pug-plain-loader": "^1.1.0",
     "serialize-error": "^5.0.0",
     "sharp": "^0.33.0",
     "vue-eslint-parser": "^10.4.1",
