@@ -47,7 +47,7 @@
     label(for="message") Message
     small なにかメッセージ等あれば
     br
-    textarea#message(name="message" rows="5" placeholder="ハッシュタグが間違っていました。\nTwitter上でのお礼は結構です。")
+    textarea#message(name="message" rows="5" placeholder="ハッシュタグが間違っていました。\nフィードのURLが変わりました。\nApple PodcastsのURLはこちらです。")
 
     label(for="contributor") Contributor
     small 無記名でももちろん大丈夫です！
