@@ -70,17 +70,13 @@ h5 {
 </style>
 
 <script>
-import axios from 'axios'
 import moment from 'moment'
-import xml2js from '@/lib/xml2js-promise'
 import { jst } from '@/lib/jst'
-import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 
 export default {
   components: {
-    'episode-row': require('@/components/episode-row.vue').default,
-    'podcast': require('@/components/podcast.vue').default
+    'episode-row': require('@/components/episode-row.vue').default
   },
   data: function() {
     // ビルド時刻を基準に、日本時間で「今週」と「先週」に振り分ける。
@@ -98,11 +94,8 @@ export default {
       }
     })
     return {
-      feeds: build_info.load_order.map(i => `./downloads/rss/${i}.rss`),
       episodes_in_1weeks,
-      episodes_in_2weeks,
-      channels: build_info.channels,
-      current_date: null
+      episodes_in_2weeks
     }
   },
   methods: {

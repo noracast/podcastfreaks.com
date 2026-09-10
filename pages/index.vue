@@ -876,7 +876,6 @@ div.root(:class="{ 'show-all-columns': showAllColumns }")
 
 <script>
 import axios from 'axios'
-import xml2js from '@/lib/xml2js-promise'
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
