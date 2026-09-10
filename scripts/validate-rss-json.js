@@ -62,10 +62,10 @@ export default function validateRssJson(rssPath, inactivePath) {
     if (keys.length > 1) errors.push(`フィードが重複しています: ${feed} (${keys.join(', ')})`)
   }
 
-  // Twitter / ハッシュタグの重複。
+  // X / ハッシュタグの重複。
   // 別番組が同じアカウントやタグを使うこともあり得るので警告に留める
   for (const [twitter, keys] of Object.entries(groupBy(entries, v => v.twitter && v.twitter.toLowerCase()))) {
-    if (keys.length > 1) warnings.push(`Twitter が重複しています: ${twitter} (${keys.join(', ')})`)
+    if (keys.length > 1) warnings.push(`X が重複しています: ${twitter} (${keys.join(', ')})`)
   }
   for (const [hashtag, keys] of Object.entries(groupBy(entries, v => v.hashtag && v.hashtag.toLowerCase()))) {
     if (keys.length > 1) warnings.push(`ハッシュタグが重複しています: ${hashtag} (${keys.join(', ')})`)

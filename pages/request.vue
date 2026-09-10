@@ -34,8 +34,8 @@
     br
     input#feed(type="text" name="feed" placeholder="https://noracast.jp/feed.xml")
 
-    label(for="twitter") Twitter
-    small 番組公式Twitterアカウントがある場合
+    label(for="twitter") X
+    small 番組公式 X アカウントがある場合
     br
     input#twitter(type="text" name="twitter" placeholder="@noracast_")
 
