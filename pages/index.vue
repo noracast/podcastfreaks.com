@@ -71,7 +71,10 @@
                端に着いたときに位置が食い違う -->
           <div class="column">
             <div class="info" @scroll="onColumnScroll">
-              <!-- 番組の説明はフィードに書かれた HTML をそのまま出している。
+              <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
+                   v-html で出すが、中身は prebuild.js の sanitizeDescription で
+                   許可したタグと属性だけに濾してある（配信者が自由に書ける入力
+                   なので、ここまで来た時点で信用できる形にしておく）。
                    もとは v-html.raw と書いてあったが、.raw という修飾子は
                    Vue に無く、黙って無視されていた -->
               <!-- eslint-disable-next-line vue/no-v-html -->

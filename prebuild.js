@@ -11,6 +11,7 @@ import path from 'path'
 import normalizeFeed from './scripts/normalize-feed.js'
 import parsePubDate from './scripts/parse-pub-date.js'
 import PFUtil from './scripts/pf-util.js'
+import sanitizeHtml from 'sanitize-html'
 import { serializeError } from 'serialize-error'
 import shell from 'shelljs'
 import validateRssJson from './scripts/validate-rss-json.js'
@@ -44,6 +45,30 @@ consola.setReporters([new CompactReporter()])
 
 // OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
 const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()
+
+// 番組の説明はフィードに書かれた HTML をそのまま一覧に出している
+// （pages/index.vue の v-html）。配信者が自由に書ける入力なので、
+// ブラウザへ渡す前にここで濾しておく。
+//
+// 実際に使われているのは p / a / br / strong / hr だけだが、体裁のための
+// タグは通しておく。危ないのは属性の方（onerror など）と、javascript: の
+// ような URL なので、許可したものだけを残す。
+//
+// target="_blank" のリンクには rel を必ず付ける。開いた先から
+// window.opener で元のページを触れてしまうため
+const sanitizeDescription = (html) => sanitizeHtml(String(html), {
+  allowedTags: ['p', 'br', 'a', 'strong', 'b', 'em', 'i', 'ul', 'ol', 'li', 'hr'],
+  allowedAttributes: { a: ['href', 'target', 'rel'] },
+  allowedSchemes: ['http', 'https', 'mailto'],
+  transformTags: {
+    a: (tagName, attribs) => ({
+      tagName,
+      attribs: attribs.target === '_blank'
+        ? { ...attribs, rel: 'noopener' }
+        : attribs
+    })
+  }
+})
 
 // 表示用のタイトルを整える。
 // - CDATA 内で二重にエスケープされているフィードがあるため実体参照を戻す
@@ -347,7 +372,7 @@ const fetchFeed = async key => {
     updateInterval: util.getUpdateInterval(episodes),
     durationAverage: util.getDurationAverage(durations),
     durationMedian: util.getDurationMedian(durations),
-    desciprtion: channel.description ? channel.description : null
+    desciprtion: channel.description ? sanitizeDescription(channel.description) : null
   }
 }
 
