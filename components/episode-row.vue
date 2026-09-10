@@ -1,9 +1,7 @@
-<template lang="pug">
-div.row
-  cover.cover(:channel="episode.key" :size='30' radius='50%')
-  a-blank.text(:href="episode.link")
-    span.channel {{ episode.channel_title }}
-    | {{ episode.title }}
+<template>
+  <div class="row">
+    <cover class="cover" :channel="episode.key" :size="30" radius="50%" /><a-blank class="text" :href="episode.link"><span class="channel">{{ episode.channel_title }}</span>{{ episode.title }}</a-blank>
+  </div>
 </template>
 
 <style scoped>

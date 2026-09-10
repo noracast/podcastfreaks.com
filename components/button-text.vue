@@ -1,13 +1,13 @@
-<template lang="pug">
-div
-  button.action(v-if="buttonAction=='copy'" v-clipboard:copy="text") {{ buttonText }}
-  a-blank.action(v-else :href="text") {{ buttonText }}
-  //- URL そのものも開けるようにする。ボタンが「コピー」のときは
-  //- ここからしか開けないため
-  a-blank.value(:href="text")
-    //- flex の直下のテキストには text-overflow が効かないため、
-    //- 省略を受け持つ要素を1つ挟む
-    span {{ text }}
+<template>
+  <div>
+    <button v-if="buttonAction=='copy'" v-clipboard:copy="text" class="action">{{ buttonText }}</button>
+    <a-blank v-else class="action" :href="text">{{ buttonText }}</a-blank><!-- URL そのものも開けるようにする。ボタンが「コピー」のときはここからしか開けない
+    --><a-blank class="value" :href="text">
+      <!-- flex の直下のテキストには text-overflow が効かないため、
+           省略を受け持つ要素を1つ挟む -->
+      <span>{{ text }}</span>
+    </a-blank>
+  </div>
 </template>
 
 <style scoped>

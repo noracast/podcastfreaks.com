@@ -47,7 +47,15 @@ export default [
 
       // コンポーネント名はテンプレートでの書き方に揃えてケバブケースにしている
       // （a-blank, episode-row など）。既定は PascalCase
-      'vue/component-definition-name-casing': ['warn', 'kebab-case']
+      'vue/component-definition-name-casing': ['warn', 'kebab-case'],
+
+      // テンプレートは pug から移したもので、属性を1行に並べて書いてある。
+      // 既定（1行に書くなら属性は1つまで）に合わせると、svg の path のような
+      // 短い要素まで縦に割れて、かえって読みにくい
+      'vue/max-attributes-per-line': 'off',
+
+      // <button>{{ buttonText }}</button> のような短いものを3行に割らない
+      'vue/singleline-html-element-content-newline': 'off'
     }
   }
 ]

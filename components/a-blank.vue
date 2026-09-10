@@ -1,4 +1,5 @@
-<template lang="pug">
-a(target="_blank" rel="noopener")
-  slot
+<template>
+  <a target="_blank" rel="noopener">
+    <slot />
+  </a>
 </template>

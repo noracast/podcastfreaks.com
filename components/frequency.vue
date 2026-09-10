@@ -1,8 +1,8 @@
-<template lang="pug">
-//- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
-//- この印を見たときなので、見出しに別の目印を置くより素直に辿れる
-nuxt-link.badge(v-if="level" :class="level.name" :title="tooltip" to="/about/#frequency") {{ level.label }}
-nuxt-link.badge(v-else to="/about/#frequency" title="更新した日が1日分しかないため算出できません") N/A
+<template>
+  <!-- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
+       この印を見たときなので、見出しに別の目印を置くより素直に辿れる -->
+  <nuxt-link v-if="level" class="badge" :class="level.name" :title="tooltip" to="/about/#frequency">{{ level.label }}</nuxt-link>
+  <nuxt-link v-else class="badge" to="/about/#frequency" title="更新した日が1日分しかないため算出できません">N/A</nuxt-link>
 </template>
 
 <style scoped>

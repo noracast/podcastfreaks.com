@@ -1,5 +1,5 @@
-<template lang="pug">
-div.cover(:style="styles")
+<template>
+  <div class="cover" :style="styles" />
 </template>
 
 <style scoped>
