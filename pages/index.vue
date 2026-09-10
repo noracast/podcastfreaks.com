@@ -502,6 +502,14 @@ $sort_icon_width: 1.6em
       height: 100%
       opacity: 0
       cursor: pointer
+  // 見出しと「?」を1行に並べる。見た目は components/help-link.vue が持つ
+  .heading-with-help
+    display: inline-flex
+    align-items: center
+  // 「?」はその見出しに触れている間だけ出す。ずっと出しておくと、
+  // 並んだ見出しの中で記号だけが目に付いてしまう
+  th:hover .heading-with-help .help
+    opacity: 1
   // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
   // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
   // ソートするたびに見出しの位置がずれる
@@ -612,6 +620,10 @@ import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
+// 見出しの中で描くので、タグ名ではなくコンポーネントそのものを渡す必要がある。
+// vue-tables-2 の内部コンポーネントの文脈で描かれるため、
+// このページに登録した名前は解決されない
+import HelpLink from '@/components/help-link.vue'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
 import { Event as VueTablesEvent } from 'vue-tables-2'
@@ -659,12 +671,12 @@ export default {
       columns: [
         'cover',
         'title',
-        'fileServer',
-        'updateInterval',
-        'durationMedian',
         'total',
         'firstEpisodeDate',
         'lastEpisodeDate',
+        'fileServer',
+        'updateInterval',
+        'durationMedian',
         'download'
       ],
       markedRows: [],
@@ -718,8 +730,9 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
-          durationMedian: 'Duration',
-          updateInterval: 'Frequency',
+          // 取りうる値の一覧は About に1か所だけ置き、ここからは「?」で送る
+          durationMedian: (h) => this.headingWithHelp(h, 'Duration', '/about/#duration'),
+          updateInterval: (h) => this.headingWithHelp(h, 'Frequency', '/about/#frequency'),
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // 通常の function だと this がページコンポーネントにならない。
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
@@ -843,6 +856,15 @@ export default {
     window.removeEventListener('resize', this.refreshScrollFades)
   },
   methods: {
+    // 列見出しに「?」を添えて、About の凡例へ送る。
+    // 見出しはセル全体が並べ替えのクリック領域なので、「?」を押したときは
+    // そこで止める（リンク自身のハンドラは同じ要素にあるので働く）
+    headingWithHelp: function(h, label, to) {
+      return h('span', { class: 'heading-with-help' }, [
+        label,
+        h(HelpLink, { props: { to, label } })
+      ])
+    },
     // エピソードは番組ごとのファイルに分けてある。
     //
     // 以前は build_info.json に全番組の直近5話を入れてページのバンドルに
