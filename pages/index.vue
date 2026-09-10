@@ -101,21 +101,19 @@ $sort_icon_width: 1.6em
   width: 150px
   top: 20px
   right: 0
-  // ヘッダーと同じ背景にする。後ろは白いだけなので透かさない。
-  // 押したときの変化は、色を差し替えるのではなく明るさで付ける
-  +brand-solid
-  // 文字は普段うっすら、ホバーでくっきり。ガラス越しに見えている感じにする
-  color: rgba(255,255,255,0.72)
-  transition-duration: 0.2s
-  &[disabled]
-    color: rgba(255,255,255,0.35)
+  // ヘッダーと同じ背景。普段はヘッダーと同じだけ透かし、ホバーで
+  // 透けを止めて色をはっきりさせる
+  +brand-glass
+  // 重ねた色を自分の中に閉じ込める（囲いを作らないと背面へ抜けてしまう）
+  z-index: 0
+  &::before
+    transition: opacity 0.2s
   &:not([disabled])
-    &:hover
-      color: #fff
-      filter: brightness(1.06)
+    &:hover::before,
+    &:active::before
+      opacity: 1
     &:active
-      color: #fff
-      filter: brightness(1.14)
+      filter: brightness(1.08)
 
 // 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
 //
