@@ -2,15 +2,16 @@
 div.cover(:style="styles")
 </template>
 
-<style lang="sass" scoped>
-.cover
-  background-repeat: no-repeat
-  background-position: center
-  background-size: cover
-  // 白背景のアートワークが行に溶け込んで消えて見えるため、輪郭を出す。
-  // border ではなく inset shadow にしているのは、指定された width / height を
-  // 変えずに border-radius にも追従させるため
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1)
+<style scoped>
+.cover {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* 白背景のアートワークが行に溶け込んで消えて見えるため、輪郭を出す。
+     border ではなく inset shadow にしているのは、指定された width / height を
+     変えずに border-radius にも追従させるため */
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
 </style>
 
 <script>

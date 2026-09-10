@@ -12,28 +12,34 @@ div
     .heatmap
 </template>
 
-<style lang="sass" scoped>
-.cover
-  width: 250px
-  height: 250px
-.since,
-.episodes
-  font-size: 32px
-h3
-  display: inline-block
-  margin-top: 20px
-  margin-right: 20px
-  font-size: 18px
-div
-  >a
-    margin-right: 10px
-.btn
-  margin-right: 5px
-  &:focus,
-  &:active
-    outline: 0
-.heatmap
-  margin-top: 10px
+<style scoped>
+.cover {
+  width: 250px;
+  height: 250px;
+}
+.since, .episodes {
+  font-size: 32px;
+}
+h3 {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 20px;
+  font-size: 18px;
+}
+div {
+  >a {
+    margin-right: 10px;
+  }
+}
+.btn {
+  margin-right: 5px;
+  &:focus, &:active {
+    outline: 0;
+  }
+}
+.heatmap {
+  margin-top: 10px;
+}
 </style>
 
 <script>

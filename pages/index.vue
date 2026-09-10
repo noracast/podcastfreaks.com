@@ -84,566 +84,695 @@ div.root
 
 </template>
 
-<style lang="sass" scoped>
-@use 'sass:color'
-@import '@/assets/brand'
+<style scoped>
 
-$color_new: #e100ff
-// 行に触れたときの色。ブランドの紫をごく薄く敷く
-$row_hover: #f8f5ff
-// 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px）
-$child_row_height: 305px
-
-@keyframes child-row-in
-  from
-    opacity: 0
-  to
-    opacity: 1
-// ソートアイコンの占有幅。ラベルの位置合わせにも使う
-// ソートアイコンの確保幅。字そのものは8.4pxしかないので、1.6em（19px）では
-// 見出しの右に10px近い余白が居座り、Frequency / Duration の列を押し広げていた。
-// 字＋6pxほどの間隔に詰める
-$sort_icon_width: 1.2em
-
-.download
-  margin-right: 20px
-  position: absolute
-  width: 150px
-  top: 20px
-  right: 0
-  // ヘッダーと同じ背景。普段はヘッダーと同じだけ透かし、ホバーで
-  // 透けを止めて色をはっきりさせる
-  +brand-glass
-  // 重ねた色を自分の中に閉じ込める（囲いを作らないと背面へ抜けてしまう）
-  z-index: 0
-  &::before
-    transition: opacity 0.2s
-  &:not([disabled])
-    &:hover::before,
-    &:active::before
-      opacity: 1
-    &:active
-      filter: brightness(1.08)
-
-// 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
-//
-// 以前は top: -40px / right: -30px だったが、行の高さが変わったことで
-// 上の行に食い込み、さらに右へはみ出して隣の列に重なっていた。
-// 自分の行の中に収まる位置に直し、指す対象の真上に置く
-.new
-  $color: #f7ff00
-  background: $color
-  font-weight: bold
-  font-size: 10px
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 50px
-  height: 20px
-  border-radius: 10px
-  color: #47525d
-  position: absolute
-  // 行の区切り線ではなく、指し示す文字列のすぐ上に置く。
-  // 吹き出し自体は文字に被せず、▼ の先だけが少し重なる。
-  // 左右は文字列の右端を基準にして、少し右へずらす
-  top: -23px
-  right: -30px
-  &:after
-    content: '▼'
-    font-size: 12px
-    line-height: 1em
-    position: absolute
-    display: block
-    color: $color
-    bottom: -7px
-    left: calc(50% - 8px)
-    transform: rotate(19deg)
-
-.root ::v-deep
-  padding-top: 20px
-  padding-bottom: 20px
-  -webkit-overflow-scrolling: touch
-  overflow-scrolling: touch
-  position: relative
-  table
-    border-collapse: collapse
-    border-spacing: 0
-    width: 100%
-  // 並べ替え中の th は class が "titletitle-sorted-asc" のようにひと続きになり、
-  // .title では拾えなくなる（vue-tables-2 が区切りなしで継ぎ足すため）。
-  // 並べ替えても幅や配置が変わらないよう、th は部分一致で指定する
-  th
-    white-space: nowrap
-    // Hosting の見出しに重ねる select の基準にする。
-    // ソートアイコンを右端へ重ねるときの基準でもある。
-    // 他の見出しはセル全体がクリック領域なので、それに合わせる
-    position: relative
-    // 伸び縮みするのは Channel と Hosting だけ。他の列は内容の幅で止める
-    // （下の width: 1%）。余った幅はこの2つに、この比で配られる。
-    // Hosting は中身（.clip）が絶対配置で幅を主張しないため、狭いときは
-    // .clip の min-width（60px）まで縮み、広いときはホスト名が読める幅まで伸びる
-    &[class*="title"]
-      width: 80%
-    // 余りに応じて伸び縮みする。
-    //
-    // 表のセルでは max-width が無視される（実測。min() / clamp() や px 指定も
-    // 効かず、内容の幅まで縮んでしまった）。この表で列を伸縮させられるのは
-    // % 指定だけなので、頭打ちは画面幅ごとに比率を下げて作る（この下の @media）
-    &.file-server
-      width: 15%
-  // 画面が広いとき、余った幅をこれらの列が吸って間延びする。
-  //
-  // table-layout: auto では width の指定は目安でしかなく、余った幅は指定値に
-  // 比例して配られてしまう（width: 115px と書いても135pxになった）。min-width も
-  // 同じように扱われる。伸びを確実に止められるのは width: 1%（できるだけ狭く）で、
-  // このとき列は内容の幅ちょうどに張り付く
-  th[class*="total"], td.total,
-  th[class*="first"], td.first,
-  th[class*="last"], td.last,
-  th[class*="frequency"], td.frequency,
-  th[class*="duration"], td.duration
-    width: 1%
-    white-space: nowrap
-  // 「New!」の吹き出しは日付の右上へ30pxずらして浮かせてある。列を内容の幅まで
-  // 詰めると隣の列へはみ出すので、そのぶんの余白を右に足す。
-  //
-  // 吹き出しがあるのは td の側だけなので、th には足さない。th に足すと
-  // First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う
-  // （並べ替え中の th は class が "lastlastEpisodeDate-sorted-desc" と
-  //   ひと続きになり .last では拾えないため、th 側は指定が効いたり効かなかったりする）
-  td.first,
-  td.last
-    padding-right: 30px
-  // チェックボックスは中身が小さいので、内容の幅に張り付かせる。
-  // width: 1% は「できるだけ狭く」の意味になり、中身より狭くはならない
-  th.check, td.check
-    width: 1%
-    white-space: nowrap
-  th,td
-    text-align: left
-    vertical-align: top
-    padding: 10px
-    outline: 0
-    &:first-child:not(:last-child)
-      display: none
-    &:nth-child(2)
-      padding-left: 20px
-  thead
-    color: #ccc
-    font-size: 12px
-    th
-      font-weight: normal
-  tbody
-    // 行のどこを押しても子行が開くので、行全体を押せるものとして見せる。
-    // 子行（.VueTables__child-row）は別の tr なので、ここには当たらない
-    tr.VueTables__row
-      cursor: pointer
-      transition: background-color 0.15s
-      &:hover
-        background-color: $row_hover
-    th,td
-      font-weight: 500
-      font-size: 13px
-      vertical-align: middle
-    td.title
-      font-weight: bold
-      font-size: 15px
-      // 日付の列と同じ仕組みで、タイトルの文字列の右上に吹き出しを浮かせる。
-      //
-      // .clip の既定では中身が左右いっぱいに広がるため、そのままだと
-      // 「文字列の右端」が取れない。.value を右に伸ばさず（right: auto）、
-      // 列幅までに収まる範囲で文字幅に沿わせることで、短いタイトルでも
-      // バッジが文字のすぐ右上に付く。
-      // 省略は内側の .text が受け持ち、.value は overflow を切らないので
-      // 上にはみ出すバッジが欠けない
-      .title-cell
-        display: flex
-        align-items: center
-        >.cover
-          flex: none
-          // 別々の列だったときの td の余白（右10px＋左10px）と同じ間隔にする
-          margin-right: 20px
-        >.clip
-          flex: 1
-        .clip
-          >.value
-            right: auto
-            max-width: 100%
-            overflow: visible
-            // タイトルとアップルマークを横に並べる。
-            // 幅が足りないときに縮むのはタイトル側だけにしたいので、
-            // .text に min-width: 0 を与えて flex の既定を外す
-            display: flex
-            align-items: center
-            .text
-              min-width: 0
-              overflow: hidden
-              text-overflow: ellipsis
-              white-space: nowrap
-            // タイトルの後ろに並べる外部リンク。
-            // 幅が足りないときに縮むのはタイトル側だけなので、ここは固定
-            .links
-              flex: none
-              display: flex
-              align-items: center
-              margin-left: 16px
-              >*
-                position: relative
-              >*:not(:first-child)
-                margin-left: 6px
-              // ホバーしたアイコンの右横に、その名前を出す。
-              //
-              // アイコンだけでは何のリンクか分からず、リンク先を開くまで
-              // 確かめられなかった。行の高さと列の幅を変えたくないので、
-              // 絶対配置にして並びの計算から外す。
-              // 隣のアイコンに重なるため、行と同じ色の背景を敷いて隠す
-              .label
-                position: absolute
-                left: 100%
-                top: 50%
-                margin-left: 4px
-                padding-right: 4px
-                // 隣のアイコンを隠すための下敷き。ラベルが出るのは
-                // そのアイコンに触れている間＝行に触れている間なので、
-                // 白ではなく行のホバー色に合わせる
-                background-color: $row_hover
-                color: #888
-                font-size: 11px
-                font-weight: normal
-                // 行間は文字の高さぴったりにする。既定（normal）だと
-                // 日本語フォントの大きな行送りのぶん箱が上下に広がり、
-                // 箱の中央で揃えてもアイコンに対して文字がずれて見える
-                line-height: 1
-                white-space: nowrap
-                pointer-events: none
-                opacity: 0
-                // 少し右から滑り込ませる
-                transform: translate(-4px, -50%)
-                transition: opacity 0.2s, transform 0.2s
-              // @ と # は字形が四角い枠いっぱいに広がらないぶん、
-              // Podcast アイコンより間隔を詰めた方が一体に読める
-              >.x .label,
-              >.hashtag .label
-                margin-left: 1px
-              // 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
-              // ホバー中のものを前に出して、ラベルの背景で隠せるようにする
-              >*:hover
-                z-index: 1
-                .label
-                  opacity: 1
-                  transform: translate(0, -50%)
-
-
-      span
-        cursor: pointer
-        &:hover
-          color: color.adjust(#444, $lightness: 10%)
-    td.file-server
-      small
-        display: block
-        font-size: 10px
-        color: #ccc
-    // 長いタイトルやホスト名で折り返して行の高さが変わらないよう、1行に省略する。
-    //
-    // 中身をそのまま nowrap にすると、その幅が列幅の下限になってしまい
-    // テーブルが画面幅に収まらず横スクロールしてしまう。
-    // .clip で1階層くるみ、中身を絶対配置にすることで列幅の計算から外す。
-    // これで「画面幅に応じて伸縮する」と「1行に省略する」が両立する
-    .clip
-      position: relative
-      // 絶対配置にした中身は高さを持たないので、ここで1行分を確保する
-      height: 1.4em
-      // 幅を主張しなくなるため、狭くなりすぎない下限を決めておく
-      min-width: 60px
-      >*
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
-      // a でくるまれている列は実際の文字が中の small にあるため、
-      // 外側だけに指定すると「…」が出ずに切り落とされてしまう
-      >*,
-      small
-        display: block
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
-    // タイトルは可変幅の主役なので、優先的に幅を取る
-    td.title
-      width: 40%
-    td.total
-      font-size: 18px
-    td.last,
-    td.first
-      >a,
-      >.date
-        // /new ページの非スコープなスタイルに .date { position: absolute } があり、
-        // ここで打ち消さないと日付がページ上部へ飛ぶ
-        position: relative
-        display: flex
-        align-items: center
-      // 日付の文字列そのものを基準にして、その右上にバッジを置く
-      .value
-        position: relative
-    tr
-      &:first-child
-        border-top: 1px solid #ccc
-      &:not(.VueTables__child-row)
-        border-top: 1px solid #ccc
-      &.VueTables__child-row
-        border-top: 1px solid #eee
-        background-color: #222
-        background-size: auto 21px
-        color: white !important
-        >td
-          line-height: 1.8em
-          padding: 0
-          // colspan で全列にまたがるため、内容の幅が他の列の幅計算に影響し、
-          // 子行を開くたびに列の位置がずれてしまう。
-          // 幅の要求を出さないようにする（描画幅は colspan により全幅になる）
-          width: 0
-          >.wrap
-            display: flex
-            // 高さが動くのに合わせて、中身も淡く出す
-            animation: child-row-in 0.22s ease-out
-            // td の width: 0 だけでは足りない。中身（長いエピソード名など）の
-            // 最小幅がセルの幅として要求され、開く行によってテーブルが広がって
-            // 横スクロールが出たり出なかったりしていた。
-            // 幅を要求せず、セルいっぱいに広げる
-            width: 0
-            min-width: 100%
-            // 中身の量で高さが変わると、開くたびに一覧が大きく動く。
-            // エピソード5話ぶんに固定し、はみ出す分は各列でスクロールさせる
-            height: $child_row_height
-            >.column
-              position: relative
-              width: 50%
-              height: 100%
-              // 中身の最小幅を外へ出さない
-              min-width: 0
-              // エピソードが少ない番組でも左右の区切りが分かるようにする
-              &:last-child
-                border-left: 1px solid #333
-              >.info,
-              >.episodes
-                height: 100%
-                overflow-y: auto
-              >.info
-                padding: 20px
-                box-sizing: border-box
-              >.episodes
-                // 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない
-                .episodes-status
-                  padding: 20px
-                  color: #999
-                  font-size: 12px
-              // まだ続きがある側の端をうっすら暗くして、スクロールできることを示す。
-              // 中身の上に重ねる（背景に敷くと再生ボタンの色に隠れてしまう）
-              >.scroll-fade
-                position: absolute
-                left: 0
-                right: 0
-                height: 28px
-                pointer-events: none
-                opacity: 0
-                transition: opacity 0.2s
-                &.top
-                  top: 0
-                  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0))
-                &.bottom
-                  bottom: 0
-                  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55))
-              >.can-scroll-up ~ .scroll-fade.top,
-              >.can-scroll-down ~ .scroll-fade.bottom
-                opacity: 1
-
-        p
-          max-width: calc(100vw - 30px)
-          &:first-child
-            margin-top: 0
-    button
-      font-size: 10px
-      padding: 5px 10px
-      min-width: initial
-  .VueTables
-    .row
-      padding-left: 20px
-      padding-right: 20px
-    .table-responsive
-      overflow: auto
-      width: 100%
-      margin-top: 15px
-  .VueTables__search-field
-    margin-bottom: 20px
-    input
-      padding: 8px
-      outline: none
-      font-size: 13px
-      border: 1px solid #ddd
-      width: 300px
-      &:placeholder-shown
-        color: #ccc
-      &::-webkit-input-placeholder
-        color: #ccc
-      &::-moz-placeholder
-        color: #ccc
-  .VueTables__search
-    float: left
-    width: calc(100% - 270px)
-  .VueTables__columns-dropdown
-    float: right
-    width: 100px
-    .dropdown-menu
-      position: absolute
-      right: 20px
-      padding: 15px
-      margin-top: 6px
-      margin-bottom: 0
-      background: #050935
-      border-radius: 3px
-      list-style: none
-      z-index: 10
-      a
-        color: white
-        font-size: 12px
-      input[type=checkbox]
-        margin-right: 1em
-  .VueTables__limit
-    display: none
-  .VueTables__sortable
-    cursor: pointer
-    &:hover
-      color: #7f00ff
-  // Hosting の見出しは配信サービスで絞り込むプルダウンになっている。
-  // ラベルの上に透明な select を重ねることで、見出しの文言を変えずに
-  // ネイティブのプルダウンを使う
-  .hosting-filter
-    display: inline-block
-    cursor: pointer
-    &:hover
-      color: #7f00ff
-    // 絞り込み中であることが分かるようにする
-    &.is-active
-      color: #7f00ff
-      font-weight: bold
-    // th を基準に、セル全体を覆う
-    select
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      opacity: 0
-      cursor: pointer
-  // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
-  // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
-  // ソートするたびに見出しの位置がずれる
-  .VueTables__sort-icon
-    display: inline-block
-    width: $sort_icon_width
-    text-align: right
-  .glyphicon-chevron-down
-    &:before
-      content: '▼'
-      font-size: 0.7em
-  .glyphicon-chevron-up
-    &:before
-      content: '▲'
-      font-size: 0.7em
-  .VuePagination
-    .text-center
-      margin-left: 0
-
-// 810px は layouts/default.vue の境界と揃える
-// Hosting は % でしか伸縮させられないため、画面が広いほど際限なく広がる。
-// ホスト名が読めれば十分で、それ以上はただの空白になるので、広い画面では
-// 比率を下げて200px前後で頭打ちにする
-@media (min-width: 1400px)
-  .root ::v-deep th.file-server
-    width: 13%
-@media (min-width: 1800px)
-  .root ::v-deep th.file-server
-    width: 11%
-@media (min-width: 2400px)
-  .root ::v-deep th.file-server
-    width: 8%
-
-@media (max-width: 810px)
-  .root ::v-deep
-    padding-top: 15px
-    padding-bottom: 15px
-    table
-      margin-top: 15px
-    tbody
-      th,td
-        font-size: 11px
-      td.total
-        font-size: 14px
-      // 画面が狭いと、他の列に押されてタイトルが数文字しか出ない
-      // （実測で文字に割り当てられる幅が10pxだった）。
-      // テーブルはもともと横スクロールするので、読める幅を先に確保する
-      td.title .clip
-        min-width: 180px
-      // タイトルとアイコン群の間隔も、広い画面ほど要らない
-      td.title .title-cell .links
-        margin-left: 8px
-    button
-      font-size: 10px
-    .download
-      position: relative
-      margin-left: 15px
-      top: initial
-      left: initial
-      height: 38px
-    .VueTables
-      margin-top: 15px
-      .row
-        padding-left: 15px
-        padding-right: 15px
-    .VueTables__columns-dropdown
-      .dropdown-menu
-        right: 15px
-    .VueTables__search
-      width: 100%
-    .VueTables__search-field
-      margin-bottom: 0
-      input
-        width: calc(100% - 20px)
-        padding: 9px
-        font-size: 16px
-    .VueTables__columns-dropdown
-      clear: left
-    th,td
-      &:nth-child(2)
-        padding-left: 15px
-    // 広い画面側の指定（tbody tr.VueTables__child-row > td > .wrap）と
-    // 同じ強さにしておく。弱いとメディアクエリの中でも上書きできない
-    tbody tr
-      &.VueTables__child-row
-        >td > .wrap
-          flex-direction: column
-          // 縦に積むぶん高さは伸びるが、説明の長い番組だと一覧が
-          // 大きく動いてしまう。上下それぞれ5話ぶんまでに収める
-          height: auto
-          >.column
-            width: auto
-            height: auto
-            // 縦に積むと上下の関係で続きがあることは分かるので、影は出さない
-            >.scroll-fade
-              display: none
-            &:last-child
-              border-left: 0
-              border-top: 1px solid #333
-            // 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
-            // 増えると、ページ全体のスクロールと取り合いになって扱いづらい
-            >.info
-              height: auto
-              max-height: none
-              overflow-y: visible
-            >.episodes
-              height: $child_row_height
-    .description
-      max-width: calc(100vw - 30px)
+@keyframes child-row-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.download {
+  margin-right: 20px;
+  position: absolute;
+  width: 150px;
+  top: 20px;
+  right: 0;
+  /* ヘッダーと同じ背景。普段はヘッダーと同じだけ透かし、ホバーで
+     透けを止めて色をはっきりさせる */
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(12px) saturate(190%);
+  backdrop-filter: blur(12px) saturate(190%);
+  /* 色は背景に直接置かず、重ねた1枚に描いてその不透明度で調整する。
+     半透明の層を何枚も重ねると、掛け算で効いて後ろがほとんど残らない
+     （最初そうなっていて、透けて見えなかった）。
+     ぼかしすぎると色が平均化されて白に寄るので、ジャケットの形が
+     うっすら分かるくらいに留める。彩度は上げて戻す（これが無いと灰色になる）。
+     使う側は position を持っていること */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    /* 角丸のある要素に使うと、重ねた色が角からはみ出す */
+    border-radius: inherit;
+    background-color: var(--brand-base);
+    background-image: var(--brand-texture);
+    opacity: var(--brand-glass-opacity);
+  }
+  /* 重ねた色を自分の中に閉じ込める（囲いを作らないと背面へ抜けてしまう） */
+  z-index: 0;
+  &::before {
+    transition: opacity 0.2s;
+  }
+  &:not([disabled]) {
+    &:hover::before, &:active::before {
+      opacity: 1;
+    }
+    &:active {
+      filter: brightness(1.08);
+    }
+  }
+}
+/* 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
+   
+   以前は top: -40px / right: -30px だったが、行の高さが変わったことで
+   上の行に食い込み、さらに右へはみ出して隣の列に重なっていた。
+   自分の行の中に収まる位置に直し、指す対象の真上に置く */
+.new {
+  background: #f7ff00;
+  font-weight: bold;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 20px;
+  border-radius: 10px;
+  color: #47525d;
+  position: absolute;
+  /* 行の区切り線ではなく、指し示す文字列のすぐ上に置く。
+     吹き出し自体は文字に被せず、▼ の先だけが少し重なる。
+     左右は文字列の右端を基準にして、少し右へずらす */
+  top: -23px;
+  right: -30px;
+  &:after {
+    content: '▼';
+    font-size: 12px;
+    line-height: 1em;
+    position: absolute;
+    display: block;
+    color: #f7ff00;
+    bottom: -7px;
+    left: calc(50% - 8px);
+    transform: rotate(19deg);
+  }
+}
+.root ::v-deep {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  position: relative;
+  & table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  /* 並べ替え中の th は class が "titletitle-sorted-asc" のようにひと続きになり、
+     .title では拾えなくなる（vue-tables-2 が区切りなしで継ぎ足すため）。
+     並べ替えても幅や配置が変わらないよう、th は部分一致で指定する */
+  & th {
+    white-space: nowrap;
+    /* Hosting の見出しに重ねる select の基準にする。
+       ソートアイコンを右端へ重ねるときの基準でもある。
+       他の見出しはセル全体がクリック領域なので、それに合わせる */
+    position: relative;
+    /* 伸び縮みするのは Channel と Hosting だけ。他の列は内容の幅で止める
+       （下の width: 1%）。余った幅はこの2つに、この比で配られる。
+       Hosting は中身（.clip）が絶対配置で幅を主張しないため、狭いときは
+       .clip の min-width（60px）まで縮み、広いときはホスト名が読める幅まで伸びる */
+    &[class*="title"] {
+      width: 80%;
+    }
+    /* 余りに応じて伸び縮みする。
+       
+       表のセルでは max-width が無視される（実測。min() / clamp() や px 指定も
+       効かず、内容の幅まで縮んでしまった）。この表で列を伸縮させられるのは
+       % 指定だけなので、頭打ちは画面幅ごとに比率を下げて作る（この下の @media） */
+    &.file-server {
+      width: 15%;
+    }
+  }
+  /* 画面が広いとき、余った幅をこれらの列が吸って間延びする。
+     
+     table-layout: auto では width の指定は目安でしかなく、余った幅は指定値に
+     比例して配られてしまう（width: 115px と書いても135pxになった）。min-width も
+     同じように扱われる。伸びを確実に止められるのは width: 1%（できるだけ狭く）で、
+     このとき列は内容の幅ちょうどに張り付く */
+  & th[class*="total"], td.total, th[class*="first"], td.first, th[class*="last"], td.last, th[class*="frequency"], td.frequency, th[class*="duration"], td.duration {
+    width: 1%;
+    white-space: nowrap;
+  }
+  /* 「New!」の吹き出しは日付の右上へ30pxずらして浮かせてある。列を内容の幅まで
+     詰めると隣の列へはみ出すので、そのぶんの余白を右に足す。
+     
+     吹き出しがあるのは td の側だけなので、th には足さない。th に足すと
+     First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う
+     （並べ替え中の th は class が "lastlastEpisodeDate-sorted-desc" と
+     ひと続きになり .last では拾えないため、th 側は指定が効いたり効かなかったりする） */
+  & td.first, td.last {
+    padding-right: 30px;
+  }
+  /* チェックボックスは中身が小さいので、内容の幅に張り付かせる。
+     width: 1% は「できるだけ狭く」の意味になり、中身より狭くはならない */
+  & th.check, td.check {
+    width: 1%;
+    white-space: nowrap;
+  }
+  & th,td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    outline: 0;
+    &:first-child:not(:last-child) {
+      display: none;
+    }
+    &:nth-child(2) {
+      padding-left: 20px;
+    }
+  }
+  & thead {
+    color: #ccc;
+    font-size: 12px;
+    & th {
+      font-weight: normal;
+    }
+  }
+  & tbody {
+    /* 行のどこを押しても子行が開くので、行全体を押せるものとして見せる。
+       子行（.VueTables__child-row）は別の tr なので、ここには当たらない */
+    & tr.VueTables__row {
+      cursor: pointer;
+      transition: background-color 0.15s;
+      &:hover {
+        /* 行に触れたときの色。ブランドの紫をごく薄く敷く */
+        background-color: #f8f5ff;
+      }
+    }
+    & th,td {
+      font-weight: 500;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+    & td.title {
+      font-weight: bold;
+      font-size: 15px;
+      /* 日付の列と同じ仕組みで、タイトルの文字列の右上に吹き出しを浮かせる。
+         
+         .clip の既定では中身が左右いっぱいに広がるため、そのままだと
+         「文字列の右端」が取れない。.value を右に伸ばさず（right: auto）、
+         列幅までに収まる範囲で文字幅に沿わせることで、短いタイトルでも
+         バッジが文字のすぐ右上に付く。
+         省略は内側の .text が受け持ち、.value は overflow を切らないので
+         上にはみ出すバッジが欠けない */
+      .title-cell {
+        display: flex;
+        align-items: center;
+        >.cover {
+          flex: none;
+          /* 別々の列だったときの td の余白（右10px＋左10px）と同じ間隔にする */
+          margin-right: 20px;
+        }
+        >.clip {
+          flex: 1;
+        }
+        .clip {
+          >.value {
+            right: auto;
+            max-width: 100%;
+            overflow: visible;
+            /* タイトルとアップルマークを横に並べる。
+               幅が足りないときに縮むのはタイトル側だけにしたいので、
+               .text に min-width: 0 を与えて flex の既定を外す */
+            display: flex;
+            align-items: center;
+            .text {
+              min-width: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            /* タイトルの後ろに並べる外部リンク。
+               幅が足りないときに縮むのはタイトル側だけなので、ここは固定 */
+            .links {
+              flex: none;
+              display: flex;
+              align-items: center;
+              margin-left: 16px;
+              >* {
+                position: relative;
+              }
+              >*:not(:first-child) {
+                margin-left: 6px;
+              }
+              /* ホバーしたアイコンの右横に、その名前を出す。
+                 
+                 アイコンだけでは何のリンクか分からず、リンク先を開くまで
+                 確かめられなかった。行の高さと列の幅を変えたくないので、
+                 絶対配置にして並びの計算から外す。
+                 隣のアイコンに重なるため、行と同じ色の背景を敷いて隠す */
+              .label {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                margin-left: 4px;
+                padding-right: 4px;
+                /* 隣のアイコンを隠すための下敷き。ラベルが出るのは
+                   そのアイコンに触れている間＝行に触れている間なので、
+                   白ではなく行のホバー色に合わせる */
+                background-color: #f8f5ff;
+                color: #888;
+                font-size: 11px;
+                font-weight: normal;
+                /* 行間は文字の高さぴったりにする。既定（normal）だと
+                   日本語フォントの大きな行送りのぶん箱が上下に広がり、
+                   箱の中央で揃えてもアイコンに対して文字がずれて見える */
+                line-height: 1;
+                white-space: nowrap;
+                pointer-events: none;
+                opacity: 0;
+                /* 少し右から滑り込ませる */
+                transform: translate(-4px, -50%);
+                transition: opacity 0.2s, transform 0.2s;
+              }
+              /* @ と # は字形が四角い枠いっぱいに広がらないぶん、
+                 Podcast アイコンより間隔を詰めた方が一体に読める */
+              >.x .label, >.hashtag .label {
+                margin-left: 1px;
+              }
+              /* 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
+                 ホバー中のものを前に出して、ラベルの背景で隠せるようにする */
+              >*:hover {
+                z-index: 1;
+                .label {
+                  opacity: 1;
+                  transform: translate(0, -50%);
+                }
+              }
+            }
+          }
+        }
+      }
+      & span {
+        cursor: pointer;
+        &:hover {
+          color: #5e5e5e;
+        }
+      }
+    }
+    & td.file-server {
+      & small {
+        display: block;
+        font-size: 10px;
+        color: #ccc;
+      }
+    }
+    /* 長いタイトルやホスト名で折り返して行の高さが変わらないよう、1行に省略する。
+       
+       中身をそのまま nowrap にすると、その幅が列幅の下限になってしまい
+       テーブルが画面幅に収まらず横スクロールしてしまう。
+       .clip で1階層くるみ、中身を絶対配置にすることで列幅の計算から外す。
+       これで「画面幅に応じて伸縮する」と「1行に省略する」が両立する */
+    .clip {
+      position: relative;
+      /* 絶対配置にした中身は高さを持たないので、ここで1行分を確保する */
+      height: 1.4em;
+      /* 幅を主張しなくなるため、狭くなりすぎない下限を決めておく */
+      min-width: 60px;
+      >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      /* a でくるまれている列は実際の文字が中の small にあるため、
+         外側だけに指定すると「…」が出ずに切り落とされてしまう */
+      >*, small {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    /* タイトルは可変幅の主役なので、優先的に幅を取る */
+    & td.title {
+      width: 40%;
+    }
+    & td.total {
+      font-size: 18px;
+    }
+    & td.last, td.first {
+      >a, >.date {
+        /* /new ページの非スコープなスタイルに .date { position: absolute } があり、
+           ここで打ち消さないと日付がページ上部へ飛ぶ */
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      /* 日付の文字列そのものを基準にして、その右上にバッジを置く */
+      .value {
+        position: relative;
+      }
+    }
+    & tr {
+      &:first-child {
+        border-top: 1px solid #ccc;
+      }
+      &:not(.VueTables__child-row) {
+        border-top: 1px solid #ccc;
+      }
+      &.VueTables__child-row {
+        border-top: 1px solid #eee;
+        background-color: #222;
+        background-size: auto 21px;
+        color: white !important;
+        >td {
+          line-height: 1.8em;
+          padding: 0;
+          /* colspan で全列にまたがるため、内容の幅が他の列の幅計算に影響し、
+             子行を開くたびに列の位置がずれてしまう。
+             幅の要求を出さないようにする（描画幅は colspan により全幅になる） */
+          width: 0;
+          >.wrap {
+            display: flex;
+            /* 高さが動くのに合わせて、中身も淡く出す */
+            animation: child-row-in 0.22s ease-out;
+            /* td の width: 0 だけでは足りない。中身（長いエピソード名など）の
+               最小幅がセルの幅として要求され、開く行によってテーブルが広がって
+               横スクロールが出たり出なかったりしていた。
+               幅を要求せず、セルいっぱいに広げる */
+            width: 0;
+            min-width: 100%;
+            /* 中身の量で高さが変わると、開くたびに一覧が大きく動く。
+               エピソード5話ぶんに固定し、はみ出す分は各列でスクロールさせる */
+            /* 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px） */
+            height: 305px;
+            >.column {
+              position: relative;
+              width: 50%;
+              height: 100%;
+              /* 中身の最小幅を外へ出さない */
+              min-width: 0;
+              /* エピソードが少ない番組でも左右の区切りが分かるようにする */
+              &:last-child {
+                border-left: 1px solid #333;
+              }
+              >.info, >.episodes {
+                height: 100%;
+                overflow-y: auto;
+              }
+              >.info {
+                padding: 20px;
+                box-sizing: border-box;
+              }
+              >.episodes {
+                /* 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない */
+                .episodes-status {
+                  padding: 20px;
+                  color: #999;
+                  font-size: 12px;
+                }
+              }
+              /* まだ続きがある側の端をうっすら暗くして、スクロールできることを示す。
+                 中身の上に重ねる（背景に敷くと再生ボタンの色に隠れてしまう） */
+              >.scroll-fade {
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 28px;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s;
+                &.top {
+                  top: 0;
+                  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
+                }
+                &.bottom {
+                  bottom: 0;
+                  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55));
+                }
+              }
+              >.can-scroll-up ~ .scroll-fade.top, >.can-scroll-down ~ .scroll-fade.bottom {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        & p {
+          max-width: calc(100vw - 30px);
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    & button {
+      font-size: 10px;
+      padding: 5px 10px;
+      min-width: initial;
+    }
+  }
+  .VueTables {
+    .row {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .table-responsive {
+      overflow: auto;
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+  .VueTables__search-field {
+    margin-bottom: 20px;
+    & input {
+      padding: 8px;
+      outline: none;
+      font-size: 13px;
+      border: 1px solid #ddd;
+      width: 300px;
+      &:placeholder-shown {
+        color: #ccc;
+      }
+      &::-webkit-input-placeholder {
+        color: #ccc;
+      }
+      &::-moz-placeholder {
+        color: #ccc;
+      }
+    }
+  }
+  .VueTables__search {
+    float: left;
+    width: calc(100% - 270px);
+  }
+  .VueTables__columns-dropdown {
+    float: right;
+    width: 100px;
+    .dropdown-menu {
+      position: absolute;
+      right: 20px;
+      padding: 15px;
+      margin-top: 6px;
+      margin-bottom: 0;
+      background: #050935;
+      border-radius: 3px;
+      list-style: none;
+      z-index: 10;
+      & a {
+        color: white;
+        font-size: 12px;
+      }
+      & input[type=checkbox] {
+        margin-right: 1em;
+      }
+    }
+  }
+  .VueTables__limit {
+    display: none;
+  }
+  .VueTables__sortable {
+    cursor: pointer;
+    &:hover {
+      color: #7f00ff;
+    }
+  }
+  /* Hosting の見出しは配信サービスで絞り込むプルダウンになっている。
+     ラベルの上に透明な select を重ねることで、見出しの文言を変えずに
+     ネイティブのプルダウンを使う */
+  .hosting-filter {
+    display: inline-block;
+    cursor: pointer;
+    &:hover {
+      color: #7f00ff;
+    }
+    /* 絞り込み中であることが分かるようにする */
+    &.is-active {
+      color: #7f00ff;
+      font-weight: bold;
+    }
+    /* th を基準に、セル全体を覆う */
+    & select {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+  /* ソートアイコンの span はソート中かどうかに関わらず描画されるが、
+     ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
+     ソートするたびに見出しの位置がずれる */
+  .VueTables__sort-icon {
+    display: inline-block;
+    /* ソートアイコンの占有幅。ラベルの位置合わせにも使う。
+       字そのものは8.4pxしかないので、1.6em（19px）では見出しの右に10px近い
+       余白が居座り、Frequency / Duration の列を押し広げていた。
+       字＋6pxほどの間隔に詰める */
+    width: 1.2em;
+    text-align: right;
+  }
+  .glyphicon-chevron-down {
+    &:before {
+      content: '▼';
+      font-size: 0.7em;
+    }
+  }
+  .glyphicon-chevron-up {
+    &:before {
+      content: '▲';
+      font-size: 0.7em;
+    }
+  }
+  .VuePagination {
+    .text-center {
+      margin-left: 0;
+    }
+  }
+}
+/* 810px は layouts/default.vue の境界と揃える
+   Hosting は % でしか伸縮させられないため、画面が広いほど際限なく広がる。
+   ホスト名が読めれば十分で、それ以上はただの空白になるので、広い画面では
+   比率を下げて200px前後で頭打ちにする */
+@media (min-width: 1400px) {
+  .root ::v-deep th.file-server {
+    width: 13%;
+  }
+}
+@media (min-width: 1800px) {
+  .root ::v-deep th.file-server {
+    width: 11%;
+  }
+}
+@media (min-width: 2400px) {
+  .root ::v-deep th.file-server {
+    width: 8%;
+  }
+}
+@media (max-width: 810px) {
+  .root ::v-deep {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    & table {
+      margin-top: 15px;
+    }
+    & tbody {
+      & th,td {
+        font-size: 11px;
+      }
+      & td.total {
+        font-size: 14px;
+      }
+      /* 画面が狭いと、他の列に押されてタイトルが数文字しか出ない
+         （実測で文字に割り当てられる幅が10pxだった）。
+         テーブルはもともと横スクロールするので、読める幅を先に確保する */
+      & td.title .clip {
+        min-width: 180px;
+      }
+      /* タイトルとアイコン群の間隔も、広い画面ほど要らない */
+      & td.title .title-cell .links {
+        margin-left: 8px;
+      }
+    }
+    & button {
+      font-size: 10px;
+    }
+    .download {
+      position: relative;
+      margin-left: 15px;
+      top: initial;
+      left: initial;
+      height: 38px;
+    }
+    .VueTables {
+      margin-top: 15px;
+      .row {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+    .VueTables__columns-dropdown {
+      .dropdown-menu {
+        right: 15px;
+      }
+    }
+    .VueTables__search {
+      width: 100%;
+    }
+    .VueTables__search-field {
+      margin-bottom: 0;
+      & input {
+        width: calc(100% - 20px);
+        padding: 9px;
+        font-size: 16px;
+      }
+    }
+    .VueTables__columns-dropdown {
+      clear: left;
+    }
+    & th,td {
+      &:nth-child(2) {
+        padding-left: 15px;
+      }
+    }
+    /* 広い画面側の指定（tbody tr.VueTables__child-row > td > .wrap）と
+       同じ強さにしておく。弱いとメディアクエリの中でも上書きできない */
+    & tbody tr {
+      &.VueTables__child-row {
+        >td > .wrap {
+          flex-direction: column;
+          /* 縦に積むぶん高さは伸びるが、説明の長い番組だと一覧が
+             大きく動いてしまう。上下それぞれ5話ぶんまでに収める */
+          height: auto;
+          >.column {
+            width: auto;
+            height: auto;
+            /* 縦に積むと上下の関係で続きがあることは分かるので、影は出さない */
+            >.scroll-fade {
+              display: none;
+            }
+            &:last-child {
+              border-left: 0;
+              border-top: 1px solid #333;
+            }
+            /* 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
+               増えると、ページ全体のスクロールと取り合いになって扱いづらい */
+            >.info {
+              height: auto;
+              max-height: none;
+              overflow-y: visible;
+            }
+            >.episodes {
+              height: 305px;
+            }
+          }
+        }
+      }
+    }
+    .description {
+      max-width: calc(100vw - 30px);
+    }
+  }
+}
 </style>
 
 <script>

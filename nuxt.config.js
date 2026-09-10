@@ -59,7 +59,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/common'
+    '@/assets/common.css'
   ],
 
   /*
@@ -103,21 +103,16 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    loaders: {
-      // Dart Sass の legacy JS API は 2.0 で削除予定で、使うたびに非推奨警告が出る。
-      // 古い API を呼んでいるのは sass-loader で、modern API に対応した
-      // sass-loader 14 以降は webpack 5 を要求するため Nuxt 2 では使えない。
-      // こちらで消しようがない警告がビルドログを何十行も埋め、他の警告が
-      // 埋もれてしまうので、この1件だけ黙らせる（他の非推奨警告は今までどおり出る）。
-      // Nuxt を 3 に上げる際にこの指定は不要になる
-      sass: {
-        sassOptions: {
-          silenceDeprecations: ['legacy-js-api']
-        }
-      },
-      scss: {
-        sassOptions: {
-          silenceDeprecations: ['legacy-js-api']
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          // スタイルは CSS のネスト記法で書いてある。ネストに対応していない
+          // ブラウザのために、ビルド時に平坦なセレクタへ展開しておく。
+          // postcss-preset-env は Nuxt が既定で通しているので、
+          // 依存を足さずにこの機能だけ有効にできる
+          'postcss-preset-env': {
+            features: { 'nesting-rules': true }
+          }
         }
       }
     },

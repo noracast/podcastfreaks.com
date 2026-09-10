@@ -13,18 +13,21 @@ a-blank.hashtag(:href="url" :title="`${hashtag} を X で検索`")
   span.label {{ tag }}
 </template>
 
-<style lang="sass" scoped>
-.hashtag
-  // Podcast アイコン・@ と大きさと濃さを揃える
-  display: inline-flex
-  align-items: center
-  opacity: 0.35
-  transition-duration: 0.2s
-  &:hover
-    opacity: 1
-    transition-duration: 0.2s
-  svg
-    display: block
+<style scoped>
+.hashtag {
+  /* Podcast アイコン・@ と大きさと濃さを揃える */
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.35;
+  transition-duration: 0.2s;
+  &:hover {
+    opacity: 1;
+    transition-duration: 0.2s;
+  }
+  & svg {
+    display: block;
+  }
+}
 </style>
 
 <script>

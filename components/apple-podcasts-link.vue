@@ -13,18 +13,21 @@ a-blank.apple(:href="url" title="Apple Podcasts で開く")
   span.label Apple Podcasts
 </template>
 
-<style lang="sass" scoped>
-.apple
-  // タイトルの邪魔をしないよう控えめに置き、ホバーで前に出す
-  display: inline-flex
-  align-items: center
-  opacity: 0.35
-  transition-duration: 0.2s
-  &:hover
-    opacity: 1
-    transition-duration: 0.2s
-  svg
-    display: block
+<style scoped>
+.apple {
+  /* タイトルの邪魔をしないよう控えめに置き、ホバーで前に出す */
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.35;
+  transition-duration: 0.2s;
+  &:hover {
+    opacity: 1;
+    transition-duration: 0.2s;
+  }
+  & svg {
+    display: block;
+  }
+}
 </style>
 
 <script>

@@ -2,7 +2,8 @@
 podcast(:channelKey="channelKey")
 </template>
 
-<style lang="sass" scoped>
+<style scoped>
+
 </style>
 
 <script>

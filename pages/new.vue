@@ -28,40 +28,45 @@
   日付が20pxずれる、位置が飛ぶ、といった不具合を起こしていた。
   episode-row はコンポーネントのルート要素にスコープが付くため .row への指定は今までどおり効く
 -->
-<style lang="sass" scoped>
-.root
-  padding-top: 0
-.border
-  height: 0
-  border-top: 1px solid #ccc
-  margin: 10px 0
-  position: relative
-
-.date
-  position: absolute
-  top: 10px
-  padding: 5px 20px
-  height: 30px
-  line-height: 30px
-
-h5
-  padding: 0 20px
-
-// 900px は Responsive で測っていたときの境界をそのまま引き継いだもの
-@media (max-width: 900px)
-  .border
-    height: auto
-    margin-left: -20px
-    margin-right: 0
-  .date
-    font-size: 11px
-    height: 20px
-    line-height: 20px
-    position: relative
-    margin-left: 20px
-    padding-left: 10px
-  .row
-    padding-left: 20px
+<style scoped>
+.root {
+  padding-top: 0;
+}
+.border {
+  height: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+  position: relative;
+}
+.date {
+  position: absolute;
+  top: 10px;
+  padding: 5px 20px;
+  height: 30px;
+  line-height: 30px;
+}
+h5 {
+  padding: 0 20px;
+}
+/* 900px は Responsive で測っていたときの境界をそのまま引き継いだもの */
+@media (max-width: 900px) {
+  .border {
+    height: auto;
+    margin-left: -20px;
+    margin-right: 0;
+  }
+  .date {
+    font-size: 11px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    margin-left: 20px;
+    padding-left: 10px;
+  }
+  .row {
+    padding-left: 20px;
+  }
+}
 </style>
 
 <script>

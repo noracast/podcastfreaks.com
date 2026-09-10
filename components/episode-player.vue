@@ -52,143 +52,158 @@
       template(v-else) {{ formattedDuration }}
 </template>
 
-<style lang="sass" scoped>
-@use 'sass:color'
+<style scoped>
+.episode {
+  height: 60px;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #333;
 
-$accent: #7f00ff
-
-.episode
-  height: 60px
-  display: flex
-  align-items: stretch
-  border-bottom: 1px solid #333
-
-  .play
-    flex: none
-    width: 60px
-    border: 0
-    padding: 0
-    // レイアウトのグローバルな button の指定（角丸・余白・最小幅）を打ち消す
-    border-radius: 0
-    min-width: 0
-    // シークバーの上に載っているが、これは押すボタン
-    cursor: pointer
-    color: white
-    background-color: $accent
-    display: flex
-    justify-content: center
-    align-items: center
-    &:hover
-      background-color: color.adjust($accent, $lightness: 10%)
-    &:active
-      background-color: color.adjust($accent, $lightness: 20%)
-
-  // 再生ボタンより右がまるごとシークバー。押した位置へ飛び、
-  // そのまま動かすとつまみを持っているように追従する
-  .track
-    flex: 1
-    min-width: 0
-    position: relative
-    display: flex
-    align-items: center
-    padding-left: 20px
-    // 左右に動かして位置を変えられることを、カーソルの形で示す
-    cursor: col-resize
-    overflow: hidden
-    // 縦に動かしたときはスクロールさせ、横だけこちらで受け取る
-    touch-action: pan-y
-    &:focus-visible
-      outline: 1px solid $accent
-      outline-offset: -1px
-    .progress
-      position: absolute
-      left: 0
-      top: 0
-      bottom: 0
-      width: 0
-      background-color: rgba(127, 0, 255, 0.35)
-      pointer-events: none
-    // 背景の伸びより手前に置く
-    >*
-      position: relative
-    .text
-      flex: 1
-      min-width: 0
-      color: #aaa
-      overflow: hidden
-      white-space: nowrap
-      text-overflow: ellipsis
-      transition: color 0.2s
-
-    .time
-      flex: none
-      display: flex
-      align-items: center
-      padding: 0 20px 0 8px
-      color: #777
-      font-size: 11px
-      // 数字の幅を揃えて、再生中に左右へ揺れないようにする
-      font-variant-numeric: tabular-nums
-      white-space: nowrap
-      .sep
-        padding: 0 3px
-
-    // 再生していないうちは場所ごと空ける。
-    // 操作が出ていないときは、その幅をタイトルに使いたい
-    .controls
-      flex: none
-      display: none
-      align-items: center
-      >*
-        background: none
-        border: 0
-        padding: 0
-        border-radius: 0
-        min-width: 0
-        margin-left: 6px
-        width: 24px
-        height: 24px
-        display: flex
-        align-items: center
-        justify-content: center
-        color: #888
-        font-size: 11px
-        // シーク操作ではなくボタンとして押せることを示す
-        cursor: pointer
-        &:hover
-          color: #fff
-      >.sec,
-      >.rate
-        width: 28px
-        font-variant-numeric: tabular-nums
-
-  &.is-active
-    .track .controls
-      display: flex
-
-  // 今鳴っている回がどれか、並びの中で見て分かるようにする。
-  // 止めているものは明るくしない（シークしただけの回まで光ってしまう）
-  &.is-playing
-    .track .text
-      color: #fff
-
-// 狭い画面ではタイトルの幅が残らないので、時間と操作ボタンを詰める。
-// 全体の長さは再生前にも出ているので、再生中は今の位置だけで足りる
-@media (max-width: 810px)
-  .episode
-    .track
-      padding-left: 10px
-      .time
-        padding: 0 10px 0 4px
-        .total
-          display: none
-      .controls
-        >*
-          margin-left: 2px
-          width: 22px
-        >.sec,
-        >.rate
-          width: 26px
+  .play {
+    flex: none;
+    width: 60px;
+    border: 0;
+    padding: 0;
+    /* レイアウトのグローバルな button の指定（角丸・余白・最小幅）を打ち消す */
+    border-radius: 0;
+    min-width: 0;
+    /* シークバーの上に載っているが、これは押すボタン */
+    cursor: pointer;
+    color: white;
+    background-color: #7f00ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: #9933ff;
+    }
+    &:active {
+      background-color: #b266ff;
+    }
+  }
+  /* 再生ボタンより右がまるごとシークバー。押した位置へ飛び、
+     そのまま動かすとつまみを持っているように追従する */
+  .track {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    /* 左右に動かして位置を変えられることを、カーソルの形で示す */
+    cursor: col-resize;
+    overflow: hidden;
+    /* 縦に動かしたときはスクロールさせ、横だけこちらで受け取る */
+    touch-action: pan-y;
+    &:focus-visible {
+      outline: 1px solid #7f00ff;
+      outline-offset: -1px;
+    }
+    .progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      background-color: rgba(127, 0, 255, 0.35);
+      pointer-events: none;
+    }
+    /* 背景の伸びより手前に置く */
+    >* {
+      position: relative;
+    }
+    .text {
+      flex: 1;
+      min-width: 0;
+      color: #aaa;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+    .time {
+      flex: none;
+      display: flex;
+      align-items: center;
+      padding: 0 20px 0 8px;
+      color: #777;
+      font-size: 11px;
+      /* 数字の幅を揃えて、再生中に左右へ揺れないようにする */
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      .sep {
+        padding: 0 3px;
+      }
+    }
+    /* 再生していないうちは場所ごと空ける。
+       操作が出ていないときは、その幅をタイトルに使いたい */
+    .controls {
+      flex: none;
+      display: none;
+      align-items: center;
+      >* {
+        background: none;
+        border: 0;
+        padding: 0;
+        border-radius: 0;
+        min-width: 0;
+        margin-left: 6px;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        font-size: 11px;
+        /* シーク操作ではなくボタンとして押せることを示す */
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+        }
+      }
+      >.sec, >.rate {
+        width: 28px;
+        font-variant-numeric: tabular-nums;
+      }
+    }
+  }
+  &.is-active {
+    .track .controls {
+      display: flex;
+    }
+  }
+  /* 今鳴っている回がどれか、並びの中で見て分かるようにする。
+     止めているものは明るくしない（シークしただけの回まで光ってしまう） */
+  &.is-playing {
+    .track .text {
+      color: #fff;
+    }
+  }
+}
+/* 狭い画面ではタイトルの幅が残らないので、時間と操作ボタンを詰める。
+   全体の長さは再生前にも出ているので、再生中は今の位置だけで足りる */
+@media (max-width: 810px) {
+  .episode {
+    .track {
+      padding-left: 10px;
+      .time {
+        padding: 0 10px 0 4px;
+        .total {
+          display: none;
+        }
+      }
+      .controls {
+        >* {
+          margin-left: 2px;
+          width: 22px;
+        }
+        >.sec, >.rate {
+          width: 26px;
+        }
+      }
+    }
+  }
+}
 </style>
 
 <script>

@@ -52,6 +52,23 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
 - フィードのエラーや警告への対処は `.claude/skills/feed-triage/` にまとめてある
 - 番組を新しく登録する手順は `.claude/skills/add-channel/` にまとめてある
 
+## スタイル
+
+スタイルはプレーン CSS のネスト記法で書く（`.vue` の `<style>` と
+`assets/common.css`）。Sass は使っていない。
+
+ネストは `postcss-preset-env` の `nesting-rules` がビルド時に平坦なセレクタへ
+展開する（`nuxt.config.js`）。有効にしているのは、ネストに対応していない
+ブラウザでも出力が今までどおりになるため。書くときの注意が2つ。
+
+- ネストの中で**要素名から始まるセレクタには `&` を付ける**（`& svg`）。
+  付けないとプロパティ名と解釈されて壊れる
+- **`@media` の直下では `&` を付けない**。そこでの `&` は `:root` を指すので、
+  `:root div.row` という別物のセレクタになる
+
+ヘッダーなどの紫のグラデーションは、もとは Sass のミックスインだった。
+`assets/common.css` の `:root` に `--brand-texture` などとして置いてある。
+
 ## 依存関係
 
 Node は `.node-version` の 20.11.0 に固定。Nuxt 2 と古い依存があるため上げない。

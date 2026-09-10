@@ -8,51 +8,62 @@ nuxt-link.badge(v-if="duration" :class="convertToClass(duration)" :title="toolti
 nuxt-link.badge(v-else to="/about/#duration" title="RSSからdurationが取得できませんでした") N/A
 </template>
 
-<style lang="sass" scoped>
-.badge
-  background-color: #ededed
-  // リンクにしたので、レイアウトの a の指定（色・下線）を打ち消す
-  text-decoration: none
-  color: white
-  &:hover
-    color: white
-    // 押せることが分かるよう、触れたときだけ少し明るくする
-    filter: brightness(1.08)
-  font-weight: bold
-  width: 60px
-  height: 23px
-  border-radius: 23px
-  // flex で中央寄せすると、数字と「分」がそれぞれ別の flex item として
-  // 中央に置かれるため、小さい「分」だけが浮いて見える。
-  // インラインとして並べればベースラインを共有するので揃う。
-  // 行の高さを箱の高さに合わせることで上下の中央にも来る
-  display: block
-  line-height: 23px
-  text-align: center
-  small
-    font-size: 0.75em
-    margin-left: 1px
-    // 「分」と詰まって見えるので少し離す
-    &.plus
-      margin-left: 2px
-  // 収録時間が短いほど鮮やかで濃くする（短いものほど聴き始めやすいため）。
-  // 色相は青（216度）に固定し、彩度 88%→14%、明度 56%→44% で段階を作る。
-  // Frequency は緑（140度）で、そちらは暗くではなく淡くしていく。
-  // 濃い青と淡い緑という明暗の差で、2つの列を見分ける
-  &.min15
-    background-color: #2C7BF2
-  &.min30
-    background-color: #3378E1
-  &.min45
-    background-color: #3B76CE
-  &.min60
-    background-color: #4474BB
-  &.min90
-    background-color: #5072A5
-  &.min120
-    background-color: #597091
-  &.min120plus
-    background-color: #606D80
+<style scoped>
+.badge {
+  background-color: #ededed;
+  /* リンクにしたので、レイアウトの a の指定（色・下線）を打ち消す */
+  text-decoration: none;
+  color: white;
+  &:hover {
+    color: white;
+    /* 押せることが分かるよう、触れたときだけ少し明るくする */
+    filter: brightness(1.08);
+  }
+  font-weight: bold;
+  width: 60px;
+  height: 23px;
+  border-radius: 23px;
+  /* flex で中央寄せすると、数字と「分」がそれぞれ別の flex item として
+     中央に置かれるため、小さい「分」だけが浮いて見える。
+     インラインとして並べればベースラインを共有するので揃う。
+     行の高さを箱の高さに合わせることで上下の中央にも来る */
+  display: block;
+  line-height: 23px;
+  text-align: center;
+  & small {
+    font-size: 0.75em;
+    margin-left: 1px;
+    /* 「分」と詰まって見えるので少し離す */
+    &.plus {
+      margin-left: 2px;
+    }
+  }
+  /* 収録時間が短いほど鮮やかで濃くする（短いものほど聴き始めやすいため）。
+     色相は青（216度）に固定し、彩度 88%→14%、明度 56%→44% で段階を作る。
+     Frequency は緑（140度）で、そちらは暗くではなく淡くしていく。
+     濃い青と淡い緑という明暗の差で、2つの列を見分ける */
+  &.min15 {
+    background-color: #2C7BF2;
+  }
+  &.min30 {
+    background-color: #3378E1;
+  }
+  &.min45 {
+    background-color: #3B76CE;
+  }
+  &.min60 {
+    background-color: #4474BB;
+  }
+  &.min90 {
+    background-color: #5072A5;
+  }
+  &.min120 {
+    background-color: #597091;
+  }
+  &.min120plus {
+    background-color: #606D80;
+  }
+}
 </style>
 
 <script>

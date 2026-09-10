@@ -98,47 +98,58 @@
     a-blank(href="https://github.com/noracast/podcastfreaks.com") https://github.com/noracast/podcastfreaks.com
 </template>
 
-<style lang="sass" scoped>
-.root
-  padding: 20px
-  max-width: 600px
-  // ヘッダーは position: sticky で上に貼り付いたままなので、アンカーで飛ぶと
-  // 見出しがその下に潜ってしまう。ヘッダーの高さ（80px）に余白を足して逃がす。
-  // Nuxt の scrollBehavior はこの値を読んで飛び先をずらしてくれる
-  h3, h4
-    scroll-margin-top: 100px
-  a:not(.noborder)
-    border-bottom: 1px dotted #999
-    padding-bottom: 0.2em
-  .badge
-    margin-right: 10px
-  h4
-    font-size: 14px
-    margin: 25px 0 3px
-  .note
-    color: #666
-    font-size: 13px
-    margin: 0 0 12px
-  // 一覧に出ているバッジそのものを並べる。凡例と実物がずれないようにするため、
-  // 色や文言をここで書き写さず、duration / frequency の各コンポーネントに描かせる
-  .legend
-    list-style: none
-    padding: 0
-    margin: 0
-    li
-      display: flex
-      align-items: center
-      padding: 3px 0
-      font-size: 13px
-      >*:first-child
-        flex: none
-        margin-right: 12px
-
-// 狭い画面ではヘッダーが 70px になる
-@media (max-width: 810px)
-  .root
-    h3, h4
-      scroll-margin-top: 90px
+<style scoped>
+.root {
+  padding: 20px;
+  max-width: 600px;
+  /* ヘッダーは position: sticky で上に貼り付いたままなので、アンカーで飛ぶと
+     見出しがその下に潜ってしまう。ヘッダーの高さ（80px）に余白を足して逃がす。
+     Nuxt の scrollBehavior はこの値を読んで飛び先をずらしてくれる */
+  & h3, h4 {
+    scroll-margin-top: 100px;
+  }
+  & a:not(.noborder) {
+    border-bottom: 1px dotted #999;
+    padding-bottom: 0.2em;
+  }
+  .badge {
+    margin-right: 10px;
+  }
+  & h4 {
+    font-size: 14px;
+    margin: 25px 0 3px;
+  }
+  .note {
+    color: #666;
+    font-size: 13px;
+    margin: 0 0 12px;
+  }
+  /* 一覧に出ているバッジそのものを並べる。凡例と実物がずれないようにするため、
+     色や文言をここで書き写さず、duration / frequency の各コンポーネントに描かせる */
+  .legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    & li {
+      display: flex;
+      align-items: center;
+      padding: 3px 0;
+      font-size: 13px;
+      >*:first-child {
+        flex: none;
+        margin-right: 12px;
+      }
+    }
+  }
+}
+/* 狭い画面ではヘッダーが 70px になる */
+@media (max-width: 810px) {
+  .root {
+    & h3, h4 {
+      scroll-margin-top: 90px;
+    }
+  }
+}
 </style>
 
 <script>

@@ -32,52 +32,66 @@
       code.javascript(v-html="raw")
 </template>
 
-<style lang="sass" scoped>
-.root
-  padding: 20px
-  max-width: 700px
-  .lead
-    color: #666
-    font-size: 13px
-    line-height: 1.7
-    margin-bottom: 30px
-  section
-    margin-bottom: 40px
-  h2
-    font-size: 16px
-    margin-bottom: 3px
-  .count
-    color: #999
-    font-size: 12px
-    margin-bottom: 10px
-  .empty
-    color: #999
-    font-size: 13px
-  .list
-    list-style: none
-    padding: 0
-    li
-      padding: 10px 0
-      border-top: 1px solid #eee
-      &:last-child
-        border-bottom: 1px solid #eee
-    .name
-      font-weight: bold
-      font-size: 14px
-    .message
-      font-size: 13px
-      color: #444
-      margin-top: 2px
-    .feed
-      font-size: 12px
-      color: #999
-      word-break: break-all
-  .raw
-    margin-top: 40px
-    summary
-      color: #999
-      font-size: 12px
-      cursor: pointer
+<style scoped>
+.root {
+  padding: 20px;
+  max-width: 700px;
+  .lead {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  & section {
+    margin-bottom: 40px;
+  }
+  & h2 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+  .count {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .empty {
+    color: #999;
+    font-size: 13px;
+  }
+  .list {
+    list-style: none;
+    padding: 0;
+    & li {
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      &:last-child {
+        border-bottom: 1px solid #eee;
+      }
+    }
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .message {
+      font-size: 13px;
+      color: #444;
+      margin-top: 2px;
+    }
+    .feed {
+      font-size: 12px;
+      color: #999;
+      word-break: break-all;
+    }
+  }
+  .raw {
+    margin-top: 40px;
+    & summary {
+      color: #999;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+}
 </style>
 
 <script>

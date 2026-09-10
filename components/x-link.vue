@@ -14,18 +14,21 @@ a-blank.x(:href="url" :title="`${account} を X で開く`")
   span.label {{ handle }}
 </template>
 
-<style lang="sass" scoped>
-.x
-  // Podcast アイコン・# と大きさと濃さを揃える
-  display: inline-flex
-  align-items: center
-  opacity: 0.35
-  transition-duration: 0.2s
-  &:hover
-    opacity: 1
-    transition-duration: 0.2s
-  svg
-    display: block
+<style scoped>
+.x {
+  /* Podcast アイコン・# と大きさと濃さを揃える */
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.35;
+  transition-duration: 0.2s;
+  &:hover {
+    opacity: 1;
+    transition-duration: 0.2s;
+  }
+  & svg {
+    display: block;
+  }
+}
 </style>
 
 <script>
