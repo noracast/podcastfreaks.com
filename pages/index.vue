@@ -82,7 +82,7 @@ div.root(:class="{ 'show-all-columns': showAllColumns }")
                 @play="playEpisode"
               )
             p.episodes-status(v-else-if="episodesFailed[props.row.key]") エピソードを読み込めませんでした
-            p.episodes-status(v-else) エピソードを読み込んでいます…
+            p.episodes-status(v-else) Loading…
           .scroll-fade.top
           .scroll-fade.bottom
 
