@@ -1131,14 +1131,17 @@ export default {
     // 全話を扱うようになったので、開いた番組のぶんだけ読みに行く
     loadEpisodes: function(key) {
       if(this.episodes[key]) return
-      this.$set(this.episodesFailed, key, false)
+      // 番組キーは後から生えるので、Vue 2 では値を差し込むだけでは
+      // 画面が追従しない（$set が要る）。オブジェクトごと差し替えれば
+      // その必要が無く、Vue 3 でもそのまま動く
+      this.episodesFailed = { ...this.episodesFailed, [key]: false }
       axios.get(`/downloads/episodes/${encodeURIComponent(key)}.json`)
         .then(res => {
-          this.$set(this.episodes, key, res.data)
-          this.$set(this.episodesShown, key, EPISODES_PER_CHUNK)
+          this.episodes = { ...this.episodes, [key]: res.data }
+          this.episodesShown = { ...this.episodesShown, [key]: EPISODES_PER_CHUNK }
           this.$nextTick(this.refreshScrollFades)
         })
-        .catch(() => { this.$set(this.episodesFailed, key, true) })
+        .catch(() => { this.episodesFailed = { ...this.episodesFailed, [key]: true } })
     },
     visibleEpisodes: function(key) {
       const all = this.episodes[key] || []
@@ -1153,7 +1156,7 @@ export default {
       const all = this.episodes[key] || []
       const shown = this.episodesShown[key] || EPISODES_PER_CHUNK
       if(shown >= all.length) return
-      this.$set(this.episodesShown, key, shown + EPISODES_PER_CHUNK)
+      this.episodesShown = { ...this.episodesShown, [key]: shown + EPISODES_PER_CHUNK }
       this.$nextTick(this.refreshScrollFades)
     },
 
