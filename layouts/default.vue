@@ -44,10 +44,12 @@
 
 <style lang='sass'>
 @use 'sass:color'
+@import '@/assets/brand'
 
 header
   height: 80px
-  background: linear-gradient(90deg, #7f00ff, #e100ff)
+  // スクロールしてくる一覧が透けてぼける。上を通るジャケットの色を拾う
+  +brand-glass
   padding: 0 20px
   position: sticky
   top: 0
@@ -183,7 +185,9 @@ button
       .stats
         display: none
     .sp_stats
-      background: linear-gradient(90deg, #7f00ff, #e100ff)
+      // ヘッダーと地続きに見せる。ここは一緒にスクロールしていくので、
+      // 透かす意味がない。同じ見え方になる色を置く
+      +brand-solid
       font-size: 10px
       color: white
       display: flex

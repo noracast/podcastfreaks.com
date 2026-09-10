@@ -81,6 +81,7 @@ div.root
 
 <style lang="sass" scoped>
 @use 'sass:color'
+@import '@/assets/brand'
 
 $color_new: #e100ff
 // 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px）
@@ -100,6 +101,21 @@ $sort_icon_width: 1.6em
   width: 150px
   top: 20px
   right: 0
+  // ヘッダーと同じ背景にする。後ろは白いだけなので透かさない。
+  // 押したときの変化は、色を差し替えるのではなく明るさで付ける
+  +brand-solid
+  // 文字は普段うっすら、ホバーでくっきり。ガラス越しに見えている感じにする
+  color: rgba(255,255,255,0.72)
+  transition-duration: 0.2s
+  &[disabled]
+    color: rgba(255,255,255,0.35)
+  &:not([disabled])
+    &:hover
+      color: #fff
+      filter: brightness(1.06)
+    &:active
+      color: #fff
+      filter: brightness(1.14)
 
 // 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
 //
