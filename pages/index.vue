@@ -693,11 +693,13 @@
      ソートするたびに見出しの位置がずれる */
   .sort-icon {
     display: inline-block;
-    /* ソートアイコンの占有幅。ラベルの位置合わせにも使う。
-       字そのものは8.4pxしかないので、1.6em（19px）では見出しの右に10px近い
-       余白が居座り、Frequency / Duration の列を押し広げていた。
-       字＋6pxほどの間隔に詰める */
-    width: 1.2em;
+    /* 字は見出しより小さく出す */
+    font-size: 0.7em;
+    /* 占有幅はラベルの位置合わせにも使う。字そのものは8.4pxしかないので、
+       1.6em（19px）では見出しの右に10px近い余白が居座り、
+       Frequency / Duration の列を押し広げていた。字＋6pxほどの間隔に詰める。
+       この幅は見出しの文字を基準に決めたいので、上で縮めたぶんを割り戻す */
+    width: calc(1.2em / 0.7);
     text-align: right;
   }
   .glyphicon-chevron-down {
