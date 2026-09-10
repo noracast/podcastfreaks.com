@@ -37,7 +37,9 @@ div.root
       frequency(:interval="props.row.updateInterval")
     template(slot="fileServer" slot-scope="props")
       .clip
-        small(:title="props.row.fileServer") {{ props.row.fileServer }}
+        //- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
+        //- 実際のホスト名はツールチップで確認できる
+        small(:title="props.row.fileServer") {{ props.row.fileServer | hosting }}
     template(slot="firstEpisodeDate" slot-scope="props")
       a-blank(v-if="props.row.firstEpisodeLink" :href="props.row.firstEpisodeLink")
         span.value
@@ -610,6 +612,7 @@ import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
+import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
 import { Event as VueTablesEvent } from 'vue-tables-2'
 
@@ -625,6 +628,9 @@ const HOSTING_MIN_COUNT = 2
 const OTHER_HOSTING = '__other__'
 
 export default {
+  filters: {
+    hosting: hostingLabel
+  },
   components: {
     'button-text': require('@/components/button-text.vue').default,
     'cover': require('@/components/cover.vue').default,
@@ -812,8 +818,16 @@ export default {
     hostingOptions: function() {
       const options = Object.keys(this.hostingCounts)
         .filter(h => this.hostingCounts[h] >= HOSTING_MIN_COUNT)
-        .map(host => ({ value: host, label: host, count: this.hostingCounts[host] }))
-        .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value))
+        .map(host => ({
+          value: host,
+          label: hostingLabel(host),
+          count: this.hostingCounts[host],
+          isService: isHostingService(host)
+        }))
+        // 名前の付いた配信サービスを上にまとめ、ただ置いてあるだけの
+        // ホストはその下に置く。それぞれの中では番組数の多い順
+        .sort((a, b) =>
+          (b.isService - a.isService) || (b.count - a.count) || a.value.localeCompare(b.value))
 
       const otherCount = this.minorHostings.reduce((sum, h) => sum + this.hostingCounts[h], 0)
       if(otherCount) options.push({ value: OTHER_HOSTING, label: 'その他（自前配信など）', count: otherCount })
@@ -959,6 +973,7 @@ export default {
           row.hashtag,
           row.twitter,
           row.fileServer,
+          hostingLabel(row.fileServer),
           row.durationMedian,
           frequencyLabel(row.updateInterval),
           row.total,
