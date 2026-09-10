@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="buttonAction=='copy'" v-clipboard:copy="text" class="action">{{ buttonText }}</button>
+    <button v-if="buttonAction=='copy'" class="action" @click="copy">{{ buttonText }}</button>
     <a-blank v-else class="action" :href="text">{{ buttonText }}</a-blank><!-- URL そのものも開けるようにする。ボタンが「コピー」のときはここからしか開けない
     --><a-blank class="value" :href="text">
       <!-- flex の直下のテキストには text-overflow が効かないため、
@@ -88,6 +88,17 @@ export default {
     buttonAction: {
       type: String,
       default: 'copy'
+    }
+  },
+  methods: {
+    // もとは vue-clipboard2 の v-clipboard ディレクティブを使っていた。
+    // navigator.clipboard は https と localhost でしか使えないが、
+    // このサイトは https で配信しているので足りる
+    copy: function() {
+      navigator.clipboard.writeText(this.text).catch(() => {
+        // 権限が無いなどで書けないことがある。URL は隣に出ていて
+        // 選んでコピーできるので、ここでは何もしない
+      })
     }
   }
 }

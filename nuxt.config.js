@@ -71,9 +71,7 @@ export default {
   */
   plugins: [
     '@/plugins/components',
-    '@/plugins/gtag.client',
-    '@/plugins/vue-clipboard2',
-    '@/plugins/vue-highlightjs'
+    '@/plugins/gtag.client'
   ],
 
   /*
