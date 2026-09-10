@@ -1,6 +1,10 @@
 <template lang="pug">
-div.root
+div.root(:class="{ 'show-all-columns': showAllColumns }")
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
+  //- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
+  //- 文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない
+  button.toggle-columns(v-if="hasHiddenColumns" @click="toggleAllColumns")
+    | {{ showAllColumns ? 'Compact' : 'All columns' }}
   //- 子行の開け閉めは行のどこを押しても効く（onRowClick）。
   //- 行の中のリンクやチェックボックスは、そのまま働かせる
   v-client-table(:columns="columns" :data="channels" :options="options" ref="table" @row-click="onRowClick")
@@ -140,6 +144,37 @@ div.root
     }
   }
 }
+/* 隠れている列を出すための切り替え。Download OPML の左に置く。
+   普段は目立たせず、押した状態のときだけ色を付ける */
+.toggle-columns {
+  position: absolute;
+  top: 20px;
+  right: 190px;
+  /* Download OPML と高さを揃える（実測 34px。padding 10px×2 ＋ 文字 14px） */
+  height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  /* layouts/default.vue の非スコープな button に背景色と、ホバー・押下時の
+     背景色（紫）の指定がある。あちらは :not([disabled]):hover まで書いてあって
+     こちらより強いので、同じ状態を名指しで打ち消す。
+     地は Duration / Frequency のバッジと同じ #ededed。白文字だと薄い地に
+     乗って読みにくかったので、文字は濃いグレーにしている。
+     濃くするのはホバーのときだけ。今どちらの状態かはラベルが示すので、
+     色でも示すと押していないのに濃い、という見え方になる */
+  &, &:active {
+    background-color: #ededed;
+    color: #999;
+  }
+  &:hover {
+    background-color: #e2e2e2;
+    color: #777;
+  }
+}
+
 /* 新しいことを表す目印の吹き出し。日付の上、またはタイトルの上に浮かせる。
    
    以前は top: -40px / right: -30px だったが、行の高さが変わったことで
@@ -375,6 +410,16 @@ div.root
         &:hover {
           color: #5e5e5e;
         }
+      }
+    }
+    /* First episode は「いつ始まったか」で、Last episode ほど日常的には見ない。
+       画面が狭くなると Hosting の次に隠れる列でもあるので、Hosting と同じ
+       濃さまで引いて、Last episode との区別を付ける。
+       a と span.date の両方に効かせる（リンクがある番組と無い番組がある） */
+    & td.first {
+      color: #ccc;
+      & a, .date {
+        color: #ccc;
       }
     }
     & td.file-server {
@@ -649,8 +694,45 @@ div.root
     }
   }
 }
-/* 810px は layouts/default.vue の境界と揃える
-   Hosting は % でしか伸縮させられないため、画面が広いほど際限なく広がる。
+/* 画面が狭くなったら、右の列から順に隠す。
+   境界は実測から決めた。233番組のタイトルのうち、Channel 列で省略される行数は
+   全部出したままだと 1100px で11行、1040px で20行（うち半分以上省略が2行）と、
+   1100px を下回ったあたりから急に増える。Hosting を隠すと 1100px で Channel が
+   469px → 585px に戻り、1200px 相当の見え方になる。以下も同じ考え方で、
+   「省略が増え始める手前」を境界にしてある。
+
+   幅を測って動的に決めることもできるが、列を隠すと Channel が広がって条件が
+   外れ、また出てくる、という往復になる。境界は固定にしている。
+
+   .show-all-columns は「All columns」を押した状態。
+   表は .table-responsive が overflow: auto なので、そのまま横スクロールになる */
+@media (max-width: 1100px) {
+  .root:not(.show-all-columns) ::v-deep th[class*="file-server"],
+  .root:not(.show-all-columns) ::v-deep td.file-server {
+    display: none;
+  }
+  /* 全部出したときは画面に収まらない。この表は幅に応じて縮む作りなので、
+     何もしないと Channel が潰れるだけで横スクロールにならない。
+     1100px の見え方を保ったまま溢れさせて、.table-responsive に流させる */
+  .root.show-all-columns ::v-deep table {
+    min-width: 1100px;
+  }
+}
+@media (max-width: 950px) {
+  .root:not(.show-all-columns) ::v-deep th[class*="first"],
+  .root:not(.show-all-columns) ::v-deep td.first {
+    display: none;
+  }
+}
+/* 810px は他の指定と揃えた境界。ここから下は文字も小さくなる */
+@media (max-width: 810px) {
+  .root:not(.show-all-columns) ::v-deep th[class*="total"],
+  .root:not(.show-all-columns) ::v-deep td.total {
+    display: none;
+  }
+}
+
+/* Hosting は % でしか伸縮させられないため、画面が広いほど際限なく広がる。
    ホスト名が読めれば十分で、それ以上はただの空白になるので、広い画面では
    比率を下げて200px前後で頭打ちにする */
 @media (min-width: 1400px) {
@@ -696,12 +778,27 @@ div.root
     & button {
       font-size: 10px;
     }
+    /* Download OPML と Show all columns を横に並べる。
+       button は display: block なので、そのままだと縦に積まれる */
+    .download, .toggle-columns {
+      display: inline-block;
+      vertical-align: top;
+    }
     .download {
       position: relative;
       margin-left: 15px;
+      margin-right: 0;
       top: initial;
       left: initial;
       height: 38px;
+    }
+    /* Download OPML の右。高さも向こうに合わせる */
+    .toggle-columns {
+      position: relative;
+      top: initial;
+      right: initial;
+      height: 38px;
+      margin-left: 10px;
     }
     .VueTables {
       margin-top: 15px;
@@ -796,6 +893,9 @@ const EPISODES_PER_CHUNK = 30
 // 子行を開け閉めするときの長さ
 const CHILD_ROW_ANIM_MS = 220
 
+// 狭い画面で隠している列を出したままにしているか（ブラウザごとに覚える）
+const SHOW_ALL_COLUMNS_KEY = 'pf-show-all-columns'
+
 const HOSTING_MIN_COUNT = 2
 const OTHER_HOSTING = '__other__'
 
@@ -828,12 +928,21 @@ export default {
 
       allMarked: false,
       hostingFilter: '',
+      // 画面が狭いときに隠している列を、手動で出しているか。
+      // 事前レンダリングした HTML と食い違わないよう、localStorage は
+      // mounted で読む（data で読むとハイドレーションが壊れる）
+      showAllColumns: false,
+      // 隠れている列があるか。無いときは切り替えボタンを出さない
+      hasHiddenColumns: false,
+      // 並び順は「番組 → どこで配信 → 最新回 → 初回 → 何話 → 中身の傾向」。
+      // 画面が狭いときは fileServer → firstEpisodeDate → total の順に隠す
+      // （<style> の @media を参照）
       columns: [
         'title',
-        'total',
-        'firstEpisodeDate',
-        'lastEpisodeDate',
         'fileServer',
+        'lastEpisodeDate',
+        'firstEpisodeDate',
+        'total',
         'updateInterval',
         'durationMedian',
         'download'
@@ -1014,11 +1123,38 @@ export default {
   mounted: function(){
     this.toggleAllCheckbox()
     window.addEventListener('resize', this.refreshScrollFades)
+
+    // 隠している列があるかは CSS のメディアクエリと同じ境界で判定する。
+    // 幅を測って動的に決めると、列を隠した分だけ Channel が広がって条件が
+    // 外れ、また出てくる、という往復になるため、境界は固定にしている
+    this.columnsMedia = window.matchMedia('(max-width: 1100px)')
+    this.updateHasHiddenColumns()
+    this.columnsMedia.addEventListener('change', this.updateHasHiddenColumns)
+
+    // 事前レンダリングした HTML と食い違わないよう、ここで読む
+    try {
+      this.showAllColumns = window.localStorage.getItem(SHOW_ALL_COLUMNS_KEY) === '1'
+    } catch(e) {
+      // プライベートウィンドウなどで読めないことがある。既定のままでよい
+    }
   },
   beforeDestroy: function(){
     window.removeEventListener('resize', this.refreshScrollFades)
+    if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
   methods: {
+    updateHasHiddenColumns: function(){
+      this.hasHiddenColumns = this.columnsMedia.matches
+    },
+    // 出した状態はブラウザごとに覚える。狭い画面で毎回押し直すのは煩わしい
+    toggleAllColumns: function(){
+      this.showAllColumns = !this.showAllColumns
+      try {
+        window.localStorage.setItem(SHOW_ALL_COLUMNS_KEY, this.showAllColumns ? '1' : '0')
+      } catch(e) {
+        // 書けなくても、そのセッションでは効いているのでこのままでよい
+      }
+    },
     // 列見出しに「?」を添えて、About の凡例へ送る。
     // 見出しはセル全体が並べ替えのクリック領域なので、「?」を押したときは
     // そこで止める（リンク自身のハンドラは同じ要素にあるので働く）
