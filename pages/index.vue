@@ -1,18 +1,21 @@
 <template lang="pug">
 div.root
   button.download(@click="downloadOpml" :disabled="markedRows.length == 0" ref="downloadBtn") Download OPML
-  v-client-table(:columns="columns" :data="channels" :options="options" ref="table")
-    template(slot="cover" slot-scope="props")
-      cover.cover(:channel="props.row.key" @click.native="toggleChildRow(props.row.key, $event)" title="Click to show detail")
+  //- 子行の開け閉めは行のどこを押しても効く（onRowClick）。
+  //- 行の中のリンクやチェックボックスは、そのまま働かせる
+  v-client-table(:columns="columns" :data="channels" :options="options" ref="table" @row-click="onRowClick")
     template(slot="title" slot-scope="props")
       .title-cell
+        //- カバー画像はもともと別の列だったが、見出しが2つに割れて
+        //- 片方が空欄になり収まりが悪かったので、この列に入れた
+        cover.cover(:channel="props.row.key")
         .clip
           //- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
           //- 省略は内側の .text が受け持つので、バッジは省略に巻き込まれない
           span.value
             span.new(v-if="isRecentlyAdded(props.row.addedAt)" :title="`${props.row.addedAt} に登録`") New!
             //- 省略された場合に全体を確認できるよう title 属性を付ける
-            span.text(:title="props.row.title" @click.self="toggleChildRow(props.row.key, $event)") {{ props.row.title }}
+            span.text(:title="props.row.title") {{ props.row.title }}
             //- タイトルの後ろに並べる外部リンク。
             //- Apple 側と登録フィードURLが違う番組は自動で特定できないため、
             //- Apple Podcasts のリンクを持たない番組がある
@@ -86,6 +89,8 @@ div.root
 @import '@/assets/brand'
 
 $color_new: #e100ff
+// 行に触れたときの色。ブランドの紫をごく薄く敷く
+$row_hover: #f8f5ff
 // 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px）
 $child_row_height: 305px
 
@@ -95,7 +100,10 @@ $child_row_height: 305px
   to
     opacity: 1
 // ソートアイコンの占有幅。ラベルの位置合わせにも使う
-$sort_icon_width: 1.6em
+// ソートアイコンの確保幅。字そのものは8.4pxしかないので、1.6em（19px）では
+// 見出しの右に10px近い余白が居座り、Frequency / Duration の列を押し広げていた。
+// 字＋6pxほどの間隔に詰める
+$sort_icon_width: 1.2em
 
 .download
   margin-right: 20px
@@ -161,18 +169,54 @@ $sort_icon_width: 1.6em
     border-collapse: collapse
     border-spacing: 0
     width: 100%
+  // 並べ替え中の th は class が "titletitle-sorted-asc" のようにひと続きになり、
+  // .title では拾えなくなる（vue-tables-2 が区切りなしで継ぎ足すため）。
+  // 並べ替えても幅や配置が変わらないよう、th は部分一致で指定する
   th
     white-space: nowrap
     // Hosting の見出しに重ねる select の基準にする。
+    // ソートアイコンを右端へ重ねるときの基準でもある。
     // 他の見出しはセル全体がクリック領域なので、それに合わせる
     position: relative
-    &.title
-      width: 40%
-  // 画面が広いとき、余った幅をアートワークの列が吸ってしまい、
-  // カバー画像とタイトルの間が間延びする。width: 1% で内容
-  // （カバー画像60px＋左右のpadding）の幅に張り付かせて固定する
-  th.artwork,
-  td.artwork
+    // 伸び縮みするのは Channel と Hosting だけ。他の列は内容の幅で止める
+    // （下の width: 1%）。余った幅はこの2つに、この比で配られる。
+    // Hosting は中身（.clip）が絶対配置で幅を主張しないため、狭いときは
+    // .clip の min-width（60px）まで縮み、広いときはホスト名が読める幅まで伸びる
+    &[class*="title"]
+      width: 80%
+    // 余りに応じて伸び縮みする。
+    //
+    // 表のセルでは max-width が無視される（実測。min() / clamp() や px 指定も
+    // 効かず、内容の幅まで縮んでしまった）。この表で列を伸縮させられるのは
+    // % 指定だけなので、頭打ちは画面幅ごとに比率を下げて作る（この下の @media）
+    &.file-server
+      width: 15%
+  // 画面が広いとき、余った幅をこれらの列が吸って間延びする。
+  //
+  // table-layout: auto では width の指定は目安でしかなく、余った幅は指定値に
+  // 比例して配られてしまう（width: 115px と書いても135pxになった）。min-width も
+  // 同じように扱われる。伸びを確実に止められるのは width: 1%（できるだけ狭く）で、
+  // このとき列は内容の幅ちょうどに張り付く
+  th[class*="total"], td.total,
+  th[class*="first"], td.first,
+  th[class*="last"], td.last,
+  th[class*="frequency"], td.frequency,
+  th[class*="duration"], td.duration
+    width: 1%
+    white-space: nowrap
+  // 「New!」の吹き出しは日付の右上へ30pxずらして浮かせてある。列を内容の幅まで
+  // 詰めると隣の列へはみ出すので、そのぶんの余白を右に足す。
+  //
+  // 吹き出しがあるのは td の側だけなので、th には足さない。th に足すと
+  // First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う
+  // （並べ替え中の th は class が "lastlastEpisodeDate-sorted-desc" と
+  //   ひと続きになり .last では拾えないため、th 側は指定が効いたり効かなかったりする）
+  td.first,
+  td.last
+    padding-right: 30px
+  // チェックボックスは中身が小さいので、内容の幅に張り付かせる。
+  // width: 1% は「できるだけ狭く」の意味になり、中身より狭くはならない
+  th.check, td.check
     width: 1%
     white-space: nowrap
   th,td
@@ -190,12 +234,17 @@ $sort_icon_width: 1.6em
     th
       font-weight: normal
   tbody
+    // 行のどこを押しても子行が開くので、行全体を押せるものとして見せる。
+    // 子行（.VueTables__child-row）は別の tr なので、ここには当たらない
+    tr.VueTables__row
+      cursor: pointer
+      transition: background-color 0.15s
+      &:hover
+        background-color: $row_hover
     th,td
       font-weight: 500
       font-size: 13px
       vertical-align: middle
-    td.artwork
-      position: relative
     td.title
       font-weight: bold
       font-size: 15px
@@ -208,6 +257,14 @@ $sort_icon_width: 1.6em
       // 省略は内側の .text が受け持ち、.value は overflow を切らないので
       // 上にはみ出すバッジが欠けない
       .title-cell
+        display: flex
+        align-items: center
+        >.cover
+          flex: none
+          // 別々の列だったときの td の余白（右10px＋左10px）と同じ間隔にする
+          margin-right: 20px
+        >.clip
+          flex: 1
         .clip
           >.value
             right: auto
@@ -246,7 +303,10 @@ $sort_icon_width: 1.6em
                 top: 50%
                 margin-left: 4px
                 padding-right: 4px
-                background-color: #fff
+                // 隣のアイコンを隠すための下敷き。ラベルが出るのは
+                // そのアイコンに触れている間＝行に触れている間なので、
+                // 白ではなく行のホバー色に合わせる
+                background-color: $row_hover
                 color: #888
                 font-size: 11px
                 font-weight: normal
@@ -413,33 +473,6 @@ $sort_icon_width: 1.6em
       overflow: auto
       width: 100%
       margin-top: 15px
-    .cover
-      cursor: pointer
-      transition-duration: 0.2s
-      overflow: hidden
-      &:before
-        content: 'info\A▼'
-        white-space: pre
-        color: white
-        font-size: 10px
-        line-height: 1.3em
-        font-weight: bold
-        background-color: rgba(0,0,0,0.4)
-        display: flex
-        justify-content: center
-        align-items: center
-        text-align: center
-        width: 100%
-        height: 100%
-        opacity: 0
-        transition-duration: 0.2s
-      &:hover
-        &:before
-          opacity: 1
-          transition-duration: 0.2s
-      &:active
-        &:before
-          opacity: 0
   .VueTables__search-field
     margin-bottom: 20px
     input
@@ -502,14 +535,6 @@ $sort_icon_width: 1.6em
       height: 100%
       opacity: 0
       cursor: pointer
-  // 見出しと「?」を1行に並べる。見た目は components/help-link.vue が持つ
-  .heading-with-help
-    display: inline-flex
-    align-items: center
-  // 「?」はその見出しに触れている間だけ出す。ずっと出しておくと、
-  // 並んだ見出しの中で記号だけが目に付いてしまう
-  th:hover .heading-with-help .help
-    opacity: 1
   // ソートアイコンの span はソート中かどうかに関わらず描画されるが、
   // ▼▲ が入るのはソート中だけ。幅を常に確保しておかないと、
   // ソートするたびに見出しの位置がずれる
@@ -530,6 +555,19 @@ $sort_icon_width: 1.6em
       margin-left: 0
 
 // 810px は layouts/default.vue の境界と揃える
+// Hosting は % でしか伸縮させられないため、画面が広いほど際限なく広がる。
+// ホスト名が読めれば十分で、それ以上はただの空白になるので、広い画面では
+// 比率を下げて200px前後で頭打ちにする
+@media (min-width: 1400px)
+  .root ::v-deep th.file-server
+    width: 13%
+@media (min-width: 1800px)
+  .root ::v-deep th.file-server
+    width: 11%
+@media (min-width: 2400px)
+  .root ::v-deep th.file-server
+    width: 8%
+
 @media (max-width: 810px)
   .root ::v-deep
     padding-top: 15px
@@ -562,9 +600,6 @@ $sort_icon_width: 1.6em
       .row
         padding-left: 15px
         padding-right: 15px
-      // hoverが解除されないので、打ち消す
-      .cover:hover:before
-        opacity: 0
     .VueTables__columns-dropdown
       .dropdown-menu
         right: 15px
@@ -620,10 +655,6 @@ import opml from 'opml-generator'
 import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
-// 見出しの中で描くので、タグ名ではなくコンポーネントそのものを渡す必要がある。
-// vue-tables-2 の内部コンポーネントの文脈で描かれるため、
-// このページに登録した名前は解決されない
-import HelpLink from '@/components/help-link.vue'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
 import { Event as VueTablesEvent } from 'vue-tables-2'
@@ -669,7 +700,6 @@ export default {
       allMarked: false,
       hostingFilter: '',
       columns: [
-        'cover',
         'title',
         'total',
         'firstEpisodeDate',
@@ -682,14 +712,16 @@ export default {
       markedRows: [],
       options: {
         columnsClasses: {
-          cover: 'artwork',
           title: 'title',
           fileServer: 'file-server',
           total: 'total',
           firstEpisodeDate: 'first',
           lastEpisodeDate: 'last',
           durationMedian: 'duration',
-          updateInterval: 'frequency'
+          updateInterval: 'frequency',
+          // 幅を止めるために名前を付ける。OPML のボタン（button.download）と
+          // 紛れないよう、別の名前にしている
+          download: 'check'
         },
         // 列幅は内容に合わせて決めている。手で変えられると崩れるうえ、
         // 見出しの境目にカーソルを乗せたときの左右矢印が紛らわしい
@@ -700,8 +732,9 @@ export default {
         },
         perPage: 9999,
         headings: {
-          cover: '▽ Click',
-          title: 'Title',
+          // ヘッダーの数字が「233 channels / 23801 episodes」と名乗っているので、
+          // 番組を指す語はサイト全体で channel に揃える。隣の Episodes とも対になる
+          title: 'Channel',
           // 配信サービスで絞り込めるようプルダウンにする。
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
@@ -730,9 +763,10 @@ export default {
           total: 'Episodes',
           firstEpisodeDate: 'First episode',
           lastEpisodeDate: 'Last episode',
-          // 取りうる値の一覧は About に1か所だけ置き、ここからは「?」で送る
-          durationMedian: (h) => this.headingWithHelp(h, 'Duration', '/about/#duration'),
-          updateInterval: (h) => this.headingWithHelp(h, 'Frequency', '/about/#frequency'),
+          // 取りうる値の一覧は About に1か所だけ置く。そこへの入口は
+          // 各行のバッジ自体（components/duration.vue, frequency.vue）
+          durationMedian: 'Duration',
+          updateInterval: 'Frequency',
           // vue-tables-2 は headings の関数を内部コンポーネントの文脈で call するため、
           // 通常の function だと this がページコンポーネントにならない。
           // アロー関数にして data() の this（＝ページコンポーネント）を束縛する
@@ -747,7 +781,7 @@ export default {
           }
         },
         headingsTooltips: {
-          title: 'クリックすると詳細情報が確認できます',
+          title: '行をクリックすると、番組の説明とエピソードが開きます',
           durationMedian: '収録時間の中央値',
           updateInterval: '直近の更新間隔から求めたおおよその頻度',
           fileServer: '音声ファイルの配信元',
@@ -859,12 +893,6 @@ export default {
     // 列見出しに「?」を添えて、About の凡例へ送る。
     // 見出しはセル全体が並べ替えのクリック領域なので、「?」を押したときは
     // そこで止める（リンク自身のハンドラは同じ要素にあるので働く）
-    headingWithHelp: function(h, label, to) {
-      return h('span', { class: 'heading-with-help' }, [
-        label,
-        h(HelpLink, { props: { to, label } })
-      ])
-    },
     // エピソードは番組ごとのファイルに分けてある。
     //
     // 以前は build_info.json に全番組の直近5話を入れてページのバンドルに
@@ -917,6 +945,16 @@ export default {
     // 中身によって高さが変わる（狭い画面では番組情報の量で決まる）ため、
     // CSS だけでは書けない。開いたあとに測った高さへ動かし、
     // 終わったら指定を外して元の指定（auto や5話ぶん）へ戻す
+    // 行のどこを押しても子行を開け閉めする。
+    // ただし行の中のリンクや操作部品は、それぞれの働きを優先する
+    // （Apple Podcasts / X / ハッシュタグ、エピソードへのリンク、
+    //   Hosting の絞り込み、OPML のチェックボックス）
+    onRowClick: function({ row, event }){
+      const target = event && event.target
+      if(!target || !target.closest) return
+      if(target.closest('a, input, select, button, label')) return
+      this.toggleChildRow(row.key, event)
+    },
     toggleChildRow: function(key, event){
       const tr = event && event.target && event.target.closest ? event.target.closest('tr') : null
       const wrapOf = (row) => {

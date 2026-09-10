@@ -1,15 +1,23 @@
 <template lang="pug">
-span(v-if="duration" :class="convertToClass(duration)")
+//- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
+//- この印を見たときなので、見出しに別の目印を置くより素直に辿れる
+nuxt-link.badge(v-if="duration" :class="convertToClass(duration)" :title="tooltip" to="/about/#duration")
   | {{ minutesOf(duration) }}
   small 分
   small.plus(v-if="isOver(duration)") +
-span(v-else v-text="'N/A'" title="RSSからdurationが取得できませんでした")
+nuxt-link.badge(v-else to="/about/#duration" title="RSSからdurationが取得できませんでした") N/A
 </template>
 
 <style lang="sass" scoped>
-span
+.badge
   background-color: #ededed
+  // リンクにしたので、レイアウトの a の指定（色・下線）を打ち消す
+  text-decoration: none
   color: white
+  &:hover
+    color: white
+    // 押せることが分かるよう、触れたときだけ少し明るくする
+    filter: brightness(1.08)
   font-weight: bold
   width: 60px
   height: 23px
@@ -55,6 +63,26 @@ export default {
     duration: {
       type: String,
       default: null
+    }
+  },
+  computed: {
+    // バッジは段階に丸めた値なので、元の中央値をツールチップで補う。
+    // Frequency の「直近の更新間隔の中央値: ◯日」と対にしている
+    tooltip() {
+      if(!this.duration) return null
+      const m = moment(String(this.duration), 'HH:mm:ss')
+      if(!m.isValid()) return null
+      const h = m.hours()
+      const min = m.minutes()
+      const sec = m.seconds()
+      // 1時間を超える番組で秒まで出しても仕方がないので、そこでは落とす。
+      // 逆に1分に満たない番組が実際にあり（フィードの値がおかしいものを含む）、
+      // 分だけで出すと「0分」になってしまうため、短いものは秒まで出す
+      let length
+      if(h) length = min ? `${h}時間${min}分` : `${h}時間`
+      else if(min) length = sec ? `${min}分${sec}秒` : `${min}分`
+      else length = `${sec}秒`
+      return `収録時間の中央値: ${length}`
     }
   },
   methods: {

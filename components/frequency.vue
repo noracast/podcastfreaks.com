@@ -1,13 +1,21 @@
 <template lang="pug">
-span(v-if="level" :class="level.name" :title="tooltip") {{ level.label }}
-span(v-else v-text="'N/A'" title="更新した日が1日分しかないため算出できません")
+//- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
+//- この印を見たときなので、見出しに別の目印を置くより素直に辿れる
+nuxt-link.badge(v-if="level" :class="level.name" :title="tooltip" to="/about/#frequency") {{ level.label }}
+nuxt-link.badge(v-else to="/about/#frequency" title="更新した日が1日分しかないため算出できません") N/A
 </template>
 
 <style lang="sass" scoped>
-span
+.badge
   background-color: #ededed
+  // リンクにしたので、レイアウトの a の指定（色・下線）を打ち消す
+  text-decoration: none
   // 背景が明るいので文字は濃く。緑を暗くした色にして、地の色となじませる
   color: #154725
+  &:hover
+    color: #154725
+    // 押せることが分かるよう、触れたときだけ少し明るくする
+    filter: brightness(1.08)
   font-weight: bold
   // Duration と同じ幅に揃える。一番長い「週2〜3」も12pxなら収まる
   width: 60px
