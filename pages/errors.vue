@@ -33,11 +33,12 @@
     <details class="raw">
       <summary>生データ</summary>
       <!-- pre の中は空白がそのまま出るので、code は続けて書く。
-           中身は prebuild が作った JSON。色を付けるために v-html で流し込んで
-           いるが、message にはフィード側から来た文字列（取得エラーの本文など）が
-           混じるため、本来はエスケープして出すべきところ -->
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <pre v-highlightjs><code class="javascript" v-html="raw" /></pre>
+           中身は prebuild が作った JSON。マスタッシュはオブジェクトを
+           JSON.stringify(値, null, 2) で整形するので、v-html で流し込まなくても
+           同じものが出る。message にはフィード側から来た文字列（取得エラーの
+           本文など）が混じるため、エスケープされる方を使う。
+           色付けは v-highlightjs が code の textContent を読んで行う -->
+      <pre v-highlightjs><code class="javascript">{{ raw }}</code></pre>
     </details>
   </div>
 </template>
