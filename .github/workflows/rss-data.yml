@@ -1,0 +1,95 @@
+# data/rss.json が変わったら、そこから導ける番組データを記録し直す。
+#
+#   data/added-at.json        番組の登録日（git 履歴から導出）
+#   data/apple-podcasts.json  Apple Podcasts のリンク（iTunes の検索APIと突き合わせ）
+#
+# もとは2本のワークフローに分かれていたが、同じ push で同時に起動して
+# 同じブランチへ commit → push するため、必ずどちらかが
+# `! [rejected] (fetch first)` で落ちていた。トリガーも対象ファイルも
+# commit 先も同じなので、1本にまとめて1コミットにする。
+#
+# それでも「実行中に人が別の push をする」競合は残るので、push は
+# rebase して再試行する。
+#
+# GITHUB_TOKEN によるコミットはワークフローを再トリガーしないので、
+# ここでの push がこのワークフロー自身を呼び戻すことはない。
+# Netlify のビルドは走るので、記録した内容がサイトへ反映される。
+#
+# Ref: https://github.com/noracast/podcastfreaks.com/issues/41
+#      https://github.com/noracast/podcastfreaks.com/issues/50
+
+name: 番組データを記録する
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/rss.json']
+  # 取りこぼしたときや、見つからなかった番組を調べ直したいときに手動で流す
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'Apple Podcasts のリンクを全件調べ直す'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # 登録日を git 履歴から導出するため、浅いクローンでは足りない
+          fetch-depth: 0
+
+      # 登録日のスクリプトは依存なしの素の Node で動くので、
+      # 時間のかかる yarn install / prebuild より先に済ませる
+      - name: 登録日を作り直す
+        run: node scripts/update-added-at-cli.js
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+
+      # 番組名の検索に build_info.json のタイトルを使うため、
+      # フィードを取得してから実行する
+      - run: yarn prebuild
+
+      - name: Apple Podcasts のリンクを調べる
+        run: node scripts/update-apple-podcasts-cli.js ${{ inputs.refresh && '--refresh' || '' }}
+
+      - name: 変更があればコミットする
+        run: |
+          files='data/added-at.json data/apple-podcasts.json'
+          if git diff --quiet $files; then
+            echo "変更はありません"
+            exit 0
+          fi
+
+          # 何が変わったかで件名を決める
+          changed=$(git diff --name-only $files)
+          case "$changed" in
+            *added-at*apple-podcasts*) subject='登録日と Apple Podcasts のリンクを記録する' ;;
+            *added-at*)                subject='番組の登録日を記録する' ;;
+            *)                         subject='Apple Podcasts のリンクを記録する' ;;
+          esac
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $files
+          git commit -m "$subject"
+
+          # 実行中に人が push していると弾かれるので、取り込んでから出し直す
+          for i in 1 2 3; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push; then
+              exit 0
+            fi
+            echo "push が弾かれたので再試行する（$i 回目）"
+            sleep 5
+          done
+          echo "3回試しても push できなかった"
+          exit 1

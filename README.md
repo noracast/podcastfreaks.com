@@ -66,13 +66,14 @@ GA4 の管理画面にも内部トラフィックの除外がありますが、�
 
 ## 自動化
 
-GitHub Actions が3つ動いています。いずれも依存のインストールや追加のトークンを必要としません（`GITHUB_TOKEN` のみ）。
+GitHub Actions が2つ動いています。追加のトークンは必要ありません（`GITHUB_TOKEN` のみ）。
 
 | ワークフロー | いつ動くか | すること |
 |---|---|---|
-| 番組の追加日を記録する | `data/rss.json` の変更時 | git 履歴から各番組の登録日を求め、`data/added-at.json` を作り直してコミットする |
-| Apple Podcasts のリンクを記録する | `data/rss.json` の変更時 | iTunes の検索APIとフィードURLを突き合わせ、`data/apple-podcasts.json` を更新してコミットする |
+| 番組データを記録する | `data/rss.json` の変更時 | git 履歴から各番組の登録日を求めて `data/added-at.json` を作り直し、iTunes の検索APIとフィードURLを突き合わせて `data/apple-podcasts.json` を更新し、**まとめて1コミットする** |
 | サイトの状態を見張る | 毎日 00:30 JST | 公開中の `build_info.json` を見て、問題があれば issue を作る／更新する |
+
+登録日と Apple Podcasts のリンクは、もとは別々のワークフローでした。同じ push で同時に起動して同じブランチへ commit → push するため、**必ずどちらかが `! [rejected] (fetch first)` で落ちていました**。1本にまとめて1コミットにすれば、この競合は起きえません。実行中に人が push する競合だけは残るので、push は rebase して3回まで試します。
 
 `data/added-at.json` と `data/apple-podcasts.json` は Actions が管理するので、手で編集しません（例外は `apple-podcasts.json` の `"source": "manual"` の項目）。
 
