@@ -724,7 +724,9 @@ div.root(:class="{ 'show-all-columns': showAllColumns }")
     display: none;
   }
 }
-/* 810px は他の指定と揃えた境界。ここから下は文字も小さくなる */
+/* 列を隠す並び（1100px → 950px）の最後。
+   ヘッダーの切り替え（900px）とは別の系列なので、揃えずに残してある。
+   iPad の縦（834px）では Episodes まで出したい */
 @media (max-width: 810px) {
   .root:not(.show-all-columns) ::v-deep th[class*="total"],
   .root:not(.show-all-columns) ::v-deep td.total {
@@ -750,7 +752,7 @@ div.root(:class="{ 'show-all-columns': showAllColumns }")
     width: 8%;
   }
 }
-@media (max-width: 810px) {
+@media (max-width: 900px) {
   .root ::v-deep {
     padding-top: 15px;
     padding-bottom: 15px;

@@ -143,7 +143,7 @@
   }
 }
 /* 狭い画面ではヘッダーが 70px になる */
-@media (max-width: 810px) {
+@media (max-width: 900px) {
   .root {
     & h3, h4 {
       scroll-margin-top: 90px;

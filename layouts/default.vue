@@ -90,6 +90,8 @@ header {
 .brand {
   float: left;
   height: 100%;
+  /* nav と同じく、縮めるとタイトルが2行になって高さが崩れる */
+  flex-shrink: 0;
   >a {
     display: -webkit-flex;
     -webkit-flex-direction: column;
@@ -126,6 +128,10 @@ nav {
   font-size: 13px;
   margin-left: 60px;
   height: 100%;
+  /* 幅が足りないときに縮められると、リンクが折り返して統計に重なる。
+     ここは縮めない。足りない幅は境界を下回った時点で SP 表示が引き取る */
+  flex-shrink: 0;
+  white-space: nowrap;
   & a {
     display: inline-block;
     color: #fff;
@@ -206,8 +212,15 @@ button {
     font-size: 10px;
   }
 }
-/* 810px は Responsive で測っていたときの境界をそのまま引き継いだもの */
-@media (max-width: 810px) {
+/* ここから下はヘッダーを詰めて、統計を2段目（.sp_stats）へ移す。
+
+   もとは 810px だった（Responsive で幅を測っていたときの境界の引き継ぎ）が、
+   iPad を縦にした幅（834px）で横並びのままになり、ナビゲーションが
+   統計に重なって Request が読めなくなっていた。macOS の Chrome で測ると
+   横並びに要るのは 765px で 834px に収まるものの、iOS は同じ指定でも
+   文字をひとまわり大きく出すため、実際には収まらない。
+   iPad の縦を確実に含む幅にしてある */
+@media (max-width: 900px) {
   .wrapper {
     & header {
       padding-left: 15px;

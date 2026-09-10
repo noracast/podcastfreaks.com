@@ -182,7 +182,7 @@
 }
 /* 狭い画面ではタイトルの幅が残らないので、時間と操作ボタンを詰める。
    全体の長さは再生前にも出ているので、再生中は今の位置だけで足りる */
-@media (max-width: 810px) {
+@media (max-width: 900px) {
   .episode {
     .track {
       padding-left: 10px;
