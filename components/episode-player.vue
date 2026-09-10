@@ -262,7 +262,11 @@ export default {
     // 音声は押されるまで用意しない。
     // 1000話を超える番組があり、行を開いた時点で全部を読みに行くと
     // それだけで大量の通信が走ってしまう。
-    // 長さはフィードの値で先に出しているので、これで困らない
+    // 長さはフィードの値で先に出しているので、これで困らない。
+    //
+    // URL はフィードの enclosure をそのまま使う。中継もキャッシュもしない。
+    // 配信元のログにリスナーの IP と UA が残る形を保つことで、ここでの再生が
+    // そのまま各番組の統計になる（CLAUDE.md「音声の再生」）
     preparePlayer: function() {
       if(this.player) return this.player
       if(!this.episode.url) return null

@@ -84,7 +84,11 @@ class Util {
     return hosts.reduce((a, b) => counts[b] > counts[a] ? b : a)
   }
 
-  // エピソードの音声ファイルのURL。複数ある場合は先頭を使う
+  // エピソードの音声ファイルのURL。複数ある場合は先頭を使う。
+  //
+  // 加工せずそのまま返す。Podtrac などの計測用プレフィックスやクエリを
+  // 落とすと配信者側で再生が数えられなくなるため、カバー画像に掛けている
+  // removeQuery はここでは使わない
   audioUrl(_episode) {
     return enclosureUrls(_episode)[0] || null
   }

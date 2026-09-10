@@ -90,6 +90,8 @@ const WARNING_TITLES = {
   durationCheck: '収録時間を読み取れない番組',
   coverImage: 'カバー画像を取得できない番組',
   xmlFix: 'XML が壊れている番組',
+  // 直してもらう問題ではなく、こちらが従った結果の報告
+  blocked: '掲載を止めている番組（フィードの指定に従っています）',
   validate: 'data/rss.json の問題'
 }
 

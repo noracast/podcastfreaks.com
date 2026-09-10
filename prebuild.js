@@ -66,6 +66,28 @@ const escapeBareAmpersands = (xml) =>
     .map((part, i) => i % 2 ? part : part.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]*|#[0-9]+|#x[0-9a-fA-F]+);)/g, '&amp;'))
     .join('')
 
+// 配信者が「ディレクトリに載せないでほしい」と言っているフィードか。
+//
+// <itunes:block>Yes</itunes:block> はもともと Apple 向けの指定だが、意思表示は
+// 掲載先を問わず同じものとして受け取る。Podcasting 2.0 の <podcast:block> は
+// id 付きだと特定のプラットフォームだけを指すので、id の無いもの（全体）と
+// id="*" のときだけ従う。
+//
+// xml2js は属性が付くと { _: '値', $: {...} }、同じ要素が複数あると配列を返すため、
+// どちらの形でも読めるようにしている
+const asArray = (value) => value == null ? [] : (value instanceof Array ? value : [value])
+const blockValue = (node) => String(_.get(node, '_', node) || '').trim().toLowerCase()
+
+const isBlocked = (channel) => {
+  const byItunes = asArray(channel['itunes:block']).some(node => blockValue(node) === 'yes')
+  const byPodcast = asArray(channel['podcast:block']).some(node => {
+    if(blockValue(node) !== 'yes') return false
+    const id = _.get(node, '$.id')
+    return !id || id === '*'
+  })
+  return byItunes || byPodcast
+}
+
 // RSS の同時ダウンロード数。全件を一斉に投げるとソケットを取れないリクエストが
 // 通信を始める前にタイムアウトしてしまうため、ワーカープールで絞る
 const CONCURRENCY = 20
@@ -235,6 +257,14 @@ const fetchFeed = async key => {
   const channel = normalizeFeed(json)
   if(!channel) {
     error('fetchFeed', dist_rss, new Error('RSS でも Atom でもありません'))
+    return
+  }
+
+  // 掲載を望んでいないフィードは、ここで降りる。音声を配信元から直接
+  // 再生しているサイトなので、フィードに意思表示があればそれに従う。
+  // カバー画像の取得もエピソードの書き出しも、この先なので走らない
+  if(isBlocked(channel)) {
+    warn('blocked', dist_rss, 'フィードで掲載拒否（itunes:block / podcast:block）が指定されているため、一覧に出していません')
     return
   }
 

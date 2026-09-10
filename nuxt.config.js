@@ -23,6 +23,9 @@ module.exports = {
     htmlAttrs: {
       lang: 'ja'
     },
+    // referrer の meta は置かない。ブラウザ既定（strict-origin-when-cross-origin）の
+    // ままなら、音声を再生したときに配信元のログへ podcastfreaks.com が残る。
+    // no-referrer などを足すと、配信者側の「どこから聴かれたか」が消える
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

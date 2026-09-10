@@ -13,6 +13,24 @@ Netlify のビルドは **UTC** で走る。事前レンダリングした結果
 `TZ=UTC yarn build:skip` でビルドしてから、`dist` を配信して**全ページを
 ブラウザで開く**こと（トップだけ見て `/new/` を見落とした前例がある）。
 
+## 音声の再生
+
+音声は配信元の enclosure URL をブラウザから直接再生している
+（`components/episode-player.vue` の `preparePlayer`）。配信者側の計測は配信
+サーバーのログを IP と UA で数えるので、この形なら再生がそのまま各番組の
+統計になる。次のことをすると、その数字を奪ってしまうのでしない。
+
+- 音声を中継する・キャッシュする（配信元のログが Netlify の IP で埋まる）
+- enclosure URL を「正規化」してプレフィックスやクエリを落とす
+  （Podtrac などの計測が効かなくなる。`scripts/pf-util.js` の `audioUrl`）
+- ファイルの保存（ダウンロード）機能を付ける
+- 再生時の UA を偽装する。ブラウザからは変えられないし、変えるべきでもない
+  （フィード取得側の UA は `scripts/wget-with-timeout.js` で名乗っている）
+- `referrer` の meta を足す。既定のままなら配信元へ podcastfreaks.com が伝わる
+
+フィードに `itunes:block` / `podcast:block` が指定された番組は `prebuild.js` が
+一覧から外し、`/errors` に「掲載を止めている番組」として出す。
+
 ## 生成物とデータ
 
 - `static/downloads/`（RSS・カバー画像・`build_info.json`・`episodes/`）は

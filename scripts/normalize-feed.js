@@ -6,7 +6,8 @@
 // Atom の差異はここで吸収する。対応していない形式なら null を返す。
 //
 // 揃える先の形:
-//   { title, link, description, image: { url }, 'itunes:image', item: [...] }
+//   { title, link, description, image: { url }, 'itunes:image',
+//     'itunes:block', 'podcast:block', item: [...] }
 //   item: { title, link, pubDate, enclosure: { $: { url } }, 'itunes:duration' }
 
 const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
@@ -39,6 +40,9 @@ function fromAtom(feed) {
     description: text(feed.subtitle) || text(feed.summary),
     // カバー画像は itunes:image が最優先。無ければ Atom の logo / icon を使う
     'itunes:image': feed['itunes:image'],
+    // 掲載拒否の指定。prebuild が見るので、Atom でも落とさずに渡す
+    'itunes:block': feed['itunes:block'],
+    'podcast:block': feed['podcast:block'],
     image: { url: text(feed.logo) || text(feed.icon) || null },
     item: asArray(feed.entry).map(fromAtomEntry)
   }
