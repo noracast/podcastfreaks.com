@@ -130,7 +130,6 @@ module.exports = {
         })
       }
       config.performance.hints = false
-    },
-    transpile: ['vue-responsive-components']
+    }
   }
 }
