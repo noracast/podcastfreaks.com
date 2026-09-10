@@ -2,21 +2,19 @@
 
 import _ from 'lodash'
 import consola from 'consola'
-import decodeEntities from './scripts/decode-entities'
-import 'date-utils'
+import decodeEntities from './scripts/decode-entities.js'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
 import path from 'path'
-import normalizeFeed from './scripts/normalize-feed'
-import parsePubDate from './scripts/parse-pub-date'
-import PFUtil from './scripts/pf-util'
-import rss from './data/rss.json'
+import normalizeFeed from './scripts/normalize-feed.js'
+import parsePubDate from './scripts/parse-pub-date.js'
+import PFUtil from './scripts/pf-util.js'
 import { serializeError } from 'serialize-error'
 import shell from 'shelljs'
-import validateRssJson from './scripts/validate-rss-json'
-import wget from './scripts/wget-with-timeout'
+import validateRssJson from './scripts/validate-rss-json.js'
+import wget from './scripts/wget-with-timeout.js'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
 import {
@@ -29,7 +27,11 @@ import {
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
   APPLE_PODCASTS_JSON
-} from './scripts/constants'
+} from './scripts/constants.js'
+
+// data/rss.json は ESM の import attributes を使わず fs で読む。
+// 読むのはここ1か所で、構文をブラウザ側と揃えておく必要もない
+const rss = JSON.parse(fs.readFileSync(new URL('./data/rss.json', import.meta.url), 'utf8'))
 
 // consola の既定 reporter は error / warn をバッジ表示にするため、
 // メッセージの前後に空行が入って読みにくい。バッジを使わずに1行で出す
@@ -172,7 +174,7 @@ const previousChannelCount = async () => {
   if(!json) return null
   try {
     return Object.keys(JSON.parse(json).channels || {}).length
-  } catch (e) {
+  } catch {
     return null
   }
 }
@@ -182,7 +184,7 @@ const previousChannelCount = async () => {
 const readOptionalJson = (path, label) => {
   try {
     return JSON.parse(fs.readFileSync(path, 'utf8'))
-  } catch (e) {
+  } catch {
     consola.warn(`${path} を読めませんでした。${label}なしで続行します`)
     return {}
   }
@@ -235,7 +237,7 @@ const fetchFeed = async key => {
   }
 
   // Read RSS
-  const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
+  const xml = await readFile(`${import.meta.dirname}/${dist_rss}`).catch(() => { return })
   if(!xml){
     error('readFile', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
@@ -364,13 +366,13 @@ const fetchFeed = async key => {
   // Make sure parent dir existence and its clean
   try {
     await readFile(BUILD_INFO)
-    downloads_backup = `${DOWNLOADS_DIR}(backup ${new Date().toFormat('YYYYMMDD-HH24MISS')})/`
+    downloads_backup = `${DOWNLOADS_DIR}(backup ${moment().format('YYYYMMDD-HHmmss')})/`
     shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)
     shell.mkdir('-p', EPISODES_DIR)
     consola.log(`前回の内容を退避しました: ${downloads_backup}`)
-  } catch (err) {
+  } catch {
     shell.rm('-rf', DOWNLOADS_DIR)
     shell.mkdir('-p', RSS_DIR)
     shell.mkdir('-p', COVER_DIR)

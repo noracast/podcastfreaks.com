@@ -22,13 +22,13 @@ const OPTOUT_KEY = 'ga-optout'
 // プライベートウィンドウなど localStorage が使えない環境でも落とさない
 const storage = {
   get(key) {
-    try { return window.localStorage.getItem(key) } catch (e) { return null }
+    try { return window.localStorage.getItem(key) } catch { return null }
   },
   set(key, value) {
-    try { window.localStorage.setItem(key, value) } catch (e) { /* 保存できなくても続行 */ }
+    try { window.localStorage.setItem(key, value) } catch { /* 保存できなくても続行 */ }
   },
   remove(key) {
-    try { window.localStorage.removeItem(key) } catch (e) { /* 消せなくても続行 */ }
+    try { window.localStorage.removeItem(key) } catch { /* 消せなくても続行 */ }
   }
 }
 

@@ -37,7 +37,7 @@ function download(src, options, timeout, redirectsLeft) {
       // WHATWG URL は非ASCII文字をパーセントエンコードしてくれる。
       // 既存のエンコード済み部分は二重にエンコードされない
       target = new URL(src)
-    } catch (e) {
+    } catch {
       reject(new Error(`Invalid URL: ${src}`))
       return
     }

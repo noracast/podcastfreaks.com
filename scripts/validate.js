@@ -4,8 +4,8 @@
 // prebuild でも同じ検証が走るが、フィードを追加した時点で確認できるようにしておく
 
 import consola from 'consola'
-import validateRssJson from './validate-rss-json'
-import { RSS_JSON, RSS_INACTIVE_JSON } from './constants'
+import validateRssJson from './validate-rss-json.js'
+import { RSS_JSON, RSS_INACTIVE_JSON } from './constants.js'
 
 // 動作確認用に別のファイルも渡せるようにしておく
 const [rssPath = RSS_JSON, inactivePath = RSS_INACTIVE_JSON] = process.argv.slice(2)

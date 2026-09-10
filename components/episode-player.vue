@@ -408,7 +408,7 @@ export default {
       if(!track || !track.setPointerCapture) return
       try {
         track.setPointerCapture(event.pointerId)
-      } catch(e) {
+      } catch {
         // 実際のポインタでないときは掴めない。追従できないだけで動作は続く
       }
     },

@@ -1135,7 +1135,7 @@ export default {
     // 事前レンダリングした HTML と食い違わないよう、ここで読む
     try {
       this.showAllColumns = window.localStorage.getItem(SHOW_ALL_COLUMNS_KEY) === '1'
-    } catch(e) {
+    } catch {
       // プライベートウィンドウなどで読めないことがある。既定のままでよい
     }
   },
@@ -1152,7 +1152,7 @@ export default {
       this.showAllColumns = !this.showAllColumns
       try {
         window.localStorage.setItem(SHOW_ALL_COLUMNS_KEY, this.showAllColumns ? '1' : '0')
-      } catch(e) {
+      } catch {
         // 書けなくても、そのセッションでは効いているのでこのままでよい
       }
     },

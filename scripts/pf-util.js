@@ -5,8 +5,8 @@ import consola from 'consola'
 import moment from 'moment'
 import path from 'path'
 import sharp from 'sharp'
-import wgetp from './wget-with-timeout'
-import parsePubDate from './parse-pub-date'
+import wgetp from './wget-with-timeout.js'
+import parsePubDate from './parse-pub-date.js'
 
 const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
 
@@ -73,7 +73,7 @@ class Util {
         try {
           const host = new URL(src).hostname
           counts[host] = (counts[host] || 0) + 1
-        } catch (e) {
+        } catch {
           // URL として解釈できないものは無視する
         }
       })
@@ -263,4 +263,4 @@ class Util {
   }
 }
 
-module.exports = Util
+export default Util

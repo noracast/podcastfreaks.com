@@ -46,13 +46,13 @@ const fetchJson = (url) => {
   try {
     const out = execFileSync('curl', ['-s', '--max-time', '20', url], { encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 })
     return JSON.parse(out)
-  } catch (e) {
+  } catch {
     return null
   }
 }
 
 const readJson = (path, fallback) => {
-  try { return JSON.parse(fs.readFileSync(path, 'utf8')) } catch (e) { return fallback }
+  try { return JSON.parse(fs.readFileSync(path, 'utf8')) } catch { return fallback }
 }
 
 function updateApplePodcasts({ refresh = false } = {}) {
