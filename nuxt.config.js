@@ -42,6 +42,19 @@ export default defineNuxtConfig({
   // 返さないと、クローラーやシェア時のプレビューから一覧が見えない
   ssr: true,
   nitro: {
+    // Nitro のプリセットを固定する。書かないと Netlify の上では
+    // netlify-static が自動で選ばれ、手元（既定の static）と2つ食い違う。
+    //
+    // - 出力先が .output/public ではなく dist になり、netlify.toml の
+    //   publish と合わず「Deploy directory does not exist」で落ちる
+    // - _payload.json が出力されない。事前レンダリングした HTML は
+    //   これを読む前提なので 404 になり、ハイドレーション後の状態が
+    //   復元されない（一覧のチェックが全部外れ、Download OPML が
+    //   押せなくなる）。警告は何も出ないので気づきにくい
+    //
+    // netlify-static が足す _headers（キャッシュ指定）と _redirects の
+    // 404 フォールバックは失うが、必要なら static/ に自分で置ける
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/']

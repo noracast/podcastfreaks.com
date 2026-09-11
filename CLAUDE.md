@@ -126,6 +126,16 @@ pnpm の設定は `package.json` の `pnpm` フィールドではなく
 出力先は `.output/public`。`netlify.toml` の `publish` と `pnpm deploy` の
 `--dir` もそこを指している。
 
+そのために `nuxt.config.js` で Nitro のプリセットを `static` に固定している。
+外すと Netlify の上だけ `netlify-static` が自動で選ばれ、手元と2つ食い違う。
+
+- 出力先が `dist` に変わり、`netlify.toml` の `publish` と合わずデプロイが落ちる
+- `_payload.json` が出力されない。事前レンダリングした HTML はこれを読む前提
+  なので 404 になり、ハイドレーション後の状態が復元されない（一覧のチェックが
+  全部外れ、Download OPML が押せなくなる）。**警告もエラーも出ない**
+
+手元で Netlify と同じ条件を試すなら `NETLIFY=true pnpm build:skip` で再現できる。
+
 ## コミットメッセージをファイルで渡すとき
 
 `git commit -F` に渡すファイルは、`$TMPDIR/msg.txt` のような汎用名にしない。
