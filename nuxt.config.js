@@ -71,15 +71,10 @@ export default defineNuxtConfig({
     }
   },
 
-  postcss: {
-    plugins: {
-      // スタイルは CSS のネスト記法で書いてある。ネストに対応していない
-      // ブラウザのために、ビルド時に平坦なセレクタへ展開しておく
-      'postcss-preset-env': {
-        features: { 'nesting-rules': true }
-      }
-    }
-  },
+  // スタイルは CSS のネスト記法で書いてある。Nuxt 2 のときは
+  // postcss-preset-env の nesting-rules で平坦なセレクタへ展開していたが、
+  // Vite は自前でネストを展開するので指定が要らなくなった
+  // （postcss-preset-env は Nuxt 4 に同梱されていない）
 
   compatibilityDate: '2025-01-01'
 })
