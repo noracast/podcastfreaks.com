@@ -55,7 +55,12 @@
             </div>
             <!-- 年は右に縦に並べる。ここが埋まることで、横幅の決まっている
                濃淡の右側が余らない -->
-            <div class="years">
+            <div
+              ref="years"
+              class="years"
+              :class="{ 'at-start': yearsAtStart, 'at-end': yearsAtEnd }"
+              @scroll="measureYears"
+            >
               <button
                 v-for="year in years"
                 :key="year.value"
@@ -270,14 +275,29 @@
   /* 年は縦に積む。濃淡と同じ高さに収め、入らないぶんはここだけ縦に送る。
      送れることが分かるよう、下端をうっすら消しておく */
   .years {
+    --fade: 18px;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: 64px;
     overflow-y: auto;
-    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 18px), transparent);
-    mask-image: linear-gradient(to bottom, #000 calc(100% - 18px), transparent);
+    /* 送れる向きの端だけを消す。両端に届いていれば消さない。
+       どこまで来ているかは JS が測ってクラスで知らせる */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    &.at-start {
+      -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
+      mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
+    }
+    &.at-end {
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--fade));
+      mask-image: linear-gradient(to bottom, transparent, #000 var(--fade));
+    }
+    &.at-start.at-end {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -327,6 +347,7 @@
     .body {
       padding-right: 0;
     }
+    /* 横並びになるので、消す向きも横にする */
     .years {
       position: static;
       width: auto;
@@ -334,9 +355,20 @@
       flex-direction: row;
       overflow-x: auto;
       overflow-y: visible;
-      /* 横並びのときは右端をうっすら消す */
-      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
-      mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+      mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+      &.at-start {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+      }
+      &.at-end {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+        mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+      }
+      &.at-start.at-end {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
       .year {
         text-align: center;
       }
@@ -376,7 +408,10 @@ export default {
       // 'recent' か西暦4桁
       selected: RECENT,
       // 濃淡を畳んでいるか
-      collapsed: false
+      collapsed: false,
+      // 年の並びが、どちらの端まで来ているか。端を消すかどうかに使う
+      yearsAtStart: true,
+      yearsAtEnd: false
     }
   },
   computed: {
@@ -477,12 +512,33 @@ export default {
     // 年を選び直したら、また新しいほうから見せる
     selected: function() {
       this.$nextTick(this.scrollToEnd)
+    },
+    // 畳んでいる間は測れない（高さが 0）ので、開いたときに測り直す
+    collapsed: function(value) {
+      if(!value) this.$nextTick(this.measureYears)
     }
   },
   mounted: function() {
     this.scrollToEnd()
+    this.measureYears()
+    window.addEventListener('resize', this.measureYears)
+  },
+  beforeUnmount: function() {
+    window.removeEventListener('resize', this.measureYears)
   },
   methods: {
+    // 年の並びが、どちらの端まで来ているか。縦にも横にも並ぶので
+    // （狭い画面では下に落ちる）、両方の向きを見る
+    measureYears: function() {
+      const years = this.$refs.years
+      if(!years) return
+      const vertical = years.scrollHeight > years.clientHeight
+      const position = vertical ? years.scrollTop : years.scrollLeft
+      const size = vertical ? years.clientHeight : years.clientWidth
+      const total = vertical ? years.scrollHeight : years.scrollWidth
+      this.yearsAtStart = position <= 1
+      this.yearsAtEnd = position + size >= total - 1
+    },
     // 開いたときに見せたいのは新しいほう
     scrollToEnd: function() {
       const scroll = this.$refs.scroll
