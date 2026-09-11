@@ -7,3 +7,15 @@
 allowBuilds:
   esbuild: true
   sharp: true
+
+# 依存の依存を上げる。どちらもビルドのときだけ動くもので、
+# 配るページには載らない。親のパッケージが古いものを掴んだままなので、
+# ここで解決先を書き換える。
+#   fast-uri  … @vite-pwa/nuxt > vite-plugin-pwa > workbox-build > ajv
+#               GHSA-2v66-hq9m-2gqg ほか（3.1.6 で直る）
+#   picomatch … nuxt > ... > anymatch
+#               GHSA-3v7f-55p6-f55p（2.3.2 で直る）
+# 親が新しいものを取り込んだら、この指定は外す
+overrides:
+  fast-uri: '>=3.1.6'
+  picomatch: '>=2.3.2'

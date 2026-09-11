@@ -1,6 +1,6 @@
 "use strict";
 
-import consola from 'consola'
+import consola from './logger.js'
 import decodeEntities from './decode-entities.js'
 import fs from 'fs'
 import nodeCleanup from 'node-cleanup'
@@ -30,15 +30,6 @@ import {
 // data/rss.json は ESM の import attributes を使わず fs で読む。
 // 読むのはここ1か所で、構文をブラウザ側と揃えておく必要もない
 const rss = JSON.parse(fs.readFileSync(new URL('../data/rss.json', import.meta.url), 'utf8'))
-
-// consola の既定 reporter は error / warn をバッジ表示にするため、
-// メッセージの前後に空行が入って読みにくい。バッジを使わずに1行で出す
-class CompactReporter extends consola.FancyReporter {
-  formatLogObj(logObj, opts) {
-    return super.formatLogObj({ ...logObj, badge: false }, opts)
-  }
-}
-consola.setReporters([new CompactReporter()])
 
 // OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
 const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()

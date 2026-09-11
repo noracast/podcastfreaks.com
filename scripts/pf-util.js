@@ -1,6 +1,6 @@
 "use strict";
 
-import consola from 'consola'
+import consola from './logger.js'
 import path from 'path'
 import sharp from 'sharp'
 import wgetp from './wget-with-timeout.js'

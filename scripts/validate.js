@@ -3,7 +3,7 @@
 // data/rss.json の重複チェックだけを単体で実行する（yarn validate）。
 // fetch-feeds でも同じ検証が走るが、フィードを追加した時点で確認できるようにしておく
 
-import consola from 'consola'
+import consola from './logger.js'
 import validateRssJson from './validate-rss-json.js'
 import { RSS_JSON, RSS_INACTIVE_JSON } from './constants.js'
 

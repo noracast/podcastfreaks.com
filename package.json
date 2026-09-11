@@ -31,7 +31,7 @@
     }
   },
   "dependencies": {
-    "consola": "^2.11.0",
+    "consola": "^3.4.2",
     "dayjs": "^1.11.23",
     "nuxt": "^4.5.2",
     "xml2js": "^0.6.2"
@@ -42,7 +42,7 @@
     "eslint-plugin-vue": "^10.11.0",
     "node-cleanup": "^2.1.2",
     "sanitize-html": "^2.17.7",
-    "sharp": "^0.33.0",
+    "sharp": "^0.35.4",
     "vitest": "^5.0.0",
     "vue-eslint-parser": "^10.4.1"
   }

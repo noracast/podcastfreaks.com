@@ -13,7 +13,7 @@
 import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
-import consola from 'consola'
+import consola from './logger.js'
 
 const SOURCE = 'static/icon.png'
 const DIST = 'static/img/icons'
