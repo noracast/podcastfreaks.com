@@ -339,10 +339,6 @@
     & tr.row {
       cursor: pointer;
       transition: background-color 0.15s;
-      &:hover {
-        /* 行に触れたときの色。ブランドの紫をごく薄く敷く */
-        background-color: #f8f5ff;
-      }
     }
     & th,td {
       font-weight: 500;
@@ -460,10 +456,6 @@
                  ホバー中のものを前に出して、ラベルの背景で隠せるようにする */
               >.link:hover {
                 z-index: 1;
-              }
-              >.link:hover :deep(.label) {
-                opacity: 1;
-                transform: translate(0, -50%);
               }
             }
           }
@@ -871,6 +863,23 @@
     }
   }
 }
+
+/* 触れたときの見た目は、ポインタのある環境だけにする。
+   指で押すと離したあとも状態が残り、押しっぱなしのように見えるため
+   （タップして子行を開いたあと、その行だけ色が付いたままになっていた）。
+   幅ではなく入力の仕方で分ける。タッチできるノート PC もあるので */
+@media (hover: hover) {
+  /* 行に触れたときの色。ブランドの紫をごく薄く敷く */
+  .root tbody tr.row:hover {
+    background-color: #f8f5ff;
+  }
+  /* タイトルの後ろのアイコンに触れると、その右に名前を出す */
+  .root tbody td.title .title-cell .clip>.value .links>.link:hover :deep(.label) {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
 </style>
 
 <script>

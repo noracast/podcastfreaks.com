@@ -55,9 +55,6 @@
     cursor: default;
     opacity: 0.4;
   }
-  &:not(:disabled):hover {
-    background-color: #f2f2f2;
-  }
   &:focus-visible {
     outline: 1px solid #7f00ff;
     outline-offset: -1px;
@@ -83,8 +80,6 @@
       transition: opacity 0.15s;
     }
   }
-  /* 行のどこに触れても再生の印を出す。行ごと押せば鳴ると分かるように */
-  &:not(:disabled):hover .cover-wrap .mark,
   &:focus-visible .cover-wrap .mark {
     opacity: 1;
   }
@@ -128,6 +123,19 @@
       color: #111;
       font-weight: bold;
     }
+  }
+}
+
+/* 触れたときの見た目は、ポインタのある環境だけにする。
+   指で押すと離したあとも状態が残り、押しっぱなしのように見えるため。
+   幅ではなく入力の仕方で分ける（タッチできるノート PC もある） */
+@media (hover: hover) {
+  .row:not(:disabled):hover {
+    background-color: #f2f2f2;
+  }
+  /* 行のどこに触れても再生の印を出す。行ごと押せば鳴ると分かるように */
+  .row:not(:disabled):hover .cover-wrap .mark {
+    opacity: 1;
   }
 }
 

@@ -49,9 +49,6 @@
     cursor: default;
     opacity: 0.4;
   }
-  &:not(:disabled):hover {
-    background-color: #ececec;
-  }
   /* /new から辿ってきたときに光らせる（pages/index.vue が付ける）。
      消えるときだけゆっくり戻す */
   transition: background-color 0.8s;
