@@ -101,6 +101,16 @@
     }
   }
 }
+
+/* 触れたときの色は、ポインタのある環境だけ。指で押すと離したあとも
+   残ってしまう（components/episode-row.vue と同じ理由）。
+   ここを書かないと、レイアウトのグローバルな button:hover（紫）が
+   そのまま効いてしまう */
+@media (hover: hover) {
+  .episode:not(:disabled):hover {
+    background-color: #ececec;
+  }
+}
 </style>
 
 <script>

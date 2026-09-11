@@ -108,7 +108,7 @@
                   <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
                        端に着いたときに位置が食い違う -->
                   <div class="column">
-                    <div class="info">
+                    <div class="info" :class="{ 'is-expanded': infoExpanded }">
                       <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
                            v-html で出すが、中身は fetch-feeds.js の sanitizeDescription で
                            許可したタグと属性だけに濾してある -->
@@ -118,6 +118,12 @@
                       <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" />
                       <button-text :text="row.feed" :button-text="'Copy RSS'" />
                     </div>
+                    <!-- 狭い画面では説明をスクロールさせず、収まらない分は畳んでおく。
+                         入れ子のスクロールがあると、その上で指を動かしたときに
+                         ページ全体が動かせなくなる -->
+                    <!-- 文字を包む span は、横スクロールしても画面の真ん中に
+                         出すためのもの（下の .show-more を参照） -->
+                    <button v-if="infoOverflows" class="show-more" :class="{ 'is-expanded': infoExpanded }" @click="infoExpanded = !infoExpanded"><span>{{ infoExpanded ? 'Show less' : 'Show more' }}</span></button>
                   </div>
                   <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
                   <div class="column">
@@ -834,6 +840,13 @@
       &.child-row {
         >td > .wrap {
           flex-direction: column;
+          /* 子行の中身は、テーブルがどれだけ横に広がっていても画面の中に
+             収める。横に送っても位置が変わらないので、開いた番組の説明や
+             回の一覧を追いかけずに済む */
+          position: sticky;
+          left: 0;
+          width: 100vw;
+          min-width: 0;
           /* 縦に積むぶん高さは伸びるが、説明の長い番組だと一覧が
              大きく動いてしまう。上下それぞれ5話ぶんまでに収める */
           height: auto;
@@ -844,12 +857,59 @@
               border-left: 0;
               border-top: 1px solid #e3e3e3;
             }
-            /* 説明と回の一覧を同じ高さに揃える。説明の長い番組だと、
-               そのぶん一覧が下へ押し出されて大きく動いてしまう。
-               はみ出す分はそれぞれの中でスクロールさせる。
-               縦に積むぶん、広い画面（6.5話）より低く 5.5話ぶんにする */
-            >.info, >.episodes {
-              height: 242px;
+            /* 説明は 5.5話ぶんまでで畳み、続きは Show more で広げる。
+               height ではなく max-height にしてあるのは、短い説明の番組で
+               余白だけが残らないようにするため。
+               スクロールさせないのは、入れ子のスクロールがあると
+               その上で指を動かしたときにページ全体が動かせなくなるから */
+            >.info {
+              height: auto;
+              max-height: 242px;
+              overflow: hidden;
+              &.is-expanded {
+                max-height: none;
+              }
+            }
+            /* 回の一覧は数が多いので（1300話を超える番組がある）、
+               広げるのではなくスクロールのままにする。
+               3.5話ぶん。半端にして、まだ下に続くと見せる */
+            >.episodes {
+              height: 154px;
+            }
+            /* 説明の続きを出すボタン。
+               畳んでいる間は説明の末尾に重ねる。下の文字がうっすら透けて
+               ぼけることで、まだ続きがあると見て分かる */
+            >.show-more {
+              /* レイアウトのグローバルな button の指定を打ち消す */
+              border: 0;
+              border-radius: 0;
+              min-width: 0;
+              width: 100%;
+              padding: 10px 0;
+              color: #888;
+              font-size: 12px;
+              font-weight: bold;
+              text-align: left;
+              cursor: pointer;
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              /* 子行の背景と同じ色を薄く敷く */
+              background-color: rgba(246, 246, 246, 0.72);
+              -webkit-backdrop-filter: blur(3px);
+              backdrop-filter: blur(3px);
+              >span {
+                display: block;
+                text-align: center;
+              }
+              /* 広げたら重ねる必要がないので、並びの中へ戻す */
+              &.is-expanded {
+                position: static;
+                background-color: transparent;
+                -webkit-backdrop-filter: none;
+                backdrop-filter: none;
+              }
             }
           }
         }
@@ -969,6 +1029,10 @@ export default {
       sortAscending: false,
       // 開いている子行の番組キー。一度に1つだけ開く
       openedKey: null,
+      // 狭い画面のとき、番組の説明が収まりきらないか／広げているか。
+      // 子行は一度に1つしか開かないので、開いている行のぶんだけ持てばよい
+      infoOverflows: false,
+      infoExpanded: false,
       channels: Object.values(build_info.channels),
       // 番組キー -> その番組の全エピソード。行を開いた時点で読み込む
       episodes: {},
@@ -1068,6 +1132,8 @@ export default {
     // 隠している列があるかは CSS のメディアクエリと同じ境界で判定する。
     // 幅を測って動的に決めると、列を隠した分だけ Channel が広がって条件が
     // 外れ、また出てくる、という往復になるため、境界は固定にしている
+    // 子行が縦に積まれる境界。説明を畳むかどうかの判定に使う
+    this.narrowMedia = window.matchMedia('(max-width: 900px)')
     this.columnsMedia = window.matchMedia('(max-width: 1100px)')
     this.updateHasHiddenColumns()
     this.columnsMedia.addEventListener('change', this.updateHasHiddenColumns)
@@ -1158,6 +1224,15 @@ export default {
       const found = this.$refs['wrap-' + key]
       return Array.isArray(found) ? found[0] : found
     },
+    // 説明が決めた高さに収まるかを測る。収まらなければ Show more を出す。
+    // 子行は開くたびに作り直されるので、開いたあとに測る
+    measureInfo: function(key) {
+      this.infoExpanded = false
+      const wrap = this.childWrap(key)
+      const info = wrap && wrap.querySelector('.info')
+      // 高さを決めているのは狭い画面のときだけ。広い画面では出さない
+      this.infoOverflows = !!info && this.narrowMedia?.matches && info.scrollHeight > info.clientHeight + 1
+    },
     toggleChildRow: function(key){
       // 開いている場合は、畳んでから行を消す
       if(this.openedKey === key) {
@@ -1171,6 +1246,7 @@ export default {
       this.openedKey = key
       this.$nextTick(() => {
         this.expandChildRow(this.childWrap(key))
+        this.measureInfo(key)
       })
     },
     // 見出しを押したときの並べ替え。同じ列をもう一度押すと向きが変わる
