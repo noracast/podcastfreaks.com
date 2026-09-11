@@ -1,61 +1,69 @@
 <template>
   <!-- /new の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
        見えてしまうので、全体をまとめた1枚だけにしている -->
-  <div class="heatmap" :style="{ '--weeks': weeks.length }">
+  <div class="heatmap" :class="{ 'is-collapsed': collapsed }" :style="{ '--weeks': weeks.length }">
     <div class="head">
       <span class="summary">{{ summary }}</span>
-      <!-- 年の数だけ並ぶと場所を取るので、普段は畳んでおく -->
-      <button class="toggle" :class="{ 'is-open': yearsOpen }" @click="yearsOpen = !yearsOpen">
-        Years
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+      <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる -->
+      <button class="fold" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" @click="collapsed = !collapsed">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
           <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-      <!-- 遡って見られるようにする。新しい年から並べる -->
-      <div v-show="yearsOpen" class="years">
-        <button
-          v-for="year in years"
-          :key="year.value"
-          class="year"
-          :class="{ 'is-selected': year.value === selected }"
-          @click="pickYear(year.value)"
-        >
-          {{ year.label }}
-        </button>
-      </div>
     </div>
-    <div class="body">
-      <!-- 曜日の目印。GitHub と同じく1つおきに出す。
-           横に送っても読めるよう、送る枠の外に置いてある -->
-      <div class="weekdays">
-        <span v-for="(label, index) in weekdays" :key="index">{{ label }}</span>
-      </div>
-      <!-- 狭い画面では収まらないので横に送る。開いたときは右端（最新）を見せる -->
-      <div ref="scroll" class="scroll">
-        <div class="chart">
-          <div class="months">
-            <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
+    <!-- 畳むときは高さを 0 にする（0fr ↔ 1fr）。中身の高さはセルの大きさで
+         変わるので、決め打ちの max-height にはできない -->
+    <div class="fold-wrap">
+      <div class="fold-inner">
+        <div class="body">
+          <div class="chart-side">
+            <!-- 曜日の目印。1つおきに出す。横に送っても読めるよう、
+                 送る枠の外に置いてある -->
+            <div class="weekdays">
+              <span v-for="(label, index) in weekdays" :key="index">{{ label }}</span>
+            </div>
+            <!-- 収まらないときは横に送る。開いたときは右端（最新）を見せる -->
+            <div ref="scroll" class="scroll">
+              <div class="chart">
+                <div class="months">
+                  <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
+                </div>
+                <div class="grid">
+                  <template v-for="(week, index) in weeks" :key="index">
+                    <component
+                      :is="cell.listed ? 'button' : 'div'"
+                      v-for="cell in week"
+                      :key="cell.key"
+                      class="cell"
+                      :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
+                      :title="cell.label"
+                      @click="cell.listed && $emit('pick', cell.key)"
+                    />
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div class="legend">
+              <span class="caption">Less</span>
+              <span v-for="level in 5" :key="level" class="cell" :class="`level-${level - 1}`" />
+              <span class="caption">More</span>
+            </div>
           </div>
-          <div class="grid">
-            <template v-for="(week, index) in weeks" :key="index">
-              <component
-                :is="cell.listed ? 'button' : 'div'"
-                v-for="cell in week"
-                :key="cell.key"
-                class="cell"
-                :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
-                :title="cell.label"
-                @click="cell.listed && $emit('pick', cell.key)"
-              />
-            </template>
+          <!-- 年は右に縦に並べる。ここが埋まることで、横幅の決まっている
+               濃淡の右側が余らない -->
+          <div class="years">
+            <button
+              v-for="year in years"
+              :key="year.value"
+              class="year"
+              :class="{ 'is-selected': year.value === selected }"
+              @click="selected = year.value"
+            >
+              {{ year.label }}
+            </button>
           </div>
         </div>
       </div>
-    </div>
-    <div class="legend">
-      <span class="caption">Less</span>
-      <span v-for="level in 5" :key="level" class="cell" :class="`level-${level - 1}`" />
-      <span class="caption">More</span>
     </div>
   </div>
 </template>
@@ -66,86 +74,79 @@
      狭い画面では貼り付けたまま場所を取りすぎるので、そこだけ小さくする */
   --cell: 10px;
   --gap: 3px;
-  /* 曜日の目印のぶん。月の並びと legend を、その右に揃えるのに使う */
+  /* 曜日の目印のぶん。月の並びと凡例を、その右に揃えるのに使う */
   --weekday-width: 26px;
   padding: 0 20px;
-  color: #656d76;
+  color: #999;
   font-size: 12px;
+
   .head {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     .summary {
       flex: none;
-      color: #1f2328;
+      color: #444;
       font-size: 14px;
       font-variant-numeric: tabular-nums;
     }
-    /* 年の出し入れ */
-    .toggle {
+    /* 濃淡ごと畳む */
+    .fold {
       /* レイアウトのグローバルな button の指定を打ち消す */
       border: 0;
       border-radius: 4px;
       min-width: 0;
       background: none;
       font: inherit;
-      font-size: 11px;
       flex: none;
       margin-left: auto;
-      padding: 3px 6px 3px 8px;
+      padding: 2px;
       display: flex;
       align-items: center;
-      gap: 2px;
       color: #999;
-      white-space: nowrap;
       cursor: pointer;
       & svg {
-        transition: transform 0.2s;
-      }
-      &.is-open svg {
-        transform: rotate(180deg);
-      }
-    }
-    /* 年の並び。数が多いので、入らなければ横に送る */
-    .years {
-      flex: none;
-      max-width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      gap: 4px;
-      overflow-x: auto;
-      .year {
-        /* レイアウトのグローバルな button の指定を打ち消す */
-        border: 0;
-        border-radius: 4px;
-        min-width: 0;
-        background: none;
-        font: inherit;
-        font-size: 11px;
-        flex: none;
-        padding: 3px 8px;
-        color: #999;
-        white-space: nowrap;
-        cursor: pointer;
-        font-variant-numeric: tabular-nums;
-        &.is-selected {
-          background-color: #7f00ff;
-          color: #fff;
-        }
+        transition: transform 0.22s;
       }
     }
   }
+
+  .fold-wrap {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.22s;
+    .fold-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+  }
+  /* 畳んだときは、見出しの行だけが残る */
+  &.is-collapsed {
+    .fold-wrap {
+      grid-template-rows: 0fr;
+    }
+    .head .fold svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* 年の並びは絶対位置で右に置く。並べて置くと、年のほうが高いせいで
+     濃淡の高さまで引き伸ばされてしまう（上に貼り付けているので高さは
+     抑えたい） */
   .body {
-    display: flex;
-    align-items: flex-start;
-    gap: 4px;
+    position: relative;
+    padding-right: 80px;
   }
-  /* 曜日の目印。月の並びのぶんだけ下げて、行の高さに合わせる */
+  /* 曜日・濃淡・凡例 */
+  .chart-side {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  /* 月の並びのぶんだけ下げて、セルの行と揃える */
   .weekdays {
-    flex: none;
     width: calc(var(--weekday-width) - 4px);
-    /* 月の並びのぶんだけ下げて、セルの行と揃える */
     padding-top: 14px;
     display: grid;
     grid-template-rows: repeat(7, var(--cell));
@@ -157,7 +158,6 @@
     }
   }
   .scroll {
-    flex: 1;
     min-width: 0;
     overflow-x: auto;
     /* 送れることが分かるよう、下の余白は残す */
@@ -200,21 +200,21 @@
     }
     /* 更新が多い日ほど濃くする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
        1日の中央値が4話なので、その前後で分かれるようにしてある。
-       色は GitHub の contribution graph と同じものを使っている */
+       色はブランドの紫を薄めていったもの */
     &.level-0 {
-      background-color: #ebedf0;
+      background-color: #ececec;
     }
     &.level-1 {
-      background-color: #9be9a8;
+      background-color: #e4d5fb;
     }
     &.level-2 {
-      background-color: #40c463;
+      background-color: #c3a0f4;
     }
     &.level-3 {
-      background-color: #30a14e;
+      background-color: #9a5cef;
     }
     &.level-4 {
-      background-color: #216e39;
+      background-color: #7f00ff;
     }
     /* まだ来ていない日と、選んだ年の外の日は、枠だけ空けておく。
        週の形を崩さないために置いてあるだけなので、色は付けない */
@@ -222,33 +222,64 @@
       background-color: transparent;
     }
   }
-  /* GitHub と同じく右下に置く。曜日のぶんを空けて、並びの右端に揃える */
+  /* 凡例は濃淡の右下に寄せる。曜日のぶんを空けて、並びの右端に揃える */
   .legend {
-    box-sizing: border-box;
-    width: calc(var(--weekday-width) + var(--weeks) * (var(--cell) + var(--gap)));
-    max-width: 100%;
-    padding-left: var(--weekday-width);
-    margin-top: 6px;
+    grid-column: 2;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: var(--gap);
+    margin-top: 6px;
     font-size: 11px;
     .caption {
       margin: 0 4px;
+    }
+  }
+  /* 年は縦に積む。濃淡と同じ高さに収め、入らないぶんはここだけ縦に送る。
+     送れることが分かるよう、下端をうっすら消しておく */
+  .years {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 64px;
+    overflow-y: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 18px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 18px), transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    .year {
+      /* レイアウトのグローバルな button の指定を打ち消す */
+      border: 0;
+      border-radius: 4px;
+      min-width: 0;
+      background: none;
+      font: inherit;
+      font-size: 11px;
+      flex: none;
+      padding: 3px 8px;
+      color: #999;
+      text-align: right;
+      white-space: nowrap;
+      cursor: pointer;
+      font-variant-numeric: tabular-nums;
+      &.is-selected {
+        background-color: #7f00ff;
+        color: #fff;
+      }
     }
   }
 }
 
 /* 触れたときの色は、ポインタのある環境だけ（指では押したあとも残るため） */
 @media (hover: hover) {
-  .heatmap .head .years .year:not(.is-selected):hover,
-  .heatmap .head .toggle:hover {
+  .heatmap .years .year:not(.is-selected):hover,
+  .heatmap .head .fold:hover {
     background-color: #f0e8fc;
     color: #7f00ff;
   }
-  /* 押せる日は、触れると輪郭を出して分かるようにする。
-     色は濃いめのグレー。ブランドの紫だと、緑の並びの中で浮いてしまう */
+  /* 押せる日は、触れると輪郭を出して分かるようにする */
   .heatmap .cell.is-listed:hover {
     box-shadow: 0 0 0 2px rgba(27, 31, 36, 0.5);
   }
@@ -260,13 +291,22 @@
     --gap: 2px;
     --weekday-width: 22px;
     padding: 0 10px;
-    /* 幅が残らないので、年の並びは見出しの下へ落とす */
-    .head {
-      flex-wrap: wrap;
-      .years {
-        flex-basis: 100%;
-        max-width: none;
-        justify-content: flex-start;
+    /* 幅が残らないので、年は濃淡の下へ横並びで落とす */
+    .body {
+      padding-right: 0;
+    }
+    .years {
+      position: static;
+      width: auto;
+      margin-top: 8px;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: visible;
+      /* 横並びのときは右端をうっすら消す */
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
+      .year {
+        text-align: center;
       }
     }
   }
@@ -284,7 +324,7 @@ const DAYS = 365
 // 年ではなく直近1年を出しているときの目印
 const RECENT = 'recent'
 
-// 曜日の目印。GitHub と同じく1つおきに出す（日曜始まり）
+// 曜日の目印。1つおきに出す（日曜始まり）
 const WEEKDAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
 
 // 1日の話数を色の段に落とす。境目は実データから決めてある
@@ -303,8 +343,8 @@ export default {
     return {
       // 'recent' か西暦4桁
       selected: RECENT,
-      // 年の並びを出しているか。普段は畳んでおく
-      yearsOpen: false
+      // 濃淡を畳んでいるか
+      collapsed: false
     }
   },
   computed: {
@@ -321,7 +361,7 @@ export default {
     years: function() {
       const days = Object.keys(counts)
       const first = days.length ? Number(days[0].slice(0, 4)) : this.today.year()
-      const list = [{ value: RECENT, label: 'この1年' }]
+      const list = [{ value: RECENT, label: '1 year' }]
       for(let year = this.today.year(); year >= first; year--) {
         list.push({ value: String(year), label: String(year) })
       }
@@ -397,7 +437,7 @@ export default {
     }
   },
   watch: {
-    // 年を選び直したら、また最新のほうから見せる
+    // 年を選び直したら、また新しいほうから見せる
     selected: function() {
       this.$nextTick(this.scrollToEnd)
     }
@@ -406,11 +446,6 @@ export default {
     this.scrollToEnd()
   },
   methods: {
-    pickYear: function(value) {
-      this.selected = value
-      // 選んだら畳む。貼り付いている高さを取り返す
-      this.yearsOpen = false
-    },
     // 開いたときに見せたいのは新しいほう
     scrollToEnd: function() {
       const scroll = this.$refs.scroll
