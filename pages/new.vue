@@ -12,7 +12,7 @@
                  key は並び順そのもの。この一覧はビルド時に決まって、
                  あとから並べ替えも差し込みもしないので添字でよい -->
             <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)" class="border">
-              <span class="date" v-text="date(val.pubDate)" />
+              <span class="date">{{ date(val.pubDate) }}</span>
             </div>
             <episode-row :episode="val" />
           </template>
@@ -26,7 +26,7 @@
                  key は並び順そのもの。この一覧はビルド時に決まって、
                  あとから並べ替えも差し込みもしないので添字でよい -->
             <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)" class="border">
-              <span class="date" v-text="date(val.pubDate)" />
+              <span class="date">{{ date(val.pubDate) }}</span>
             </div>
             <episode-row :episode="val" />
           </template>
@@ -52,12 +52,19 @@
   margin: 10px 0;
   position: relative;
 }
+/* 日付は一覧（pages/index.vue）と同じ YYYY.MM.DD・13px で出す。
+   色も一覧の日付のグレー（First episode 列）に揃えてある。
+   区切り線と同じ色なので、見出しとして浮かない */
 .date {
   position: absolute;
   top: 10px;
   padding: 5px 20px;
   height: 30px;
   line-height: 30px;
+  color: #ccc;
+  font-size: 13px;
+  /* 数字の幅を揃えて、日ごとの見出しの並びが揺れないようにする */
+  font-variant-numeric: tabular-nums;
 }
 h5 {
   padding: 0 20px;
@@ -70,12 +77,12 @@ h5 {
     margin-right: 0;
   }
   .date {
-    font-size: 11px;
-    height: 20px;
-    line-height: 20px;
     position: relative;
     margin-left: 20px;
-    padding-left: 10px;
+    padding: 0 10px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 11px;
   }
 }
 </style>
@@ -110,8 +117,8 @@ export default {
   },
   methods: {
     date: function(_date) {
-      // ロケールは lib/jst.js で ja に決めている
-      return jst(_date).format('M/D(ddd)')
+      // 一覧（pages/index.vue の lib/format-date.js）と同じ表記に揃える
+      return jst(_date).format('YYYY.MM.DD')
     },
     // 日付の区切り線を出すかの判定。表示と同じ日本時間で比べる
     isSame: function(_date1, _date2) {

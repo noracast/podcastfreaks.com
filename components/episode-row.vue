@@ -1,90 +1,85 @@
 <template>
   <!-- /new に並ぶ1話。トップの子行（components/episode-item.vue）と同じく、
-       行のどこを押しても右下のプレーヤーで鳴る。
-       違うのは、番組をまたぐ一覧なのでジャケットと番組名を添えるところ -->
-  <button
-    class="row"
-    :class="{ 'is-current': current, 'is-playing': current && playing }"
-    :title="playable ? `${episode.title} を再生` : `${episode.title}（音声が取得できていません）`"
-    :disabled="!playable"
-    @click="onPlay"
+       押すと右下のプレーヤーで鳴る。違うのは、番組をまたぐ一覧なので
+       ジャケットと番組名を添えるところ。
+       番組名だけは行き先が違う（一覧でその番組を開く）ので、別のボタンにする。
+       そのため行そのものは button ではなく div にしてある -->
+  <div
+    class="row episode-line"
+    :class="{ 'is-current': current, 'is-playing': current && playing, 'is-disabled': !playable }"
   >
-    <span class="cover-wrap">
-      <cover class="cover" :channel="episode.key" :size="30" radius="50%" />
-      <!-- ジャケットに重ねる再生の印。行に触れている間と、鳴らしている回に出す -->
-      <span class="mark">
-        <play-icon :playing="current && playing" :size="12" />
+    <button
+      class="main"
+      :title="playable ? `${episode.title} を再生` : `${episode.title}（音声が取得できていません）`"
+      :disabled="!playable"
+      @click="onPlay"
+    >
+      <cover class="cover" :channel="episode.key" :size="30" />
+      <!-- 触れている間と、鳴らしている回にだけ出す。出ていないときは幅を
+           持たないので、題名が右へずれて隙間が開くように見える -->
+      <span class="play">
+        <play-icon :playing="current && playing" />
       </span>
-    </span>
-    <span class="text">{{ episode.title }}</span>
-    <!-- 番組名は題名の後ろに控えめに。ジャケットで分かることが多いが、
-         知らない番組のときはここで名前が読める -->
-    <span class="channel">{{ episode.channel_title }}</span>
+      <span class="text">{{ episode.title }}</span>
+    </button>
+    <!-- 番組名は控えめに。ジャケットで分かることが多いが、知らない番組の
+         ときはここで名前が読める。押すと一覧でその番組を開く -->
+    <button class="channel" :title="`${episode.channel_title} を一覧で開く`" @click="onOpenChannel">{{ episode.channel_title }}</button>
     <span class="time">{{ formattedDuration }}</span>
-  </button>
+  </div>
 </template>
 
 <style scoped>
+/* 骨格と、題名・長さ・印の見た目は assets/episode-line.css（.episode-line）。
+   ここに書くのは、/new の行にしかないものだけ */
 .row {
-  /* レイアウトのグローバルな button の指定（角丸・余白・最小幅・中央寄せ）を打ち消す */
-  border: 0;
-  border-radius: 0;
-  min-width: 0;
   padding: 0 20px 0 0;
-  background: none;
-  color: inherit;
-  /* font: inherit だと親（/new）の 16px を拾ってしまう。
-     トップの子行（components/episode-item.vue）と同じ 13px に揃える */
-  font: inherit;
-  font-size: 13px;
-  font-weight: normal;
-  text-align: left;
-  width: 100%;
-  height: 44px;
-  display: flex;
-  align-items: center;
   gap: 12px;
-  cursor: pointer;
-  &:disabled {
-    cursor: default;
-    opacity: 0.4;
-  }
-  &:focus-visible {
-    outline: 1px solid #7f00ff;
-    outline-offset: -1px;
-  }
 
-  .cover-wrap {
-    flex: none;
-    position: relative;
+  /* 中の2つのボタンから、レイアウトのグローバルな button の指定
+     （角丸・余白・最小幅・中央寄せ）を外す */
+  .main, .channel {
+    border: 0;
+    border-radius: 0;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  /* 題名までがひとつのボタン。行の空いているところを押しても鳴るよう、
+     残りの幅はここが持つ */
+  .main {
+    flex: 1;
+    height: 100%;
     display: flex;
-    /* 日付の見出しと縦に揃える */
-    margin-left: 100px;
-    .mark {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      color: #fff;
-      /* グレーで重ねる。紫は「いま鳴っている回」の印に取ってある */
-      background-color: rgba(70, 70, 70, 0.6);
-      opacity: 0;
-      transition: opacity 0.15s;
+    align-items: center;
+    gap: 12px;
+    &:disabled {
+      cursor: default;
     }
   }
-  &:focus-visible .cover-wrap .mark {
-    opacity: 1;
+  .cover {
+    flex: none;
+    /* 日付の見出しと縦に揃える */
+    margin-left: 120px;
   }
-
-  .text {
-    flex: 0 1 auto;
-    min-width: 0;
-    color: #555;
+  .play {
+    width: 0;
+    /* 閉じている間は、前後に付く gap のぶんを打ち消しておく */
+    margin-left: -12px;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    opacity: 0;
+    transition: width 0.18s, margin-left 0.18s, opacity 0.18s;
+  }
+  /* 鳴らしている回は触れていなくても出す。キーボードで辿ったときも同じ */
+  &.is-current .play,
+  .main:focus-visible .play {
+    width: 22px;
+    margin-left: 0;
+    opacity: 1;
   }
   .channel {
     flex: none;
@@ -94,29 +89,10 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    transition: color 0.2s;
   }
   .time {
-    flex: none;
-    /* 残りを埋めて右端へ寄せる */
-    margin-left: auto;
     padding-left: 12px;
-    color: #999;
-    font-size: 11px;
-    /* 数字の幅を揃えて、並びの中で右端が揃うようにする */
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
-  /* 右下で鳴らしている回。触れていなくても印を出したままにする */
-  &.is-current {
-    .cover-wrap .mark {
-      opacity: 1;
-      background-color: rgba(127, 0, 255, 0.65);
-    }
-    .text {
-      color: #111;
-      font-weight: bold;
-    }
   }
 }
 
@@ -124,12 +100,17 @@
    指で押すと離したあとも状態が残り、押しっぱなしのように見えるため。
    幅ではなく入力の仕方で分ける（タッチできるノート PC もある） */
 @media (hover: hover) {
-  .row:not(:disabled):hover {
+  .row:not(.is-disabled):hover {
     background-color: #f2f2f2;
   }
-  /* 行のどこに触れても再生の印を出す。行ごと押せば鳴ると分かるように */
-  .row:not(:disabled):hover .cover-wrap .mark {
+  /* 行のどこに触れても印を出す。行ごと押せば鳴ると分かるように */
+  .row:not(.is-disabled):hover .play {
+    width: 22px;
+    margin-left: 0;
     opacity: 1;
+  }
+  .row .channel:hover {
+    color: #555;
   }
 }
 
@@ -138,8 +119,14 @@
   .row {
     padding-right: 10px;
     gap: 10px;
-    .cover-wrap {
+    .main {
+      gap: 10px;
+    }
+    .cover {
       margin-left: 10px;
+    }
+    .play {
+      margin-left: -10px;
     }
     .text {
       font-size: 12px;
@@ -154,30 +141,22 @@
 </style>
 
 <script>
-import formatTime from '@/lib/format-time'
-import { player, isCurrent, toggleEpisode } from '@/lib/player'
+import episodeLine from '@/lib/episode-line'
+import { toggleEpisode, revealFor } from '@/lib/player'
 
 export default {
-  props: {
-    episode: {
-      required: true,
-      type: Object
-    }
-  },
-  computed: {
-    // 音声を持たない回がある（記事だけのフィードや、enclosure の無い回）
-    playable: function() { return !!this.episode.url },
-    current: function() { return isCurrent(this.episode) },
-    playing: function() { return player.playing },
-    formattedDuration: function() {
-      return formatTime(this.episode.duration == null ? NaN : this.episode.duration)
-    }
-  },
+  // 回そのものの扱い（props と computed）はトップの子行と分け合っている
+  mixins: [episodeLine],
   methods: {
     onPlay: function() {
       // episode に key と channel_title が入っているので、
       // 右下のプレーヤーはそこから番組を知る
       toggleEpisode(this.episode)
+    },
+    // 一覧へ行き、この番組の行を開いてこの回まで辿る（pages/index.vue が受ける）
+    onOpenChannel: function() {
+      revealFor(this.episode)
+      this.$router.push('/')
     }
   }
 }

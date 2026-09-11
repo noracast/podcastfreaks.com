@@ -1,4 +1,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+/* トップの子行と /new の行で分け合うぶん。scoped な <style> どうしでは
+   分け合えないので、グローバルとしてここから読む */
+@import './episode-line.css';
 
 /* ブランドの背景。左の紫から右の赤紫へ流れるのは今までどおりだが、
    2色を直線でつなぐのではなく、近い色相の光を横に並べて重ねる。

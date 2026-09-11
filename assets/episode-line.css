@@ -1,0 +1,76 @@
+/* トップの子行（components/episode-item.vue）と /new の行
+   （components/episode-row.vue）は、並ぶ場所も中身も違うが、「押すと右下の
+   プレーヤーで鳴る1話」という点は同じなので、見た目を揃える。
+   scoped な <style> どうしでは分け合えないため、共通のぶんをここに置く。
+
+   触れたときの色だけは、それぞれのコンポーネントで決める。敷かれている面の
+   色が違うため（子行は #f6f6f6、/new は白） */
+.episode-line {
+  /* レイアウトのグローバルな button の指定（角丸・余白・最小幅・中央寄せ）を打ち消す */
+  border: 0;
+  border-radius: 0;
+  min-width: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  /* font: inherit だけだと親の大きさを拾う（/new は 16px）ので、ここで決める */
+  font: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  text-align: left;
+  /* /new の行は button ではなく div なので、既定の border-box が外れる。
+     width: 100% に padding が足されて横スクロールが出るため明示する */
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+/* /new の行は、番組名だけ行き先が違うので button ではなく div。
+   そちらは :disabled を持てないので、クラスでも同じ見た目にする */
+.episode-line:disabled,
+.episode-line.is-disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+.episode-line:focus-visible {
+  outline: 1px solid #7f00ff;
+  outline-offset: -1px;
+}
+
+/* 再生と一時停止の印 */
+.episode-line .play {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+/* 題名 */
+.episode-line .text {
+  min-width: 0;
+  color: #555;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+/* 長さ。数字の幅を揃えて、並びの中で右端が揃うようにする */
+.episode-line > .time {
+  flex: none;
+  color: #999;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* 右下で鳴らしている回がどれか、並びの中で見て分かるようにする。
+   止めているものも印は残す（どこまで聴いたか見失わないように） */
+.episode-line.is-current .play {
+  color: #7f00ff;
+}
+.episode-line.is-current .text {
+  color: #111;
+  font-weight: bold;
+}
