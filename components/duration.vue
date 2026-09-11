@@ -3,7 +3,7 @@
        この印を見たときなので、見出しに別の目印を置くより素直に辿れる。
        About では凡例そのものなので、linked を false にしてただの印にする -->
   <component :is="tag" v-if="duration" class="badge" :class="convertToClass(duration)" :title="tooltip" :to="linked ? '/about/#duration' : null"><small v-if="!isOver(duration)" class="upto">〜</small>{{ minutesOf(duration) }}<small>分</small><small v-if="isOver(duration)" class="from">〜</small></component>
-  <component :is="tag" v-else class="badge" :to="linked ? '/about/#duration' : null" title="RSSからdurationが取得できませんでした">N/A</component>
+  <component :is="tag" v-else class="badge na" :to="linked ? '/about/#duration' : null" title="RSSからdurationが取得できませんでした">N/A</component>
 </template>
 
 <style scoped>
@@ -16,6 +16,14 @@
     color: white;
     /* 押せることが分かるよう、触れたときだけ少し明るくする */
     filter: brightness(1.08);
+  }
+  /* 値が無いときは背景が明るい灰色のままなので、白文字だと読めない。
+     Frequency の N/A と同じ濃い文字にして、2つの N/A を揃える */
+  &.na {
+    color: #154725;
+    &:hover {
+      color: #154725;
+    }
   }
   font-weight: bold;
   width: 60px;
