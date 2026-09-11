@@ -2,7 +2,6 @@
 
 import consola from 'consola'
 import decodeEntities from './decode-entities.js'
-import fileExtension from 'file-extension'
 import fs from 'fs'
 import nodeCleanup from 'node-cleanup'
 import path from 'path'
@@ -11,7 +10,6 @@ import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
-import { serializeError } from 'serialize-error'
 import validateRssJson from './validate-rss-json.js'
 import wget from './wget-with-timeout.js'
 import xml2js from 'xml2js'
@@ -43,6 +41,19 @@ consola.setReporters([new CompactReporter()])
 
 // OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
 const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()
+
+// URL や パス の拡張子（ドットなし・小文字）。file-extension と同じ。
+// 呼び出し前に removeQuery でクエリを落としてある
+const fileExtension = (filename) =>
+  !filename ? '' : (/[^./\\]*$/.exec(filename) || [''])[0].toLowerCase()
+
+// Error は JSON.stringify すると {} になるので、必要な項目を取り出す。
+// serialize-error を使っていたが、/errors が見るのは message だけで、
+// あとは調べるときのために name と stack があれば足りる。
+// Promise の reject には Error 以外も来るため、その場合は文字列にする
+const serializeError = (error) => error instanceof Error
+  ? { ...error, name: error.name, message: error.message, stack: error.stack }
+  : { message: String(error) }
 
 // 取得先のディレクトリを作る。無ければ作り、あれば何もしない
 const makeDownloadDirs = () => {

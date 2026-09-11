@@ -899,7 +899,7 @@
 <script>
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
-import opml from 'opml-generator'
+import opml from '@/lib/opml'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
