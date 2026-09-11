@@ -379,8 +379,11 @@ export default {
     today: function() { return jst(build_info.updated).startOf('date') },
     weekdays: function() { return WEEKDAYS },
     // 見出しはどの範囲を見ているかだけ。話数は隣に小さく出す
+    // （見出しに入れると、桁が増えるほど長くなってしまう）
     period: function() {
-      return this.selected === RECENT ? 'Last year' : this.selected
+      return this.selected === RECENT
+        ? 'Episodes in the last year'
+        : `Episodes in ${this.selected}`
     },
     totalLabel: function() {
       return `${this.total.toLocaleString('en')} episodes`
