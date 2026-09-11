@@ -179,10 +179,30 @@ const util = new PFUtil()
 const durationSeconds = (raw) => {
   if(raw == null || raw === '') return null
   const hhmmss = util.getDuration(raw)
-  if(!/^\d{2}:\d{2}:\d{2}$/.test(hhmmss)) return null
+  if(!/^\d{2,}:\d{2}:\d{2}$/.test(hhmmss)) return null
   const [h, m, sec] = hhmmss.split(':').map(Number)
   return h * 3600 + m * 60 + sec
 }
+
+// フィードのエピソード1件を、ページが使う形にする。
+//
+// 子行（episodes/<key>.json）と /new の両方がこの形を受け取る。
+// 一覧の子行も /new も同じ episode-row で描き、同じプレーヤーで鳴らすので、
+// 形が違うと片方だけ再生できないといったことが起きる。
+//
+// フィードの項目をそのまま渡さないのは、必要なのがこの6つだけだからでもある。
+// /new のぶんを生のまま build_info.json に入れていた頃は、使っていない
+// description などが全体の53%（271KB）を占めていた
+const toEpisode = (ep) => ({
+  title: ep.title,
+  link: ep.link || null,
+  pubDate: ep.pubDate,
+  // enclosure の URL をそのまま使う。プレフィックスもクエリも落とさない
+  // （CLAUDE.md「音声の再生」）
+  url: util.audioUrl(ep),
+  // 再生前に長さを出せるようにしておく。音声を読みに行かずに済む
+  duration: durationSeconds(ep['itunes:duration'])
+})
 const readFile = promisify(fs.readFile)
 const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
@@ -352,21 +372,22 @@ const fetchFeed = async key => {
     pubDate: episodes[0].pubDate
   })
 
-  episodes_in_2weeks = episodes_in_2weeks.concat(util.getEpisodesIn2Weeks(episodes, key, title))
+  // /new に出すぶん。番組をまたいで1つの並びにするので、どの番組のものか
+  // 分かるように key と番組名を添える
+  episodes_in_2weeks = episodes_in_2weeks.concat(
+    util.getEpisodesIn2Weeks(episodes, key, title).map(ep => ({
+      ...toEpisode(ep),
+      key: ep.key,
+      channel_title: ep.channel_title
+    }))
+  )
 
   // 平均と中央値で同じ解析を2度走らせない（警告も2回出ていた）
   const durations = util.getDurations(episodes, dist_rss)
 
   // 一覧の初期表示には要らないので、番組ごとの別ファイルへ回す。
   // 行を開いたときに、その番組のぶんだけ読み込む
-  await writeFile(`${EPISODES_DIR}/${key}.json`, JSON.stringify(episodes.map(ep => ({
-    title: ep.title,
-    link: ep.link || null,
-    pubDate: ep.pubDate,
-    url: util.audioUrl(ep),
-    // 再生前に長さを出せるようにしておく。音声を読みに行かずに済む
-    duration: durationSeconds(ep['itunes:duration'])
-  }))), 'utf8')
+  await writeFile(`${EPISODES_DIR}/${key}.json`, JSON.stringify(episodes.map(toEpisode)), 'utf8')
 
   // Save data
   channels[key] = {
