@@ -29,24 +29,14 @@
            読む方は 30（= -60）を指定する -->
       <cover v-if="episode.key" class="cover" :channel="episode.key" :size="36" :image-size="30" />
       <div class="names">
-        <!-- 番組名とリンク、題名と配信日。右端を揃えたいので行ごとに分ける。
-             -->
+        <!-- 番組名と配信日、その下に題名。右端を揃えたいので行ごとに分ける -->
         <div class="line">
           <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToChannel">{{ episode.channelTitle || episode.key }}</button>
           <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
-          <a-blank v-if="episode.link" class="open" :href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く">
-            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M14 5h5v5" />
-                <path d="M19 5l-8 8" />
-                <path d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10" />
-              </g>
-            </svg>
-          </a-blank>
+          <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
         </div>
         <div class="line">
           <span class="title" :title="episode.title">{{ episode.title }}</span>
-          <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
         </div>
       </div>
     </div>
@@ -186,11 +176,21 @@
   /* 上の余白は .tab が持つ。つまみを上端いっぱいの帯にしたいので */
   padding: 0 17px;
   border-radius: 12px;
-  /* 畳むときに下へ滑らせる */
-  transition: transform 0.28s ease-out;
+  /* 畳むときに下へ滑らせる。触れている間は濃くする（下の :hover） */
+  transition: transform 0.28s ease-out, background-color 0.2s;
   /* ぶら下げた一覧が角からはみ出さないようにする */
   overflow: hidden;
-  background-color: #222;
+  /* 後ろの一覧が少し透けてぼける。重なっていることが分かる程度に留める
+     （透かしすぎると白い文字が読みにくい）。彩度を上げているのは、
+     ぼかすと色が平均化されて灰色に寄るため */
+  background-color: rgba(34, 34, 34, 0.86);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  /* 触れている間は濃くする。読むとき・操作するときは、後ろが透けるより
+     はっきり見えた方がよい */
+  &:hover {
+    background-color: rgba(26, 26, 26, 0.97);
+  }
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   color: #ccc;
   font-size: 14px;
@@ -230,9 +230,10 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    /* 背景は変えない。不透明な色を敷くと、そこだけ後ろが透けなくなって
+       別の板が載っているように見える */
     &:hover {
       color: #ccc;
-      background-color: #2a2a2a;
     }
     /* 開いているうちは矢印だけ。何が鳴っているかは本体に出ている */
     >.state, >.label {
@@ -241,7 +242,7 @@
     >.state {
       flex: none;
       align-items: center;
-      color: #b388ff;
+      color: #ccc;
     }
     >.label {
       flex: 1;
@@ -303,7 +304,7 @@
            長い番組名はここで省略する */
         flex: 1;
         min-width: 0;
-        color: #b388ff;
+        color: #aaa;
         font-size: 13px;
         font-weight: bold;
         text-align: left;
@@ -312,7 +313,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         &:hover {
-          color: #d0b3ff;
+          color: #fff;
           text-decoration: underline;
         }
         /* 番組が特定できないとき（/new から鳴らして key が無い場合）は
@@ -320,7 +321,7 @@
         &.as-text {
           cursor: default;
           &:hover {
-            color: #b388ff;
+            color: #aaa;
             text-decoration: none;
           }
         }
@@ -332,15 +333,6 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-      }
-      .open {
-        flex: none;
-        display: flex;
-        align-items: center;
-        color: #888;
-        &:hover {
-          color: #fff;
-        }
       }
     }
   }
@@ -381,7 +373,9 @@
       align-items: center;
       justify-content: flex-end;
       border-radius: 0 5px 5px 0;
-      background-color: #333;
+      /* 後ろのグラデーションを透かす。不透明な帯だと、そこだけ
+         別の板が載っているように見えるため */
+      background-color: rgba(255, 255, 255, 0.08);
       /* 左右に動かして位置を変えられることを、カーソルの形で示す */
       cursor: col-resize;
       overflow: hidden;
@@ -397,7 +391,8 @@
         top: 0;
         bottom: 0;
         width: 0;
-        background-color: rgba(127, 0, 255, 0.45);
+        /* 溝より明るく、けれど後ろは透ける程度に */
+        background-color: rgba(255, 255, 255, 0.2);
         pointer-events: none;
       }
       .time {
@@ -465,10 +460,7 @@
         }
       }
       >.drawer-toggle.is-open {
-        color: #b388ff;
-        &:hover {
-          color: #d0b3ff;
-        }
+        color: #fff;
       }
       /* 端まで来たら押せないことを見せる */
       >button:disabled {
@@ -500,14 +492,12 @@
       max-height: 216px;
       overflow-y: auto;
     }
-    /* 区切り線と上下の余白は中に持たせる。.drawer 側に置くと
-       閉じているときも線だけ残ってしまう */
     >.inner >ul {
-      border-top: 1px solid #333;
-      /* 上下の端が、左右の余白と同じ 14px に見えるようにする。
-         1件ごとの上下の余白が 6px あるので、その差だけ足す */
+      /* 余白も線も持たせない。ここに空けると1件目との間に何も無い帯が
+         できて、触れたときの色もそこまで届かない。
+         操作との境目は .controls の下余白で足りている */
       margin: 0;
-      padding: 8px 0 10px;
+      padding: 0;
       list-style: none;
       >li >button {
         /* レイアウトのグローバルな button の指定を打ち消す */
@@ -524,8 +514,10 @@
         font: inherit;
         text-align: left;
         cursor: pointer;
+        /* 半透明にしておく。不透明な色を敷くと、そこだけ後ろが
+           透けなくなって浮いて見える */
         &:hover {
-          background-color: #2c2c2c;
+          background-color: rgba(255, 255, 255, 0.07);
         }
         &:focus-visible {
           outline: 1px solid #7f00ff;
@@ -565,10 +557,11 @@
         /* いま鳴っている回 */
         &.is-current {
           .channel {
-            color: #b388ff;
+            color: #ccc;
           }
           .title {
             color: #fff;
+            font-weight: bold;
           }
         }
       }
