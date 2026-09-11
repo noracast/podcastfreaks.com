@@ -1,8 +1,9 @@
 <template>
   <!-- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
-       この印を見たときなので、見出しに別の目印を置くより素直に辿れる -->
-  <nuxt-link v-if="duration" class="badge" :class="convertToClass(duration)" :title="tooltip" to="/about/#duration"><small v-if="!isOver(duration)" class="upto">〜</small>{{ minutesOf(duration) }}<small>分</small><small v-if="isOver(duration)" class="from">〜</small></nuxt-link>
-  <nuxt-link v-else class="badge" to="/about/#duration" title="RSSからdurationが取得できませんでした">N/A</nuxt-link>
+       この印を見たときなので、見出しに別の目印を置くより素直に辿れる。
+       About では凡例そのものなので、linked を false にしてただの印にする -->
+  <component :is="tag" v-if="duration" class="badge" :class="convertToClass(duration)" :title="tooltip" :to="linked ? '/about/#duration' : null"><small v-if="!isOver(duration)" class="upto">〜</small>{{ minutesOf(duration) }}<small>分</small><small v-if="isOver(duration)" class="from">〜</small></component>
+  <component :is="tag" v-else class="badge" :to="linked ? '/about/#duration' : null" title="RSSからdurationが取得できませんでした">N/A</component>
 </template>
 
 <style scoped>
@@ -77,14 +78,26 @@
 // （段の境目をテストで固めておきたいため）
 import { durationClass, minutesOf, isOver, durationTooltip } from '@/lib/duration-label'
 
+import { resolveComponent } from 'vue'
+
 export default {
   props: {
     duration: {
       type: String,
       default: null
+    },
+    // About の凡例では、自分自身へのリンクになってしまうので外す
+    linked: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
+    // nuxt-link は文字列で :is に渡しても解決されず、<nuxt-link> という
+    // ただの要素になってしまう。コンポーネントそのものを渡す
+    tag() {
+      return this.linked ? resolveComponent('NuxtLink') : 'span'
+    },
     tooltip() {
       return durationTooltip(this.duration)
     }

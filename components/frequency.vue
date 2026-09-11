@@ -1,8 +1,8 @@
 <template>
   <!-- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
        この印を見たときなので、見出しに別の目印を置くより素直に辿れる -->
-  <nuxt-link v-if="level" class="badge" :class="level.name" :title="tooltip" to="/about/#frequency">{{ level.label }}</nuxt-link>
-  <nuxt-link v-else class="badge" to="/about/#frequency" title="更新した日が1日分しかないため算出できません">N/A</nuxt-link>
+  <component :is="tag" v-if="level" class="badge" :class="level.name" :title="tooltip" :to="linked ? '/about/#frequency' : null">{{ level.label }}</component>
+  <component :is="tag" v-else class="badge" :to="linked ? '/about/#frequency' : null" title="更新した日が1日分しかないため算出できません">N/A</component>
 </template>
 
 <style scoped>
@@ -60,15 +60,27 @@
 <script>
 import { frequencyLevel } from '@/lib/frequency-label'
 
+import { resolveComponent } from 'vue'
+
 export default {
   props: {
     // 直近の更新日の間隔の中央値（日）。fetch-feeds で算出している
     interval: {
       type: Number,
       default: null
+    },
+    // About の凡例では、自分自身へのリンクになってしまうので外す
+    linked: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
+    // nuxt-link は文字列で :is に渡しても解決されず、<nuxt-link> という
+    // ただの要素になってしまう。コンポーネントそのものを渡す
+    tag() {
+      return this.linked ? resolveComponent('NuxtLink') : 'span'
+    },
     level() {
       return frequencyLevel(this.interval)
     },

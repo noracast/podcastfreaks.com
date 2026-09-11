@@ -13,35 +13,35 @@
     <p class="note">各エピソードの収録時間（RSSの itunes:duration）の中央値です。短いものほど濃い青にしています。</p>
     <ul class="legend">
       <li>
-        <duration duration="00:10:00" />
+        <duration :linked="false" duration="00:10:00" />
         <span>15分00秒まで</span>
       </li>
       <li>
-        <duration duration="00:25:00" />
+        <duration :linked="false" duration="00:25:00" />
         <span>15分を超えて30分まで</span>
       </li>
       <li>
-        <duration duration="00:40:00" />
+        <duration :linked="false" duration="00:40:00" />
         <span>30分を超えて45分まで</span>
       </li>
       <li>
-        <duration duration="00:50:00" />
+        <duration :linked="false" duration="00:50:00" />
         <span>45分を超えて1時間未満</span>
       </li>
       <li>
-        <duration duration="01:10:00" />
+        <duration :linked="false" duration="01:10:00" />
         <span>1時間から1時間29分まで</span>
       </li>
       <li>
-        <duration duration="01:45:00" />
+        <duration :linked="false" duration="01:45:00" />
         <span>1時間30分から1時間59分まで</span>
       </li>
       <li>
-        <duration duration="02:30:00" />
+        <duration :linked="false" duration="02:30:00" />
         <span>2時間以上</span>
       </li>
       <li>
-        <duration />
+        <duration :linked="false" />
         <span>収録時間を読み取れなかった番組</span>
       </li>
     </ul>
@@ -49,35 +49,35 @@
     <p class="note">直近の更新日の間隔の中央値です。更新が多いものほど鮮やかな緑にしています。</p>
     <ul class="legend">
       <li>
-        <frequency :interval="1" />
+        <frequency :linked="false" :interval="1" />
         <span>2日未満</span>
       </li>
       <li>
-        <frequency :interval="3" />
+        <frequency :linked="false" :interval="3" />
         <span>2日から4日</span>
       </li>
       <li>
-        <frequency :interval="7" />
+        <frequency :linked="false" :interval="7" />
         <span>5日から9日</span>
       </li>
       <li>
-        <frequency :interval="14" />
+        <frequency :linked="false" :interval="14" />
         <span>10日から17日</span>
       </li>
       <li>
-        <frequency :interval="30" />
+        <frequency :linked="false" :interval="30" />
         <span>18日から44日</span>
       </li>
       <li>
-        <frequency :interval="60" />
+        <frequency :linked="false" :interval="60" />
         <span>45日から119日</span>
       </li>
       <li>
-        <frequency :interval="200" />
+        <frequency :linked="false" :interval="200" />
         <span>120日以上</span>
       </li>
       <li>
-        <frequency />
+        <frequency :linked="false" />
         <span>更新した日が1日分しかなく、間隔を求められなかった番組</span>
       </li>
     </ul>
