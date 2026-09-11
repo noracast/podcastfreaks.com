@@ -49,9 +49,10 @@
      透けることで、そこに面があると分かる。
      線や影で境目を作ると、日ごとの区切り線が近づいたときに2本が並んで
      見えてしまうので、境目は質感だけで示す */
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(255, 255, 255, 0.58);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
+  transition: background-color 0.25s;
 }
 .days {
   /* 貼り付いた濃淡の下端に、最初の区切り線をそのまま付ける。
@@ -92,19 +93,27 @@
   }
 }
 /* 日付は一覧（pages/index.vue）と同じ YYYY.MM.DD・13px で出す。
-   色も一覧の日付のグレー（First episode 列）に揃えてある。
-   区切り線と同じ色なので、見出しとして浮かない */
+   色は一覧の Last episode 列（回が出た日）と同じ。日ごとのまとまりの
+   見出しなので、区切り線と同じ薄さでは沈んでしまう */
 .date {
   position: absolute;
   top: 10px;
   padding: 5px 20px;
   height: 30px;
   line-height: 30px;
-  color: #ccc;
+  color: #444;
   font-size: 13px;
   /* 数字の幅を揃えて、日ごとの見出しの並びが揺れないようにする */
   font-variant-numeric: tabular-nums;
 }
+/* 触れている間は塞ぐ。濃淡を読むときに、下を通る並びが透けていると
+   目が散る。ポインタのある環境だけにする（指では離れられない） */
+@media (hover: hover) {
+  .heatmap:hover {
+    background-color: #fff;
+  }
+}
+
 /* 900px は Responsive で測っていたときの境界をそのまま引き継いだもの */
 @media (max-width: 900px) {
   .heatmap {
