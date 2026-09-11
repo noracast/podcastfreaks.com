@@ -375,6 +375,28 @@
     }
   }
 }
+
+/* 見出しと話数が1行に並びきらない幅では、話数を下の行へ落とす。
+   横に並べたままだと（どちらも縮まないので）ページごと横にはみ出す */
+@media (max-width: 480px) {
+  .heatmap {
+    .head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 10px;
+      row-gap: 2px;
+      .period,
+      .total {
+        grid-column: 1;
+      }
+      /* 畳むボタンは、落とした話数に付いていかず見出しの行に残す */
+      .fold {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+  }
+}
 </style>
 
 <script>
