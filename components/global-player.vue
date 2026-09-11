@@ -3,26 +3,39 @@
   <div v-if="episode" class="global-player" :class="{ 'is-playing': playing, 'is-minimized': minimized }">
     <!-- 上端のつまみ。押すと本体が画面の下へ逃げ、この行だけが残る。
          隠れている間は、何が鳴っているか分かるように題名も出す -->
-    <button
+    <div
       class="tab"
-      :title="minimized ? '元に戻す' : '下に隠す'"
-      :aria-label="minimized ? '元に戻す' : '下に隠す'"
-      @click="toggleMinimized"
+      :class="{ 'is-scrollable': labelShift > 0 }"
+      :style="labelShift > 0 ? { '--marquee-shift': `${-labelShift}px`, '--marquee-duration': `${marqueeDuration}s` } : null"
     >
-      <span class="state" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="14" height="14">
+      <!-- 隠したまま鳴らし始めたり止めたりできるようにする。
+           押しても本体は開かない（止めたいだけのことが多いため） -->
+      <button
+        class="state"
+        :title="playing ? '一時停止' : '再生'"
+        :aria-label="playing ? '一時停止' : '再生'"
+        @click="onTabToggle"
+      >
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
           <g v-if="playing" fill="currentColor">
             <rect x="6" y="5" width="4" height="14" rx="1" />
             <rect x="14" y="5" width="4" height="14" rx="1" />
           </g>
           <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
         </svg>
-      </span>
-      <span class="label">{{ episode.title }}</span>
-      <svg class="arrow" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
+      </button>
+      <button
+        class="expand"
+        :title="minimized ? '元に戻す' : '下に隠す'"
+        :aria-label="minimized ? '元に戻す' : '下に隠す'"
+        @click="toggleMinimized"
+      >
+        <span ref="label" class="label"><span class="marquee">{{ episode.title }}</span></span>
+        <svg class="arrow" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
 
     <div class="head">
       <!-- 36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
@@ -208,10 +221,13 @@
        隠れている間も題名が読める */
     transform: translateY(calc(100% - 12px));
     .tab {
-      >.state, >.label {
+      >.state {
         display: flex;
       }
-      >.arrow {
+      >.expand >.label {
+        display: block;
+      }
+      >.expand >.arrow {
         transform: rotate(180deg);
       }
     }
@@ -220,13 +236,9 @@
   /* 上端のつまみ。押すと畳む／戻す。
      カードの左右の余白を打ち消して、端まで届く帯にする */
   .tab {
-    /* レイアウトのグローバルな button の指定を打ち消す */
-    border: 0;
-    border-radius: 0;
-    min-width: 0;
-    background: none;
-    color: #777;
-    font: inherit;
+    /* button をやめて div にしたので、既定の border-box が外れる。
+       padding のぶん右にはみ出し、カードの overflow に矢印が切られていた */
+    box-sizing: border-box;
     margin: 0 -17px;
     width: calc(100% + 34px);
     height: 32px;
@@ -234,34 +246,61 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    cursor: pointer;
-    /* 背景は変えない。不透明な色を敷くと、そこだけ後ろが透けなくなって
+    /* 中の2つのボタンから、レイアウトのグローバルな button の指定を外す。
+       背景は敷かない。不透明な色を置くと、そこだけ後ろが透けなくなって
        別の板が載っているように見える */
-    &:hover {
-      color: #ccc;
+    >.state, >.expand {
+      border: 0;
+      border-radius: 0;
+      min-width: 0;
+      background: none;
+      font: inherit;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
     }
     /* 開いているうちは矢印だけ。何が鳴っているかは本体に出ている */
-    >.state, >.label {
-      display: none;
-    }
     >.state {
       flex: none;
-      align-items: center;
+      display: none;
       color: #ccc;
+      &:hover {
+        color: #fff;
+      }
     }
-    >.label {
+    >.expand {
       flex: 1;
-      min-width: 0;
-      color: #ccc;
-      font-size: 12px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    >.arrow {
-      flex: none;
-      margin-left: auto;
-      transition: transform 0.25s;
+      gap: 10px;
+      color: #777;
+      &:hover {
+        color: #ccc;
+      }
+      >.label {
+        display: none;
+        flex: 1;
+        min-width: 0;
+        color: #ccc;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: left;
+        /* 収まらないぶんは右端をうっすら消して、続きがあることを見せる。
+           「…」だと、触れて流し始める瞬間に消えるのが目につくため */
+        --fade: 14px;
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+        >.marquee {
+          /* transform で動かしたいので、行の中の箱にする */
+          display: inline-block;
+        }
+      }
+      >.arrow {
+        flex: none;
+        margin-left: auto;
+        transition: transform 0.25s;
+      }
     }
   }
 
@@ -607,6 +646,32 @@
     }
   }
 }
+
+/* 畳んでいる間、題名が収まりきらないときは、触れている間だけ流して先を
+   読ませる。末尾まで来たらそこで止め、離れたら頭に戻す。
+   ポインタのある環境だけにする（指では触れ続けられないうえ、タップした
+   だけで流れ始めてしまう）。
+   ずらす量と時間は、はみ出した長さから JS が決めている */
+@media (hover: hover) {
+  .global-player .tab.is-scrollable:hover .label {
+    /* 流れている間は、左に消えていくぶんも同じようにぼかす */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    >.marquee {
+      /* 触れてすぐ動き出すと目が追いつかないので、少しだけ置く */
+      animation: tab-marquee var(--marquee-duration) linear 0.35s forwards;
+    }
+  }
+}
+
+@keyframes tab-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--marquee-shift));
+  }
+}
 </style>
 
 <script>
@@ -623,7 +688,10 @@ export default {
   data: function() {
     return {
       // 聴いたものの一覧を開いているか
-      drawerOpen: false
+      drawerOpen: false,
+      // 畳んだときのつまみで、題名が収まりきらないぶんの幅（px）。
+      // 0 なら全部見えているので流さない
+      labelShift: 0
     }
   },
   computed: {
@@ -641,6 +709,11 @@ export default {
     historyNewestFirst: function() {
       return player.history.map((entry, index) => ({ ...entry, index })).reverse()
     },
+    // 流す速さは題名の長さによらず一定にしたいので、距離から時間を出す。
+    // 12px の文字で秒あたり80px（6〜7文字）が、目で追える速さだった
+    marqueeDuration: function() {
+      return Math.round((this.labelShift / 80) * 10) / 10
+    },
     progressPercent: function() {
       if(!this.duration) return '0%'
       return `${Math.min(100, (this.currentTime / this.duration) * 100)}%`
@@ -653,6 +726,12 @@ export default {
       return jst(this.episode.pubDate).format('YYYY.MM.DD')
     }
   },
+  watch: {
+    // つまみは畳んでいる間しか出ていないので、そこで測る。
+    // 回が変わると題名の長さも変わる
+    minimized: function() { this.$nextTick(this.measureLabel) },
+    episode: function() { this.$nextTick(this.measureLabel) }
+  },
   created: function() {
     // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
     this.pointer = null
@@ -661,9 +740,13 @@ export default {
     // 再生中にページを閉じようとしたら確かめる。
     // ブラウザは文言を出せないので、引き止めるかどうかだけを伝える
     window.addEventListener('beforeunload', this.onBeforeUnload)
+    // 幅が変われば、収まるかどうかも変わる
+    window.addEventListener('resize', this.measureLabel)
+    this.measureLabel()
   },
   beforeUnmount: function() {
     window.removeEventListener('beforeunload', this.onBeforeUnload)
+    window.removeEventListener('resize', this.measureLabel)
     this.releasePointer()
   },
   methods: {
@@ -674,10 +757,25 @@ export default {
     onBack: function() { goBack() },
     onForward: function() { goForward() },
     onPlayAt: function(index) { playAt(index) },
+    // 畳んだつまみの再生ボタン。本体は畳んだままにする
+    onTabToggle: function() {
+      toggle()
+    },
     toggleMinimized: function() {
       player.minimized = !player.minimized
       // 隠すときは一覧も閉じる。開いたまま隠して戻すと、いきなり出てくる
       if(player.minimized) this.drawerOpen = false
+    },
+
+    // つまみの題名が、幅に収まりきらないかどうかを測る。
+    // 畳んでいる間しか出していないので、開いているときは測らない
+    measureLabel: function() {
+      const label = this.$refs.label
+      if(!label || !this.minimized) {
+        this.labelShift = 0
+        return
+      }
+      this.labelShift = Math.max(0, label.scrollWidth - label.clientWidth)
     },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
