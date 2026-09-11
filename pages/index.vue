@@ -108,7 +108,7 @@
                   <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
                        端に着いたときに位置が食い違う -->
                   <div class="column">
-                    <div class="info" @scroll="onColumnScroll">
+                    <div class="info">
                       <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
                            v-html で出すが、中身は fetch-feeds.js の sanitizeDescription で
                            許可したタグと属性だけに濾してある -->
@@ -118,9 +118,6 @@
                       <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" />
                       <button-text :text="row.feed" :button-text="'Copy RSS'" />
                     </div>
-                    <!-- 上下にまだ続きがあることを示す影 -->
-                    <div class="scroll-fade top" />
-                    <div class="scroll-fade bottom" />
                   </div>
                   <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
                   <div class="column">
@@ -136,8 +133,6 @@
                       <p v-else-if="episodesFailed[row.key]" class="episodes-status">エピソードを読み込めませんでした</p>
                       <p v-else class="episodes-status">Loading…</p>
                     </div>
-                    <div class="scroll-fade top" />
-                    <div class="scroll-fade bottom" />
                   </div>
                 </div>
               </td>
@@ -554,9 +549,10 @@
       }
       &.child-row {
         border-top: 1px solid #eee;
-        background-color: #222;
+        /* 右下のプレーヤーを濃い色にしたので、こちらは薄いグレーにする。
+           以前は両方 #222 で、重なったときに境目が分からなかった */
+        background-color: #f1f0f5;
         background-size: auto 21px;
-        color: white !important;
         >td {
           line-height: 1.8em;
           padding: 0;
@@ -574,10 +570,11 @@
                幅を要求せず、セルいっぱいに広げる */
             width: 0;
             min-width: 100%;
-            /* 中身の量で高さが変わると、開くたびに一覧が大きく動く。
-               エピソード5話ぶんに固定し、はみ出す分は各列でスクロールさせる */
-            /* 子行の高さ。エピソード5話ぶん（1話60px＋区切り線1px） */
-            height: 305px;
+            /* 中身の量で高さが変わると、開くたびに一覧が大きく動くので固定する。
+               エピソード6.5話ぶん（1話44px）。半端な数にしてあるのは、
+               7話目が半分だけ見えていれば、まだ下に続くと分かるため。
+               ちょうど割り切れる高さにすると、そこで終わりのように見える */
+            height: 286px;
             >.column {
               position: relative;
               width: 50%;
@@ -586,7 +583,7 @@
               min-width: 0;
               /* エピソードが少ない番組でも左右の区切りが分かるようにする */
               &:last-child {
-                border-left: 1px solid #333;
+                border-left: 1px solid #e0dee7;
               }
               >.info, >.episodes {
                 height: 100%;
@@ -603,28 +600,6 @@
                   color: #999;
                   font-size: 12px;
                 }
-              }
-              /* まだ続きがある側の端をうっすら暗くして、スクロールできることを示す。
-                 中身の上に重ねる（背景に敷くと再生ボタンの色に隠れてしまう） */
-              >.scroll-fade {
-                position: absolute;
-                left: 0;
-                right: 0;
-                height: 28px;
-                pointer-events: none;
-                opacity: 0;
-                transition: opacity 0.2s;
-                &.top {
-                  top: 0;
-                  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
-                }
-                &.bottom {
-                  bottom: 0;
-                  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.55));
-                }
-              }
-              >.can-scroll-up ~ .scroll-fade.top, >.can-scroll-down ~ .scroll-fade.bottom {
-                opacity: 1;
               }
             }
           }
@@ -865,13 +840,9 @@
           >.column {
             width: auto;
             height: auto;
-            /* 縦に積むと上下の関係で続きがあることは分かるので、影は出さない */
-            >.scroll-fade {
-              display: none;
-            }
             &:last-child {
               border-left: 0;
-              border-top: 1px solid #333;
+              border-top: 1px solid #e0dee7;
             }
             /* 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
                増えると、ページ全体のスクロールと取り合いになって扱いづらい */
@@ -1076,7 +1047,6 @@ export default {
     // 別のページで鳴らし始めてからトップへ来たときのぶん。
     // watch は変化したときだけなので、最初の1回はここで拾う
     if(player.reveal) this.revealEpisode(player.reveal)
-    window.addEventListener('resize', this.refreshScrollFades)
 
     // 隠している列があるかは CSS のメディアクエリと同じ境界で判定する。
     // 幅を測って動的に決めると、列を隠した分だけ Channel が広がって条件が
@@ -1093,7 +1063,6 @@ export default {
     }
   },
   beforeUnmount: function(){
-    window.removeEventListener('resize', this.refreshScrollFades)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
   methods: {
@@ -1133,7 +1102,6 @@ export default {
         .then(episodes => {
           this.episodes = { ...this.episodes, [key]: episodes }
           this.episodesShown = { ...this.episodesShown, [key]: EPISODES_PER_CHUNK }
-          this.$nextTick(this.refreshScrollFades)
         })
         .catch(() => { this.episodesFailed = { ...this.episodesFailed, [key]: true } })
     },
@@ -1144,28 +1112,12 @@ export default {
     // 下まで見たら続きを描く。1000話を超える番組があるため、
     // 開いた瞬間に全部描くと固まってしまう
     onEpisodesScroll: function(key, event) {
-      this.onColumnScroll(event)
       const el = event.target
       if(el.scrollTop + el.clientHeight < el.scrollHeight - 200) return
       const all = this.episodes[key] || []
       const shown = this.episodesShown[key] || EPISODES_PER_CHUNK
       if(shown >= all.length) return
       this.episodesShown = { ...this.episodesShown, [key]: shown + EPISODES_PER_CHUNK }
-      this.$nextTick(this.refreshScrollFades)
-    },
-
-    // まだ下に続きがある列にだけ影を出す。
-    // 子行は開くたびに作り直されるので、Vue の状態には持たずクラスで付ける
-    onColumnScroll: function(event) {
-      this.markScrollFade(event.target)
-    },
-    markScrollFade: function(el) {
-      el.classList.toggle('can-scroll-up', el.scrollTop > 1)
-      el.classList.toggle('can-scroll-down', el.scrollTop + el.clientHeight < el.scrollHeight - 1)
-    },
-    refreshScrollFades: function() {
-      document.querySelectorAll('.child-row .info, .child-row .episodes')
-        .forEach(this.markScrollFade)
     },
 
     // 子行の開け閉め。高さを 0 と実際の高さのあいだで動かす。
@@ -1201,7 +1153,6 @@ export default {
       this.openedKey = key
       this.$nextTick(() => {
         this.expandChildRow(this.childWrap(key))
-        this.refreshScrollFades()
       })
     },
     // 見出しを押したときの並べ替え。同じ列をもう一度押すと向きが変わる
@@ -1394,7 +1345,6 @@ export default {
       // ページごと動かすと行の位置まで変わってしまうので、
       // エピソードの列の中だけをスクロールする
       list.scrollTop = item.offsetTop - (list.clientHeight - item.offsetHeight) / 2
-      this.refreshScrollFades()
     }
   }
 }

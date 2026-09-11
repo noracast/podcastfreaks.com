@@ -35,17 +35,22 @@
   height: 44px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #e3e1e9;
   color: inherit;
   font: inherit;
   text-align: left;
   cursor: pointer;
+  /* 並びの最後だけは引かない。下まで見たとき、子行の下端の線と重なって
+     2本に見えてしまう */
+  &:last-child {
+    border-bottom: 0;
+  }
   &:disabled {
     cursor: default;
     opacity: 0.4;
   }
   &:not(:disabled):hover {
-    background-color: #2a2a2a;
+    background-color: #e8e5f0;
   }
   &:focus-visible {
     outline: 1px solid #7f00ff;
@@ -60,12 +65,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #888;
+    color: #999;
   }
   .text {
     flex: 1;
     min-width: 0;
-    color: #aaa;
+    color: #555;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -75,7 +80,7 @@
     flex: none;
     /* 右も上下と同じ 14px にする */
     padding: 0 14px 0 8px;
-    color: #777;
+    color: #999;
     font-size: 11px;
     /* 数字の幅を揃えて、並びの中で右端が揃うようにする */
     font-variant-numeric: tabular-nums;
@@ -85,14 +90,12 @@
      止めているものも印は残す（どこまで聴いたか見失わないように） */
   &.is-current {
     .play {
-      color: #b388ff;
+      color: #7f00ff;
     }
     .text {
-      color: #fff;
+      color: #111;
+      font-weight: bold;
     }
-  }
-  &.is-playing .play {
-    color: #7f00ff;
   }
 }
 </style>

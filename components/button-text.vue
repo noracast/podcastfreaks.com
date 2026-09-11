@@ -59,8 +59,9 @@ div {
     height: 100%;
     border: 0;
     outline: 0;
-    background-color: #000;
-    color: #ccc;
+    /* 子行の背景（薄いグレー）に乗るので、URL の側は白で抜く */
+    background-color: #fff;
+    color: #666;
     border-radius: 0 3px 3px 0;
     padding: 0 10px;
     margin: 0;
@@ -75,7 +76,7 @@ div {
       white-space: nowrap;
     }
     &:hover {
-      color: #fff;
+      color: #111;
     }
   }
 }
