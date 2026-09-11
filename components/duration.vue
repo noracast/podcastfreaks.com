@@ -1,7 +1,7 @@
 <template>
   <!-- バッジ自体を About の凡例への入口にする。段階の意味を知りたくなるのは
        この印を見たときなので、見出しに別の目印を置くより素直に辿れる -->
-  <nuxt-link v-if="duration" class="badge" :class="convertToClass(duration)" :title="tooltip" to="/about/#duration">{{ minutesOf(duration) }}<small>分</small><small v-if="isOver(duration)" class="plus">+</small></nuxt-link>
+  <nuxt-link v-if="duration" class="badge" :class="convertToClass(duration)" :title="tooltip" to="/about/#duration"><small v-if="!isOver(duration)" class="upto">〜</small>{{ minutesOf(duration) }}<small>分</small><small v-if="isOver(duration)" class="plus">+</small></nuxt-link>
   <nuxt-link v-else class="badge" to="/about/#duration" title="RSSからdurationが取得できませんでした">N/A</nuxt-link>
 </template>
 
@@ -33,6 +33,14 @@
     /* 「分」と詰まって見えるので少し離す */
     &.plus {
       margin-left: 2px;
+    }
+    /* バッジの数字は段の上限。「30分」だとちょうど30分に見えるので、
+       「〜」を添えて「30分まで」と読めるようにする。
+       2時間以上（+）のときだけは下限なので付けない */
+    &.upto {
+      margin-left: 0;
+      margin-right: 1px;
+      opacity: 0.7;
     }
   }
   /* 収録時間が短いほど鮮やかで濃くする（短いものほど聴き始めやすいため）。

@@ -14,7 +14,7 @@
     <ul class="legend">
       <li>
         <duration duration="00:10:00" />
-        <span>〜15分00秒</span>
+        <span>15分00秒まで</span>
       </li>
       <li>
         <duration duration="00:25:00" />
