@@ -6,7 +6,8 @@
          濃淡の右に何もない広い余白ができてしまう -->
     <div class="inner">
       <div class="head">
-        <h2 class="summary">{{ summary }}</h2>
+        <h2 class="period">{{ period }}</h2>
+        <span class="total">{{ totalLabel }}</span>
         <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる -->
         <button class="fold" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" @click="collapsed = !collapsed">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
@@ -93,17 +94,24 @@
 
   .head {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    /* 見出しと、その隣の話数の下端を揃える */
+    align-items: baseline;
+    gap: 10px;
     /* About の h2 の下の余白（0.83em）と同じ */
     margin-bottom: 20px;
-    /* このページの見出し。About の h2 と同じ大きさ・太さにしてある */
-    .summary {
+    /* このページの見出し。About の h2 と同じ大きさ・太さにしてある。
+       話数は入れない。桁が増えると見出しが長くなってしまう */
+    .period {
       flex: none;
       margin: 0;
       color: #444;
       font-size: 24px;
       font-weight: bold;
+      font-variant-numeric: tabular-nums;
+    }
+    .total {
+      flex: none;
+      font-size: 12px;
       font-variant-numeric: tabular-nums;
     }
     /* 濃淡ごと畳む */
@@ -115,6 +123,8 @@
       background: none;
       font: inherit;
       flex: none;
+      /* 行の下端ではなく、見出しの高さの真ん中に置く */
+      align-self: center;
       margin-left: auto;
       padding: 2px;
       display: flex;
@@ -368,10 +378,12 @@ export default {
     // 事前レンダリングした結果と閲覧者のブラウザで食い違う（lib/jst.js）
     today: function() { return jst(build_info.updated).startOf('date') },
     weekdays: function() { return WEEKDAYS },
-    // GitHub の「N contributions in ...」と同じ形にしてある
-    summary: function() {
-      const when = this.selected === RECENT ? 'in the last year' : `in ${this.selected}`
-      return `${this.total.toLocaleString('en')} episodes ${when}`
+    // 見出しはどの範囲を見ているかだけ。話数は隣に小さく出す
+    period: function() {
+      return this.selected === RECENT ? 'Last year' : this.selected
+    },
+    totalLabel: function() {
+      return `${this.total.toLocaleString('en')} episodes`
     },
     // 選べる年。話数のある最初の年から今年まで、新しいほうを先に並べる
     years: function() {

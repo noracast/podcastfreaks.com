@@ -49,7 +49,7 @@
      透けることで、そこに面があると分かる。
      線や影で境目を作ると、日ごとの区切り線が近づいたときに2本が並んで
      見えてしまうので、境目は質感だけで示す */
-  background-color: rgba(255, 255, 255, 0.58);
+  background-color: rgba(255, 255, 255, 0.45);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
   transition: background-color 0.25s;
@@ -62,15 +62,16 @@
 .back {
   padding: 0 20px 10px;
   & button {
-    /* レイアウトのグローバルな button の指定を打ち消す */
+    /* レイアウトのグローバルな button の指定（紫・角丸・最小幅）を打ち消す。
+       ここは並びを元に戻すだけで、押してほしい操作ではないのでグレーにする */
     border: 0;
     border-radius: 4px;
     min-width: 0;
-    background: none;
     font: inherit;
     font-size: 12px;
-    padding: 4px 8px;
-    color: #7f00ff;
+    padding: 6px 12px;
+    background-color: #ececec;
+    color: #444;
     cursor: pointer;
   }
 }
@@ -111,6 +112,9 @@
 @media (hover: hover) {
   .heatmap:hover {
     background-color: #fff;
+  }
+  .back button:hover {
+    background-color: #e0e0e0;
   }
 }
 
