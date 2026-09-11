@@ -3,14 +3,26 @@
        見えてしまうので、全体をまとめた1枚だけにしている -->
   <div class="heatmap">
     <div class="head">
-      <span class="title">この1年の更新</span>
+      <span class="title">{{ title }}</span>
       <span class="total">{{ total }} episodes</span>
+      <!-- 遡って見られるようにする。新しい年から並べる -->
+      <div class="years">
+        <button
+          v-for="year in years"
+          :key="year.value"
+          class="year"
+          :class="{ 'is-selected': year.value === selected }"
+          @click="selected = year.value"
+        >
+          {{ year.label }}
+        </button>
+      </div>
     </div>
     <!-- 狭い画面では収まらないので横に送る。開いたときは右端（最新）を見せる -->
     <div ref="scroll" class="scroll">
       <div class="chart" :style="{ '--weeks': weeks.length }">
         <div class="months">
-          <span v-for="month in months" :key="month.label" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
+          <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
         </div>
         <div class="grid">
           <template v-for="(week, index) in weeks" :key="index">
@@ -18,7 +30,7 @@
               v-for="cell in week"
               :key="cell.key"
               class="cell"
-              :class="[`level-${cell.level}`, { 'is-future': cell.future }]"
+              :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside }]"
               :title="cell.label"
             />
           </template>
@@ -44,12 +56,42 @@
     gap: 12px;
     margin-bottom: 10px;
     .title {
+      flex: none;
       font-weight: bold;
     }
     .total {
+      flex: none;
       color: #999;
       font-size: 11px;
       font-variant-numeric: tabular-nums;
+    }
+    /* 年の並び。数が多いので、入らなければ横に送る */
+    .years {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      overflow-x: auto;
+      .year {
+        /* レイアウトのグローバルな button の指定を打ち消す */
+        border: 0;
+        border-radius: 4px;
+        min-width: 0;
+        background: none;
+        font: inherit;
+        font-size: 11px;
+        flex: none;
+        padding: 3px 8px;
+        color: #999;
+        white-space: nowrap;
+        cursor: pointer;
+        font-variant-numeric: tabular-nums;
+        &.is-selected {
+          background-color: #7f00ff;
+          color: #fff;
+        }
+      }
     }
   }
   .scroll {
@@ -101,8 +143,9 @@
     &.level-4 {
       background-color: #7f00ff;
     }
-    /* まだ来ていない日は、枠だけ空けておく */
-    &.is-future {
+    /* まだ来ていない日と、選んだ年の外の日は、枠だけ空けておく。
+       週の形を崩さないために置いてあるだけなので、色は付けない */
+    &.is-blank {
       background-color: transparent;
     }
   }
@@ -119,9 +162,25 @@
   }
 }
 
+/* 触れたときの色は、ポインタのある環境だけ（指では押したあとも残るため） */
+@media (hover: hover) {
+  .heatmap .head .years .year:not(.is-selected):hover {
+    background-color: #f0e8fc;
+    color: #7f00ff;
+  }
+}
+
 @media (max-width: 900px) {
   .heatmap {
     padding: 0 10px;
+    /* 幅が残らないので、年の並びは見出しの下へ落とす */
+    .head {
+      flex-wrap: wrap;
+      .years {
+        flex-basis: 100%;
+        justify-content: flex-start;
+      }
+    }
   }
 }
 </style>
@@ -131,8 +190,11 @@ import build_info from '@/static/downloads/build_info.json'
 import counts from '@/static/downloads/daily-counts.json'
 import { jst } from '@/lib/jst'
 
-// 出す日数。週の頭で切り揃えるので、実際はこれを含む週まで
+// 既定で出す日数（直近1年）。週の頭で切り揃えるので、実際はこれを含む週まで
 const DAYS = 365
+
+// 年ではなく直近1年を出しているときの目印
+const RECENT = 'recent'
 
 // 1日の話数を色の段に落とす。境目は実データから決めてある
 // （1日あたりの中央値が4話、直近1年の最大が15話）
@@ -145,16 +207,47 @@ const levelOf = (count) => {
 }
 
 export default {
+  data: function() {
+    return {
+      // 'recent' か西暦4桁
+      selected: RECENT
+    }
+  },
   computed: {
     // 基準は「いま」ではなくビルド時刻。実行時のタイムゾーンで日付が変わると、
     // 事前レンダリングした結果と閲覧者のブラウザで食い違う（lib/jst.js）
     today: function() { return jst(build_info.updated).startOf('date') },
+    title: function() {
+      return this.selected === RECENT ? 'この1年の更新' : `${this.selected}年の更新`
+    },
+    // 選べる年。話数のある最初の年から今年まで、新しいほうを先に並べる
+    years: function() {
+      const days = Object.keys(counts)
+      const first = days.length ? Number(days[0].slice(0, 4)) : this.today.year()
+      const list = [{ value: RECENT, label: 'この1年' }]
+      for(let year = this.today.year(); year >= first; year--) {
+        list.push({ value: String(year), label: String(year) })
+      }
+      return list
+    },
+    // 描く範囲の、最初の日曜と最後の土曜。週の頭で切り揃える
+    range: function() {
+      const today = this.today
+      if(this.selected === RECENT) {
+        const last = today.add(6 - today.day(), 'day')
+        return { first: last.subtract(Math.ceil(DAYS / 7) * 7 - 1, 'day'), last }
+      }
+      const start = this.today.set('year', Number(this.selected)).startOf('year')
+      const end = start.endOf('year').startOf('date')
+      return {
+        first: start.subtract(start.day(), 'day'),
+        last: end.add(6 - end.day(), 'day')
+      }
+    },
     weeks: function() {
       const today = this.today
-      // 今日を含む週の土曜まで描き、そこから週単位で遡る（週の頭は日曜）
-      const lastSaturday = today.add(6 - today.day(), 'day')
-      const count = Math.ceil(DAYS / 7)
-      const firstSunday = lastSaturday.subtract(count * 7 - 1, 'day')
+      const firstSunday = this.range.first
+      const count = Math.round(this.range.last.diff(firstSunday, 'day') / 7) + 1
 
       const weeks = []
       for(let w = 0; w < count; w++) {
@@ -162,13 +255,17 @@ export default {
         for(let d = 0; d < 7; d++) {
           const date = firstSunday.add(w * 7 + d, 'day')
           const key = date.format('YYYY-MM-DD')
-          const n = counts[key] || 0
+          // 年で見ているとき、週の頭とお尻には前後の年の日が混ざる。
+          // 週の形は崩したくないので置いておくが、数にも色にも入れない
+          const outside = this.selected !== RECENT && key.slice(0, 4) !== this.selected
+          const n = outside ? 0 : (counts[key] || 0)
           days.push({
             key,
             count: n,
             level: levelOf(n),
             future: date.isAfter(today),
-            label: `${date.format('YYYY.MM.DD')}　${n} episodes`
+            outside,
+            label: outside ? null : `${date.format('YYYY.MM.DD')}　${n} episodes`
           })
         }
         weeks.push(days)
@@ -180,6 +277,9 @@ export default {
     months: function() {
       const months = []
       this.weeks.forEach((week, index) => {
+        // まるごと年の外に出ている週（年で見たときの最後の1列など）には
+        // 何も描いていないので、月名も置かない
+        if(week.every(cell => cell.outside)) return
         const first = week[0]
         const month = first.key.slice(0, 7)
         const previous = index == 0 ? null : this.weeks[index - 1][0].key.slice(0, 7)
@@ -197,10 +297,21 @@ export default {
       return this.weeks.reduce((sum, week) => sum + week.reduce((n, cell) => n + cell.count, 0), 0)
     }
   },
+  watch: {
+    // 年を選び直したら、また最新のほうから見せる
+    selected: function() {
+      this.$nextTick(this.scrollToEnd)
+    }
+  },
   mounted: function() {
-    // 開いたときに見せたいのは最新のほう
-    const scroll = this.$refs.scroll
-    if(scroll) scroll.scrollLeft = scroll.scrollWidth
+    this.scrollToEnd()
+  },
+  methods: {
+    // 開いたときに見せたいのは新しいほう
+    scrollToEnd: function() {
+      const scroll = this.$refs.scroll
+      if(scroll) scroll.scrollLeft = scroll.scrollWidth
+    }
   }
 }
 </script>
