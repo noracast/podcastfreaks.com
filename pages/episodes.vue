@@ -52,7 +52,11 @@
   background-color: rgba(255, 255, 255, 0.45);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
-  transition: background-color 0.25s;
+  transition: background-color 0.25s, padding-bottom 0.22s;
+  /* 畳んだときは、見出しの上下が同じ余白になるようにする */
+  &.is-collapsed {
+    padding-bottom: 20px;
+  }
 }
 .days {
   /* 貼り付いた濃淡の下端に、最初の区切り線をそのまま付ける。

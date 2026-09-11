@@ -99,6 +99,7 @@
     gap: 10px;
     /* About の h2 の下の余白（0.83em）と同じ */
     margin-bottom: 20px;
+    transition: margin-bottom 0.22s;
     /* このページの見出し。About の h2 と同じ大きさ・太さにしてある。
        話数は入れない。桁が増えると見出しが長くなってしまう */
     .period {
@@ -150,6 +151,11 @@
   &.is-collapsed {
     .fold-wrap {
       grid-template-rows: 0fr;
+    }
+    /* 濃淡が無くなるので、見出しの下の余白も畳む。
+       残すと、上（帯の padding）より下だけが広くなる */
+    .head {
+      margin-bottom: 0;
     }
     .head .fold svg {
       transform: rotate(180deg);
