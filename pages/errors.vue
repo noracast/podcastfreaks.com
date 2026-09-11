@@ -141,6 +141,9 @@ const decorate = (item, message) => {
 }
 
 export default {
+  setup() {
+    useHead({ title: 'Errors | Podcast Freaks - Japanese techie podcast archive' })
+  },
   data() {
     // まだ warnings を持たない build_info.json でも表示が壊れないようにする
     const warnings = build_info.warnings || []
@@ -157,11 +160,6 @@ export default {
       errors: build_info.errors.map(e => decorate(e, (e.error && e.error.message) || e.label)),
       warningGroups: groups,
       raw: { errors: build_info.errors, warnings }
-    }
-  },
-  head() {
-    return {
-      title: 'Errors | Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

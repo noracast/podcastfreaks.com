@@ -101,10 +101,8 @@ a {
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Register request | Podcast Freaks - Japanese techie podcast archive'
-    }
-  }
+  setup() {
+    useHead({ title: 'Register request | Podcast Freaks - Japanese techie podcast archive' })
+  },
 }
 </script>

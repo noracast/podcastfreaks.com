@@ -7,28 +7,28 @@
       <template v-if="episodes_in_1weeks.length">
         <h5>今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes</h5>
         <div class="this-week">
-          <template v-for="(val, idx) in episodes_in_1weeks">
+          <template v-for="(val, idx) in episodes_in_1weeks" :key="idx">
             <!-- 違う日だったら。
                  key は並び順そのもの。この一覧はビルド時に決まって、
                  あとから並べ替えも差し込みもしないので添字でよい -->
-            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)" :key="`date-${idx}`" class="border">
+            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)" class="border">
               <span class="date" v-text="date(val.pubDate)" />
             </div>
-            <episode-row :key="`episode-${idx}`" :episode="val" />
+            <episode-row :episode="val" />
           </template>
         </div>
       </template>
       <template v-if="episodes_in_2weeks.length">
         <h5>先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes</h5>
         <div class="last-week">
-          <template v-for="(val, idx) in episodes_in_2weeks">
+          <template v-for="(val, idx) in episodes_in_2weeks" :key="idx">
             <!-- 違う日だったら。
                  key は並び順そのもの。この一覧はビルド時に決まって、
                  あとから並べ替えも差し込みもしないので添字でよい -->
-            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)" :key="`date-${idx}`" class="border">
+            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)" class="border">
               <span class="date" v-text="date(val.pubDate)" />
             </div>
-            <episode-row :key="`episode-${idx}`" :episode="val" />
+            <episode-row :episode="val" />
           </template>
         </div>
       </template>
@@ -84,13 +84,12 @@ h5 {
 </style>
 
 <script>
-import moment from 'moment'
 import { jst } from '@/lib/jst'
 import build_info from '@/static/downloads/build_info.json'
 
 export default {
-  components: {
-    'episode-row': require('@/components/episode-row.vue').default
+  setup() {
+    useHead({ title: 'New episodes | Podcast Freaks - Japanese techie podcast archive' })
   },
   data: function() {
     // ビルド時刻を基準に、日本時間で「今週」と「先週」に振り分ける。
@@ -114,17 +113,12 @@ export default {
   },
   methods: {
     date: function(_date) {
-      moment.locale('ja')
+      // ロケールは lib/jst.js で決めている
       return jst(_date).format('M/D(ddd)')
     },
     // 日付の区切り線を出すかの判定。表示と同じ日本時間で比べる
     isSame: function(_date1, _date2) {
       return jst(_date1).isSame(jst(_date2), 'day')
-    }
-  },
-  head() {
-    return {
-      title: 'New episodes | Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

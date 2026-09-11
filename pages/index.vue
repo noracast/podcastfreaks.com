@@ -36,10 +36,10 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="row in sortedChannels">
+          <template v-for="row in sortedChannels" :key="row.key">
             <!-- 子行の開け閉めは行のどこを押しても効く。
                  行の中のリンクや操作部品は、それぞれの働きを優先する -->
-            <tr :key="row.key" class="row" @click="onRowClick(row, $event)">
+            <tr class="row" @click="onRowClick(row, $event)">
               <td class="title">
                 <div class="title-cell">
                   <!-- カバー画像はもともと別の列だったが、見出しが2つに割れて
@@ -94,7 +94,7 @@
               <td class="duration"><duration :duration="row.durationMedian" /></td>
               <td class="check"><input v-model="markedRows" type="checkbox" :value="row.key"></td>
             </tr>
-            <tr v-if="openedKey === row.key" :key="`${row.key}--child`" class="child-row">
+            <tr v-if="openedKey === row.key" class="child-row">
               <td :colspan="columns.length">
                 <div :ref="`wrap-${row.key}`" class="wrap">
                   <!-- 影はスクロールしない枠に重ねる。スクロールする側に置くと、
@@ -256,7 +256,7 @@
     transform: rotate(19deg);
   }
 }
-.root ::v-deep {
+.root {
   padding-top: 20px;
   padding-bottom: 20px;
   -webkit-overflow-scrolling: touch;
@@ -391,11 +391,11 @@
               display: flex;
               align-items: center;
               margin-left: 16px;
+              /* アイコンの間隔。>*:not(:first-child) と書くと、Vue 3 の
+                 scoped 変換が属性セレクタを別の位置に差し込んでしまう */
+              gap: 6px;
               >* {
                 position: relative;
-              }
-              >*:not(:first-child) {
-                margin-left: 6px;
               }
               /* ホバーしたアイコンの右横に、その名前を出す。
                  
@@ -403,7 +403,7 @@
                  確かめられなかった。行の高さと列の幅を変えたくないので、
                  絶対配置にして並びの計算から外す。
                  隣のアイコンに重なるため、行と同じ色の背景を敷いて隠す */
-              .label {
+              :deep(.label) {
                 position: absolute;
                 left: 100%;
                 top: 50%;
@@ -429,14 +429,14 @@
               }
               /* @ と # は字形が四角い枠いっぱいに広がらないぶん、
                  Podcast アイコンより間隔を詰めた方が一体に読める */
-              >.x .label, >.hashtag .label {
+              >.x :deep(.label), >.hashtag :deep(.label) {
                 margin-left: 1px;
               }
               /* 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
                  ホバー中のものを前に出して、ラベルの背景で隠せるようにする */
               >*:hover {
                 z-index: 1;
-                .label {
+                :deep(.label) {
                   opacity: 1;
                   transform: translate(0, -50%);
                 }
@@ -702,23 +702,6 @@
     width: calc(1.2em / 0.7);
     text-align: right;
   }
-  .glyphicon-chevron-down {
-    &:before {
-      content: '▼';
-      font-size: 0.7em;
-    }
-  }
-  .glyphicon-chevron-up {
-    &:before {
-      content: '▲';
-      font-size: 0.7em;
-    }
-  }
-  .VuePagination {
-    .text-center {
-      margin-left: 0;
-    }
-  }
 }
 /* 画面が狭くなったら、右の列から順に隠す。
    境界は実測から決めた。233番組のタイトルのうち、Channel 列で省略される行数は
@@ -733,20 +716,20 @@
    .show-all-columns は「All columns」を押した状態。
    表は .table-scroll が overflow: auto なので、そのまま横スクロールになる */
 @media (max-width: 1100px) {
-  .root:not(.show-all-columns) ::v-deep th.file-server,
-  .root:not(.show-all-columns) ::v-deep td.file-server {
+  .root:not(.show-all-columns) th.file-server,
+  .root:not(.show-all-columns) td.file-server {
     display: none;
   }
   /* 全部出したときは画面に収まらない。この表は幅に応じて縮む作りなので、
      何もしないと Channel が潰れるだけで横スクロールにならない。
      1100px の見え方を保ったまま溢れさせて、.table-scroll に流させる */
-  .root.show-all-columns ::v-deep table {
+  .root.show-all-columns table {
     min-width: 1100px;
   }
 }
 @media (max-width: 950px) {
-  .root:not(.show-all-columns) ::v-deep th.first,
-  .root:not(.show-all-columns) ::v-deep td.first {
+  .root:not(.show-all-columns) th.first,
+  .root:not(.show-all-columns) td.first {
     display: none;
   }
 }
@@ -754,8 +737,8 @@
    ヘッダーの切り替え（900px）とは別の系列なので、揃えずに残してある。
    iPad の縦（834px）では Episodes まで出したい */
 @media (max-width: 810px) {
-  .root:not(.show-all-columns) ::v-deep th.total,
-  .root:not(.show-all-columns) ::v-deep td.total {
+  .root:not(.show-all-columns) th.total,
+  .root:not(.show-all-columns) td.total {
     display: none;
   }
 }
@@ -764,22 +747,22 @@
    ホスト名が読めれば十分で、それ以上はただの空白になるので、広い画面では
    比率を下げて200px前後で頭打ちにする */
 @media (min-width: 1400px) {
-  .root ::v-deep th.file-server {
+  .root th.file-server {
     width: 13%;
   }
 }
 @media (min-width: 1800px) {
-  .root ::v-deep th.file-server {
+  .root th.file-server {
     width: 11%;
   }
 }
 @media (min-width: 2400px) {
-  .root ::v-deep th.file-server {
+  .root th.file-server {
     width: 8%;
   }
 }
 @media (max-width: 900px) {
-  .root ::v-deep {
+  .root {
     padding-top: 15px;
     padding-bottom: 15px;
     & table {
@@ -889,7 +872,6 @@ import axios from 'axios'
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
-import { saveAs } from 'file-saver'
 import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
@@ -929,15 +911,8 @@ const compareBy = (key, ascending) => (a, b) => {
 const OTHER_HOSTING = '__other__'
 
 export default {
-  components: {
-    'button-text': require('@/components/button-text.vue').default,
-    'cover': require('@/components/cover.vue').default,
-    'duration': require('@/components/duration.vue').default,
-    'episode-player': require('@/components/episode-player.vue').default,
-    'frequency': require('@/components/frequency.vue').default,
-    'apple-podcasts-link': require('@/components/apple-podcasts-link.vue').default,
-    'x-link': require('@/components/x-link.vue').default,
-    'hashtag-link': require('@/components/hashtag-link.vue').default
+  setup() {
+    useHead({ title: 'Podcast Freaks - Japanese techie podcast archive' })
   },
   data: function() {
     return {
@@ -1099,7 +1074,7 @@ export default {
       // プライベートウィンドウなどで読めないことがある。既定のままでよい
     }
   },
-  beforeDestroy: function(){
+  beforeUnmount: function(){
     window.removeEventListener('resize', this.refreshScrollFades)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
@@ -1320,8 +1295,15 @@ export default {
           "xmlUrl": channel.feed
         }
       })
-      var blob = new Blob([opml(header, outlines)], {type: "text/plain;charset=utf-8"})
-      saveAs(blob, "podcast-freaks.opml")
+      // file-saver を使っていたが、CommonJS のまま配られていて事前レンダリング
+      // （Node 側）で読めなかった。やっていることは数行なので自前で書く
+      const blob = new Blob([opml(header, outlines)], { type: 'text/plain;charset=utf-8' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'podcast-freaks.opml'
+      a.click()
+      URL.revokeObjectURL(url)
     },
     loadRecentEpisodes: async function(rss) {
       const xml = await readFile(rss).catch(() => { return })
@@ -1338,11 +1320,6 @@ export default {
         this.currentPlayer.stop()
       }
       this.currentPlayer = player
-    }
-  },
-  head() {
-    return {
-      title: 'Podcast Freaks - Japanese techie podcast archive'
     }
   }
 }

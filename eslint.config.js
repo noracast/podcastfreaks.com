@@ -8,12 +8,10 @@ import pluginVue from 'eslint-plugin-vue'
 
 export default [
   {
-    ignores: ['dist/', '.nuxt/', 'static/downloads*/']
+    ignores: ['dist/', '.nuxt/', '.output/', 'static/downloads*/']
   },
 
-  // Vue 2 向けのプリセット。3 系のものを当てると、このプロジェクトでは
-  // まだ使えない書き方を促されてしまう
-  ...pluginVue.configs['flat/vue2-recommended'],
+  ...pluginVue.configs['flat/recommended'],
 
   {
     languageOptions: {

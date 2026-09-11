@@ -51,7 +51,7 @@ const applyOptoutParam = () => {
   }
 }
 
-export default ({ app }) => {
+export default defineNuxtPlugin((nuxtApp) => {
   applyOptoutParam()
 
   const optout = !!storage.get(OPTOUT_KEY)
@@ -110,11 +110,11 @@ export default ({ app }) => {
 
   // 初回の描画時点では title は既に正しいので、そのまま送る
   let firstRoute = true
-  app.router.afterEach((to) => {
+  nuxtApp.$router.afterEach((to) => {
     if (firstRoute) {
       firstRoute = false
       return sendPageView(to)
     }
     sendAfterTitleUpdate(to)
   })
-}
+})

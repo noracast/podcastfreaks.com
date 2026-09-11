@@ -239,6 +239,8 @@ const formatTime = (seconds) => {
 }
 
 export default {
+  // 別のエピソードを鳴らし始めたとき、前のものを止めてもらうために投げる
+  emits: ['play'],
   props: {
     episode: {
       required: true,
@@ -276,7 +278,7 @@ export default {
     // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
     this.pointer = null
   },
-  beforeDestroy: function() {
+  beforeUnmount: function() {
     if(!this.player) return
     this.player.pause()
     this.player.removeEventListener('loadedmetadata', this.onLoadedMetadata)

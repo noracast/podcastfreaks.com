@@ -49,7 +49,7 @@
           <span>updated</span>
         </div>
       </div>
-      <nuxt />
+      <slot />
     </div>
   </div>
 </template>
@@ -287,14 +287,17 @@ button {
 </style>
 
 <script>
-import moment from 'moment'
 import build_info from '@/static/downloads/build_info.json'
+import { jst } from '@/lib/jst'
 
 export default {
   data: function() {
     return {
-      updatedDate: moment(build_info.updated).format('YYYY.MM.DD'),
-      updatedTime: moment(build_info.updated).format('h:mm:ss A'),
+      // ここだけ lib/jst.js を通っておらず、moment() が実行時の
+      // タイムゾーンで解釈していた。Netlify のビルドは UTC なので、
+      // 本番のヘッダーには UTC の時刻が出ていた
+      updatedDate: jst(build_info.updated).format('YYYY.MM.DD'),
+      updatedTime: jst(build_info.updated).format('h:mm:ss A'),
       channelCount: Object.keys(build_info.channels).length,
       episodeCount: build_info.episodeCount
     }

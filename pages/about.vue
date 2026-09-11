@@ -129,7 +129,11 @@
       align-items: center;
       padding: 3px 0;
       font-size: 13px;
-      >*:first-child {
+      /* バッジ（duration / frequency のルート要素）は自分で margin-right を
+         持っているので、説明との間隔はここで決め直す。
+         要素を書かずに >* や >:first-child とすると、Vue 3 の scoped 変換が
+         属性セレクタを別の位置に差し込んで別物のセレクタになる */
+      >.badge {
         flex: none;
         margin-right: 12px;
       }
@@ -151,11 +155,9 @@ import Duration from '@/components/duration.vue'
 import Frequency from '@/components/frequency.vue'
 
 export default {
-  components: { Duration, Frequency },
-  head() {
-    return {
-      title: 'About | Podcast Freaks - Japanese techie podcast archive'
-    }
-  }
+  setup() {
+    useHead({ title: 'About | Podcast Freaks - Japanese techie podcast archive' })
+  },
+  components: { Duration, Frequency }
 }
 </script>
