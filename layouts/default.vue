@@ -36,7 +36,7 @@
     </header>
     <!-- プレーヤーが出ている間は、その高さぶん下に余白を作る。
          無いと一覧の最後の行や子行の下端がプレーヤーに隠れる -->
-    <div class="main" :class="{ 'has-player': hasPlayer }">
+    <div class="main" :class="{ 'has-player': hasPlayer, 'player-minimized': playerMinimized }">
       <div class="sp_stats">
         <div class="channels">
           <span>{{ channelCount }}</span>
@@ -65,6 +65,10 @@
    常に空けておくと、鳴らしていないときに余白が浮く */
 .main.has-player {
   padding-bottom: 156px;
+}
+/* 下に隠しているあいだは、つまみのぶんだけでよい */
+.main.has-player.player-minimized {
+  padding-bottom: 52px;
 }
 @media (max-width: 900px) {
   /* 狭い画面では左右いっぱいに敷くぶん、少し高くなる */
@@ -328,6 +332,9 @@ export default {
   computed: {
     hasPlayer: function() {
       return !!player.episode
+    },
+    playerMinimized: function() {
+      return player.minimized
     }
   }
 }

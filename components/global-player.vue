@@ -1,6 +1,29 @@
 <template>
   <!-- 右下に浮かべる。エピソードを選ぶまでは出さない -->
-  <div v-if="episode" class="global-player" :class="{ 'is-playing': playing }">
+  <div v-if="episode" class="global-player" :class="{ 'is-playing': playing, 'is-minimized': minimized }">
+    <!-- 上端のつまみ。押すと本体が画面の下へ逃げ、この行だけが残る。
+         隠れている間は、何が鳴っているか分かるように題名も出す -->
+    <button
+      class="tab"
+      :title="minimized ? '元に戻す' : '下に隠す'"
+      :aria-label="minimized ? '元に戻す' : '下に隠す'"
+      @click="toggleMinimized"
+    >
+      <span class="state" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="14" height="14">
+          <g v-if="playing" fill="currentColor">
+            <rect x="6" y="5" width="4" height="14" rx="1" />
+            <rect x="14" y="5" width="4" height="14" rx="1" />
+          </g>
+          <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
+        </svg>
+      </span>
+      <span class="label">{{ episode.title }}</span>
+      <svg class="arrow" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
     <div class="head">
       <!-- 36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
            読む方は 30（= -60）を指定する -->
@@ -83,17 +106,19 @@
       <div class="group">
         <button :disabled="!backAvailable" title="さっき聴いていた回に戻る" aria-label="さっき聴いていた回に戻る" @click="onBack">
           <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+            <!-- 図形は y 4〜21 に収めてある。隣の箇条書き（y 5.5〜18.5）と
+                 中心を揃えないと、矢印だけ下がって見える -->
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 7 4 12l5 5" />
-              <path d="M4 12h9a6 6 0 0 1 0 12h-1" />
+              <path d="M9 4 4 9l5 5" />
+              <path d="M4 9h9a6 6 0 0 1 0 12h-1" />
             </g>
           </svg>
         </button>
         <button :disabled="!forwardAvailable" title="次の回へ進む" aria-label="次の回へ進む" @click="onForward">
           <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 7l5 5-5 5" />
-              <path d="M20 12h-9a6 6 0 0 0 0 12h1" />
+              <path d="M15 4l5 5-5 5" />
+              <path d="M20 9h-9a6 6 0 0 0 0 12h1" />
             </g>
           </svg>
         </button>
@@ -107,8 +132,19 @@
           :aria-label="drawerOpen ? '聴いたものを隠す' : '聴いたものを見る'"
           @click="drawerOpen = !drawerOpen"
         >
-          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+          <!-- 箇条書き。上端のつまみ（矢印）と見分けが付くようにしている。
+               線が細いぶん小さく見えるので、他より少しだけ大きく描く -->
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <g fill="currentColor">
+              <circle cx="5" cy="7" r="1.5" />
+              <circle cx="5" cy="12" r="1.5" />
+              <circle cx="5" cy="17" r="1.5" />
+            </g>
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M10 7h9" />
+              <path d="M10 12h9" />
+              <path d="M10 17h9" />
+            </g>
           </svg>
         </button>
       </div>
@@ -147,8 +183,11 @@
   /* 下の余白は .controls が持つ。ここに持たせると、下端まで伸ばしたい
      ドロワーが打ち消し（負のマージン）を必要とし、閉じているときまで
      余白が消えてしまう */
-  padding: 14px 17px 0;
+  /* 上の余白は .tab が持つ。つまみを上端いっぱいの帯にしたいので */
+  padding: 0 17px;
   border-radius: 12px;
+  /* 畳むときに下へ滑らせる */
+  transition: transform 0.28s ease-out;
   /* ぶら下げた一覧が角からはみ出さないようにする */
   overflow: hidden;
   background-color: #222;
@@ -156,10 +195,76 @@
   color: #ccc;
   font-size: 14px;
 
+  /* 畳んだ状態。本体を画面の下へ逃がして、つまみの行だけ残す。
+     bottom: 20px のぶんも下げて、画面の下端に貼り付ける
+     （つまみの高さ32px − 20px = 12px を 100% から引く） */
+  &.is-minimized {
+    /* 幅はそのまま。右下には余裕があるので縮める必要がなく、
+       隠れている間も題名が読める */
+    transform: translateY(calc(100% - 12px));
+    .tab {
+      >.state, >.label {
+        display: flex;
+      }
+      >.arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  /* 上端のつまみ。押すと畳む／戻す。
+     カードの左右の余白を打ち消して、端まで届く帯にする */
+  .tab {
+    /* レイアウトのグローバルな button の指定を打ち消す */
+    border: 0;
+    border-radius: 0;
+    min-width: 0;
+    background: none;
+    color: #777;
+    font: inherit;
+    margin: 0 -17px;
+    width: calc(100% + 34px);
+    height: 32px;
+    padding: 0 14px 0 17px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    &:hover {
+      color: #ccc;
+      background-color: #2a2a2a;
+    }
+    /* 開いているうちは矢印だけ。何が鳴っているかは本体に出ている */
+    >.state, >.label {
+      display: none;
+    }
+    >.state {
+      flex: none;
+      align-items: center;
+      color: #b388ff;
+    }
+    >.label {
+      flex: 1;
+      min-width: 0;
+      color: #ccc;
+      font-size: 12px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    >.arrow {
+      flex: none;
+      margin-left: auto;
+      transition: transform 0.25s;
+    }
+  }
+
   .head {
     display: flex;
     align-items: center;
     gap: 12px;
+    /* つまみのぶん上が詰まるので、少しだけ空ける */
+    margin-top: 2px;
     .cover {
       flex: none;
       border-radius: 5px;
@@ -349,12 +454,21 @@
         width: 34px;
         font-variant-numeric: tabular-nums;
       }
-      /* 開いている間は矢印を裏返す */
-      >.drawer-toggle svg {
-        transition: transform 0.2s;
+      /* 開いている間は色で示す。上端のつまみと違って裏返さない
+         （箇条書きは回しても意味が変わらない） */
+      >.drawer-toggle {
+        transition: color 0.2s;
+        /* 隣の矢印は半円を描くぶん縦に長く、図形の重心が下にある。
+           数値上の中心を揃えても箇条書きの方が上に見えるので、少し下げる */
+        svg {
+          transform: translateY(1px);
+        }
       }
-      >.drawer-toggle.is-open svg {
-        transform: rotate(180deg);
+      >.drawer-toggle.is-open {
+        color: #b388ff;
+        &:hover {
+          color: #d0b3ff;
+        }
       }
       /* 端まで来たら押せないことを見せる */
       >button:disabled {
@@ -471,6 +585,11 @@
     width: auto;
     max-width: none;
     border-radius: 10px 10px 0 0;
+    /* 下端に貼り付いているぶん、広い画面より引く量が大きい
+       （つまみの高さそのまま） */
+    &.is-minimized {
+      transform: translateY(calc(100% - 32px));
+    }
   }
 }
 </style>
@@ -498,6 +617,7 @@ export default {
     currentTime: function() { return player.currentTime },
     duration: function() { return player.duration },
     rate: function() { return player.rate },
+    minimized: function() { return player.minimized },
     backAvailable: function() { return canGoBack() },
     forwardAvailable: function() { return canGoForward() },
     history: function() { return player.history },
@@ -539,6 +659,11 @@ export default {
     onBack: function() { goBack() },
     onForward: function() { goForward() },
     onPlayAt: function(index) { playAt(index) },
+    toggleMinimized: function() {
+      player.minimized = !player.minimized
+      // 隠すときは一覧も閉じる。開いたまま隠して戻すと、いきなり出てくる
+      if(player.minimized) this.drawerOpen = false
+    },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
     goToChannel: function() {
