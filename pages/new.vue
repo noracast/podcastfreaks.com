@@ -4,6 +4,7 @@
        事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
   <div class="root">
     <div>
+      <episode-heatmap class="heatmap" />
       <template v-if="episodes_in_1weeks.length">
         <h5>今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes</h5>
         <div class="this-week">
@@ -68,6 +69,9 @@
 }
 h5 {
   padding: 0 20px;
+}
+.heatmap {
+  margin: 10px 0 30px;
 }
 /* 900px は Responsive で測っていたときの境界をそのまま引き継いだもの */
 @media (max-width: 900px) {

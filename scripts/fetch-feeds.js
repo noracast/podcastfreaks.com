@@ -9,6 +9,7 @@ import normalizeFeed from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import episodeId from '../lib/episode-id.js'
+import countByDay from '../lib/daily-counts.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import validateRssJson from './validate-rss-json.js'
@@ -21,6 +22,7 @@ import {
   COVER_DIR,
   BUILD_INFO,
   EPISODES_DIR,
+  DAILY_COUNTS,
   RSS_JSON,
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
@@ -215,6 +217,8 @@ const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseStr
 const writeFile = promisify(fs.writeFile)
 
 let episodes_in_2weeks = []
+// 日ごとの話数（/new の heatmap のぶん）。番組をまたいで積み上げる
+let daily_counts = {}
 let latest_pubdates = []
 let channels = {}
 let covers = {}
@@ -396,6 +400,9 @@ const fetchFeed = async key => {
   // 行を開いたときに、その番組のぶんだけ読み込む
   const episodeList = episodes.map(toEpisode)
 
+  // 日ごとに何話出たか。番組をまたいで積む（/new の heatmap）
+  countByDay(episodeList, daily_counts)
+
   // id が重なると、あとで回を指すときに別のものを開いてしまう。
   // 実データでは衝突しないことを確かめてあるが、番組が増えれば起こりうるので
   // 見つけたら知らせる（/errors に出る）
@@ -516,6 +523,12 @@ const fetchFeed = async key => {
   // Save to file
   consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
+  // heatmap のぶん。日付の順に並べておく（読む側がそのまま辿れるように）
+  const sortedDays = Object.keys(daily_counts).sort()
+  await writeFile(DAILY_COUNTS, JSON.stringify(
+    Object.fromEntries(sortedDays.map(day => [day, daily_counts[day]]))
+  ), 'utf8')
 
   const elapsed = Math.round((Date.now() - startedAt) / 1000)
   consola.success(
