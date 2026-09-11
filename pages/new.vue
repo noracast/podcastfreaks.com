@@ -34,10 +34,6 @@
 <style scoped>
 .root {
   padding-top: 0;
-  /* 濃淡（53〜54週 + 曜日 + 年の並び）が横に送らずに収まる幅。
-     日ごとの並びも同じ幅に揃えると、広い画面で題名と番組名が離れすぎない */
-  max-width: 860px;
-  margin: 0 auto;
 }
 /* 日ごとの並びの上に貼り付ける。header（layouts/default.vue）の下に付ける
    ので、その高さぶん下げる。下を並びが通るので、背景は敷いてぼかす */
@@ -46,8 +42,9 @@
   top: 80px;
   /* header は 5 */
   z-index: 4;
-  padding-top: 14px;
-  padding-bottom: 10px;
+  /* 見出しの上下は About（.root の padding）と同じ 20px にする */
+  padding-top: 20px;
+  padding-bottom: 14px;
   /* ヘッダーや右下のプレーヤーと同じすりガラス。下を通る並びがぼけて
      透けることで、そこに面があると分かる。
      線や影で境目を作ると、日ごとの区切り線が近づいたときに2本が並んで

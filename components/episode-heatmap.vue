@@ -2,65 +2,69 @@
   <!-- /new の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
        見えてしまうので、全体をまとめた1枚だけにしている -->
   <div class="heatmap" :class="{ 'is-collapsed': collapsed }" :style="{ '--weeks': weeks.length }">
-    <div class="head">
-      <span class="summary">{{ summary }}</span>
-      <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる -->
-      <button class="fold" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" @click="collapsed = !collapsed">
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </button>
-    </div>
-    <!-- 畳むときは高さを 0 にする（0fr ↔ 1fr）。中身の高さはセルの大きさで
+    <!-- すりガラスは全幅に敷き、中身だけを幅で止める。全幅にすると、
+         濃淡の右に何もない広い余白ができてしまう -->
+    <div class="inner">
+      <div class="head">
+        <h2 class="summary">{{ summary }}</h2>
+        <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる -->
+        <button class="fold" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" @click="collapsed = !collapsed">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <!-- 畳むときは高さを 0 にする（0fr ↔ 1fr）。中身の高さはセルの大きさで
          変わるので、決め打ちの max-height にはできない -->
-    <div class="fold-wrap">
-      <div class="fold-inner">
-        <div class="body">
-          <div class="chart-side">
-            <!-- 曜日の目印。1つおきに出す。横に送っても読めるよう、
+      <div class="fold-wrap">
+        <div class="fold-inner">
+          <div class="body">
+            <div class="chart-side">
+              <!-- 曜日の目印。1つおきに出す。横に送っても読めるよう、
                  送る枠の外に置いてある -->
-            <div class="weekdays">
-              <span v-for="(label, index) in weekdays" :key="index">{{ label }}</span>
-            </div>
-            <!-- 収まらないときは横に送る。開いたときは右端（最新）を見せる -->
-            <div ref="scroll" class="scroll">
-              <div class="chart">
-                <div class="months">
-                  <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
-                </div>
-                <div class="grid">
-                  <template v-for="(week, index) in weeks" :key="index">
-                    <component
-                      :is="cell.listed ? 'button' : 'div'"
-                      v-for="cell in week"
-                      :key="cell.key"
-                      class="cell"
-                      :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
-                      :title="cell.label"
-                      @click="cell.listed && $emit('pick', cell.key)"
-                    />
-                  </template>
+              <div class="weekdays">
+                <span v-for="(label, index) in weekdays" :key="index">{{ label }}</span>
+              </div>
+              <!-- 収まらないときは横に送る。開いたときは右端（最新）を見せる -->
+              <div ref="scroll" class="scroll">
+                <div class="chart">
+                  <div class="months">
+                    <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
+                  </div>
+                  <div class="grid">
+                    <template v-for="(week, index) in weeks" :key="index">
+                      <component
+                        :is="cell.listed ? 'button' : 'div'"
+                        v-for="cell in week"
+                        :key="cell.key"
+                        class="cell"
+                        :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
+                        :title="cell.label"
+                        @click="cell.listed && $emit('pick', cell.key)"
+                      />
+                    </template>
+                  </div>
                 </div>
               </div>
+              <div class="legend">
+                <span class="caption">Less</span>
+                <span v-for="level in 5" :key="level" class="cell" :class="`level-${level - 1}`" />
+                <span class="caption">More</span>
+              </div>
             </div>
-            <div class="legend">
-              <span class="caption">Less</span>
-              <span v-for="level in 5" :key="level" class="cell" :class="`level-${level - 1}`" />
-              <span class="caption">More</span>
-            </div>
-          </div>
-          <!-- 年は右に縦に並べる。ここが埋まることで、横幅の決まっている
+            <!-- 年は右に縦に並べる。ここが埋まることで、横幅の決まっている
                濃淡の右側が余らない -->
-          <div class="years">
-            <button
-              v-for="year in years"
-              :key="year.value"
-              class="year"
-              :class="{ 'is-selected': year.value === selected }"
-              @click="selected = year.value"
-            >
-              {{ year.label }}
-            </button>
+            <div class="years">
+              <button
+                v-for="year in years"
+                :key="year.value"
+                class="year"
+                :class="{ 'is-selected': year.value === selected }"
+                @click="selected = year.value"
+              >
+                {{ year.label }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -82,15 +86,24 @@
   color: #999;
   font-size: 12px;
 
+  /* 濃淡（53〜54週 + 曜日 + 年の並び）が横に送らずに収まる幅 */
+  .inner {
+    max-width: 820px;
+  }
+
   .head {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
+    /* About の h2 の下の余白（0.83em）と同じ */
+    margin-bottom: 20px;
+    /* このページの見出し。About の h2 と同じ大きさ・太さにしてある */
     .summary {
       flex: none;
+      margin: 0;
       color: #444;
-      font-size: 14px;
+      font-size: 24px;
+      font-weight: bold;
       font-variant-numeric: tabular-nums;
     }
     /* 濃淡ごと畳む */
