@@ -61,10 +61,13 @@
                            Apple 側と登録フィードURLが違う番組は自動で特定できないため、
                            Apple Podcasts のリンクを持たない番組がある
                            （data/apple-podcasts.json に手で足せる） -->
+                      <!-- .link は3つに共通で付ける目印。スタイルを当てるのに
+                           `>*` と書くと、Vue 3 の scoped 変換が属性セレクタを
+                           別の位置に差し込んでしまう（下の .links を参照） -->
                       <span class="links">
-                        <apple-podcasts-link v-if="row.applePodcasts" :url="row.applePodcasts" />
-                        <x-link v-if="row.twitter" :account="row.twitter" />
-                        <hashtag-link v-if="row.hashtag" :hashtag="row.hashtag" />
+                        <apple-podcasts-link v-if="row.applePodcasts" class="link" :url="row.applePodcasts" />
+                        <x-link v-if="row.twitter" class="link" :account="row.twitter" />
+                        <hashtag-link v-if="row.hashtag" class="link" :hashtag="row.hashtag" />
                       </span>
                     </span>
                   </div>
@@ -408,7 +411,7 @@
               /* アイコンの間隔。>*:not(:first-child) と書くと、Vue 3 の
                  scoped 変換が属性セレクタを別の位置に差し込んでしまう */
               gap: 6px;
-              >* {
+              >.link {
                 position: relative;
               }
               /* ホバーしたアイコンの右横に、その名前を出す。
@@ -419,12 +422,17 @@
                  隣のアイコンに重なるため、行と同じ色の背景を敷いて隠す
 
                  .label は子コンポーネント（x-link など）の中にあるので
-                 :deep() で届かせる。このとき scoped の属性は :deep() の
-                 手前にある要素に付くので、**そこを同じセレクタの中に
-                 書いておく**こと。`>*` を親の入れ子にして :deep() だけを
-                 中に書くと、属性が子孫側（`>* [data-v-x] .label`）に
-                 ずれて、どの要素にも当たらなくなる */
-              >* :deep(.label) {
+                 :deep() で届かせる。Vue 3 の scoped 変換に2つ癖があるので、
+                 セレクタの書き方に決まりがある。
+
+                 - scoped の属性は :deep() の手前にある要素に付くため、
+                   **その要素を同じセレクタの中に書く**。:deep() だけを
+                   入れ子の中に書くと `... [data-v-x] .label` と子孫側に
+                   ずれて、どの要素にも当たらない
+                 - `*` は属性そのものに置き換えられるが、`>*:hover` のように
+                   疑似クラスが続くと `[data-v-x] > :hover` と結合子の位置まで
+                   崩れる。`*` は使わず、クラス（.link）で指す */
+              >.link :deep(.label) {
                 position: absolute;
                 left: 100%;
                 top: 50%;
@@ -455,10 +463,10 @@
               }
               /* 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
                  ホバー中のものを前に出して、ラベルの背景で隠せるようにする */
-              >*:hover {
+              >.link:hover {
                 z-index: 1;
               }
-              >*:hover :deep(.label) {
+              >.link:hover :deep(.label) {
                 opacity: 1;
                 transform: translate(0, -50%);
               }
