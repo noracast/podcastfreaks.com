@@ -46,12 +46,17 @@
                        片方が空欄になり収まりが悪かったので、この列に入れた -->
                   <cover class="cover" :channel="row.key" />
                   <div class="clip">
-                    <!-- .value をタイトルの文字幅に沿わせ、その右上にバッジを置く。
+                    <!-- .value をタイトルの文字幅に沿わせる。
                          省略は内側の .text が受け持つので、バッジは省略に巻き込まれない -->
                     <span class="value">
-                      <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
-                      <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="`${row.addedAt} に登録`">New!</span>
-                      <span class="text" :title="row.title">{{ row.title }}</span>
+                      <!-- New! はタイトルの文字列の右上に出したいので、アイコン群まで
+                           含む .value ではなく、タイトルだけをくるむ .headline を
+                           基準にする -->
+                      <span class="headline">
+                        <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="`${row.addedAt} に登録`">New!</span>
+                        <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
+                        <span class="text" :title="row.title">{{ row.title }}</span>
+                      </span>
                       <!-- タイトルの後ろに並べる外部リンク。
                            Apple 側と登録フィードURLが違う番組は自動で特定できないため、
                            Apple Podcasts のリンクを持たない番組がある
@@ -355,8 +360,8 @@
          「文字列の右端」が取れない。.value を右に伸ばさず（right: auto）、
          列幅までに収まる範囲で文字幅に沿わせることで、短いタイトルでも
          バッジが文字のすぐ右上に付く。
-         省略は内側の .text が受け持ち、.value は overflow を切らないので
-         上にはみ出すバッジが欠けない */
+         .value にはタイトルの後ろのアイコン群も入るため、バッジの基準は
+         .value ではなくタイトルだけをくるむ .headline にしている */
       .title-cell {
         display: flex;
         align-items: center;
@@ -378,6 +383,15 @@
                .text に min-width: 0 を与えて flex の既定を外す */
             display: flex;
             align-items: center;
+            /* New! の位置の基準。アイコン群を含まないタイトルだけの幅にしたいので、
+               .value ではなくここを基準にする。省略は内側の .text が受け持ち、
+               ここは overflow を切らないので上にはみ出すバッジが欠けない */
+            .headline {
+              position: relative;
+              /* 幅が足りないときに縮むのはタイトル側だけ。flex の既定を外す */
+              min-width: 0;
+              display: flex;
+            }
             .text {
               min-width: 0;
               overflow: hidden;
