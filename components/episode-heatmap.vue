@@ -1,13 +1,12 @@
 <template>
   <!-- /new の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
        見えてしまうので、全体をまとめた1枚だけにしている -->
-  <div class="heatmap">
+  <div class="heatmap" :style="{ '--weeks': weeks.length }">
     <div class="head">
-      <span class="title">{{ title }}</span>
-      <span class="total">{{ total }} episodes</span>
+      <span class="summary">{{ summary }}</span>
       <!-- 年の数だけ並ぶと場所を取るので、普段は畳んでおく -->
       <button class="toggle" :class="{ 'is-open': yearsOpen }" @click="yearsOpen = !yearsOpen">
-        年を選ぶ
+        Years
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
           <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
@@ -25,56 +24,62 @@
         </button>
       </div>
     </div>
-    <!-- 狭い画面では収まらないので横に送る。開いたときは右端（最新）を見せる -->
-    <div ref="scroll" class="scroll">
-      <div class="chart" :style="{ '--weeks': weeks.length }">
-        <div class="months">
-          <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
-        </div>
-        <div class="grid">
-          <template v-for="(week, index) in weeks" :key="index">
-            <component
-              :is="cell.listed ? 'button' : 'div'"
-              v-for="cell in week"
-              :key="cell.key"
-              class="cell"
-              :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
-              :title="cell.listed ? `${cell.label}　押すとその日まで辿ります` : cell.label"
-              @click="cell.listed && $emit('pick', cell.key)"
-            />
-          </template>
+    <div class="body">
+      <!-- 曜日の目印。GitHub と同じく1つおきに出す。
+           横に送っても読めるよう、送る枠の外に置いてある -->
+      <div class="weekdays">
+        <span v-for="(label, index) in weekdays" :key="index">{{ label }}</span>
+      </div>
+      <!-- 狭い画面では収まらないので横に送る。開いたときは右端（最新）を見せる -->
+      <div ref="scroll" class="scroll">
+        <div class="chart">
+          <div class="months">
+            <span v-for="month in months" :key="month.column" class="month" :style="{ gridColumnStart: month.column }">{{ month.label }}</span>
+          </div>
+          <div class="grid">
+            <template v-for="(week, index) in weeks" :key="index">
+              <component
+                :is="cell.listed ? 'button' : 'div'"
+                v-for="cell in week"
+                :key="cell.key"
+                class="cell"
+                :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
+                :title="cell.listed ? `${cell.label}　押すとその日まで辿ります` : cell.label"
+                @click="cell.listed && $emit('pick', cell.key)"
+              />
+            </template>
+          </div>
         </div>
       </div>
     </div>
     <div class="legend">
-      <span class="caption">少ない</span>
+      <span class="caption">Less</span>
       <span v-for="level in 5" :key="level" class="cell" :class="`level-${level - 1}`" />
-      <span class="caption">多い</span>
+      <span class="caption">More</span>
     </div>
   </div>
 </template>
 
 <style scoped>
 .heatmap {
-  /* セルの大きさ。狭い画面では貼り付けたまま場所を取りすぎるので小さくする */
-  --cell: 11px;
+  /* GitHub の contribution graph と同じ大きさ。
+     狭い画面では貼り付けたまま場所を取りすぎるので、そこだけ小さくする */
+  --cell: 10px;
   --gap: 3px;
+  /* 曜日の目印のぶん。月の並びと legend を、その右に揃えるのに使う */
+  --weekday-width: 26px;
   padding: 0 20px;
-  /* 日付の見出し（pages/new.vue の .date）と同じ大きさに揃える */
-  font-size: 13px;
+  color: #656d76;
+  font-size: 12px;
   .head {
     display: flex;
     align-items: baseline;
     gap: 12px;
     margin-bottom: 10px;
-    .title {
+    .summary {
       flex: none;
-      font-weight: bold;
-    }
-    .total {
-      flex: none;
-      color: #999;
-      font-size: 11px;
+      color: #1f2328;
+      font-size: 14px;
       font-variant-numeric: tabular-nums;
     }
     /* 年の出し入れ */
@@ -131,7 +136,29 @@
       }
     }
   }
+  .body {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  /* 曜日の目印。月の並びのぶんだけ下げて、行の高さに合わせる */
+  .weekdays {
+    flex: none;
+    width: calc(var(--weekday-width) - 4px);
+    /* 月の並びのぶんだけ下げて、セルの行と揃える */
+    padding-top: 14px;
+    display: grid;
+    grid-template-rows: repeat(7, var(--cell));
+    gap: var(--gap);
+    font-size: 9px;
+    & span {
+      display: flex;
+      align-items: center;
+    }
+  }
   .scroll {
+    flex: 1;
+    min-width: 0;
     overflow-x: auto;
     /* 送れることが分かるよう、下の余白は残す */
     padding-bottom: 4px;
@@ -144,8 +171,7 @@
     display: grid;
     grid-template-columns: repeat(var(--weeks), calc(var(--cell) + var(--gap)));
     height: 14px;
-    color: #999;
-    font-size: 10px;
+    font-size: 12px;
     .month {
       /* 月の頭の週の上に置く。次の月に押し出されないよう、はみ出させる */
       grid-row: 1;
@@ -198,13 +224,18 @@
       background-color: transparent;
     }
   }
+  /* GitHub と同じく右下に置く。曜日のぶんを空けて、並びの右端に揃える */
   .legend {
+    box-sizing: border-box;
+    width: calc(var(--weekday-width) + var(--weeks) * (var(--cell) + var(--gap)));
+    max-width: 100%;
+    padding-left: var(--weekday-width);
+    margin-top: 6px;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: var(--gap);
-    margin-top: 8px;
-    color: #999;
-    font-size: 10px;
+    font-size: 11px;
     .caption {
       margin: 0 4px;
     }
@@ -228,6 +259,7 @@
   .heatmap {
     --cell: 9px;
     --gap: 2px;
+    --weekday-width: 22px;
     padding: 0 10px;
     /* 幅が残らないので、年の並びは見出しの下へ落とす */
     .head {
@@ -245,13 +277,16 @@
 <script>
 import build_info from '@/static/downloads/build_info.json'
 import counts from '@/static/downloads/daily-counts.json'
-import { jst } from '@/lib/jst'
+import { jst, jstEn } from '@/lib/jst'
 
 // 既定で出す日数（直近1年）。週の頭で切り揃えるので、実際はこれを含む週まで
 const DAYS = 365
 
 // 年ではなく直近1年を出しているときの目印
 const RECENT = 'recent'
+
+// 曜日の目印。GitHub と同じく1つおきに出す（日曜始まり）
+const WEEKDAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
 
 // 1日の話数を色の段に落とす。境目は実データから決めてある
 // （1日あたりの中央値が4話、直近1年の最大が15話）
@@ -284,8 +319,11 @@ export default {
     // 基準は「いま」ではなくビルド時刻。実行時のタイムゾーンで日付が変わると、
     // 事前レンダリングした結果と閲覧者のブラウザで食い違う（lib/jst.js）
     today: function() { return jst(build_info.updated).startOf('date') },
-    title: function() {
-      return this.selected === RECENT ? 'この1年の更新' : `${this.selected}年の更新`
+    weekdays: function() { return WEEKDAYS },
+    // GitHub の「N contributions in ...」と同じ形にしてある
+    summary: function() {
+      const when = this.selected === RECENT ? 'in the last year' : `in ${this.selected}`
+      return `${this.total.toLocaleString('en')} episodes ${when}`
     },
     // 選べる年。話数のある最初の年から今年まで、新しいほうを先に並べる
     years: function() {
@@ -355,7 +393,7 @@ export default {
         if(month === previous) return
         if(index == 0 && Number(first.key.slice(8, 10)) > 7) return
         months.push({
-          label: jst(`${month}-01T00:00:00+09:00`).format('MMM'),
+          label: jstEn(`${month}-01T00:00:00+09:00`).format('MMM'),
           // grid の列は 1 から数える
           column: index + 1
         })
