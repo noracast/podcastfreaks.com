@@ -53,7 +53,7 @@
                            含む .value ではなく、タイトルだけをくるむ .headline を
                            基準にする -->
                       <span class="headline">
-                        <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="`${row.addedAt} に登録`">New!</span>
+                        <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="addedTitle(row.addedAt)">New!</span>
                         <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
                         <span class="text" :title="row.title">{{ row.title }}</span>
                       </span>
@@ -83,18 +83,18 @@
               <td class="last">
                 <a-blank v-if="row.lastEpisodeLink" :href="row.lastEpisodeLink">
                   <!-- .value を基準にして、バッジを日付の右上に置く -->
-                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new" :title="newTitle1">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
                 </a-blank>
                 <span v-else class="date">
-                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
+                  <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new" :title="newTitle1">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
                 </span>
               </td>
               <td class="first">
                 <a-blank v-if="row.firstEpisodeLink" :href="row.firstEpisodeLink">
-                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new" :title="newTitle2">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
                 </a-blank>
                 <span v-else class="date">
-                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
+                  <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new" :title="newTitle2">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
                 </span>
               </td>
               <td class="total">{{ row.total }}</td>
@@ -965,6 +965,16 @@ const CHILD_ROW_ANIM_MS = 220
 // 狭い画面で隠している列を出したままにしているか（ブラウザごとに覚える）
 const SHOW_ALL_COLUMNS_KEY = 'pf-show-all-columns'
 
+// New! を付ける範囲（日）。しきい値と、アイコンに出す説明文の両方で使う
+const NEW_WITHIN = {
+  // 最新の回が出たばかりの番組
+  lastEpisode: 3,
+  // 始まったばかりの番組（1本目の回が新しい）
+  firstEpisode: 30,
+  // この一覧に載ったばかりの番組
+  addedAt: 30
+}
+
 const HOSTING_MIN_COUNT = 2
 
 const OTHER_HOSTING = '__other__'
@@ -978,13 +988,18 @@ export default {
       rssDir: `@/${RSS_DIR}/`,
 
       // 行ごとに何度も作成しないように予め作る。
-      // moment() ではなくビルド時刻を基準にするのは、実行時のタイムゾーンで
+      // いまの時刻ではなくビルド時刻を基準にするのは、実行時のタイムゾーンで
       // 判定が変わると、UTC で事前レンダリングした結果と閲覧者のブラウザで
       // バッジの有無が食い違い、ハイドレーションが無駄にやり直されるため
-      newThreshold1: jst(build_info.updated).subtract(3, 'days').startOf('date'),
-      newThreshold2: jst(build_info.updated).subtract(30, 'days').startOf('date'),
+      newThreshold1: jst(build_info.updated).subtract(NEW_WITHIN.lastEpisode, 'days').startOf('date'),
+      newThreshold2: jst(build_info.updated).subtract(NEW_WITHIN.firstEpisode, 'days').startOf('date'),
       // サイトへの登録が新しいと見なす範囲
-      addedThreshold: jst(build_info.updated).subtract(30, 'days').startOf('date'),
+      addedThreshold: jst(build_info.updated).subtract(NEW_WITHIN.addedAt, 'days').startOf('date'),
+
+      // New! が何を指しているのかは印を見ただけでは分からないので、
+      // ホバーで条件を出す。日数はしきい値と同じ定数から作る
+      newTitle1: `${NEW_WITHIN.lastEpisode}日以内に新しい回が公開された番組`,
+      newTitle2: `${NEW_WITHIN.firstEpisode}日以内に1本目の回が公開された番組`,
 
       allMarked: false,
       hostingFilter: '',
@@ -1343,6 +1358,9 @@ export default {
     isRecentlyAdded: function(date){
       if(!date) return false
       return jstDate(date, 'YYYY-MM-DD').isAfter(this.addedThreshold)
+    },
+    addedTitle: function(date){
+      return `${NEW_WITHIN.addedAt}日以内にこの一覧に加わった番組（${date} に登録）`
     },
     downloadOpml: function(){
       const header = {
