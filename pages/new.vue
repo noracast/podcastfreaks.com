@@ -3,35 +3,16 @@
        Responsive は幅を測るまで中身を visibility: hidden で隠すため、
        事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
   <div class="root">
-    <div>
-      <episode-heatmap class="heatmap" />
-      <template v-if="episodes_in_1weeks.length">
-        <h5>今週の新着エピソード　　{{ episodes_in_1weeks.length }} episodes</h5>
-        <div class="this-week">
-          <template v-for="(val, idx) in episodes_in_1weeks" :key="idx">
-            <!-- 違う日だったら。
-                 key は並び順そのもの。この一覧はビルド時に決まって、
-                 あとから並べ替えも差し込みもしないので添字でよい -->
-            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_1weeks[idx-1].pubDate)" class="border">
-              <span class="date">{{ date(val.pubDate) }}</span>
-            </div>
-            <episode-row :episode="val" />
-          </template>
+    <!-- 上に貼り付いたまま、下の並びだけが動く。押した日まで辿れる -->
+    <episode-heatmap class="heatmap" :available="availableDays" @pick="scrollToDay" />
+    <div class="days">
+      <template v-for="day in days" :key="day.key">
+        <div :id="`day-${day.key}`" class="border">
+          <span class="date">{{ day.label }}</span>
         </div>
-      </template>
-      <template v-if="episodes_in_2weeks.length">
-        <h5>先週の新着エピソード　　{{ episodes_in_2weeks.length }} episodes</h5>
-        <div class="last-week">
-          <template v-for="(val, idx) in episodes_in_2weeks" :key="idx">
-            <!-- 違う日だったら。
-                 key は並び順そのもの。この一覧はビルド時に決まって、
-                 あとから並べ替えも差し込みもしないので添字でよい -->
-            <div v-if="idx == 0 || !isSame(val.pubDate, episodes_in_2weeks[idx-1].pubDate)" class="border">
-              <span class="date">{{ date(val.pubDate) }}</span>
-            </div>
-            <episode-row :episode="val" />
-          </template>
-        </div>
+        <!-- key は並び順そのもの。この一覧はビルド時に決まって、
+             あとから並べ替えも差し込みもしないので添字でよい -->
+        <episode-row v-for="(episode, index) in day.episodes" :key="index" :episode="episode" />
       </template>
     </div>
   </div>
@@ -46,6 +27,26 @@
 <style scoped>
 .root {
   padding-top: 0;
+}
+/* 日ごとの並びの上に貼り付ける。header（layouts/default.vue）の下に付ける
+   ので、その高さぶん下げる。下を並びが通るので、背景は敷いてぼかす */
+.heatmap {
+  position: sticky;
+  top: 80px;
+  /* header は 5 */
+  z-index: 4;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.93);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eee;
+}
+.days {
+  padding-top: 10px;
+  /* 最後の日を押したときも、貼り付いた heatmap のすぐ下まで来られるように
+     しておく。これが無いと、末尾の日はページの途中までしかスクロールしない */
+  padding-bottom: 60vh;
 }
 .border {
   height: 0;
@@ -67,14 +68,12 @@
   /* 数字の幅を揃えて、日ごとの見出しの並びが揺れないようにする */
   font-variant-numeric: tabular-nums;
 }
-h5 {
-  padding: 0 20px;
-}
-.heatmap {
-  margin: 10px 0 30px;
-}
 /* 900px は Responsive で測っていたときの境界をそのまま引き継いだもの */
 @media (max-width: 900px) {
+  .heatmap {
+    /* 狭い画面の header は 70px */
+    top: 70px;
+  }
   .border {
     height: auto;
     margin-left: -20px;
@@ -95,38 +94,47 @@ h5 {
 import { jst } from '@/lib/jst'
 import build_info from '@/static/downloads/build_info.json'
 
+// 貼り付いている heatmap の下に、押した日の見出しが出るようにする隙間
+const SCROLL_MARGIN = 8
+
 export default {
   setup() {
     useHead({ title: 'New episodes | Podcast Freaks - Japanese techie podcast archive' })
   },
-  data: function() {
-    // ビルド時刻を基準に、日本時間で「今週」と「先週」に振り分ける。
-    // moment() を使うと実行のたびに基準が変わり、UTC のビルドサーバーと
-    // JST の閲覧者で件数が食い違ってハイドレーションが壊れる
-    const aweekago = jst(build_info.updated).subtract(7, 'days').startOf('date')
-    let episodes_in_1weeks = []
-    let episodes_in_2weeks = []
-    build_info.episodes_in_2weeks.forEach((item, index)=> {
-      if(jst(item.pubDate).isAfter(aweekago)){
-        episodes_in_1weeks.push(item)
+  computed: {
+    // 日ごとにまとめる。fetch-feeds が新しい順に並べてあるので、そのまま辿る。
+    // 日付の判定と表示は日本時間で揃える（lib/jst.js）
+    days: function() {
+      const days = []
+      let current = null
+      for(const episode of build_info.episodes_in_2weeks) {
+        const date = jst(episode.pubDate)
+        const key = date.format('YYYY-MM-DD')
+        if(!current || current.key !== key) {
+          current = { key, label: date.format('YYYY.MM.DD'), episodes: [] }
+          days.push(current)
+        }
+        current.episodes.push(episode)
       }
-      else {
-        episodes_in_2weeks.push(item)
-      }
-    })
-    return {
-      episodes_in_1weeks,
-      episodes_in_2weeks
+      return days
+    },
+    // heatmap のうち、この並びに出ている日。そこだけ押せるようにする
+    availableDays: function() {
+      return this.days.map(day => day.key)
     }
   },
   methods: {
-    date: function(_date) {
-      // 一覧（pages/index.vue の lib/format-date.js）と同じ表記に揃える
-      return jst(_date).format('YYYY.MM.DD')
-    },
-    // 日付の区切り線を出すかの判定。表示と同じ日本時間で比べる
-    isSame: function(_date1, _date2) {
-      return jst(_date1).isSame(jst(_date2), 'day')
+    scrollToDay: function(key) {
+      const target = document.getElementById(`day-${key}`)
+      if(!target) return
+      // 貼り付いているぶんだけ上に隠れてしまうので、その高さを引く
+      const header = document.querySelector('header')
+      const heatmap = this.$el.querySelector('.heatmap')
+      const offset = (header ? header.offsetHeight : 0) + (heatmap ? heatmap.offsetHeight : 0)
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - offset - SCROLL_MARGIN,
+        behavior: 'smooth'
+      })
     }
   }
 }

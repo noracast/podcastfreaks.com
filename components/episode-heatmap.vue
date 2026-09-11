@@ -5,14 +5,21 @@
     <div class="head">
       <span class="title">{{ title }}</span>
       <span class="total">{{ total }} episodes</span>
+      <!-- 年の数だけ並ぶと場所を取るので、普段は畳んでおく -->
+      <button class="toggle" :class="{ 'is-open': yearsOpen }" @click="yearsOpen = !yearsOpen">
+        年を選ぶ
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
       <!-- 遡って見られるようにする。新しい年から並べる -->
-      <div class="years">
+      <div v-show="yearsOpen" class="years">
         <button
           v-for="year in years"
           :key="year.value"
           class="year"
           :class="{ 'is-selected': year.value === selected }"
-          @click="selected = year.value"
+          @click="pickYear(year.value)"
         >
           {{ year.label }}
         </button>
@@ -26,12 +33,14 @@
         </div>
         <div class="grid">
           <template v-for="(week, index) in weeks" :key="index">
-            <div
+            <component
+              :is="cell.listed ? 'button' : 'div'"
               v-for="cell in week"
               :key="cell.key"
               class="cell"
-              :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside }]"
-              :title="cell.label"
+              :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
+              :title="cell.listed ? `${cell.label}　押すとその日まで辿ります` : cell.label"
+              @click="cell.listed && $emit('pick', cell.key)"
             />
           </template>
         </div>
@@ -47,6 +56,9 @@
 
 <style scoped>
 .heatmap {
+  /* セルの大きさ。狭い画面では貼り付けたまま場所を取りすぎるので小さくする */
+  --cell: 11px;
+  --gap: 3px;
   padding: 0 20px;
   /* 日付の見出し（pages/new.vue の .date）と同じ大きさに揃える */
   font-size: 13px;
@@ -65,10 +77,35 @@
       font-size: 11px;
       font-variant-numeric: tabular-nums;
     }
+    /* 年の出し入れ */
+    .toggle {
+      /* レイアウトのグローバルな button の指定を打ち消す */
+      border: 0;
+      border-radius: 4px;
+      min-width: 0;
+      background: none;
+      font: inherit;
+      font-size: 11px;
+      flex: none;
+      margin-left: auto;
+      padding: 3px 6px 3px 8px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      color: #999;
+      white-space: nowrap;
+      cursor: pointer;
+      & svg {
+        transition: transform 0.2s;
+      }
+      &.is-open svg {
+        transform: rotate(180deg);
+      }
+    }
     /* 年の並び。数が多いので、入らなければ横に送る */
     .years {
-      flex: 1;
-      min-width: 0;
+      flex: none;
+      max-width: 100%;
       display: flex;
       justify-content: flex-end;
       gap: 4px;
@@ -101,11 +138,11 @@
   }
   .chart {
     /* 列の数はその時々で変わるので、JS から渡す */
-    width: calc(var(--weeks) * 14px);
+    width: calc(var(--weeks) * (var(--cell) + var(--gap)));
   }
   .months {
     display: grid;
-    grid-template-columns: repeat(var(--weeks), 14px);
+    grid-template-columns: repeat(var(--weeks), calc(var(--cell) + var(--gap)));
     height: 14px;
     color: #999;
     font-size: 10px;
@@ -117,15 +154,26 @@
   }
   .grid {
     display: grid;
-    grid-template-rows: repeat(7, 11px);
+    grid-template-rows: repeat(7, var(--cell));
     grid-auto-flow: column;
-    grid-auto-columns: 11px;
-    gap: 3px;
+    grid-auto-columns: var(--cell);
+    gap: var(--gap);
   }
   .cell {
-    width: 11px;
-    height: 11px;
+    /* button になるものがあるので、レイアウトのグローバルな指定を打ち消す */
+    border: 0;
+    min-width: 0;
+    padding: 0;
+    width: var(--cell);
+    height: var(--cell);
     border-radius: 2px;
+    /* 下の並びに出ている日だけ押せる */
+    &.is-listed {
+      cursor: pointer;
+      /* 押せることが分かるよう、輪郭を出す。枠を足すと大きさが変わるので影で。
+         色は濃いめのグレー。ブランドの紫だと、緑の並びの中で浮いてしまう */
+      box-shadow: 0 0 0 1px rgba(27, 31, 36, 0.45);
+    }
     /* 更新が多い日ほど濃い紫にする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
        1日の中央値が4話なので、その前後で分かれるようにしてある */
     &.level-0 {
@@ -152,7 +200,7 @@
   .legend {
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: var(--gap);
     margin-top: 8px;
     color: #999;
     font-size: 10px;
@@ -164,20 +212,28 @@
 
 /* 触れたときの色は、ポインタのある環境だけ（指では押したあとも残るため） */
 @media (hover: hover) {
-  .heatmap .head .years .year:not(.is-selected):hover {
+  .heatmap .head .years .year:not(.is-selected):hover,
+  .heatmap .head .toggle:hover {
     background-color: #f0e8fc;
     color: #7f00ff;
+  }
+  /* 押せる日は、触れると枠を濃くして分かるようにする */
+  .heatmap .cell.is-listed:hover {
+    box-shadow: 0 0 0 2px #7f00ff;
   }
 }
 
 @media (max-width: 900px) {
   .heatmap {
+    --cell: 9px;
+    --gap: 2px;
     padding: 0 10px;
     /* 幅が残らないので、年の並びは見出しの下へ落とす */
     .head {
       flex-wrap: wrap;
       .years {
         flex-basis: 100%;
+        max-width: none;
         justify-content: flex-start;
       }
     }
@@ -207,10 +263,20 @@ const levelOf = (count) => {
 }
 
 export default {
+  props: {
+    // 下の並びに出ている日（'YYYY-MM-DD'）。そこだけ押せるようにする
+    available: {
+      type: Array,
+      default: () => []
+    }
+  },
+  emits: ['pick'],
   data: function() {
     return {
       // 'recent' か西暦4桁
-      selected: RECENT
+      selected: RECENT,
+      // 年の並びを出しているか。普段は畳んでおく
+      yearsOpen: false
     }
   },
   computed: {
@@ -246,6 +312,7 @@ export default {
     },
     weeks: function() {
       const today = this.today
+      const listed = new Set(this.available)
       const firstSunday = this.range.first
       const count = Math.round(this.range.last.diff(firstSunday, 'day') / 7) + 1
 
@@ -265,6 +332,7 @@ export default {
             level: levelOf(n),
             future: date.isAfter(today),
             outside,
+            listed: listed.has(key),
             label: outside ? null : `${date.format('YYYY.MM.DD')}　${n} episodes`
           })
         }
@@ -307,6 +375,11 @@ export default {
     this.scrollToEnd()
   },
   methods: {
+    pickYear: function(value) {
+      this.selected = value
+      // 選んだら畳む。貼り付いている高さを取り返す
+      this.yearsOpen = false
+    },
     // 開いたときに見せたいのは新しいほう
     scrollToEnd: function() {
       const scroll = this.$refs.scroll
