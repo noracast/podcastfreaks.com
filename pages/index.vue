@@ -637,11 +637,6 @@
         }
       }
     }
-    & button {
-      font-size: 10px;
-      padding: 5px 10px;
-      min-width: initial;
-    }
   }
   /* 検索欄とボタンを1本の帯に並べる。ボタンは右端に寄せる */
   .tools {
@@ -815,7 +810,10 @@
         margin-left: 8px;
       }
     }
-    & button {
+    /* Download OPML と Show all columns。子行の中のボタンには届かない
+       （scoped CSS はコンポーネントの中まで入らない）ので、
+       それぞれのコンポーネントが自分で大きさを決めている */
+    .tools button {
       font-size: 10px;
     }
     /* Download OPML と Show all columns を横に並べる。

@@ -22,7 +22,14 @@ div {
   &:first-child {
     margin-top: 0;
   }
+  /* Copy RSS は button、Open Web は a。レイアウトのグローバルな button の
+     指定（余白・最小幅）が片方にだけ効いて、紫の大きさが上下で食い違って
+     いたので、ここで打ち消して揃える。
+     親（pages/index.vue）からは打ち消せない。scoped CSS はコンポーネントの
+     中の要素には届かず、当たるのはルート要素だけなので */
   >.action {
+    padding: 0;
+    min-width: 0;
     color: white;
     font-size: 10px;
     font-weight: bold;
