@@ -9,7 +9,12 @@ export default defineConfig({
   resolve: {
     alias: {
       // .vue から import するときと同じ書き方をテストでも使えるようにする
-      '@': fileURLToPath(new URL('.', import.meta.url))
+      '@': fileURLToPath(new URL('.', import.meta.url)),
+      // vue は package.json に書いていない（Nuxt が連れてくる）ので、
+      // pnpm は node_modules の直下に置かない。ビルドは Nuxt が解決するが、
+      // テストからは見えないので、pnpm が寄せた場所を直接指す。
+      // lib/player.js が reactive を使っている
+      vue: fileURLToPath(new URL('./node_modules/.pnpm/node_modules/vue', import.meta.url))
     }
   },
   test: {

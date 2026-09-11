@@ -126,11 +126,11 @@
                   <div class="column">
                     <div class="episodes" @scroll="onEpisodesScroll(row.key, $event)">
                       <template v-if="episodes[row.key]">
-                        <episode-player
+                        <episode-item
                           v-for="(ep, i) in visibleEpisodes(row.key)"
                           :key="i"
                           :episode="ep"
-                          @play="playEpisode"
+                          :channel="{ key: row.key, title: row.title }"
                         />
                       </template>
                       <p v-else-if="episodesFailed[row.key]" class="episodes-status">エピソードを読み込めませんでした</p>
@@ -904,6 +904,7 @@ import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
 import { compareBy, compareInterval } from '@/lib/compare'
 import formatDate from '@/lib/format-date'
+import { player, clearReveal } from '@/lib/player'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
 // 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
@@ -980,7 +981,6 @@ export default {
       sortAscending: false,
       // 開いている子行の番組キー。一度に1つだけ開く
       openedKey: null,
-      currentPlayer: null,
       channels: Object.values(build_info.channels),
       // 番組キー -> その番組の全エピソード。行を開いた時点で読み込む
       episodes: {},
@@ -1008,6 +1008,11 @@ export default {
         // ように配信元と番組名をまたいだ絞り込みができない
         return terms.every(term => this.searchableText(row).includes(term))
       })
+    },
+
+    // 右下のプレーヤーで番組名を押されたか
+    revealRequest: function() {
+      return player.reveal
     },
 
     // 並べ替えたあとの行。表に出すのはこれ
@@ -1057,8 +1062,20 @@ export default {
       return options
     }
   },
+  watch: {
+    // 右下のプレーヤーで番組名を押されたら、その回まで辿る。
+    // 合図が来るたびに動かしたいので、値が変わったことが分かるよう
+    // lib/player.js 側が毎回新しいオブジェクトを入れる
+    revealRequest: function(reveal) {
+      if(reveal) this.revealEpisode(reveal)
+    }
+  },
   mounted: function(){
     this.toggleAllCheckbox()
+
+    // 別のページで鳴らし始めてからトップへ来たときのぶん。
+    // watch は変化したときだけなので、最初の1回はここで拾う
+    if(player.reveal) this.revealEpisode(player.reveal)
     window.addEventListener('resize', this.refreshScrollFades)
 
     // 隠している列があるかは CSS のメディアクエリと同じ境界で判定する。
@@ -1315,13 +1332,69 @@ export default {
       }
       return xml
     },
-    playEpisode: function(player) {
-      // 一時停止から再開したときは自分自身が渡ってくる。
-      // そこで止めてしまうと、押した直後に停止してしまう
-      if(this.currentPlayer && this.currentPlayer !== player) {
-        this.currentPlayer.stop()
+    // 右下のプレーヤーで番組名を押されたとき、その回まで辿れるようにする。
+    //
+    // 絞り込みで行が消えていることがあるので先に外し、子行を開き、
+    // その回が描かれるところまで件数を伸ばしてからスクロールする。
+    // 目印（紫）は episode-item が player を見て自分で付ける
+    revealEpisode: async function(reveal) {
+      clearReveal()
+      const key = reveal.key
+      if(!this.channels.some(c => c.key === key)) return
+
+      // 検索や Hosting の絞り込みで隠れていたら外す
+      if(!this.sortedChannels.some(c => c.key === key)) {
+        this.query = ''
+        this.hostingFilter = ''
+        await this.$nextTick()
       }
-      this.currentPlayer = player
+
+      if(this.openedKey !== key) {
+        this.toggleChildRow(key)
+        await this.$nextTick()
+      }
+      this.scrollToRow(key)
+
+      // エピソードの読み込みを待つ。開いた直後は取得中のことがある
+      const episodes = await this.waitForEpisodes(key)
+      const index = episodes.findIndex(ep => ep.url === reveal.url)
+      if(index < 0) return
+
+      // 30話ずつしか描いていないので、そこまで伸ばす
+      if((this.episodesShown[key] || EPISODES_PER_CHUNK) <= index) {
+        this.episodesShown = { ...this.episodesShown, [key]: index + EPISODES_PER_CHUNK }
+      }
+      await this.$nextTick()
+      this.scrollToEpisode(key, index)
+    },
+    // 読み込み中なら待つ。失敗したときや、待っている間に別の行が
+    // 開かれたときは諦める
+    waitForEpisodes: function(key) {
+      return new Promise(resolve => {
+        const check = () => {
+          if(this.episodes[key]) return resolve(this.episodes[key])
+          if(this.episodesFailed[key] || this.openedKey !== key) return resolve([])
+          setTimeout(check, 100)
+        }
+        check()
+      })
+    },
+    scrollToRow: function(key) {
+      const wrap = this.childWrap(key)
+      const row = wrap && wrap.closest('tr')
+      const target = row && row.previousElementSibling
+      if(!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    },
+    scrollToEpisode: function(key, index) {
+      const wrap = this.childWrap(key)
+      const list = wrap && wrap.querySelector('.episodes')
+      const item = list && list.children[index]
+      if(!item) return
+      // ページごと動かすと行の位置まで変わってしまうので、
+      // エピソードの列の中だけをスクロールする
+      list.scrollTop = item.offsetTop - (list.clientHeight - item.offsetHeight) / 2
+      this.refreshScrollFades()
     }
   }
 }

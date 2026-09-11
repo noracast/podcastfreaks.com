@@ -27,6 +27,10 @@ export default {
       type: String,
       default: '10%'
     },
+    // 使えるのは 30 と 60 だけ。倍の大きさの画像を読むので、
+    // 用意してある -60 と -120 に当たる（scripts/pf-util.js の
+    // downloadAndResize がこの2枚を作る）。他の値を渡すと 404 になる。
+    // 0 を渡すと元の大きさの画像を、幅と高さを指定せずに出す
     size: {
       type: Number,
       default: 60

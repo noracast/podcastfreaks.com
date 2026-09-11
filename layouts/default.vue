@@ -34,7 +34,9 @@
            除外は localStorage に持つのでブラウザごと。他の人には出ない -->
       <div class="ga-optout" title="このブラウザはアクセス解析の対象外です。戻すには ?ga-optout=0 を付けて開いてください">計測オフ</div>
     </header>
-    <div class="main">
+    <!-- プレーヤーが出ている間は、その高さぶん下に余白を作る。
+         無いと一覧の最後の行や子行の下端がプレーヤーに隠れる -->
+    <div class="main" :class="{ 'has-player': hasPlayer }">
       <div class="sp_stats">
         <div class="channels">
           <span>{{ channelCount }}</span>
@@ -51,10 +53,25 @@
       </div>
       <slot />
     </div>
+    <!-- 再生中のものを出し続ける。ページを移っても消えないよう、
+         ページの中ではなくレイアウトに置く（issue #235） -->
+    <global-player />
   </div>
 </template>
 
 <style>
+
+/* 右下のプレーヤーに隠れないよう、出ている間だけ下を空ける。
+   常に空けておくと、鳴らしていないときに余白が浮く */
+.main.has-player {
+  padding-bottom: 130px;
+}
+@media (max-width: 900px) {
+  /* 狭い画面では左右いっぱいに敷くぶん、少し高くなる */
+  .main.has-player {
+    padding-bottom: 150px;
+  }
+}
 
 header {
   height: 80px;
@@ -289,6 +306,7 @@ button {
 <script>
 import build_info from '@/static/downloads/build_info.json'
 import { jst } from '@/lib/jst'
+import { player } from '@/lib/player'
 
 export default {
   data: function() {
@@ -305,6 +323,11 @@ export default {
       updatedTime: `${updated.format('h:mm:ss')} ${updated.hour() < 12 ? 'AM' : 'PM'}`,
       channelCount: Object.keys(build_info.channels).length,
       episodeCount: build_info.episodeCount
+    }
+  },
+  computed: {
+    hasPlayer: function() {
+      return !!player.episode
     }
   }
 }
