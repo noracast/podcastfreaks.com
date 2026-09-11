@@ -145,7 +145,9 @@ const previousMonth = (month) => {
 
 export default {
   setup() {
-    useHead({ title: 'New episodes | Podcast Freaks - Japanese techie podcast archive' })
+    // 2週間の新着だけでなく、2009年からを日ごとに辿れるようになったので
+    // 「New episodes」ではなく「Episodes」。URL は /new のまま
+    useHead({ title: 'Episodes | Podcast Freaks - Japanese techie podcast archive' })
   },
   data: function() {
     return {
