@@ -77,9 +77,6 @@ h5 {
     margin-left: 20px;
     padding-left: 10px;
   }
-  .row {
-    padding-left: 20px;
-  }
 }
 </style>
 

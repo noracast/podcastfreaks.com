@@ -31,12 +31,14 @@
       <div class="names">
         <!-- 番組名と配信日、その下に題名。右端を揃えたいので行ごとに分ける -->
         <div class="line">
-          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToChannel">{{ episode.channelTitle || episode.key }}</button>
+          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToEpisode">{{ episode.channelTitle || episode.key }}</button>
           <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
           <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
         </div>
         <div class="line">
-          <span class="title" :title="episode.title">{{ episode.title }}</span>
+          <!-- 押すと一覧でこの回まで辿る。番組名と同じ行き先 -->
+          <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode">{{ episode.title }}</button>
+          <span v-else class="title as-text" :title="episode.title">{{ episode.title }}</span>
         </div>
       </div>
     </div>
@@ -314,7 +316,6 @@
         text-overflow: ellipsis;
         &:hover {
           color: #fff;
-          text-decoration: underline;
         }
         /* 番組が特定できないとき（/new から鳴らして key が無い場合）は
            押せないので、リンクに見せない */
@@ -322,17 +323,35 @@
           cursor: default;
           &:hover {
             color: #aaa;
-            text-decoration: none;
           }
         }
       }
       .title {
-        flex: 1;
+        /* レイアウトのグローバルな button の指定を打ち消す */
+        border: 0;
+        border-radius: 0;
         min-width: 0;
+        padding: 0;
+        background: none;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        flex: 1;
         color: #eee;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        &:hover {
+          color: #fff;
+        }
+        /* 番組が特定できないとき（/new から鳴らして key が無い場合）は
+           押せないので、そう見せない */
+        &.as-text {
+          cursor: default;
+          &:hover {
+            color: #eee;
+          }
+        }
       }
     }
   }
@@ -659,7 +678,7 @@ export default {
     },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
-    goToChannel: function() {
+    goToEpisode: function() {
       requestReveal()
       if(this.$route.path !== '/') this.$router.push('/')
     },

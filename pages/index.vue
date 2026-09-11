@@ -597,6 +597,11 @@
                 box-sizing: border-box;
               }
               >.episodes {
+                /* /new から辿ってきた回を、しばらく光らせる。
+                   クラスは JS で付け外しする（pages/index.vue の scrollToEpisode） */
+                .episode.is-revealed {
+                  background-color: #e7e0f7;
+                }
                 /* 読み込みが済むまでの控えめな案内。すぐ入れ替わるので目立たせない */
                 .episodes-status {
                   padding: 20px;
@@ -885,6 +890,9 @@ import { player, clearReveal } from '@/lib/player'
 // 一度に描くエピソードの数。下まで見たらこの数ずつ足していく
 const EPISODES_PER_CHUNK = 30
 
+// 辿り着いた回を光らせておく長さ（ミリ秒）
+const REVEAL_HIGHLIGHT = 1800
+
 // 子行を開け閉めするときの長さ
 const CHILD_ROW_ANIM_MS = 220
 
@@ -1066,6 +1074,7 @@ export default {
     }
   },
   beforeUnmount: function(){
+    clearTimeout(this.revealTimer)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
   methods: {
@@ -1348,6 +1357,13 @@ export default {
       // ページごと動かすと行の位置まで変わってしまうので、
       // エピソードの列の中だけをスクロールする
       list.scrollTop = item.offsetTop - (list.clientHeight - item.offsetHeight) / 2
+
+      // 辿り着いた回を少しのあいだ光らせる。鳴らしていない回には
+      // 「いま鳴っている」の印が付かないので、これが無いとどれを
+      // 指したのか分からない
+      item.classList.add('is-revealed')
+      clearTimeout(this.revealTimer)
+      this.revealTimer = setTimeout(() => item.classList.remove('is-revealed'), REVEAL_HIGHLIGHT)
     }
   }
 }
