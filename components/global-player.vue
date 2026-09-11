@@ -16,13 +16,7 @@
         :aria-label="playing ? '一時停止' : '再生'"
         @click="onTabToggle"
       >
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-          <g v-if="playing" fill="currentColor">
-            <rect x="6" y="5" width="4" height="14" rx="1" />
-            <rect x="14" y="5" width="4" height="14" rx="1" />
-          </g>
-          <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
-        </svg>
+        <play-icon :playing="playing" :size="14" />
       </button>
       <button
         class="expand"
@@ -58,13 +52,7 @@
 
     <div class="body">
       <button class="play" :title="playing ? '一時停止' : '再生'" :aria-label="playing ? '一時停止' : '再生'" @click="onToggle">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <g v-if="playing" fill="currentColor">
-            <rect x="6" y="5" width="4" height="14" rx="1" />
-            <rect x="14" y="5" width="4" height="14" rx="1" />
-          </g>
-          <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
-        </svg>
+        <play-icon :playing="playing" :size="22" />
       </button>
 
       <!-- 再生ボタンより右がまるごとシークバー。背景の伸びが再生位置を表す -->

@@ -12,14 +12,8 @@
     <span class="cover-wrap">
       <cover class="cover" :channel="episode.key" :size="30" radius="50%" />
       <!-- ジャケットに重ねる再生の印。行に触れている間と、鳴らしている回に出す -->
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="12" height="12">
-          <g v-if="current && playing" fill="currentColor">
-            <rect x="6" y="5" width="4" height="14" rx="1" />
-            <rect x="14" y="5" width="4" height="14" rx="1" />
-          </g>
-          <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
-        </svg>
+      <span class="mark">
+        <play-icon :playing="current && playing" :size="12" />
       </span>
     </span>
     <span class="text">{{ episode.title }}</span>

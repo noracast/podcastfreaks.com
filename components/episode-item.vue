@@ -9,14 +9,8 @@
     :disabled="!playable"
     @click="onClick"
   >
-    <span class="play" aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="16" height="16">
-        <g v-if="current && playing" fill="currentColor">
-          <rect x="6" y="5" width="4" height="14" rx="1" />
-          <rect x="14" y="5" width="4" height="14" rx="1" />
-        </g>
-        <path v-else fill="currentColor" d="M8 5.5v13l11-6.5z" />
-      </svg>
+    <span class="play">
+      <play-icon :playing="current && playing" :size="16" />
     </span>
     <span class="text">{{ episode.title }}</span>
     <span class="time">{{ formattedDuration }}</span>
