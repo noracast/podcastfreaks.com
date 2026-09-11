@@ -1,0 +1,9 @@
+# Service Worker 自体はキャッシュさせない。
+# ここが古いままだと、新しい版を入れる合図が端末に届かず、
+# サイトを更新しても古い画面が返り続ける
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# ページも同じ。中身は毎日変わる
+/*.html
+  Cache-Control: no-cache

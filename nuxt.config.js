@@ -118,12 +118,46 @@ export default defineNuxtConfig({
       // 前の版のキャッシュを残さない。ローカルで別のビルドを配信したときに
       // 古い HTML が返り続けて何度も混乱した
       cleanupOutdatedCaches: true,
-      // 事前レンダリングしたページと、その素材
-      globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
+      // 新しい Service Worker が、開いているページをすぐ引き継ぐ
+      skipWaiting: true,
+      clientsClaim: true,
+
+      // 先読みするのは素材だけ。HTML は入れない。
+      //
+      // 以前は html も入れていたが、そうすると Service Worker が
+      // キャッシュした HTML を返し続け、サイトを更新しても端末側が
+      // 古いままになる（タブを全部閉じても直らなかった）。
+      // 中身が毎日変わるので、ページは下の runtimeCaching で
+      // 「まずネットワーク、駄目ならキャッシュ」にする
+      globPatterns: ['**/*.{js,css,ico,png,svg,webmanifest}'],
       // フィードのデータ（downloads/）は毎日変わるうえ量が多いので、
       // 先読みの対象から外す。エピソードは開いたときに取りに行く
       globIgnores: ['**/downloads/**'],
-      navigateFallback: null
+      navigateFallback: null,
+
+      runtimeCaching: [
+        {
+          // ページそのもの。取れたら必ず新しいものを出す。
+          // 5秒待って駄目なら、前に見たものを出す（機内などオフラインのとき）
+          urlPattern: ({ request }) => request.mode === 'navigate',
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'pages',
+            networkTimeoutSeconds: 5,
+            expiration: { maxEntries: 30 }
+          }
+        },
+        {
+          // 一覧が読むフィードのデータ。こちらも新しいものを優先する
+          urlPattern: ({ url }) => url.pathname.startsWith('/downloads/'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'downloads',
+            networkTimeoutSeconds: 5,
+            expiration: { maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 }
+          }
+        }
+      ]
     },
 
     // 開発サーバーでは Service Worker を動かさない。
