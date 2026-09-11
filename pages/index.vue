@@ -113,7 +113,9 @@
                            v-html で出すが、中身は fetch-feeds.js の sanitizeDescription で
                            許可したタグと属性だけに濾してある -->
                       <!-- eslint-disable-next-line vue/no-v-html -->
-                      <p v-if="row.desciprtion" class="description" v-html="row.desciprtion" />
+                      <!-- 説明に裸で書かれた URL は押せないので、ここでリンクにする
+                           （v-html に渡すのは sanitize 済みの HTML。lib/linkify.js） -->
+                      <p v-if="row.desciprtion" class="description" v-html="linkify(row.desciprtion)" />
                       <p v-else class="description">No description</p>
                       <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" />
                       <button-text :text="row.feed" :button-text="'Copy RSS'" />
@@ -949,6 +951,7 @@ import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
 import { compareBy, compareInterval } from '@/lib/compare'
 import formatDate from '@/lib/format-date'
+import linkify from '@/lib/linkify'
 import { player, clearReveal } from '@/lib/player'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
@@ -1350,6 +1353,7 @@ export default {
       this.markedRows = this.allMarked ? [] : Object.keys(rss)
       this.allMarked = !this.allMarked
     },
+    linkify,
     isIn: function(date, threshold){
       return jstDate(date, 'YYYY.MM.DD').isAfter(threshold)
     },
