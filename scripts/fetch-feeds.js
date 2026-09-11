@@ -9,6 +9,7 @@ import normalizeFeed from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import episodeId from '../lib/episode-id.js'
+import countByDay, { jstDay } from '../lib/daily-counts.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import validateRssJson from './validate-rss-json.js'
@@ -21,6 +22,8 @@ import {
   COVER_DIR,
   BUILD_INFO,
   EPISODES_DIR,
+  MONTHS_DIR,
+  DAILY_COUNTS,
   RSS_JSON,
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
@@ -49,7 +52,7 @@ const serializeError = (error) => error instanceof Error
 
 // 取得先のディレクトリを作る。無ければ作り、あれば何もしない
 const makeDownloadDirs = () => {
-  for(const dir of [RSS_DIR, COVER_DIR, EPISODES_DIR]) {
+  for(const dir of [RSS_DIR, COVER_DIR, EPISODES_DIR, MONTHS_DIR]) {
     fs.mkdirSync(dir, { recursive: true })
   }
 }
@@ -178,12 +181,12 @@ const durationSeconds = (raw) => {
 
 // フィードのエピソード1件を、ページが使う形にする。
 //
-// 子行（episodes/<key>.json）と /new の両方がこの形を受け取る。
-// 一覧の子行も /new も同じ episode-row で描き、同じプレーヤーで鳴らすので、
+// 子行（episodes/<key>.json）と /episodes の両方がこの形を受け取る。
+// 一覧の子行も /episodes も同じ episode-row で描き、同じプレーヤーで鳴らすので、
 // 形が違うと片方だけ再生できないといったことが起きる。
 //
 // フィードの項目をそのまま渡さないのは、必要なのがこの6つだけだからでもある。
-// /new のぶんを生のまま build_info.json に入れていた頃は、使っていない
+// /episodes のぶんを生のまま build_info.json に入れていた頃は、使っていない
 // description などが全体の53%（271KB）を占めていた
 // フィードの guid。xml2js は isPermaLink のような属性が付いていると
 // { _: '値', $: {...} } を返し、属性が無ければ素の文字列を返す
@@ -215,6 +218,10 @@ const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseStr
 const writeFile = promisify(fs.writeFile)
 
 let episodes_in_2weeks = []
+// 日ごとの話数（/episodes の heatmap のぶん）。番組をまたいで積み上げる
+let daily_counts = {}
+// 月ごとのエピソード（/episodes を過去へ遡るぶん）。こちらも番組をまたぐ
+let by_month = {}
 let latest_pubdates = []
 let channels = {}
 let covers = {}
@@ -379,7 +386,7 @@ const fetchFeed = async key => {
     pubDate: episodes[0].pubDate
   })
 
-  // /new に出すぶん。番組をまたいで1つの並びにするので、どの番組のものか
+  // /episodes に出すぶん。番組をまたいで1つの並びにするので、どの番組のものか
   // 分かるように key と番組名を添える
   episodes_in_2weeks = episodes_in_2weeks.concat(
     util.getEpisodesIn2Weeks(episodes, key, title).map(ep => ({
@@ -395,6 +402,19 @@ const fetchFeed = async key => {
   // 一覧の初期表示には要らないので、番組ごとの別ファイルへ回す。
   // 行を開いたときに、その番組のぶんだけ読み込む
   const episodeList = episodes.map(toEpisode)
+
+  // 日ごとに何話出たか。番組をまたいで積む（/episodes の heatmap）
+  countByDay(episodeList, daily_counts)
+
+  // 月ごとにも振り分ける。/episodes はここから過去を継ぎ足すので、
+  // episodes_in_2weeks と同じ形（どの番組のものか分かるように）にしておく
+  for(const episode of episodeList) {
+    const day = jstDay(episode.pubDate)
+    if(!day) continue
+    const month = day.slice(0, 7)
+    if(!by_month[month]) by_month[month] = []
+    by_month[month].push({ ...episode, key, channel_title: title })
+  }
 
   // id が重なると、あとで回を指すときに別のものを開いてしまう。
   // 実データでは衝突しないことを確かめてあるが、番組が増えれば起こりうるので
@@ -516,6 +536,20 @@ const fetchFeed = async key => {
   // Save to file
   consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
+  // heatmap のぶん。日付の順に並べておく（読む側がそのまま辿れるように）
+  const sortedDays = Object.keys(daily_counts).sort()
+  await writeFile(DAILY_COUNTS, JSON.stringify(
+    Object.fromEntries(sortedDays.map(day => [day, daily_counts[day]]))
+  ), 'utf8')
+
+  // 月ごとのぶん。/episodes と同じく新しい順に並べておく
+  const months = Object.keys(by_month).sort()
+  for(const month of months) {
+    const episodes = by_month[month].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+    await writeFile(`${MONTHS_DIR}/${month}.json`, JSON.stringify(episodes), 'utf8')
+  }
+  consola.log(`　月ごとのエピソードを ${months.length}か月ぶん書き出しました`)
 
   const elapsed = Math.round((Date.now() - startedAt) / 1000)
   consola.success(

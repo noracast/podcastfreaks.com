@@ -16,7 +16,7 @@
       </div>
       <!-- リンクの間に改行を入れると、出力に半角空白が入って間隔が変わる -->
       <nav>
-        <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/new/">New episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
+        <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/episodes/">Episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
       </nav>
       <div class="stats channels">
         <span>{{ channelCount }}</span>
@@ -330,7 +330,7 @@ export default {
       updatedDate: updated.format('YYYY.MM.DD'),
       // AM / PM は英語で出す。書式の A は既定のロケール（ja）だと
       // 「午前」「午後」になり、隣の updated や channels / episodes と
-      // 揃わない。locale('en') を挟むと /new/ の曜日まで英語になるので、
+      // 揃わない。locale('en') を挟むと他の日本語表記まで英語になるので、
       // ここだけ自分で付ける
       updatedTime: `${updated.format('h:mm:ss')} ${updated.hour() < 12 ? 'AM' : 'PM'}`,
       channelCount: Object.keys(build_info.channels).length,

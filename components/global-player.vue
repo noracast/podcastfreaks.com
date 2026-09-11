@@ -347,7 +347,7 @@
         &:hover {
           color: #fff;
         }
-        /* 番組が特定できないとき（/new から鳴らして key が無い場合）は
+        /* 番組が特定できないとき（/episodes から鳴らして key が無い場合）は
            押せないので、リンクに見せない */
         &.as-text {
           cursor: default;
@@ -374,7 +374,7 @@
         &:hover {
           color: #fff;
         }
-        /* 番組が特定できないとき（/new から鳴らして key が無い場合）は
+        /* 番組が特定できないとき（/episodes から鳴らして key が無い場合）は
            押せないので、そう見せない */
         &.as-text {
           cursor: default;

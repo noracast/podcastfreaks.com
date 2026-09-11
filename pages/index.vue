@@ -529,7 +529,7 @@
     }
     & td.last, td.first {
       >a, >.date {
-        /* /new ページの非スコープなスタイルに .date { position: absolute } があり、
+        /* /episodes ページの非スコープなスタイルに .date { position: absolute } があり、
            ここで打ち消さないと日付がページ上部へ飛ぶ */
         position: relative;
         display: flex;
@@ -597,7 +597,7 @@
                 box-sizing: border-box;
               }
               >.episodes {
-                /* /new から辿ってきた回を、しばらく光らせる。
+                /* /episodes から辿ってきた回を、しばらく光らせる。
                    クラスは JS で付け外しする（pages/index.vue の scrollToEpisode） */
                 .episode.is-revealed {
                   background-color: #e7e0f7;

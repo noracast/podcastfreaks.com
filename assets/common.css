@@ -1,5 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
-/* トップの子行と /new の行で分け合うぶん。scoped な <style> どうしでは
+/* トップの子行と /episodes の行で分け合うぶん。scoped な <style> どうしでは
    分け合えないので、グローバルとしてここから読む */
 @import './episode-line.css';
 

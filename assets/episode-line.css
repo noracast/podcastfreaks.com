@@ -1,10 +1,10 @@
-/* トップの子行（components/episode-item.vue）と /new の行
+/* トップの子行（components/episode-item.vue）と /episodes の行
    （components/episode-row.vue）は、並ぶ場所も中身も違うが、「押すと右下の
    プレーヤーで鳴る1話」という点は同じなので、見た目を揃える。
    scoped な <style> どうしでは分け合えないため、共通のぶんをここに置く。
 
    触れたときの色だけは、それぞれのコンポーネントで決める。敷かれている面の
-   色が違うため（子行は #f6f6f6、/new は白） */
+   色が違うため（子行は #f6f6f6、/episodes は白） */
 .episode-line {
   /* レイアウトのグローバルな button の指定（角丸・余白・最小幅・中央寄せ）を打ち消す */
   border: 0;
@@ -13,12 +13,12 @@
   padding: 0;
   background: none;
   color: inherit;
-  /* font: inherit だけだと親の大きさを拾う（/new は 16px）ので、ここで決める */
+  /* font: inherit だけだと親の大きさを拾う（/episodes は 16px）ので、ここで決める */
   font: inherit;
   font-size: 13px;
   font-weight: normal;
   text-align: left;
-  /* /new の行は button ではなく div なので、既定の border-box が外れる。
+  /* /episodes の行は button ではなく div なので、既定の border-box が外れる。
      width: 100% に padding が足されて横スクロールが出るため明示する */
   box-sizing: border-box;
   width: 100%;
@@ -27,7 +27,7 @@
   align-items: center;
   cursor: pointer;
 }
-/* /new の行は、番組名だけ行き先が違うので button ではなく div。
+/* /episodes の行は、番組名だけ行き先が違うので button ではなく div。
    そちらは :disabled を持てないので、クラスでも同じ見た目にする */
 .episode-line:disabled,
 .episode-line.is-disabled {
