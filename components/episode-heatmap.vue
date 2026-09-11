@@ -44,7 +44,7 @@
                 :key="cell.key"
                 class="cell"
                 :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
-                :title="cell.listed ? `${cell.label}　押すとその日まで辿ります` : cell.label"
+                :title="cell.label"
                 @click="cell.listed && $emit('pick', cell.key)"
               />
             </template>
@@ -193,12 +193,10 @@
     width: var(--cell);
     height: var(--cell);
     border-radius: 2px;
-    /* 下の並びに出ている日だけ押せる */
+    /* 1話でも出ている日は押せる。枠は出さない（ほとんどの日が押せるので、
+       付けると並び全体がうるさくなる）。触れたときだけ輪郭を出す */
     &.is-listed {
       cursor: pointer;
-      /* 押せることが分かるよう、輪郭を出す。枠を足すと大きさが変わるので影で。
-         色は濃いめのグレー。ブランドの紫だと、緑の並びの中で浮いてしまう */
-      box-shadow: 0 0 0 1px rgba(27, 31, 36, 0.45);
     }
     /* 更新が多い日ほど濃くする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
        1日の中央値が4話なので、その前後で分かれるようにしてある。
@@ -249,9 +247,10 @@
     background-color: #f0e8fc;
     color: #7f00ff;
   }
-  /* 押せる日は、触れると枠を濃くして分かるようにする */
+  /* 押せる日は、触れると輪郭を出して分かるようにする。
+     色は濃いめのグレー。ブランドの紫だと、緑の並びの中で浮いてしまう */
   .heatmap .cell.is-listed:hover {
-    box-shadow: 0 0 0 2px #7f00ff;
+    box-shadow: 0 0 0 2px rgba(27, 31, 36, 0.5);
   }
 }
 
@@ -299,13 +298,6 @@ const levelOf = (count) => {
 }
 
 export default {
-  props: {
-    // 下の並びに出ている日（'YYYY-MM-DD'）。そこだけ押せるようにする
-    available: {
-      type: Array,
-      default: () => []
-    }
-  },
   emits: ['pick'],
   data: function() {
     return {
@@ -351,7 +343,6 @@ export default {
     },
     weeks: function() {
       const today = this.today
-      const listed = new Set(this.available)
       const firstSunday = this.range.first
       const count = Math.round(this.range.last.diff(firstSunday, 'day') / 7) + 1
 
@@ -371,7 +362,8 @@ export default {
             level: levelOf(n),
             future: date.isAfter(today),
             outside,
-            listed: listed.has(key),
+            // 1話でも出ている日なら、その日まで辿れる
+            listed: !outside && n > 0 && !date.isAfter(today),
             label: outside ? null : `${date.format('YYYY.MM.DD')}　${n} episodes`
           })
         }

@@ -9,6 +9,9 @@ export const EPISODES_DIR = 'static/downloads/episodes'
 // 日ごとに何話出たかだけを集めたもの。/new の heatmap が読む。
 // 17年ぶんで65KBあり、一覧の初期表示には要らないので build_info.json とは分ける
 export const DAILY_COUNTS = 'static/downloads/daily-counts.json'
+// 月ごとのエピソード。/new を過去へ遡るときに、見えている月のぶんだけ読む。
+// 番組ごとの episodes/ とは切り口が違う（あちらは一覧で行を開いたとき）
+export const MONTHS_DIR = 'static/downloads/months'
 export const RSS_JSON = 'data/rss.json'
 export const RSS_INACTIVE_JSON = 'data/rss-inactive.json'
 export const ADDED_AT_JSON = 'data/added-at.json'

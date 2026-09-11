@@ -9,7 +9,7 @@ import normalizeFeed from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import episodeId from '../lib/episode-id.js'
-import countByDay from '../lib/daily-counts.js'
+import countByDay, { jstDay } from '../lib/daily-counts.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import validateRssJson from './validate-rss-json.js'
@@ -22,6 +22,7 @@ import {
   COVER_DIR,
   BUILD_INFO,
   EPISODES_DIR,
+  MONTHS_DIR,
   DAILY_COUNTS,
   RSS_JSON,
   RSS_INACTIVE_JSON,
@@ -51,7 +52,7 @@ const serializeError = (error) => error instanceof Error
 
 // 取得先のディレクトリを作る。無ければ作り、あれば何もしない
 const makeDownloadDirs = () => {
-  for(const dir of [RSS_DIR, COVER_DIR, EPISODES_DIR]) {
+  for(const dir of [RSS_DIR, COVER_DIR, EPISODES_DIR, MONTHS_DIR]) {
     fs.mkdirSync(dir, { recursive: true })
   }
 }
@@ -219,6 +220,8 @@ const writeFile = promisify(fs.writeFile)
 let episodes_in_2weeks = []
 // 日ごとの話数（/new の heatmap のぶん）。番組をまたいで積み上げる
 let daily_counts = {}
+// 月ごとのエピソード（/new を過去へ遡るぶん）。こちらも番組をまたぐ
+let by_month = {}
 let latest_pubdates = []
 let channels = {}
 let covers = {}
@@ -403,6 +406,16 @@ const fetchFeed = async key => {
   // 日ごとに何話出たか。番組をまたいで積む（/new の heatmap）
   countByDay(episodeList, daily_counts)
 
+  // 月ごとにも振り分ける。/new はここから過去を継ぎ足すので、
+  // episodes_in_2weeks と同じ形（どの番組のものか分かるように）にしておく
+  for(const episode of episodeList) {
+    const day = jstDay(episode.pubDate)
+    if(!day) continue
+    const month = day.slice(0, 7)
+    if(!by_month[month]) by_month[month] = []
+    by_month[month].push({ ...episode, key, channel_title: title })
+  }
+
   // id が重なると、あとで回を指すときに別のものを開いてしまう。
   // 実データでは衝突しないことを確かめてあるが、番組が増えれば起こりうるので
   // 見つけたら知らせる（/errors に出る）
@@ -529,6 +542,14 @@ const fetchFeed = async key => {
   await writeFile(DAILY_COUNTS, JSON.stringify(
     Object.fromEntries(sortedDays.map(day => [day, daily_counts[day]]))
   ), 'utf8')
+
+  // 月ごとのぶん。/new と同じく新しい順に並べておく
+  const months = Object.keys(by_month).sort()
+  for(const month of months) {
+    const episodes = by_month[month].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+    await writeFile(`${MONTHS_DIR}/${month}.json`, JSON.stringify(episodes), 'utf8')
+  }
+  consola.log(`　月ごとのエピソードを ${months.length}か月ぶん書き出しました`)
 
   const elapsed = Math.round((Date.now() - startedAt) / 1000)
   consola.success(

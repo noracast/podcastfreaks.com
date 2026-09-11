@@ -4,16 +4,23 @@
        事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
   <div class="root">
     <!-- 上に貼り付いたまま、下の並びだけが動く。押した日まで辿れる -->
-    <episode-heatmap class="heatmap" :available="availableDays" @pick="scrollToDay" />
+    <episode-heatmap class="heatmap" @pick="pickDay" />
     <div class="days">
+      <!-- 過去へ飛んだあと、新着へ戻る道を残しておく -->
+      <div v-if="!fromLatest" class="back">
+        <button @click="backToLatest">最新の新着に戻る</button>
+      </div>
       <template v-for="day in days" :key="day.key">
         <div :id="`day-${day.key}`" class="border">
           <span class="date">{{ day.label }}</span>
         </div>
-        <!-- key は並び順そのもの。この一覧はビルド時に決まって、
-             あとから並べ替えも差し込みもしないので添字でよい -->
-        <episode-row v-for="(episode, index) in day.episodes" :key="index" :episode="episode" />
+        <episode-row v-for="episode in day.episodes" :key="episode.id" :episode="episode" />
       </template>
+      <!-- ここが見えたら続きを読む -->
+      <div ref="sentinel" class="sentinel">
+        <span v-if="loading">読み込み中…</span>
+        <span v-else-if="reachedEnd">ここが一番古い回です</span>
+      </div>
     </div>
   </div>
 </template>
@@ -44,9 +51,30 @@
 }
 .days {
   padding-top: 10px;
-  /* 最後の日を押したときも、貼り付いた heatmap のすぐ下まで来られるように
-     しておく。これが無いと、末尾の日はページの途中までしかスクロールしない */
-  padding-bottom: 60vh;
+}
+.back {
+  padding: 0 20px 10px;
+  & button {
+    /* レイアウトのグローバルな button の指定を打ち消す */
+    border: 0;
+    border-radius: 4px;
+    min-width: 0;
+    background: none;
+    font: inherit;
+    font-size: 12px;
+    padding: 4px 8px;
+    color: #7f00ff;
+    cursor: pointer;
+  }
+}
+.sentinel {
+  /* 最後まで見たあとも、押した日を上へ持ってこられるだけの高さを残す。
+     続きがあるうちは、ここが見えた時点で読み込みが始まる */
+  min-height: 60vh;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+  text-align: center;
 }
 .border {
   height: 0;
@@ -74,6 +102,9 @@
     /* 狭い画面の header は 70px */
     top: 70px;
   }
+  .back {
+    padding: 0 10px 10px;
+  }
   .border {
     height: auto;
     margin-left: -20px;
@@ -93,13 +124,40 @@
 <script>
 import { jst } from '@/lib/jst'
 import build_info from '@/static/downloads/build_info.json'
+import counts from '@/static/downloads/daily-counts.json'
 
 // 貼り付いている heatmap の下に、押した日の見出しが出るようにする隙間
 const SCROLL_MARGIN = 8
 
+// 話数のある最初の月。これより前は読みに行かない
+const FIRST_MONTH = Object.keys(counts)[0].slice(0, 7)
+
+// 1度に遡る上限。1話も出ていない月が続くことがあるので
+// （2009〜2012 は疎）、何も足せなかったときは次の月へ進む
+const MAX_STEPS = 12
+
+const previousMonth = (month) => {
+  const [year, number] = month.split('-').map(Number)
+  return number === 1
+    ? `${year - 1}-12`
+    : `${year}-${String(number - 1).padStart(2, '0')}`
+}
+
 export default {
   setup() {
     useHead({ title: 'New episodes | Podcast Freaks - Japanese techie podcast archive' })
+  },
+  data: function() {
+    return {
+      // 表示しているエピソード（新しい順）。まずはビルドに含まれている2週間ぶん。
+      // ここだけは読み込みを待たずに出せる
+      episodes: build_info.episodes_in_2weeks,
+      // 月ごとのファイルを、どこまで遡って読んだか。null はまだ読んでいない
+      loadedFrom: null,
+      loading: false,
+      // 最新から続けて見ているか。heatmap で過去へ飛ぶと false になる
+      fromLatest: true
+    }
   },
   computed: {
     // 日ごとにまとめる。fetch-feeds が新しい順に並べてあるので、そのまま辿る。
@@ -107,7 +165,7 @@ export default {
     days: function() {
       const days = []
       let current = null
-      for(const episode of build_info.episodes_in_2weeks) {
+      for(const episode of this.episodes) {
         const date = jst(episode.pubDate)
         const key = date.format('YYYY-MM-DD')
         if(!current || current.key !== key) {
@@ -118,12 +176,88 @@ export default {
       }
       return days
     },
-    // heatmap のうち、この並びに出ている日。そこだけ押せるようにする
-    availableDays: function() {
-      return this.days.map(day => day.key)
+    reachedEnd: function() {
+      return this.loadedFrom === FIRST_MONTH
     }
   },
+  mounted: function() {
+    // 下端が見えたら続きを読む。スクロールを毎回数えるより軽い
+    this.observer = new IntersectionObserver(entries => {
+      if(entries.some(entry => entry.isIntersecting)) this.loadMore()
+    }, { rootMargin: '200px' })
+    this.observer.observe(this.$refs.sentinel)
+  },
+  beforeUnmount: function() {
+    if(this.observer) this.observer.disconnect()
+  },
   methods: {
+    // 月ごとのファイルを1つ読む。無い月（1話も出ていない月）は 404 になるので、
+    // そのときは読めなかったことにして次へ進む
+    fetchMonth: async function(month) {
+      try {
+        return await $fetch(`/downloads/months/${month}.json`)
+      }
+      catch {
+        return []
+      }
+    },
+    // 表示している最後の日より前を継ぎ足す
+    loadMore: async function() {
+      if(this.loading || this.reachedEnd) return
+      this.loading = true
+      try {
+        let month = this.loadedFrom
+          ? previousMonth(this.loadedFrom)
+          : (this.days.length ? this.days[this.days.length - 1].key.slice(0, 7) : FIRST_MONTH)
+        for(let step = 0; step < MAX_STEPS; step++) {
+          if(month < FIRST_MONTH) {
+            this.loadedFrom = FIRST_MONTH
+            return
+          }
+          const list = await this.fetchMonth(month)
+          this.loadedFrom = month
+          // 2週間ぶんと重なるところがあるので、同じ回は足さない
+          const known = new Set(this.episodes.map(episode => episode.id))
+          const added = list.filter(episode => !known.has(episode.id))
+          if(added.length) {
+            this.episodes = this.episodes.concat(added)
+            return
+          }
+          if(month === FIRST_MONTH) return
+          month = previousMonth(month)
+        }
+      }
+      finally {
+        this.loading = false
+      }
+    },
+    // heatmap の日を押したとき。並びに無ければ、その月から出し直す
+    pickDay: async function(key) {
+      if(document.getElementById(`day-${key}`)) {
+        this.scrollToDay(key)
+        return
+      }
+      const month = key.slice(0, 7)
+      this.loading = true
+      try {
+        const list = await this.fetchMonth(month)
+        if(!list.length) return
+        this.episodes = list
+        this.loadedFrom = month
+        this.fromLatest = false
+      }
+      finally {
+        this.loading = false
+      }
+      await this.$nextTick()
+      this.scrollToDay(key)
+    },
+    backToLatest: function() {
+      this.episodes = build_info.episodes_in_2weeks
+      this.loadedFrom = null
+      this.fromLatest = true
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    },
     scrollToDay: function(key) {
       const target = document.getElementById(`day-${key}`)
       if(!target) return
