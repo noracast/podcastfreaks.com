@@ -174,22 +174,23 @@
          色は濃いめのグレー。ブランドの紫だと、緑の並びの中で浮いてしまう */
       box-shadow: 0 0 0 1px rgba(27, 31, 36, 0.45);
     }
-    /* 更新が多い日ほど濃い紫にする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
-       1日の中央値が4話なので、その前後で分かれるようにしてある */
+    /* 更新が多い日ほど濃くする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
+       1日の中央値が4話なので、その前後で分かれるようにしてある。
+       色は GitHub の contribution graph と同じものを使っている */
     &.level-0 {
-      background-color: #eee;
+      background-color: #ebedf0;
     }
     &.level-1 {
-      background-color: #e4d5fb;
+      background-color: #9be9a8;
     }
     &.level-2 {
-      background-color: #c3a0f4;
+      background-color: #40c463;
     }
     &.level-3 {
-      background-color: #9a5cef;
+      background-color: #30a14e;
     }
     &.level-4 {
-      background-color: #7f00ff;
+      background-color: #216e39;
     }
     /* まだ来ていない日と、選んだ年の外の日は、枠だけ空けておく。
        週の形を崩さないために置いてあるだけなので、色は付けない */
