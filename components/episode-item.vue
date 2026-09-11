@@ -35,7 +35,7 @@
   height: 44px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e3e1e9;
+  border-bottom: 1px solid #e5e5e5;
   color: inherit;
   font: inherit;
   text-align: left;
@@ -50,7 +50,7 @@
     opacity: 0.4;
   }
   &:not(:disabled):hover {
-    background-color: #e8e5f0;
+    background-color: #ececec;
   }
   &:focus-visible {
     outline: 1px solid #7f00ff;

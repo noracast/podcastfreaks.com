@@ -550,8 +550,11 @@
       &.child-row {
         border-top: 1px solid #eee;
         /* 右下のプレーヤーを濃い色にしたので、こちらは薄いグレーにする。
-           以前は両方 #222 で、重なったときに境目が分からなかった */
-        background-color: #f1f0f5;
+           以前は両方 #222 で、重なったときに境目が分からなかった。
+           紫みは入れない。行に触れたときの色（#f8f5ff）と同系統になり、
+           開いた行にホバーしたとき差が分からなくなる。
+           「開いた中身＝グレーの面」「触れている行＝紫」と役割を分ける */
+        background-color: #f6f6f6;
         background-size: auto 21px;
         >td {
           line-height: 1.8em;
@@ -583,7 +586,7 @@
               min-width: 0;
               /* エピソードが少ない番組でも左右の区切りが分かるようにする */
               &:last-child {
-                border-left: 1px solid #e0dee7;
+                border-left: 1px solid #e3e3e3;
               }
               >.info, >.episodes {
                 height: 100%;
@@ -842,7 +845,7 @@
             height: auto;
             &:last-child {
               border-left: 0;
-              border-top: 1px solid #e0dee7;
+              border-top: 1px solid #e3e3e3;
             }
             /* 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
                増えると、ページ全体のスクロールと取り合いになって扱いづらい */
