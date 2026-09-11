@@ -48,10 +48,13 @@
   z-index: 4;
   padding-top: 14px;
   padding-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.93);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #eee;
+  /* ヘッダーや右下のプレーヤーと同じすりガラス。下を通る並びがぼけて
+     透けることで、そこに面があると分かる。
+     線や影で境目を作ると、日ごとの区切り線が近づいたときに2本が並んで
+     見えてしまうので、境目は質感だけで示す */
+  background-color: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
 }
 .days {
   padding-top: 10px;
