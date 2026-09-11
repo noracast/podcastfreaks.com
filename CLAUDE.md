@@ -136,6 +136,25 @@ pnpm の設定は `package.json` の `pnpm` フィールドではなく
 
 手元で Netlify と同じ条件を試すなら `NETLIFY=true pnpm build:skip` で再現できる。
 
+## Netlify のビルドが手元と違う結果になるとき
+
+まずログの冒頭にある `Starting to download cache of ... (Last modified: ...)` を
+見る。Netlify は `node_modules` を丸ごとキャッシュして復元するため、**古い
+パッケージマネージャが置いたディレクトリが残り続ける**。
+
+yarn から pnpm へ移したとき、これで3回デプロイに失敗した。pnpm は
+`node_modules/.pnpm` の下に実体を置き、`package.json` に書いた依存だけを
+そこへリンクする。`vue` のように**直接の依存でないもの**は触らないので、
+yarn 時代の `node_modules/vue`（Vue 2.7）がそのまま残り、Vite がそちらを
+解決して `"createApp" is not exported by node_modules/vue/dist/vue.runtime.esm.js`
+で止まっていた。ログのパスに `.pnpm/` が無いものは、pnpm が入れたものでは
+ないと判断できる。
+
+直すには Netlify の UI から `Trigger deploy` ▾ → `Clear cache and deploy site`。
+ただし**クリアが効くのはその1回だけで、失敗したビルドは新しいキャッシュを
+保存しない**。途中で別の理由で落ちると古いキャッシュが生き残り、「クリアした
+のに直らない」ように見える。最後まで通るビルドを1回成功させる必要がある。
+
 ## コミットメッセージをファイルで渡すとき
 
 `git commit -F` に渡すファイルは、`$TMPDIR/msg.txt` のような汎用名にしない。
