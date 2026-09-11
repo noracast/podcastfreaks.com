@@ -1,5 +1,5 @@
 <template>
-  <!-- /new の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
+  <!-- /episodes の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
        見えてしまうので、全体をまとめた1枚だけにしている -->
   <div class="heatmap" :class="{ 'is-collapsed': collapsed }" :style="{ '--weeks': weeks.length }">
     <!-- すりガラスは全幅に敷き、中身だけを幅で止める。全幅にすると、

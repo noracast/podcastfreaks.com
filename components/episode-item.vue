@@ -27,7 +27,7 @@
   &:last-child {
     border-bottom: 0;
   }
-  /* /new から辿ってきたときに光らせる（pages/index.vue が付ける）。
+  /* /episodes から辿ってきたときに光らせる（pages/index.vue が付ける）。
      消えるときだけゆっくり戻す */
   transition: background-color 0.8s;
   &.is-revealed {
@@ -64,7 +64,7 @@ import episodeLine from '@/lib/episode-line'
 import { toggleEpisode } from '@/lib/player'
 
 export default {
-  // 回そのものの扱い（props と computed）は /new の行と分け合っている
+  // 回そのものの扱い（props と computed）は /episodes の行と分け合っている
   mixins: [episodeLine],
   props: {
     // どの番組の回か。右下のプレーヤーが番組名を出すのに使う

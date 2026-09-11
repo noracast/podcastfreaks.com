@@ -16,7 +16,7 @@
       </div>
       <!-- リンクの間に改行を入れると、出力に半角空白が入って間隔が変わる -->
       <nav>
-        <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/new/">Episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
+        <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/episodes/">Episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
       </nav>
       <div class="stats channels">
         <span>{{ channelCount }}</span>

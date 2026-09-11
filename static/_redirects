@@ -1,2 +1,10 @@
 # Redirect default Netlify subdomain to primary domain
 https://podcast-freaks.netlify.com/* https://podcastfreaks.com/:splat 301!
+
+# ページ名を New episodes から Episodes に変えたのに合わせて URL も移した。
+# 外から /new/ を指しているリンクが切れないよう、恒久的な移動として返す。
+#
+# nitro のプリセットを static に固定しているため、netlify-static が自動で
+# 足すぶんは付かない（nuxt.config.js のコメント参照）。ここに自分で置く。
+/new      /episodes   301
+/new/     /episodes/  301

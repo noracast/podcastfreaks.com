@@ -1,5 +1,5 @@
 <template>
-  <!-- /new に並ぶ1話。トップの子行（components/episode-item.vue）と同じく、
+  <!-- /episodes に並ぶ1話。トップの子行（components/episode-item.vue）と同じく、
        押すと右下のプレーヤーで鳴る。違うのは、番組をまたぐ一覧なので
        ジャケットと番組名を添えるところ。
        番組名だけは行き先が違う（一覧でその番組を開く）ので、別のボタンにする。
@@ -31,7 +31,7 @@
 
 <style scoped>
 /* 骨格と、題名・長さ・印の見た目は assets/episode-line.css（.episode-line）。
-   ここに書くのは、/new の行にしかないものだけ */
+   ここに書くのは、/episodes の行にしかないものだけ */
 .row {
   padding: 0 20px 0 0;
   gap: 12px;
@@ -114,7 +114,7 @@
   }
 }
 
-/* 900px は pages/new.vue の境界と揃える */
+/* 900px は pages/episodes.vue の境界と揃える */
 @media (max-width: 900px) {
   .row {
     padding-right: 10px;
