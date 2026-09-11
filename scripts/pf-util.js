@@ -1,11 +1,11 @@
 "use strict";
 
 import consola from 'consola'
-import moment from 'moment'
 import path from 'path'
 import sharp from 'sharp'
 import wgetp from './wget-with-timeout.js'
 import parsePubDate from './parse-pub-date.js'
+import { toSeconds, toHHMMSS } from '../lib/format-seconds.js'
 
 const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : [value])
 
@@ -107,37 +107,31 @@ class Util {
   // 解析できたら 'HH:mm:ss' の文字列、できなければ理由を表す文字列
   // （'wrong-format' / 'zero'）を返す。番組ごとにまとめて警告するため、
   // ここではログを出さない
-  getDuration(_d, _outFormat = 'HH:mm:ss') {
-    var output = null
+  getDuration(_d) {
+    var seconds = null
     // XX:XX:XX (correct format)
     if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(_d)) {
-      output = moment(_d, 'HH:mm:ss')
+      seconds = toSeconds(_d)
     }
     // XX:XX
     else if(/^\d+:\d{1,2}$/.test(_d)) {
       // Treat value like 82:14 -> 01:22:14
       const match = _d.match(/^(\d+):(\d{1,2})$/)
-      const second = match[2]
-      const minute = match[1]%60
-      const hour = Math.floor(match[1]/60)
-      output = moment({ hour, minute, second })
+      seconds = Number(match[1])*60 + Number(match[2])
     }
     // XXXX
     else if(/^[\d\.]+$/.test(_d)) {
       // Treat value as 'second'
-      const second = _d%60
-      const minute = Math.floor(_d/60)%60
-      const hour = Math.floor(Math.floor(_d/60)/60)
-      output = moment({ hour, minute, second })
+      seconds = Math.floor(Number(_d))
     }
     else {
       return 'wrong-format'
     }
 
     // フォーマットは正しいが0のものがあるため間引く
-    if(output.format(_outFormat) == '00:00:00') return 'zero'
+    if(!seconds) return 'zero'
 
-    return output.format(_outFormat)
+    return toHHMMSS(seconds)
   }
 
   getDurations(_items, _dist_rss) {
@@ -167,8 +161,8 @@ class Util {
   // 平均値。getDurations の結果を受け取る
   getDurationAverage(_durations) {
     if(_durations.length == 0) return null
-    const totalDurations = _durations.slice(1).reduce((prev, cur) => moment.duration(cur).add(prev), moment.duration(_durations[0]))
-    return moment.utc(totalDurations.asMilliseconds()/_durations.length).format('HH:mm:ss')
+    const total = _durations.reduce((sum, cur) => sum + toSeconds(cur), 0)
+    return toHHMMSS(total/_durations.length)
   }
 
   // 中央値。getDurations の結果を受け取る
@@ -182,8 +176,7 @@ class Util {
     if(durations.length % 2) return durations[half]
 
     // 偶数個のときは中央2つの平均をとる
-    const ms = (moment.duration(durations[half-1]).asMilliseconds() + moment.duration(durations[half]).asMilliseconds()) / 2
-    return moment.utc(ms).format('HH:mm:ss')
+    return toHHMMSS((toSeconds(durations[half-1]) + toSeconds(durations[half])) / 2)
   }
 
   // 更新頻度。直近の「更新した日」の間隔の中央値を日数で返す。
@@ -197,25 +190,31 @@ class Util {
   //   一括投稿や、収録済みの回をまとめて公開した場合に起きる
   //   （例: abefm は全5話が同じ時刻、meetsfm は4話が7分の間に並ぶ）
   getUpdateInterval(_items, _sampleSize = SAMPLE_SIZE_FOR_INTERVAL) {
-    const times = _(asArray(_items))
+    const seenDays = new Set()
+    const times = asArray(_items)
       .map(ep => ep && parsePubDate(ep.pubDate))
-      .filter(date => date && date.isValid())
-      .map(date => date.valueOf())
+      .filter(date => !!date)
+      .map(date => date.getTime())
       // フィードの並び順は基本的に新しい順だが、保証はされていないので揃える
       .sort((a, b) => b - a)
-      // 同じ日に投稿された話は1回の更新として数える。
+      // 同じ日に投稿された話は1回の更新として数える。新しい順に並べたあと
+      // なので、その日で最初に見つかったもの＝一番新しいものが残る。
       // 日でまとめたあとの間隔は実際の時刻から測る。日数に丸めてしまうと
       // 9.7日の番組が10日になって「毎週」から「隔週」へ移るなど、
       // 境界に乗った番組の表示が変わってしまう
-      .uniqBy(toJstDayNumber)
-      .take(_sampleSize)
-      .value()
+      .filter(ms => {
+        const day = toJstDayNumber(ms)
+        if(seenDays.has(day)) return false
+        seenDays.add(day)
+        return true
+      })
+      .slice(0, _sampleSize)
 
     if(times.length < 2) return null
 
     const intervals = []
     for(let i = 0; i < times.length - 1; i++) {
-      intervals.push(moment.duration(times[i] - times[i+1]).asDays())
+      intervals.push((times[i] - times[i+1]) / DAY_MS)
     }
     intervals.sort((a, b) => a - b)
 
@@ -248,11 +247,14 @@ class Util {
   }
 
   getEpisodesIn2Weeks(episodes, key, title) {
-    const twoweeksago = moment().subtract(14, 'days').startOf('date')
+    // 14日前の 00:00。日本時間で切る（CLAUDE.md）ので、JST に寄せた時刻で
+    // 日の頭まで落としてから、UTC のミリ秒に戻す
+    const twoweeksago = (toJstDayNumber(Date.now()) - 14) * DAY_MS - JST_OFFSET_MS
     // Add channel info into each episodes
     let res = episodes.filter((element, index, array) => {
       // RSS date format is RFC-822
-      return parsePubDate(element.pubDate).isAfter(twoweeksago)
+      const date = parsePubDate(element.pubDate)
+      return !!date && date.getTime() > twoweeksago
     })
     res.forEach( el => {
       el['key'] = key

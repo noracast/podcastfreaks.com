@@ -6,16 +6,20 @@
 
 Netlify のビルドは **UTC** で走る。事前レンダリングした結果と閲覧者のブラウザでの
 再計算が食い違うとハイドレーションが壊れるため、日付の判定・表示は必ず
-`lib/jst.js` を通し、基準時刻は `moment()` ではなく `build_info.updated`
+`lib/jst.js` を通し、基準時刻は `new Date()` ではなく `build_info.updated`
 （ビルド時刻）を使う。
 
 この不具合はローカル（JST でビルド → JST で表示）では再現しない。検証は
 `TZ=UTC pnpm build:skip` でビルドしてから、`.output/public` を配信して
 **全ページをブラウザで開く**こと（トップだけ見て `/new/` を見落とした前例がある）。
 
-`moment` のロケールは `lib/jst.js` で `ja` に決めている。webpack は
-`moment/locale/*` を丸ごと抱き込んでいたので何もしなくても日本語で出たが、
-Vite は使うものだけを読むため、ここを通さないと曜日や午前/午後が英語になる。
+日付ライブラリは dayjs。ロケールは `lib/jst.js` で `ja` に決めている。
+Vite は使うものだけを読むため、ここを通さないと曜日が英語になる。
+ロケールは副作用だけの import（`import 'dayjs/locale/ja'`）では効かず、
+値として読んで `dayjs.locale(ja)` に渡す必要がある。
+
+`scripts/` 側（フィードの取得）は素の `Date` で日付を扱う。RSS の pubDate は
+`scripts/parse-pub-date.js`、収録時間の計算は `lib/format-seconds.js`。
 
 ## 音声の再生
 
@@ -76,6 +80,8 @@ pnpm test:watch  # 直しながら見る
   （`vitest.config.js`）。手元が JST でも気づけるように
 - `scripts/parse-pub-date.js` … RSS の pubDate。GMT のような名前の
   タイムゾーン、実際と食い違う曜日など、過去に踏んだ形をそのまま置いてある
+- `scripts/pf-util.js` … 収録時間と更新頻度の集計。moment を外したときに、
+  配信中の234フィードで旧実装と突き合わせながら書き換えた部分
 
 画面の描画（一覧の絞り込みや子行の開け閉め）はここでは見ていない。
 そちらを変えたときは、ブラウザで実際に動かして確かめる。

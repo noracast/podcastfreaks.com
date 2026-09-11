@@ -6,39 +6,37 @@
 import { describe, it, expect } from 'vitest'
 import parsePubDate from './parse-pub-date.js'
 
+// 期待値は UTC の ISO 文字列で書く。実行環境のタイムゾーンに左右されない
+const iso = (date) => date.toISOString()
+
 describe('parsePubDate', () => {
   it('RFC2822（数字のタイムゾーン）', () => {
-    const d = parsePubDate('Wed, 10 Sep 2026 23:06:45 +0900')
-    expect(d.isValid()).toBe(true)
-    expect(d.utcOffset(9 * 60).format('YYYY-MM-DD HH:mm')).toBe('2026-09-10 23:06')
+    expect(iso(parsePubDate('Wed, 10 Sep 2026 23:06:45 +0900'))).toBe('2026-09-10T14:06:45.000Z')
   })
 
   it('GMT のような名前のタイムゾーンも読める', () => {
     // 以前は 'ddd, DD MMM YYYY HH:mm:ss ZZ' で解析していて、GMT を無視して
     // ローカル時刻として扱っていた。全222フィード中117件がこの書き方だった
-    const d = parsePubDate('Wed, 10 Sep 2026 14:00:00 GMT')
-    expect(d.isValid()).toBe(true)
-    expect(d.utcOffset(0).format('YYYY-MM-DD HH:mm')).toBe('2026-09-10 14:00')
+    expect(iso(parsePubDate('Wed, 10 Sep 2026 14:00:00 GMT'))).toBe('2026-09-10T14:00:00.000Z')
   })
 
   it('曜日が実際と食い違っていても読める', () => {
     // kakakikikeke の "Tue, 30 Oct 2024" は実際には水曜日。
     // 曜日の整合性を見る書式だと、これだけで Invalid date になっていた
-    const d = parsePubDate('Tue, 30 Oct 2024 12:00:00 +0900')
-    expect(d.isValid()).toBe(true)
-    expect(d.utcOffset(9 * 60).format('YYYY-MM-DD')).toBe('2024-10-30')
+    expect(iso(parsePubDate('Tue, 30 Oct 2024 12:00:00 +0900'))).toBe('2024-10-30T03:00:00.000Z')
   })
 
   it('Atom の RFC3339（ISO 8601）', () => {
-    const d = parsePubDate('2026-09-10T23:06:45Z')
-    expect(d.isValid()).toBe(true)
-    expect(d.utcOffset(0).format('YYYY-MM-DD HH:mm')).toBe('2026-09-10 23:06')
+    expect(iso(parsePubDate('2026-09-10T23:06:45Z'))).toBe('2026-09-10T23:06:45.000Z')
   })
 
   it('曜日が無くても読める（RFC2822 では省略できる）', () => {
-    const d = parsePubDate('10 Sep 2026 23:06:45 +0900')
-    expect(d.isValid()).toBe(true)
-    expect(d.utcOffset(9 * 60).format('YYYY-MM-DD')).toBe('2026-09-10')
+    expect(iso(parsePubDate('10 Sep 2026 23:06:45 +0900'))).toBe('2026-09-10T14:06:45.000Z')
+  })
+
+  it('前後の空白は落とす', () => {
+    // 要素の中で改行して書くフィードがある
+    expect(iso(parsePubDate('\n  Wed, 10 Sep 2026 14:00:00 GMT\n'))).toBe('2026-09-10T14:00:00.000Z')
   })
 
   // ここから下は、実際に配信されている234フィードから pubDate を23,154通り
@@ -61,16 +59,17 @@ describe('parsePubDate', () => {
     ]
     for (const [input, expected] of cases) {
       it(input, () => {
-        const d = parsePubDate(input)
-        expect(d.isValid()).toBe(true)
-        expect(new Date(d.valueOf()).toISOString()).toBe(expected)
+        expect(iso(parsePubDate(input))).toBe(expected)
       })
     }
   })
 
-  it('読めない値は Invalid で返る（例外にはしない）', () => {
-    // 呼び出し側が isValid() で弾けるようにしておく
-    expect(parsePubDate('これは日付ではない').isValid()).toBe(false)
-    expect(parsePubDate('').isValid()).toBe(false)
+  it('読めない値は null で返る（例外にはしない）', () => {
+    // 呼び出し側が null で弾ける。moment を使っていた頃は Invalid な
+    // moment オブジェクトが返り、isValid() で確かめる決まりだった
+    expect(parsePubDate('これは日付ではない')).toBe(null)
+    expect(parsePubDate('')).toBe(null)
+    expect(parsePubDate(null)).toBe(null)
+    expect(parsePubDate(undefined)).toBe(null)
   })
 })

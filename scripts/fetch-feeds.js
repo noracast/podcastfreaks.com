@@ -4,11 +4,11 @@ import consola from 'consola'
 import decodeEntities from './decode-entities.js'
 import fileExtension from 'file-extension'
 import fs from 'fs'
-import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
 import path from 'path'
 import normalizeFeed from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
+import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import { serializeError } from 'serialize-error'
@@ -367,8 +367,8 @@ const fetchFeed = async key => {
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
-    firstEpisodeDate: parsePubDate(episodes.at(-1).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
-    lastEpisodeDate: parsePubDate(episodes[0].pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+    firstEpisodeDate: toLocalSeconds(parsePubDate(episodes.at(-1).pubDate)),
+    lastEpisodeDate: toLocalSeconds(parsePubDate(episodes[0].pubDate)),
     firstEpisodeLink: episodes.at(-1).link,
     lastEpisodeLink: episodes[0].link,
     fileServer: util.getFileServer(episodes),
@@ -396,7 +396,7 @@ const fetchFeed = async key => {
   // Make sure parent dir existence and its clean
   try {
     await readFile(BUILD_INFO)
-    downloads_backup = `${DOWNLOADS_DIR}(backup ${moment().format('YYYYMMDD-HHmmss')})/`
+    downloads_backup = `${DOWNLOADS_DIR}(backup ${toStamp()})/`
     fs.renameSync(DOWNLOADS_DIR, downloads_backup)
     makeDownloadDirs()
     consola.log(`前回の内容を退避しました: ${downloads_backup}`)
