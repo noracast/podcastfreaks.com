@@ -74,6 +74,8 @@
      狭い画面では貼り付けたまま場所を取りすぎるので、そこだけ小さくする */
   --cell: 10px;
   --gap: 3px;
+  /* 月の並びと、その下のセルの間 */
+  --months-gap: 4px;
   /* 曜日の目印のぶん。月の並びと凡例を、その右に揃えるのに使う */
   --weekday-width: 26px;
   padding: 0 20px;
@@ -147,7 +149,7 @@
   /* 月の並びのぶんだけ下げて、セルの行と揃える */
   .weekdays {
     width: calc(var(--weekday-width) - 4px);
-    padding-top: 14px;
+    padding-top: calc(14px + var(--months-gap));
     display: grid;
     grid-template-rows: repeat(7, var(--cell));
     gap: var(--gap);
@@ -171,6 +173,7 @@
     display: grid;
     grid-template-columns: repeat(var(--weeks), calc(var(--cell) + var(--gap)));
     height: 14px;
+    margin-bottom: var(--months-gap);
     font-size: 12px;
     .month {
       /* 月の頭の週の上に置く。次の月に押し出されないよう、はみ出させる */
