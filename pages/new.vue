@@ -57,7 +57,9 @@
   backdrop-filter: blur(18px) saturate(180%);
 }
 .days {
-  padding-top: 10px;
+  /* 貼り付いた濃淡の下端に、最初の区切り線をそのまま付ける。
+     間を空けると、スクロールしていないときにそこだけ隙間に見える */
+  padding-top: 0;
 }
 .back {
   padding: 0 20px 10px;
@@ -88,6 +90,9 @@
   border-top: 1px solid #ccc;
   margin: 10px 0;
   position: relative;
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 /* 日付は一覧（pages/index.vue）と同じ YYYY.MM.DD・13px で出す。
    色も一覧の日付のグレー（First episode 列）に揃えてある。
@@ -132,9 +137,6 @@
 import { jst } from '@/lib/jst'
 import build_info from '@/static/downloads/build_info.json'
 import counts from '@/static/downloads/daily-counts.json'
-
-// 貼り付いている heatmap の下に、押した日の見出しが出るようにする隙間
-const SCROLL_MARGIN = 8
 
 // 話数のある最初の月。これより前は読みに行かない
 const FIRST_MONTH = Object.keys(counts)[0].slice(0, 7)
@@ -270,12 +272,16 @@ export default {
     scrollToDay: function(key) {
       const target = document.getElementById(`day-${key}`)
       if(!target) return
-      // 貼り付いているぶんだけ上に隠れてしまうので、その高さを引く
+      // 貼り付いているぶんだけ上に隠れてしまうので、その高さを引く。
+      // 余白は足さない。少しでも空けると、そこだけ下の並びが覗いて
+      // 濃淡と区切り線の間に隙間ができる。
+      // offsetHeight は整数に丸めるので、端数のぶんずれる
       const header = document.querySelector('header')
       const heatmap = this.$el.querySelector('.heatmap')
-      const offset = (header ? header.offsetHeight : 0) + (heatmap ? heatmap.offsetHeight : 0)
+      const offset = (header ? header.getBoundingClientRect().height : 0) +
+        (heatmap ? heatmap.getBoundingClientRect().height : 0)
       window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - offset - SCROLL_MARGIN,
+        top: target.getBoundingClientRect().top + window.scrollY - offset,
         behavior: 'smooth'
       })
     }
