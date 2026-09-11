@@ -6,19 +6,25 @@
            （scripts/pf-util.js の downloadAndResize）ので、他を渡すと 404 になる -->
       <cover v-if="episode.key" class="cover" :channel="episode.key" :size="30" />
       <div class="names">
-        <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToChannel">{{ episode.channelTitle || episode.key }}</button>
-        <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
-        <span class="title" :title="episode.title">{{ episode.title }}</span>
+        <!-- 番組名とリンク、題名と配信日。右端を揃えたいので行ごとに分ける -->
+        <div class="line">
+          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToChannel">{{ episode.channelTitle || episode.key }}</button>
+          <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
+          <a-blank v-if="episode.link" class="open" :href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M14 5h5v5" />
+                <path d="M19 5l-8 8" />
+                <path d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10" />
+              </g>
+            </svg>
+          </a-blank>
+        </div>
+        <div class="line">
+          <span class="title" :title="episode.title">{{ episode.title }}</span>
+          <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
+        </div>
       </div>
-      <a-blank v-if="episode.link" class="open" :href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く">
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M14 5h5v5" />
-            <path d="M19 5l-8 8" />
-            <path d="M18 14.5V18a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 18V8a1.5 1.5 0 0 1 1.5-1.5H10" />
-          </g>
-        </svg>
-      </a-blank>
     </div>
 
     <div class="body">
@@ -55,6 +61,22 @@
     </div>
 
     <div class="controls">
+      <div class="group">
+        <button title="先頭に戻る" aria-label="先頭に戻る" @click="toStart">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <g fill="currentColor">
+              <rect x="5" y="6" width="2.5" height="12" rx="1" />
+              <path d="M19 6.5v11L9.5 12z" />
+            </g>
+          </svg>
+        </button>
+        <button class="sec" title="10秒もどす" aria-label="10秒もどす" @click="onSkip(-10)">−10</button>
+        <button class="sec" title="10秒すすめる" aria-label="10秒すすめる" @click="onSkip(10)">+10</button>
+        <!-- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
+             小文字の x はベースラインに乗るので、数字と下が揃う -->
+        <button class="rate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`" @click="onCycleRate">{{ rate }}x</button>
+      </div>
+
       <!-- 聴いた順をさかのぼる／進む。その回の頭に戻る ⏮ と紛らわしいので、
            曲がった矢印にして、離れた場所へまとめて置く -->
       <div class="group">
@@ -74,22 +96,40 @@
             </g>
           </svg>
         </button>
-      </div>
-
-      <div class="group">
-        <button title="先頭に戻る" aria-label="先頭に戻る" @click="toStart">
+        <!-- 聴いたものを並べて見せる。1つ前へ戻るだけでは足りないときに使う -->
+        <button
+          class="drawer-toggle"
+          :class="{ 'is-open': drawerOpen }"
+          :disabled="history.length < 2"
+          :aria-expanded="drawerOpen ? 'true' : 'false'"
+          :title="drawerOpen ? '聴いたものを隠す' : `聴いたものを見る（${history.length}件）`"
+          :aria-label="drawerOpen ? '聴いたものを隠す' : '聴いたものを見る'"
+          @click="drawerOpen = !drawerOpen"
+        >
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-            <g fill="currentColor">
-              <rect x="5" y="6" width="2.5" height="12" rx="1" />
-              <path d="M19 6.5v11L9.5 12z" />
-            </g>
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
           </svg>
         </button>
-        <button class="sec" title="10秒もどす" aria-label="10秒もどす" @click="onSkip(-10)">−10</button>
-        <button class="sec" title="10秒すすめる" aria-label="10秒すすめる" @click="onSkip(10)">+10</button>
-        <!-- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
-             小文字の x はベースラインに乗るので、数字と下が揃う -->
-        <button class="rate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`" @click="onCycleRate">{{ rate }}x</button>
+      </div>
+    </div>
+
+    <!-- 聴いたもの。新しいものが上。押すとその回に戻る。
+         開け閉めを滑らかにするため、閉じている間も置いたままにして
+         高さだけを 0 にする -->
+    <div v-if="history.length > 1" class="drawer" :class="{ 'is-open': drawerOpen }">
+      <div class="inner">
+        <ul>
+          <li v-for="entry in historyNewestFirst" :key="entry.index">
+            <button :class="{ 'is-current': entry.index === historyIndex }" :title="entry.title" :tabindex="drawerOpen ? null : -1" @click="onPlayAt(entry.index)">
+              <cover v-if="entry.key" class="cover" :channel="entry.key" :size="30" />
+              <span v-else class="cover no-image" />
+              <span class="names">
+                <span class="channel">{{ entry.channelTitle || entry.key || '' }}</span>
+                <span class="title">{{ entry.title }}</span>
+              </span>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -103,8 +143,13 @@
   z-index: 100;
   width: 380px;
   max-width: calc(100vw - 40px);
-  padding: 12px 14px 10px;
+  /* 下の余白は .controls が持つ。ここに持たせると、下端まで伸ばしたい
+     ドロワーが打ち消し（負のマージン）を必要とし、閉じているときまで
+     余白が消えてしまう */
+  padding: 12px 14px 0;
   border-radius: 10px;
+  /* ぶら下げた一覧が角からはみ出さないようにする */
+  overflow: hidden;
   background-color: #222;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   color: #ccc;
@@ -126,6 +171,21 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+      /* 日付とリンクを右端に置く。長い題名に押し出されないよう
+         flex: none にし、縮むのは左側だけにする */
+      >.line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .date {
+        flex: none;
+        color: #777;
+        font-size: 10px;
+        /* 数字の幅を揃える */
+        font-variant-numeric: tabular-nums;
+      }
       .channel {
         /* レイアウトのグローバルな button の指定を打ち消す */
         border: 0;
@@ -133,8 +193,10 @@
         min-width: 0;
         padding: 0;
         background: none;
-        align-self: flex-start;
-        max-width: 100%;
+        /* 残りの幅を埋めて、日付を行の右端へ押しやる。
+           長い番組名はここで省略する */
+        flex: 1;
+        min-width: 0;
         color: #b388ff;
         font-size: 11px;
         font-weight: bold;
@@ -158,19 +220,21 @@
         }
       }
       .title {
+        flex: 1;
+        min-width: 0;
         color: #eee;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
-    }
-    .open {
-      flex: none;
-      display: flex;
-      align-items: center;
-      color: #888;
-      &:hover {
-        color: #fff;
+      .open {
+        flex: none;
+        display: flex;
+        align-items: center;
+        color: #888;
+        &:hover {
+          color: #fff;
+        }
       }
     }
   }
@@ -252,9 +316,9 @@
   .controls {
     display: flex;
     align-items: center;
-    /* 聴いた順の行き来は左、再生位置の操作は右。役割が違うので離して置く */
+    /* 再生位置の操作は左、聴いた順の行き来は右。役割が違うので離して置く */
     justify-content: space-between;
-    margin-top: 6px;
+    margin: 6px 0 10px;
     .group {
       display: flex;
       align-items: center;
@@ -284,12 +348,113 @@
         width: 28px;
         font-variant-numeric: tabular-nums;
       }
+      /* 開いている間は矢印を裏返す */
+      >.drawer-toggle svg {
+        transition: transform 0.2s;
+      }
+      >.drawer-toggle.is-open svg {
+        transform: rotate(180deg);
+      }
       /* 端まで来たら押せないことを見せる */
       >button:disabled {
         color: #555;
         cursor: default;
         &:hover {
           color: #555;
+        }
+      }
+    }
+  }
+  /* 聴いたもの。プレーヤーの下にぶら下げる。
+     多くなっても画面を埋めないよう、高さを決めて中でスクロールさせる */
+  /* 閉じている間も置いたままにして、高さだけを動かす。
+     grid の行を 0fr と 1fr のあいだで動かすと、中身の量を測らずに
+     実際の高さへ向かって伸ばせる（max-height でやると、中身が上限より
+     短いときに「開ききったあと何も起きない時間」ができる） */
+  .drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.22s ease-out;
+    margin: 0 -14px;
+    &.is-open {
+      grid-template-rows: 1fr;
+    }
+    >.inner {
+      /* grid の行に従わせるために要る。既定の auto だと縮まない */
+      min-height: 0;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    /* 区切り線と上下の余白は中に持たせる。.drawer 側に置くと
+       閉じているときも線だけ残ってしまう */
+    >.inner >ul {
+      border-top: 1px solid #333;
+      /* 上下の端が、左右の余白と同じ 14px に見えるようにする。
+         1件ごとの上下の余白が 6px あるので、その差だけ足す */
+      margin: 0;
+      padding: 7px 0 8px;
+      list-style: none;
+      >li >button {
+        /* レイアウトのグローバルな button の指定を打ち消す */
+        border: 0;
+        border-radius: 0;
+        min-width: 0;
+        padding: 6px 14px;
+        background: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        &:hover {
+          background-color: #2c2c2c;
+        }
+        &:focus-visible {
+          outline: 1px solid #7f00ff;
+          outline-offset: -1px;
+        }
+        .cover {
+          flex: none;
+          border-radius: 4px;
+          overflow: hidden;
+          /* 画像を持たない番組のぶん。大きさだけ取って場所を保つ */
+          &.no-image {
+            width: 30px;
+            height: 30px;
+            background-color: #444;
+          }
+        }
+        .names {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          .channel {
+            color: #999;
+            font-size: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .title {
+            color: #ccc;
+            font-size: 12px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        /* いま鳴っている回 */
+        &.is-current {
+          .channel {
+            color: #b388ff;
+          }
+          .title {
+            color: #fff;
+          }
         }
       }
     }
@@ -311,7 +476,8 @@
 
 <script>
 import formatTime from '@/lib/format-time'
-import { player, toggle, seekTo, skip, cycleRate, requestReveal, goBack, goForward, canGoBack, canGoForward } from '@/lib/player'
+import { jst } from '@/lib/jst'
+import { player, toggle, seekTo, skip, cycleRate, requestReveal, goBack, goForward, canGoBack, canGoForward, playAt } from '@/lib/player'
 
 // 指で横へこれだけ動かしたら、スクロールではなくシークとみなす
 const SEEK_DRAG_THRESHOLD = 8
@@ -319,6 +485,12 @@ const SEEK_DRAG_THRESHOLD = 8
 const TAP_SLOP = 8
 
 export default {
+  data: function() {
+    return {
+      // 聴いたものの一覧を開いているか
+      drawerOpen: false
+    }
+  },
   computed: {
     episode: function() { return player.episode },
     playing: function() { return player.playing },
@@ -327,12 +499,23 @@ export default {
     rate: function() { return player.rate },
     backAvailable: function() { return canGoBack() },
     forwardAvailable: function() { return canGoForward() },
+    history: function() { return player.history },
+    historyIndex: function() { return player.historyIndex },
+    // 新しいものを上に出す。押したときに元の位置が要るので添字を持たせる
+    historyNewestFirst: function() {
+      return player.history.map((entry, index) => ({ ...entry, index })).reverse()
+    },
     progressPercent: function() {
       if(!this.duration) return '0%'
       return `${Math.min(100, (this.currentTime / this.duration) * 100)}%`
     },
     formattedCurrent: function() { return formatTime(this.currentTime) },
-    formattedDuration: function() { return formatTime(this.duration) }
+    formattedDuration: function() { return formatTime(this.duration) },
+    // 配信日。フィードの pubDate は RFC2822 なので、日本時間に寄せて出す
+    publishedOn: function() {
+      if(!this.episode || !this.episode.pubDate) return null
+      return jst(this.episode.pubDate).format('YYYY.MM.DD')
+    }
   },
   created: function() {
     // 操作中の指（カーソル）の情報。見た目に関わらないので data には持たせない
@@ -354,6 +537,7 @@ export default {
     onCycleRate: function() { cycleRate() },
     onBack: function() { goBack() },
     onForward: function() { goForward() },
+    onPlayAt: function(index) { playAt(index) },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
     goToChannel: function() {
