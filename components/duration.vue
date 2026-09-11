@@ -64,7 +64,9 @@
 </style>
 
 <script>
-import moment from 'moment'
+// 丸め方とツールチップの文言は lib/duration-label.js に出してある
+// （段の境目をテストで固めておきたいため）
+import { durationClass, minutesOf, isOver, durationTooltip } from '@/lib/duration-label'
 
 export default {
   props: {
@@ -74,66 +76,14 @@ export default {
     }
   },
   computed: {
-    // バッジは段階に丸めた値なので、元の中央値をツールチップで補う。
-    // Frequency の「直近の更新間隔の中央値: ◯日」と対にしている
     tooltip() {
-      if(!this.duration) return null
-      const m = moment(String(this.duration), 'HH:mm:ss')
-      if(!m.isValid()) return null
-      const h = m.hours()
-      const min = m.minutes()
-      const sec = m.seconds()
-      // 1時間を超える番組で秒まで出しても仕方がないので、そこでは落とす。
-      // 逆に1分に満たない番組が実際にあり（フィードの値がおかしいものを含む）、
-      // 分だけで出すと「0分」になってしまうため、短いものは秒まで出す
-      let length
-      if(h) length = min ? `${h}時間${min}分` : `${h}時間`
-      else if(min) length = sec ? `${min}分${sec}秒` : `${min}分`
-      else length = `${sec}秒`
-      return `収録時間の中央値: ${length}`
+      return durationTooltip(this.duration)
     }
   },
   methods: {
-    convertToClass(str) {
-      if(!str) return null
-      return `min${this.roughlyMinutes(str).replace('+', 'plus')}`
-    },
-    // 「120+分」ではなく「120分+」と出したいので、数値と単位を分けて返す
-    minutesOf(val) {
-      const minutes = this.roughlyMinutes(val)
-      return minutes ? minutes.replace('+', '') : minutes
-    },
-    // 2時間以上かどうか。「120分+」の + を出すかの判定に使う
-    isOver(val) {
-      const minutes = this.roughlyMinutes(val)
-      return !!minutes && minutes.includes('+')
-    },
-    // 収録時間をおおまかな分数に丸める
-    roughlyMinutes(val) {
-      if(!val){
-        return null
-      }
-      let _val = moment(String(val), 'HH:mm:ss')
-      if(2 <= _val.hours()){
-        return '120+'
-      }
-      else if(1 <= _val.hours()){
-        if(30 <= _val.minutes()) {
-          return '120'
-        }
-        return '90'
-      }
-      else if(45 < _val.minutes()){
-        return '60'
-      }
-      else if(30 < _val.minutes()){
-        return '45'
-      }
-      else if(15 < _val.minutes()){
-        return '30'
-      }
-      return '15'
-    }
+    convertToClass: durationClass,
+    minutesOf,
+    isOver
   }
 }
 </script>

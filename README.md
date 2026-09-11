@@ -8,35 +8,37 @@ https://podcastfreaks.com/
 
 ## はじめかた
 
-```
-yarn
-yarn prebuild # /static/downloads へフィードとカバー画像を取得する
-yarn dev
+```sh
+corepack enable pnpm # 初回だけ。package.json の packageManager のバージョンが使われる
+pnpm install
+pnpm fetch-feeds # /static/downloads へフィードとカバー画像を取得する
+pnpm dev
 ```
 
 ## デプロイ
 
 ```sh
-yarn build && yarn deploy
+pnpm build && pnpm deploy
 ```
 
-`prebuild` を実行済みなら
+`build` は `fetch-feeds`（フィードとカバー画像の取得）から走ります。取得済みの
+ものをそのまま使うなら
 
 ```sh
-yarn build:skip && yarn deploy
+pnpm build:skip && pnpm deploy
 ```
 
-netlify-cli で Netlify へ直接送るなら
+ビルドした結果をそのまま開いて確かめるなら
 
 ```sh
-yarn build:skip && yarn deploy:netlify
+pnpm preview
 ```
 
 ## 依存関係の更新
 
 ```sh
-yarn ncu
-yarn ncu -u
+pnpm ncu
+pnpm ncu -u
 ```
 
 ## 毎日のビルド
@@ -107,10 +109,10 @@ issue が立ったあとの調べ方と直し方は `.claude/skills/feed-triage/
 ### ローカルで実行する
 
 ```sh
-yarn validate        # data/rss.json の重複を調べる（prebuild でも自動で走る）
-yarn health          # 公開中のサイトの状態を調べる
-yarn added-at        # data/added-at.json を作り直す
-yarn apple-podcasts  # data/apple-podcasts.json を更新する（--refresh で全件調べ直す）
+pnpm validate        # data/rss.json の重複を調べる（fetch-feeds でも自動で走る）
+pnpm health          # 公開中のサイトの状態を調べる
+pnpm added-at        # data/added-at.json を作り直す
+pnpm apple-podcasts  # data/apple-podcasts.json を更新する（--refresh で全件調べ直す）
 ```
 
 直近のビルドで見つかった問題は https://podcastfreaks.com/errors/ で見られます。

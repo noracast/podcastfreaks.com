@@ -1,0 +1,9 @@
+# pnpm の設定置き場。単一のパッケージでもここを見る
+# （pnpm 10 以降、package.json の "pnpm" フィールドは読まれない）。
+
+# 入れたパッケージのビルドスクリプトは既定では走らない。必要なものだけ許可する。
+#   esbuild … Vite のビルドに要る
+#   sharp   … カバー画像の変換（scripts/pf-util.js）とアイコン生成
+allowBuilds:
+  esbuild: true
+  sharp: true

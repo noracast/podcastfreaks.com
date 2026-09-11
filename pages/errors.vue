@@ -33,7 +33,7 @@
     <details class="raw">
       <summary>生データ</summary>
       <!-- pre の中は空白がそのまま出るので、code は続けて書く。
-           中身は prebuild が作った JSON。マスタッシュはオブジェクトを
+           中身は fetch-feeds が作った JSON。マスタッシュはオブジェクトを
            JSON.stringify(値, null, 2) で整形するので、そのまま流し込める。
            message にはフィード側から来た文字列（取得エラーの本文など）が
            混じるので、エスケープされるこの書き方を使う。

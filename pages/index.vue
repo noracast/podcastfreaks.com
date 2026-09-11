@@ -102,7 +102,7 @@
                   <div class="column">
                     <div class="info" @scroll="onColumnScroll">
                       <!-- 番組の説明はフィードに書かれた HTML。体裁を保つために
-                           v-html で出すが、中身は prebuild.js の sanitizeDescription で
+                           v-html で出すが、中身は fetch-feeds.js の sanitizeDescription で
                            許可したタグと属性だけに濾してある -->
                       <!-- eslint-disable-next-line vue/no-v-html -->
                       <p v-if="row.desciprtion" class="description" v-html="row.desciprtion" />
@@ -868,7 +868,6 @@
 </style>
 
 <script>
-import axios from 'axios'
 import rss from '@/data/rss.json'
 import build_info from '@/static/downloads/build_info.json'
 import opml from 'opml-generator'
@@ -876,6 +875,7 @@ import { RSS_DIR } from '@/scripts/constants'
 import frequencyLabel from '@/lib/frequency-label'
 import hostingLabel, { isHostingService } from '@/lib/hosting-label'
 import { jst, jstDate } from '@/lib/jst'
+import { compareBy, compareInterval } from '@/lib/compare'
 import formatDate from '@/lib/format-date'
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
@@ -891,23 +891,6 @@ const SHOW_ALL_COLUMNS_KEY = 'pf-show-all-columns'
 
 const HOSTING_MIN_COUNT = 2
 
-// 値の比べ方。vue-tables-2 の既定と同じ挙動にしてある。
-//
-//   - 空や null は '' として扱う（Duration や Frequency の N/A がこれ）
-//   - 文字列は小文字に揃えてから比べる
-//   - 同じ値でも 0 を返さず、必ずどちらかに倒す
-//
-// 最後のひとつは Array#sort の作法から外れているが、直すと同じ値の行
-// （同じ日付、同じ話数）の並びが変わってしまう。表の見え方を変えない
-// ことを優先して、そのまま持ってきた
-const compareBy = (key, ascending) => (a, b) => {
-  let x = a[key] || ''
-  let y = b[key] || ''
-  const dir = ascending ? 1 : -1
-  if(typeof x === 'string') x = x.toLowerCase()
-  if(typeof y === 'string') y = y.toLowerCase()
-  return x > y ? dir : -dir
-}
 const OTHER_HOSTING = '__other__'
 
 export default {
@@ -1007,16 +990,7 @@ export default {
       const rows = this.filteredChannels.slice()
 
       if(key === 'updateInterval') {
-        // 算出できない番組（N/A）は昇順・降順どちらでも末尾にまとめる。
-        // 素直に比べると null が数値の間に紛れ、N/A が飛び飛びに現れる
-        rows.sort((a, b) => {
-          if(a.updateInterval == null && b.updateInterval == null) return 0
-          if(a.updateInterval == null) return 1
-          if(b.updateInterval == null) return -1
-          return ascending
-            ? a.updateInterval - b.updateInterval
-            : b.updateInterval - a.updateInterval
-        })
+        rows.sort(compareInterval(ascending))
         return rows
       }
 
@@ -1110,9 +1084,10 @@ export default {
       // 画面が追従しない（$set が要る）。オブジェクトごと差し替えれば
       // その必要が無く、Vue 3 でもそのまま動く
       this.episodesFailed = { ...this.episodesFailed, [key]: false }
-      axios.get(`/downloads/episodes/${encodeURIComponent(key)}.json`)
-        .then(res => {
-          this.episodes = { ...this.episodes, [key]: res.data }
+      // $fetch は Nuxt が持っている取得関数。JSON はそのまま返る
+      $fetch(`/downloads/episodes/${encodeURIComponent(key)}.json`)
+        .then(episodes => {
+          this.episodes = { ...this.episodes, [key]: episodes }
           this.episodesShown = { ...this.episodesShown, [key]: EPISODES_PER_CHUNK }
           this.$nextTick(this.refreshScrollFades)
         })

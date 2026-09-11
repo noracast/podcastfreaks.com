@@ -4,7 +4,7 @@
 //
 // JSON はキーが重複していても後勝ちで黙って読めてしまい、
 // 同じフィードを二重に登録しても取得までは通ってしまうため、
-// prebuild の最初にここで弾く。
+// フィードを取りに行く前に、ここで弾く。
 //
 // Ref: https://github.com/noracast/podcastfreaks.com/issues/88
 

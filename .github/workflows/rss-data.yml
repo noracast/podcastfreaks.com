@@ -45,19 +45,21 @@ jobs:
           fetch-depth: 0
 
       # 登録日のスクリプトは依存なしの素の Node で動くので、
-      # 時間のかかる yarn install / prebuild より先に済ませる
+      # 時間のかかるインストールやフィードの取得より先に済ませる
       - name: 登録日を作り直す
         run: node scripts/update-added-at-cli.js
 
+      # package.json の packageManager に書いたバージョンが使われる
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v5
         with:
           node-version-file: .node-version
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
 
       # 番組名の検索に build_info.json のタイトルを使うため、
       # フィードを取得してから実行する
-      - run: yarn prebuild
+      - run: pnpm fetch-feeds
 
       - name: Apple Podcasts のリンクを調べる
         run: node scripts/update-apple-podcasts-cli.js ${{ inputs.refresh && '--refresh' || '' }}

@@ -7,12 +7,36 @@ const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 
 export default defineNuxtConfig({
   // Nuxt 4 の既定では app/ 配下を見るが、このプロジェクトは pages/ や
   // components/ をルート直下に置いたままにしてある。lib/ や scripts/ を
-  // ページ側と prebuild 側で共有しているので、片方だけ app/ へ移すと
+  // ページ側とフィード取得側で共有しているので、片方だけ app/ へ移すと
   // import のパスが入り組む
   srcDir: '.',
   dir: {
-    // prebuild.js の出力先（scripts/constants.js）と揃える
+    // scripts/fetch-feeds.js の出力先（scripts/constants.js）と揃える
     public: 'static'
+  },
+
+  // srcDir がルートなので、放っておくと下にあるもの全部を相手にしてしまう。
+  //
+  // ここに書いたものは Nuxt が一切見なくなる。static/downloads は配信する
+  // 中身なので入れてはいけない（入れるとフィードもカバー画像も
+  // .output/public へコピーされず、エピソードが読めなくなる）
+  ignore: [
+    '.output/**',
+    'dist/**',
+    '_assets/**',
+    'data-dummy/**',
+    '**/*.test.js'
+  ],
+
+  vite: {
+    server: {
+      watch: {
+        // static/downloads だけで1000ファイルを超える。開発サーバーが
+        // これを見張ると EMFILE（開けるファイルの数が足りない）で
+        // 再起動を繰り返す。配信はするが、変更は追わなくてよい
+        ignored: ['**/static/downloads/**']
+      }
+    }
   },
 
   // 各ページを事前レンダリングして HTML として出力する。中身の入った HTML を
@@ -46,12 +70,18 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Podcast Freaks' },
         { name: 'twitter:description', content: pkg.description },
-        { name: 'twitter:image', content: 'https://podcastfreaks.com/img/share.png' }
+        { name: 'twitter:image', content: 'https://podcastfreaks.com/img/share.png' },
+        // ホーム画面から開いたときに Safari の枠を出さない（iOS）
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'apple-mobile-web-app-title', content: 'Podcast Freaks' },
+        { name: 'theme-color', content: '#8a00f0' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' },
-        { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/img/apple-touch-icon-120.png', sizes: '120x120' },
-        { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/img/apple-touch-icon-152.png', sizes: '152x152' }
+        // iOS がホーム画面に置くときに使う絵。透過のままだと黒く塗られるので、
+        // pnpm icons が背景を白で埋めたものを作っている
+        { rel: 'apple-touch-icon', href: '/img/icons/apple-touch-icon.png', sizes: '180x180' }
       ]
     }
   },
@@ -61,13 +91,53 @@ export default defineNuxtConfig({
   modules: ['@vite-pwa/nuxt'],
 
   pwa: {
+    // 新しい版が出ていたら黙って入れ替える。
+    //
+    // 既定の 'prompt' は、新しい Service Worker を待機させたまま古いものを
+    // 使い続ける。このサイトは毎日中身が変わるので、更新を尋ねる意味がない。
+    // Nuxt 2 の @nuxtjs/pwa も skipWaiting: true で同じ振る舞いだった
+    registerType: 'autoUpdate',
+
+    workbox: {
+      // 前の版のキャッシュを残さない。ローカルで別のビルドを配信したときに
+      // 古い HTML が返り続けて何度も混乱した
+      cleanupOutdatedCaches: true,
+      // 事前レンダリングしたページと、その素材
+      globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
+      // フィードのデータ（downloads/）は毎日変わるうえ量が多いので、
+      // 先読みの対象から外す。エピソードは開いたときに取りに行く
+      globIgnores: ['**/downloads/**'],
+      navigateFallback: null
+    },
+
+    // 開発サーバーでは Service Worker を動かさない。
+    // 直したそばから古い画面が返ると、原因を追いにくい
+    devOptions: {
+      enabled: false
+    },
+
     manifest: {
       name: 'Podcast Freaks',
       short_name: 'P/F',
       description: 'Japanese techie podcast archive',
       lang: 'ja',
       start_url: '/',
-      display: 'standalone'
+      display: 'standalone',
+      background_color: '#ffffff',
+      // ヘッダーの紫。iOS でホーム画面から開いたときの上下の色になる
+      theme_color: '#8a00f0',
+      // pnpm icons が static/icon.png から作る。
+      // @nuxtjs/pwa はビルドのたびに生成していたが、@vite-pwa/nuxt は
+      // 作らないので、こちらで用意して並べる
+      icons: [
+        { src: '/img/icons/icon-64.png', sizes: '64x64', type: 'image/png' },
+        { src: '/img/icons/icon-120.png', sizes: '120x120', type: 'image/png' },
+        { src: '/img/icons/icon-144.png', sizes: '144x144', type: 'image/png' },
+        { src: '/img/icons/icon-152.png', sizes: '152x152', type: 'image/png' },
+        { src: '/img/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+        { src: '/img/icons/icon-384.png', sizes: '384x384', type: 'image/png' },
+        { src: '/img/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+      ]
     }
   },
 

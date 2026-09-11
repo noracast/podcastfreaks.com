@@ -2,7 +2,7 @@
 
 // xml2js（explicitArray: false）でパースした結果を RSS 2.0 の channel の形に揃える。
 //
-// prebuild.js より下流は rss.channel / channel.item の形を前提にしているため、
+// fetch-feeds.js より下流は rss.channel / channel.item の形を前提にしているため、
 // Atom の差異はここで吸収する。対応していない形式なら null を返す。
 //
 // 揃える先の形:
@@ -40,7 +40,7 @@ function fromAtom(feed) {
     description: text(feed.subtitle) || text(feed.summary),
     // カバー画像は itunes:image が最優先。無ければ Atom の logo / icon を使う
     'itunes:image': feed['itunes:image'],
-    // 掲載拒否の指定。prebuild が見るので、Atom でも落とさずに渡す
+    // 掲載拒否の指定。fetch-feeds が見るので、Atom でも落とさずに渡す
     'itunes:block': feed['itunes:block'],
     'podcast:block': feed['podcast:block'],
     image: { url: text(feed.logo) || text(feed.icon) || null },

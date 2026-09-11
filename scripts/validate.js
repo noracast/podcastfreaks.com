@@ -1,7 +1,7 @@
 "use strict";
 
 // data/rss.json の重複チェックだけを単体で実行する（yarn validate）。
-// prebuild でも同じ検証が走るが、フィードを追加した時点で確認できるようにしておく
+// fetch-feeds でも同じ検証が走るが、フィードを追加した時点で確認できるようにしておく
 
 import consola from 'consola'
 import validateRssJson from './validate-rss-json.js'

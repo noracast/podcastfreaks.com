@@ -1,6 +1,5 @@
 "use strict";
 
-import _ from 'lodash'
 import consola from 'consola'
 import moment from 'moment'
 import path from 'path'
@@ -16,7 +15,7 @@ const asArray = (value) => value == null ? [] : (Array.isArray(value) ? value : 
 // enclosure.$.url だけを見ると、そうしたフィードを丸ごと取りこぼす
 const enclosureUrls = (episode) =>
   asArray(episode && episode.enclosure)
-    .map(enclosure => _.get(enclosure, '$.url'))
+    .map(enclosure => enclosure?.$?.url)
     .filter(url => !!url)
 
 // 更新頻度を求めるときに見る直近の「更新した日」の数。
@@ -33,7 +32,7 @@ const toJstDayNumber = (ms) => Math.floor((ms + JST_OFFSET_MS) / DAY_MS)
 class Util {
 
   constructor() {
-    // 見つけた問題の受け取り先。prebuild が build_info.json に残して
+    // 見つけた問題の受け取り先。fetch-feeds が build_info.json に残して
     // /errors から見えるようにするために差し替える。
     // 単体で使うときのために、既定ではログに出すだけにしておく
     this.onWarn = (label, rss, message) => consola.warn(`${label} | ${rss} | ${message}`)
@@ -62,8 +61,8 @@ class Util {
   }
 
   // 音声ファイルの配信元ホスト名を返す。
-  // 以前は単一のエピソードを受け取る想定だったが、呼び出し側は配列を渡しており
-  // _.has(配列, 'enclosure.$.url') が常に false になるため必ず null を返していた。
+  // 以前は単一のエピソードを受け取る想定だったが、呼び出し側は配列を渡しており、
+  // 配列に enclosure.$.url を探しても見つからないため必ず null を返していた。
   //
   // 途中で配信サービスを移行している番組があるので、最頻のホストを採用する
   getFileServer(_items) {

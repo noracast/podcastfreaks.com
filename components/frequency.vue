@@ -62,7 +62,7 @@ import { frequencyLevel } from '@/lib/frequency-label'
 
 export default {
   props: {
-    // 直近の更新日の間隔の中央値（日）。prebuild で算出している
+    // 直近の更新日の間隔の中央値（日）。fetch-feeds で算出している
     interval: {
       type: Number,
       default: null

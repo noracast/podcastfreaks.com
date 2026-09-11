@@ -1,21 +1,19 @@
 "use strict";
 
-import _ from 'lodash'
 import consola from 'consola'
-import decodeEntities from './scripts/decode-entities.js'
+import decodeEntities from './decode-entities.js'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
 import path from 'path'
-import normalizeFeed from './scripts/normalize-feed.js'
-import parsePubDate from './scripts/parse-pub-date.js'
-import PFUtil from './scripts/pf-util.js'
+import normalizeFeed from './normalize-feed.js'
+import parsePubDate from './parse-pub-date.js'
+import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import { serializeError } from 'serialize-error'
-import shell from 'shelljs'
-import validateRssJson from './scripts/validate-rss-json.js'
-import wget from './scripts/wget-with-timeout.js'
+import validateRssJson from './validate-rss-json.js'
+import wget from './wget-with-timeout.js'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
 import {
@@ -28,11 +26,11 @@ import {
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
   APPLE_PODCASTS_JSON
-} from './scripts/constants.js'
+} from './constants.js'
 
 // data/rss.json は ESM の import attributes を使わず fs で読む。
 // 読むのはここ1か所で、構文をブラウザ側と揃えておく必要もない
-const rss = JSON.parse(fs.readFileSync(new URL('./data/rss.json', import.meta.url), 'utf8'))
+const rss = JSON.parse(fs.readFileSync(new URL('../data/rss.json', import.meta.url), 'utf8'))
 
 // consola の既定 reporter は error / warn をバッジ表示にするため、
 // メッセージの前後に空行が入って読みにくい。バッジを使わずに1行で出す
@@ -45,6 +43,13 @@ consola.setReporters([new CompactReporter()])
 
 // OpenSSL のエラーなど、メッセージ自体に改行を含むものがあるため1行にまとめる
 const oneLine = (value) => String(value).replace(/\s+/g, ' ').trim()
+
+// 取得先のディレクトリを作る。無ければ作り、あれば何もしない
+const makeDownloadDirs = () => {
+  for(const dir of [RSS_DIR, COVER_DIR, EPISODES_DIR]) {
+    fs.mkdirSync(dir, { recursive: true })
+  }
+}
 
 // 番組の説明はフィードに書かれた HTML をそのまま一覧に出している
 // （pages/index.vue の v-html）。配信者が自由に書ける入力なので、
@@ -103,13 +108,13 @@ const escapeBareAmpersands = (xml) =>
 // xml2js は属性が付くと { _: '値', $: {...} }、同じ要素が複数あると配列を返すため、
 // どちらの形でも読めるようにしている
 const asArray = (value) => value == null ? [] : (value instanceof Array ? value : [value])
-const blockValue = (node) => String(_.get(node, '_', node) || '').trim().toLowerCase()
+const blockValue = (node) => String(node?._ ?? node ?? '').trim().toLowerCase()
 
 const isBlocked = (channel) => {
   const byItunes = asArray(channel['itunes:block']).some(node => blockValue(node) === 'yes')
   const byPodcast = asArray(channel['podcast:block']).some(node => {
     if(blockValue(node) !== 'yes') return false
-    const id = _.get(node, '$.id')
+    const id = node?.$?.id
     return !id || id === '*'
   })
   return byItunes || byPodcast
@@ -262,7 +267,7 @@ const fetchFeed = async key => {
   }
 
   // Read RSS
-  const xml = await readFile(`${import.meta.dirname}/${dist_rss}`).catch(() => { return })
+  const xml = await readFile(`${import.meta.dirname}/../${dist_rss}`).catch(() => { return })
   if(!xml){
     error('readFile', dist_rss)
     return // catch内では、fetchFeedを抜けられないのでここでreturn
@@ -312,7 +317,7 @@ const fetchFeed = async key => {
   }
 
   // Get cover image urls
-  const cover_url = util.removeQuery(_.get(channel, '[itunes:image].$.href') || _.get(channel, '[itunes:image].href') || _.get(channel, 'image.url'), src)
+  const cover_url = util.removeQuery(channel?.['itunes:image']?.$?.href || channel?.['itunes:image']?.href || channel?.image?.url, src)
   if(cover_url){
     covers[key] = {
       src: cover_url,
@@ -362,10 +367,10 @@ const fetchFeed = async key => {
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
-    firstEpisodeDate: parsePubDate(_.last(episodes).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
-    lastEpisodeDate: parsePubDate(_.first(episodes).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
-    firstEpisodeLink: _.last(episodes).link,
-    lastEpisodeLink: _.first(episodes).link,
+    firstEpisodeDate: parsePubDate(episodes.at(-1).pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+    lastEpisodeDate: parsePubDate(episodes[0].pubDate).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS),
+    firstEpisodeLink: episodes.at(-1).link,
+    lastEpisodeLink: episodes[0].link,
     fileServer: util.getFileServer(episodes),
     addedAt: addedAt[key] || null,
     applePodcasts: (applePodcasts[key] && applePodcasts[key].url) || null,
@@ -392,16 +397,12 @@ const fetchFeed = async key => {
   try {
     await readFile(BUILD_INFO)
     downloads_backup = `${DOWNLOADS_DIR}(backup ${moment().format('YYYYMMDD-HHmmss')})/`
-    shell.mv(`${DOWNLOADS_DIR}/`, downloads_backup)
-    shell.mkdir('-p', RSS_DIR)
-    shell.mkdir('-p', COVER_DIR)
-    shell.mkdir('-p', EPISODES_DIR)
+    fs.renameSync(DOWNLOADS_DIR, downloads_backup)
+    makeDownloadDirs()
     consola.log(`前回の内容を退避しました: ${downloads_backup}`)
   } catch {
-    shell.rm('-rf', DOWNLOADS_DIR)
-    shell.mkdir('-p', RSS_DIR)
-    shell.mkdir('-p', COVER_DIR)
-    shell.mkdir('-p', EPISODES_DIR)
+    fs.rmSync(DOWNLOADS_DIR, { recursive: true, force: true })
+    makeDownloadDirs()
   }
 
 
@@ -436,7 +437,7 @@ const fetchFeed = async key => {
 
   // 取得結果が明らかにおかしいときは、書き出さずに異常終了する。
   //
-  // netlify.toml のビルドコマンドは `yarn prebuild && nuxt generate --spa` なので、
+  // ビルドは `pnpm fetch-feeds && nuxt generate`（package.json の build）なので、
   // ここで止めればサイトの生成まで進まない。以前は全件失敗しても exit 0 で終わり、
   // 中身が空の build_info.json でサイトが生成されうる状態だった。
   // 異常終了時は nodeCleanup が退避した前回の内容へ戻すため、取得済みのデータも守られる
@@ -486,12 +487,12 @@ nodeCleanup(function (exitCode) {
 
   if (exitCode === 0) {
     consola.log(`退避した前回の内容を削除しました`)
-    shell.rm('-rf', downloads_backup)
+    fs.rmSync(downloads_backup, { recursive: true, force: true })
   }
   else {
     // 中断・異常終了時は取得途中のデータを残さず、前回の内容へ戻す
     consola.log(`中断されたため、退避した前回の内容へ戻します`)
-    shell.rm('-rf', DOWNLOADS_DIR)
-    shell.mv(downloads_backup, `${DOWNLOADS_DIR}/`)
+    fs.rmSync(DOWNLOADS_DIR, { recursive: true, force: true })
+    fs.renameSync(downloads_backup, DOWNLOADS_DIR)
   }
 });
