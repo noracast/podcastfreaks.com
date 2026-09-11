@@ -24,7 +24,6 @@ export default defineNuxtConfig({
     '.output/**',
     'dist/**',
     '_assets/**',
-    'data-dummy/**',
     '**/*.test.js'
   ],
 
