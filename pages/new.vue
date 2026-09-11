@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     date: function(_date) {
-      // ロケールは lib/jst.js で決めている
+      // ロケールは lib/jst.js で ja に決めている
       return jst(_date).format('M/D(ddd)')
     },
     // 日付の区切り線を出すかの判定。表示と同じ日本時間で比べる

@@ -292,12 +292,17 @@ import { jst } from '@/lib/jst'
 
 export default {
   data: function() {
+    // ここだけ lib/jst.js を通っておらず、moment() が実行時のタイムゾーンで
+    // 解釈していた。Netlify のビルドは UTC なので、本番のヘッダーには
+    // UTC の時刻が出ていた
+    const updated = jst(build_info.updated)
     return {
-      // ここだけ lib/jst.js を通っておらず、moment() が実行時の
-      // タイムゾーンで解釈していた。Netlify のビルドは UTC なので、
-      // 本番のヘッダーには UTC の時刻が出ていた
-      updatedDate: jst(build_info.updated).format('YYYY.MM.DD'),
-      updatedTime: jst(build_info.updated).format('h:mm:ss A'),
+      updatedDate: updated.format('YYYY.MM.DD'),
+      // AM / PM は英語で出す。書式の A は既定のロケール（ja）だと
+      // 「午前」「午後」になり、隣の updated や channels / episodes と
+      // 揃わない。locale('en') を挟むと /new/ の曜日まで英語になるので、
+      // ここだけ自分で付ける
+      updatedTime: `${updated.format('h:mm:ss')} ${updated.hour() < 12 ? 'AM' : 'PM'}`,
       channelCount: Object.keys(build_info.channels).length,
       episodeCount: build_info.episodeCount
     }
