@@ -55,6 +55,27 @@
     </div>
 
     <div class="controls">
+      <!-- 聴いた順をさかのぼる／進む。その回の頭に戻る ⏮ と紛らわしいので、
+           曲がった矢印にして、離れた場所へまとめて置く -->
+      <div class="group">
+        <button :disabled="!backAvailable" title="さっき聴いていた回に戻る" aria-label="さっき聴いていた回に戻る" @click="onBack">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 7 4 12l5 5" />
+              <path d="M4 12h9a6 6 0 0 1 0 12h-1" />
+            </g>
+          </svg>
+        </button>
+        <button :disabled="!forwardAvailable" title="次の回へ進む" aria-label="次の回へ進む" @click="onForward">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 7l5 5-5 5" />
+              <path d="M20 12h-9a6 6 0 0 0 0 12h1" />
+            </g>
+          </svg>
+        </button>
+      </div>
+
       <div class="group">
         <button title="先頭に戻る" aria-label="先頭に戻る" @click="toStart">
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
@@ -231,7 +252,8 @@
   .controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* 聴いた順の行き来は左、再生位置の操作は右。役割が違うので離して置く */
+    justify-content: space-between;
     margin-top: 6px;
     .group {
       display: flex;
@@ -262,6 +284,14 @@
         width: 28px;
         font-variant-numeric: tabular-nums;
       }
+      /* 端まで来たら押せないことを見せる */
+      >button:disabled {
+        color: #555;
+        cursor: default;
+        &:hover {
+          color: #555;
+        }
+      }
     }
   }
 }
@@ -281,7 +311,7 @@
 
 <script>
 import formatTime from '@/lib/format-time'
-import { player, toggle, seekTo, skip, cycleRate, requestReveal } from '@/lib/player'
+import { player, toggle, seekTo, skip, cycleRate, requestReveal, goBack, goForward, canGoBack, canGoForward } from '@/lib/player'
 
 // 指で横へこれだけ動かしたら、スクロールではなくシークとみなす
 const SEEK_DRAG_THRESHOLD = 8
@@ -295,6 +325,8 @@ export default {
     currentTime: function() { return player.currentTime },
     duration: function() { return player.duration },
     rate: function() { return player.rate },
+    backAvailable: function() { return canGoBack() },
+    forwardAvailable: function() { return canGoForward() },
     progressPercent: function() {
       if(!this.duration) return '0%'
       return `${Math.min(100, (this.currentTime / this.duration) * 100)}%`
@@ -320,6 +352,8 @@ export default {
     toStart: function() { seekTo(0) },
     onSkip: function(seconds) { skip(seconds) },
     onCycleRate: function() { cycleRate() },
+    onBack: function() { goBack() },
+    onForward: function() { goForward() },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
     goToChannel: function() {
