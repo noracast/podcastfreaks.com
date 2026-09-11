@@ -844,15 +844,12 @@
               border-left: 0;
               border-top: 1px solid #e3e3e3;
             }
-            /* 番組情報はそのまま伸ばす。狭い画面で入れ子のスクロールが
-               増えると、ページ全体のスクロールと取り合いになって扱いづらい */
-            >.info {
-              height: auto;
-              max-height: none;
-              overflow-y: visible;
-            }
-            >.episodes {
-              height: 305px;
+            /* 説明と回の一覧を同じ高さに揃える。説明の長い番組だと、
+               そのぶん一覧が下へ押し出されて大きく動いてしまう。
+               はみ出す分はそれぞれの中でスクロールさせる。
+               縦に積むぶん、広い画面（6.5話）より低く 5.5話ぶんにする */
+            >.info, >.episodes {
+              height: 242px;
             }
           }
         }
