@@ -65,7 +65,7 @@
    意図せず拡大してしまうので、そのジェスチャだけ外す。
    manipulation は「指でなぞる」「つまんで広げる」は残すので、
    スクロールもピンチでの拡大もそのまま使える */
-html {
+html, body {
   touch-action: manipulation;
 }
 

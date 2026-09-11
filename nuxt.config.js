@@ -71,7 +71,11 @@ export default defineNuxtConfig({
       // no-referrer などを足すと、配信者側の「どこから聴かれたか」が消える
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // maximum-scale=1 は、iOS がダブルタップを拡大と解釈するのを止めるため。
+        // 一覧の行やエピソードを続けて押すと拡大してしまっていた。
+        // touch-action: manipulation も敷いているが、それだけでは効かなかった。
+        // iOS 10 以降は、この指定でもユーザーのピンチ操作そのものは効く
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' },
         { name: 'description', content: pkg.description },
         { property: 'og:site_name', content: 'Podcast Freaks' },
         { property: 'og:type', content: 'website' },

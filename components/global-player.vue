@@ -180,6 +180,9 @@
   border-radius: 12px;
   /* 畳むときに下へ滑らせる。触れている間は濃くする（下の :hover） */
   transition: transform 0.28s ease-out, background-color 0.2s;
+  /* html への指定だけでは、iOS でここのダブルタップが拾われて拡大した。
+     重ねて敷いておく（シークバーは下で pan-y に上書きする） */
+  touch-action: manipulation;
   /* ぶら下げた一覧が角からはみ出さないようにする */
   overflow: hidden;
   /* 後ろの一覧が少し透けてぼける。重なっていることが分かる程度に留める
