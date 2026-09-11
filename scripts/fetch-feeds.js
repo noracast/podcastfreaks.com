@@ -8,6 +8,7 @@ import path from 'path'
 import normalizeFeed from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
+import episodeId from '../lib/episode-id.js'
 import PFUtil from './pf-util.js'
 import sanitizeHtml from 'sanitize-html'
 import validateRssJson from './validate-rss-json.js'
@@ -193,7 +194,22 @@ const durationSeconds = (raw) => {
 // フィードの項目をそのまま渡さないのは、必要なのがこの6つだけだからでもある。
 // /new のぶんを生のまま build_info.json に入れていた頃は、使っていない
 // description などが全体の53%（271KB）を占めていた
+// フィードの guid。xml2js は isPermaLink のような属性が付いていると
+// { _: '値', $: {...} } を返し、属性が無ければ素の文字列を返す
+const guidOf = (ep) => {
+  const guid = asArray(ep && ep.guid)[0]
+  if(guid == null) return null
+  const value = typeof guid === 'object' ? guid._ : guid
+  return String(value ?? '').trim() || null
+}
+
 const toEpisode = (ep) => ({
+  // その回を指す短い id。guid から作る。
+  //
+  // guid を持たない番組がわずかにあり（234フィード中1つ、19話）、その1つは
+  // エピソードのページ URL も持っていないので、音声の URL まで下がって代える。
+  // guid ほど安定しない（配信元を移すと変わる）が、無いよりは指せる
+  id: episodeId(guidOf(ep) || ep.link || util.audioUrl(ep)),
   title: ep.title,
   link: ep.link || null,
   pubDate: ep.pubDate,
@@ -387,7 +403,19 @@ const fetchFeed = async key => {
 
   // 一覧の初期表示には要らないので、番組ごとの別ファイルへ回す。
   // 行を開いたときに、その番組のぶんだけ読み込む
-  await writeFile(`${EPISODES_DIR}/${key}.json`, JSON.stringify(episodes.map(toEpisode)), 'utf8')
+  const episodeList = episodes.map(toEpisode)
+
+  // id が重なると、あとで回を指すときに別のものを開いてしまう。
+  // 実データでは衝突しないことを確かめてあるが、番組が増えれば起こりうるので
+  // 見つけたら知らせる（/errors に出る）
+  const idCounts = {}
+  episodeList.forEach(ep => { if(ep.id) idCounts[ep.id] = (idCounts[ep.id] || 0) + 1 })
+  const duplicated = Object.keys(idCounts).filter(id => idCounts[id] > 1)
+  if(duplicated.length) {
+    warn('episodeId', dist_rss, `同じ id になるエピソードがあります（${duplicated.length}件。guid が重複しているか、同じページを指しています）`)
+  }
+
+  await writeFile(`${EPISODES_DIR}/${key}.json`, JSON.stringify(episodeList), 'utf8')
 
   // Save data
   channels[key] = {
