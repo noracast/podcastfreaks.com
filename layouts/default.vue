@@ -64,12 +64,12 @@
 /* 右下のプレーヤーに隠れないよう、出ている間だけ下を空ける。
    常に空けておくと、鳴らしていないときに余白が浮く */
 .main.has-player {
-  padding-bottom: 130px;
+  padding-bottom: 156px;
 }
 @media (max-width: 900px) {
   /* 狭い画面では左右いっぱいに敷くぶん、少し高くなる */
   .main.has-player {
-    padding-bottom: 150px;
+    padding-bottom: 180px;
   }
 }
 

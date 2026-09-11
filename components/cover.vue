@@ -27,18 +27,24 @@ export default {
       type: String,
       default: '10%'
     },
-    // 使えるのは 30 と 60 だけ。倍の大きさの画像を読むので、
-    // 用意してある -60 と -120 に当たる（scripts/pf-util.js の
-    // downloadAndResize がこの2枚を作る）。他の値を渡すと 404 になる。
-    // 0 を渡すと元の大きさの画像を、幅と高さを指定せずに出す
+    // 出す大きさ（px）。0 を渡すと幅と高さを指定せず、元の大きさの画像を使う
     size: {
       type: Number,
       default: 60
+    },
+    // 読む画像の選び方。既定では size の倍の画像を探すが、用意してあるのは
+    // -60 と -120 の2枚だけ（scripts/pf-util.js の downloadAndResize）なので、
+    // size に 30 と 60 以外を渡すときは、ここで 30 か 60 を指定して
+    // どちらの画像を使うか決める
+    imageSize: {
+      type: Number,
+      default: null
     }
   },
   computed: {
     styles () {
-      const suffix = this.size == 0 ? '' : `-${this.size*2}`
+      const pick = this.imageSize == null ? this.size : this.imageSize
+      const suffix = pick == 0 ? '' : `-${pick*2}`
       let style = {
         'border-radius': this.radius
       }

@@ -2,16 +2,17 @@
   <!-- 右下に浮かべる。エピソードを選ぶまでは出さない -->
   <div v-if="episode" class="global-player" :class="{ 'is-playing': playing }">
     <div class="head">
-      <!-- size は 30 か 60 だけ。カバー画像は -60 と -120 の2枚しか作っていない
-           （scripts/pf-util.js の downloadAndResize）ので、他を渡すと 404 になる -->
-      <cover v-if="episode.key" class="cover" :channel="episode.key" :size="30" />
+      <!-- 36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
+           読む方は 30（= -60）を指定する -->
+      <cover v-if="episode.key" class="cover" :channel="episode.key" :size="36" :image-size="30" />
       <div class="names">
-        <!-- 番組名とリンク、題名と配信日。右端を揃えたいので行ごとに分ける -->
+        <!-- 番組名とリンク、題名と配信日。右端を揃えたいので行ごとに分ける。
+             -->
         <div class="line">
           <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToChannel">{{ episode.channelTitle || episode.key }}</button>
           <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
           <a-blank v-if="episode.link" class="open" :href="episode.link" title="エピソードのページを開く" aria-label="エピソードのページを開く">
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
               <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <path d="M14 5h5v5" />
                 <path d="M19 5l-8 8" />
@@ -29,7 +30,7 @@
 
     <div class="body">
       <button class="play" :title="playing ? '一時停止' : '再生'" :aria-label="playing ? '一時停止' : '再生'" @click="onToggle">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
           <g v-if="playing" fill="currentColor">
             <rect x="6" y="5" width="4" height="14" rx="1" />
             <rect x="14" y="5" width="4" height="14" rx="1" />
@@ -63,7 +64,7 @@
     <div class="controls">
       <div class="group">
         <button title="先頭に戻る" aria-label="先頭に戻る" @click="toStart">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
             <g fill="currentColor">
               <rect x="5" y="6" width="2.5" height="12" rx="1" />
               <path d="M19 6.5v11L9.5 12z" />
@@ -81,7 +82,7 @@
            曲がった矢印にして、離れた場所へまとめて置く -->
       <div class="group">
         <button :disabled="!backAvailable" title="さっき聴いていた回に戻る" aria-label="さっき聴いていた回に戻る" @click="onBack">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 7 4 12l5 5" />
               <path d="M4 12h9a6 6 0 0 1 0 12h-1" />
@@ -89,7 +90,7 @@
           </svg>
         </button>
         <button :disabled="!forwardAvailable" title="次の回へ進む" aria-label="次の回へ進む" @click="onForward">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15 7l5 5-5 5" />
               <path d="M20 12h-9a6 6 0 0 0 0 12h1" />
@@ -106,7 +107,7 @@
           :aria-label="drawerOpen ? '聴いたものを隠す' : '聴いたものを見る'"
           @click="drawerOpen = !drawerOpen"
         >
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
             <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
           </svg>
         </button>
@@ -121,7 +122,7 @@
         <ul>
           <li v-for="entry in historyNewestFirst" :key="entry.index">
             <button :class="{ 'is-current': entry.index === historyIndex }" :title="entry.title" :tabindex="drawerOpen ? null : -1" @click="onPlayAt(entry.index)">
-              <cover v-if="entry.key" class="cover" :channel="entry.key" :size="30" />
+              <cover v-if="entry.key" class="cover" :channel="entry.key" :size="36" :image-size="30" />
               <span v-else class="cover no-image" />
               <span class="names">
                 <span class="channel">{{ entry.channelTitle || entry.key || '' }}</span>
@@ -141,27 +142,27 @@
   right: 20px;
   bottom: 20px;
   z-index: 100;
-  width: 380px;
+  width: 456px;
   max-width: calc(100vw - 40px);
   /* 下の余白は .controls が持つ。ここに持たせると、下端まで伸ばしたい
      ドロワーが打ち消し（負のマージン）を必要とし、閉じているときまで
      余白が消えてしまう */
-  padding: 12px 14px 0;
-  border-radius: 10px;
+  padding: 14px 17px 0;
+  border-radius: 12px;
   /* ぶら下げた一覧が角からはみ出さないようにする */
   overflow: hidden;
   background-color: #222;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   color: #ccc;
-  font-size: 12px;
+  font-size: 14px;
 
   .head {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     .cover {
       flex: none;
-      border-radius: 4px;
+      border-radius: 5px;
       overflow: hidden;
     }
     /* 番組名とタイトルを縦に積む。どちらも1行に省略する */
@@ -170,19 +171,19 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
       /* 日付とリンクを右端に置く。長い題名に押し出されないよう
          flex: none にし、縮むのは左側だけにする */
       >.line {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         min-width: 0;
       }
       .date {
         flex: none;
         color: #777;
-        font-size: 10px;
+        font-size: 12px;
         /* 数字の幅を揃える */
         font-variant-numeric: tabular-nums;
       }
@@ -198,7 +199,7 @@
         flex: 1;
         min-width: 0;
         color: #b388ff;
-        font-size: 11px;
+        font-size: 13px;
         font-weight: bold;
         text-align: left;
         cursor: pointer;
@@ -242,15 +243,15 @@
   .body {
     display: flex;
     align-items: stretch;
-    height: 32px;
-    margin-top: 10px;
+    height: 38px;
+    margin-top: 12px;
     .play {
       flex: none;
-      width: 40px;
+      width: 48px;
       border: 0;
       padding: 0;
       /* レイアウトのグローバルな button の指定（角丸・余白・最小幅）を打ち消す */
-      border-radius: 4px 0 0 4px;
+      border-radius: 5px 0 0 5px;
       min-width: 0;
       cursor: pointer;
       color: white;
@@ -274,7 +275,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 5px 5px 0;
       background-color: #333;
       /* 左右に動かして位置を変えられることを、カーソルの形で示す */
       cursor: col-resize;
@@ -300,14 +301,14 @@
         flex: none;
         display: flex;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 12px;
         color: #aaa;
-        font-size: 11px;
+        font-size: 13px;
         /* 数字の幅を揃えて、再生中に左右へ揺れないようにする */
         font-variant-numeric: tabular-nums;
         white-space: nowrap;
         .sep {
-          padding: 0 3px;
+          padding: 0 4px;
         }
       }
     }
@@ -318,7 +319,7 @@
     align-items: center;
     /* 再生位置の操作は左、聴いた順の行き来は右。役割が違うので離して置く */
     justify-content: space-between;
-    margin: 6px 0 10px;
+    margin: 7px 0 12px;
     .group {
       display: flex;
       align-items: center;
@@ -329,23 +330,23 @@
         padding: 0;
         border-radius: 0;
         min-width: 0;
-        width: 24px;
-        height: 22px;
+        width: 29px;
+        height: 26px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #888;
-        font-size: 11px;
+        font-size: 13px;
         cursor: pointer;
         &:not(:first-child) {
-          margin-left: 6px;
+          margin-left: 7px;
         }
         &:hover {
           color: #fff;
         }
       }
       >.sec, >.rate {
-        width: 28px;
+        width: 34px;
         font-variant-numeric: tabular-nums;
       }
       /* 開いている間は矢印を裏返す */
@@ -375,14 +376,14 @@
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.22s ease-out;
-    margin: 0 -14px;
+    margin: 0 -17px;
     &.is-open {
       grid-template-rows: 1fr;
     }
     >.inner {
       /* grid の行に従わせるために要る。既定の auto だと縮まない */
       min-height: 0;
-      max-height: 180px;
+      max-height: 216px;
       overflow-y: auto;
     }
     /* 区切り線と上下の余白は中に持たせる。.drawer 側に置くと
@@ -392,19 +393,19 @@
       /* 上下の端が、左右の余白と同じ 14px に見えるようにする。
          1件ごとの上下の余白が 6px あるので、その差だけ足す */
       margin: 0;
-      padding: 7px 0 8px;
+      padding: 8px 0 10px;
       list-style: none;
       >li >button {
         /* レイアウトのグローバルな button の指定を打ち消す */
         border: 0;
         border-radius: 0;
         min-width: 0;
-        padding: 6px 14px;
+        padding: 7px 17px;
         background: none;
         width: 100%;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         color: inherit;
         font: inherit;
         text-align: left;
@@ -418,12 +419,12 @@
         }
         .cover {
           flex: none;
-          border-radius: 4px;
+          border-radius: 5px;
           overflow: hidden;
           /* 画像を持たない番組のぶん。大きさだけ取って場所を保つ */
           &.no-image {
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             background-color: #444;
           }
         }
@@ -434,14 +435,14 @@
           flex-direction: column;
           .channel {
             color: #999;
-            font-size: 10px;
+            font-size: 12px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
           }
           .title {
             color: #ccc;
-            font-size: 12px;
+            font-size: 14px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
