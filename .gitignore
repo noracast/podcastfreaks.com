@@ -86,6 +86,8 @@ dist
 sw.*
 
 /static/downloads*
+# 登録済み判定用の一覧。fetch-feeds が data/rss.json から作る（#229）
+/static/registered.json
 package-lock.json
 
 # AI エージェント用のスキル（npx skills add でインストールするもの）
