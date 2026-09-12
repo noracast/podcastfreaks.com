@@ -101,11 +101,9 @@
       <!-- ここから下が「調べた結果」。打ち直されたら薄くする -->
       <div class="searched" :class="{ 'is-stale': stale }">
       <section v-if="unregisteredChannels.length" class="group">
-        <!-- iTunes の検索は10件で打ち切っている。まだ先があるときは + を付けて、
-             語を足して絞り込んでもらう -->
-        <h4 class="group-title">未登録<span>{{ unregisteredChannels.length }}件{{ truncated ? '+' : '' }}</span></h4>
+        <h4 class="group-title">未登録<span>{{ unregisteredChannels.length }}件</span></h4>
         <ul class="candidates">
-          <li v-for="channel in unregisteredChannels" :key="channel.feed">
+          <li v-for="channel in visibleUnregistered" :key="channel.feed">
             <div class="row">
               <!-- 本当にこの番組かを確かめたいときのために、ジャケットと
                    番組名まわりを Apple Podcasts へのリンクにする。
@@ -147,20 +145,29 @@
               <p class="next-title">どちらか一方</p>
               <div class="choice">
                 <div class="actions">
-                  <a-blank class="send" :href="issueUrl(channel)">Githubでリクエスト</a-blank>
+                  <a-blank class="send" :href="issueUrl(channel)">Github から リクエスト</a-blank>
                 </div>
                 <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
               </div>
               <div class="choice">
                 <div class="actions">
-                  <button type="button" class="send gray" @click="openForm(channel)">フォームから送る</button>
+                  <button type="button" class="send gray" @click="openForm(channel)">フォーム から リクエスト</button>
                 </div>
                 <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
               </div>
             </div>
           </li>
         </ul>
+        <!-- 取ってあるぶんは全部出せる。最初から並べると、送り先まで遠くなる -->
+        <button v-if="restUnregistered" type="button" class="more" @click="expanded = true">もっと見る（残り {{ restUnregistered }} 件）</button>
       </section>
+
+      <!-- iTunes から取れるだけ取ってなお埋まっていた。まだ先がある -->
+      <p v-if="truncated" class="note">Apple Podcasts にはこれ以上あります。目当ての番組が出ていない場合は、語を足すか正式な番組名で探し直してください。</p>
+
+      <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
+           目当てが無いときも、ここで行き止まりにしない -->
+      <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
 
       <!-- 見つからなかったときは、番組の行と同じ形にしない（番組ではないので）。
            入れたものは上の欄に出ているので、ここで繰り返さない。
@@ -175,20 +182,20 @@
           <template v-if="canSendUnknown">
             <div class="choice">
               <div class="actions">
-                <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
+                <a-blank class="send" :href="issueUrl(unknownChannel)">Github から リクエスト</a-blank>
               </div>
               <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
             </div>
             <div class="choice">
               <div class="actions">
-                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォーム から リクエスト</button>
               </div>
               <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
             </div>
           </template>
           <div v-else class="choice">
             <div class="actions">
-              <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+              <button type="button" class="send gray" @click="openForm(unknownChannel)">フォーム から リクエスト</button>
             </div>
             <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
           </div>
@@ -206,7 +213,7 @@
     <p v-if="!formOpen" class="other">番組の URL が分からないときや、登録済みの番組についてのご連絡は、<button type="button" class="as-link" @click="openForm()">フォームから直接お送りいただけます</button>。</p>
 
     <section v-if="formOpen" id="form" ref="formSection" class="form-section">
-      <h3>フォームから送る</h3>
+      <h3>フォーム から リクエスト</h3>
       <!-- 調べずに開いた人は、上の注意書きを見ていない -->
       <p v-if="!searched" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
       <request-form :values="formValues" />
@@ -248,6 +255,22 @@ form.search {
   & button[disabled] {
     background-color: #ededed;
     color: #bbb;
+  }
+}
+/* 残りを出すもの。行の右のボタンと同じ見え方で、本題より弱く */
+.more {
+  margin-top: 10px;
+  min-width: 0;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #444;
+  background-color: #e4e4e4;
+  cursor: pointer;
+  &:hover {
+    background-color: #d6d6d6;
   }
 }
 /* 打ち直されたあとの結果。消さずに薄くして、今の入力のものではないと伝える */
@@ -576,6 +599,7 @@ import oembedUrl from '@/lib/spotify.js'
 import matchRegistered, { matchByHost, normalizeTitle, searchRegistered } from '@/lib/registered-match.js'
 import feedTitle from '@/lib/feed-title.js'
 import parseQuery from '@/lib/parse-query.js'
+import sortByGenre, { mainGenre } from '@/lib/tech-genres.js'
 import Cover from '@/components/cover.vue'
 // レイアウトが既に読んでいるので、ここで読んでも増えない
 import build_info from '@/static/downloads/build_info.json'
@@ -592,6 +616,11 @@ const REGISTERED_JSON = '/registered.json'
 // 未登録として並べる数。これ以上あるときは件数に + を付けて、
 // 語を足して絞り込んでもらう（登録済みのほうは全部出す。ジャケットだけなので）
 const SEARCH_LIMIT = 10
+
+// iTunes から取る数。並べる数より多めに取って、テック寄りを前に出してから
+// 切る。取った順のまま切ると、下のほうにいるテック系が落ちる。
+// 残りは「もっと見る」で出すので、取ったものは捨てない
+const SEARCH_FETCH = 50
 
 export default {
   components: { RequestForm, RequestBookmarklet, Cover },
@@ -612,6 +641,8 @@ export default {
       truncated: false,
       // 最後に調べたときの入力。打ち直されたかを見るのに使う
       searchedQuery: '',
+      // 未登録を全部出しているか
+      expanded: false,
       registered: null,
       registeredAvailable: true,
       // 送信フォームは、必要になったときだけ開く
@@ -678,6 +709,13 @@ export default {
     },
     unregisteredChannels: function() {
       return this.candidates.filter(channel => !channel.matched.length)
+    },
+    // 最初は10件だけ。多いと下の「次のアクション」まで遠くなる
+    visibleUnregistered: function() {
+      return this.expanded ? this.unregisteredChannels : this.unregisteredChannels.slice(0, SEARCH_LIMIT)
+    },
+    restUnregistered: function() {
+      return this.unregisteredChannels.length - this.visibleUnregistered.length
     },
     // 同じ番組に当たった候補が複数出ることがある（iTunes に同名の別番組があり、
     // そちらも番組名で当たる。rebuild で2件出ていた）。ここで並べるのは
@@ -783,6 +821,7 @@ export default {
         this.candidates = [...candidates, ...found.map(entry => this.fromRegistered(entry))]
         // 迷いようが無いものは、畳まずに出す。ブックマークレットや URL から
         // 来た場合はたいてい1件で、そこでクリックを1回増やしたくない
+        this.expanded = false
         this.openRows = this.unregisteredChannels.length === 1
           ? { [this.unregisteredChannels[0].feed]: true }
           : {}
@@ -817,11 +856,13 @@ export default {
       }
 
       for(const term of searchTerms({ title: this.name })) {
-        // 出す数より1件多く取る。返ってきたらまだ先がある（表示には使わない）
-        const channels = toChannels(await this.fetchJson(searchUrl(term, SEARCH_LIMIT + 1)))
+        // 多めに取り、テック寄りを前に出してから切る。
+        // 出す数より多く返ってきたら、まだ先がある（件数に + を付ける）
+        const channels = toChannels(await this.fetchJson(searchUrl(term, SEARCH_FETCH)))
         if(!channels.length) continue
-        this.truncated = channels.length > SEARCH_LIMIT
-        return channels.slice(0, SEARCH_LIMIT)
+        // 取れるだけ取ってなお埋まっているなら、まだ先がある
+        this.truncated = channels.length >= SEARCH_FETCH
+        return sortByGenre(channels)
       }
 
       // ここから先は URL を1つずつ。入れてもらった順に試す
@@ -970,6 +1011,9 @@ export default {
     },
     channelMeta: function(channel) {
       return [
+        // ジャンルを先に出す。「ラジオ」で NHK が出ても、ニュースと
+        // 書いてあれば選び間違えない（絞り込みには使わない。lib/tech-genres.js）
+        mainGenre(channel),
         channel.artist,
         channel.trackCount ? `${channel.trackCount}話` : '',
         channel.releaseDate ? `最新 ${jst(channel.releaseDate).format('YYYY.MM.DD')}` : ''
