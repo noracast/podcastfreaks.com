@@ -11,17 +11,21 @@
     <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
          ラベルも補足も置かない（同じことを二度読ませない） -->
     <form class="search" @submit.prevent="lookup">
-      <!-- type="search" にすると、ブラウザが消す × を出してくれる。
-           トップの検索欄（pages/index.vue）と同じ方式に揃えている -->
-      <input id="query" v-model="query" type="search" aria-label="番組の URL か番組名" placeholder="https://noracast.jp/feed.xml noracast">
-
-      <button type="submit" :disabled="loading || !query.trim()">{{ loading ? 'Searching…' : 'Search' }}</button>
+      <!-- 探すボタンはここではなく、登録済みの下に置く（下の「未登録」にしか
+           効かないため）。この欄では Enter で同じことができる。
+           type="search" にすると、ブラウザが消す × を出してくれる
+           （トップの検索欄と同じ方式） -->
+      <input id="query" v-model="query" type="search" aria-label="番組の URL か番組名" placeholder="https://noracast.jp/feed.xml noracast" @paste="onPaste">
     </form>
 
     <p v-if="error" class="error">{{ error }}</p>
 
-    <template v-if="searched && !loading">
-      <h3>{{ candidates.length ? 'Results' : 'Not found' }}</h3>
+    <!-- 調べているあいだも出しっぱなしにする。登録済みは手元の一覧から出して
+         いて検索とは関係が無いのに、一瞬消えると何か起きたように見える -->
+    <template v-if="query.trim()">
+      <!-- 見出しは変えない。見つからなかったことは下のカードが言っているので、
+           ここまで変わると画面が別物になったように見える -->
+      <h3 v-if="searched || registeredChannels.length">Results</h3>
 
       <!-- 登録済みは「もう載っている」ことが分かれば足りるので、ジャケットだけ
            並べる。名前まで読ませると、本題（未登録）に辿り着くのが遅くなる。
@@ -41,8 +45,8 @@
             >
               <!-- 用意してあるカバーは -60 と -120 の2枚だけなので、
                    どちらを使うかを image-size で指定する（components/cover.vue） -->
-              <cover v-if="hasCover(channel)" :channel="registeredKey(channel)" :size="36" :image-size="60" radius="4px" />
-              <span v-else class="no-cover">{{ registeredTitle(channel).slice(0, 1) }}</span>
+              <cover v-if="hasCover(channel)" :channel="registeredKey(channel)" :size="coverSize" :image-size="60" radius="4px" />
+              <span v-else class="no-cover" :style="noCoverStyle">{{ registeredTitle(channel).slice(0, 1) }}</span>
             </button>
           </li>
         </ul>
@@ -84,6 +88,18 @@
         </ul>
       </section>
 
+      <!-- 登録済みは手元の一覧で分かるので打ちながら出す。未登録は iTunes に
+           聞きに行くぶん、押されるまで待つ。ボタンをここに置いているのは、
+           効くのが下の「未登録」だけだから -->
+      <div class="run">
+        <!-- 今の入力で調べ終えていれば押す用は無い。打ち直されたら（下の結果が
+             薄くなると同時に）また押せるようにする。
+             失敗したときは、同じ入力でもやり直せるようにしておく -->
+        <button type="button" :disabled="loading || (searched && !stale && !error)" @click="lookup">{{ loading ? 'Searching…' : 'Apple Podcasts から探す' }}</button>
+      </div>
+
+      <!-- ここから下が「調べた結果」。打ち直されたら薄くする -->
+      <div class="searched" :class="{ 'is-stale': stale }">
       <section v-if="unregisteredChannels.length" class="group">
         <!-- iTunes の検索は10件で打ち切っている。まだ先があるときは + を付けて、
              語を足して絞り込んでもらう -->
@@ -146,56 +162,43 @@
         </ul>
       </section>
 
-      <!-- 見つからなかったときも、同じ座布団で出す。結果の形が変わると、
-           何が起きたのかを読み直すことになる。
+      <!-- 見つからなかったときは、番組の行と同じ形にしない（番組ではないので）。
+           入れたものは上の欄に出ているので、ここで繰り返さない。
            送れるのは番組の URL があるときだけ。名前だけのリクエストは、
            受け取った側が番組を特定するところから始めることになり、
            フィードに辿り着けないことも多い -->
-      <ul v-if="!candidates.length" class="candidates">
-        <li class="is-unknown">
-          <div class="detail">
-            <p class="title">{{ unknownChannel.title || '番組が見つかりませんでした' }}</p>
-            <p v-if="url" class="meta">{{ url }}</p>
-            <p class="unregistered">
-              <span class="badge unknown">見つかりません</span>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。
-            </p>
-            <div class="next">
-              <p class="next-title">次のアクション<span v-if="canSendUnknown">どちらか一方</span></p>
-              <template v-if="canSendUnknown">
-                <div class="choice">
-                  <div class="actions">
-                    <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
-                  </div>
-                  <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
-                </div>
-                <div class="choice">
-                  <div class="actions">
-                    <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
-                  </div>
-                  <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
-                </div>
-              </template>
-              <div v-else class="choice">
-                <div class="actions">
-                  <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
-                </div>
-                <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
+      <div v-if="searched && !candidates.length" class="empty">
+        <p class="note">Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。</p>
+
+        <div class="next">
+          <p class="next-title">次のアクション<span v-if="canSendUnknown">どちらか一方</span></p>
+          <template v-if="canSendUnknown">
+            <div class="choice">
+              <div class="actions">
+                <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
               </div>
+              <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
             </div>
+            <div class="choice">
+              <div class="actions">
+                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+              </div>
+              <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
+            </div>
+          </template>
+          <div v-else class="choice">
+            <div class="actions">
+              <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+            </div>
+            <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
 
-      <p v-if="truncated" class="note">目当ての番組が出ていない場合は、語を足すか正式な番組名で探し直すと絞り込めます。</p>
-
-      <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
-           目当てが無いときも、ここで行き止まりにしない -->
-      <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
-
-      <!-- 送ったあとの話。登録されるとは限らないことは、先に伝えておく -->
-      <p v-if="sendable || canSendUnknown" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
+      <p v-if="searched && (sendable || canSendUnknown)" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
 
       <p v-if="!registeredAvailable" class="note">※ 登録済みかどうかの判定ができませんでした（一覧の取得に失敗しています）。すでに載っている番組かもしれません。</p>
+      </div>
     </template>
 
     <!-- 調べるまでもない用（ハッシュタグの誤り、掲載を止めたい、Apple の
@@ -231,12 +234,25 @@ form.search {
       color: #ccc;
     }
   }
-  & button {
-    margin-top: 20px;
-  }
 }
 .error {
   color: #c00;
+}
+/* 未登録を調べるボタン。効く先（下の未登録）のすぐ上に置く */
+.run {
+  /* 下にも空ける。すぐ下に結果が続くので、詰まっていると1つの塊に見える */
+  margin: 25px 0;
+  /* 無効のとき。レイアウトの button は紫のまま文字だけ薄くするので、
+     白が紫に沈んで読みづらい。地ごとグレーにする
+     （#ededed は Duration / Frequency のバッジと同じ地） */
+  & button[disabled] {
+    background-color: #ededed;
+    color: #bbb;
+  }
+}
+/* 打ち直されたあとの結果。消さずに薄くして、今の入力のものではないと伝える */
+.is-stale {
+  opacity: 0.4;
 }
 /* 未登録・登録済みの区切り */
 .group {
@@ -256,10 +272,6 @@ form.search {
 /* ジャケットの並びのすぐ下に開いた枠が来るときだけ、間を空ける */
 .covers + .candidates {
   margin-top: 12px;
-}
-/* 見つからなかったときは、見出し（Not found）の直後に座布団が来る */
-h3 + .candidates {
-  margin-top: 15px;
 }
 /* 登録済みのジャケットの並び。「もう載っている」ことが分かればよいので、
    名前は出さず、押したときだけ下に出す */
@@ -409,37 +421,12 @@ h3 + .candidates {
       }
     }
   }
-  /* 見つからなかったものは、ジャケットも話数も無い。入れてもらった URL を
-     控えめに出すだけなので、そこだけ折り返しを許す */
-  & li.is-unknown {
-    padding: 15px;
-    & .meta {
-      word-break: break-all;
-    }
-  }
-  & .unregistered {
-    font-size: 13px;
-    /* 入れてもらったものと、そこから先の話とを読み分けられるよう一段空ける */
-    margin-top: 20px;
-  }
   /* 送ったあとに何が起きるかの補足。ボタンより弱く */
   & .hint {
     font-size: 12px;
     color: #888;
     margin-top: 8px;
   }
-}
-/* 見つからなかったときの印。文字だけだと本文に紛れるので、小さく囲って先頭に置く */
-.badge {
-  display: inline-block;
-  margin-right: 8px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: bold;
-  /* 見つからなかった印。押す先はあるが、番組が分かっているわけではない */
-  color: #fff;
-  background-color: #999;
 }
 .actions {
   margin-top: 8px;
@@ -623,6 +610,8 @@ export default {
       candidates: [],
       // iTunes の検索結果を打ち切ったか（未登録の件数に + を付ける）
       truncated: false,
+      // 最後に調べたときの入力。打ち直されたかを見るのに使う
+      searchedQuery: '',
       registered: null,
       registeredAvailable: true,
       // 送信フォームは、必要になったときだけ開く
@@ -648,6 +637,9 @@ export default {
     // 分けて渡してくる。欄は1つなので、並べて入れる。
     // Spotify のように番組名が URL から取れないサービスでは、
     // タイトルが唯一の手がかりになる
+    // 打ちながら登録済みを絞り込むので、一覧は最初に読んでおく
+    this.loadRegistered()
+
     this.query = [query.url, query.title].filter(Boolean).join(' ')
 
     // フォームに用がある人は、調べるところを飛ばして来る（About からのリンク、
@@ -690,17 +682,44 @@ export default {
     // 同じ番組に当たった候補が複数出ることがある（iTunes に同名の別番組があり、
     // そちらも番組名で当たる。rebuild で2件出ていた）。ここで並べるのは
     // **登録済みの番組**なので、キーで1つにまとめる
+    // 調べたあとに打ち直された状態。前の結果は今の入力のものではないので、
+    // 消さずに薄くして、そうと分かるようにする
+    stale: function() {
+      return this.searched && this.query !== this.searchedQuery
+    },
+    // 打っているあいだは、手元の一覧だけで絞り込む（通信が要らない）。
+    // 調べ終えたら、その結果に切り替える（登録済みは lookup が混ぜてある）
+    liveRegistered: function() {
+      if(this.searched && !this.stale) return []
+      return searchRegistered(this.registered, this.name).map(entry => this.fromRegistered(entry))
+    },
     registeredChannels: function() {
+      // 登録済みは手元の一覧で今の入力に追いつけるので、薄くする対象にしない
+      const source = this.searched && !this.stale ? this.candidates : this.liveRegistered
       const seen = new Set()
-      return this.candidates.filter(channel => {
+      return source.filter(channel => {
         const key = this.registeredKey(channel)
         if(!key || seen.has(key)) return false
         seen.add(key)
         return true
       })
     },
-    // ジャケットを押して開いている番組。開くのは1つまで
+    // 数が多いときは小さくする。36px は1行に13件ほどで、それ以上だと
+    // 何段にもなって「もう載っている」を読み取るのに目が要る
+    coverSize: function() {
+      return this.registeredChannels.length > 14 ? 28 : 36
+    },
+    noCoverStyle: function() {
+      return {
+        width: `${this.coverSize}px`,
+        height: `${this.coverSize}px`,
+        fontSize: `${Math.round(this.coverSize * 0.42)}px`
+      }
+    },
+    // ジャケットを押して開いている番組。開くのは1つまで。
+    // 1件のときは並びを出さないので、常に開いた状態で見せる
     openRegisteredChannel: function() {
+      if(this.registeredChannels.length === 1) return this.registeredChannels[0]
       if(!this.openRegisteredKey) return null
       return this.registeredChannels.find(channel => this.registeredKey(channel) === this.openRegisteredKey) || null
     },
@@ -767,14 +786,13 @@ export default {
         this.openRows = this.unregisteredChannels.length === 1
           ? { [this.unregisteredChannels[0].feed]: true }
           : {}
-        this.openRegisteredKey = this.registeredChannels.length === 1
-          ? this.registeredKey(this.registeredChannels[0])
-          : ''
+        this.openRegisteredKey = ''
       } catch {
         this.error = '番組を探せませんでした。しばらくしてからもう一度お試しください。'
       } finally {
         this.loading = false
         this.searched = true
+        this.searchedQuery = this.query
       }
     },
     // Apple のリンクなら id から一発で引ける。それ以外は、URL と番組名から
@@ -910,6 +928,13 @@ export default {
         // 読めないフィードは珍しくない（CORS）。手がかりが1つ減るだけ
         return ''
       }
+    },
+    // 貼り付けは1回の操作なので、URL を貼ったらそのまま調べに行く。
+    // 打っている途中の文字列（https://open.spot…）では走らせない
+    onPaste: function() {
+      this.$nextTick(() => {
+        if(this.urls.length) this.lookup()
+      })
     },
     isOpen: function(channel) {
       return !!this.openRows[channel.feed]
