@@ -18,14 +18,15 @@
       <nav>
         <nuxt-link to="/about/">About</nuxt-link><nuxt-link to="/episodes/">Episodes</nuxt-link><nuxt-link to="/request/">Request</nuxt-link>
       </nav>
-      <div class="stats channels">
+      <!-- 数字はそれぞれの一覧への入口にする。番組はトップ、回は /episodes -->
+      <nuxt-link to="/" class="stats channels">
         <span>{{ channelCount }}</span>
         <span>channels</span>
-      </div>
-      <div class="stats episodes">
+      </nuxt-link>
+      <nuxt-link to="/episodes/" class="stats episodes">
         <span>{{ episodeCount }}</span>
         <span>episodes</span>
-      </div>
+      </nuxt-link>
       <div class="stats update">
         <span>{{ updatedDate }}</span>
         <span>{{ updatedTime }} updated</span>
@@ -38,15 +39,15 @@
          無いと一覧の最後の行や子行の下端がプレーヤーに隠れる -->
     <div class="main" :class="{ 'has-player': hasPlayer, 'player-minimized': playerMinimized }">
       <div class="sp_stats">
-        <div class="channels">
+        <nuxt-link to="/" class="stat channels">
           <span>{{ channelCount }}</span>
           <span>channels</span>
-        </div>
-        <div class="episodes">
+        </nuxt-link>
+        <nuxt-link to="/episodes/" class="stat episodes">
           <span>{{ episodeCount }}</span>
           <span>episodes</span>
-        </div>
-        <div class="update">
+        </nuxt-link>
+        <div class="stat update">
           <span>{{ updatedDate }} {{ updatedTime }}</span>
           <span>updated</span>
         </div>
@@ -120,10 +121,6 @@ header {
   align-items: center;
   & a {
     color: #fff;
-    &:hover {
-      color: #fff;
-      opacity: 0.5;
-    }
   }
 }
 /* タイトルとリード文を縦に並べ、2つまとめてヘッダーの中央に置く。
@@ -253,6 +250,24 @@ button {
     font-size: 10px;
   }
 }
+/* 触れたときの見え方は、ポインタのある環境だけにする。
+   指の環境（iOS など）は離れられないので、押した直後の見た目がそのまま残り、
+   ナビゲーションのリンクが薄いままになっていた。
+   /episodes の行で同じことを直したのと同じ理由（components/episode-row.vue） */
+@media (hover: hover) {
+  header a:hover {
+    color: #fff;
+    opacity: 0.5;
+  }
+  /* channels と episodes はリンク。a の既定色（#444）に戻らないよう名指しする。
+     updated は押せないので、a のときだけにする（触れても何も変わらない） */
+  header a.stats:hover,
+  .sp_stats > a.stat:hover {
+    color: #fff;
+    opacity: 1;
+  }
+}
+
 /* ここから下はヘッダーを詰めて、統計を2段目（.sp_stats）へ移す。
 
    もとは 810px だった（Responsive で幅を測っていたときの境界の引き継ぎ）が、
@@ -313,11 +328,15 @@ button {
       padding-top: 10px;
       padding-bottom: 10px;
       border-top: 1px solid rgba(255,255,255,0.4);
-      >div {
+      /* channels と episodes はリンク（a）、updated は div。
+         要素名ではなくクラスで指すこと */
+      >.stat {
         display: flex;
         flex-direction: column;
         padding-left: 15px;
         margin-right: 15px;
+        /* a の色（#444）と hover が効いてしまうので、名指しで戻す */
+        color: inherit;
         &:not(:first-child) {
           border-left: 1px solid rgba(255,255,255,0.4);
         }
