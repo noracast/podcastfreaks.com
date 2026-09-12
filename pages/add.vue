@@ -26,29 +26,81 @@
       <ul v-if="candidates.length" class="candidates">
         <!-- まだ登録されていないものが本題なので、そちらを先に並べる -->
         <li v-for="channel in candidates" :key="channel.feed" :class="{ 'is-registered': channel.matched.length }">
-          <img v-if="channel.artwork" class="cover" :src="channel.artwork" :alt="channel.title" width="80" height="80">
+          <!-- 本当にこの番組かを確かめたいときのために、ジャケットと
+               番組名まわりを Apple Podcasts へのリンクにする。
+               状態やボタンは対象にしないので、リンクは2つに分けている。
+               Apple に無い番組（iTunes 以外から見つけた場合）は素の要素で出す。
+
+               ここは a-blank ではなく素の a。component の :is に
+               コンポーネント名を文字列で渡しても解決されず、
+               <a-blank> という不明な要素のまま出てリンクにならない -->
+          <component
+            :is="channel.apple ? 'a' : 'div'"
+            v-if="channel.artwork"
+            class="art"
+            :href="channel.apple || undefined"
+            :target="channel.apple ? '_blank' : undefined"
+            :rel="channel.apple ? 'noopener' : undefined"
+            :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
+          >
+            <img class="cover" :src="channel.artwork" :alt="channel.title" width="80" height="80">
+          </component>
           <div class="detail">
-            <p class="title">{{ channel.title }}</p>
-            <p class="meta">{{ channelMeta(channel) }}</p>
-            <p class="feed">{{ channel.feed }}</p>
+            <component
+              :is="channel.apple ? 'a' : 'div'"
+              class="head"
+              :href="channel.apple || undefined"
+              :target="channel.apple ? '_blank' : undefined"
+              :rel="channel.apple ? 'noopener' : undefined"
+              :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
+            >
+              <p class="title">{{ channel.title }}</p>
+              <p class="meta">{{ channelMeta(channel) }}</p>
+            </component>
             <!-- 登録済みかどうかは static/registered.json と突き合わせている。
                  フィード URL と番組名のどちらかが当たれば「登録済みの可能性」
                  として出す。完全一致だけでは取りこぼすため。
 
-                 送り先をトップにしているのは、番組ごとの URL がまだ無いため。
+                 番組ごとの URL がまだ無いので、ここからはどこへも送っていない。
                  番組の個別ページ（/channels/<key>/ のようなもの）ができたら、
-                 matched[0].key からその URL へ変える -->
-            <p v-if="channel.matched.length" class="registered">
-              <span class="badge">登録済み</span>
-              <code>{{ channel.matched[0].key }}</code>{{ channel.matched[0].matchedBy === 'title' ? '（番組名が一致）' : '' }} として<nuxt-link to="/">一覧</nuxt-link>に出ています。フィードの URL が変わったなどのご連絡は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>からお願いします。
-            </p>
-            <template v-else>
-              <p class="unregistered"><span class="badge new">未登録</span>この番組はまだ一覧にありません。</p>
-              <div class="actions">
-                <a-blank class="send" :href="issueUrl(channel)">登録をリクエスト</a-blank>
-                <a-blank v-if="channel.apple" class="apple" :href="channel.apple">Apple Podcasts で見る</a-blank>
+                 matched[0].key からその番組のページへのリンクを足す -->
+            <template v-if="channel.matched.length">
+              <p class="registered">
+                <span class="badge">登録済み</span>
+                <code>{{ channel.matched[0].key }}</code>{{ channel.matched[0].matchedBy === 'title' ? '（番組名が一致）' : '' }} として登録されています。
+              </p>
+              <!-- 登録済みでも用がある人はいる（フィードの URL が変わった、
+                   ハッシュタグが違う）。行き止まりにせず、未登録のときと
+                   同じ形で送り先を出す。こちらは送り先がフォームだけ -->
+              <div class="next">
+                <p class="next-title">次のアクション</p>
+                <div class="choice">
+                  <div class="actions">
+                    <nuxt-link class="send gray" :to="requestLink(channel)">修正依頼を送る</nuxt-link>
+                  </div>
+                  <p class="hint">フィードの URL が変わった、ハッシュタグが違うなどのご連絡はこちらから。</p>
+                </div>
               </div>
-              <p class="hint">GitHub の画面が開きます。中身は入力済みなので、そのまま Create でかまいません。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
+            </template>
+            <template v-else>
+              <p class="unregistered"><span class="badge new">未登録</span>この番組はまだ登録されていません。</p>
+              <!-- 送り先は2つあって、どちらか一方でよい。
+                   枠で囲って「ここから選ぶ」ことが分かるようにする -->
+              <div class="next">
+                <p class="next-title">次のアクション<span>どちらか一方</span></p>
+                <div class="choice">
+                  <div class="actions">
+                    <a-blank class="send" :href="issueUrl(channel)">Githubでリクエスト</a-blank>
+                  </div>
+                  <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
+                </div>
+                <div class="choice">
+                  <div class="actions">
+                    <nuxt-link class="send gray" :to="requestLink(channel)">フォームから送る</nuxt-link>
+                  </div>
+                  <p class="hint">GitHub のアカウントをお持ちでない場合は、こちらから。</p>
+                </div>
+              </div>
             </template>
           </div>
         </li>
@@ -66,12 +118,29 @@
       <template v-else-if="!candidates.length">
         <p>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。番組名を変えて探し直すか、番組のページの URL を添えて送ってください。</p>
         <template v-if="canSendUnknown">
-          <div class="actions">
-            <a-blank class="send" :href="issueUrl(unknownChannel)">このまま登録をリクエスト</a-blank>
+          <div class="next">
+            <p class="next-title">次のアクション<span>どちらか一方</span></p>
+            <div class="choice">
+              <div class="actions">
+                <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
+              </div>
+              <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
+            </div>
+            <div class="choice">
+              <div class="actions">
+                <nuxt-link class="send gray" :to="requestLink(unknownChannel)">フォームから送る</nuxt-link>
+              </div>
+              <p class="hint">GitHub のアカウントをお持ちでない場合は、こちらから。</p>
+            </div>
           </div>
-          <p class="hint">GitHub の画面が開きます。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
         </template>
-        <p v-else class="hint">上の「番組の URL」に、Spotify・Apple Podcasts・番組サイトなど番組のページの URL を入れてください。そこから配信元をこちらで追えます。URL が分からない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>からお知らせください。</p>
+        <template v-else>
+          <p class="hint">上の「番組の URL」に、Spotify・Apple Podcasts・番組サイトなど番組のページの URL を入れてください。そこから配信元をこちらで追えます。</p>
+          <div class="actions">
+            <nuxt-link class="send gray" :to="requestLink(unknownChannel)">フォームから送る</nuxt-link>
+          </div>
+          <p class="hint">URL が分からない場合も、こちらからお知らせいただけます。</p>
+        </template>
       </template>
 
       <!-- 送ったあとの話。登録されるとは限らないことは、先に伝えておく -->
@@ -156,11 +225,25 @@ form {
   & code {
     background-color: #fff;
   }
+  & .art {
+    flex-shrink: 0;
+    line-height: 0;
+    border-bottom: 0;
+  }
   & .cover {
     width: 80px;
     height: 80px;
-    flex-shrink: 0;
     border-radius: 3px;
+  }
+  /* 番組名と、その下の話数や日付までをひとまとまりのリンクにする。
+     見出しとして読めるままにしたいので、線も色の変化も付けない */
+  & .head {
+    display: block;
+    color: inherit;
+    border-bottom: 0;
+    &:hover {
+      color: inherit;
+    }
   }
   & .detail {
     min-width: 0;
@@ -177,16 +260,10 @@ form {
     color: #666;
     margin-top: 3px;
   }
-  /* フィードの URL は長い。折り返して、行がはみ出さないようにする */
-  & .feed {
-    font-size: 12px;
-    color: #888;
-    margin-top: 3px;
-    word-break: break-all;
-  }
   & .registered, & .unregistered {
     font-size: 13px;
-    margin-top: 10px;
+    /* 番組の情報と、状態から先の話とを読み分けられるよう、ここで一段空ける */
+    margin-top: 20px;
   }
   /* 登録済みのものは、すでに用が済んでいる。一段引いた見え方にする */
   & li.is-registered {
@@ -201,6 +278,7 @@ form {
     color: #888;
     margin-top: 8px;
   }
+
 }
 /* 状態の印。文字だけだと本文に紛れるので、小さく囲って先頭に置く */
 .badge {
@@ -218,7 +296,7 @@ form {
   }
 }
 .actions {
-  margin-top: 10px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -239,8 +317,15 @@ form {
       background-color: #9933ff;
     }
   }
-  & .apple {
-    font-size: 13px;
+  /* GitHub を使わない人の行き先。押せることは同じだが、
+     こちらが本命ではないので色を落とす */
+  & .send.gray {
+    color: #444;
+    background-color: #e0e0e0;
+    &:hover {
+      color: #444;
+      background-color: #d0d0d0;
+    }
   }
 }
 .note {
@@ -251,6 +336,37 @@ form {
   font-size: 12px;
   color: #888;
   margin-top: 8px;
+}
+/* 送り先が2つあることを、枠で囲って示す。
+   座布団（薄いグレー）の上に置くので、こちらは白で抜いて浮かせる */
+.next {
+  margin-top: 14px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+}
+.next-title {
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  letter-spacing: 0.05em;
+  /* 「どちらか一方」は添え物。太さと色を落として続ける */
+  & span {
+    margin-left: 8px;
+    font-weight: normal;
+    color: #aaa;
+  }
+}
+/* 2つ目からは、細い線で区切る。or を挟むより、選ぶものが
+   並んでいることが伝わる */
+.choice {
+  margin-top: 12px;
+  &:not(:first-of-type) {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+  }
 }
 /* 枠で囲って、結果とは別のものだと分かるようにする */
 .bookmarklet-section {
@@ -312,6 +428,7 @@ import toChannels, { lookupUrl, searchUrl, episodeSearchUrl, collectionIds } fro
 import oembedUrl from '@/lib/spotify.js'
 import matchRegistered from '@/lib/registered-match.js'
 import registerRequestIssueUrl from '@/lib/register-request-issue.js'
+import requestFormLink from '@/lib/request-form-link.js'
 import { jst } from '@/lib/jst'
 
 // 登録中の番組。判定に要るキー・フィード・番組名だけを持つ軽いファイルで、
@@ -485,6 +602,14 @@ export default {
     },
     issueUrl: function(channel) {
       return registerRequestIssueUrl({
+        channel,
+        source: { url: this.url, title: this.name }
+      })
+    },
+    // GitHub を使わない人の行き先。調べた結果をクエリで渡し、
+    // フォーム側（pages/request.vue）で初期値に入れる
+    requestLink: function(channel) {
+      return requestFormLink({
         channel,
         source: { url: this.url, title: this.name }
       })
