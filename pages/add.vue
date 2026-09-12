@@ -15,7 +15,7 @@
       <br>
       <input id="name" v-model="name" type="text" placeholder="fukabori.fm">
 
-      <button type="submit" :disabled="loading || (!url && !name)">{{ loading ? '探しています…' : '探す' }}</button>
+      <button type="submit" :disabled="loading || (!url && !name)">{{ loading ? 'Searching…' : 'Search' }}</button>
     </form>
 
     <p v-if="error" class="error">{{ error }}</p>
