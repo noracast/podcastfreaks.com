@@ -48,6 +48,13 @@
     font: inherit;
     text-align: left;
     cursor: pointer;
+    /* 触れたときの紫も外す。指で押した端末では :hover が離したあとも
+       残るため、これが無いと押した行が紫のまま居座る。
+       行そのものの色（下の @media (hover: hover)）はポインタのある
+       環境でだけ出す */
+    &:hover {
+      background-color: transparent;
+    }
   }
   /* 題名までがひとつのボタン。行の空いているところを押しても鳴るよう、
      残りの幅はここが持つ */

@@ -48,10 +48,16 @@
   }
 }
 
+/* レイアウトのグローバルな button:hover（紫）を、ここで打ち消しておく。
+   指で押した端末では :hover が離したあとも残るため、これが無いと
+   押した回が紫のまま居座る（iOS で実際に起きていた）。
+   @media (hover: hover) の中だけに書いても、タッチ側には届かない */
+.episode:not(:disabled):hover {
+  background-color: transparent;
+}
+
 /* 触れたときの色は、ポインタのある環境だけ。指で押すと離したあとも
-   残ってしまう（components/episode-row.vue と同じ理由）。
-   ここを書かないと、レイアウトのグローバルな button:hover（紫）が
-   そのまま効いてしまう */
+   残ってしまう（components/episode-row.vue と同じ理由） */
 @media (hover: hover) {
   .episode:not(:disabled):hover {
     background-color: #ececec;
