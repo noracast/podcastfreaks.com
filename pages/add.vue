@@ -65,6 +65,7 @@
       <a class="bookmarklet" :href="bookmarklet" @click.prevent="copyBookmarklet">Podcast Freaks に登録</a>
       <span v-if="copied" class="copied">コピーしました</span>
     </p>
+    <h4>使い方</h4>
     <ol class="note">
       <li>上のボタンを<strong>ブックマークバーへドラッグ</strong>する（名前は好きに変えて構いません）</li>
       <li>ブックマークバーが出ていなければ、Chrome・Safari とも <code>⌘ + Shift + B</code> で出せます</li>
