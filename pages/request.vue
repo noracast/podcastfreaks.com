@@ -11,7 +11,9 @@
     <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
          ラベルも補足も置かない（同じことを二度読ませない） -->
     <form class="search" @submit.prevent="lookup">
-      <input id="query" v-model="query" type="text" aria-label="番組の URL か番組名" placeholder="https://noracast.jp/feed.xml noracast">
+      <!-- type="search" にすると、ブラウザが消す × を出してくれる。
+           トップの検索欄（pages/index.vue）と同じ方式に揃えている -->
+      <input id="query" v-model="query" type="search" aria-label="番組の URL か番組名" placeholder="https://noracast.jp/feed.xml noracast">
 
       <button type="submit" :disabled="loading || !query.trim()">{{ loading ? 'Searching…' : 'Search' }}</button>
     </form>
@@ -217,13 +219,14 @@
 form.search {
   margin-top: 20px;
   & input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 600px;
     font-size: 16px;
     padding: 10px;
-    max-width: 600px;
-    width: calc(100% - 20px);
     outline: none;
     border: 1px solid #ccc;
-    margin-top: 5px;
     &::placeholder {
       color: #ccc;
     }
