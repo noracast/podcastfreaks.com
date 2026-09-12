@@ -32,6 +32,23 @@
      すりガラスと同じ見え方になるよう、白と混ぜた色を置く。
      mix(#fff, var(--brand-base), 12%) を畳んだもの */
   --brand-solid: #981ff2;
+
+  /* ページの見出し（h2）の大きさ。ブラウザの既定（1.5em）と同じ */
+  --heading-size: 24px;
+}
+
+/* 狭い画面では一段小さくする。24px だと「Episodes in the last year」が
+   iPhone で折り返す（実測で文字幅は 24px=285px / 20px=237px。iOS は同じ
+   指定でも1割ほど大きく描くので、375px 幅で収まるのは 20px から）。
+   ページごとに決めると揃わなくなるので、ここで1つにしている */
+@media (max-width: 480px) {
+  :root {
+    --heading-size: 20px;
+  }
+}
+
+h2 {
+  font-size: var(--heading-size);
 }
 
 body {

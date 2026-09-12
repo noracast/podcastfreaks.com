@@ -134,13 +134,14 @@
     padding-bottom: 10px;
     margin-bottom: 10px;
     transition: margin-bottom 0.22s, padding-bottom 0.22s;
-    /* このページの見出し。About の h2 と同じ大きさ・太さにしてある。
-       話数は入れない。桁が増えると見出しが長くなってしまう */
+    /* このページの見出し。About の h2 と同じ大きさ・太さにしてある
+       （大きさは assets/common.css の --heading-size。狭い画面で
+       小さくなるのも、サイトの他の見出しと揃う） */
     .period {
       flex: none;
       margin: 0;
       color: #444;
-      font-size: 24px;
+      font-size: var(--heading-size);
       font-weight: bold;
       font-variant-numeric: tabular-nums;
     }
@@ -460,7 +461,8 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       column-gap: 10px;
-      row-gap: 2px;
+      /* 折り返したときに、見出しの行間より詰まって見えないだけ空ける */
+      row-gap: 6px;
       .period,
       .total {
         grid-column: 1;
