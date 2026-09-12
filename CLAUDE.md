@@ -111,6 +111,15 @@ pnpm test:watch  # 直しながら見る
   `[data-v-x]` を別の位置に差し込み、`.links [data-v-x]>:not(:first-child)`
   のような別物のセレクタになる（アイコンの間隔と About の凡例が崩れた）
 
+**ホバーは今までどおり `&:hover` と書けばよい。** タッチ端末では :hover が
+離したあとも残る（指はポインタのように離れられない）ので、押したリンクが
+薄いまま、押した行が紫のまま居座っていた。これを1つずつ `@media (hover: hover)`
+で囲むと書き漏らすため、ビルドのときに `postcss-hover-media-feature` が
+:hover を含むルールをまとめて囲んでいる（`nuxt.config.js` の `postcss`）。
+
+そのため、`.vue` の中に手で書いた `@media (hover: hover)` は要らない。
+すでに囲んであるものはプラグインが二重に囲まないので、残っていても害はない。
+
 ヘッダーなどの紫のグラデーションは、もとは Sass のミックスインだった。
 `assets/common.css` の `:root` に `--brand-texture` などとして置いてある。
 

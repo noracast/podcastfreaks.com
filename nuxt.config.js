@@ -196,6 +196,24 @@ export default defineNuxtConfig({
   // postcss-preset-env の nesting-rules で平坦なセレクタへ展開していたが、
   // Vite は自前でネストを展開するので指定が要らなくなった
   // （postcss-preset-env は Nuxt 4 に同梱されていない）
+  postcss: {
+    plugins: {
+      // :hover を含むルールを、まるごと @media (hover: hover) の中へ入れる。
+      //
+      // 指で触る端末（iOS など）はポインタが離れられないので、押した直後の
+      // 見た目がそのまま残る。ナビゲーションのリンクが薄いまま、押した行が
+      // 紫のまま居座っていた。
+      //
+      // これをホバーの指定1つずつに書いて回ると40箇所を超えるうえ、
+      // これから書くものでも毎回思い出す必要がある。ビルドのときにまとめて
+      // 囲めば、書く側はこれまでどおり `&:hover` と書けばよい。
+      //
+      // 他のホバーを打ち消すためだけの指定（`&:hover { background-color:
+      // transparent }` のような、レイアウトの button:hover を解くもの）も
+      // 一緒に囲まれるが、打ち消す相手も同時に囲まれるので結果は変わらない
+      'postcss-hover-media-feature': {}
+    }
+  },
 
   compatibilityDate: '2025-01-01'
 })

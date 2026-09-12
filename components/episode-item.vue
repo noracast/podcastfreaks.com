@@ -49,9 +49,9 @@
 }
 
 /* レイアウトのグローバルな button:hover（紫）を、ここで打ち消しておく。
-   指で押した端末では :hover が離したあとも残るため、これが無いと
-   押した回が紫のまま居座る（iOS で実際に起きていた）。
-   @media (hover: hover) の中だけに書いても、タッチ側には届かない */
+   これが無いと、ポインタのある環境で押した回が紫の塊になる
+   （指で押した端末に紫が残らないことは、ビルド時に :hover をまとめて
+   @media (hover: hover) で囲む方で担保している。CLAUDE.md のスタイル参照） */
 .episode:not(:disabled):hover {
   background-color: transparent;
 }
