@@ -12,7 +12,7 @@
          placeholder が実例で見せるので、説明を重ねると同じことを2度言う
          ことになる。どれも入れなくて構わない欄なので、（任意）とも書かない。
          全部に付くと、読む手がかりにならないまま行が伸びるだけになる
-         （名前だけは、書くのが前提に見えないよう一言添える）。
+         （名前だけは、何に使うのかを説明するので下に一行添える）。
          name は Netlify Forms の項目名。static/form.html と揃えてあるので、
          見せ方を変えてもここは変えない -->
     <label for="feed">RSS フィードの URL</label>
@@ -30,8 +30,11 @@
     <!-- placeholder は3行に分けて出す。&#10; は改行 -->
     <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
-    <!-- 名前を出すのが前提に見えないよう、ここだけは一言添える -->
-    <label for="contributor">お名前（無記名で構いません）</label>
+    <!-- ここだけ説明を添える。何に使うのかは、placeholder の実例では
+         伝わらないため。名前を出すのが前提に見えないよう、
+         無記名でよいこともここで言う -->
+    <label for="contributor">お名前</label>
+    <small>X でのお礼に使わせていただきます。無記名でも構いません</small>
     <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
     <button type="submit">Send</button>
@@ -49,6 +52,13 @@ form {
     &:not(:nth-of-type(1)) {
       margin-top: 20px;
     }
+  }
+  /* ラベルの補足。ラベルより弱く、入れる欄の手前に置く */
+  & small {
+    display: block;
+    margin-top: 3px;
+    color: #888;
+    font-size: 12px;
   }
   & input[type=text], textarea {
     font-size: 16px;
