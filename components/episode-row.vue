@@ -117,13 +117,14 @@
 /* 900px は pages/episodes.vue の境界と揃える */
 @media (max-width: 900px) {
   .row {
-    padding-right: 10px;
+    padding-right: 20px;
     gap: 10px;
     .main {
       gap: 10px;
     }
     .cover {
-      margin-left: 10px;
+      /* ページの左右の余白（20px）に揃える */
+      margin-left: 20px;
     }
     .play {
       margin-left: -10px;

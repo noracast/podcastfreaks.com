@@ -131,7 +131,7 @@
     top: 70px;
   }
   .back {
-    padding: 0 10px 10px;
+    padding: 0 20px 10px;
   }
   .border {
     height: auto;
@@ -141,7 +141,8 @@
   .date {
     position: relative;
     margin-left: 20px;
-    padding: 0 10px;
+    /* 左右の余白は、区画の端（20px）に合わせる */
+    padding: 0 20px;
     height: 20px;
     line-height: 20px;
     font-size: 11px;
