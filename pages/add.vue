@@ -55,6 +55,21 @@
 
       <p v-if="!registeredAvailable" class="note">※ 登録済みかどうかの判定ができませんでした（一覧の取得に失敗しています）。すでに載っている番組かもしれません。</p>
     </template>
+
+    <h3>Bookmarklet</h3>
+    <p>ブックマークバーに入れておくと、番組のページを見ているときに押すだけで、その URL とタイトルをこのページへ渡せます。</p>
+    <!-- href は javascript: のまま。押しても何も起きないよう既定の動作は止める
+         （このページで押すと、このページ自身を調べに行ってしまう）。
+         代わりにコードをコピーして、ドラッグできない環境の逃げ道にする -->
+    <p class="bookmarklet-box">
+      <a class="bookmarklet" :href="bookmarklet" @click.prevent="copyBookmarklet">Podcast Freaks に登録</a>
+      <span v-if="copied" class="copied">コピーしました</span>
+    </p>
+    <ol class="note">
+      <li>上のボタンを<strong>ブックマークバーへドラッグ</strong>する（名前は好きに変えて構いません）</li>
+      <li>ブックマークバーが出ていなければ、Chrome・Safari とも <code>⌘ + Shift + B</code> で出せます</li>
+      <li>ドラッグできない場合（iOS など）は、上のボタンを押すとコードをコピーします。適当なページをブックマークに追加して開き直し、その URL の欄にコピーしたものを貼り替えてください</li>
+    </ol>
   </div>
 </template>
 
@@ -165,13 +180,44 @@ form {
   font-size: 13px;
   color: #666;
 }
+/* ブックマークバーへ引っ張るもの。掴めることが分かるよう、
+   リンクではなくボタンの見え方にして、カーソルも掴む形にする */
+.bookmarklet {
+  display: inline-block;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #7f00ff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 16px;
+  cursor: grab;
+  &:hover {
+    color: #fff;
+    background-color: #9933ff;
+  }
+  &:active {
+    cursor: grabbing;
+  }
+}
+.copied {
+  margin-left: 10px;
+  font-size: 13px;
+  color: #7f00ff;
+}
+/* 作り方。番号を振って、上のボタンからの続きとして読ませる */
+ol.note {
+  padding-left: 1.5em;
+  & li:not(:first-child) {
+    margin-top: 5px;
+  }
+}
 code {
   background-color: #f4f4f4;
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 12px;
 }
-a:not(.send) {
+a:not(.send, .bookmarklet) {
   padding-bottom: 0.2em;
   border-bottom: 1px dotted #444;
 }
@@ -206,7 +252,11 @@ export default {
       error: '',
       candidates: [],
       registered: null,
-      registeredAvailable: true
+      registeredAvailable: true,
+      // ブックマークレットが開く先。手元で試すときはそのまま手元を指す。
+      // 事前レンダリングの時点では分からないので、本番の URL を初期値にする
+      origin: 'https://podcastfreaks.com',
+      copied: false
     }
   },
   mounted: function() {
@@ -218,6 +268,7 @@ export default {
     // location は一度クエリの無い状態（事前レンダリングした '/add/'）に
     // なっていて、そこを読むと毎回空が返る。ルーターは最初から
     // 開かれた URL を持っている
+    this.origin = window.location.origin
     const query = this.$route.query
     this.url = query.url || ''
     // ブックマークレット（#230）は、見ていたページのタイトルを渡してくる。
@@ -231,6 +282,11 @@ export default {
     // 出ているのが登録済みのものだけなら、送り先の案内は要らない
     sendable: function() {
       return this.candidates.some(channel => !channel.matched.length)
+    },
+    // 見ているページの URL とタイトルを付けて、このページを新しいタブで開く。
+    // ブックマークの URL 欄に入るものなので、1行に収める
+    bookmarklet: function() {
+      return `javascript:(()=>{open('${this.origin}/add/?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title),'_blank')})()`
     }
   },
   methods: {
@@ -292,6 +348,14 @@ export default {
         channel.trackCount ? `${channel.trackCount}話` : '',
         channel.releaseDate ? `最新 ${jst(channel.releaseDate).format('YYYY.MM.DD')}` : ''
       ].filter(Boolean).join(' / ')
+    },
+    // ブックマークバーが無い環境のため。コピーできない場合は何も言わない
+    // （押しても動かないことは、隣の説明で伝えてある）
+    copyBookmarklet: function() {
+      if(!navigator.clipboard) return
+      navigator.clipboard.writeText(this.bookmarklet).then(() => {
+        this.copied = true
+      }).catch(() => {})
     },
     issueUrl: function(channel) {
       return registerRequestIssueUrl({
