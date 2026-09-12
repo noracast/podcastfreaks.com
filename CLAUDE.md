@@ -62,6 +62,10 @@ Vite は使うものだけを読むため、ここを通さないと曜日が英
 - `data/added-at.json`（番組の登録日）と `data/apple-podcasts.json`（Apple Podcasts の
   リンク）は GitHub Actions が生成する。手で編集するのは後者の `"source": "manual"`
   の項目だけ
+- 手元で建て直したとき、ページの末尾に `/html>` のような**前回の出力の切れ端**が
+  残ることがある。事前レンダリングした HTML を上書きするとき、前より短くなった
+  ぶんが切り詰められないため。もう一度ビルドすれば消える（Netlify は毎回まっさら
+  なので起きない）。ページを削ったあとに変な文字が出ていたら、まずこれを疑う
 - フィードのエラーや警告への対処は `.claude/skills/feed-triage/` にまとめてある
 - 番組を新しく登録する手順は `.claude/skills/add-channel/` にまとめてある
 

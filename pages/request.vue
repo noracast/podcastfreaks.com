@@ -4,6 +4,10 @@
     <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
     <p>登録してほしい番組の URL か番組名を入れると、配信元の RSS フィードを探して、登録済みかどうかまで調べます。URL は Spotify・Apple Podcasts・YouTube・番組サイト・RSS フィードのどれでも構いません。分かるものを、スペース区切りでいくつでも入れられます。</p>
 
+    <!-- ブックマークレットは、ページの一番下だと気づかれない。
+         説明のすぐ下、入れる欄の手前に、畳んだまま小さく置く -->
+    <request-bookmarklet />
+
     <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
          ラベルも補足も置かない（同じことを二度読ませない） -->
     <form class="search" @submit.prevent="lookup">
@@ -17,93 +21,134 @@
     <template v-if="searched && !loading">
       <h3>{{ candidates.length ? 'Results' : 'Not found' }}</h3>
 
-      <ul class="candidates">
-        <!-- まだ登録されていないものが本題なので、そちらを先に並べる -->
-        <li v-for="channel in candidates" :key="channel.feed" :class="{ 'is-registered': channel.matched.length }">
-          <!-- 本当にこの番組かを確かめたいときのために、ジャケットと
-               番組名まわりを Apple Podcasts へのリンクにする。
-               状態やボタンは対象にしないので、リンクは2つに分けている。
-               Apple に無い番組（iTunes 以外から見つけた場合）は素の要素で出す。
-
-               ここは a-blank ではなく素の a。component の :is に
-               コンポーネント名を文字列で渡しても解決されず、
-               <a-blank> という不明な要素のまま出てリンクにならない -->
-          <component
-            :is="channel.apple ? 'a' : 'div'"
-            v-if="channel.artwork"
-            class="art"
-            :href="channel.apple || undefined"
-            :target="channel.apple ? '_blank' : undefined"
-            :rel="channel.apple ? 'noopener' : undefined"
-            :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
-          >
-            <img class="cover" :src="channel.artwork" :alt="channel.title" width="80" height="80">
-          </component>
-          <div class="detail">
-            <component
-              :is="channel.apple ? 'a' : 'div'"
-              class="head"
-              :href="channel.apple || undefined"
-              :target="channel.apple ? '_blank' : undefined"
-              :rel="channel.apple ? 'noopener' : undefined"
-              :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
+      <!-- 登録済みは「もう載っている」ことが分かれば足りるので、ジャケットだけ
+           並べる。名前まで読ませると、本題（未登録）に辿り着くのが遅くなる。
+           押すと、その番組の送り先が下に出る（開くのは1つまで） -->
+      <section v-if="registeredChannels.length" class="group">
+        <h4 class="group-title">登録済み<span>{{ registeredChannels.length }}件</span></h4>
+        <!-- 1件しか無いときは、下の枠にジャケットが出ている。同じ絵を2つ出さない -->
+        <ul v-if="registeredChannels.length > 1" class="covers">
+          <li v-for="channel in registeredChannels" :key="channel.feed">
+            <button
+              type="button"
+              class="cover-button"
+              :class="{ 'is-open': registeredKey(channel) === openRegisteredKey }"
+              :title="registeredTitle(channel)"
+              :aria-expanded="String(registeredKey(channel) === openRegisteredKey)"
+              @click="toggleRegistered(channel)"
             >
-              <p class="title">{{ channel.title }}</p>
-              <p class="meta">{{ channelMeta(channel) }}</p>
-            </component>
-            <!-- 登録済みかどうかは static/registered.json と突き合わせている。
-                 フィード URL と番組名のどちらかが当たれば「登録済みの可能性」
-                 として出す。完全一致だけでは取りこぼすため。
+              <!-- 用意してあるカバーは -60 と -120 の2枚だけなので、
+                   どちらを使うかを image-size で指定する（components/cover.vue） -->
+              <cover v-if="hasCover(channel)" :channel="registeredKey(channel)" :size="36" :image-size="60" radius="4px" />
+              <span v-else class="no-cover">{{ registeredTitle(channel).slice(0, 1) }}</span>
+            </button>
+          </li>
+        </ul>
 
-                 番組ごとの URL がまだ無いので、ここからはどこへも送っていない。
-                 番組の個別ページ（/channels/<key>/ のようなもの）ができたら、
-                 matched[0].key からその番組のページへのリンクを足す -->
-            <template v-if="channel.matched.length">
-              <p class="registered">
-                <span class="badge">登録済み</span>
-                <code>{{ channel.matched[0].key }}</code>{{ matchNote(channel.matched[0]) }} として登録されています。
-              </p>
-              <!-- 登録済みでも用がある人はいる（フィードの URL が変わった、
-                   ハッシュタグが違う）。行き止まりにせず、未登録のときと
-                   同じ形で送り先を出す。こちらは送り先がフォームだけ -->
-              <div class="next">
-                <p class="next-title">次のアクション</p>
-                <div class="choice">
-                  <div class="actions">
-                    <button type="button" class="send gray" @click="openForm(channel)">修正依頼を送る</button>
-                  </div>
-                  <p class="hint">フィードの URL が変わった、ハッシュタグが違うなどのご連絡はこちらから。</p>
-                </div>
+        <!-- 登録済みでも用がある人はいる（フィードの URL が変わった、
+             ハッシュタグが違う）。行き止まりにせず、送り先を出す。
+             形は未登録の行と揃える（座布団の上に、送り先の枠） -->
+        <ul v-if="openRegisteredChannel" class="candidates">
+          <li>
+            <div class="row">
+              <div v-if="hasCover(openRegisteredChannel)" class="art">
+                <cover :channel="registeredKey(openRegisteredChannel)" :size="40" :image-size="60" radius="3px" />
               </div>
-            </template>
-            <template v-else>
-              <p class="unregistered"><span class="badge new">未登録</span>この番組はまだ登録されていません。</p>
-              <!-- 送り先は2つあって、どちらか一方でよい。
-                   枠で囲って「ここから選ぶ」ことが分かるようにする -->
-              <div class="next">
-                <p class="next-title">次のアクション<span>どちらか一方</span></p>
-                <div class="choice">
-                  <div class="actions">
-                    <a-blank class="send" :href="issueUrl(channel)">Githubでリクエスト</a-blank>
-                  </div>
-                  <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
-                </div>
-                <div class="choice">
-                  <div class="actions">
-                    <button type="button" class="send gray" @click="openForm(channel)">フォームから送る</button>
-                  </div>
-                  <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
-                </div>
+              <span v-else class="no-cover">{{ registeredTitle(openRegisteredChannel).slice(0, 1) }}</span>
+              <div class="head">
+                <!-- 番組ごとの URL がまだ無いので、名前を出すだけにしている。
+                     番組の個別ページ（/channels/<key>/ のようなもの）ができたら、
+                     ここからその番組のページへのリンクにする -->
+                <p class="title">{{ registeredTitle(openRegisteredChannel) }}</p>
+                <p class="meta">
+                  <!-- 当て方が番組名やドメインのときだけ添える（外すこともある判断材料） -->
+                  <span v-if="matchNote(openRegisteredChannel.matched[0])" class="key">{{ matchNote(openRegisteredChannel.matched[0]) }}</span>{{ channelMeta(openRegisteredChannel) }}
+                </p>
               </div>
-            </template>
-          </div>
-        </li>
-        <!-- 見つからなかったときも、同じ座布団で出す。結果の形が変わると、
-             何が起きたのかを読み直すことになる。
-             送れるのは番組の URL があるときだけ。名前だけのリクエストは、
-             受け取った側が番組を特定するところから始めることになり、
-             フィードに辿り着けないことも多い -->
-        <li v-if="!candidates.length" class="is-unknown">
+              <!-- ジャケットをもう一度押しても閉じられるが、こちらにも出口を置く。
+                   1件しか無いときは並びが無く、閉じると開き直せないので出さない -->
+              <button v-if="registeredChannels.length > 1" type="button" class="toggle close" aria-label="閉じる" @click="openRegisteredKey = ''">×</button>
+            </div>
+
+            <div class="next">
+              <div class="choice">
+                <div class="actions">
+                  <button type="button" class="send gray" @click="openForm(openRegisteredChannel)">修正依頼を送る</button>
+                </div>
+                <p class="hint">フィードの URL が変わった、ハッシュタグが違うなどのご連絡はこちらから。</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section v-if="unregisteredChannels.length" class="group">
+        <h4 class="group-title">未登録<span>{{ unregisteredChannels.length }}件</span></h4>
+        <ul class="candidates">
+          <li v-for="channel in unregisteredChannels" :key="channel.feed">
+            <div class="row">
+              <!-- 本当にこの番組かを確かめたいときのために、ジャケットと
+                   番組名まわりを Apple Podcasts へのリンクにする。
+                   ボタンは対象にしないので、リンクは2つに分けている。
+                   Apple に無い番組（iTunes 以外から見つけた場合）は素の要素で出す。
+
+                   ここは a-blank ではなく素の a。component の :is に
+                   コンポーネント名を文字列で渡しても解決されず、
+                   <a-blank> という不明な要素のまま出てリンクにならない -->
+              <component
+                :is="channel.apple ? 'a' : 'div'"
+                v-if="channel.artwork"
+                class="art"
+                :href="channel.apple || undefined"
+                :target="channel.apple ? '_blank' : undefined"
+                :rel="channel.apple ? 'noopener' : undefined"
+                :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
+              >
+                <img class="cover" :src="channel.artwork" :alt="channel.title" width="40" height="40">
+              </component>
+              <component
+                :is="channel.apple ? 'a' : 'div'"
+                class="head"
+                :href="channel.apple || undefined"
+                :target="channel.apple ? '_blank' : undefined"
+                :rel="channel.apple ? 'noopener' : undefined"
+                :title="channel.apple ? 'Apple Podcasts で開く' : undefined"
+              >
+                <p class="title">{{ channel.title }}</p>
+                <p class="meta">{{ channelMeta(channel) }}</p>
+              </component>
+              <!-- 送り先は行ごとに違うだけで中身は同じ。10件並ぶと同じ枠が
+                   10回出るので、押されるまで畳んでおく（1件のときは開いた状態で出す） -->
+              <button type="button" class="toggle" :aria-expanded="String(isOpen(channel))" @click="toggleRow(channel)">リクエスト</button>
+            </div>
+
+            <!-- 送り先は2つあって、どちらか一方でよい -->
+            <div v-if="isOpen(channel)" class="next">
+              <p class="next-title">どちらか一方</p>
+              <div class="choice">
+                <div class="actions">
+                  <a-blank class="send" :href="issueUrl(channel)">Githubでリクエスト</a-blank>
+                </div>
+                <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
+              </div>
+              <div class="choice">
+                <div class="actions">
+                  <button type="button" class="send gray" @click="openForm(channel)">フォームから送る</button>
+                </div>
+                <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 見つからなかったときも、同じ座布団で出す。結果の形が変わると、
+           何が起きたのかを読み直すことになる。
+           送れるのは番組の URL があるときだけ。名前だけのリクエストは、
+           受け取った側が番組を特定するところから始めることになり、
+           フィードに辿り着けないことも多い -->
+      <ul v-if="!candidates.length" class="candidates">
+        <li class="is-unknown">
           <div class="detail">
             <p class="title">{{ unknownChannel.title || '番組が見つかりませんでした' }}</p>
             <p v-if="url" class="meta">{{ url }}</p>
@@ -157,8 +202,6 @@
       <p v-if="!searched" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
       <request-form :values="formValues" />
     </section>
-
-    <request-bookmarklet />
   </div>
 </template>
 
@@ -168,7 +211,7 @@
   max-width: 600px;
 }
 form.search {
-  margin-top: 30px;
+  margin-top: 20px;
   & input {
     font-size: 16px;
     padding: 10px;
@@ -188,19 +231,99 @@ form.search {
 .error {
   color: #c00;
 }
+/* 未登録・登録済みの区切り */
+.group {
+  margin-top: 25px;
+}
+.group-title {
+  font-size: 13px;
+  /* 見出しと中身の間隔。ジャケットの並びと座布団の並びで同じにする */
+  margin: 0 0 16px;
+  /* 件数は添え物。太さと色を落として続ける */
+  & span {
+    margin-left: 8px;
+    font-weight: normal;
+    color: #aaa;
+  }
+}
+/* ジャケットの並びのすぐ下に開いた枠が来るときだけ、間を空ける */
+.covers + .candidates {
+  margin-top: 12px;
+}
+/* 見つからなかったときは、見出し（Not found）の直後に座布団が来る */
+h3 + .candidates {
+  margin-top: 15px;
+}
+/* 登録済みのジャケットの並び。「もう載っている」ことが分かればよいので、
+   名前は出さず、押したときだけ下に出す */
+.covers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cover-button {
+  display: block;
+  padding: 0;
+  min-width: 0;
+  border: 0;
+  border-radius: 4px;
+  /* レイアウトの button は紫の塊なので、ここで解く */
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+  /* どれを開いているかを分かるようにする。ジャケットの外側に出すので、
+     border ではなく outline（大きさが変わらない） */
+  &.is-open {
+    outline: 2px solid #7f00ff;
+    outline-offset: 2px;
+  }
+}
+/* カバー画像を取れていない番組。頭文字だけの升目にする */
+.no-cover {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #ddd;
+  color: #666;
+  font-size: 15px;
+  font-weight: bold;
+}
+/* 座布団の中（開いた枠）では、未登録の行のジャケットと同じ大きさにする */
+.candidates .no-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  font-size: 16px;
+}
 .candidates {
   list-style: none;
+  /* ul の既定の余白を消して、見出しからの間隔をジャケットの並びと揃える */
+  margin: 0;
   padding: 0;
   /* 1件ずつ座布団を敷いて、どこまでが1番組かを分かるようにする */
   & li {
-    display: flex;
-    gap: 15px;
-    padding: 15px;
+    padding: 12px 15px;
     background-color: #f7f7f7;
     border-radius: 6px;
     &:not(:first-child) {
-      margin-top: 10px;
+      margin-top: 8px;
     }
+  }
+  /* 番組の行。ジャケット・番組名・ボタンを1行に収める */
+  & .row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   /* 座布団の上では、キーの印が背景に埋もれる。ここだけ白で抜く */
   & code {
@@ -212,13 +335,16 @@ form.search {
     border-bottom: 0;
   }
   & .cover {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     border-radius: 3px;
   }
-  /* 番組名と、その下の話数や日付までをひとまとまりのリンクにする。
-     見出しとして読めるままにしたいので、線も色の変化も付けない */
+  /* 番組名と、その下のキーや話数までをひとまとまりのリンクにする。
+     見出しとして読めるままにしたいので、線も色の変化も付けない。
+     余った幅もここで受ける（書かないとボタンが番組名に寄る） */
   & .head {
+    flex: 1;
+    min-width: 0;
     display: block;
     color: inherit;
     border-bottom: 0;
@@ -226,40 +352,68 @@ form.search {
       color: inherit;
     }
   }
-  & .detail {
-    /* 余った幅をここで受ける。書かないと中身の幅のまま縮み、
-       「次のアクション」の枠だけ座布団の右端に届かない */
-    flex: 1;
-    min-width: 0;
-  }
   & p {
     margin: 0;
   }
   & .title {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
   }
   & .meta {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
     margin-top: 3px;
   }
-  & .registered, & .unregistered {
-    font-size: 13px;
-    /* 番組の情報と、状態から先の話とを読み分けられるよう、ここで一段空ける */
-    margin-top: 20px;
+  /* どのキーで載っているか。作者や話数と続けて読ませると境目が
+     分からないので、ここで間を空ける */
+  & .key {
+    margin-right: 8px;
+  }
+  /* 送り先を開くボタン。押せることは分かるが、
+     中の「送る」ボタンより弱く見せる */
+  & .toggle {
+    flex: none;
+    min-width: 0;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+    background-color: #e4e4e4;
+    cursor: pointer;
+    &:hover {
+      background-color: #d6d6d6;
+    }
+    /* 開いている間は押し込んだ見え方にする */
+    &[aria-expanded="true"] {
+      color: #666;
+      background-color: #d6d6d6;
+    }
+    /* 閉じるだけのものは、枠に溶かしておく。線も細く */
+    &.close {
+      font-size: 20px;
+      font-weight: normal;
+      color: #999;
+      background-color: transparent;
+      &:hover {
+        color: #444;
+        background-color: transparent;
+      }
+    }
   }
   /* 見つからなかったものは、ジャケットも話数も無い。入れてもらった URL を
      控えめに出すだけなので、そこだけ折り返しを許す */
-  & li.is-unknown .meta {
-    word-break: break-all;
-  }
-  /* 登録済みのものは、すでに用が済んでいる。一段引いた見え方にする */
-  & li.is-registered {
-    color: #666;
-    & .title {
-      color: #444;
+  & li.is-unknown {
+    padding: 15px;
+    & .meta {
+      word-break: break-all;
     }
+  }
+  & .unregistered {
+    font-size: 13px;
+    /* 入れてもらったものと、そこから先の話とを読み分けられるよう一段空ける */
+    margin-top: 20px;
   }
   /* 送ったあとに何が起きるかの補足。ボタンより弱く */
   & .hint {
@@ -267,9 +421,8 @@ form.search {
     color: #888;
     margin-top: 8px;
   }
-
 }
-/* 状態の印。文字だけだと本文に紛れるので、小さく囲って先頭に置く */
+/* 見つからなかったときの印。文字だけだと本文に紛れるので、小さく囲って先頭に置く */
 .badge {
   display: inline-block;
   margin-right: 8px;
@@ -277,17 +430,9 @@ form.search {
   border-radius: 10px;
   font-size: 11px;
   font-weight: bold;
-  color: #666;
-  background-color: #e8e8e8;
-  &.new {
-    color: #fff;
-    background-color: #7f00ff;
-  }
   /* 見つからなかった印。押す先はあるが、番組が分かっているわけではない */
-  &.unknown {
-    color: #fff;
-    background-color: #999;
-  }
+  color: #fff;
+  background-color: #999;
 }
 .actions {
   margin-top: 8px;
@@ -339,11 +484,16 @@ form.search {
 /* 送り先が2つあることを、枠で囲って示す。
    座布団（薄いグレー）の上に置くので、こちらは白で抜いて浮かせる */
 .next {
-  margin-top: 14px;
+  margin-top: 12px;
   padding: 15px;
   background-color: #fff;
   border: 1px solid #e4e4e4;
   border-radius: 6px;
+  /* 座布団の中（未登録の行）では最初の要素が詰まって見えるので、
+     見出しの既定の余白だけ消しておく */
+  & p:first-child {
+    margin-top: 0;
+  }
 }
 .next-title {
   font-size: 11px;
@@ -361,6 +511,10 @@ form.search {
    並んでいることが伝わる */
 .choice {
   margin-top: 12px;
+  /* 送り先が1つだけのとき（登録済み）は、枠の余白だけで足りる */
+  &:first-child {
+    margin-top: 0;
+  }
   &:not(:first-of-type) {
     margin-top: 14px;
     padding-top: 14px;
@@ -425,9 +579,12 @@ a:not(.send) {
 import searchTerms, { appleIdFromUrl, cleanTitle, hostLabel, looksLikeFeed, pathLabel, startsWithHostLabel } from '@/lib/podcast-source.js'
 import toChannels, { lookupUrl, searchUrl, episodeSearchUrl, collectionIds } from '@/lib/itunes.js'
 import oembedUrl from '@/lib/spotify.js'
-import matchRegistered, { matchByHost, normalizeTitle } from '@/lib/registered-match.js'
+import matchRegistered, { matchByHost, normalizeTitle, searchRegistered } from '@/lib/registered-match.js'
 import feedTitle from '@/lib/feed-title.js'
 import parseQuery from '@/lib/parse-query.js'
+import Cover from '@/components/cover.vue'
+// レイアウトが既に読んでいるので、ここで読んでも増えない
+import build_info from '@/static/downloads/build_info.json'
 import registerRequestIssueUrl from '@/lib/register-request-issue.js'
 import requestFormValues from '@/lib/request-form-values.js'
 import { jst } from '@/lib/jst'
@@ -439,7 +596,7 @@ import RequestBookmarklet from '@/components/request-bookmarklet.vue'
 const REGISTERED_JSON = '/registered.json'
 
 export default {
-  components: { RequestForm, RequestBookmarklet },
+  components: { RequestForm, RequestBookmarklet, Cover },
   setup() {
     useHead({
       title: 'Register request | Podcast Freaks - Japanese techie podcast archive'
@@ -457,7 +614,11 @@ export default {
       registeredAvailable: true,
       // 送信フォームは、必要になったときだけ開く
       formOpen: false,
-      formValues: {}
+      formValues: {},
+      // 送り先を開いている行（未登録）。キーはフィードの URL
+      openRows: {},
+      // ジャケットを押して開いている番組（登録済み）。1つだけ持つ
+      openRegisteredKey: ''
     }
   },
   mounted: function() {
@@ -510,6 +671,26 @@ export default {
     name: function() {
       return this.parsed.name
     },
+    unregisteredChannels: function() {
+      return this.candidates.filter(channel => !channel.matched.length)
+    },
+    // 同じ番組に当たった候補が複数出ることがある（iTunes に同名の別番組があり、
+    // そちらも番組名で当たる。rebuild で2件出ていた）。ここで並べるのは
+    // **登録済みの番組**なので、キーで1つにまとめる
+    registeredChannels: function() {
+      const seen = new Set()
+      return this.candidates.filter(channel => {
+        const key = this.registeredKey(channel)
+        if(!key || seen.has(key)) return false
+        seen.add(key)
+        return true
+      })
+    },
+    // ジャケットを押して開いている番組。開くのは1つまで
+    openRegisteredChannel: function() {
+      if(!this.openRegisteredKey) return null
+      return this.registeredChannels.find(channel => this.registeredKey(channel) === this.openRegisteredKey) || null
+    },
     // 1件でも「まだ登録されていない番組」があるか。
     // 出ているのが登録済みのものだけなら、送り先の案内は要らない
     sendable: function() {
@@ -555,11 +736,26 @@ export default {
       try {
         const registered = await this.loadRegistered()
         const channels = await this.findChannels(registered)
-        this.candidates = channels.map(channel => ({
+        const candidates = channels.map(channel => ({
           ...channel,
           // 登録中の一覧から作った候補は、どれに当たったかを持っている
           matched: channel.matched || matchRegistered(registered, channel)
         }))
+        // 登録済みの番組は、iTunes の結果を待たずに必ず出す。iTunes の検索に
+        // 出てこない番組（Apple に載っていない、名前が違う）でも、
+        // 「もう載っている」ことだけは一覧から答えられる（nora → noracast）
+        const found = searchRegistered(registered, this.name).filter(
+          entry => !candidates.some(channel => channel.matched.some(match => match.key === entry.key))
+        )
+        this.candidates = [...candidates, ...found.map(entry => this.fromRegistered(entry))]
+        // 迷いようが無いものは、畳まずに出す。ブックマークレットや URL から
+        // 来た場合はたいてい1件で、そこでクリックを1回増やしたくない
+        this.openRows = this.unregisteredChannels.length === 1
+          ? { [this.unregisteredChannels[0].feed]: true }
+          : {}
+        this.openRegisteredKey = this.registeredChannels.length === 1
+          ? this.registeredKey(this.registeredChannels[0])
+          : ''
       } catch {
         this.error = '番組を探せませんでした。しばらくしてからもう一度お試しください。'
       } finally {
@@ -697,6 +893,31 @@ export default {
         // 読めないフィードは珍しくない（CORS）。手がかりが1つ減るだけ
         return ''
       }
+    },
+    isOpen: function(channel) {
+      return !!this.openRows[channel.feed]
+    },
+    // 出すのは登録してある側の番組名。iTunes 側の名前を出すと、同名の別番組に
+    // 当たったときにその名前が出てしまう
+    registeredTitle: function(channel) {
+      return (channel.matched.length && channel.matched[0].title) || channel.title || ''
+    },
+    // 登録済みの番組を指すキー。ジャケットの画像もこれで引く
+    registeredKey: function(channel) {
+      return channel.matched.length ? channel.matched[0].key : ''
+    },
+    // カバー画像はビルド時に取ったもの（static/downloads/cover）を使う。
+    // 取れていない番組もあるので、そのときは頭文字で代わりの升目を出す
+    hasCover: function(channel) {
+      const entry = build_info.channels[this.registeredKey(channel)]
+      return !!(entry && entry.cover)
+    },
+    toggleRegistered: function(channel) {
+      const key = this.registeredKey(channel)
+      this.openRegisteredKey = this.openRegisteredKey === key ? '' : key
+    },
+    toggleRow: function(channel) {
+      this.openRows = { ...this.openRows, [channel.feed]: !this.openRows[channel.feed] }
     },
     // どこで当たったかの添え書き。フィードの URL が一致したときは、
     // 言うまでもないので何も出さない
