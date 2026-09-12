@@ -7,7 +7,7 @@
     <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
          ラベルも補足も置かない（同じことを二度読ませない） -->
     <form class="search" @submit.prevent="lookup">
-      <input id="query" v-model="query" type="text" aria-label="番組の URL か番組名" placeholder="https://open.spotify.com/show/... fukabori.fm">
+      <input id="query" v-model="query" type="text" aria-label="番組の URL か番組名" placeholder="https://noracast.jp/feed.xml noracast">
 
       <button type="submit" :disabled="loading || !query.trim()">{{ loading ? 'Searching…' : 'Search' }}</button>
     </form>

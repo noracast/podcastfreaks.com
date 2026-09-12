@@ -110,6 +110,16 @@ pnpm test:watch  # 直しながら見る
 ヘッダーなどの紫のグラデーションは、もとは Sass のミックスインだった。
 `assets/common.css` の `:root` に `--brand-texture` などとして置いてある。
 
+## 例示に使う名前
+
+画面に出す例（placeholder など）は自分たちのもので統一する。番組は `noracast`
+（フィードは `https://noracast.jp/feed.xml`、X は `@noracast_`、ハッシュタグは
+`#noracast`）。人は X が `@naokazu_terada`、GitHub が `naokazuterada`
+（**アンダースコアの有無が違う**）。
+
+他所の番組を例に出すと、その番組のフィードやアカウントが変わったときに、
+こちらの画面だけ古い情報を出し続けることになる。
+
 ## 依存関係
 
 Nuxt 4 / Vue 3 / Vite。Node は `.node-version` に固定。
