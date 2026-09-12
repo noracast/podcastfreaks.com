@@ -279,8 +279,10 @@ button {
         & a {
           font-size: 10px;
         }
+        /* 広い画面と同じ 2em（ここでは 10px 文字なので 20px）。
+           固定値で詰めると、文字の大きさに対して間隔だけが狭く見える */
         & a:not(:first-child) {
-          margin-left: 10px;
+          margin-left: 2em;
         }
       }
       /* Chrome は日本語を 10px 未満で描かないので、font-size ではなく縮小で

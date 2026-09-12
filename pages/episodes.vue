@@ -4,7 +4,7 @@
        事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
   <div class="root">
     <!-- 上に貼り付いたまま、下の並びだけが動く。押した日まで辿れる -->
-    <episode-heatmap class="heatmap" @pick="pickDay" />
+    <episode-heatmap class="heatmap" :current="currentDay" @pick="pickDay" />
     <div class="days">
       <!-- 過去へ飛んだあと、新着へ戻る道を残しておく -->
       <div v-if="!fromLatest" class="back">
@@ -12,7 +12,7 @@
       </div>
       <template v-for="day in days" :key="day.key">
         <div :id="`day-${day.key}`" class="border">
-          <span class="date">{{ day.label }}</span>
+          <span class="date">{{ day.label }}<span class="weekday">{{ day.weekday }}</span></span>
         </div>
         <episode-row v-for="episode in day.episodes" :key="episode.id" :episode="episode" />
       </template>
@@ -113,6 +113,13 @@
   /* 数字の幅を揃えて、日ごとの見出しの並びが揺れないようにする */
   font-variant-numeric: tabular-nums;
 }
+/* 曜日は添え物。日付より薄く、小さく。区切り線（#e8e8e8）よりは濃くして、
+   読めるところで止める */
+.weekday {
+  margin-left: 6px;
+  color: #c8c8c8;
+  font-size: 11px;
+}
 /* 触れている間は塞ぐ。濃淡を読むときに、下を通る並びが透けていると
    目が散る。ポインタのある環境だけにする（指では離れられない） */
 @media (hover: hover) {
@@ -137,14 +144,20 @@
     height: auto;
     margin-left: -20px;
     margin-right: 0;
+    /* 日付の上下の余白は .date が持つ。ここに margin を残すと、
+       下だけがそのぶん広くなる */
+    margin-bottom: 0;
   }
   .date {
     position: relative;
+    /* インラインのままだと上下の余白を持てない（height も効かない）ので、
+       ブロックにして上下を同じだけ空ける */
+    display: block;
     margin-left: 20px;
     /* 左右の余白は、区画の端（20px）に合わせる */
-    padding: 0 20px;
-    height: 20px;
-    line-height: 20px;
+    padding: 16px 20px;
+    height: auto;
+    line-height: 1;
     font-size: 11px;
   }
 }
@@ -157,6 +170,10 @@ import counts from '@/static/downloads/daily-counts.json'
 
 // 話数のある最初の月。これより前は読みに行かない
 const FIRST_MONTH = Object.keys(counts)[0].slice(0, 7)
+
+// 曜日。dayjs の ddd は日本語（lib/jst.js でロケールを ja にしてある）なので、
+// 濃淡の目印（components/episode-heatmap.vue）と同じ英語の略で出す
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 // 1度に遡る上限。1話も出ていない月が続くことがあるので
 // （2009〜2012 は疎）、何も足せなかったときは次の月へ進む
@@ -184,7 +201,9 @@ export default {
       loadedFrom: null,
       loading: false,
       // 最新から続けて見ているか。heatmap で過去へ飛ぶと false になる
-      fromLatest: true
+      fromLatest: true,
+      // いま一覧の先頭に見えている日。濃淡の同じ日に印を付けるのに使う
+      currentDay: ''
     }
   },
   computed: {
@@ -197,7 +216,7 @@ export default {
         const date = jst(episode.pubDate)
         const key = date.format('YYYY-MM-DD')
         if(!current || current.key !== key) {
-          current = { key, label: date.format('YYYY.MM.DD'), episodes: [] }
+          current = { key, label: date.format('YYYY.MM.DD'), weekday: WEEKDAYS[date.day()], episodes: [] }
           days.push(current)
         }
         current.episodes.push(episode)
@@ -208,15 +227,36 @@ export default {
       return this.loadedFrom === FIRST_MONTH
     }
   },
+  watch: {
+    // 続きを読んだり、過去へ飛んだりして並びが変わったら見直す
+    days: function() {
+      this.$nextTick(this.updateCurrentDay)
+    }
+  },
   mounted: function() {
     // 下端が見えたら続きを読む。スクロールを毎回数えるより軽い
     this.observer = new IntersectionObserver(entries => {
       if(entries.some(entry => entry.isIntersecting)) this.loadMore()
     }, { rootMargin: '200px' })
     this.observer.observe(this.$refs.sentinel)
+
+    // 先頭に見えている日を追う。1フレームに1回までにする
+    this.onScroll = () => {
+      if(this.scrollFrame) return
+      this.scrollFrame = requestAnimationFrame(() => {
+        this.scrollFrame = 0
+        this.updateCurrentDay()
+      })
+    }
+    window.addEventListener('scroll', this.onScroll, { passive: true })
+    window.addEventListener('resize', this.onScroll, { passive: true })
+    this.updateCurrentDay()
   },
   beforeUnmount: function() {
     if(this.observer) this.observer.disconnect()
+    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('resize', this.onScroll)
+    if(this.scrollFrame) cancelAnimationFrame(this.scrollFrame)
   },
   methods: {
     // 月ごとのファイルを1つ読む。無い月（1話も出ていない月）は 404 になるので、
@@ -286,17 +326,34 @@ export default {
       this.fromLatest = true
       window.scrollTo({ top: 0, behavior: 'smooth' })
     },
+    // 上に貼り付いているもの（ヘッダーと濃淡）の高さ。
+    // offsetHeight は整数に丸めるので、端数のぶんずれる
+    stickyOffset: function() {
+      const header = document.querySelector('header')
+      const heatmap = this.$el.querySelector('.heatmap')
+      return (header ? header.getBoundingClientRect().height : 0) +
+        (heatmap ? heatmap.getBoundingClientRect().height : 0)
+    },
+    // 貼り付いているものの下に来ている、最後の日付。それが「いま読んでいる日」。
+    // 日付は上から順に並んでいるので、下に出た時点で見るのをやめる
+    updateCurrentDay: function() {
+      const offset = this.stickyOffset()
+      let current = ''
+      for(const day of this.days) {
+        const el = document.getElementById(`day-${day.key}`)
+        if(!el) continue
+        if(el.getBoundingClientRect().top - offset > 1) break
+        current = day.key
+      }
+      this.currentDay = current
+    },
     scrollToDay: function(key) {
       const target = document.getElementById(`day-${key}`)
       if(!target) return
       // 貼り付いているぶんだけ上に隠れてしまうので、その高さを引く。
       // 余白は足さない。少しでも空けると、そこだけ下の並びが覗いて
-      // 濃淡と区切り線の間に隙間ができる。
-      // offsetHeight は整数に丸めるので、端数のぶんずれる
-      const header = document.querySelector('header')
-      const heatmap = this.$el.querySelector('.heatmap')
-      const offset = (header ? header.getBoundingClientRect().height : 0) +
-        (heatmap ? heatmap.getBoundingClientRect().height : 0)
+      // 濃淡と区切り線の間に隙間ができる
+      const offset = this.stickyOffset()
       window.scrollTo({
         top: target.getBoundingClientRect().top + window.scrollY - offset,
         behavior: 'smooth'

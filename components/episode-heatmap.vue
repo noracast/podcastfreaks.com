@@ -6,12 +6,23 @@
          矢印だけでなく、見出しの行のどこを押しても開け閉めできる。
          この行だけは幅で止めず、画面の端まで使う（矢印を右端に置くため） -->
     <div class="head" @click="collapsed = !collapsed">
-      <h2 class="period">{{ period }}</h2>
-      <span class="total">{{ totalLabel }}</span>
-      <!-- 押したときの動きは行が持っているので、ここでは受けない -->
-      <button class="fold" type="button" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" :aria-expanded="!collapsed">
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- 見出しは動かさない。どの範囲を見ているかは隣の話数（totalLabel）が
+           言う。見出しに入れると、選び直すたびに見出しが変わってしまう -->
+      <h2 class="period">Episodes</h2>
+      <!-- 押したときの動きは行が持っているので、ここでは受けない。
+           初めは畳んであるので、矢印ではなく濃淡そのものの形を出す
+           （何が開くのかが分かる）。開いている間は色を付ける -->
+      <button class="fold" type="button" :title="collapsed ? '濃淡を開く' : '濃淡を畳む'" :aria-label="collapsed ? '濃淡を開く' : '濃淡を畳む'" :aria-expanded="!collapsed">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="4" width="5" height="5" rx="1.2" opacity="0.45" />
+          <rect x="9.5" y="4" width="5" height="5" rx="1.2" opacity="0.75" />
+          <rect x="17" y="4" width="5" height="5" rx="1.2" opacity="0.3" />
+          <rect x="2" y="11.5" width="5" height="5" rx="1.2" />
+          <rect x="9.5" y="11.5" width="5" height="5" rx="1.2" opacity="0.3" />
+          <rect x="17" y="11.5" width="5" height="5" rx="1.2" opacity="0.6" />
+          <rect x="2" y="19" width="5" height="5" rx="1.2" opacity="0.3" />
+          <rect x="9.5" y="19" width="5" height="5" rx="1.2" opacity="0.55" />
+          <rect x="17" y="19" width="5" height="5" rx="1.2" opacity="0.85" />
         </svg>
       </button>
     </div>
@@ -22,16 +33,23 @@
          変わるので、決め打ちの max-height にはできない -->
       <div class="fold-wrap">
         <div class="fold-inner">
-          <!-- 狭い画面では、右の並びの代わりにこちらを出す。選択肢を
-               全部見せずに済む（出し分けは CSS のほうでしている） -->
-          <div class="years-select">
-            <select v-model="selected" aria-label="濃淡に出す期間">
-              <option v-for="year in years" :key="year.value" :value="year.value">{{ year.label }}</option>
-            </select>
-            <!-- 素の矢印を消しているので、畳むボタンと同じ形を重ねる -->
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+          <!-- 話数は、どの範囲のものかが分かる場所に置く。見出しに入れると
+               期間を選び直すたびに見出しが変わる。
+               狭い画面ではプルダウンの隣、広い画面では（プルダウンが
+               消えるので）濃淡の左上に出る -->
+          <div class="period-row">
+            <!-- 狭い画面では、右の並びの代わりにこちらを出す。選択肢を
+                 全部見せずに済む（出し分けは CSS のほうでしている） -->
+            <div class="years-select">
+              <select v-model="selected" aria-label="濃淡に出す期間">
+                <option v-for="year in years" :key="year.value" :value="year.value">{{ year.label }}</option>
+              </select>
+              <!-- 素の矢印を消しているので、畳むボタンと同じ形を重ねる -->
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <span class="total">{{ totalLabel }}</span>
           </div>
           <div class="body">
             <div class="chart-side">
@@ -53,7 +71,7 @@
                         v-for="cell in week"
                         :key="cell.key"
                         class="cell"
-                        :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed }]"
+                        :class="[`level-${cell.level}`, { 'is-blank': cell.future || cell.outside, 'is-listed': cell.listed, 'is-current': cell.key === current }]"
                         :title="cell.label"
                         @click="cell.listed && $emit('pick', cell.key)"
                       />
@@ -130,9 +148,10 @@
     /* 濃淡との境目。日ごとの区切り線（#ccc）より薄くして、
        ここが区画の切れ目だと分かる程度にとどめる */
     border-bottom: 1px solid #e8e8e8;
-    /* 上下で分けて、About の h2 の下の余白（0.83em）と同じ 20px にする */
+    /* 見出しの下の余白（0.83em ＝ 20px）は、線の上（padding）で持つ。
+       線から下は、左右の余白と同じ 20px 空ける */
     padding-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     transition: margin-bottom 0.22s, padding-bottom 0.22s;
     /* このページの見出し。About の h2 と同じ大きさ・太さにしてある
        （大きさは assets/common.css の --heading-size。狭い画面で
@@ -143,11 +162,6 @@
       color: #444;
       font-size: var(--heading-size);
       font-weight: bold;
-      font-variant-numeric: tabular-nums;
-    }
-    .total {
-      flex: none;
-      font-size: 12px;
       font-variant-numeric: tabular-nums;
     }
     /* 濃淡ごと畳む */
@@ -169,7 +183,7 @@
       color: #999;
       cursor: pointer;
       & svg {
-        transition: transform 0.22s;
+        transition: color 0.22s;
       }
     }
   }
@@ -197,9 +211,11 @@
       margin-bottom: 0;
       border-bottom-color: transparent;
     }
-    .head .fold svg {
-      transform: rotate(180deg);
-    }
+  }
+  /* 開いている間は色を付けて、いま出ていることを示す
+     （矢印ではないので、向きでは表せない） */
+  &:not(.is-collapsed) .fold {
+    color: #7f00ff;
   }
 
   /* 年の並びは絶対位置で右に置く。並べて置くと、年のほうが高いせいで
@@ -275,6 +291,14 @@
        付けると並び全体がうるさくなる）。触れたときだけ輪郭を出す */
     &.is-listed {
       cursor: pointer;
+    }
+    /* いま一覧の先頭に見えている日。スクロールに合わせて動くので、
+       濃淡の段（紫の濃さ）と取り違えないよう、色ではなく縁で示す。
+       隣のセルに重なるので、前に出しておく */
+    &.is-current {
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--brand-base);
     }
     /* 更新が多い日ほど濃くする。段は 0 / 1〜2 / 3〜4 / 5〜7 / 8話以上。
        1日の中央値が4話なので、その前後で分かれるようにしてある。
@@ -368,6 +392,19 @@
       }
     }
   }
+  /* 期間の選択と話数の行。狭い画面ではプルダウンの隣、広い画面では
+     プルダウンが消えるので話数だけが濃淡の左上に残る */
+  .period-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .total {
+    flex: none;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
   /* 年を選ぶプルダウン。狭い画面でだけ出す（広い画面では上の並びを見せる）。
      素の枠のままだと並びの中で浮くので、「元に戻す」ボタン（pages/episodes.vue
      の .back）と同じグレーの座布団に載せる */
@@ -427,9 +464,12 @@
   .heatmap .years-select select:hover {
     background-color: #e0e0e0;
   }
-  /* 押せる日は、触れると輪郭を出して分かるようにする */
+  /* 押せる日は、触れると輪郭を出して分かるようにする。
+     地の色に埋もれないよう、内側を白で1本抜いてから縁を引く */
   .heatmap .cell.is-listed:hover {
-    box-shadow: 0 0 0 2px rgba(27, 31, 36, 0.5);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(27, 31, 36, 0.55);
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -448,33 +488,10 @@
     }
     .years-select {
       display: block;
-      margin-bottom: 10px;
     }
   }
 }
 
-/* 見出しと話数が1行に並びきらない幅では、話数を下の行へ落とす。
-   横に並べたままだと（どちらも縮まないので）ページごと横にはみ出す */
-@media (max-width: 480px) {
-  .heatmap {
-    .head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      column-gap: 10px;
-      /* 折り返したときに、見出しの行間より詰まって見えないだけ空ける */
-      row-gap: 6px;
-      .period,
-      .total {
-        grid-column: 1;
-      }
-      /* 畳むボタンは、落とした話数に付いていかず見出しの行に残す */
-      .fold {
-        grid-column: 2;
-        grid-row: 1;
-      }
-    }
-  }
-}
 </style>
 
 <script>
@@ -502,13 +519,22 @@ const levelOf = (count) => {
 }
 
 export default {
+  props: {
+    // いま一覧の先頭に見えている日（YYYY-MM-DD）。スクロールに合わせて
+    // pages/episodes.vue が渡してくる
+    current: {
+      type: String,
+      default: ''
+    }
+  },
   emits: ['pick'],
   data: function() {
     return {
       // 'recent' か西暦4桁
       selected: RECENT,
-      // 濃淡を畳んでいるか
-      collapsed: false,
+      // 濃淡を畳んでいるか。**初めは畳んでおく**。開くと画面の上半分を
+      // 占めるので、まず一覧が見えるほうがよい
+      collapsed: true,
       // 年の並びが、どちらの端まで来ているか。端を消すかどうかに使う
       yearsAtStart: true,
       yearsAtEnd: false
@@ -519,15 +545,10 @@ export default {
     // 事前レンダリングした結果と閲覧者のブラウザで食い違う（lib/jst.js）
     today: function() { return jst(build_info.updated).startOf('date') },
     weekdays: function() { return WEEKDAYS },
-    // 見出しはどの範囲を見ているかだけ。話数は隣に小さく出す
-    // （見出しに入れると、桁が増えるほど長くなってしまう）
-    period: function() {
-      return this.selected === RECENT
-        ? 'Episodes in the last year'
-        : `Episodes in ${this.selected}`
-    },
+    // 見出しは「Episodes」で固定なので、どの範囲の話数なのかはここで言う
     totalLabel: function() {
-      return `${this.total.toLocaleString('en')} episodes`
+      const where = this.selected === RECENT ? 'in the last year' : `in ${this.selected}`
+      return `${this.total.toLocaleString('en')} episodes ${where}`
     },
     // 選べる年。話数のある最初の年から今年まで、新しいほうを先に並べる
     years: function() {
@@ -613,9 +634,14 @@ export default {
     selected: function() {
       this.$nextTick(this.scrollToEnd)
     },
-    // 畳んでいる間は測れない（高さが 0）ので、開いたときに測り直す
+    // 畳んでいる間は測れない（高さが 0）ので、開いたときに測り直す。
+    // 初めは畳んであるので、新しいほうへ寄せるのもここで行う
     collapsed: function(value) {
-      if(!value) this.$nextTick(this.measureYears)
+      if(value) return
+      this.$nextTick(() => {
+        this.scrollToEnd()
+        this.measureYears()
+      })
     }
   },
   mounted: function() {
