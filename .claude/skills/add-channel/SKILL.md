@@ -49,7 +49,7 @@ oEmbed の title    #60 コードを書かないのにプログラマなのか, 
 → エピソード検索   ムーザルのプログラミング絶望ラジオ | https://anchor.fm/s/107747d74/podcast/rss
 ```
 
-この経路はサイト側の `/add` でも使っている（`lib/spotify.js`・`lib/itunes.js`）。
+この経路はサイト側の `/request` でも使っている（`lib/spotify.js`・`lib/itunes.js`）。
 oEmbed は CORS も通るので、ブラウザからも呼べる。
 
 エピソード検索で見つからないとき（Apple に載っていない番組）は、埋め込みページの

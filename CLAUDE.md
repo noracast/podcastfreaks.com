@@ -45,7 +45,7 @@ Vite は使うものだけを読むため、ここを通さないと曜日が英
   `pnpm fetch-feeds` が生成する。gitignore 対象。ページは `build_info.json` を
   ビルド時に import するので、無いと中身のないサイトになる
 - `static/registered.json` も `pnpm fetch-feeds` が `data/rss.json` から作る
-  （gitignore 対象）。`/add` が「もう登録されている番組か」を判定するためだけの
+  （gitignore 対象）。`/request` が「もう登録されている番組か」を判定するためだけの
   軽い一覧で、キー・フィード・番組名しか持たない。`build_info.json` は一覧の
   初期表示に載るサイズなので、判定のために読ませない
 - エピソードは `build_info.json` ではなく `episodes/<key>.json` に番組ごとに

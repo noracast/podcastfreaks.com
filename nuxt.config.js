@@ -57,10 +57,8 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       crawlLinks: true,
-      // トップから辿れるページは crawlLinks が拾う。/add はサイレント
-      // リリースの間どこからもリンクしない（issue #228）ため、ここに
-      // 書かないと出力されない
-      routes: ['/', '/add/']
+      // トップから辿れるページは crawlLinks が拾う。入口はここだけ指定する
+      routes: ['/']
     }
   },
 

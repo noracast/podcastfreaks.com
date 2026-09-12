@@ -6,7 +6,7 @@
     <h3>ざっくりとした仕組みの解説</h3>
     <p>手動で登録しているのは、フィードURLと、公式X、公式ハッシュタグの３つで、残りの情報は取得したデータを元に作っています。フィードや画像の取得はビルド時に行っています。毎日00:00:00(UTC+0900)に、NetlifyのWebhookをIFTTTから叩いてビルドしています。<br><br><a-blank class="noborder" href="https://app.netlify.com/projects/podcast-freaks/deploys"><img class="badge" src="https://api.netlify.com/api/v1/badges/8fefaabc-7813-412d-a1ee-901215b39f14/deploy-status" alt="Netlify Status"></a-blank></p>
     <h3>フィードの取得状況</h3>
-    <p>毎日のビルドで見つかった問題は<nuxt-link to="/errors/">Errors ページ</nuxt-link>に出しています。取得できなかった番組のほか、収録時間やカバー画像を読み取れなかった番組も挙げています。<br>ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。原因が分からない場合はリクエストページからお知らせください。</p>
+    <p>毎日のビルドで見つかった問題は<nuxt-link to="/errors/">Errors ページ</nuxt-link>に出しています。取得できなかった番組のほか、収録時間やカバー画像を読み取れなかった番組も挙げています。<br>ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。原因が分からない場合は<nuxt-link to="/request/#form">リクエストページのフォーム</nuxt-link>からお知らせください。<br>フィード側の既知の問題は、<a-blank href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed">GitHub の issue</a-blank>にまとめています。</p>
     <h3>Duration と Frequency の見方</h3>
     <p>一覧の Duration と Frequency は、番組ごとに求めた値をおおまかな段階に丸めて出しています。取りうる値は次のとおりです。</p>
     <h4 id="duration">Duration</h4>
@@ -82,15 +82,16 @@
       </li>
     </ul>
     <h3>Apple Podcasts のリンクについて</h3>
-    <p>一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。<br>リンクが出ていない番組がありましたら、そのApple PodcastsのURLを<nuxt-link to="/request/">リクエストページ</nuxt-link>からお知らせください。Githubアカウントをお持ちの方は<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json">こちらのファイル</a-blank>へPRを送っていただけると確実です。</p>
+    <p>一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。<br>リンクが出ていない番組がありましたら、そのApple PodcastsのURLを<nuxt-link to="/request/#form">リクエストページのフォーム</nuxt-link>からお知らせください。Githubアカウントをお持ちの方は<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json">こちらのファイル</a-blank>へPRを送っていただけると確実です。</p>
     <h3>X アカウントについて</h3>
     <p>MCの方個人のXアカウントですと、番組以外の情報が混ざってしまいやすいので、番組公式のものに限っています。<br></p>
     <h3>OPMLダウンロード</h3>
     <p>トップページから、書き出したい番組の一番右にあるチェックボックスにチェックをして、「Download OPML」ボタンを押すとOPMLファイルがダウンロードできます。<br>MacとiOSをご使用の場合は、MacからAirDropで送るとiOS側でPodcastアプリを選択し、簡単に登録することができます。</p>
     <h3>音声の再生について</h3>
-    <p>このサイトで再生する音声は、預かったり中継したりせず、各番組の配信サーバーにあるファイルをブラウザから直接再生しています。配信元のログにはお聴きの方のアクセスがそのまま残るので、ここでの再生は各番組の統計に計上されます。フィードに書かれたURLは計測用のものも含めて一切書き換えていません。ファイルの保存機能は用意していません。<br>フィードに掲載拒否（itunes:block / podcast:block）が指定されている番組は、一覧に出していません。掲載を止めたい場合は、フィードでの指定のほか、<nuxt-link to="/request/">リクエストページ</nuxt-link>からもお知らせいただけます。</p>
+    <p>このサイトで再生する音声は、預かったり中継したりせず、各番組の配信サーバーにあるファイルをブラウザから直接再生しています。配信元のログにはお聴きの方のアクセスがそのまま残るので、ここでの再生は各番組の統計に計上されます。フィードに書かれたURLは計測用のものも含めて一切書き換えていません。ファイルの保存機能は用意していません。<br>フィードに掲載拒否（itunes:block / podcast:block）が指定されている番組は、一覧に出していません。掲載を止めたい場合は、フィードでの指定のほか、<nuxt-link to="/request/#form">リクエストページのフォーム</nuxt-link>からもお知らせいただけます。</p>
     <h3>Contribution</h3>
     <p>このプロジェクトのソースは下記にて公開しています。Bug Report や Pull Request などありましたらこちらでも受け付けます。<br><a-blank href="https://github.com/noracast/podcastfreaks.com">https://github.com/noracast/podcastfreaks.com</a-blank></p>
+    <p>番組の登録・修正は、<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json">data/rss.json</a-blank>へPRを送っていただくのが一番確実です。</p>
   </div>
 </template>
 

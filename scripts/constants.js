@@ -16,7 +16,7 @@ export const RSS_JSON = 'data/rss.json'
 export const RSS_INACTIVE_JSON = 'data/rss-inactive.json'
 export const ADDED_AT_JSON = 'data/added-at.json'
 export const APPLE_PODCASTS_JSON = 'data/apple-podcasts.json'
-// 登録済みかどうかを判定するためだけの軽い一覧。/add が読む。
+// 登録済みかどうかを判定するためだけの軽い一覧。/request が読む。
 // build_info.json にも同じ情報は入っているが、あちらは一覧の初期表示に
 // 載るサイズなので、判定のために読ませるには重すぎる（issue #229）。
 // static/downloads の下ではなく static/ 直下に置く。あそこは

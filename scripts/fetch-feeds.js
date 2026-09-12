@@ -538,7 +538,7 @@ const fetchFeed = async key => {
   consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
 
-  // 登録済みかどうかの判定用（/add が読む）。判定に要るキー・フィード・番組名だけ。
+  // 登録済みかどうかの判定用（/request が読む）。判定に要るキー・フィード・番組名だけ。
   //
   // 並びの元は channels ではなく data/rss.json にする。channels には取得に
   // 失敗した番組が入らないため、フィードが一時的に落ちている番組を

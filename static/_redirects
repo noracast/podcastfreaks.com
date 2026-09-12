@@ -8,3 +8,9 @@ https://podcast-freaks.netlify.com/* https://podcastfreaks.com/:splat 301!
 # 足すぶんは付かない（nuxt.config.js のコメント参照）。ここに自分で置く。
 /new      /episodes   301
 /new/     /episodes/  301
+
+# /add/ は /request/ に統合した（issue #228）。ブックマークレット（#230）で
+# 配った `/add/?url=…&title=…` が生き続けるよう、恒久的な移動として返す。
+# クエリは Netlify が引き継ぐ（行き先にクエリを書いていないため）
+/add      /request    301
+/add/     /request/   301
