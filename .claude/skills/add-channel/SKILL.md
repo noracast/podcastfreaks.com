@@ -28,8 +28,31 @@ Actions が勝手に付ける。
 
 ### Spotify のリンクの場合
 
-**oEmbed（`open.spotify.com/oembed`）は使えない。** 番組のURLを渡しても、返ってくる
-`title` は「最新エピソードのタイトル」で、番組名ではない。埋め込みページの
+**oEmbed（`open.spotify.com/oembed`）が返す `title` は番組名ではない。** 番組のURLを
+渡しても、返るのは「最新エピソードのタイトル」。ただし**そのエピソード名から番組へ
+辿れる**ので、まずはこれが速い（curl 2回で済む）。
+
+```sh
+SHOW_URL="https://open.spotify.com/show/<SHOW_ID>"
+TITLE=$(curl -s --max-time 25 "https://open.spotify.com/oembed?url=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$SHOW_URL")" \
+  | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>console.log(JSON.parse(d).title))")
+echo "最新エピソード: $TITLE"
+# そのエピソードが属する番組を引く（entity=podcastEpisode）
+curl -s --max-time 25 "https://itunes.apple.com/search?media=podcast&entity=podcastEpisode&country=JP&limit=5&term=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$TITLE")" \
+  | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{JSON.parse(d).results.forEach(x=>console.log(x.collectionName,'|',x.feedUrl))})"
+```
+
+実例（ムーザルのプログラミング絶望ラジオ。Spotify のURLしか無い状態から）:
+
+```
+oEmbed の title    #60 コードを書かないのにプログラマなのか, …
+→ エピソード検索   ムーザルのプログラミング絶望ラジオ | https://anchor.fm/s/107747d74/podcast/rss
+```
+
+この経路はサイト側の `/add` でも使っている（`lib/spotify.js`・`lib/itunes.js`）。
+oEmbed は CORS も通るので、ブラウザからも呼べる。
+
+エピソード検索で見つからないとき（Apple に載っていない番組）は、埋め込みページの
 `__NEXT_DATA__` を読む。
 
 ```sh
