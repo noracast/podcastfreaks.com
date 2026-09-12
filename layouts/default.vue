@@ -267,8 +267,10 @@ button {
       padding-left: 15px;
       padding-right: 0;
       height: 70px;
+      /* 日本語のリード文（下）と幅が揃う大きさ。実測で英題 111px に対して
+         リードは 112px（10px を 0.8 倍） */
       & h1 {
-        font-size: 13px;
+        font-size: 15px;
       }
       & nav {
         float: right;
@@ -281,8 +283,16 @@ button {
           margin-left: 10px;
         }
       }
+      /* Chrome は日本語を 10px 未満で描かないので、font-size ではなく縮小で
+         小さくする。英題（96px）に対してリードは 10px で 140px あり、
+         0.8 倍で 112px。英題の幅をやや超えるが、読める大きさを採る。
+         縮小しても場所は元の大きさのまま取るので、余るぶんを下で詰める */
       .lead {
-        display: none;
+        font-size: 10px;
+        letter-spacing: 0;
+        transform: scale(0.8);
+        transform-origin: left top;
+        margin-bottom: -3px;
       }
       .stats {
         display: none;

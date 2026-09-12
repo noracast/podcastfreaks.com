@@ -144,13 +144,13 @@
               <p class="next-title">どちらか一方</p>
               <div class="choice">
                 <div class="actions">
-                  <a-blank class="send" :href="issueUrl(channel)">GitHub から リクエスト</a-blank>
+                  <a-blank class="send" :href="issueUrl(channel)">GitHub からリクエスト</a-blank>
                 </div>
                 <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
               </div>
               <div class="choice">
                 <div class="actions">
-                  <button type="button" class="send gray" @click="openForm(channel)">フォーム から リクエスト</button>
+                  <button type="button" class="send gray" @click="openForm(channel)">フォームからリクエスト</button>
                 </div>
                 <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
               </div>
@@ -181,20 +181,20 @@
           <template v-if="canSendUnknown">
             <div class="choice">
               <div class="actions">
-                <a-blank class="send" :href="issueUrl(unknownChannel)">GitHub から リクエスト</a-blank>
+                <a-blank class="send" :href="issueUrl(unknownChannel)">GitHub からリクエスト</a-blank>
               </div>
               <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
             </div>
             <div class="choice">
               <div class="actions">
-                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォーム から リクエスト</button>
+                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームからリクエスト</button>
               </div>
               <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
             </div>
           </template>
           <div v-else class="choice">
             <div class="actions">
-              <button type="button" class="send gray" @click="openForm(unknownChannel)">フォーム から リクエスト</button>
+              <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームからリクエスト</button>
             </div>
             <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
           </div>
@@ -212,7 +212,7 @@
     <p v-if="!formOpen" class="other">番組の URL が分からないときや、登録済みの番組についてのご連絡は、<button type="button" class="as-link" @click="openForm()">フォームから直接お送りいただけます</button>。</p>
 
     <section v-if="formOpen" id="form" ref="formSection" class="form-section">
-      <h3>フォーム から リクエスト</h3>
+      <h3>フォームからリクエスト</h3>
       <!-- 調べずに開いた人は、上の注意書きを見ていない -->
       <p v-if="!searched" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
       <request-form :values="formValues" />
