@@ -83,7 +83,9 @@
       </section>
 
       <section v-if="unregisteredChannels.length" class="group">
-        <h4 class="group-title">未登録<span>{{ unregisteredChannels.length }}件</span></h4>
+        <!-- iTunes の検索は10件で打ち切っている。まだ先があるときは + を付けて、
+             語を足して絞り込んでもらう -->
+        <h4 class="group-title">未登録<span>{{ unregisteredChannels.length }}件{{ truncated ? '+' : '' }}</span></h4>
         <ul class="candidates">
           <li v-for="channel in unregisteredChannels" :key="channel.feed">
             <div class="row">
@@ -181,6 +183,8 @@
           </div>
         </li>
       </ul>
+
+      <p v-if="truncated" class="note">目当ての番組が出ていない場合は、語を足すか正式な番組名で探し直すと絞り込めます。</p>
 
       <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
            目当てが無いときも、ここで行き止まりにしない -->
@@ -595,6 +599,10 @@ import RequestBookmarklet from '@/components/request-bookmarklet.vue'
 // fetch-feeds が data/rss.json から作る（issue #229）
 const REGISTERED_JSON = '/registered.json'
 
+// 未登録として並べる数。これ以上あるときは件数に + を付けて、
+// 語を足して絞り込んでもらう（登録済みのほうは全部出す。ジャケットだけなので）
+const SEARCH_LIMIT = 10
+
 export default {
   components: { RequestForm, RequestBookmarklet, Cover },
   setup() {
@@ -610,6 +618,8 @@ export default {
       searched: false,
       error: '',
       candidates: [],
+      // iTunes の検索結果を打ち切ったか（未登録の件数に + を付ける）
+      truncated: false,
       registered: null,
       registeredAvailable: true,
       // 送信フォームは、必要になったときだけ開く
@@ -732,6 +742,7 @@ export default {
       this.loading = true
       this.error = ''
       this.candidates = []
+      this.truncated = false
 
       try {
         const registered = await this.loadRegistered()
@@ -785,8 +796,11 @@ export default {
       }
 
       for(const term of searchTerms({ title: this.name })) {
-        const channels = toChannels(await this.fetchJson(searchUrl(term)))
-        if(channels.length) return channels
+        // 出す数より1件多く取る。返ってきたらまだ先がある（表示には使わない）
+        const channels = toChannels(await this.fetchJson(searchUrl(term, SEARCH_LIMIT + 1)))
+        if(!channels.length) continue
+        this.truncated = channels.length > SEARCH_LIMIT
+        return channels.slice(0, SEARCH_LIMIT)
       }
 
       // ここから先は URL を1つずつ。入れてもらった順に試す
