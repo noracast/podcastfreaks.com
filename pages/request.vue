@@ -12,23 +12,23 @@
       <label for="feed">RSS feed</label>
       <small>番組のRSSフィードURI</small>
       <br>
-      <input id="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml">
+      <input id="feed" v-model="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml">
 
       <label for="twitter">X</label>
       <small>番組公式 X アカウントがある場合</small>
       <br>
-      <input id="twitter" type="text" name="twitter" placeholder="@noracast_">
+      <input id="twitter" v-model="twitter" type="text" name="twitter" placeholder="@noracast_">
 
       <label for="hashtag">Hashtag</label>
       <small>番組公式ハッシュタグがある場合</small>
       <br>
-      <input id="hashtag" type="text" name="hashtag" placeholder="#noracast">
+      <input id="hashtag" v-model="hashtag" type="text" name="hashtag" placeholder="#noracast">
 
       <label for="message">Message</label>
       <small>なにかメッセージ等あれば</small>
       <br>
       <!-- placeholder は3行に分けて出す。&#10; は改行 -->
-      <textarea id="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
+      <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
       <label for="contributor">Contributor</label>
       <small>無記名でももちろん大丈夫です！</small>
@@ -108,5 +108,27 @@ export default {
   setup() {
     useHead({ title: 'Register request | Podcast Freaks - Japanese techie podcast archive' })
   },
+  data: function() {
+    return {
+      feed: '',
+      twitter: '',
+      hashtag: '',
+      message: ''
+    }
+  },
+  mounted: function() {
+    // /add から回ってきた場合は、調べた結果がクエリに入っている
+    // （lib/request-form-link.js）。同じことを二度入力させない。
+    //
+    // 読むのは描き終えてから。事前レンダリングした HTML にはクエリの中身が
+    // 入っていないので、setup で読んで初期値にすると出力と食い違う。
+    // 読む先も window.location ではなくルーター（ハイドレーションの間、
+    // location は一度クエリの無い状態になる）
+    const query = this.$route.query
+    this.feed = query.feed || ''
+    this.twitter = query.twitter || ''
+    this.hashtag = query.hashtag || ''
+    this.message = query.message || ''
+  }
 }
 </script>
