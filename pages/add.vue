@@ -56,21 +56,27 @@
       <p v-if="!registeredAvailable" class="note">※ 登録済みかどうかの判定ができませんでした（一覧の取得に失敗しています）。すでに載っている番組かもしれません。</p>
     </template>
 
-    <h3>Bookmarklet</h3>
-    <p>番組のページを見ているときに押すだけで、その URL とタイトルをこのページへ渡せるブックマークレットです。</p>
-    <!-- href は javascript: のまま。押しても何も起きないよう既定の動作は止める
-         （このページで押すと、このページ自身を調べに行ってしまう）。
-         代わりにコードをコピーして、ドラッグできない環境の逃げ道にする -->
-    <p class="bookmarklet-box">
-      <a class="bookmarklet" :href="bookmarklet" @click.prevent="copyBookmarklet">Podcast Freaks に登録</a>
-      <span v-if="copied" class="copied">コピーしました</span>
-    </p>
-    <h4>使い方</h4>
-    <ol class="note">
-      <li>上のボタンを<strong>ブックマークバーへドラッグ</strong>する（名前は好きに変えて構いません）</li>
-      <li>ブックマークバーが出ていなければ、Chrome・Safari とも <code>⌘ + Shift + B</code> で出せます</li>
-      <li>ドラッグできない場合（iOS など）は、上のボタンを押すとコードをコピーします。適当なページをブックマークに追加して開き直し、その URL の欄にコピーしたものを貼り替えてください</li>
-    </ol>
+    <!-- 結果の下に続けて置くと読み飛ばされるので、枠で囲んで切り離す -->
+    <section class="bookmarklet-section">
+      <h3>Bookmarklet</h3>
+      <p>番組のページを見ているときに押すだけで、その URL とタイトルをこのページへ渡せるブックマークレットです。</p>
+      <!-- href は javascript: のまま。押しても何も起きないよう既定の動作は止める
+           （このページで押すと、このページ自身を調べに行ってしまう）。
+           代わりにコードをコピーして、ドラッグできない環境の逃げ道にする -->
+      <p class="bookmarklet-box">
+        <!-- ここに出している文字が、そのままブックマークの名前になる
+             （ドラッグしたリンクの表示テキストが使われる。title 属性は効かない）。
+             長ければ、ブックマークバーへ入れたあとに名前を変えられる -->
+        <a class="bookmarklet" :href="bookmarklet" @click.prevent="copyBookmarklet">→ Podcast Freaks</a>
+        <span v-if="copied" class="copied">コピーしました</span>
+      </p>
+      <h4>使い方</h4>
+      <ol class="note">
+        <li>上のボタンを<strong>ブックマークバーへドラッグ</strong>する（名前は好きに変えて構いません）</li>
+        <li>ブックマークバーが出ていなければ、Chrome・Safari とも <code>⌘ + Shift + B</code> で出せます</li>
+        <li>ドラッグできない場合（iOS など）は、上のボタンを押すとコードをコピーします。適当なページをブックマークに追加して開き直し、その URL の欄にコピーしたものを貼り替えてください</li>
+      </ol>
+    </section>
   </div>
 </template>
 
@@ -187,6 +193,17 @@ form {
 .note {
   font-size: 13px;
   color: #666;
+}
+/* 枠で囲って、結果とは別のものだと分かるようにする */
+.bookmarklet-section {
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  /* 枠の上端と見出しの間が空きすぎるので、見出しの既定の余白は消す */
+  & h3:first-child {
+    margin-top: 0;
+  }
 }
 /* ブックマークバーへ引っ張るもの。掴めることが分かるよう、
    リンクではなくボタンの見え方にして、カーソルも掴む形にする */
