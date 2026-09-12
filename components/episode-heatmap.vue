@@ -2,23 +2,37 @@
   <!-- /episodes の頭に置く、日ごとの更新の濃淡。番組ごとに出すと更新の催促に
        見えてしまうので、全体をまとめた1枚だけにしている -->
   <div class="heatmap" :class="{ 'is-collapsed': collapsed }" :style="{ '--weeks': weeks.length }">
-    <!-- すりガラスは全幅に敷き、中身だけを幅で止める。全幅にすると、
-         濃淡の右に何もない広い余白ができてしまう -->
+    <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる。
+         矢印だけでなく、見出しの行のどこを押しても開け閉めできる。
+         この行だけは幅で止めず、画面の端まで使う（矢印を右端に置くため） -->
+    <div class="head" @click="collapsed = !collapsed">
+      <h2 class="period">{{ period }}</h2>
+      <span class="total">{{ totalLabel }}</span>
+      <!-- 押したときの動きは行が持っているので、ここでは受けない -->
+      <button class="fold" type="button" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" :aria-expanded="!collapsed">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <!-- 濃淡のほうは幅で止める。全幅にすると、右に何もない広い余白が
+         できてしまう -->
     <div class="inner">
-      <div class="head">
-        <h2 class="period">{{ period }}</h2>
-        <span class="total">{{ totalLabel }}</span>
-        <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる -->
-        <button class="fold" :title="collapsed ? '開く' : '畳む'" :aria-label="collapsed ? '開く' : '畳む'" @click="collapsed = !collapsed">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
       <!-- 畳むときは高さを 0 にする（0fr ↔ 1fr）。中身の高さはセルの大きさで
          変わるので、決め打ちの max-height にはできない -->
       <div class="fold-wrap">
         <div class="fold-inner">
+          <!-- 狭い画面では、右の並びの代わりにこちらを出す。選択肢を
+               全部見せずに済む（出し分けは CSS のほうでしている） -->
+          <div class="years-select">
+            <select v-model="selected" aria-label="濃淡に出す期間">
+              <option v-for="year in years" :key="year.value" :value="year.value">{{ year.label }}</option>
+            </select>
+            <!-- 素の矢印を消しているので、畳むボタンと同じ形を重ねる -->
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="body">
             <div class="chart-side">
               <!-- 曜日の目印。1つおきに出す。横に送っても読めるよう、
@@ -86,7 +100,7 @@
   --gap: 3px;
   /* 月の並びと、その下のセルの間 */
   --months-gap: 4px;
-  /* 曜日の目印のぶん。月の並びと凡例を、その右に揃えるのに使う */
+  /* 曜日の目印のぶん。文字の幅（18px）と、濃淡との間（8px）の合計 */
   --weekday-width: 26px;
   padding: 0 20px;
   color: #999;
@@ -102,9 +116,24 @@
     /* 見出しと、その隣の話数の下端を揃える */
     align-items: baseline;
     gap: 10px;
-    /* About の h2 の下の余白（0.83em）と同じ */
-    margin-bottom: 20px;
-    transition: margin-bottom 0.22s;
+    /* 行ごと押せる。二度押しで選択されてしまわないよう、選択は止める */
+    cursor: pointer;
+    user-select: none;
+    /* 触れたときの色を端まで敷くため、上と左右の余白はここで持つ。
+       上は About（.root の padding）と同じ 20px */
+    padding-top: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: background-color 0.2s;
+    /* 濃淡との境目。日ごとの区切り線（#ccc）より薄くして、
+       ここが区画の切れ目だと分かる程度にとどめる */
+    border-bottom: 1px solid #e8e8e8;
+    /* 上下で分けて、About の h2 の下の余白（0.83em）と同じ 20px にする */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    transition: margin-bottom 0.22s, padding-bottom 0.22s;
     /* このページの見出し。About の h2 と同じ大きさ・太さにしてある。
        話数は入れない。桁が増えると見出しが長くなってしまう */
     .period {
@@ -122,9 +151,10 @@
     }
     /* 濃淡ごと畳む */
     .fold {
-      /* レイアウトのグローバルな button の指定を打ち消す */
+      /* レイアウトのグローバルな button の指定を打ち消す。
+         背景を敷かないので、角丸も要らない */
       border: 0;
-      border-radius: 4px;
+      border-radius: 0;
       min-width: 0;
       background: none;
       font: inherit;
@@ -158,9 +188,13 @@
       grid-template-rows: 0fr;
     }
     /* 濃淡が無くなるので、見出しの下の余白も畳む。
-       残すと、上（帯の padding）より下だけが広くなる */
+       残すと、上（帯の padding）より下だけが広くなる。
+       区切る相手が無くなるので線も消す。残すと、すぐ下にある
+       日ごとの区切り線と2本が並んで見えてしまう */
     .head {
+      padding-bottom: 0;
       margin-bottom: 0;
+      border-bottom-color: transparent;
     }
     .head .fold svg {
       transform: rotate(180deg);
@@ -177,12 +211,17 @@
   /* 曜日・濃淡・凡例 */
   .chart-side {
     display: grid;
-    grid-template-columns: auto 1fr;
+    /* 濃淡の列は、その中身（週の数で決まる幅）に合わせる。1fr にすると
+       余った幅まで広がり、右下に寄せた凡例だけが濃淡から離れてしまう。
+       収まらないときは 0 まで縮めて、中で横に送る */
+    grid-template-columns: auto minmax(0, max-content);
     grid-template-rows: auto auto;
   }
   /* 月の並びのぶんだけ下げて、セルの行と揃える */
   .weekdays {
-    width: calc(var(--weekday-width) - 4px);
+    /* 文字の幅と、その右に空ける濃淡との間。合わせて --weekday-width */
+    width: calc(var(--weekday-width) - 8px);
+    padding-right: 8px;
     padding-top: calc(14px + var(--months-gap));
     display: grid;
     grid-template-rows: repeat(7, var(--cell));
@@ -208,7 +247,8 @@
     grid-template-columns: repeat(var(--weeks), calc(var(--cell) + var(--gap)));
     height: 14px;
     margin-bottom: var(--months-gap);
-    font-size: 12px;
+    /* 曜日の目印と同じ大きさ。ここだけ大きいと、並びの中で月名が浮く */
+    font-size: 9px;
     .month {
       /* 月の頭の週の上に置く。次の月に押し出されないよう、はみ出させる */
       grid-row: 1;
@@ -259,7 +299,8 @@
       background-color: transparent;
     }
   }
-  /* 凡例は濃淡の右下に寄せる。曜日のぶんを空けて、並びの右端に揃える */
+  /* 凡例は濃淡の右下に寄せる。年を変えて濃淡の幅が変わっても、
+     その右端に付いていく（列の幅を中身に合わせてあるため） */
   .legend {
     grid-column: 2;
     display: flex;
@@ -270,6 +311,10 @@
     font-size: 11px;
     .caption {
       margin: 0 4px;
+      /* 濃淡の右端に文字を合わせる */
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   /* 年は縦に積む。濃淡と同じ高さに収め、入らないぶんはここだけ縦に送る。
@@ -322,14 +367,64 @@
       }
     }
   }
+  /* 年を選ぶプルダウン。狭い画面でだけ出す（広い画面では上の並びを見せる）。
+     素の枠のままだと並びの中で浮くので、「元に戻す」ボタン（pages/episodes.vue
+     の .back）と同じグレーの座布団に載せる */
+  .years-select {
+    display: none;
+    position: relative;
+    width: fit-content;
+    color: #444;
+    & select {
+      appearance: none;
+      /* レイアウトのグローバルな指定は button だけだが、素の枠と矢印は
+         ここで消しておく */
+      border: 0;
+      border-radius: 4px;
+      background-color: #ececec;
+      color: inherit;
+      font: inherit;
+      font-size: 12px;
+      /* 右は、重ねた矢印のぶんを空ける */
+      padding: 6px 26px 6px 12px;
+      cursor: pointer;
+      /* 触れた瞬間に出る青い囲み（iOS・Chrome）と、タップの色を消す */
+      -webkit-tap-highlight-color: transparent;
+      &:focus {
+        outline: none;
+      }
+      /* キーボードで辿ってきたときは、囲みではなく座布団の色で示す */
+      &:focus-visible {
+        background-color: #e0e0e0;
+      }
+    }
+    & svg {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      /* 押したときは下の select が受ける */
+      pointer-events: none;
+    }
+  }
 }
 
 /* 触れたときの色は、ポインタのある環境だけ（指では押したあとも残るため） */
 @media (hover: hover) {
-  .heatmap .years .year:not(.is-selected):hover,
-  .heatmap .head .fold:hover {
+  .heatmap .years .year:not(.is-selected):hover {
     background-color: #f0e8fc;
     color: #7f00ff;
+  }
+  /* 押せるのは行ごとなので、行ごと薄く色を敷く。矢印だけを囲うと、
+     そこだけが押せるように見えてしまう */
+  .heatmap .head:hover {
+    background-color: #faf6ff;
+  }
+  .heatmap .head:hover .fold {
+    color: #7f00ff;
+  }
+  .heatmap .years-select select:hover {
+    background-color: #e0e0e0;
   }
   /* 押せる日は、触れると輪郭を出して分かるようにする */
   .heatmap .cell.is-listed:hover {
@@ -341,37 +436,18 @@
   .heatmap {
     --cell: 9px;
     --gap: 2px;
-    --weekday-width: 22px;
-    padding: 0 10px;
-    /* 幅が残らないので、年は濃淡の下へ横並びで落とす */
+    /* 年を置く場所が右に残らない幅。ここからはプルダウンに替える。
+       濃淡の下へ横並びで落とすこともできるが、選択肢が19個あって
+       横に送らないと端まで見えないので、並べては出さない */
     .body {
       padding-right: 0;
     }
-    /* 横並びになるので、消す向きも横にする */
     .years {
-      position: static;
-      width: auto;
-      margin-top: 8px;
-      flex-direction: row;
-      overflow-x: auto;
-      overflow-y: visible;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
-      mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
-      &.at-start {
-        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
-        mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
-      }
-      &.at-end {
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade));
-        mask-image: linear-gradient(to right, transparent, #000 var(--fade));
-      }
-      &.at-start.at-end {
-        -webkit-mask-image: none;
-        mask-image: none;
-      }
-      .year {
-        text-align: center;
-      }
+      display: none;
+    }
+    .years-select {
+      display: block;
+      margin-bottom: 10px;
     }
   }
 }
@@ -549,17 +625,13 @@ export default {
     window.removeEventListener('resize', this.measureYears)
   },
   methods: {
-    // 年の並びが、どちらの端まで来ているか。縦にも横にも並ぶので
-    // （狭い画面では下に落ちる）、両方の向きを見る
+    // 年の並びが、上下どちらの端まで来ているか。端を消すかどうかに使う
+    // （狭い画面ではプルダウンに替わるので、縦だけを見ればいい）
     measureYears: function() {
       const years = this.$refs.years
       if(!years) return
-      const vertical = years.scrollHeight > years.clientHeight
-      const position = vertical ? years.scrollTop : years.scrollLeft
-      const size = vertical ? years.clientHeight : years.clientWidth
-      const total = vertical ? years.scrollHeight : years.scrollWidth
-      this.yearsAtStart = position <= 1
-      this.yearsAtEnd = position + size >= total - 1
+      this.yearsAtStart = years.scrollTop <= 1
+      this.yearsAtEnd = years.scrollTop + years.clientHeight >= years.scrollHeight - 1
     },
     // 開いたときに見せたいのは新しいほう
     scrollToEnd: function() {

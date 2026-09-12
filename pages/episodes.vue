@@ -42,8 +42,10 @@
   top: 80px;
   /* header は 5 */
   z-index: 4;
-  /* 見出しの上下は About（.root の padding）と同じ 20px にする */
-  padding-top: 20px;
+  /* 見出しの上下は About（.root の padding）と同じ 20px にする。
+     上のぶんは見出しの行が持つ（components/episode-heatmap.vue の .head）。
+     ここで空けると、触れたときの色が上端まで届かず、帯との間に
+     白い隙間が残ってしまう */
   padding-bottom: 14px;
   /* ヘッダーや右下のプレーヤーと同じすりガラス。下を通る並びがぼけて
      透けることで、そこに面があると分かる。
