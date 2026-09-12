@@ -55,9 +55,11 @@
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
   transition: background-color 0.25s, padding-bottom 0.22s;
-  /* 畳んだときは、見出しの上下が同じ余白になるようにする */
+  /* 畳んでいるあいだは、帯のどこを押しても開くようにしたい。
+     下の余白をここで持つと、その 20px の上だけが押せないので、
+     見出しの行（components/episode-heatmap.vue の .head）に渡す */
   &.is-collapsed {
-    padding-bottom: 20px;
+    padding-bottom: 0;
   }
 }
 .days {

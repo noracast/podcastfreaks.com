@@ -137,22 +137,18 @@
     /* 行ごと押せる。二度押しで選択されてしまわないよう、選択は止める */
     cursor: pointer;
     user-select: none;
-    /* 触れたときの色を端まで敷くため、上と左右の余白はここで持つ。
+    /* 下の線を端まで引くため、上と左右の余白はここで持つ。
        上は About（.root の padding）と同じ 20px */
     padding-top: 20px;
     margin-left: -20px;
     margin-right: -20px;
     padding-left: 20px;
     padding-right: 20px;
-    transition: background-color 0.2s;
-    /* 濃淡との境目。日ごとの区切り線（#ccc）より薄くして、
-       ここが区画の切れ目だと分かる程度にとどめる */
-    border-bottom: 1px solid #e8e8e8;
-    /* 見出しの下の余白（0.83em ＝ 20px）は、線の上（padding）で持つ。
-       線から下は、左右の余白と同じ 20px 空ける */
+    /* 見出しと濃淡のあいだに線は引かない。右端の矢印とのあいだが詰まって、
+       アイコンに下線が付いているように見えるため。区画の切れ目は余白で示す */
     padding-bottom: 10px;
     margin-bottom: 20px;
-    transition: margin-bottom 0.22s, padding-bottom 0.22s;
+    transition: margin-bottom 0.22s, padding-bottom 0.22s, opacity 0.2s;
     /* このページの見出し。About の h2 と同じ大きさ・太さにしてある
        （大きさは assets/common.css の --heading-size。狭い画面で
        小さくなるのも、サイトの他の見出しと揃う） */
@@ -202,14 +198,13 @@
     .fold-wrap {
       grid-template-rows: 0fr;
     }
-    /* 濃淡が無くなるので、見出しの下の余白も畳む。
-       残すと、上（帯の padding）より下だけが広くなる。
-       区切る相手が無くなるので線も消す。残すと、すぐ下にある
-       日ごとの区切り線と2本が並んで見えてしまう */
+    /* 濃淡が無くなるので、見出しの下の余白はここで持つ（上の
+       padding-top と同じ 20px にして、帯の上下を揃える）。
+       親（pages/episodes.vue の .heatmap）の padding で空けると、
+       そのぶんが押せない帯になってしまうため、押せるこちらに寄せる */
     .head {
-      padding-bottom: 0;
+      padding-bottom: 20px;
       margin-bottom: 0;
-      border-bottom-color: transparent;
     }
   }
   /* 開いている間は色を付けて、いま出ていることを示す
@@ -453,13 +448,12 @@
     background-color: #f0e8fc;
     color: #7f00ff;
   }
-  /* 押せるのは行ごとなので、行ごと薄く色を敷く。矢印だけを囲うと、
-     そこだけが押せるように見えてしまう */
+  /* 押せるのは行ごとなので、行ごと薄くする。矢印だけを変えると、
+     そこだけが押せるように見えてしまう。
+     色を敷くと、画面の幅いっぱいに帯が出て見出しの区画が変わって見えた
+     （下の線まで含めて別物になる）ので、濃さだけを変える */
   .heatmap .head:hover {
-    background-color: #faf6ff;
-  }
-  .heatmap .head:hover .fold {
-    color: #7f00ff;
+    opacity: 0.6;
   }
   .heatmap .years-select select:hover {
     background-color: #e0e0e0;
