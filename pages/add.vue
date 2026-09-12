@@ -32,7 +32,11 @@
             <p class="feed">{{ channel.feed }}</p>
             <!-- 登録済みかどうかは static/registered.json と突き合わせている。
                  フィード URL と番組名のどちらかが当たれば「登録済みの可能性」
-                 として出す。完全一致だけでは取りこぼすため -->
+                 として出す。完全一致だけでは取りこぼすため。
+
+                 送り先をトップにしているのは、番組ごとの URL がまだ無いため。
+                 番組の個別ページ（/channels/<key>/ のようなもの）ができたら、
+                 matched[0].key からその URL へ変える -->
             <p v-if="channel.matched.length" class="registered">
               この番組は登録済みのようです（<code>{{ channel.matched[0].key }}</code>{{ channel.matched[0].matchedBy === 'title' ? ' / 番組名が一致' : '' }}）。<nuxt-link to="/">一覧</nuxt-link>でご確認ください。フィードの URL が変わったなどのご連絡は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>からお願いします。
             </p>
