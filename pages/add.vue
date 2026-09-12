@@ -45,7 +45,7 @@
             <template v-else>
               <p class="unregistered"><span class="badge new">未登録</span>この番組はまだ一覧にありません。</p>
               <div class="actions">
-                <a-blank class="send" :href="issueUrl(channel)">この番組の登録をリクエストする</a-blank>
+                <a-blank class="send" :href="issueUrl(channel)">登録をリクエスト</a-blank>
                 <a-blank v-if="channel.apple" class="apple" :href="channel.apple">Apple Podcasts で見る</a-blank>
               </div>
               <p class="hint">GitHub の画面が開きます。中身は入力済みなので、そのまま Create でかまいません。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
@@ -67,7 +67,7 @@
         <p>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。番組名を変えて探し直すか、番組のページの URL を添えて送ってください。</p>
         <template v-if="canSendUnknown">
           <div class="actions">
-            <a-blank class="send" :href="issueUrl(unknownChannel)">見つからないまま登録をリクエストする</a-blank>
+            <a-blank class="send" :href="issueUrl(unknownChannel)">このまま登録をリクエスト</a-blank>
           </div>
           <p class="hint">GitHub の画面が開きます。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
         </template>
@@ -224,7 +224,8 @@ form {
   gap: 15px;
   flex-wrap: wrap;
   /* 送るリンクだけボタンに見せる。ここは実際には別サイトへ飛ぶので、
-     form の button とは別に用意する */
+     form の button とは別に用意する。
+     文言は短くしてある（長いと狭い画面で2行になり、実機で押しづらかった） */
   & .send {
     border-radius: 3px;
     color: #fff;
