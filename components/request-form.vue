@@ -30,11 +30,13 @@
     <!-- placeholder は3行に分けて出す。&#10; は改行 -->
     <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
-    <!-- ここだけ説明を添える。何に使うのかは、placeholder の実例では
-         伝わらないため。名前を出すのが前提に見えないよう、
-         無記名でよいこともここで言う -->
-    <label for="contributor">お名前</label>
-    <small>X でのお礼に使わせていただきます。無記名でも構いません</small>
+    <!-- 上の「公式 X アカウント」は番組のもの、こちらは送ってくれた人のもの。
+         同じ X を2回訊くので、どちらのことか分かるように書き分ける。
+         ここだけ説明を添えるのは、何に使うのかが placeholder の実例では
+         伝わらないため。名乗るのが前提に見えないよう、
+         入れなくてよいこともここで言う -->
+    <label for="contributor">ご自身の X アカウント</label>
+    <small>X でお礼をお伝えするのに使わせていただきます。無記名でも構いません</small>
     <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
     <button type="submit">Send</button>
