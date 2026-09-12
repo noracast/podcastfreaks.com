@@ -110,13 +110,20 @@ form {
 .candidates {
   list-style: none;
   padding: 0;
+  /* 1件ずつ座布団を敷いて、どこまでが1番組かを分かるようにする */
   & li {
     display: flex;
     gap: 15px;
-    padding: 15px 0;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
     &:not(:first-child) {
-      border-top: 1px solid #e8e8e8;
+      margin-top: 10px;
     }
+  }
+  /* 座布団の上では、キーの印が背景に埋もれる。ここだけ白で抜く */
+  & code {
+    background-color: #fff;
   }
   & .cover {
     width: 80px;
