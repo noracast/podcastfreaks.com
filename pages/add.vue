@@ -56,20 +56,26 @@
 
       <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
            目当てが無いときも、ここで行き止まりにしない -->
-      <p v-if="candidates.length" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">分かっているぶんだけで登録をリクエスト</a-blank>できます。</p>
+      <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
 
-      <!-- 見つからなくても、ここで終わらせない。分かっているぶん
-           （番組名と見ていたページ）を入れて送れるようにする -->
-      <template v-else>
-        <p>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。番組名を変えて探し直すか、分かっているぶんだけで送ってください。</p>
-        <div class="actions">
-          <a-blank class="send" :href="issueUrl(unknownChannel)">見つからないまま登録をリクエストする</a-blank>
-        </div>
-        <p class="hint">GitHub の画面が開きます。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
+      <!-- 見つからなくても、ここで終わらせない。ただし送れるのは
+           番組の URL があるときだけ。
+           名前だけのリクエストは、受け取った側が番組を特定するところから
+           始めることになり、フィードに辿り着けないことも多い。
+           URL さえあれば、そこから配信元を追える -->
+      <template v-else-if="!candidates.length">
+        <p>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。番組名を変えて探し直すか、番組のページの URL を添えて送ってください。</p>
+        <template v-if="canSendUnknown">
+          <div class="actions">
+            <a-blank class="send" :href="issueUrl(unknownChannel)">見つからないまま登録をリクエストする</a-blank>
+          </div>
+          <p class="hint">GitHub の画面が開きます。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。アカウントをお持ちでない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>から。</p>
+        </template>
+        <p v-else class="hint">上の「番組の URL」に、Spotify・Apple Podcasts・番組サイトなど番組のページの URL を入れてください。そこから配信元をこちらで追えます。URL が分からない場合は<nuxt-link to="/request/">リクエストフォーム</nuxt-link>からお知らせください。</p>
       </template>
 
       <!-- 送ったあとの話。登録されるとは限らないことは、先に伝えておく -->
-      <p v-if="sendable || !candidates.length" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
+      <p v-if="sendable || canSendUnknown" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
 
       <p v-if="!registeredAvailable" class="note">※ 登録済みかどうかの判定ができませんでした（一覧の取得に失敗しています）。すでに載っている番組かもしれません。</p>
     </template>
@@ -359,6 +365,11 @@ export default {
     // 出ているのが登録済みのものだけなら、送り先の案内は要らない
     sendable: function() {
       return this.candidates.some(channel => !channel.matched.length)
+    },
+    // 番組名だけのリクエストは受け取らない。番組の URL があれば、そこから
+    // 配信元のフィードを追えるが、名前だけだと特定から始めることになる
+    canSendUnknown: function() {
+      return !!this.url.trim()
     },
     // 見つからなかったときに送るもの。分かっているのは、入れてもらった
     // 番組名と見ていたページだけ。フィードは GitHub の画面で書き足してもらう
