@@ -82,7 +82,7 @@
       </li>
     </ul>
     <h3>Apple Podcasts のリンクについて</h3>
-    <p>一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。<br>リンクが出ていない番組がありましたら、そのApple PodcastsのURLを<nuxt-link to="/request/#form">リクエストページのフォーム</nuxt-link>からお知らせください。Githubアカウントをお持ちの方は<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json">こちらのファイル</a-blank>へPRを送っていただけると確実です。</p>
+    <p>一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。<br>リンクが出ていない番組がありましたら、そのApple PodcastsのURLを<nuxt-link to="/request/#form">リクエストページのフォーム</nuxt-link>からお知らせください。GitHub アカウントをお持ちの方は<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json">こちらのファイル</a-blank>へPRを送っていただけると確実です。</p>
     <h3>X アカウントについて</h3>
     <p>MCの方個人のXアカウントですと、番組以外の情報が混ざってしまいやすいので、番組公式のものに限っています。<br></p>
     <h3>OPMLダウンロード</h3>

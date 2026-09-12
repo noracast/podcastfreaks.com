@@ -23,10 +23,9 @@
     <!-- 調べているあいだも出しっぱなしにする。登録済みは手元の一覧から出して
          いて検索とは関係が無いのに、一瞬消えると何か起きたように見える -->
     <template v-if="query.trim()">
-      <!-- 見出しは変えない。見つからなかったことは下のカードが言っているので、
-           ここまで変わると画面が別物になったように見える -->
-      <h3 v-if="searched || registeredChannels.length">Results</h3>
-
+      <!-- 「Results」のような見出しは置かない。率いるものが無く（登録済みと
+           未登録はそれぞれ見出しを持っている）、すぐ下に探すボタンが来て
+           収まりが悪い -->
       <!-- 登録済みは「もう載っている」ことが分かれば足りるので、ジャケットだけ
            並べる。名前まで読ませると、本題（未登録）に辿り着くのが遅くなる。
            押すと、その番組の送り先が下に出る（開くのは1つまで） -->
@@ -145,7 +144,7 @@
               <p class="next-title">どちらか一方</p>
               <div class="choice">
                 <div class="actions">
-                  <a-blank class="send" :href="issueUrl(channel)">Github から リクエスト</a-blank>
+                  <a-blank class="send" :href="issueUrl(channel)">GitHub から リクエスト</a-blank>
                 </div>
                 <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
               </div>
@@ -182,7 +181,7 @@
           <template v-if="canSendUnknown">
             <div class="choice">
               <div class="actions">
-                <a-blank class="send" :href="issueUrl(unknownChannel)">Github から リクエスト</a-blank>
+                <a-blank class="send" :href="issueUrl(unknownChannel)">GitHub から リクエスト</a-blank>
               </div>
               <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
             </div>
