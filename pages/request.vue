@@ -2,13 +2,6 @@
   <div class="root">
     <h2>Request</h2>
     <p>自薦他薦問わず、このサイトに登録してほしい番組がある場合は下記のフォームよりお申し込みください。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。ハッシュタグの登録漏れなどもMessageの欄に書いて送っていただけると助かります。</p>
-    <h3>Feedに関する既知の問題</h3>
-    <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
-    <p>既知の問題は、<a-blank href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed">こちら</a-blank>にまとめていますので、予めご一読いただけるとありがたいです。<br>また、毎日のビルドで見つかった問題は<nuxt-link to="/errors/">Errors ページ</nuxt-link>に出しています。ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。</p>
-    <h3>Apple Podcastsのリンクについて</h3>
-    <p>一覧に出るApple Podcastsへのリンクは、iTunesの検索APIで<strong>フィードURLが一致した番組にだけ</strong>自動で付けています。Apple側に登録されているフィードURLがこのサイトのものと違う場合（配信元を移行した、FeedBurnerを経由しているなど）は自動では特定できず、リンクが出ません。番組名が近いというだけで採用すると別の番組にリンクしてしまうため、確実でないものは出さない方針です。<br>リンクが出ていない番組がありましたら、そのApple PodcastsのURLをMessageの欄に書いて送ってください。Githubアカウントをお持ちの方は<a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/apple-podcasts.json">こちらのファイル</a-blank>へPRを送っていただけると確実です。</p>
-    <h3>Githubアカウントをお持ちの方へ</h3>
-    <p><a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json">こちらのファイル</a-blank>へPRを送ってもらうとさらに助かります。</p>
     <form name="register-request" method="POST" netlify data-netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="register-request">
       <!-- スパム対策の隠しフィールド。人には見えないので、値が入っていたら
@@ -44,6 +37,11 @@
 
       <button type="submit">Send</button>
     </form>
+    <h3>Feedに関する既知の問題</h3>
+    <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
+    <p>既知の問題は、<a-blank href="https://github.com/noracast/podcastfreaks.com/issues?q=is%3Aissue+is%3Aopen+label%3AFeed">こちら</a-blank>にまとめていますので、予めご一読いただけるとありがたいです。<br>また、毎日のビルドで見つかった問題は<nuxt-link to="/errors/">Errors ページ</nuxt-link>に出しています。ご自身の番組が挙がっていましたら、フィードをご確認いただけると助かります。</p>
+    <h3>Githubアカウントをお持ちの方へ</h3>
+    <p><a-blank href="https://github.com/noracast/podcastfreaks.com/blob/main/data/rss.json">こちらのファイル</a-blank>へPRを送ってもらうとさらに助かります。</p>
   </div>
 </template>
 
@@ -92,6 +90,12 @@ form {
     min-width: 100px;
     cursor: pointer;
   }
+}
+/* フォームより下は補足。送る場所と読み分けられるよう、薄い線で区切る */
+form + h3 {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #e8e8e8;
 }
 a {
   padding-bottom: 0.2em;
