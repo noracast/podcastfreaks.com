@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-    <h2>番組の登録リクエスト</h2>
+    <h2>Add</h2>
     <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
     <p>登録してほしい番組の URL を入れると、配信元の RSS フィードを探して、登録済みかどうかまで調べます。Spotify・Apple Podcasts・YouTube・番組サイト、どのページの URL でも構いません。</p>
 
@@ -21,7 +21,7 @@
     <p v-if="error" class="error">{{ error }}</p>
 
     <template v-if="searched && !loading">
-      <h3>{{ candidates.length ? '見つかった番組' : '見つかりませんでした' }}</h3>
+      <h3>{{ candidates.length ? 'Results' : 'Not found' }}</h3>
 
       <ul v-if="candidates.length" class="candidates">
         <li v-for="channel in candidates" :key="channel.feed">
@@ -237,7 +237,7 @@ const REGISTERED_JSON = '/registered.json'
 export default {
   setup() {
     useHead({
-      title: '番組の登録リクエスト | Podcast Freaks - Japanese techie podcast archive',
+      title: 'Add | Podcast Freaks - Japanese techie podcast archive',
       // サイレントリリースの間は検索に載せない（issue #228）。
       // このサイトにサイトマップは無いので、これで足りる
       meta: [{ name: 'robots', content: 'noindex' }]
