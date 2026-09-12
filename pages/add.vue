@@ -98,7 +98,7 @@
                   <div class="actions">
                     <nuxt-link class="send gray" :to="requestLink(channel)">フォームから送る</nuxt-link>
                   </div>
-                  <p class="hint">GitHub のアカウントをお持ちでない場合は、こちらから。</p>
+                  <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
                 </div>
               </div>
             </template>
@@ -130,7 +130,7 @@
               <div class="actions">
                 <nuxt-link class="send gray" :to="requestLink(unknownChannel)">フォームから送る</nuxt-link>
               </div>
-              <p class="hint">GitHub のアカウントをお持ちでない場合は、こちらから。</p>
+              <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
             </div>
           </div>
         </template>
