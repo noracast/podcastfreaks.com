@@ -8,30 +8,25 @@
     <p hidden>
       <label>入力しないでください<input name="bot-field"></label>
     </p>
-    <label for="feed">RSS feed</label>
-    <small>番組のRSSフィードURI</small>
-    <br>
+    <!-- 見出しと説明を2行に分けず、ラベル1行にまとめる。何を入れるかは
+         placeholder が実例で見せるので、説明を重ねると同じことを2度言う
+         ことになる。任意のものは、そう分かるようにだけ書き添える。
+         name は Netlify Forms の項目名。static/form.html と揃えてあるので、
+         見せ方を変えてもここは変えない -->
+    <label for="feed">RSS フィードの URL</label>
     <input id="feed" v-model="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml">
 
-    <label for="twitter">X</label>
-    <small>番組公式 X アカウントがある場合</small>
-    <br>
+    <label for="twitter">公式 X アカウント（任意）</label>
     <input id="twitter" v-model="twitter" type="text" name="twitter" placeholder="@noracast_">
 
-    <label for="hashtag">Hashtag</label>
-    <small>番組公式ハッシュタグがある場合</small>
-    <br>
+    <label for="hashtag">公式ハッシュタグ（任意）</label>
     <input id="hashtag" v-model="hashtag" type="text" name="hashtag" placeholder="#noracast">
 
-    <label for="message">Message</label>
-    <small>なにかメッセージ等あれば</small>
-    <br>
+    <label for="message">メッセージ（任意）</label>
     <!-- placeholder は3行に分けて出す。&#10; は改行 -->
     <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
-    <label for="contributor">Contributor</label>
-    <small>無記名でももちろん大丈夫です！</small>
-    <br>
+    <label for="contributor">お名前（任意・無記名で構いません）</label>
     <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
     <button type="submit">Send</button>
@@ -43,7 +38,9 @@ form {
   & label {
     display: block;
     font-weight: bold;
-    font-size: 16px;
+    /* 入れる欄の文字（16px）より小さくして、欄の方を主役にする。
+       項目が5つ並ぶので、同じ大きさだと見出しの列のように見えてしまう */
+    font-size: 14px;
     &:not(:nth-of-type(1)) {
       margin-top: 20px;
     }
