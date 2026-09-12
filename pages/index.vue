@@ -812,9 +812,10 @@
     .toggle-columns {
       height: 38px;
     }
-    /* 横に並べる幅が無いので、ボタンを上、検索を下に積む */
+    /* 横に並べる幅が無いので上下に積む。順は DOM のまま（検索が上、ボタンが下）。
+       まず絞り込んでから書き出す流れに合う */
     .tools {
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: stretch;
       gap: 15px;
       padding: 0 15px;
@@ -830,6 +831,8 @@
       flex-direction: row;
       margin-left: 0;
       margin-right: auto;
+      /* ボタン同士の間も、この画面幅での余白（15px）に合わせる */
+      gap: 15px;
     }
     & th,td {
       &:first-child {
