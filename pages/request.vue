@@ -2,20 +2,14 @@
   <div class="root">
     <h2>番組の登録リクエスト</h2>
     <!-- 文の途中に改行を入れると出力に半角空白が入るので、段落は1行で書く -->
-    <p>登録してほしい番組の URL を入れると、配信元の RSS フィードを探して、登録済みかどうかまで調べます。Spotify・Apple Podcasts・YouTube・番組サイト、どのページの URL でも構いません。</p>
+    <p>登録してほしい番組の URL か番組名を入れると、配信元の RSS フィードを探して、登録済みかどうかまで調べます。URL は Spotify・Apple Podcasts・YouTube・番組サイト・RSS フィードのどれでも構いません。分かるものを、スペース区切りでいくつでも入れられます。</p>
 
+    <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
+         ラベルも補足も置かない（同じことを二度読ませない） -->
     <form class="search" @submit.prevent="lookup">
-      <label for="url">番組の URL</label>
-      <small>番組のページなら、どのサービスのものでも構いません</small>
-      <br>
-      <input id="url" v-model="url" type="url" placeholder="https://open.spotify.com/show/...">
+      <input id="query" v-model="query" type="text" aria-label="番組の URL か番組名" placeholder="https://open.spotify.com/show/... fukabori.fm">
 
-      <label for="name">番組名</label>
-      <small>URL から見つからないときの手がかりにします。分かる範囲で構いません</small>
-      <br>
-      <input id="name" v-model="name" type="text" placeholder="fukabori.fm">
-
-      <button type="submit" :disabled="loading || (!url && !name)">{{ loading ? 'Searching…' : 'Search' }}</button>
+      <button type="submit" :disabled="loading || !query.trim()">{{ loading ? 'Searching…' : 'Search' }}</button>
     </form>
 
     <p v-if="error" class="error">{{ error }}</p>
@@ -23,7 +17,7 @@
     <template v-if="searched && !loading">
       <h3>{{ candidates.length ? 'Results' : 'Not found' }}</h3>
 
-      <ul v-if="candidates.length" class="candidates">
+      <ul class="candidates">
         <!-- まだ登録されていないものが本題なので、そちらを先に並べる -->
         <li v-for="channel in candidates" :key="channel.feed" :class="{ 'is-registered': channel.matched.length }">
           <!-- 本当にこの番組かを確かめたいときのために、ジャケットと
@@ -67,7 +61,7 @@
             <template v-if="channel.matched.length">
               <p class="registered">
                 <span class="badge">登録済み</span>
-                <code>{{ channel.matched[0].key }}</code>{{ channel.matched[0].matchedBy === 'title' ? '（番組名が一致）' : '' }} として登録されています。
+                <code>{{ channel.matched[0].key }}</code>{{ matchNote(channel.matched[0]) }} として登録されています。
               </p>
               <!-- 登録済みでも用がある人はいる（フィードの URL が変わった、
                    ハッシュタグが違う）。行き止まりにせず、未登録のときと
@@ -104,44 +98,48 @@
             </template>
           </div>
         </li>
+        <!-- 見つからなかったときも、同じ座布団で出す。結果の形が変わると、
+             何が起きたのかを読み直すことになる。
+             送れるのは番組の URL があるときだけ。名前だけのリクエストは、
+             受け取った側が番組を特定するところから始めることになり、
+             フィードに辿り着けないことも多い -->
+        <li v-if="!candidates.length" class="is-unknown">
+          <div class="detail">
+            <p class="title">{{ unknownChannel.title || '番組が見つかりませんでした' }}</p>
+            <p v-if="url" class="meta">{{ url }}</p>
+            <p class="unregistered">
+              <span class="badge unknown">見つかりません</span>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。
+            </p>
+            <div class="next">
+              <p class="next-title">次のアクション<span v-if="canSendUnknown">どちらか一方</span></p>
+              <template v-if="canSendUnknown">
+                <div class="choice">
+                  <div class="actions">
+                    <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
+                  </div>
+                  <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
+                </div>
+                <div class="choice">
+                  <div class="actions">
+                    <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+                  </div>
+                  <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
+                </div>
+              </template>
+              <div v-else class="choice">
+                <div class="actions">
+                  <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
+                </div>
+                <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
 
       <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
            目当てが無いときも、ここで行き止まりにしない -->
       <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
-
-      <!-- 見つからなくても、ここで終わらせない。ただし送れるのは
-           番組の URL があるときだけ。
-           名前だけのリクエストは、受け取った側が番組を特定するところから
-           始めることになり、フィードに辿り着けないことも多い。
-           URL さえあれば、そこから配信元を追える -->
-      <template v-else-if="!candidates.length">
-        <p>Apple Podcasts に載っていない番組や、名前が違う番組は見つかりません。番組名を変えて探し直すか、番組のページの URL を添えて送ってください。</p>
-        <template v-if="canSendUnknown">
-          <div class="next">
-            <p class="next-title">次のアクション<span>どちらか一方</span></p>
-            <div class="choice">
-              <div class="actions">
-                <a-blank class="send" :href="issueUrl(unknownChannel)">Githubでリクエスト</a-blank>
-              </div>
-              <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
-            </div>
-            <div class="choice">
-              <div class="actions">
-                <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
-              </div>
-              <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
-            </div>
-          </div>
-        </template>
-        <template v-else>
-          <p class="hint">上の「番組の URL」に、Spotify・Apple Podcasts・番組サイトなど番組のページの URL を入れてください。そこから配信元をこちらで追えます。</p>
-          <div class="actions">
-            <button type="button" class="send gray" @click="openForm(unknownChannel)">フォームから送る</button>
-          </div>
-          <p class="hint">URL が分からない場合も、こちらからお知らせいただけます。</p>
-        </template>
-      </template>
 
       <!-- 送ったあとの話。登録されるとは限らないことは、先に伝えておく -->
       <p v-if="sendable || canSendUnknown" class="note">いただいたリクエストは、フィードの中身（音声を持っているか、配信者が掲載を止めていないか）を確認したうえで登録します。このサイトの意図に沿わないなどの理由で、登録しかねる場合もありますので予めご了承ください。</p>
@@ -170,15 +168,7 @@
   max-width: 600px;
 }
 form.search {
-  margin-top: 40px;
-  & label {
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-    &:not(:nth-of-type(1)) {
-      margin-top: 20px;
-    }
-  }
+  margin-top: 30px;
   & input {
     font-size: 16px;
     padding: 10px;
@@ -259,6 +249,11 @@ form.search {
     /* 番組の情報と、状態から先の話とを読み分けられるよう、ここで一段空ける */
     margin-top: 20px;
   }
+  /* 見つからなかったものは、ジャケットも話数も無い。入れてもらった URL を
+     控えめに出すだけなので、そこだけ折り返しを許す */
+  & li.is-unknown .meta {
+    word-break: break-all;
+  }
   /* 登録済みのものは、すでに用が済んでいる。一段引いた見え方にする */
   & li.is-registered {
     color: #666;
@@ -287,6 +282,11 @@ form.search {
   &.new {
     color: #fff;
     background-color: #7f00ff;
+  }
+  /* 見つからなかった印。押す先はあるが、番組が分かっているわけではない */
+  &.unknown {
+    color: #fff;
+    background-color: #999;
   }
 }
 .actions {
@@ -422,10 +422,12 @@ a:not(.send) {
 </style>
 
 <script>
-import searchTerms, { appleIdFromUrl, cleanTitle, hostLabel, startsWithHostLabel } from '@/lib/podcast-source.js'
+import searchTerms, { appleIdFromUrl, cleanTitle, hostLabel, looksLikeFeed, pathLabel, startsWithHostLabel } from '@/lib/podcast-source.js'
 import toChannels, { lookupUrl, searchUrl, episodeSearchUrl, collectionIds } from '@/lib/itunes.js'
 import oembedUrl from '@/lib/spotify.js'
-import matchRegistered from '@/lib/registered-match.js'
+import matchRegistered, { matchByHost, normalizeTitle } from '@/lib/registered-match.js'
+import feedTitle from '@/lib/feed-title.js'
+import parseQuery from '@/lib/parse-query.js'
 import registerRequestIssueUrl from '@/lib/register-request-issue.js'
 import requestFormValues from '@/lib/request-form-values.js'
 import { jst } from '@/lib/jst'
@@ -445,8 +447,8 @@ export default {
   },
   data: function() {
     return {
-      url: '',
-      name: '',
+      // 入れてもらった1行。URL と番組名は lib/parse-query.js で分ける
+      query: '',
       loading: false,
       searched: false,
       error: '',
@@ -468,11 +470,11 @@ export default {
     // なっていて、そこを読むと毎回空が返る。ルーターは最初から
     // 開かれた URL を持っている
     const query = this.$route.query
-    this.url = query.url || ''
-    // ブックマークレット（#230）は、見ていたページのタイトルを渡してくる。
-    // Spotify のように番組名が URL から取れないサービスでは、これが
-    // 唯一の手がかりになる
-    this.name = query.title || ''
+    // ブックマークレット（#230）は、見ていたページの URL とタイトルを
+    // 分けて渡してくる。欄は1つなので、並べて入れる。
+    // Spotify のように番組名が URL から取れないサービスでは、
+    // タイトルが唯一の手がかりになる
+    this.query = [query.url, query.title].filter(Boolean).join(' ')
 
     // フォームに用がある人は、調べるところを飛ばして来る（About からのリンク、
     // /add から回していた頃のクエリ付きリンク）。その場合は開いた状態で出す
@@ -490,9 +492,24 @@ export default {
       if(wantsForm) this.$nextTick(this.scrollToForm)
     }
 
-    if(this.url || this.name) this.lookup()
+    if(this.query.trim()) this.lookup()
   },
   computed: {
+    // 入れてもらった1行を、URL と番組名に分けたもの
+    parsed: function() {
+      return parseQuery(this.query)
+    },
+    urls: function() {
+      return this.parsed.urls
+    },
+    // 表示や送り先に添えるのは、最初に書かれた URL。
+    // 探すときは urls を順に試す（findChannels）
+    url: function() {
+      return this.urls[0] || ''
+    },
+    name: function() {
+      return this.parsed.name
+    },
     // 1件でも「まだ登録されていない番組」があるか。
     // 出ているのが登録済みのものだけなら、送り先の案内は要らない
     sendable: function() {
@@ -501,12 +518,14 @@ export default {
     // 番組名だけのリクエストは受け取らない。番組の URL があれば、そこから
     // 配信元のフィードを追えるが、名前だけだと特定から始めることになる
     canSendUnknown: function() {
-      return !!this.url.trim()
+      return this.urls.length > 0
     },
     // 見つからなかったときに送るもの。分かっているのは、入れてもらった
     // 番組名と見ていたページだけ。フィードは GitHub の画面で書き足してもらう
     unknownChannel: function() {
-      return { title: cleanTitle(this.name), feed: '', apple: '', genres: [] }
+      // 明らかにフィードの形の URL を入れてもらっているなら、それを
+      // フィードとして渡す。受け取った側が探し直さずに済む
+      return { title: cleanTitle(this.name), feed: this.urls.find(looksLikeFeed) || '', apple: '', genres: [] }
     }
   },
   methods: {
@@ -535,10 +554,11 @@ export default {
 
       try {
         const registered = await this.loadRegistered()
-        const channels = await this.findChannels()
+        const channels = await this.findChannels(registered)
         this.candidates = channels.map(channel => ({
           ...channel,
-          matched: matchRegistered(registered, channel)
+          // 登録中の一覧から作った候補は、どれに当たったかを持っている
+          matched: channel.matched || matchRegistered(registered, channel)
         }))
       } catch {
         this.error = '番組を探せませんでした。しばらくしてからもう一度お試しください。'
@@ -548,40 +568,95 @@ export default {
       }
     },
     // Apple のリンクなら id から一発で引ける。それ以外は、URL と番組名から
-    // 作った検索語を、結果が出るまで順に試す
-    findChannels: async function() {
-      const appleId = appleIdFromUrl(this.url)
-      if(appleId) {
+    // 作った検索語を、結果が出るまで順に試す。
+    //
+    // 順番は「確かなものから」。iTunes を通さない登録済み一覧との
+    // 突き合わせが前後にあるのは、**iTunes には URL で引く方法が無い**ため。
+    // フィードの URL をそのまま入れられたときは、こちらでしか辿れない
+    findChannels: async function(registered) {
+      // 入れられたものが、そのまま登録中のフィードだった場合
+      for(const url of this.urls) {
+        const sameFeed = matchRegistered(registered, { feed: url })
+        if(sameFeed.length) return sameFeed.map(entry => this.fromRegistered(entry))
+      }
+
+      // Apple のリンクは id から一発で引ける
+      for(const url of this.urls) {
+        const appleId = appleIdFromUrl(url)
+        if(!appleId) continue
         const channels = toChannels(await this.fetchJson(lookupUrl(appleId)))
         if(channels.length) return channels
       }
 
-      for(const term of searchTerms({ url: this.url, title: this.name })) {
+      for(const term of searchTerms({ title: this.name })) {
         const channels = toChannels(await this.fetchJson(searchUrl(term)))
         if(channels.length) return channels
       }
 
-      const viaHost = await this.findViaHost()
-      if(viaHost.length) return viaHost
+      // ここから先は URL を1つずつ。入れてもらった順に試す
+      for(const url of this.urls) {
+        const viaHost = await this.findViaHost(url)
+        if(viaHost.length) return viaHost
+      }
 
-      return await this.findViaSpotify()
+      for(const url of this.urls) {
+        const viaPath = await this.findViaPath(url)
+        if(viaPath.length) return viaPath
+      }
+
+      for(const url of this.urls) {
+        const viaSpotify = await this.findViaSpotify(url)
+        if(viaSpotify.length) return viaSpotify
+      }
+
+      for(const url of this.urls) {
+        const viaFeed = await this.findViaFeed(url)
+        if(viaFeed.length) return viaFeed
+      }
+
+      // 番組サイトを入れられた場合。フィードの URL とは一致しないが、
+      // 同じホストで配信している番組が登録されていれば、それが答え
+      for(const url of this.urls) {
+        const sameSite = matchByHost(registered, url)
+        if(sameSite.length) return sameSite.map(entry => this.fromRegistered(entry))
+      }
+
+      return []
+    },
+    // 登録中の一覧から候補を作る。ジャケットや話数は持っていないが、
+    // 「もう載っているか」に答えるにはこれで足りる
+    fromRegistered: function(entry) {
+      return { title: entry.title || '', feed: entry.feed, apple: '', artwork: '', genres: [], matched: [entry] }
     },
     // 番組サイトのホスト名で引く。タイトルが回の名前だけ、といった場合の最後の手がかり。
     //
     // iTunes の検索は説明文や作者欄にも当たるので、ここは**番組名がその語で
     // 始まるものだけ**を残す。example.com のようなありふれた語で、無関係な番組が
     // 並ぶのを防ぐため（絞る前は5件、「含む」で見たときも4件並んだ）
-    findViaHost: async function() {
-      const label = hostLabel(this.url)
+    findViaHost: async function(url) {
+      const label = hostLabel(url)
       if(!label || label.length < 2) return []
       const channels = toChannels(await this.fetchJson(searchUrl(label)))
       return channels.filter(channel => startsWithHostLabel(channel.title, label))
     },
+    // フィードの URL を入れられたとき。パスの末尾が番組名になっている形
+    // （rss.art19.com/fukabori）を拾う。ホスト名は配信基盤のものなので使えない。
+    // findViaHost と同じく、番組名がその語で始まるものだけを残す
+    findViaPath: async function(url) {
+      const label = pathLabel(url)
+      if(!label || label.length < 2) return []
+      // パスの語はハイフンやアンダースコアで繋がっている（the-daily）。
+      // 番組名の側は空白なので、区切りを空白に直してから引く
+      // （突き合わせる normalizeTitle は空白を落とす）
+      const term = label.replace(/[-_]+/g, ' ').trim()
+      const channels = toChannels(await this.fetchJson(searchUrl(term)))
+      return channels.filter(channel => startsWithHostLabel(channel.title, term))
+    },
     // Spotify の URL しか無いとき（ブックマークレットを通さず貼られた場合など）。
     // 番組名は URL からもページからも取れないが、oEmbed が最新エピソード名を
     // 返すので、それをエピソードとして検索して番組へ辿る（lib/spotify.js）
-    findViaSpotify: async function() {
-      const oembed = oembedUrl(this.url)
+    findViaSpotify: async function(url) {
+      const oembed = oembedUrl(url)
       if(!oembed) return []
       try {
         const { title } = await this.fetchJson(oembed)
@@ -594,6 +669,42 @@ export default {
         return []
       }
     },
+    // 最後の手がかり。入れられたものがフィードそのものなら、読めば番組名が
+    // 分かる。ホスト名にもパスにも名前が出ない形（anchor.fm/s/<hex>/podcast/rss）は
+    // これでしか辿れない。
+    //
+    // **フィードの約3割はブラウザから読めない**（CORS。issue #228）。
+    // 読めなくても送る導線は出すので、ここで止めない
+    findViaFeed: async function(url) {
+      const title = await this.fetchFeedTitle(url)
+      if(!title) return []
+
+      // 名前が分かったので iTunes を引き直す。ジャケットや話数が付く
+      const channels = toChannels(await this.fetchJson(searchUrl(title)))
+      const same = channels.filter(channel => normalizeTitle(channel.title) === normalizeTitle(title))
+      if(same.length) return same
+
+      // Apple に載っていない番組。フィードから分かったぶんだけで出す
+      return [{ title, feed: url, apple: '', artwork: '', genres: [] }]
+    },
+    // フィードを読んで番組名を取る。番組のページ（HTML）を読んでしまった
+    // 場合は、lib/feed-title.js が空を返す
+    fetchFeedTitle: async function(url) {
+      if(!url) return ''
+      try {
+        return feedTitle(await $fetch(url, { responseType: 'text' }))
+      } catch {
+        // 読めないフィードは珍しくない（CORS）。手がかりが1つ減るだけ
+        return ''
+      }
+    },
+    // どこで当たったかの添え書き。フィードの URL が一致したときは、
+    // 言うまでもないので何も出さない
+    matchNote: function(matched) {
+      if(matched.matchedBy === 'title') return '（番組名が一致）'
+      if(matched.matchedBy === 'host') return '（同じドメインで配信）'
+      return ''
+    },
     channelMeta: function(channel) {
       return [
         channel.artist,
@@ -604,14 +715,14 @@ export default {
     issueUrl: function(channel) {
       return registerRequestIssueUrl({
         channel,
-        source: { url: this.url, title: this.name }
+        source: { url: this.urls.join(' '), title: this.name }
       })
     },
     // 送信フォームを開く。調べた結果があれば初期値に入れて、
     // 同じことを二度入力させない（lib/request-form-values.js）
     openForm: function(channel) {
       this.formValues = channel
-        ? requestFormValues({ channel, source: { url: this.url, title: this.name } })
+        ? requestFormValues({ channel, source: { url: this.urls.join(' '), title: this.name } })
         : {}
       this.formOpen = true
       this.$nextTick(this.scrollToForm)
