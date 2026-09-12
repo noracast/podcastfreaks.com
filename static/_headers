@@ -7,3 +7,9 @@
 # ページも同じ。中身は毎日変わる
 /*.html
   Cache-Control: no-cache
+
+# 登録済み判定用の一覧（/add が読む）。
+# ブックマークレット（#230）から別のオリジンで開かれる場合にも読めるよう、
+# ここだけ他所からの読み取りを許す
+/registered.json
+  Access-Control-Allow-Origin: *

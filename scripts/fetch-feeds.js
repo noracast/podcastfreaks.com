@@ -27,7 +27,8 @@ import {
   RSS_JSON,
   RSS_INACTIVE_JSON,
   ADDED_AT_JSON,
-  APPLE_PODCASTS_JSON
+  APPLE_PODCASTS_JSON,
+  REGISTERED_JSON
 } from './constants.js'
 
 // data/rss.json は ESM の import attributes を使わず fs で読む。
@@ -536,6 +537,21 @@ const fetchFeed = async key => {
   // Save to file
   consola.log(`[3/3] ${BUILD_INFO} を書き出します`)
   await writeFile(BUILD_INFO, JSON.stringify(data), 'utf8')
+
+  // 登録済みかどうかの判定用（/add が読む）。判定に要るキー・フィード・番組名だけ。
+  //
+  // 並びの元は channels ではなく data/rss.json にする。channels には取得に
+  // 失敗した番組が入らないため、フィードが一時的に落ちている番組を
+  // 「未登録」と答えてしまい、すでに載っている番組のリクエストを
+  // 受け取ることになる。番組名は取得できたときのものを添える
+  // （名前での判定に使う。取れなければフィードURLの一致だけで見る）
+  consola.log(`　${REGISTERED_JSON} を書き出します`)
+  await writeFile(REGISTERED_JSON, JSON.stringify(
+    Object.fromEntries(keys.map(key => [key, {
+      feed: rss[key].feed,
+      title: channels[key] ? channels[key].title : null
+    }]))
+  ), 'utf8')
 
   // heatmap のぶん。日付の順に並べておく（読む側がそのまま辿れるように）
   const sortedDays = Object.keys(daily_counts).sort()
