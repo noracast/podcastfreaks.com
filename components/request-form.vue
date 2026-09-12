@@ -10,23 +10,24 @@
     </p>
     <!-- 見出しと説明を2行に分けず、ラベル1行にまとめる。何を入れるかは
          placeholder が実例で見せるので、説明を重ねると同じことを2度言う
-         ことになる。任意のものは、そう分かるようにだけ書き添える。
+         ことになる。どれも入れなくて構わない欄なので、（任意）とも書かない。
+         全部に付くと、読む手がかりにならないまま行が伸びるだけになる。
          name は Netlify Forms の項目名。static/form.html と揃えてあるので、
          見せ方を変えてもここは変えない -->
     <label for="feed">RSS フィードの URL</label>
     <input id="feed" v-model="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml">
 
-    <label for="twitter">公式 X アカウント（任意）</label>
+    <label for="twitter">公式 X アカウント</label>
     <input id="twitter" v-model="twitter" type="text" name="twitter" placeholder="@noracast_">
 
-    <label for="hashtag">公式ハッシュタグ（任意）</label>
+    <label for="hashtag">公式ハッシュタグ</label>
     <input id="hashtag" v-model="hashtag" type="text" name="hashtag" placeholder="#noracast">
 
-    <label for="message">メッセージ（任意）</label>
+    <label for="message">メッセージ</label>
     <!-- placeholder は3行に分けて出す。&#10; は改行 -->
     <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
-    <label for="contributor">お名前（任意・無記名で構いません）</label>
+    <label for="contributor">お名前</label>
     <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
     <button type="submit">Send</button>
