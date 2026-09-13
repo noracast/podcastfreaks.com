@@ -50,6 +50,16 @@
           <!-- 押すと一覧でこの回まで辿る。番組名と同じ行き先 -->
           <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode">{{ episode.title }}</button>
           <span v-else class="title as-text" :title="episode.title">{{ episode.title }}</span>
+          <!-- 配信元にあるこの回のページ。番組サイトの説明や書き起こしを見に行ける。
+               このサイトの中ではなく外へ出るので、別タブのしるしを付ける
+               （フィードに <link> が無い番組があるので、あるときだけ出す） -->
+          <a-blank v-if="episode.link" class="page" :href="episode.link" title="この回のページを開く" aria-label="この回のページを開く">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+              <path d="M14 4h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M20 4l-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a-blank>
         </div>
       </div>
     </div>
@@ -351,6 +361,31 @@
         font-size: 12px;
         /* 数字の幅を揃える */
         font-variant-numeric: tabular-nums;
+      }
+      /* 配信元のページへ出る印。日付と同じ濃さにして、題名より弱く置く。
+         指で押せる大きさを確保するため、当たり判定だけ広げる
+         （見た目を大きくすると、題名の隣で目立ちすぎる） */
+      .page {
+        flex: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: #777;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 24px;
+          height: 24px;
+          transform: translate(-50%, -50%);
+        }
+        & svg {
+          display: block;
+        }
+        &:hover {
+          color: #fff;
+        }
       }
       .channel {
         /* レイアウトのグローバルな button の指定を打ち消す */
