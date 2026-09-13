@@ -94,12 +94,11 @@
     max-width: 30%;
     color: #999;
     font-size: 11px;
-    /* 字がボックスの中心より下に来るぶんを持ち上げて、カバー画像と揃える。
-       理由と測り方は CLAUDE.md のスタイルを参照。
+    /* カバー画像と揃える（assets/common.css の --optical-shift を参照）。
        ここは名前に g や y が入ることが多く、そのぶんずれが大きく出る
        （実測 1.9px。回の題名は 0.8px なので触っていない） */
     position: relative;
-    top: -0.15em;
+    top: var(--optical-shift);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

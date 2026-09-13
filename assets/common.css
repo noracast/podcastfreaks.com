@@ -34,6 +34,26 @@
 
   /* ページの見出し（h2）の大きさ。ブラウザの既定（1.5em）と同じ */
   --heading-size: 24px;
+
+  /* 本文の書体（下の body）の癖をならすための持ち上げ幅。
+     カバー画像・アイコン・バッジのような図形と横に並べて上下中央に置くとき、
+     文字の側にだけ当てる。
+
+     Noto Sans JP は字に対して上の余白が広く、15px のときの行ボックス21pxに
+     対して字の中心はその中心より 2.2px 下に来る。図形はぴったり中央に
+     置かれるので、そのまま並べると文字だけ沈んで見える。
+
+     測り方は canvas の measureText で、fontBoundingBox（行ボックス）と
+     actualBoundingBox（字そのもの）の差を見る:
+       ((fa - fd) - (aa - ad)) / 2
+
+     本来は @font-face の ascent-override で書体ごと直したいが、
+     Google Fonts が配る @font-face は書き換えられない（日本語は
+     unicode-range で120個ほどに分かれていて、自前で持つには重すぎる）。
+     text-box-trim も、継承しないので * に当てるしかなく、そうすると
+     段落の余白まで詰まる（About ページで実測 160px 縮む）。
+     どちらも割に合わないので、必要な場所にこの値を当てる形にしている */
+  --optical-shift: -0.15em;
 }
 
 /* 狭い画面では一段小さくする。24px だと「Episodes in the last year」が

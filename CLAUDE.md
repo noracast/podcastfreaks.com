@@ -125,8 +125,20 @@ Noto Sans JP は字に対して上の余白が広く、15px のときの行ボ�
 字の中心はその中心より 2.2px 下に来る（`measureText` の
 `fontBoundingBox` と `actualBoundingBox` の差で測れる）。カバー画像や
 アイコン、バッジは図形なのでぴったり中央に置かれるため、そのまま並べると
-文字だけ沈んで見える。`top: -0.15em` で揃う（`pages/index.vue` の
-`.headline`）。大きさが変わっても比率で効くよう em で書く。
+文字だけ沈んで見える。持ち上げ幅は `assets/common.css` の `--optical-shift`
+に置いてあるので、`top: var(--optical-shift)` を当てる。
+
+書体ごと直す方法も試したが、どちらも割に合わなかった。
+
+- `@font-face` の `ascent-override` … Google Fonts が配る `@font-face` は
+  書き換えられない。自前で持つには、日本語が `unicode-range` で120個ほどに
+  分かれているぶんを全部抱えることになる
+- `text-box-trim` … 継承しないので `*` に当てるしかなく、そうすると段落の
+  余白まで詰まる（About ページで実測160px縮む）。`ideographic` の値は
+  まだ使えず、対応していないブラウザとで見え方が2つに割れる
+
+当てる場所は測ってから決める。ずれ幅は字の大きさと、その文字列に下へ
+伸びる字（g・y）が入るかで変わり、1px前後のところに当てると逆に浮く。
 
 ヘッダーなどの紫のグラデーションは、もとは Sass のミックスインだった。
 `assets/common.css` の `:root` に `--brand-texture` などとして置いてある。
