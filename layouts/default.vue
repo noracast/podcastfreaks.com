@@ -147,12 +147,12 @@ h1 {
   margin: 0;
   line-height: 1.2;
   /* 文字を直接持つようになったので、h1 の既定（2em）ではなくここで指定する */
-  font-size: 22px;
+  font-size: 20px;
 }
 .lead {
   margin: 3px 0 0;
   color: #fff;
-  font-size: 11px;
+  font-size: 11.5px;
   line-height: 1.2;
   /* 小さい文字なので少し字間を空けて読みやすくする */
   letter-spacing: 0.05em;
@@ -310,7 +310,7 @@ button {
       .lead {
         font-size: 10px;
         letter-spacing: 0;
-        transform: scale(0.8);
+        transform: scale(0.9);
         transform-origin: left top;
         margin-bottom: -3px;
       }
