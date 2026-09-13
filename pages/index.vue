@@ -510,6 +510,10 @@
                   margin-left: 4px;
                   padding-right: 0;
                   background-color: transparent;
+                  /* 押す先なので、添え物の薄さ（#888）ではなく本文と同じ濃さに。
+                     重ねて出すときは触れている間だけの案内だが、ここは
+                     行き先として読ませる */
+                  color: #444;
                   /* 開くのは文字を押したときだけ。アイコンは開け閉めに使う */
                   pointer-events: auto;
                 }
