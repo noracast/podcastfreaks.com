@@ -4,8 +4,9 @@
 # （issue #228）、フィード本体の検証はここが担う。登録中のフィードの約3割は
 # CORS を返さず、ブラウザからは読めないため。
 #
-# いまはコメントするところまで。data/rss.json への PR を出すところは、
-# 実際のリクエストを何件か見てからにする（issue #231 の段取り）。
+# 検証を通ったら data/rss.json に足す PR まで出す。merge するかどうかは人が決める。
+# X とハッシュタグは、送る人が書いてくれたときだけ入れる（フィード本文から
+# 機械で拾うと、出演者個人のアカウントや一般的なタグを掴んで間違えるため）。
 #
 # Ref: https://github.com/noracast/podcastfreaks.com/issues/231
 
@@ -22,8 +23,10 @@ on:
     types: [opened, labeled, edited]
 
 permissions:
-  contents: read
+  # PR のためにブランチを作るので、読むだけでは足りない
+  contents: write
   issues: write
+  pull-requests: write
 
 jobs:
   check:
@@ -77,3 +80,69 @@ jobs:
           GH_REPO: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: gh issue edit "$ISSUE_NUMBER" --add-label register-request
+
+      # ここから下は、検証を全部通った場合だけ。
+      # 同じ issue で何度も動く（edited）ので、すでにブランチがあれば作らない
+      - name: すでに PR があるか見る
+        id: existing
+        if: steps.check.outputs.verdict == 'ok' && steps.check.outputs.key != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          BRANCH: register/${{ github.event.issue.number }}
+        run: |
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: data/rss.json に足す
+        id: apply
+        if: steps.check.outputs.verdict == 'ok' && steps.check.outputs.key != '' && steps.existing.outputs.found == 'false'
+        continue-on-error: true
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          KEY: ${{ steps.check.outputs.key }}
+        run: node scripts/apply-register-request.js
+
+      - name: PR を出す
+        if: steps.apply.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          BRANCH: register/${{ github.event.issue.number }}
+          KEY: ${{ steps.check.outputs.key }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git add data/rss.json
+          git commit -m "$KEY を追加する" -m "Closes #$ISSUE_NUMBER"
+          git push origin "$BRANCH"
+          # 本文はファイル経由で渡す。issue の題名をシェルに展開させない
+          {
+            echo "#$ISSUE_NUMBER の登録リクエストです。フィードの検証は通っています（結果は issue のコメント）。"
+            echo
+            echo "merge する前に確かめること。"
+            echo
+            echo "- キー \`$KEY\` でよいか（URL とカバー画像のファイル名になるので、あとから変えにくい）"
+            echo "- X とハッシュタグ。**空のままなら、それは分からなかったということ**。"
+            echo "  フィード本文から機械で拾うと出演者個人のアカウントや一般的なタグを掴むので、自動では埋めていない"
+            echo "- このサイトの趣旨（日本語のテック系ポッドキャスト）に合うか"
+            echo
+            echo "merge すると、登録日と Apple Podcasts のリンクは別のワークフローが埋める。"
+          } > "$RUNNER_TEMP/pr.md"
+          gh pr create --base main --head "$BRANCH" \
+            --title "$KEY を追加する" \
+            --body-file "$RUNNER_TEMP/pr.md" \
+            --label register-request
+
+      - name: PR を出せなかったことを伝える
+        if: steps.apply.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue comment "$ISSUE_NUMBER" --body 'フィードは問題ありませんでしたが、`data/rss.json` へ足すところで止まりました。登録する側で手を入れます。'
