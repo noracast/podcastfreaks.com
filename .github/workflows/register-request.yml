@@ -1,0 +1,79 @@
+# 登録リクエストの issue が立ったら、フィードを確かめて結果をコメントする。
+#
+# 登録リクエストのページ（/request/）はブラウザだけで動く設計なので
+# （issue #228）、フィード本体の検証はここが担う。登録中のフィードの約3割は
+# CORS を返さず、ブラウザからは読めないため。
+#
+# いまはコメントするところまで。data/rss.json への PR を出すところは、
+# 実際のリクエストを何件か見てからにする（issue #231 の段取り）。
+#
+# Ref: https://github.com/noracast/podcastfreaks.com/issues/231
+
+name: 登録リクエストを確かめる
+
+on:
+  issues:
+    # opened … 送られた直後に見る。
+    # labeled … ラベルは issue を立てた人が付けられるとは限らない。
+    #   /request/ が作るリンクには ?labels=register-request を載せているが、
+    #   GitHub は権限の無い人からのラベル指定を黙って捨てる。あとから
+    #   こちらで付けたときにも動くようにしておく。
+    # edited … フィードの URL を書き足してもらったときに、もう一度見る
+    types: [opened, labeled, edited]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    # 関係のない issue では動かさない。ラベルが付いているか、
+    # /request/ が本文の末尾に入れている案内文があるものだけ。
+    # ここは式なので、本文がシェルとして動くことはない
+    if: >-
+      contains(github.event.issue.labels.*.name, 'register-request') ||
+      contains(github.event.issue.body, 'https://podcastfreaks.com/request/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # package.json の packageManager に書いたバージョンが使われる
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      # xml2js しか要らないが、lockfile どおりに入れる方が早くて確実
+      - run: pnpm install --frozen-lockfile
+
+      - name: フィードを確かめる
+        id: check
+        # issue の本文は人が書いたものなので、run: の中へ直に埋め込まない
+        # （${{ github.event.issue.body }} と書くと、本文の中身がそのまま
+        #   シェルとして動いてしまう）。環境変数で渡して、スクリプト側で読む
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          node scripts/check-register-request.js > "$RUNNER_TEMP/comment.md"
+          echo "comment_path=$RUNNER_TEMP/comment.md" >> "$GITHUB_OUTPUT"
+
+      # 登録リクエストの形をしていない issue には何も言わない
+      - name: 結果をコメントする
+        if: steps.check.outputs.verdict != '' && steps.check.outputs.verdict != 'not-request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_PATH: ${{ steps.check.outputs.comment_path }}
+        run: gh issue comment "$ISSUE_NUMBER" --body-file "$COMMENT_PATH"
+
+      # あとで探しやすいよう、ラベルを付けておく。
+      # 立てた人に権限が無くて付かなかったぶんを、ここで補う
+      - name: ラベルを付ける
+        if: steps.check.outputs.verdict != '' && steps.check.outputs.verdict != 'not-request'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue edit "$ISSUE_NUMBER" --add-label register-request
