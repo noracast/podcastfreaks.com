@@ -4,7 +4,10 @@
     <div class="tools">
       <input v-model="query" class="search" type="search" placeholder="Search">
       <div class="actions">
-        <button ref="downloadBtn" class="download" :disabled="markedRows.length == 0" @click="downloadOpml">Download OPML</button>
+        <!-- 書き出す対象は「いま一覧に出ている番組」。検索と Hosting の
+             絞り込みがそのまま選択になるので、行ごとのチェックは置かない。
+             何件書き出すのかが分かるよう、数を添える -->
+        <button ref="downloadBtn" class="download" :disabled="sortedChannels.length == 0" @click="downloadOpml">Download OPML ({{ sortedChannels.length }})</button>
         <!-- 画面が狭くて列を隠しているときだけ出す。出すと表は横スクロールになる。
              文言は「押したらどうなるか」。状態ではないので aria-pressed は付けない -->
         <button v-if="hasHiddenColumns" class="toggle-columns" @click="toggleAllColumns">{{ showAllColumns ? 'Compact' : 'All columns' }}</button>
@@ -23,12 +26,9 @@
               :title="col.tooltip"
               @click="sortBy(col)"
             >
-              <!-- 全選択。押すたびに全部入る／全部外れる。
-                   見出しのセルに文字を置かないので、読み上げ用の名前を持たせる -->
-              <input v-if="col.key === 'download'" type="checkbox" checked class="check-all" aria-label="すべての番組を選ぶ" @change="toggleAllCheckbox">
               <!-- ラベルは "Hosting" のまま固定し、透明な select を重ねる。
                    select 自体に文字を出すと、絞り込み中に見出しの文言が変わってしまう -->
-              <span v-else-if="col.filter" class="hosting-filter" :class="{ 'is-active': !!hostingFilter }">{{ col.label }}<select :value="hostingFilter" @change="filterByHosting($event.target.value)" @click.stop>
+              <span v-if="col.filter" class="hosting-filter" :class="{ 'is-active': !!hostingFilter }">{{ col.label }}<select :value="hostingFilter" @change="filterByHosting($event.target.value)" @click.stop>
                 <option value="">すべて</option>
                 <option v-for="o in hostingOptions" :key="o.value" :value="o.value">{{ o.label }} ({{ o.count }})</option>
               </select></span>
@@ -101,9 +101,6 @@
               <td class="total">{{ row.total }}</td>
               <td class="frequency"><frequency :interval="row.updateInterval" /></td>
               <td class="duration"><duration :duration="row.durationMedian" /></td>
-              <!-- 書き出す番組を選ぶ。どの行のものか読み上げで分かるよう、
-                   番組名を名前にする（画面には出さない） -->
-              <td class="check"><input v-model="markedRows" type="checkbox" :value="row.key" :aria-label="`${row.title} を書き出しに含める`"></td>
             </tr>
             <tr v-if="openedKey === row.key" class="child-row">
               <td :colspan="columns.length">
@@ -167,7 +164,12 @@
   }
 }
 .download {
-  width: 150px;
+  /* 書き出す数を添えるぶん、文字が長い。折り返すと2行になって
+     隣のボタンと高さが揃わなくなるので、幅は中身に合わせる
+     （150px だと「Download OPML (234)」が入らなかった） */
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
   /* ヘッダーと同じ背景。普段はヘッダーと同じだけ透かし、ホバーで
      透けを止めて色をはっきりさせる */
   background-color: transparent;
@@ -321,12 +323,6 @@
      First episode の側だけ列が広くなり、2つの日付の列で幅が食い違う */
   & td.first, td.last {
     padding-right: 30px;
-  }
-  /* チェックボックスは中身が小さいので、内容の幅に張り付かせる。
-     width: 1% は「できるだけ狭く」の意味になり、中身より狭くはならない */
-  & th.check, td.check {
-    width: 1%;
-    white-space: nowrap;
   }
   & th,td {
     text-align: left;
@@ -1030,7 +1026,6 @@ export default {
       newTitle1: `${NEW_WITHIN.lastEpisode}日以内に新しい回が公開された番組`,
       newTitle2: `${NEW_WITHIN.firstEpisode}日以内に1本目の回が公開された番組`,
 
-      allMarked: false,
       hostingFilter: '',
       // 画面が狭いときに隠している列を、手動で出しているか。
       // 事前レンダリングした HTML と食い違わないよう、localStorage は
@@ -1059,12 +1054,7 @@ export default {
           tooltip: '直近の更新間隔から求めたおおよその頻度' },
         { key: 'durationMedian', label: 'Duration', class: 'duration', sortable: true, desc: true,
           tooltip: '収録時間の中央値' },
-        // 幅を止めるために名前を付ける。OPML のボタン（button.download）と
-        // 紛れないよう、別の名前にしている
-        { key: 'download', label: '', class: 'check',
-          tooltip: 'ダウンロードするためにチェックしてください' }
       ],
-      markedRows: [],
 
       // 検索欄の文字列
       query: '',
@@ -1167,8 +1157,6 @@ export default {
     }
   },
   mounted: function(){
-    this.toggleAllCheckbox()
-
     // 別のページで鳴らし始めてからトップへ来たときのぶん。
     // watch は変化したときだけなので、最初の1回はここで拾う
     if(player.reveal) this.revealEpisode(player.reveal)
@@ -1375,10 +1363,6 @@ export default {
       }
       return this._searchableCache[row.key]
     },
-    toggleAllCheckbox: function() {
-      this.markedRows = this.allMarked ? [] : Object.keys(rss)
-      this.allMarked = !this.allMarked
-    },
     linkify,
     isIn: function(date, threshold){
       return jstDate(date, 'YYYY.MM.DD').isAfter(threshold)
@@ -1398,13 +1382,14 @@ export default {
         "dateCreated": new Date(),
         "ownerName": "podcast-freaks"
       }
-      const outlines = this.markedRows.map((channelName)=>{
-        const channel = rss[channelName]
+      // 表に出ている順そのまま。絞り込みと並べ替えの結果が、
+      // そのまま書き出す中身になる
+      const outlines = this.sortedChannels.map((row)=>{
         return {
           text: "txt",
-          title: channelName,
+          title: row.key,
           type: "rss",
-          "xmlUrl": channel.feed
+          "xmlUrl": rss[row.key].feed
         }
       })
       // file-saver を使っていたが、CommonJS のまま配られていて事前レンダリング
