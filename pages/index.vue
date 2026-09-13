@@ -70,8 +70,9 @@
                       <!-- .link は3つに共通で付ける目印。スタイルを当てるのに
                            `>*` と書くと、Vue 3 の scoped 変換が属性セレクタを
                            別の位置に差し込んでしまう（下の .links を参照） -->
-                      <!-- 指の環境では重ねられないので、1回目のタップで名前を出し、
-                           2回目で開く（onLinkTap）。ポインタのある環境は今までどおり -->
+                      <!-- 指の環境では重ねられないので、アイコンを押すと名前を出す。
+                           もう一度押すと閉じ、開くのは出ている名前を押したときだけ
+                           （onLinkTap）。ポインタのある環境は今までどおり -->
                       <span class="links" :class="{ 'has-revealed': revealedLink.startsWith(`${row.key}:`) }">
                         <apple-podcasts-link v-if="row.applePodcasts" class="link" :class="{ 'is-revealed': revealedLink === `${row.key}:apple` }" :url="row.applePodcasts" @click="onLinkTap(`${row.key}:apple`, $event)" />
                         <x-link v-if="row.twitter" class="link" :class="{ 'is-revealed': revealedLink === `${row.key}:x` }" :account="row.twitter" @click="onLinkTap(`${row.key}:x`, $event)" />
@@ -509,6 +510,8 @@
                   margin-left: 4px;
                   padding-right: 0;
                   background-color: transparent;
+                  /* 開くのは文字を押したときだけ。アイコンは開け閉めに使う */
+                  pointer-events: auto;
                 }
                 /* 出している間、他のアイコンは引っ込める。
                    場所も空けたいので display で消す */
@@ -1305,15 +1308,28 @@ export default {
     // 出し、2回目で開く。しばらく置くと元に戻す
     onLinkTap: function(id, event){
       if(this.hoverMedia && this.hoverMedia.matches) return
-      if(this.revealedLink === id) {
-        // 2回目。そのまま開かせる
+
+      // まだ出ていなければ、どこを押しても名前を出すだけ。
+      // ここで飛ぶと、何のリンクか分からないまま開くことになる
+      if(this.revealedLink !== id) {
+        event.preventDefault()
+        this.revealedLink = id
+        clearTimeout(this.linkRevealTimer)
+        this.linkRevealTimer = setTimeout(this.hideLinkLabel, LINK_LABEL_DURATION)
+        return
+      }
+
+      // 出ているときは、アイコンを押したら閉じる。
+      // 文字（.label）の側を押したときだけ開く。判定はアイコン（svg）で
+      // 見る。文字は行の中に流し込んだ素の span で、当たり判定が
+      // 端末によって取りにくいため
+      const target = event && event.target
+      if(target && target.closest && target.closest('svg')) {
+        event.preventDefault()
         this.hideLinkLabel()
         return
       }
-      event.preventDefault()
-      this.revealedLink = id
-      clearTimeout(this.linkRevealTimer)
-      this.linkRevealTimer = setTimeout(this.hideLinkLabel, LINK_LABEL_DURATION)
+      this.hideLinkLabel()
     },
     hideLinkLabel: function(){
       clearTimeout(this.linkRevealTimer)
