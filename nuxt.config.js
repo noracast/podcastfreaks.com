@@ -56,9 +56,19 @@ export default defineNuxtConfig({
     // 404 フォールバックは失うが、必要なら static/ に自分で置ける
     preset: 'static',
     prerender: {
-      crawlLinks: true,
-      // トップから辿れるページは crawlLinks が拾う。入口はここだけ指定する
-      routes: ['/']
+      // 出すページはここに全部書く。リンクを辿らせない。
+      //
+      // 辿らせると、同じページが末尾スラッシュの有無で2回描かれることが
+      // あった（/request と /request/）。nitro は autoSubfolderIndex が
+      // 既定で true なので、どちらも request/index.html に書く。2つが同時に
+      // 書くと中身が混ざり、短い方を書いたあとに長い方の余りが残って、
+      // ページの末尾に「/html>」が出ていた（本番で発生）。
+      //
+      // ページは5つしかないので、辿らせるより並べた方が確実。
+      // 新しいページを足したらここにも足すこと。
+      // 末尾スラッシュ付きで書くのは、サイト内のリンクがその形のため
+      crawlLinks: false,
+      routes: ['/', '/about/', '/episodes/', '/request/', '/errors/']
     }
   },
 

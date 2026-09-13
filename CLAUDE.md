@@ -62,10 +62,14 @@ Vite は使うものだけを読むため、ここを通さないと曜日が英
 - `data/added-at.json`（番組の登録日）と `data/apple-podcasts.json`（Apple Podcasts の
   リンク）は GitHub Actions が生成する。手で編集するのは後者の `"source": "manual"`
   の項目だけ
-- 手元で建て直したとき、ページの末尾に `/html>` のような**前回の出力の切れ端**が
-  残ることがある。事前レンダリングした HTML を上書きするとき、前より短くなった
-  ぶんが切り詰められないため。もう一度ビルドすれば消える（Netlify は毎回まっさら
-  なので起きない）。ページを削ったあとに変な文字が出ていたら、まずこれを疑う
+- 出すページは `nuxt.config.js` の `nitro.prerender.routes` に**全部書く**。
+  リンクは辿らせない（`crawlLinks: false`）。辿らせると、同じページが末尾
+  スラッシュの有無で2回描かれることがあった（`/request` と `/request/`）。
+  nitro は `autoSubfolderIndex` が既定で true なので、どちらも
+  `request/index.html` に書く。2つが同時に書くと中身が混ざり、短い方を
+  書いたあとに長い方の余りが残って、ページの末尾に `/html>` が出る
+  （payload に入る `"path"` の `\u002F` 6文字ぶんが余る）。本番でも起きていた。
+  ページの末尾に変な文字が出ていたら、まずこれを疑う
 - フィードのエラーや警告への対処は `.claude/skills/feed-triage/` にまとめてある
 - 番組を新しく登録する手順は `.claude/skills/add-channel/` にまとめてある
 
