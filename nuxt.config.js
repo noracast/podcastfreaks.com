@@ -95,6 +95,12 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#8a00f0' }
       ],
       link: [
+        // 本文のフォント。使っている太さは 400・500（表）・700（見出し）の3つ。
+        // 日本語は文字ごとに分割配信されるので、必要なぶんだけ落ちてくる。
+        // display=swap を付けて、届くまでは下の代替（assets/common.css）で出す
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap' },
         { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' },
         // iOS がホーム画面に置くときに使う絵。透過のままだと黒く塗られるので、
         // pnpm icons が背景を白で埋めたものを作っている

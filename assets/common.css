@@ -1,4 +1,3 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 /* トップの子行と /episodes の行で分け合うぶん。scoped な <style> どうしでは
    分け合えないので、グローバルとしてここから読む */
 @import './episode-line.css';
@@ -52,7 +51,11 @@ h2 {
 }
 
 body {
-  font-family: 'Noto Sans Japanese', sans-serif;
+  /* 読み込みは nuxt.config.js の link で行う（@import は直列に待たされる）。
+     Noto Sans JP が来るまでのあいだと、来なかったときは端末の標準ゴシックで
+     出す。以前ここで読んでいた Google Fonts の Early Access は提供が終わって
+     いて、ファイルが404になったまま気づかずに標準ゴシックで出していた */
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
   color: #444;
   margin: 0;
 }
