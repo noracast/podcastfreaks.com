@@ -412,9 +412,24 @@
               margin-left: 16px;
               /* アイコンの間隔。>*:not(:first-child) と書くと、Vue 3 の
                  scoped 変換が属性セレクタを別の位置に差し込んでしまう */
-              gap: 6px;
+              /* 指で押せる大きさを確保するため、アイコンの中心どうしを 24px
+                 離す。アイコン自体は 14px なので、残りを間隔で持つ */
+              gap: 10px;
               >.link {
                 position: relative;
+                /* 当たり判定だけを 24px へ広げる。padding で広げると
+                   アイコンの並びと行の高さが変わるので、透明な板を重ねる。
+                   ラベル（下の :deep(.label)）と重ならないよう、
+                   重ねるのはアイコンの真上だけにする */
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  width: 24px;
+                  height: 24px;
+                  transform: translate(-50%, -50%);
+                }
               }
               /* ホバーしたアイコンの右横に、その名前を出す。
                  
