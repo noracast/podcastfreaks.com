@@ -120,6 +120,14 @@ pnpm test:watch  # 直しながら見る
 そのため、`.vue` の中に手で書いた `@media (hover: hover)` は要らない。
 すでに囲んであるものはプラグインが二重に囲まないので、残っていても害はない。
 
+**文字を図形と横に並べて上下中央に置くときは、文字を少し持ち上げる。**
+Noto Sans JP は字に対して上の余白が広く、15px のときの行ボックス21pxに対して
+字の中心はその中心より 2.2px 下に来る（`measureText` の
+`fontBoundingBox` と `actualBoundingBox` の差で測れる）。カバー画像や
+アイコン、バッジは図形なのでぴったり中央に置かれるため、そのまま並べると
+文字だけ沈んで見える。`top: -0.15em` で揃う（`pages/index.vue` の
+`.headline`）。大きさが変わっても比率で効くよう em で書く。
+
 ヘッダーなどの紫のグラデーションは、もとは Sass のミックスインだった。
 `assets/common.css` の `:root` に `--brand-texture` などとして置いてある。
 
