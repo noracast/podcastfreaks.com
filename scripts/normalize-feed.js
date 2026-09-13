@@ -25,6 +25,26 @@ const findLink = (node, rel) => asArray(node && node.link)
   .map(link => (link && link.$) ? link.$ : link)
   .find(link => link && link.href && (rel ? link.rel === rel : (!link.rel || link.rel === 'alternate')))
 
+// <link> から URL を1つ取り出す。
+//
+// RSS では <link>https://…</link> と本文に書くのが決まりだが、RSS の中で
+// Atom の書き方（<link href="…"/>）を使っているフィードがある（品モノラジオ）。
+// xml2js はこれを { $: { href } } にするので、そのまま持ち回ると href の無い
+// <a> が出来て、その番組だけリンクが押せなくなっていた。
+//
+// 属性が付いただけの <link rel="…">https://…</link> も同じ理由で拾う。
+// 複数並んでいるときは、本文へのリンク（rel 無し／alternate）を選ぶ
+export function linkUrl(value) {
+  if (value == null) return null
+  for (const link of asArray(value)) {
+    const body = text(link)
+    if (body && body.trim()) return body.trim()
+    const href = link && link.$ && link.$.href
+    if (href && (!link.$.rel || link.$.rel === 'alternate')) return String(href).trim()
+  }
+  return null
+}
+
 export default function normalizeFeed(json) {
   if (json && json.rss && json.rss.channel) return json.rss.channel
   if (json && json.feed) return fromAtom(json.feed)

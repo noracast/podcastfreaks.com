@@ -5,7 +5,7 @@ import decodeEntities from './decode-entities.js'
 import fs from 'fs'
 import nodeCleanup from 'node-cleanup'
 import path from 'path'
-import normalizeFeed from './normalize-feed.js'
+import normalizeFeed, { linkUrl } from './normalize-feed.js'
 import parsePubDate from './parse-pub-date.js'
 import { toLocalSeconds, toStamp } from '../lib/format-seconds.js'
 import episodeId from '../lib/episode-id.js'
@@ -204,9 +204,9 @@ const toEpisode = (ep) => ({
   // guid を持たない番組がわずかにあり（234フィード中1つ、19話）、その1つは
   // エピソードのページ URL も持っていないので、音声の URL まで下がって代える。
   // guid ほど安定しない（配信元を移すと変わる）が、無いよりは指せる
-  id: episodeId(guidOf(ep) || ep.link || util.audioUrl(ep)),
+  id: episodeId(guidOf(ep) || linkUrl(ep.link) || util.audioUrl(ep)),
   title: ep.title,
-  link: ep.link || null,
+  link: linkUrl(ep.link),
   pubDate: ep.pubDate,
   // enclosure の URL をそのまま使う。プレフィックスもクエリも落とさない
   // （CLAUDE.md「音声の再生」）
@@ -435,7 +435,7 @@ const fetchFeed = async key => {
     title,
     twitter: rss[key].twitter,
     feed: rss[key].feed,
-    link: channel.link ? channel.link : null,
+    link: linkUrl(channel.link),
     hashtag: rss[key].hashtag,
     cover: covers[key] ? covers[key].dist.replace(/^static/,'') : null,
     total: episodes.length,
