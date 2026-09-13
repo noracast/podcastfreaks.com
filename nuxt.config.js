@@ -102,6 +102,12 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap' },
         { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' },
+        // ホーム画面に追加したときの名前とアイコン。
+        // Service Worker を置かない指定（pwa.selfDestroying）にすると
+        // @vite-pwa/nuxt はこの link を入れてくれないので、自分で書く。
+        // iOS はこれが無くても下の apple-touch-icon を見るが、
+        // Android はこちらを見る
+        { rel: 'manifest', href: '/manifest.webmanifest' },
         // iOS がホーム画面に置くときに使う絵。透過のままだと黒く塗られるので、
         // pnpm icons が背景を白で埋めたものを作っている
         { rel: 'apple-touch-icon', href: '/img/icons/apple-touch-icon.png', sizes: '180x180' }
@@ -114,100 +120,26 @@ export default defineNuxtConfig({
   modules: ['@vite-pwa/nuxt'],
 
   pwa: {
-    // 新しい版が出ていたら黙って入れ替える。
+    // 欲しいのはホーム画面に追加したときのアイコンと名前だけ。
+    // Service Worker は置かない（selfDestroying: true）。
     //
-    // 既定の 'prompt' は、新しい Service Worker を待機させたまま古いものを
-    // 使い続ける。このサイトは毎日中身が変わるので、更新を尋ねる意味がない。
-    // Nuxt 2 の @nuxtjs/pwa も skipWaiting: true で同じ振る舞いだった
-    registerType: 'autoUpdate',
-
-    workbox: {
-      // 前の版のキャッシュを残さない。ローカルで別のビルドを配信したときに
-      // 古い HTML が返り続けて何度も混乱した
-      cleanupOutdatedCaches: true,
-      // 新しい Service Worker が、開いているページをすぐ引き継ぐ
-      skipWaiting: true,
-      clientsClaim: true,
-
-      // 先読みするのは、名前の変わらないものだけ（アイコンと manifest）。
-      //
-      // HTML は入れない。以前は入れていたが、そうすると Service Worker が
-      // キャッシュした HTML を返し続け、サイトを更新しても端末側が
-      // 古いままになる（タブを全部閉じても直らなかった）。
-      // 中身が毎日変わるので、ページは下の runtimeCaching で
-      // 「まずネットワーク、駄目ならキャッシュ」にする。
-      //
-      // _nuxt/ の js と css も、ここには入れない。先読みの一覧から外れた
-      // ものは新しい版が来たときに消されるが、**消されると困る**ため
-      // （理由は下の assets を参照）
-      globPatterns: ['**/*.{ico,png,svg,webmanifest}'],
-      // フィードのデータ（downloads/）は毎日変わるうえ量が多いので、
-      // 先読みの対象から外す。エピソードは開いたときに取りに行く
-      globIgnores: ['**/downloads/**'],
-      navigateFallback: null,
-
-      runtimeCaching: [
-        {
-          // ページそのもの。取れたら必ず新しいものを出す。
-          // 5秒待って駄目なら、前に見たものを出す（機内などオフラインのとき）
-          urlPattern: ({ request }) => request.mode === 'navigate',
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'pages',
-            networkTimeoutSeconds: 5,
-            expiration: { maxEntries: 30 }
-          }
-        },
-        {
-          // js と css。名前にハッシュが入っていて、名前が同じなら中身も
-          // 同じなので、一度取ったらそのまま使う。
-          //
-          // 肝は**古い版のぶんも残す**こと。上の pages は通信が間に合わ
-          // なかったときに前に見た HTML を出すので、その HTML が指す
-          // 素材がここに残っている必要がある。先読み（precache）に置くと
-          // 新しい版が来た時点で消され、古い HTML が出たときに 404 になり、
-          // 文字も色も無い素のページが表示される（iOS で実際に起きていた）。
-          //
-          // 消えるのは、30日経つか、200件を超えて古いものから溢れたとき
-          urlPattern: ({ url }) => url.pathname.startsWith('/_nuxt/'),
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'assets',
-            expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 }
-          }
-        },
-        {
-          // 本文の書体（Google Fonts）。こちらも名前に版が入っていて
-          // 中身は変わらない。取れないと端末の標準ゴシックに落ちるので、
-          // 一度読めたら手元に置いておく
-          urlPattern: ({ url }) => url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com',
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'fonts',
-            expiration: { maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 * 365 },
-            // 別のドメインからの返事は中身を確かめられない（opaque）ので、
-            // 状態が 0 のものも保存の対象にする
-            cacheableResponse: { statuses: [0, 200] }
-          }
-        },
-        {
-          // 一覧が読むフィードのデータ。こちらも新しいものを優先する
-          urlPattern: ({ url }) => url.pathname.startsWith('/downloads/'),
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'downloads',
-            networkTimeoutSeconds: 5,
-            expiration: { maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 }
-          }
-        }
-      ]
-    },
-
-    // 開発サーバーでは Service Worker を動かさない。
-    // 直したそばから古い画面が返ると、原因を追いにくい
-    devOptions: {
-      enabled: false
-    },
+    // iOS はホーム画面のアイコンを apple-touch-icon と下の manifest から
+    // 取るので、Service Worker が無くてもスクリーンショットにはならない。
+    //
+    // 外した理由。素材（js・css）とページを別々に持つ作りにしていたが、
+    // デプロイでファイル名が変わると、前に見た HTML が指す素材が消えて
+    // 文字も色も無いページが出ていた（iOS で実際に起きた）。素材の方は
+    // 消えないキャッシュへ移して直したが、このサイトの offline は
+    // もともと半分しか成り立たない。音声は配信元から直接鳴らしていて
+    // 手元に置かないので（CLAUDE.md「音声の再生」）、圏外では一覧が
+    // 見えるだけで聴けない。仕組みの重さに見合わないと判断した。
+    //
+    // 速さのぶんは static/_headers で持たせている（ハッシュ付きの
+    // /_nuxt/ を1年間そのまま使ってよいことにした）。
+    //
+    // selfDestroying は、すでに入っている Service Worker を自分で
+    // 登録解除するためのもの。端末から消えるまで当分は置いておく
+    selfDestroying: true,
 
     manifest: {
       name: 'Podcast Freaks',

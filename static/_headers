@@ -13,3 +13,9 @@
 # ここだけ他所からの読み取りを許す
 /registered.json
   Access-Control-Allow-Origin: *
+
+# ハッシュ付きの素材。名前が同じなら中身も同じなので、取り直す必要が無い。
+# Netlify の既定は max-age=0, must-revalidate で、開くたびに全部の
+# js と css をサーバーへ確認しに行っていた
+/_nuxt/*
+  Cache-Control: public, max-age=31536000, immutable
