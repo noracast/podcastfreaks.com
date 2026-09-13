@@ -37,7 +37,10 @@
     </header>
     <!-- プレーヤーが出ている間は、その高さぶん下に余白を作る。
          無いと一覧の最後の行や子行の下端がプレーヤーに隠れる -->
-    <div class="main" :class="{ 'has-player': hasPlayer, 'player-minimized': playerMinimized }">
+    <!-- main にしておくと、読み上げで「本文へ飛ぶ」が使える。
+         ヘッダーと再生中のプレーヤーは外に置いてあるので、
+         ここから下がそのページの中身になる -->
+    <main class="main" :class="{ 'has-player': hasPlayer, 'player-minimized': playerMinimized }">
       <div class="sp_stats">
         <nuxt-link to="/" class="stat channels">
           <span>{{ channelCount }}</span>
@@ -53,7 +56,7 @@
         </div>
       </div>
       <slot />
-    </div>
+    </main>
     <!-- 再生中のものを出し続ける。ページを移っても消えないよう、
          ページの中ではなくレイアウトに置く（issue #235） -->
     <global-player />
