@@ -1436,13 +1436,19 @@ export default {
       // エピソードの読み込みを待つ。開いた直後は取得中のことがある
       const episodes = await this.waitForEpisodes(key)
       const index = episodes.findIndex(ep => ep.url === reveal.url)
-      if(index < 0) return
 
       // 30話ずつしか描いていないので、そこまで伸ばす
-      if((this.episodesShown[key] || EPISODES_PER_CHUNK) <= index) {
+      if(index >= 0 && (this.episodesShown[key] || EPISODES_PER_CHUNK) <= index) {
         this.episodesShown = { ...this.episodesShown, [key]: index + EPISODES_PER_CHUNK }
       }
       await this.$nextTick()
+
+      // もう一度合わせる。/episodes など別のページから来たときは、
+      // 上の scrollToRow のあとにルーターがページの先頭へ戻してしまい、
+      // 番組が画面の外に残っていた（行は開いているのに表の先頭が見えている）。
+      // ここまで来ればルーターの処理は終わっているので、こちらが最後に決める
+      this.scrollToRow(key)
+      if(index < 0) return
       this.scrollToEpisode(key, index)
     },
     // 読み込み中なら待つ。失敗したときや、待っている間に別の行が
