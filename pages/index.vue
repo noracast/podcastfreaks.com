@@ -41,7 +41,10 @@
             <!-- 子行の開け閉めは行のどこを押しても効く。
                  行の中のリンクや操作部品は、それぞれの働きを優先する -->
             <tr class="row" @click="onRowClick(row, $event)">
-              <td class="title">
+              <!-- アイコンの名前を出している間は、この列ごと前に出す。
+                   名前は右へはみ出すので、そのままだと隣の列（日付）の
+                   文字が上に描かれて重なる -->
+              <td class="title" :class="{ 'has-revealed-link': revealedLink.startsWith(`${row.key}:`) }">
                 <div class="title-cell">
                   <!-- カバー画像はもともと別の列だったが、見出しが2つに割れて
                        片方が空欄になり収まりが悪かったので、この列に入れた -->
@@ -67,10 +70,12 @@
                       <!-- .link は3つに共通で付ける目印。スタイルを当てるのに
                            `>*` と書くと、Vue 3 の scoped 変換が属性セレクタを
                            別の位置に差し込んでしまう（下の .links を参照） -->
-                      <span class="links">
-                        <apple-podcasts-link v-if="row.applePodcasts" class="link" :url="row.applePodcasts" />
-                        <x-link v-if="row.twitter" class="link" :account="row.twitter" />
-                        <hashtag-link v-if="row.hashtag" class="link" :hashtag="row.hashtag" />
+                      <!-- 指の環境では重ねられないので、1回目のタップで名前を出し、
+                           2回目で開く（onLinkTap）。ポインタのある環境は今までどおり -->
+                      <span class="links" :class="{ 'has-revealed': revealedLink.startsWith(`${row.key}:`) }">
+                        <apple-podcasts-link v-if="row.applePodcasts" class="link" :class="{ 'is-revealed': revealedLink === `${row.key}:apple` }" :url="row.applePodcasts" @click="onLinkTap(`${row.key}:apple`, $event)" />
+                        <x-link v-if="row.twitter" class="link" :class="{ 'is-revealed': revealedLink === `${row.key}:x` }" :account="row.twitter" @click="onLinkTap(`${row.key}:x`, $event)" />
+                        <hashtag-link v-if="row.hashtag" class="link" :class="{ 'is-revealed': revealedLink === `${row.key}:hashtag` }" :hashtag="row.hashtag" @click="onLinkTap(`${row.key}:hashtag`, $event)" />
                       </span>
                     </span>
                   </div>
@@ -408,6 +413,8 @@
                幅が足りないときに縮むのはタイトル側だけなので、ここは固定 */
             .links {
               flex: none;
+              /* 名前を流れの中に出すと、その幅だけ番組名が縮む。
+                 縮む側は番組名（marquee-text）が受け持つ */
               display: flex;
               align-items: center;
               margin-left: 16px;
@@ -480,9 +487,34 @@
                 margin-left: 1px;
               }
               /* 隣のアイコンは DOM の後ろにあるぶん手前に描かれるので、
-                 ホバー中のものを前に出して、ラベルの背景で隠せるようにする */
-              >.link:hover {
+                 ホバー中のものを前に出して、ラベルの背景で隠せるようにする。
+                 指の環境で名前を出しているもの（.is-revealed）も同じ */
+              >.link:hover, >.link.is-revealed {
                 z-index: 1;
+              }
+              /* 指の環境で、1回目のタップで出した名前。
+                 ホバーのときは絶対配置で隣に重ねるが、指のときは**流れの中に
+                 置く**。重ねると、狭い画面では隣の列（日付）にはみ出して
+                 文字が重なってしまう。流れの中なら、そのぶん番組名が縮む */
+              &.has-revealed {
+                /* 出しているアイコンは、ホバーのときと同じくはっきりさせる。
+                   普段は 0.35 まで引いてあるので、名前まで薄くなってしまう */
+                >.link.is-revealed {
+                  opacity: 1;
+                }
+                >.link.is-revealed :deep(.label) {
+                  position: static;
+                  opacity: 1;
+                  transform: none;
+                  margin-left: 4px;
+                  padding-right: 0;
+                  background-color: transparent;
+                }
+                /* 出している間、他のアイコンは引っ込める。
+                   場所も空けたいので display で消す */
+                >.link:not(.is-revealed) {
+                  display: none;
+                }
               }
             }
           }
@@ -543,6 +575,12 @@
     /* タイトルは可変幅の主役なので、優先的に幅を取る */
     & td.title {
       width: 40%;
+    }
+    /* アイコンの名前を出している間だけ、この列を前に出す。
+       いつも前に出すと、New! の吹き出しなど他の重なりに影響する */
+    & td.title.has-revealed-link {
+      position: relative;
+      z-index: 2;
     }
     & td.total {
       font-size: 18px;
@@ -983,6 +1021,10 @@ import { player, clearReveal } from '@/lib/player'
 // 一度に描くエピソードの数。下まで見たらこの数ずつ足していく
 const EPISODES_PER_CHUNK = 30
 
+// 指の環境で、アイコンの名前を出しておく時間（ミリ秒）。
+// 読んでから押し直すのに足りて、放っておけば戻る長さ
+const LINK_LABEL_DURATION = 4000
+
 // 辿り着いた回を光らせておく長さ（ミリ秒）
 const REVEAL_HIGHLIGHT = 1800
 
@@ -1057,6 +1099,10 @@ export default {
         { key: 'durationMedian', label: 'Duration', class: 'duration', sortable: true, desc: true,
           tooltip: '収録時間の中央値' },
       ],
+
+      // 指の環境で、いま名前を出しているアイコン（`<番組のキー>:<種類>`）。
+      // 1回目のタップで出し、2回目で開く
+      revealedLink: '',
 
       // 検索欄の文字列
       query: '',
@@ -1167,6 +1213,10 @@ export default {
     // 幅を測って動的に決めると、列を隠した分だけ Channel が広がって条件が
     // 外れ、また出てくる、という往復になるため、境界は固定にしている
     // 子行が縦に積まれる境界。説明を畳むかどうかの判定に使う
+    // 重ねられる環境か。アイコンの名前は、重ねられるならホバーで出し、
+    // そうでなければ1回目のタップで出す
+    this.hoverMedia = window.matchMedia('(hover: hover)')
+
     this.narrowMedia = window.matchMedia('(max-width: 900px)')
     this.columnsMedia = window.matchMedia('(max-width: 1100px)')
     this.updateHasHiddenColumns()
@@ -1181,6 +1231,7 @@ export default {
   },
   beforeUnmount: function(){
     clearTimeout(this.revealTimer)
+    clearTimeout(this.linkRevealTimer)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
   },
   methods: {
@@ -1247,10 +1298,36 @@ export default {
     // ただし行の中のリンクや操作部品は、それぞれの働きを優先する
     // （Apple Podcasts / X / ハッシュタグ、エピソードへのリンク、
     //   Hosting の絞り込み、OPML のチェックボックス）
+    // タイトルの後ろのアイコン（Apple・X・ハッシュタグ）を押したとき。
+    //
+    // 重ねられる環境ではホバーで名前が出るので、何もしない。指の環境では
+    // アイコンだけを見て何のリンクか分からないので、1回目のタップで名前を
+    // 出し、2回目で開く。しばらく置くと元に戻す
+    onLinkTap: function(id, event){
+      if(this.hoverMedia && this.hoverMedia.matches) return
+      if(this.revealedLink === id) {
+        // 2回目。そのまま開かせる
+        this.hideLinkLabel()
+        return
+      }
+      event.preventDefault()
+      this.revealedLink = id
+      clearTimeout(this.linkRevealTimer)
+      this.linkRevealTimer = setTimeout(this.hideLinkLabel, LINK_LABEL_DURATION)
+    },
+    hideLinkLabel: function(){
+      clearTimeout(this.linkRevealTimer)
+      this.linkRevealTimer = null
+      this.revealedLink = ''
+    },
     onRowClick: function(row, event){
       const target = event && event.target
       if(!target || !target.closest) return
+      // アイコンを押したぶんは、そのクリックがここまで上がってくる。
+      // ここで消すと、出したばかりの名前がすぐ引っ込む
       if(target.closest('a, input, select, button, label')) return
+      // 名前を出したまま別のところを押したら、戻しておく
+      if(this.revealedLink) this.hideLinkLabel()
       this.toggleChildRow(row.key)
     },
     // 開いている子行の .wrap。ref は v-for の中なので配列で返る
