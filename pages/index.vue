@@ -655,7 +655,8 @@
     padding: 8px;
     outline: none;
     font-size: 13px;
-    border: 1px solid #ddd;
+    /* 枠の濃さは、リクエストフォームの入力欄と揃える */
+    border: 1px solid #ccc;
     width: 300px;
     &:placeholder-shown {
       color: #ccc;

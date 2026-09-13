@@ -96,7 +96,23 @@ p {
 }
 
 input[type=text],
+input[type=search],
 textarea,
 input[type=submit] {
   -webkit-appearance: none;
+  appearance: none;
+}
+
+/* 検索欄は、これが無いと iOS が純正の見た目（角丸の灰色）で描く。
+   入力できない欄のように見えていたので、リクエストフォームの欄と同じ
+   白地に揃える。上の appearance と合わせて、地の色まで明示しておく */
+input[type=search] {
+  background-color: #fff;
+}
+
+/* appearance を外すと、入力中に出る取り消しボタン（×）まで消える。
+   自前で描くほどのものではないので、ここだけ既定に戻す */
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: auto;
+  appearance: auto;
 }
