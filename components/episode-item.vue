@@ -12,7 +12,7 @@
     <span class="play">
       <play-icon :playing="current && playing" />
     </span>
-    <span class="text">{{ episode.title }}</span>
+    <marquee-text class="text">{{ episode.title }}</marquee-text>
     <span class="time">{{ formattedDuration }}</span>
   </button>
 </template>
@@ -48,11 +48,16 @@
   }
 }
 
-/* レイアウトのグローバルな button:hover（紫）を、ここで打ち消しておく。
-   これが無いと、ポインタのある環境で押した回が紫の塊になる
+/* レイアウトのグローバルな button の紫（:hover と :active）を、ここで
+   打ち消しておく。これが無いと、ポインタのある環境で押した回が紫の塊になる
    （指で押した端末に紫が残らないことは、ビルド時に :hover をまとめて
-   @media (hover: hover) で囲む方で担保している。CLAUDE.md のスタイル参照） */
-.episode:not(:disabled):hover {
+   @media (hover: hover) で囲む方で担保している。CLAUDE.md のスタイル参照）。
+
+   :active は指の環境でも出る。題名を横になぞって読んでいる間ずっと
+   「押している」扱いになり、行が紫になっていた。触れている合図は
+   下の #ececec で足りる */
+.episode:not(:disabled):hover,
+.episode:not(:disabled):active {
   background-color: transparent;
 }
 

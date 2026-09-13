@@ -47,13 +47,10 @@
   align-items: center;
   color: #999;
 }
-/* 題名 */
+/* 題名。省略と、触れたときに流すところは components/marquee-text.vue が持つ */
 .episode-line .text {
   min-width: 0;
   color: #555;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   transition: color 0.2s;
 }
 /* 長さ。数字の幅を揃えて、並びの中で右端が揃うようにする */

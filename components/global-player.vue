@@ -42,14 +42,14 @@
       <div class="names">
         <!-- 番組名と配信日、その下に題名。右端を揃えたいので行ごとに分ける -->
         <div class="line">
-          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToEpisode">{{ episode.channelTitle || episode.key }}</button>
-          <span v-else class="channel as-text">{{ episode.channelTitle }}</span>
+          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToEpisode"><marquee-text>{{ episode.channelTitle || episode.key }}</marquee-text></button>
+          <span v-else class="channel as-text"><marquee-text>{{ episode.channelTitle }}</marquee-text></span>
           <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
         </div>
         <div class="line">
           <!-- 押すと一覧でこの回まで辿る。番組名と同じ行き先 -->
-          <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode">{{ episode.title }}</button>
-          <span v-else class="title as-text" :title="episode.title">{{ episode.title }}</span>
+          <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode"><marquee-text>{{ episode.title }}</marquee-text></button>
+          <span v-else class="title as-text" :title="episode.title"><marquee-text>{{ episode.title }}</marquee-text></span>
           <!-- 配信元にあるこの回のページ。番組サイトの説明や書き起こしを見に行ける。
                このサイトの中ではなく外へ出るので、別タブのしるしを付ける
                （フィードに <link> が無い番組があるので、あるときだけ出す） -->
@@ -168,8 +168,8 @@
               <cover v-if="entry.key" class="cover" :channel="entry.key" :size="36" :image-size="30" />
               <span v-else class="cover no-image" />
               <span class="names">
-                <span class="channel">{{ entry.channelTitle || entry.key || '' }}</span>
-                <span class="title">{{ entry.title }}</span>
+                <marquee-text class="channel">{{ entry.channelTitle || entry.key || '' }}</marquee-text>
+                <marquee-text class="title">{{ entry.title }}</marquee-text>
               </span>
             </button>
           </li>
@@ -403,9 +403,7 @@
         font-weight: bold;
         text-align: left;
         cursor: pointer;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        /* 省略と、触れたときに流すところは中の marquee-text が持つ */
         &:hover {
           color: #fff;
         }
@@ -430,9 +428,7 @@
         cursor: pointer;
         flex: 1;
         color: #eee;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        /* 省略と、触れたときに流すところは中の marquee-text が持つ */
         &:hover {
           color: #fff;
         }
@@ -650,19 +646,14 @@
           min-width: 0;
           display: flex;
           flex-direction: column;
+          /* 省略と、触れたときに流すところは marquee-text が持つ */
           .channel {
             color: #999;
             font-size: 12px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
           }
           .title {
             color: #ccc;
             font-size: 14px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
           }
         }
         /* いま鳴っている回 */

@@ -20,11 +20,11 @@
       <span class="play">
         <play-icon :playing="current && playing" />
       </span>
-      <span class="text">{{ episode.title }}</span>
+      <marquee-text class="text">{{ episode.title }}</marquee-text>
     </button>
     <!-- 番組名は控えめに。ジャケットで分かることが多いが、知らない番組の
          ときはここで名前が読める。押すと一覧でその番組を開く -->
-    <button class="channel" :title="`${episode.channel_title} を一覧で開く`" @click="onOpenChannel">{{ episode.channel_title }}</button>
+    <button class="channel" :title="`${episode.channel_title} を一覧で開く`" @click="onOpenChannel"><marquee-text>{{ episode.channel_title }}</marquee-text></button>
     <span class="time">{{ formattedDuration }}</span>
   </div>
 </template>
@@ -51,8 +51,11 @@
     /* 触れたときの紫も外す。指で押した端末では :hover が離したあとも
        残るため、これが無いと押した行が紫のまま居座る。
        行そのものの色（下の @media (hover: hover)）はポインタのある
-       環境でだけ出す */
-    &:hover {
+       環境でだけ出す。
+
+       :active も外す。指の環境でも出るので、題名を横になぞって読んでいる
+       間ずっと「押している」扱いになり、行が紫になっていた */
+    &:hover, &:active {
       background-color: transparent;
     }
   }
@@ -99,9 +102,8 @@
        （実測 1.9px。回の題名は 0.8px なので触っていない） */
     position: relative;
     top: var(--optical-shift);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    /* 省略と、触れたときに流すところは中の marquee-text が持つ */
+    min-width: 0;
     transition: color 0.2s;
   }
   .time {

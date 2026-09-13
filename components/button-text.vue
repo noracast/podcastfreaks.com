@@ -4,8 +4,9 @@
     <a-blank v-else class="action" :href="text">{{ buttonText }}</a-blank><!-- URL そのものも開けるようにする。ボタンが「コピー」のときはここからしか開けない
     --><a-blank class="value" :href="text">
       <!-- flex の直下のテキストには text-overflow が効かないため、
-           省略を受け持つ要素を1つ挟む -->
-      <span>{{ text }}</span>
+           省略を受け持つ要素を1つ挟む。長い URL は触れる（長押しする）と
+           流れて先まで読める（components/marquee-text.vue） -->
+      <marquee-text>{{ text }}</marquee-text>
     </a-blank>
   </div>
 </template>
@@ -70,11 +71,7 @@ div {
     align-items: center;
     /* 長いURLで子行からはみ出さないよう、収まらない分は省略する */
     min-width: 0;
-    & span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    /* 省略と、触れたときに流すところは marquee-text が持つ */
     &:hover {
       color: #111;
     }

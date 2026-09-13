@@ -55,8 +55,10 @@
                            基準にする -->
                       <span class="headline">
                         <span v-if="isRecentlyAdded(row.addedAt)" class="new" :title="addedTitle(row.addedAt)">New!</span>
-                        <!-- 省略された場合に全体を確認できるよう title 属性を付ける -->
-                        <span class="text" :title="row.title">{{ row.title }}</span>
+                        <!-- 収まらないときは「…」で省略する。触れる（長押しする）と
+                             流れて先まで読める（components/marquee-text.vue）。
+                             title 属性はポインタのある環境の保険として残す -->
+                        <marquee-text class="text" :title="row.title">{{ row.title }}</marquee-text>
                       </span>
                       <!-- タイトルの後ろに並べる外部リンク。
                            Apple 側と登録フィードURLが違う番組は自動で特定できないため、
@@ -77,8 +79,8 @@
               <td class="file-server">
                 <div class="clip">
                   <!-- 配信サービスは名前で、ただ置いてあるだけのホストはホスト名で出す。
-                       実際のホスト名はツールチップで確認できる -->
-                  <small :title="row.fileServer">{{ hostingLabel(row.fileServer) }}</small>
+                       長いホスト名は触れる（長押しする）と流れて先まで読める -->
+                  <small :title="row.fileServer"><marquee-text>{{ hostingLabel(row.fileServer) }}</marquee-text></small>
                 </div>
               </td>
               <td class="last">
@@ -397,11 +399,10 @@
               min-width: 0;
               display: flex;
             }
+            /* 省略と、触れたときに流すところは marquee-text が持つ。
+               ここでは縮む余地だけ与える */
             .text {
               min-width: 0;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
             }
             /* タイトルの後ろに並べる外部リンク。
                幅が足りないときに縮むのはタイトル側だけなので、ここは固定 */
@@ -530,7 +531,8 @@
         right: 0;
       }
       /* a でくるまれている列は実際の文字が中の small にあるため、
-         外側だけに指定すると「…」が出ずに切り落とされてしまう */
+         外側だけに指定すると「…」が出ずに切り落とされてしまう。
+         中に marquee-text を置いた列（Hosting）は、そちらが省略を持つ */
       >*, small {
         display: block;
         overflow: hidden;
