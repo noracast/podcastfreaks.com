@@ -32,9 +32,13 @@
     </div>
 
     <div class="head">
-      <!-- 36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
+      <!-- ジャケットも押せる。番組名・題名と同じ行き先（一覧でこの回まで辿る）。
+           一番大きくて狙いやすいので、ここが押せないのは分かりにくかった。
+           36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
            読む方は 30（= -60）を指定する -->
-      <cover v-if="episode.key" class="cover" :channel="episode.key" :size="36" :image-size="30" />
+      <button v-if="episode.key" class="cover-button" :title="`${episode.title} を一覧で開く`" :aria-label="`${episode.title} を一覧で開く`" @click="goToEpisode">
+        <cover class="cover" :channel="episode.key" :size="36" :image-size="30" />
+      </button>
       <div class="names">
         <!-- 番組名と配信日、その下に題名。右端を揃えたいので行ごとに分ける -->
         <div class="line">
@@ -298,6 +302,29 @@
     gap: 12px;
     /* つまみのぶん上が詰まるので、少しだけ空ける */
     margin-top: 2px;
+    /* レイアウトのグローバルな button の指定（紫の塊・余白・最小幅）を解く。
+       中のジャケットだけが見えるようにする */
+    .cover-button {
+      flex: none;
+      display: block;
+      padding: 0;
+      min-width: 0;
+      border: 0;
+      border-radius: 5px;
+      background: none;
+      cursor: pointer;
+      /* 触れたときに少しだけ持ち上げる。題名や番組名と違って文字ではないので、
+         色ではなく濃さで押せることを示す */
+      transition: opacity 0.2s;
+      &:hover {
+        background: none;
+        opacity: 0.8;
+      }
+      &:focus-visible {
+        outline: 1px solid #7f00ff;
+        outline-offset: 2px;
+      }
+    }
     .cover {
       flex: none;
       border-radius: 5px;
