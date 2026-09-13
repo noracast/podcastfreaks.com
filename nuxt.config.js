@@ -129,14 +129,18 @@ export default defineNuxtConfig({
       skipWaiting: true,
       clientsClaim: true,
 
-      // 先読みするのは素材だけ。HTML は入れない。
+      // 先読みするのは、名前の変わらないものだけ（アイコンと manifest）。
       //
-      // 以前は html も入れていたが、そうすると Service Worker が
+      // HTML は入れない。以前は入れていたが、そうすると Service Worker が
       // キャッシュした HTML を返し続け、サイトを更新しても端末側が
       // 古いままになる（タブを全部閉じても直らなかった）。
       // 中身が毎日変わるので、ページは下の runtimeCaching で
-      // 「まずネットワーク、駄目ならキャッシュ」にする
-      globPatterns: ['**/*.{js,css,ico,png,svg,webmanifest}'],
+      // 「まずネットワーク、駄目ならキャッシュ」にする。
+      //
+      // _nuxt/ の js と css も、ここには入れない。先読みの一覧から外れた
+      // ものは新しい版が来たときに消されるが、**消されると困る**ため
+      // （理由は下の assets を参照）
+      globPatterns: ['**/*.{ico,png,svg,webmanifest}'],
       // フィードのデータ（downloads/）は毎日変わるうえ量が多いので、
       // 先読みの対象から外す。エピソードは開いたときに取りに行く
       globIgnores: ['**/downloads/**'],
@@ -152,6 +156,38 @@ export default defineNuxtConfig({
             cacheName: 'pages',
             networkTimeoutSeconds: 5,
             expiration: { maxEntries: 30 }
+          }
+        },
+        {
+          // js と css。名前にハッシュが入っていて、名前が同じなら中身も
+          // 同じなので、一度取ったらそのまま使う。
+          //
+          // 肝は**古い版のぶんも残す**こと。上の pages は通信が間に合わ
+          // なかったときに前に見た HTML を出すので、その HTML が指す
+          // 素材がここに残っている必要がある。先読み（precache）に置くと
+          // 新しい版が来た時点で消され、古い HTML が出たときに 404 になり、
+          // 文字も色も無い素のページが表示される（iOS で実際に起きていた）。
+          //
+          // 消えるのは、30日経つか、200件を超えて古いものから溢れたとき
+          urlPattern: ({ url }) => url.pathname.startsWith('/_nuxt/'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'assets',
+            expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 }
+          }
+        },
+        {
+          // 本文の書体（Google Fonts）。こちらも名前に版が入っていて
+          // 中身は変わらない。取れないと端末の標準ゴシックに落ちるので、
+          // 一度読めたら手元に置いておく
+          urlPattern: ({ url }) => url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com',
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'fonts',
+            expiration: { maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            // 別のドメインからの返事は中身を確かめられない（opaque）ので、
+            // 状態が 0 のものも保存の対象にする
+            cacheableResponse: { statuses: [0, 200] }
           }
         },
         {
