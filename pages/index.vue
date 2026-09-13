@@ -23,8 +23,9 @@
               :title="col.tooltip"
               @click="sortBy(col)"
             >
-              <!-- 全選択。押すたびに全部入る／全部外れる -->
-              <input v-if="col.key === 'download'" type="checkbox" checked class="check-all" @change="toggleAllCheckbox">
+              <!-- 全選択。押すたびに全部入る／全部外れる。
+                   見出しのセルに文字を置かないので、読み上げ用の名前を持たせる -->
+              <input v-if="col.key === 'download'" type="checkbox" checked class="check-all" aria-label="すべての番組を選ぶ" @change="toggleAllCheckbox">
               <!-- ラベルは "Hosting" のまま固定し、透明な select を重ねる。
                    select 自体に文字を出すと、絞り込み中に見出しの文言が変わってしまう -->
               <span v-else-if="col.filter" class="hosting-filter" :class="{ 'is-active': !!hostingFilter }">{{ col.label }}<select :value="hostingFilter" @change="filterByHosting($event.target.value)" @click.stop>
@@ -100,7 +101,9 @@
               <td class="total">{{ row.total }}</td>
               <td class="frequency"><frequency :interval="row.updateInterval" /></td>
               <td class="duration"><duration :duration="row.durationMedian" /></td>
-              <td class="check"><input v-model="markedRows" type="checkbox" :value="row.key"></td>
+              <!-- 書き出す番組を選ぶ。どの行のものか読み上げで分かるよう、
+                   番組名を名前にする（画面には出さない） -->
+              <td class="check"><input v-model="markedRows" type="checkbox" :value="row.key" :aria-label="`${row.title} を書き出しに含める`"></td>
             </tr>
             <tr v-if="openedKey === row.key" class="child-row">
               <td :colspan="columns.length">
