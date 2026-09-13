@@ -133,7 +133,7 @@
                          ページ全体が動かせなくなる -->
                     <!-- 文字を包む span は、横スクロールしても画面の真ん中に
                          出すためのもの（下の .show-more を参照） -->
-                    <button v-if="infoOverflows" class="show-more" :class="{ 'is-expanded': infoExpanded }" @click="infoExpanded = !infoExpanded"><span>{{ infoExpanded ? 'Show less' : 'Show more' }}</span></button>
+                    <button v-if="infoOverflows && !infoExpanded" class="show-more" @click="infoExpanded = true"><span>Show more</span></button>
                   </div>
                   <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
                   <div class="column">
@@ -973,13 +973,6 @@
                 display: block;
                 text-align: center;
               }
-              /* 広げたら重ねる必要がないので、並びの中へ戻す */
-              &.is-expanded {
-                position: static;
-                background-color: transparent;
-                -webkit-backdrop-filter: none;
-                backdrop-filter: none;
-              }
             }
           }
         }
@@ -1357,13 +1350,18 @@ export default {
     // 説明が決めた高さに収まるかを測る。収まらなければ Show more を出す。
     // 子行は開くたびに作り直されるので、開いたあとに測る
     measureInfo: function(key) {
-      this.infoExpanded = false
       const wrap = this.childWrap(key)
       const info = wrap && wrap.querySelector('.info')
       // 高さを決めているのは狭い画面のときだけ。広い画面では出さない
       this.infoOverflows = !!info && this.narrowMedia?.matches && info.scrollHeight > info.clientHeight + 1
     },
     toggleChildRow: function(key){
+      // 説明の畳み具合は行に持ち越さない。閉じれば元に戻り、開き直すと
+      // また Show more から始まる。
+      // ここで戻すのは、描き直しの前に畳んだ状態にしておくため。
+      // measureInfo の中で戻すと、まだ広がったままの高さを測ってしまい、
+      // 広げたまま閉じた行を開き直したときに Show more が出なくなる
+      this.infoExpanded = false
       // 開いている場合は、畳んでから行を消す
       if(this.openedKey === key) {
         const wrap = this.childWrap(key)
