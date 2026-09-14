@@ -32,9 +32,13 @@
   /* flex で中央寄せすると、数字と「分」がそれぞれ別の flex item として
      中央に置かれるため、小さい「分」だけが浮いて見える。
      インラインとして並べればベースラインを共有するので揃う。
-     行の高さを箱の高さに合わせることで上下の中央にも来る */
+     行の高さは箱（23px）より 2px 低くして、字を1px持ち上げる。
+     Noto Sans JP は字に対して上の余白が広く、行の高さを箱に合わせると
+     字だけ 0.95px 沈む（実測。assets/common.css の --optical-shift と
+     同じ話だが、ここは箱そのものが図形なので top ではずらせない。
+     12px では --optical-shift も効きすぎる） */
   display: block;
-  line-height: 23px;
+  line-height: 21px;
   text-align: center;
   & small {
     font-size: 0.75em;

@@ -22,9 +22,13 @@
   width: 60px;
   height: 23px;
   border-radius: 23px;
-  /* Duration と同じく、行の高さを箱の高さに合わせて上下中央に置く */
+  /* Duration と同じ置き方。行の高さは箱（23px）より 2px 低くして、
+     字を1px持ち上げる。Noto Sans JP は字に対して上の余白が広く、
+     行の高さを箱に合わせると字だけ 0.95px 沈む（実測。assets/common.css の
+     --optical-shift と同じ話だが、ここは箱そのものが図形なので top では
+     ずらせない。12px では --optical-shift も効きすぎる） */
   display: block;
-  line-height: 23px;
+  line-height: 21px;
   text-align: center;
   font-size: 12px;
   /* Duration と同じく、更新頻度が高いほど鮮やか。
