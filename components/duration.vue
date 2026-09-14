@@ -40,6 +40,11 @@
   display: block;
   line-height: 21px;
   text-align: center;
+  /* Frequency と対の印なので、字の大きさも揃えて固定する。
+     指定しないと行の文字（広い画面13px・狭い画面11px）に引きずられ、
+     2つの印で大きさと沈み方が食い違う（狭い画面で、Frequency の字だけ
+     浮いて見えた） */
+  font-size: 12px;
   & small {
     font-size: 0.75em;
     margin-left: 1px;
