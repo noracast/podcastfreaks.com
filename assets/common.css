@@ -98,6 +98,19 @@
   }
 }
 
+/* 指で触る端末では、ぼかさずに塞ぐ。
+   すりガラスは**後ろが動くたびに描き直す**ので、スクロールに付いてくる帯では
+   端末によって目に見えて重くなる（実機で、帯が下りてくるときにもたついた）。
+   ポインタがあれば触れている間に塞いでいるので、見た目としては同じものを
+   最初から出しているだけになる */
+@media (hover: none) {
+  .glass {
+    background-color: var(--glass-fill-hover);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 /* 狭い画面では一段小さくする。24px だと「Episodes in the last year」が
    iPhone で折り返す（実測で文字幅は 24px=285px / 20px=237px。iOS は同じ
    指定でも1割ほど大きく描くので、375px 幅で収まるのは 20px から）。
