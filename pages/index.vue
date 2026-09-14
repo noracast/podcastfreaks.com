@@ -324,10 +324,12 @@
   /* 貼り付く起点（--sticky-top）とすりガラスの質感（--glass-*）は
      assets/common.css の :root にまとめてある。Episodes の濃淡
      （pages/episodes.vue の .heatmap）と同じものを使う */
-  /* 検索の帯の高さと、そのうち上へ隠れている分。どちらも JS が測って入れる
-     （下へ送ると隠れ、上へ戻した分だけ出てくる。<script> の onStickyScroll） */
+  /* 検索の帯の高さ。JS が測って入れる。
+     上へ隠れている分は、ここ（カスタムプロパティ）ではなく各要素の
+     transform に直接入れる。**貼り付く位置を毎回変えると、そのたびに
+     234行の表のスタイル計算とレイアウトが走って、動きがカクつく。**
+     transform なら位置の計算をやり直さずに済む（<script> の setToolsHidden） */
   --tools-height: 0px;
-  --tools-hidden: 0px;
   /* 見出しの行の高さ。すりガラスをここまで伸ばす（.tools の ::before） */
   --thead-height: 0px;
   /* 表を横に送れる最大量。見出しの写しを同じだけ動かす（JS が測る） */
@@ -408,7 +410,7 @@
     color: #ccc;
     font-size: 12px;
     position: sticky;
-    top: calc(var(--sticky-top) + var(--tools-height) - var(--tools-hidden));
+    top: calc(var(--sticky-top) + var(--tools-height));
     /* header は 5、検索の帯（すりガラスの1枚）は 3 */
     z-index: 4;
     & th {
@@ -429,7 +431,7 @@
      ここには敷かない */
   .head-clone {
     position: sticky;
-    top: calc(var(--sticky-top) + var(--tools-height) - var(--tools-hidden));
+    top: calc(var(--sticky-top) + var(--tools-height));
     /* header は 5、検索の帯（すりガラス）は 3 */
     z-index: 4;
     /* 横に送った分を切る。scrollLeft を表と合わせて追いかける */
@@ -803,7 +805,8 @@
        検索と Download OPML は、下まで送ったあとでも、少し戻すだけで
        手が届く */
     position: sticky;
-    top: calc(var(--sticky-top) - var(--tools-hidden));
+    top: var(--sticky-top);
+    /* 隠れている分は transform で上へ逃がす（JS が入れる） */
     /* header は 5、見出しの行は 4 */
     z-index: 3;
     /* すりガラスの面はこの1枚だけ。帯と見出しの行を続けて覆いたいので、
@@ -1378,9 +1381,13 @@ export default {
     sortedChannels: function() {
       this.$nextTick(this.syncHeadClone)
     },
-    // 写しが出た直後は、まだ何も測っていない
+    // 写しが出た直後は、まだ何も測っていない。
+    // 帯が隠れている状態で出てきた場合は、写しにも同じだけずれを当てる
     tableOverflows: function() {
-      this.$nextTick(this.syncHeadClone)
+      this.$nextTick(() => {
+        this.syncHeadClone()
+        this.setToolsHidden(this.toolsHidden)
+      })
     }
   },
   mounted: function(){
@@ -1457,6 +1464,16 @@ export default {
 
       this.toolsHeight = tools.getBoundingClientRect().height
       this.$el.style.setProperty('--tools-height', `${this.toolsHeight}px`)
+      // 帯が上に貼り付き始めるところ。ここを過ぎた分だけ隠せる。
+      //
+      // 測るのは帯そのものではなく .root。**貼り付いている要素の offsetTop は
+      // 貼り付いたあとの位置を返す**ので、帯から測ると下へ送るほど
+      // この値も増えてしまい、いつまでも隠れない。
+      // 帯は .root の最初の子で、上の余白も帯が持っている（.root には無い）
+      // ので、.root の位置がそのまま帯の元の位置になる
+      let top = 0
+      for(let el = this.$el; el; el = el.offsetParent) top += el.offsetTop
+      this.toolsPinAt = Math.max(0, top - (parseFloat(getComputedStyle(tools).top) || 0))
       // 高さが変わると、隠れていてよい量の上限も変わる
       this.setToolsHidden(this.toolsHidden)
 
@@ -1498,12 +1515,25 @@ export default {
       if(wrap && table) table.style.transform = `translateX(${-wrap.scrollLeft}px)`
     },
     // 帯のうち上へ隠す量。0（全部見えている）から帯の高さ（全部隠れている）まで。
-    // ページの頭の近くでは、スクロールした量より多く隠さない
-    // （頭では普通に流れていくように見せるため）
+    // 貼り付く前は隠さない（頭では普通に流れていくように見せるため）。
+    //
+    // 当てるのは transform。貼り付く位置（top）を毎回変えると、そのたびに
+    // 表のスタイル計算とレイアウトが走ってカクつく。
+    // 継承するカスタムプロパティに入れるのも同じ理由で避ける
+    // （.root に入れると、その下の234行ぶんのスタイルが無効になる）
     setToolsHidden: function(value){
-      const max = Math.min(this.toolsHeight || 0, Math.max(0, window.scrollY))
+      const stuck = Math.max(0, window.scrollY - (this.toolsPinAt || 0))
+      const max = Math.min(this.toolsHeight || 0, stuck)
       this.toolsHidden = Math.min(Math.max(value, 0), max)
-      this.$el.style.setProperty('--tools-hidden', `${this.toolsHidden}px`)
+
+      // 見出しの行（と、横に流しているときはその写し）も一緒に動かす。
+      // 帯とこの行は間を空けずに並んでいるので、同じだけずらせば重ならない
+      const shift = `translateY(${-this.toolsHidden}px)`
+      const wrap = this.$refs.tableScroll
+      const head = wrap && wrap.querySelector('thead')
+      for(const el of [this.$refs.tools, head, this.$refs.headClone]) {
+        if(el) el.style.transform = shift
+      }
     },
     // 動かした分だけ隠し、戻した分だけ出す（1:1）。
     // 「少し戻したのに何も出てこない」「勢いよく戻すと一気に出る」といった
