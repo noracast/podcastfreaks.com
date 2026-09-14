@@ -18,10 +18,10 @@
     <label for="feed">RSS フィードの URL</label>
     <input id="feed" v-model="feed" type="text" name="feed" placeholder="https://noracast.jp/feed.xml">
 
-    <label for="twitter">公式 X アカウント</label>
+    <label for="twitter">番組公式 X アカウント</label>
     <input id="twitter" v-model="twitter" type="text" name="twitter" placeholder="@noracast_">
 
-    <label for="hashtag">公式ハッシュタグ</label>
+    <label for="hashtag">番組公式ハッシュタグ</label>
     <input id="hashtag" v-model="hashtag" type="text" name="hashtag" placeholder="#noracast">
 
     <!-- 上の欄に当てはまらないこと（番組名、Apple Podcasts の URL、
@@ -30,7 +30,7 @@
     <!-- placeholder は3行に分けて出す。&#10; は改行 -->
     <textarea id="message" v-model="message" name="message" rows="5" placeholder="ハッシュタグが間違っていました。&#10;フィードのURLが変わりました。&#10;Apple PodcastsのURLはこちらです。" />
 
-    <!-- 上の「公式 X アカウント」は番組のもの、こちらは送ってくれた人のもの。
+    <!-- 上の「番組公式 X アカウント」は番組のもの、こちらは送ってくれた人のもの。
          同じ X を2回訊くので、どちらのことか分かるように書き分ける。
          ここだけ説明を添えるのは、何に使うのかが placeholder の実例では
          伝わらないため。名乗るのが前提に見えないよう、
