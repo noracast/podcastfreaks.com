@@ -39,7 +39,9 @@
    ので、その高さぶん下げる。下を並びが通るので、背景は敷いてぼかす */
 .heatmap {
   position: sticky;
-  top: 80px;
+  /* 起点と質感は assets/common.css の :root にまとめてある
+     （一覧の検索＋見出しの帯と同じものを使う） */
+  top: var(--sticky-top);
   /* header は 5 */
   z-index: 4;
   /* 見出しの上下は About（.root の padding）と同じ 20px にする。
@@ -47,14 +49,11 @@
      ここで空けると、触れたときの色が上端まで届かず、帯との間に
      白い隙間が残ってしまう */
   padding-bottom: 14px;
-  /* ヘッダーや右下のプレーヤーと同じすりガラス。下を通る並びがぼけて
-     透けることで、そこに面があると分かる。
-     線や影で境目を作ると、日ごとの区切り線が近づいたときに2本が並んで
-     見えてしまうので、境目は質感だけで示す */
-  background-color: rgba(255, 255, 255, 0.45);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
-  transition: background-color 0.25s, padding-bottom 0.22s;
+  /* ヘッダーや右下のプレーヤーと同じすりガラス（assets/common.css） */
+  background-color: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  transition: var(--glass-transition), padding-bottom 0.22s;
   /* 畳んでいるあいだは、帯のどこを押しても開くようにしたい。
      下の余白をここで持つと、その 20px の上だけが押せないので、
      見出しの行（components/episode-heatmap.vue の .head）に渡す */
@@ -122,11 +121,10 @@
   color: #c8c8c8;
   font-size: 11px;
 }
-/* 触れている間は塞ぐ。濃淡を読むときに、下を通る並びが透けていると
-   目が散る。ポインタのある環境だけにする（指では離れられない） */
+/* 触れている間は塞ぐ（理由は assets/common.css の --glass-fill-hover） */
 @media (hover: hover) {
   .heatmap:hover {
-    background-color: #fff;
+    background-color: var(--glass-fill-hover);
   }
   .back button:hover {
     background-color: #e0e0e0;
@@ -135,10 +133,6 @@
 
 /* 900px は Responsive で測っていたときの境界をそのまま引き継いだもの */
 @media (max-width: 900px) {
-  .heatmap {
-    /* 狭い画面の header は 70px */
-    top: 70px;
-  }
   .back {
     padding: 0 20px 10px;
   }

@@ -35,6 +35,27 @@
   /* ページの見出し（h2）の大きさ。ブラウザの既定（1.5em）と同じ */
   --heading-size: 24px;
 
+  /* 上に貼り付くもの（ヘッダーの下に留まる帯）の起点と質感。
+     /episodes の濃淡（pages/episodes.vue の .heatmap）と、一覧の検索＋
+     見出しの帯（pages/index.vue の .tools）が使う。増えるたびに書き写すと
+     ずれていくので、ここで1つにしている。
+
+     起点はヘッダー（layouts/default.vue）の高さ。狭い画面では 70px になる
+     （下の @media） */
+  --sticky-top: 80px;
+  /* 下を通る中身がぼけて透けることで、そこに面があると分かる。
+     線や影で境目を作ると、近くの区切り線と2本並んで見えてしまうので、
+     境目は質感だけで示す。
+
+     すりガラスは**重ねた枚数だけ境目ができる**（backdrop-filter はその要素の
+     裏だけをぼかすため）。1つの帯に見せたいものは、1枚で覆うこと */
+  --glass-fill: rgba(255, 255, 255, 0.45);
+  --glass-blur: blur(18px) saturate(180%);
+  /* 触れている間は塞ぐ。読み取るときに下が透けていると目が散る。
+     当てるのはポインタのある環境だけにする（指では離れられない） */
+  --glass-fill-hover: #fff;
+  --glass-transition: background-color 0.25s;
+
   /* 本文の書体（下の body）の癖をならすための持ち上げ幅。
      カバー画像・アイコン・バッジのような図形と横に並べて上下中央に置くとき、
      文字の側にだけ当てる。
@@ -63,6 +84,13 @@
 @media (max-width: 480px) {
   :root {
     --heading-size: 20px;
+  }
+}
+
+/* ヘッダーがこの幅から 70px になる（layouts/default.vue） */
+@media (max-width: 900px) {
+  :root {
+    --sticky-top: 70px;
   }
 }
 

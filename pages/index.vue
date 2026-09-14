@@ -1,7 +1,9 @@
 <template>
   <div class="root" :class="{ 'show-all-columns': showAllColumns }">
-    <!-- 検索と操作ボタン。狭い画面では上下に分かれる（<style> の @media） -->
-    <div class="tools">
+    <!-- 検索と操作ボタン。狭い画面では上下に分かれる（<style> の @media）。
+         下へ送ると上へ抜けていき、上へ戻すとその分だけ下りてくる
+         （<script> の onStickyScroll） -->
+    <div ref="tools" class="tools">
       <input v-model="query" class="search" type="search" placeholder="Search">
       <div class="actions">
         <!-- 書き出す対象は「いま一覧に出ている番組」。検索と Hosting の
@@ -14,8 +16,42 @@
       </div>
     </div>
 
-    <!-- 列を全部出すと画面に収まらないので、表ごと横スクロールさせる -->
-    <div class="table-scroll">
+    <!-- 横に流しているときの、見出しの行の写し。表の中の見出しは
+         overflow を持つ枠の中にいるので、ページのスクロールでは貼り付かない。
+         そこだけ表の外に出して、画面に貼り付ける。横に送った分は
+         scrollLeft を合わせて追いかける（<script> の syncHeadClone）。
+
+         **中身は下の見出しの行と同じものを書いている。片方だけ直さないこと。**
+         コンポーネントに切り出さないのは、列の幅・余白・隠す列といった
+         指定がこのファイルの scoped な <style> にあり、切り出すと
+         どれも効かなくなるため -->
+    <div v-if="tableOverflows" ref="headClone" class="head-clone" :style="{ height: theadHeight }">
+      <table :style="{ width: `${cloneTableWidth}px` }">
+        <thead>
+          <tr>
+            <th
+              v-for="(col, i) in columns"
+              :key="col.key"
+              :class="[col.class, { sortable: col.sortable }]"
+              :style="{ width: cloneWidths[i] != null ? `${cloneWidths[i]}px` : null }"
+              :title="col.tooltip"
+              @click="sortBy(col)"
+            >
+              <span v-if="col.filter" class="hosting-filter" :class="{ 'is-active': !!hostingFilter }">{{ col.label }}<select :value="hostingFilter" @change="filterByHosting($event.target.value)" @click.stop>
+                <option value="">すべて</option>
+                <option v-for="o in hostingOptions" :key="o.value" :value="o.value">{{ o.label }} ({{ o.count }})</option>
+              </select></span>
+              <template v-else>{{ col.label }}<span class="sort-icon">{{ sortIcon(col) }}</span></template>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <!-- 列を全部出すと画面に収まらないので、表ごと横スクロールさせる。
+         ただし収まっている間は overflow を持たせない（見出しの貼り付きが
+         効かなくなるため。<style> の .table-scroll） -->
+    <div ref="tableScroll" class="table-scroll" :class="{ 'is-scrollable': tableOverflows }">
       <table>
         <thead>
           <tr>
@@ -281,7 +317,21 @@
   }
 }
 .root {
-  padding-top: 20px;
+  /* 貼り付く起点（--sticky-top）とすりガラスの質感（--glass-*）は
+     assets/common.css の :root にまとめてある。Episodes の濃淡
+     （pages/episodes.vue の .heatmap）と同じものを使う */
+  /* 検索の帯の高さと、そのうち上へ隠れている分。どちらも JS が測って入れる
+     （下へ送ると隠れ、上へ戻した分だけ出てくる。<script> の onStickyScroll） */
+  --tools-height: 0px;
+  --tools-hidden: 0px;
+  /* 見出しの行の高さ。すりガラスをここまで伸ばす（.tools の ::before） */
+  --thead-height: 0px;
+  /* 表を横に送れる最大量。見出しの写しを同じだけ動かす（JS が測る） */
+  --clone-pan: 0px;
+  /* 表の横スクロールを、枠の外にいる写しから参照できるようにする */
+  timeline-scope: --table-pan;
+  /* 上の余白は .tools が持つ。貼り付いたときに、余白ごと1枚の帯として
+     すりガラスで覆いたいため（ここに置くと、帯の上に透ける隙間が残る） */
   padding-bottom: 20px;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
@@ -341,11 +391,60 @@
       padding-left: 20px;
     }
   }
+  /* 見出しの行は、ヘッダーと検索の帯の下に貼り付ける。
+     どの列を見ているのかが、下まで送っても分かるようにする。
+     貼り付く位置は検索の帯のすぐ下（帯とこの行は、間を空けずに動く）。
+
+     **すりガラスはここには敷かない。** backdrop-filter はその要素の裏だけを
+     ぼかすので、敷いた数だけ境目ができる（セルごとに敷けば桝目が、
+     検索の帯と2枚に分ければその間に線が見えた）。1枚で覆うのは
+     .tools の ::before で、この行のぶんまで下へ伸ばしてある。
+     文字はその上に出したいので、検索の帯より前に置く */
   & thead {
     color: #ccc;
     font-size: 12px;
+    position: sticky;
+    top: calc(var(--sticky-top) + var(--tools-height) - var(--tools-hidden));
+    /* header は 5、検索の帯（すりガラスの1枚）は 3 */
+    z-index: 4;
     & th {
       font-weight: normal;
+    }
+  }
+  /* 横スクロールにしているときは、この中が基準になるので貼り付けられない。
+     貼り付く位置（ヘッダーと帯の高さ）が**表の中の位置**として効き、
+     見出しの行が表の途中に浮いてしまう。
+     代わりに上の .head-clone を出すので、こちらは場所を取るためだけに残す
+     （列の幅はこの行が決めている。消すと写しと幅が合わなくなる） */
+  .table-scroll.is-scrollable thead {
+    position: static;
+    visibility: hidden;
+  }
+  /* 表の外に出した、見出しの行の写し。貼り付く位置は表の中の見出しと同じ。
+     すりガラスは検索の帯の1枚が下まで伸びているので、ここには敷かない */
+  .head-clone {
+    position: sticky;
+    top: calc(var(--sticky-top) + var(--tools-height) - var(--tools-hidden));
+    /* header は 5、検索の帯（すりガラス）は 3 */
+    z-index: 4;
+    /* 横に送った分を切る。scrollLeft を表と合わせて追いかける */
+    overflow: hidden;
+    /* 場所は取らない。下の表の（隠した）見出しの行にちょうど重なる */
+    margin-bottom: calc(-1 * var(--thead-height));
+    & table {
+      /* 幅は測って入れる（<script> の syncHeadClone）。
+         auto のままだと、写しの中身だけで列の幅が決まってずれる */
+      table-layout: fixed;
+      /* 横に送った量に直結させる。scroll イベントで追いかけると
+         1フレーム遅れて、見出しだけ遅れて付いてくる。
+         繋げないブラウザでは JS が同じ transform を当てる（onTableScroll） */
+      animation: head-clone-pan linear both;
+      animation-timeline: --table-pan;
+    }
+    /* 測って渡すのは外側の幅（余白を含む）。border-box にしておかないと、
+       table-layout: fixed では余白の 20px が外に足されて1列ずつずれる */
+    & th {
+      box-sizing: border-box;
     }
   }
   & tbody {
@@ -690,8 +789,42 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    /* 上下の余白もこの箱で持つ（.root からここへ移した）。
+       貼り付いたときに、余白まで含めて1枚の帯として覆うため */
+    padding: 20px;
+    margin-bottom: 0;
+    /* 見出しの行と一緒に上へ貼り付ける。下へ送ると隠れ、上へ戻すと
+       戻した分だけ下りてくる（--tools-hidden は <script> が入れる）。
+       検索と Download OPML は、下まで送ったあとでも、少し戻すだけで
+       手が届く */
+    position: sticky;
+    top: calc(var(--sticky-top) - var(--tools-hidden));
+    /* header は 5、見出しの行は 4 */
+    z-index: 3;
+    /* すりガラスはこの1枚だけ。帯と見出しの行を続けて覆う
+       （--thead-height は見出しの行の高さ。横スクロールに切り替わって
+       いるときは行が一緒に流れていくので 0 が入る）。
+       質感は Episodes の濃淡と共通（assets/common.css） */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: calc(-1 * var(--thead-height));
+      z-index: -1;
+      pointer-events: none;
+      background-color: var(--glass-fill);
+      -webkit-backdrop-filter: var(--glass-blur);
+      backdrop-filter: var(--glass-blur);
+      transition: var(--glass-transition);
+    }
+    /* 触れている間は塞ぐ（assets/common.css の --glass-fill-hover）。
+       ポインタのある環境だけに当てるのはビルド時
+       （postcss-hover-media-feature が @media (hover: hover) で囲む） */
+    &:hover::before {
+      background-color: var(--glass-fill-hover);
+    }
   }
   .search {
     padding: 8px;
@@ -719,10 +852,21 @@
        狭い画面では並びが逆になる（下の @media） */
     flex-direction: row-reverse;
   }
-  /* 列を全部出すと画面に収まらないので、表ごと横に流す */
+  /* 列を全部出すと画面に収まらないので、表ごと横に流す。ただし
+     overflow を持つ要素はその中がスクロールの基準になり、中の
+     position: sticky は**ページのスクロールでは動かなくなる**（見出しが
+     貼り付かない）。表が枠に収まっている間は持たせず、収まらないときだけ
+     JS が is-scrollable を付ける（<script> の updateStickyMetrics）。
+     収まらないのは「All columns」を押したときと、狭い画面
+     （タイトルに 180px を確保しているので実測566pxから溢れる） */
   .table-scroll {
-    overflow: auto;
     width: 100%;
+    &.is-scrollable {
+      overflow: auto;
+      /* 横に送った量を、見出しの写しへ渡す（.head-clone の animation） */
+      scroll-timeline-name: --table-pan;
+      scroll-timeline-axis: inline;
+    }
   }
   .no-result {
     padding: 40px 20px;
@@ -787,6 +931,24 @@
 
    .show-all-columns は「All columns」を押した状態。
    表は .table-scroll が overflow: auto なので、そのまま横スクロールになる */
+/* 見出しの写しを、表を横に送った分だけ動かす。進み具合は表のスクロールが
+   そのまま渡ってくる（--table-pan）ので、送った量 = --clone-pan の割合になる */
+@keyframes head-clone-pan {
+  to {
+    transform: translateX(calc(-1 * var(--clone-pan)));
+  }
+}
+
+/* 帯と見出しの行は続きの1枚なので、見出しの行に触れたときも塞ぐ。
+   ここだけ @media (hover: hover) を自分で書いているのは、
+   :has の中の :hover を postcss-hover-media-feature に渡すと
+   ビルドが終わらなくなるため（すでに囲まれているものは触らない） */
+@media (hover: hover) {
+  .root:has(thead:hover) .tools::before {
+    background-color: var(--glass-fill-hover);
+  }
+}
+
 @media (max-width: 1100px) {
   .root:not(.show-all-columns) th.file-server,
   .root:not(.show-all-columns) td.file-server {
@@ -835,11 +997,8 @@
 }
 @media (max-width: 900px) {
   .root {
-    padding-top: 15px;
+    /* 上の余白と、表との間は .tools が持つ（広い画面と同じ理由） */
     padding-bottom: 15px;
-    & table {
-      margin-top: 15px;
-    }
     & tbody {
       & th,td {
         font-size: 11px;
@@ -883,8 +1042,9 @@
       flex-direction: column;
       align-items: stretch;
       gap: 15px;
-      padding: 0 15px;
-      margin-bottom: 15px;
+      /* 下は 30px（もとの margin-bottom 15px ＋ 表の margin-top 15px）。
+         間を margin で空けると、貼り付いたときにそこだけ行が透ける */
+      padding: 15px 15px 30px;
     }
     .search {
       width: auto;
@@ -1070,6 +1230,13 @@ export default {
       newTitle2: `${NEW_WITHIN.firstEpisode}日以内に1本目の回が公開された番組`,
 
       hostingFilter: '',
+      // 表が枠に収まらず、横スクロールにしているか。
+      // 収まっている間は overflow を持たせない（見出しが貼り付かなくなる）
+      tableOverflows: false,
+      // 見出しの行の写しに渡す寸法。表の側を測って入れる（syncHeadClone）
+      cloneTableWidth: 0,
+      cloneWidths: [],
+      theadHeight: '0px',
       // 画面が狭いときに隠している列を、手動で出しているか。
       // 事前レンダリングした HTML と食い違わないよう、localStorage は
       // mounted で読む（data で読むとハイドレーションが壊れる）
@@ -1201,6 +1368,20 @@ export default {
     // lib/player.js 側が毎回新しいオブジェクトを入れる
     revealRequest: function(reveal) {
       if(reveal) this.revealEpisode(reveal)
+    },
+    // 「All columns」で列が増えると、表が枠に収まらなくなることがある。
+    // 描き直したあとに測り直す
+    showAllColumns: function() {
+      this.$nextTick(this.updateStickyMetrics)
+    },
+    // 絞り込みや並べ替えで中身が変わると、列の幅も変わる。
+    // 表の幅は変わらないことがあるので ResizeObserver では拾えない
+    sortedChannels: function() {
+      this.$nextTick(this.syncHeadClone)
+    },
+    // 写しが出た直後は、まだ何も測っていない
+    tableOverflows: function() {
+      this.$nextTick(this.syncHeadClone)
     }
   },
   mounted: function(){
@@ -1221,6 +1402,29 @@ export default {
     this.updateHasHiddenColumns()
     this.columnsMedia.addEventListener('change', this.updateHasHiddenColumns)
 
+    // 上に貼り付いている検索の帯の、隠れている量（px）と、
+    // 直前のスクロール位置。画面を描き直す必要が無いので data には置かない
+    this.toolsHidden = 0
+    this.lastScrollY = window.scrollY
+    this.updateStickyMetrics()
+    // 読み込み時点で下の方にいるなら（ブラウザが位置を戻した場合）、
+    // 帯は隠れた状態から始める
+    this.setToolsHidden(Infinity)
+    window.addEventListener('scroll', this.onStickyScroll, { passive: true })
+    // 写しを表の横スクロールに直結できるか（scroll-timeline）。
+    // できるなら JS では追いかけない（遅れるうえ、指定が二重になる）
+    this.panLinked = !!(window.CSS && CSS.supports('animation-timeline', 'scroll()'))
+    if(!this.panLinked) this.$refs.tableScroll.addEventListener('scroll', this.onTableScroll, { passive: true })
+    // 帯の高さ（狭い画面では上下に積まれる）と、表が枠に収まるかは
+    // どちらも幅で変わる。読み終えてから測る
+    if(window.ResizeObserver) {
+      this.stickyObserver = new ResizeObserver(this.updateStickyMetrics)
+      this.stickyObserver.observe(this.$refs.tools)
+      this.stickyObserver.observe(this.$refs.tableScroll)
+      const table = this.$refs.tableScroll.querySelector('table')
+      if(table) this.stickyObserver.observe(table)
+    }
+
     // 事前レンダリングした HTML と食い違わないよう、ここで読む
     try {
       this.showAllColumns = window.localStorage.getItem(SHOW_ALL_COLUMNS_KEY) === '1'
@@ -1232,6 +1436,9 @@ export default {
     clearTimeout(this.revealTimer)
     clearTimeout(this.linkRevealTimer)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
+    window.removeEventListener('scroll', this.onStickyScroll)
+    if(!this.panLinked && this.$refs.tableScroll) this.$refs.tableScroll.removeEventListener('scroll', this.onTableScroll)
+    if(this.stickyObserver) this.stickyObserver.disconnect()
   },
   methods: {
     // テンプレートから呼ぶために methods に載せる。
@@ -1241,6 +1448,72 @@ export default {
 
     updateHasHiddenColumns: function(){
       this.hasHiddenColumns = this.columnsMedia.matches
+    },
+    // 検索の帯の高さと、表が枠に収まるかを測って CSS に渡す。
+    // 幅が変わるたびに呼ばれる（ResizeObserver）
+    updateStickyMetrics: function(){
+      const tools = this.$refs.tools
+      const wrap = this.$refs.tableScroll
+      if(!tools || !wrap) return
+
+      this.toolsHeight = tools.getBoundingClientRect().height
+      this.$el.style.setProperty('--tools-height', `${this.toolsHeight}px`)
+      // 高さが変わると、隠れていてよい量の上限も変わる
+      this.setToolsHidden(this.toolsHidden)
+
+      const table = wrap.querySelector('table')
+      // 溢れているときは表の方が広いままなので、切り替えても行き来しない。
+      // 端数で揺れないよう1px の余裕を見る
+      if(table) this.tableOverflows = table.getBoundingClientRect().width > wrap.clientWidth + 1
+
+      // すりガラス（検索の帯の1枚）を、見出しの行のぶんまで伸ばすための高さ。
+      // 横に流しているときも、写しがそこに出るので同じだけ伸ばす
+      const head = wrap.querySelector('thead')
+      const headHeight = head ? head.getBoundingClientRect().height : 0
+      this.theadHeight = `${headHeight}px`
+      this.$el.style.setProperty('--thead-height', `${headHeight}px`)
+
+      this.syncHeadClone()
+    },
+    // 見出しの行の写しを、表の側に合わせる。
+    // 列の幅は表（本文も含めた中身）が決めているので、測って渡すしかない
+    syncHeadClone: function(){
+      if(!this.tableOverflows) return
+      const wrap = this.$refs.tableScroll
+      const table = wrap && wrap.querySelector('table')
+      if(!table) return
+      this.cloneTableWidth = table.getBoundingClientRect().width
+      // 隠している列（display: none）は 0 で返る。写しの側も同じ指定で
+      // 隠れるので、番号がずれることはない
+      this.cloneWidths = [...wrap.querySelectorAll('thead th')].map(th => th.getBoundingClientRect().width)
+      // 送れる最大量。写しはこの幅を端から端まで動く（<style> の @keyframes）
+      this.$el.style.setProperty('--clone-pan', `${Math.max(0, this.cloneTableWidth - wrap.clientWidth)}px`)
+      if(!this.panLinked) this.$nextTick(this.onTableScroll)
+    },
+    // スクロールに直結させられないブラウザのときだけ使う。
+    // scroll イベントは送られたあとに届くので、見出しが1フレーム遅れる
+    onTableScroll: function(){
+      const wrap = this.$refs.tableScroll
+      const clone = this.$refs.headClone
+      const table = clone && clone.querySelector('table')
+      if(wrap && table) table.style.transform = `translateX(${-wrap.scrollLeft}px)`
+    },
+    // 帯のうち上へ隠す量。0（全部見えている）から帯の高さ（全部隠れている）まで。
+    // ページの頭の近くでは、スクロールした量より多く隠さない
+    // （頭では普通に流れていくように見せるため）
+    setToolsHidden: function(value){
+      const max = Math.min(this.toolsHeight || 0, Math.max(0, window.scrollY))
+      this.toolsHidden = Math.min(Math.max(value, 0), max)
+      this.$el.style.setProperty('--tools-hidden', `${this.toolsHidden}px`)
+    },
+    // 動かした分だけ隠し、戻した分だけ出す（1:1）。
+    // 「少し戻したのに何も出てこない」「勢いよく戻すと一気に出る」といった
+    // ずれが起きないよう、速さや向きでの切り替えはしない
+    onStickyScroll: function(){
+      const y = Math.max(0, window.scrollY)
+      const moved = y - this.lastScrollY
+      this.lastScrollY = y
+      this.setToolsHidden(this.toolsHidden + moved)
     },
     // 出した状態はブラウザごとに覚える。狭い画面で毎回押し直すのは煩わしい
     toggleAllColumns: function(){
