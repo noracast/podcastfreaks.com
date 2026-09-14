@@ -247,7 +247,10 @@
     padding: 0 14px 0 17px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    /* 左端の余白（17px）と同じだけ、アイコンと題名のあいだも空ける。
+       再生・一時停止の図形は 14px の枠の中で左右 3.5px ずつ空くので、
+       ここを 17px にすると見た目の余白も左右そろって 20.5px になる */
+    gap: 17px;
     /* 中の2つのボタンから、レイアウトのグローバルな button の指定を外す。
        背景は敷かない。不透明な色を置くと、そこだけ後ろが透けなくなって
        別の板が載っているように見える */
@@ -285,6 +288,11 @@
         min-width: 0;
         color: #ccc;
         font-size: 12px;
+        /* 図形（再生アイコンと矢印）と揃える（assets/common.css の
+           --optical-shift を参照）。ここは 12px の題名で実測 1.0px しか
+           沈まないので、--optical-shift（-0.15em = 1.8px）だと逆に浮く */
+        position: relative;
+        top: -1px;
         overflow: hidden;
         white-space: nowrap;
         text-align: left;
