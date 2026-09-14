@@ -154,7 +154,7 @@ export default defineNuxtConfig({
     manifest: {
       name: 'Podcast Freaks',
       short_name: 'P/F',
-      description: 'Japanese techie podcast archive',
+      description: '日本語テック系ポッドキャストまとめ',
       lang: 'ja',
       start_url: '/',
       display: 'standalone',

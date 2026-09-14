@@ -182,7 +182,7 @@ export default {
   setup() {
     // 2週間の新着だけでなく、2009年からを日ごとに辿れるようになったので
     // 「New episodes」ではなく「Episodes」
-    useHead({ title: 'Episodes | Podcast Freaks - Japanese techie podcast archive' })
+    useHead({ title: 'Episodes | Podcast Freaks - 日本語テック系ポッドキャストまとめ' })
   },
   data: function() {
     return {

@@ -142,7 +142,7 @@ const decorate = (item, message) => {
 
 export default {
   setup() {
-    useHead({ title: 'Errors | Podcast Freaks - Japanese techie podcast archive' })
+    useHead({ title: 'Errors | Podcast Freaks - 日本語テック系ポッドキャストまとめ' })
   },
   data() {
     // まだ warnings を持たない build_info.json でも表示が壊れないようにする

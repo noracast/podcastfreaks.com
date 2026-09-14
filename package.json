@@ -1,7 +1,7 @@
 {
   "name": "podcastfreaks.com",
   "version": "2.0.0",
-  "description": "Podcast Freaks - Japanese techie podcast archive",
+  "description": "Podcast Freaks - 日本語テック系ポッドキャストまとめ",
   "author": "Naokazu Terada",
   "private": true,
   "packageManager": "pnpm@12.3.4",

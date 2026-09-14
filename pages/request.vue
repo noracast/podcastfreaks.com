@@ -625,7 +625,7 @@ export default {
   components: { RequestForm, RequestBookmarklet, Cover },
   setup() {
     useHead({
-      title: 'Register request | Podcast Freaks - Japanese techie podcast archive'
+      title: 'Register request | Podcast Freaks - 日本語テック系ポッドキャストまとめ'
     })
   },
   data: function() {

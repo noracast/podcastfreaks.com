@@ -159,7 +159,7 @@ import Frequency from '@/components/frequency.vue'
 
 export default {
   setup() {
-    useHead({ title: 'About | Podcast Freaks - Japanese techie podcast archive' })
+    useHead({ title: 'About | Podcast Freaks - 日本語テック系ポッドキャストまとめ' })
   },
   components: { Duration, Frequency }
 }

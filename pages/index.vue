@@ -1211,7 +1211,7 @@ const OTHER_HOSTING = '__other__'
 
 export default {
   setup() {
-    useHead({ title: 'Podcast Freaks - Japanese techie podcast archive' })
+    useHead({ title: 'Podcast Freaks - 日本語テック系ポッドキャストまとめ' })
   },
   data: function() {
     return {
