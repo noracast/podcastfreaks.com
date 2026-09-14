@@ -77,6 +77,27 @@
   --optical-shift: -0.15em;
 }
 
+/* 上に貼り付く帯に敷く、すりガラスの面。
+   置き方（貼り付く位置・重なり順・面の大きさ）は使う側が決める。
+   ここが持つのは見え方だけ。
+
+   **1つの帯に見えるものは1枚で覆うこと。** backdrop-filter はその要素の
+   裏だけをぼかすので、敷いた数だけ境目ができる（セルごとに敷けば桝目に
+   割れ、2枚に分ければその間に線が出る）。
+   一覧（pages/index.vue）で、検索の帯の面を見出しの行のぶんまで下へ
+   伸ばしているのはこのため */
+.glass {
+  background-color: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  transition: var(--glass-transition);
+  /* 触れている間は塞ぐ。ポインタのある環境だけに当てるのはビルドのとき
+     （postcss-hover-media-feature が @media (hover: hover) で囲む） */
+  &:hover {
+    background-color: var(--glass-fill-hover);
+  }
+}
+
 /* 狭い画面では一段小さくする。24px だと「Episodes in the last year」が
    iPhone で折り返す（実測で文字幅は 24px=285px / 20px=237px。iOS は同じ
    指定でも1割ほど大きく描くので、375px 幅で収まるのは 20px から）。

@@ -4,6 +4,10 @@
          下へ送ると上へ抜けていき、上へ戻すとその分だけ下りてくる
          （<script> の onStickyScroll） -->
     <div ref="tools" class="tools">
+      <!-- 貼り付いた帯のすりガラス。見え方は assets/common.css の .glass、
+           大きさと重なり順は下の <style>。検索の帯と見出しの行を
+           続けて1枚で覆うため、この箱より下へはみ出させている -->
+      <div class="glass" aria-hidden="true" />
       <input v-model="query" class="search" type="search" placeholder="Search">
       <div class="actions">
         <!-- 書き出す対象は「いま一覧に出ている番組」。検索と Hosting の
@@ -421,7 +425,8 @@
     visibility: hidden;
   }
   /* 表の外に出した、見出しの行の写し。貼り付く位置は表の中の見出しと同じ。
-     すりガラスは検索の帯の1枚が下まで伸びているので、ここには敷かない */
+     すりガラスは検索の帯の1枚（.tools の .glass）が下まで伸びているので、
+     ここには敷かない */
   .head-clone {
     position: sticky;
     top: calc(var(--sticky-top) + var(--tools-height) - var(--tools-hidden));
@@ -801,12 +806,10 @@
     top: calc(var(--sticky-top) - var(--tools-hidden));
     /* header は 5、見出しの行は 4 */
     z-index: 3;
-    /* すりガラスはこの1枚だけ。帯と見出しの行を続けて覆う
-       （--thead-height は見出しの行の高さ。横スクロールに切り替わって
-       いるときは行が一緒に流れていくので 0 が入る）。
-       質感は Episodes の濃淡と共通（assets/common.css） */
-    &::before {
-      content: '';
+    /* すりガラスの面はこの1枚だけ。帯と見出しの行を続けて覆いたいので、
+       この箱より下へ --thead-height（見出しの行の高さ）ぶんはみ出させる。
+       見え方そのものは .glass（assets/common.css）が持つ */
+    >.glass {
       position: absolute;
       top: 0;
       right: 0;
@@ -814,15 +817,11 @@
       bottom: calc(-1 * var(--thead-height));
       z-index: -1;
       pointer-events: none;
-      background-color: var(--glass-fill);
-      -webkit-backdrop-filter: var(--glass-blur);
-      backdrop-filter: var(--glass-blur);
-      transition: var(--glass-transition);
     }
-    /* 触れている間は塞ぐ（assets/common.css の --glass-fill-hover）。
-       ポインタのある環境だけに当てるのはビルド時
+    /* 面には触れられない（pointer-events: none）ので、塞ぐきっかけは
+       帯の側で受ける。ポインタのある環境だけに当てるのはビルド時
        （postcss-hover-media-feature が @media (hover: hover) で囲む） */
-    &:hover::before {
+    &:hover >.glass {
       background-color: var(--glass-fill-hover);
     }
   }
@@ -944,7 +943,7 @@
    :has の中の :hover を postcss-hover-media-feature に渡すと
    ビルドが終わらなくなるため（すでに囲まれているものは触らない） */
 @media (hover: hover) {
-  .root:has(thead:hover) .tools::before {
+  .root:has(thead:hover) .tools >.glass {
     background-color: var(--glass-fill-hover);
   }
 }

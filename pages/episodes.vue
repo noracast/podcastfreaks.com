@@ -4,7 +4,9 @@
        事前レンダリング済みの HTML が JS を読み終えるまで表示されなかった -->
   <div class="root">
     <!-- 上に貼り付いたまま、下の並びだけが動く。押した日まで辿れる -->
-    <episode-heatmap class="heatmap" :current="currentDay" @pick="pickDay" />
+    <!-- glass は assets/common.css。すりガラスの見え方と、触れている間の
+         塞ぎ方をそこから受け取る -->
+    <episode-heatmap class="heatmap glass" :current="currentDay" @pick="pickDay" />
     <div class="days">
       <!-- 過去へ飛んだあと、新着へ戻る道を残しておく -->
       <div v-if="!fromLatest" class="back">
@@ -49,10 +51,8 @@
      ここで空けると、触れたときの色が上端まで届かず、帯との間に
      白い隙間が残ってしまう */
   padding-bottom: 14px;
-  /* ヘッダーや右下のプレーヤーと同じすりガラス（assets/common.css） */
-  background-color: var(--glass-fill);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
+  /* すりガラス（地の色・ぼかし・触れている間の塞ぎ）は .glass が持つ。
+     遷移はここで畳む動きと一緒に書くので、.glass のぶんも並べ直す */
   transition: var(--glass-transition), padding-bottom 0.22s;
   /* 畳んでいるあいだは、帯のどこを押しても開くようにしたい。
      下の余白をここで持つと、その 20px の上だけが押せないので、
@@ -121,11 +121,7 @@
   color: #c8c8c8;
   font-size: 11px;
 }
-/* 触れている間は塞ぐ（理由は assets/common.css の --glass-fill-hover） */
 @media (hover: hover) {
-  .heatmap:hover {
-    background-color: var(--glass-fill-hover);
-  }
   .back button:hover {
     background-color: #e0e0e0;
   }
