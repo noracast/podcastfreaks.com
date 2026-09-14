@@ -35,7 +35,7 @@
          ここだけ説明を添えるのは、何に使うのかが placeholder の実例では
          伝わらないため。名乗るのが前提に見えないよう、
          入れなくてよいこともここで言う -->
-    <label for="contributor">ご自身の X アカウント</label>
+    <label for="contributor">あなたの X アカウント</label>
     <small>X でお礼をお伝えするのに使わせていただきます。無記名でも構いません</small>
     <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
