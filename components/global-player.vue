@@ -101,8 +101,14 @@
             </g>
           </svg>
         </button>
-        <button class="sec" title="10秒もどす" aria-label="10秒もどす" @click="onSkip(-10)">−10</button>
-        <button class="sec" title="10秒すすめる" aria-label="10秒すすめる" @click="onSkip(10)">+10</button>
+        <!-- 10秒の行き来。秒数を文字で書くより、円を回る矢印の方が
+             押したときに何が起きるかが見て分かる -->
+        <button class="sec" title="10秒もどす" aria-label="10秒もどす" @click="onSkip(-10)">
+          <skip-icon back :size="20" />
+        </button>
+        <button class="sec" title="10秒すすめる" aria-label="10秒すすめる" @click="onSkip(10)">
+          <skip-icon :size="20" />
+        </button>
         <!-- 掛け算記号（×）は数字より高い位置に描かれ、浮いて見える。
              小文字の x はベースラインに乗るので、数字と下が揃う -->
         <button class="rate" :title="`再生速度 ${rate}倍（押すと切り替え）`" :aria-label="`再生速度 ${rate}倍`" @click="onCycleRate">{{ rate }}x</button>
@@ -560,7 +566,7 @@
           color: #fff;
         }
       }
-      >.sec, >.rate {
+      >.rate {
         width: 34px;
         font-variant-numeric: tabular-nums;
       }
