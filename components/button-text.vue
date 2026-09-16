@@ -1,8 +1,8 @@
 <template>
   <div>
     <button v-if="buttonAction=='copy'" class="action" @click="copy">{{ buttonText }}</button>
-    <a-blank v-else class="action" :href="text">{{ buttonText }}</a-blank><!-- URL そのものも開けるようにする。ボタンが「コピー」のときはここからしか開けない
-    --><a-blank class="value" :href="text">
+    <a-blank v-else class="action" :href="text" @click="$emit('action', 'open')">{{ buttonText }}</a-blank><!-- URL そのものも開けるようにする。ボタンが「コピー」のときはここからしか開けない
+    --><a-blank class="value" :href="text" @click="$emit('action', 'value')">
       <!-- flex の直下のテキストには text-overflow が効かないため、
            省略を受け持つ要素を1つ挟む。長い URL は触れる（長押しする）と
            流れて先まで読める（components/marquee-text.vue） -->
@@ -81,6 +81,9 @@ div {
 
 <script>
 export default {
+  // 押されたものを呼ぶ側へ知らせる（計測に使う）。
+  // copy（ボタンでコピー）/ open（ボタンで開く）/ value（URL の文字を押して開く）
+  emits: ['action'],
   props: {
     text: {
       type: String,
@@ -100,6 +103,7 @@ export default {
     // navigator.clipboard は https と localhost でしか使えないが、
     // このサイトは https で配信しているので足りる
     copy: function() {
+      this.$emit('action', 'copy')
       navigator.clipboard.writeText(this.text).catch(() => {
         // 権限が無いなどで書けないことがある。URL は隣に出ていて
         // 選んでコピーできるので、ここでは何もしない

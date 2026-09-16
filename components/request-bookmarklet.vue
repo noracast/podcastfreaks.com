@@ -1,7 +1,7 @@
 <template>
   <!-- 使う人は限られるので、既定では畳んでおく。
        開いたときだけ作り方まで読ませる -->
-  <details class="bookmarklet-section">
+  <details class="bookmarklet-section" @toggle="onToggle">
     <summary>ブックマークレット</summary>
     <!-- class は .lead にしない。レイアウトの（scoped でない）スタイルで
          ヘッダーのリード文と同じ白文字になり、白地に白で消える -->
@@ -14,7 +14,7 @@
         <!-- ここに出している文字が、そのままブックマークの名前になる
              （ドラッグしたリンクの表示テキストが使われる。title 属性は効かない）。
              長ければ、ブックマークバーへ入れたあとに名前を変えられる -->
-        <a class="bookmarklet" :href="bookmarklet" @click.prevent="copy">→ Podcast Freaks</a>
+        <a class="bookmarklet" :href="bookmarklet" @click.prevent="copy" @dragstart="onDragStart">→ Podcast Freaks</a>
         <span v-if="copied" class="copied">コピーしました</span>
       </p>
       <ol class="note">
@@ -122,6 +122,8 @@ code {
 </style>
 
 <script>
+import track from '@/lib/analytics'
+
 export default {
   data: function() {
     return {
@@ -142,12 +144,21 @@ export default {
     }
   },
   methods: {
+    // 開かれたときだけ送る。畳んである説明が読まれているか
+    onToggle: function(event) {
+      if(event.target.open) track('request_bookmarklet_open')
+    },
+    // ブックマークバーへ入れたかどうかまでは分からないので、掴んだことを数える
+    onDragStart: function() {
+      track('request_bookmarklet_drag')
+    },
     // ブックマークバーが無い環境のため。コピーできない場合は何も言わない
     // （押しても動かないことは、隣の説明で伝えてある）
     copy: function() {
       if(!navigator.clipboard) return
       navigator.clipboard.writeText(this.bookmarklet).then(() => {
         this.copied = true
+        track('request_bookmarklet_copy')
       }).catch(() => {})
     }
   }

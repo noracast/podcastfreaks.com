@@ -159,6 +159,7 @@
 import { jst } from '@/lib/jst'
 import build_info from '@/static/downloads/build_info.json'
 import counts from '@/static/downloads/daily-counts.json'
+import track from '@/lib/analytics'
 
 // 話数のある最初の月。これより前は読みに行かない
 const FIRST_MONTH = Object.keys(counts)[0].slice(0, 7)
@@ -220,6 +221,10 @@ export default {
     }
   },
   watch: {
+    // 一番古い回（2009年）まで送り切った。読み終え方はいくつかあるので、ここでまとめて拾う
+    reachedEnd: function(value) {
+      if(value) track('episodes_reach_end', { from_latest: this.fromLatest })
+    },
     // 続きを読んだり、過去へ飛んだりして並びが変わったら見直す
     days: function() {
       this.$nextTick(this.updateCurrentDay)
@@ -281,6 +286,9 @@ export default {
           const added = list.filter(episode => !known.has(episode.id))
           if(added.length) {
             this.episodes = this.episodes.concat(added)
+            // 下まで送って過去の回を読んだ。どこまで遡られているか
+            // （from_latest は最新から送ってきたか、heatmap で飛んだ先から送ったか）
+            track('episodes_load_more', { month, from_latest: this.fromLatest, added_count: added.length })
             return
           }
           if(month === FIRST_MONTH) return
@@ -293,7 +301,10 @@ export default {
     },
     // heatmap の日を押したとき。並びに無ければ、その月から出し直す
     pickDay: async function(key) {
-      if(document.getElementById(`day-${key}`)) {
+      // loaded は、並びに無くて月を読み直したか（遠い過去へ飛んだか）
+      const listed = !!document.getElementById(`day-${key}`)
+      track('heatmap_day_pick', { date: key, month: key.slice(0, 7), loaded: !listed })
+      if(listed) {
         this.scrollToDay(key)
         return
       }
@@ -313,6 +324,7 @@ export default {
       this.scrollToDay(key)
     },
     backToLatest: function() {
+      track('episodes_back_to_latest', { loaded_from: this.loadedFrom })
       this.episodes = build_info.episodes_in_2weeks
       this.loadedFrom = null
       this.fromLatest = true

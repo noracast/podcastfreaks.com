@@ -39,6 +39,14 @@ Vite は使うものだけを読むため、ここを通さないと曜日が英
 フィードに `itunes:block` / `podcast:block` が指定された番組は `scripts/fetch-feeds.js` が
 一覧から外し、`/errors` に「掲載を止めている番組」として出す。
 
+## アクセス解析
+
+GA4 へはページビューのほかに操作のイベントを送っている（`lib/analytics.js` の
+`track`）。送っているイベントと引数の一覧は `docs/analytics-events.md`。
+操作を足したり名前を変えたりしたら、そちらも直す。
+
+フォームの入力の中身は送らない（どの欄が埋まっていたかだけ）。
+
 ## 生成物とデータ
 
 - `static/downloads/`（RSS・カバー画像・`build_info.json`・`episodes/`）は

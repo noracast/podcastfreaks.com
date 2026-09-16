@@ -1,7 +1,7 @@
 <template>
   <!-- Netlify Forms。項目は static/form.html と揃える必要がある
        （揃っていないと、その欄は送信されても記録されない） -->
-  <form name="register-request" method="POST" netlify data-netlify-honeypot="bot-field">
+  <form name="register-request" method="POST" netlify data-netlify-honeypot="bot-field" @submit="onSubmit">
     <input type="hidden" name="form-name" value="register-request">
     <!-- スパム対策の隠しフィールド。人には見えないので、値が入っていたら
          bot と判断されて送信が弾かれる。static/form.html 側にも同じ項目が要る -->
@@ -37,7 +37,7 @@
          入れなくてよいこともここで言う -->
     <label for="contributor">あなたの X アカウント</label>
     <small>X でお礼をお伝えするのに使わせていただきます。無記名でも構いません</small>
-    <input id="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
+    <input id="contributor" v-model="contributor" type="text" name="contributor" placeholder="@naokazu_terada">
 
     <button type="submit">Send</button>
   </form>
@@ -85,6 +85,8 @@ form {
 </style>
 
 <script>
+import track from '@/lib/analytics'
+
 export default {
   // 呼び出し側（/request/）が調べた結果を初期値として渡す。
   // 検索のたびに入れ直すので、data に写して watch で追いかける
@@ -100,7 +102,22 @@ export default {
       feed: '',
       twitter: '',
       hashtag: '',
-      message: ''
+      message: '',
+      contributor: ''
+    }
+  },
+  methods: {
+    // 送信は Netlify Forms への普通の POST で、そのままページが移る。
+    // 届く前に切られないよう beacon で送る。
+    // 中身は送らない（名前やメッセージが入る）。どの欄が埋まっていたかだけ
+    onSubmit: function() {
+      track('request_form_submit', {
+        has_feed: !!this.feed.trim(),
+        has_twitter: !!this.twitter.trim(),
+        has_hashtag: !!this.hashtag.trim(),
+        has_message: !!this.message.trim(),
+        has_contributor: !!this.contributor.trim()
+      }, { beacon: true })
     }
   },
   watch: {

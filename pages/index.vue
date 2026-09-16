@@ -130,7 +130,7 @@
                 </div>
               </td>
               <td class="last">
-                <a-blank v-if="row.lastEpisodeLink" :href="row.lastEpisodeLink">
+                <a-blank v-if="row.lastEpisodeLink" :href="row.lastEpisodeLink" @click="trackChannelLink(row, 'last_episode')">
                   <!-- .value を基準にして、バッジを日付の右上に置く -->
                   <span class="value"><span v-if="isIn(row.lastEpisodeDate, newThreshold1)" class="new" :title="newTitle1">New!</span>{{ formatDate(row.lastEpisodeDate) }}</span>
                 </a-blank>
@@ -139,7 +139,7 @@
                 </span>
               </td>
               <td class="first">
-                <a-blank v-if="row.firstEpisodeLink" :href="row.firstEpisodeLink">
+                <a-blank v-if="row.firstEpisodeLink" :href="row.firstEpisodeLink" @click="trackChannelLink(row, 'first_episode')">
                   <span class="value"><span v-if="isIn(row.firstEpisodeDate, newThreshold2)" class="new" :title="newTitle2">New!</span>{{ formatDate(row.firstEpisodeDate) }}</span>
                 </a-blank>
                 <span v-else class="date">
@@ -147,8 +147,9 @@
                 </span>
               </td>
               <td class="total">{{ row.total }}</td>
-              <td class="frequency"><frequency :interval="row.updateInterval" /></td>
-              <td class="duration"><duration :duration="row.durationMedian" /></td>
+              <!-- バッジは About の凡例へのリンク。凡例が読まれているかを見る -->
+              <td class="frequency"><frequency :interval="row.updateInterval" @click="trackLegend(row, 'frequency')" /></td>
+              <td class="duration"><duration :duration="row.durationMedian" @click="trackLegend(row, 'duration')" /></td>
             </tr>
             <tr v-if="openedKey === row.key" class="child-row">
               <td :colspan="columns.length">
@@ -165,15 +166,15 @@
                            （v-html に渡すのは sanitize 済みの HTML。lib/linkify.js） -->
                       <p v-if="row.desciprtion" class="description" v-html="linkify(row.desciprtion)" />
                       <p v-else class="description">No description</p>
-                      <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" />
-                      <button-text :text="row.feed" :button-text="'Copy RSS'" />
+                      <button-text v-if="row.link" :text="row.link" :button-text="'Open Web'" button-action="'open'" @action="trackChannelLink(row, `web_${$event}`)" />
+                      <button-text :text="row.feed" :button-text="'Copy RSS'" @action="trackChannelLink(row, `rss_${$event}`)" />
                     </div>
                     <!-- 狭い画面では説明をスクロールさせず、収まらない分は畳んでおく。
                          入れ子のスクロールがあると、その上で指を動かしたときに
                          ページ全体が動かせなくなる -->
                     <!-- 文字を包む span は、横スクロールしても画面の真ん中に
                          出すためのもの（下の .show-more を参照） -->
-                    <button v-if="infoOverflows && !infoExpanded" class="show-more" @click="infoExpanded = true"><span>Show more</span></button>
+                    <button v-if="infoOverflows && !infoExpanded" class="show-more" @click="showMoreInfo(row)"><span>Show more</span></button>
                   </div>
                   <!-- エピソードは番組ごとの別ファイルにあり、行を開いた時点で読み込む -->
                   <div class="column">
@@ -1183,6 +1184,10 @@ import { compareBy, compareInterval } from '@/lib/compare'
 import formatDate from '@/lib/format-date'
 import linkify from '@/lib/linkify'
 import { player, clearReveal } from '@/lib/player'
+import track, { debounced } from '@/lib/analytics'
+
+// 検索語を送るまでの待ち時間。打ち終えたとみなす長さ
+const SEARCH_TRACK_WAIT = 1500
 
 // 配信サービスでの絞り込み。1番組しか使っていないホストは自前配信とみなし、
 // 選択肢が増えすぎないよう「その他」にまとめる（71ホスト中62が該当）
@@ -1372,6 +1377,10 @@ export default {
     }
   },
   watch: {
+    // 打ち終えた検索語を送る（GA4 の search。「検索キーワード」のレポートに出る）
+    query: function(value) {
+      this.trackSearch(value)
+    },
     // 右下のプレーヤーで番組名を押されたら、その回まで辿る。
     // 合図が来るたびに動かしたいので、値が変わったことが分かるよう
     // lib/player.js 側が毎回新しいオブジェクトを入れる
@@ -1396,6 +1405,16 @@ export default {
         this.setToolsHidden(this.toolsHidden)
       })
     }
+  },
+  created: function(){
+    // 同じ語を続けて送らない（消して打ち直した場合など）
+    this.lastTrackedQuery = ''
+    this.trackSearch = debounced((value) => {
+      const term = String(value).trim()
+      if(!term || term === this.lastTrackedQuery) return
+      this.lastTrackedQuery = term
+      track('search', { search_term: term, search_scope: 'channels', result_count: this.sortedChannels.length })
+    }, SEARCH_TRACK_WAIT)
   },
   mounted: function(){
     // 別のページで鳴らし始めてからトップへ来たときのぶん。
@@ -1446,6 +1465,7 @@ export default {
     }
   },
   beforeUnmount: function(){
+    this.trackSearch.cancel()
     clearTimeout(this.revealTimer)
     clearTimeout(this.linkRevealTimer)
     if(this.columnsMedia) this.columnsMedia.removeEventListener('change', this.updateHasHiddenColumns)
@@ -1554,6 +1574,7 @@ export default {
     // 出した状態はブラウザごとに覚える。狭い画面で毎回押し直すのは煩わしい
     toggleAllColumns: function(){
       this.showAllColumns = !this.showAllColumns
+      track('toggle_columns', { state: this.showAllColumns ? 'all' : 'compact' })
       try {
         window.localStorage.setItem(SHOW_ALL_COLUMNS_KEY, this.showAllColumns ? '1' : '0')
       } catch {
@@ -1580,7 +1601,10 @@ export default {
           this.episodes = { ...this.episodes, [key]: episodes }
           this.episodesShown = { ...this.episodesShown, [key]: EPISODES_PER_CHUNK }
         })
-        .catch(() => { this.episodesFailed = { ...this.episodesFailed, [key]: true } })
+        .catch(() => {
+          this.episodesFailed = { ...this.episodesFailed, [key]: true }
+          track('channel_episodes_error', { channel_key: key })
+        })
     },
     visibleEpisodes: function(key) {
       const all = this.episodes[key] || []
@@ -1595,6 +1619,8 @@ export default {
       const shown = this.episodesShown[key] || EPISODES_PER_CHUNK
       if(shown >= all.length) return
       this.episodesShown = { ...this.episodesShown, [key]: shown + EPISODES_PER_CHUNK }
+      // どこまで遡って見られているか。足した後の件数を送る
+      track('channel_episodes_more', { channel_key: key, shown_count: Math.min(all.length, shown + EPISODES_PER_CHUNK), total_count: all.length })
     },
 
     // 子行の開け閉め。高さを 0 と実際の高さのあいだで動かす。
@@ -1612,7 +1638,7 @@ export default {
     // アイコンだけを見て何のリンクか分からないので、1回目のタップで名前を
     // 出し、2回目で開く。しばらく置くと元に戻す
     onLinkTap: function(id, event){
-      if(this.hoverMedia && this.hoverMedia.matches) return
+      if(this.hoverMedia && this.hoverMedia.matches) return this.trackLinkId(id)
 
       // まだ出ていなければ、どこを押しても名前を出すだけ。
       // ここで飛ぶと、何のリンクか分からないまま開くことになる
@@ -1634,7 +1660,24 @@ export default {
         this.hideLinkLabel()
         return
       }
+      // 名前を押して、実際に開いたとき
+      this.trackLinkId(id)
       this.hideLinkLabel()
+    },
+    // `<番組のキー>:<種類>`（apple / x / hashtag）から送る
+    trackLinkId: function(id){
+      const [key, type] = id.split(':')
+      track('channel_link', { channel_key: key, link_type: type })
+    },
+    trackChannelLink: function(row, type){
+      track('channel_link', { channel_key: row.key, link_type: type })
+    },
+    trackLegend: function(row, legend){
+      track('legend_click', { legend, channel_key: row.key })
+    },
+    showMoreInfo: function(row){
+      this.infoExpanded = true
+      track('channel_description_more', { channel_key: row.key })
     },
     hideLinkLabel: function(){
       clearTimeout(this.linkRevealTimer)
@@ -1649,6 +1692,8 @@ export default {
       if(target.closest('a, input, select, button, label')) return
       // 名前を出したまま別のところを押したら、戻しておく
       if(this.revealedLink) this.hideLinkLabel()
+      // 開くときだけ送る。どの番組の中身が見られているか
+      if(this.openedKey !== row.key) track('channel_open', { channel_key: row.key, via: 'row' })
       this.toggleChildRow(row.key)
     },
     // 開いている子行の .wrap。ref は v-for の中なので配列で返る
@@ -1698,6 +1743,7 @@ export default {
         // 新しい方から入る
         this.sortAscending = !col.desc
       }
+      track('sort_channels', { sort_key: this.sortKey, sort_direction: this.sortAscending ? 'asc' : 'desc' })
     },
     // 見出しに出す並べ替えの印。ソート中の列にだけ入る
     sortIcon: function(col){
@@ -1746,6 +1792,13 @@ export default {
     },
     filterByHosting: function(value) {
       this.hostingFilter = value
+      // 「その他」は内部の値（__other__）なので、読める名前にして送る
+      this.$nextTick(() => {
+        track('filter_hosting', {
+          hosting: value === OTHER_HOSTING ? 'other' : (value || 'all'),
+          result_count: this.sortedChannels.length
+        })
+      })
     },
     // 検索対象にする文字列。画面に出ている値で絞り込めるよう、
     // 日付は表示と同じ YYYY.MM.DD の形にしてから含める
@@ -1806,6 +1859,13 @@ export default {
       a.download = 'podcast-freaks.opml'
       a.click()
       URL.revokeObjectURL(url)
+      // blob の URL なので、GA の自動計測（file_download）には拾われない。
+      // 絞り込んでから書き出しているか（全部か、選んだものか）も見る
+      track('download_opml', {
+        channel_count: outlines.length,
+        filtered: !!(String(this.query).trim() || this.hostingFilter),
+        sort_key: this.sortKey
+      })
     },
     loadRecentEpisodes: async function(rss) {
       const xml = await readFile(rss).catch(() => { return })
@@ -1833,6 +1893,7 @@ export default {
       }
 
       if(this.openedKey !== key) {
+        track('channel_open', { channel_key: key, via: 'reveal' })
         this.toggleChildRow(key)
         await this.$nextTick()
       }

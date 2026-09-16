@@ -159,6 +159,7 @@
 <script>
 import episodeLine from '@/lib/episode-line'
 import { toggleEpisode, revealFor } from '@/lib/player'
+import track from '@/lib/analytics'
 
 export default {
   // 回そのものの扱い（props と computed）はトップの子行と分け合っている
@@ -167,10 +168,11 @@ export default {
     onPlay: function() {
       // episode に key と channel_title が入っているので、
       // 右下のプレーヤーはそこから番組を知る
-      toggleEpisode(this.episode)
+      toggleEpisode(this.episode, null, 'episodes')
     },
     // 一覧へ行き、この番組の行を開いてこの回まで辿る（pages/index.vue が受ける）
     onOpenChannel: function() {
+      track('channel_reveal', { source: 'episodes', channel_key: this.episode.key })
       revealFor(this.episode)
       this.$router.push('/')
     }

@@ -36,24 +36,24 @@
            一番大きくて狙いやすいので、ここが押せないのは分かりにくかった。
            36px で出したいが、用意してある画像は -60 と -120 の2枚だけなので、
            読む方は 30（= -60）を指定する -->
-      <button v-if="episode.key" class="cover-button" :title="`${episode.title} を一覧で開く`" :aria-label="`${episode.title} を一覧で開く`" @click="goToEpisode">
+      <button v-if="episode.key" class="cover-button" :title="`${episode.title} を一覧で開く`" :aria-label="`${episode.title} を一覧で開く`" @click="goToEpisode('cover')">
         <cover class="cover" :channel="episode.key" :size="36" :image-size="30" />
       </button>
       <div class="names">
         <!-- 番組名と配信日、その下に題名。右端を揃えたいので行ごとに分ける -->
         <div class="line">
-          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToEpisode"><marquee-text>{{ episode.channelTitle || episode.key }}</marquee-text></button>
+          <button v-if="episode.key" class="channel" title="この番組の回一覧を開く" @click="goToEpisode('channel')"><marquee-text>{{ episode.channelTitle || episode.key }}</marquee-text></button>
           <span v-else class="channel as-text"><marquee-text>{{ episode.channelTitle }}</marquee-text></span>
           <span v-if="publishedOn" class="date">{{ publishedOn }}</span>
         </div>
         <div class="line">
           <!-- 押すと一覧でこの回まで辿る。番組名と同じ行き先 -->
-          <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode"><marquee-text>{{ episode.title }}</marquee-text></button>
+          <button v-if="episode.key" class="title" :title="`${episode.title} を一覧で開く`" @click="goToEpisode('title')"><marquee-text>{{ episode.title }}</marquee-text></button>
           <span v-else class="title as-text" :title="episode.title"><marquee-text>{{ episode.title }}</marquee-text></span>
           <!-- 配信元にあるこの回のページ。番組サイトの説明や書き起こしを見に行ける。
                このサイトの中ではなく外へ出るので、別タブのしるしを付ける
                （フィードに <link> が無い番組があるので、あるときだけ出す） -->
-          <a-blank v-if="episode.link" class="page" :href="episode.link" title="この回のページを開く" aria-label="この回のページを開く">
+          <a-blank v-if="episode.link" class="page" :href="episode.link" title="この回のページを開く" aria-label="この回のページを開く" @click="control('episode_page')">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
               <path d="M14 4h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M20 4l-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -143,7 +143,7 @@
           :aria-expanded="drawerOpen ? 'true' : 'false'"
           :title="drawerOpen ? '聴いたものを隠す' : `聴いたものを見る（${history.length}件）`"
           :aria-label="drawerOpen ? '聴いたものを隠す' : '聴いたものを見る'"
-          @click="drawerOpen = !drawerOpen"
+          @click="toggleDrawer"
         >
           <!-- 箇条書き。上端のつまみ（矢印）と見分けが付くようにしている。
                線が細いぶん小さく見えるので、他より少しだけ大きく描く -->
@@ -732,7 +732,7 @@
 <script>
 import formatTime from '@/lib/format-time'
 import { jst } from '@/lib/jst'
-import { player, toggle, seekTo, skip, cycleRate, requestReveal, goBack, goForward, canGoBack, canGoForward, playAt } from '@/lib/player'
+import { player, toggle, seekTo, skip, cycleRate, requestReveal, goBack, goForward, canGoBack, canGoForward, playAt, trackPlayer } from '@/lib/player'
 
 // 指で横へこれだけ動かしたら、スクロールではなくシークとみなす
 const SEEK_DRAG_THRESHOLD = 8
@@ -805,18 +805,51 @@ export default {
     this.releasePointer()
   },
   methods: {
-    onToggle: function() { toggle() },
-    toStart: function() { seekTo(0) },
-    onSkip: function(seconds) { skip(seconds) },
-    onCycleRate: function() { cycleRate() },
-    onBack: function() { goBack() },
-    onForward: function() { goForward() },
-    onPlayAt: function(index) { playAt(index) },
+    // 操作を GA へ送る。どのボタンが使われているか（使われていないか）を見る。
+    // input は押し方（画面のボタンか、キーボードか、シークバーの操作か）
+    control: function(name, params) {
+      trackPlayer('player_control', { control: name, input: 'player', ...params })
+    },
+    onToggle: function() {
+      this.control(this.playing ? 'pause' : 'play')
+      toggle()
+    },
+    toStart: function() {
+      this.control('to_start')
+      seekTo(0)
+    },
+    onSkip: function(seconds) {
+      this.control(seconds < 0 ? 'skip_back' : 'skip_forward')
+      skip(seconds)
+    },
+    onCycleRate: function() {
+      cycleRate()
+      // 切り替えたあとの速度を送る
+      this.control('rate', { rate: player.rate })
+    },
+    onBack: function() {
+      this.control('history_back')
+      goBack()
+    },
+    onForward: function() {
+      this.control('history_forward')
+      goForward()
+    },
+    onPlayAt: function(index) {
+      this.control('history_pick')
+      playAt(index)
+    },
+    toggleDrawer: function() {
+      this.drawerOpen = !this.drawerOpen
+      this.control(this.drawerOpen ? 'history_open' : 'history_close', { history_count: this.history.length })
+    },
     // 畳んだつまみの再生ボタン。本体は畳んだままにする
     onTabToggle: function() {
+      this.control(this.playing ? 'pause' : 'play', { input: 'tab' })
       toggle()
     },
     toggleMinimized: function() {
+      this.control(player.minimized ? 'restore' : 'minimize')
       player.minimized = !player.minimized
       // 隠すときは一覧も閉じる。開いたまま隠して戻すと、いきなり出てくる
       if(player.minimized) this.drawerOpen = false
@@ -834,7 +867,9 @@ export default {
     },
 
     // 鳴っている回の子行を開きに行く。URL は変えない（issue #236）
-    goToEpisode: function() {
+    // from は押した場所（cover / channel / title）
+    goToEpisode: function(from) {
+      trackPlayer('channel_reveal', { source: 'player', target: from })
       requestReveal()
       if(this.$route.path !== '/') this.$router.push('/')
     },
@@ -866,6 +901,8 @@ export default {
       this.$refs.track.addEventListener('pointermove', this.onPointerMove)
       this.$refs.track.addEventListener('pointerup', this.onPointerUp)
       this.$refs.track.addEventListener('pointercancel', this.releasePointer)
+      // 動かした向きを、離したときに比べるための元の位置
+      this.seekStartedAt = player.currentTime
       if(byMouse) {
         this.seekToPointer(event)
         this.capturePointer(event)
@@ -890,7 +927,18 @@ export default {
         const dx = Math.abs(event.clientX - pointer.x)
         const dy = Math.abs(event.clientY - pointer.y)
         // ほとんど動かさずに離した＝その位置を指したとみなす
-        if(dx < TAP_SLOP && dy < TAP_SLOP) this.seekToPointer(event)
+        if(dx < TAP_SLOP && dy < TAP_SLOP) {
+          this.seekToPointer(event)
+          this.control('seek', { input: 'tap' })
+        }
+      }
+      // なぞって動かした場合は、離したときに1回だけ送る（動かすたびには送らない）。
+      // 送る値は動かした向き（前へ飛ばしたか、聴き直したか）
+      else if(pointer && pointer.seeking) {
+        this.control('seek', {
+          input: event.pointerType === 'mouse' ? 'mouse' : 'drag',
+          direction: player.currentTime >= this.seekStartedAt ? 'forward' : 'back'
+        })
       }
       this.releasePointer()
     },
@@ -914,15 +962,18 @@ export default {
     onKeydown: function(event) {
       const step = { ArrowLeft: -10, ArrowRight: 10, ArrowDown: -10, ArrowUp: 10 }[event.key]
       if(step) {
+        this.control(step < 0 ? 'skip_back' : 'skip_forward', { input: 'keyboard' })
         skip(step)
         event.preventDefault()
         return
       }
       if(event.key === 'Home') {
+        this.control('to_start', { input: 'keyboard' })
         seekTo(0)
         event.preventDefault()
       }
       if(event.key === ' ' || event.key === 'Enter') {
+        this.control(this.playing ? 'pause' : 'play', { input: 'keyboard' })
         toggle()
         event.preventDefault()
       }

@@ -10,7 +10,7 @@
 
     <!-- 欄は1つ。何を入れられるかはリード文に書いてあるので、
          ラベルも補足も置かない（同じことを二度読ませない） -->
-    <form class="search" @submit.prevent="lookup">
+    <form class="search" @submit.prevent="lookup('enter')">
       <!-- 探すボタンはここではなく、登録済みの下に置く（下の「未登録」にしか
            効かないため）。この欄では Enter で同じことができる。
            type="search" にすると、ブラウザが消す × を出してくれる
@@ -78,7 +78,7 @@
             <div class="next">
               <div class="choice">
                 <div class="actions">
-                  <button type="button" class="send gray" @click="openForm(openRegisteredChannel)">修正依頼を送る</button>
+                  <button type="button" class="send gray" @click="openForm(openRegisteredChannel, 'registered')">修正依頼を送る</button>
                 </div>
                 <p class="hint">フィードの URL が変わった、ハッシュタグが違うなどのご連絡はこちらから。</p>
               </div>
@@ -94,7 +94,7 @@
         <!-- 今の入力で調べ終えていれば押す用は無い。打ち直されたら（下の結果が
              薄くなると同時に）また押せるようにする。
              失敗したときは、同じ入力でもやり直せるようにしておく -->
-        <button type="button" :disabled="loading || (searched && !stale && !error)" @click="lookup">{{ loading ? 'Searching…' : 'Apple Podcasts から探す' }}</button>
+        <button type="button" :disabled="loading || (searched && !stale && !error)" @click="lookup('button')">{{ loading ? 'Searching…' : 'Apple Podcasts から探す' }}</button>
       </div>
 
       <!-- ここから下が「調べた結果」。打ち直されたら薄くする -->
@@ -144,13 +144,13 @@
               <p class="next-title">どちらか一方</p>
               <div class="choice">
                 <div class="actions">
-                  <a-blank class="send" :href="issueUrl(channel)">GitHub からリクエスト</a-blank>
+                  <a-blank class="send" :href="issueUrl(channel)" @click="trackGithub('candidate')">GitHub からリクエスト</a-blank>
                 </div>
                 <p class="hint">GitHub のissue作成画面に遷移します。そのままCreateで構いません。</p>
               </div>
               <div class="choice">
                 <div class="actions">
-                  <button type="button" class="send gray" @click="openForm(channel)">リクエストフォーム</button>
+                  <button type="button" class="send gray" @click="openForm(channel, 'candidate')">リクエストフォーム</button>
                 </div>
                 <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
               </div>
@@ -158,7 +158,7 @@
           </li>
         </ul>
         <!-- 取ってあるぶんは全部出せる。最初から並べると、送り先まで遠くなる -->
-        <button v-if="restUnregistered" type="button" class="more" @click="expanded = true">もっと見る（残り {{ restUnregistered }} 件）</button>
+        <button v-if="restUnregistered" type="button" class="more" @click="showAllUnregistered">もっと見る（残り {{ restUnregistered }} 件）</button>
       </section>
 
       <!-- iTunes から取れるだけ取ってなお埋まっていた。まだ先がある -->
@@ -166,7 +166,7 @@
 
       <!-- iTunes の検索は緩く、関係のない番組が並ぶことがある。
            目当てが無いときも、ここで行き止まりにしない -->
-      <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
+      <p v-if="candidates.length && canSendUnknown" class="note">目当ての番組が出ていませんか。番組名を変えて探し直すか、<a-blank :href="issueUrl(unknownChannel)" @click="trackGithub('not_listed')">番組の URL を添えて登録をリクエスト</a-blank>できます。</p>
 
       <!-- 見つからなかったときは、番組の行と同じ形にしない（番組ではないので）。
            入れたものは上の欄に出ているので、ここで繰り返さない。
@@ -181,20 +181,20 @@
           <template v-if="canSendUnknown">
             <div class="choice">
               <div class="actions">
-                <a-blank class="send" :href="issueUrl(unknownChannel)">GitHub からリクエスト</a-blank>
+                <a-blank class="send" :href="issueUrl(unknownChannel)" @click="trackGithub('not_found')">GitHub からリクエスト</a-blank>
               </div>
               <p class="hint">GitHub のissue作成画面に遷移します。番組名と見ていたページは入れてあります。RSS フィードの URL が分かれば書き足してください。</p>
             </div>
             <div class="choice">
               <div class="actions">
-                <button type="button" class="send gray" @click="openForm(unknownChannel)">リクエストフォーム</button>
+                <button type="button" class="send gray" @click="openForm(unknownChannel, 'not_found')">リクエストフォーム</button>
               </div>
               <p class="hint">GitHub のアカウントをお持ちでない場合はこちら。</p>
             </div>
           </template>
           <div v-else class="choice">
             <div class="actions">
-              <button type="button" class="send gray" @click="openForm(unknownChannel)">リクエストフォーム</button>
+              <button type="button" class="send gray" @click="openForm(unknownChannel, 'not_found')">リクエストフォーム</button>
             </div>
             <p class="hint">上の欄に番組の URL（Spotify・Apple Podcasts・番組サイト・RSS フィードなど）を足すと、そこから配信元をこちらで追えます。URL が分からない場合も、こちらからお知らせいただけます。</p>
           </div>
@@ -209,7 +209,7 @@
 
     <!-- 調べるまでもない用（ハッシュタグの誤り、掲載を止めたい、Apple の
          リンクが出ない）の逃げ道。フォームは開くまで出さない -->
-    <p v-if="!formOpen" class="other">番組の URL が分からないときや、登録済みの番組についてのご連絡は、<button type="button" class="as-link" @click="openForm()">フォームから直接お送りいただけます</button>。</p>
+    <p v-if="!formOpen" class="other">番組の URL が分からないときや、登録済みの番組についてのご連絡は、<button type="button" class="as-link" @click="openForm(null, 'direct')">フォームから直接お送りいただけます</button>。</p>
 
     <section v-if="formOpen" id="form" ref="formSection" class="form-section">
       <h3>リクエストフォーム</h3>
@@ -607,6 +607,7 @@ import requestFormValues from '@/lib/request-form-values.js'
 import { jst } from '@/lib/jst'
 import RequestForm from '@/components/request-form.vue'
 import RequestBookmarklet from '@/components/request-bookmarklet.vue'
+import track from '@/lib/analytics'
 
 // 登録中の番組。判定に要るキー・フィード・番組名だけを持つ軽いファイルで、
 // fetch-feeds が data/rss.json から作る（issue #229）
@@ -681,6 +682,13 @@ export default {
       message: query.message || ''
     }
     const wantsForm = this.$route.hash === '#form' || query.form !== undefined
+    // どこから来たか。ブックマークレットが使われているか、About などの
+    // フォームへのリンクから来ているかを見る（ただ開いただけのときは送らない）
+    const arrival = (query.url || query.title) ? 'bookmarklet'
+      : wantsForm ? 'form_link'
+      : Object.values(values).some(Boolean) ? 'prefilled'
+      : ''
+    if(arrival) track('request_arrival', { via: arrival, url_hosts: this.hostsOf(parseQuery(this.query).urls) })
     if(wantsForm || Object.values(values).some(Boolean)) {
       this.formValues = values
       this.formOpen = true
@@ -688,7 +696,7 @@ export default {
       if(wantsForm) this.$nextTick(this.scrollToForm)
     }
 
-    if(this.query.trim()) this.lookup()
+    if(this.query.trim()) this.lookup('arrival')
   },
   computed: {
     // 入れてもらった1行を、URL と番組名に分けたもの
@@ -796,7 +804,8 @@ export default {
       }
       return this.registered
     },
-    lookup: async function() {
+    // trigger は計測用。どう調べ始めたか（enter / button / paste / arrival）
+    lookup: async function(trigger) {
       if(this.loading) return
       this.loading = true
       this.error = ''
@@ -831,7 +840,40 @@ export default {
         this.loading = false
         this.searched = true
         this.searchedQuery = this.query
+        this.trackLookup(trigger)
       }
+    },
+    // 何を入れて、何が見つかったか。
+    // url_hosts は入れた URL のホスト名（Spotify や Apple など、どこの URL が
+    // 持ち込まれているか）。result は error / none / registered / unregistered
+    trackLookup: function(trigger) {
+      const registeredCount = this.registeredChannels.length
+      const unregisteredCount = this.unregisteredChannels.length
+      track('request_lookup', {
+        search_term: this.query.trim(),
+        trigger: typeof trigger === 'string' ? trigger : '',
+        url_count: this.urls.length,
+        url_hosts: this.hostsOf(this.urls),
+        has_name: !!this.name,
+        registered_count: registeredCount,
+        unregistered_count: unregisteredCount,
+        result: this.error ? 'error'
+          : unregisteredCount ? 'unregistered'
+          : registeredCount ? 'registered'
+          : 'none'
+      })
+    },
+    hostsOf: function(urls) {
+      return urls.map(url => {
+        try { return new URL(url).hostname } catch { return '' }
+      }).filter(Boolean).join(' ')
+    },
+    trackGithub: function(context) {
+      track('request_github_click', { context })
+    },
+    showAllUnregistered: function() {
+      this.expanded = true
+      track('request_candidates_more', { unregistered_count: this.unregisteredChannels.length })
     },
     // Apple のリンクなら id から一発で引ける。それ以外は、URL と番組名から
     // 作った検索語を、結果が出るまで順に試す。
@@ -973,7 +1015,7 @@ export default {
     // 打っている途中の文字列（https://open.spot…）では走らせない
     onPaste: function() {
       this.$nextTick(() => {
-        if(this.urls.length) this.lookup()
+        if(this.urls.length) this.lookup('paste')
       })
     },
     isOpen: function(channel) {
@@ -997,9 +1039,11 @@ export default {
     toggleRegistered: function(channel) {
       const key = this.registeredKey(channel)
       this.openRegisteredKey = this.openRegisteredKey === key ? '' : key
+      if(this.openRegisteredKey) track('request_registered_open', { channel_key: key })
     },
     toggleRow: function(channel) {
       this.openRows = { ...this.openRows, [channel.feed]: !this.openRows[channel.feed] }
+      if(this.openRows[channel.feed]) track('request_candidate_open', { channel_title: channel.title })
     },
     // どこで当たったかの添え書き。フィードの URL が一致したときは、
     // 言うまでもないので何も出さない
@@ -1025,8 +1069,10 @@ export default {
       })
     },
     // 送信フォームを開く。調べた結果があれば初期値に入れて、
-    // 同じことを二度入力させない（lib/request-form-values.js）
-    openForm: function(channel) {
+    // 同じことを二度入力させない（lib/request-form-values.js）。
+    // context は計測用。どこから開いたか（registered / candidate / not_found / direct）
+    openForm: function(channel, context) {
+      track('request_form_open', { context, searched: this.searched })
       this.formValues = channel
         ? requestFormValues({ channel, source: { url: this.urls.join(' '), title: this.name } })
         : {}

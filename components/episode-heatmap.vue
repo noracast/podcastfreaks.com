@@ -5,7 +5,7 @@
     <!-- 上に貼り付いているので、要らないときは畳んで並びに場所を譲れる。
          矢印だけでなく、見出しの行のどこを押しても開け閉めできる。
          この行だけは幅で止めず、画面の端まで使う（矢印を右端に置くため） -->
-    <div class="head" @click="collapsed = !collapsed">
+    <div class="head" @click="toggleCollapsed">
       <!-- 見出しは動かさない。どの範囲を見ているかは隣の話数（totalLabel）が
            言う。見出しに入れると、選び直すたびに見出しが変わってしまう -->
       <h2 class="period">Episodes</h2>
@@ -41,7 +41,7 @@
             <!-- 狭い画面では、右の並びの代わりにこちらを出す。選択肢を
                  全部見せずに済む（出し分けは CSS のほうでしている） -->
             <div class="years-select">
-              <select v-model="selected" aria-label="濃淡に出す期間">
+              <select v-model="selected" aria-label="濃淡に出す期間" @change="trackPeriod('select')">
                 <option v-for="year in years" :key="year.value" :value="year.value">{{ year.label }}</option>
               </select>
               <!-- 素の矢印を消しているので、畳むボタンと同じ形を重ねる -->
@@ -98,7 +98,7 @@
                 :key="year.value"
                 class="year"
                 :class="{ 'is-selected': year.value === selected }"
-                @click="selected = year.value"
+                @click="pickYear(year.value)"
               >
                 {{ year.label }}
               </button>
@@ -492,6 +492,7 @@
 import build_info from '@/static/downloads/build_info.json'
 import counts from '@/static/downloads/daily-counts.json'
 import { jst, jstEn } from '@/lib/jst'
+import track from '@/lib/analytics'
 
 // 既定で出す日数（直近1年）。週の頭で切り揃えるので、実際はこれを含む週まで
 const DAYS = 365
@@ -647,6 +648,21 @@ export default {
     window.removeEventListener('resize', this.measureYears)
   },
   methods: {
+    // 開け閉めは既定で畳んであるので、開かれているか自体を知りたい
+    toggleCollapsed: function() {
+      this.collapsed = !this.collapsed
+      track('heatmap_toggle', { state: this.collapsed ? 'close' : 'open' })
+    },
+    pickYear: function(value) {
+      if(this.selected === value) return
+      this.selected = value
+      this.trackPeriod('list')
+    },
+    // どの年が見られているか。input は広い画面の並び（list）か、
+    // 狭い画面のプルダウン（select）か
+    trackPeriod: function(input) {
+      track('heatmap_period', { period: this.selected, input })
+    },
     // 年の並びが、上下どちらの端まで来ているか。端を消すかどうかに使う
     // （狭い画面ではプルダウンに替わるので、縦だけを見ればいい）
     measureYears: function() {

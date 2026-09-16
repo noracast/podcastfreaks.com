@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     onClick: function() {
-      toggleEpisode(this.episode, this.channel)
+      toggleEpisode(this.episode, this.channel, 'list')
     }
   }
 }
