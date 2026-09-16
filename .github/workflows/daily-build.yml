@@ -1,0 +1,44 @@
+# 毎日サイトをビルドし直して、各番組の新着エピソードを取り込む。
+#
+# もとは IFTTT の applet（Date & Time → Webhooks）から Netlify の Build hook を
+# 叩いていた。IFTTT の無料アカウントが applet 2つまでに絞られたときにこの applet が
+# 切断され、2024-02-22 を最後に日次ビルドの起動そのものが止まっていた。設定が IFTTT の
+# 管理画面にしか無く、リポジトリからも GitHub からも見えなかったため、止まったことに
+# 誰も気づけなかった。ここに置けば、実行ログが GitHub に残り、手動でも流せる。
+#
+# GitHub の schedule は数分〜30分遅れる（混んでいるとさらに遅れる）ので、
+# 「00:00:00 ちょうど」ではない。サイトの状態を見張るワークフローは、これが
+# 終わったころに動くよう 01:00 JST にしてある。
+#
+# schedule は「60日間リポジトリに活動が無いと自動で止まる」仕様がある。止まると
+# ビルドが36時間以上古くなるので、site-health.yml が issue を立てて気づける。
+#
+# Ref: https://github.com/noracast/podcastfreaks.com/issues/237
+
+name: 毎日ビルドする
+
+on:
+  schedule:
+    # 00:05 JST。00分ちょうどは GitHub 側が混んで遅れやすいので少しずらす
+    - cron: '5 15 * * *'
+  workflow_dispatch:
+
+# Netlify を叩くだけで、リポジトリには触らない
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Netlify の Build hook を叩く
+        env:
+          # Netlify の Site configuration → Build & deploy → Build hooks で作った URL。
+          # URL を知っていれば誰でもビルドを起動できるので Secrets に置く
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK が設定されていません（Settings → Secrets and variables → Actions）"
+            exit 1
+          fi
+          curl -fsS -X POST -d '{}' "$HOOK"
+          echo "ビルドを起動しました: https://app.netlify.com/projects/podcast-freaks/deploys"

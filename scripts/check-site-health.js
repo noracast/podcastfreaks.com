@@ -46,7 +46,8 @@ async function checkSiteHealth(url = BUILD_INFO_URL) {
       kind: 'stale',
       title: 'ビルドが止まっています',
       detail: `最後のビルドは ${new Date(info.updated).toISOString()}（約${Math.floor(staleHours / 24)}日前）です。` +
-        '毎日のビルドは IFTTT から Netlify の Build hook を叩いて動かしています。まずそちらを確認してください。'
+        '毎日のビルドは GitHub Actions（`.github/workflows/daily-build.yml`）から Netlify の Build hook を叩いて動かしています。' +
+        'まず[ワークフローの実行ログ](https://github.com/noracast/podcastfreaks.com/actions/workflows/daily-build.yml)を確認してください。'
     })
   }
 

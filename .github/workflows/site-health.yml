@@ -14,8 +14,9 @@ name: サイトの状態を見張る
 
 on:
   schedule:
-    # 毎日 00:30 JST。日次ビルド（00:00 JST に IFTTT から Netlify を叩く）の後
-    - cron: '30 15 * * *'
+    # 毎日 01:00 JST。日次ビルド（daily-build.yml が 00:05 JST に Netlify を叩く）の後。
+    # GitHub の schedule は数分〜30分遅れるので、ビルド側の遅れを見込んで間隔を空けてある
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 permissions:

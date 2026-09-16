@@ -15,6 +15,8 @@ pnpm fetch-feeds # /static/downloads へフィードとカバー画像を取得�
 pnpm dev
 ```
 
+Node のバージョンは `.node-version` が唯一の置き場です。手元も、GitHub Actions（`node-version-file`）も、Netlify もこれを読みます。Netlify の管理画面にも Node のバージョンを選ぶ設定がありますが、`.node-version` があるとそちらが優先されるので、管理画面の値は使われません。
+
 ## デプロイ
 
 ```sh
@@ -43,7 +45,11 @@ pnpm ncu -u
 
 ## 毎日のビルド
 
-IFTTT から Netlify の Build hooks を叩いて、毎日デプロイしています。
+GitHub Actions（`.github/workflows/daily-build.yml`）から Netlify の Build hook を叩いて、毎日デプロイしています。起動は 00:05 JST ですが、GitHub の `schedule` は数分〜30分遅れるので時刻はぴったりではありません。
+
+Build hook の URL は Secrets の `NETLIFY_BUILD_HOOK` に置いてあります（URL を知っていれば誰でもビルドを起動できるため）。作り直すときは Netlify の Site configuration → Build & deploy → Build hooks から。
+
+もとは IFTTT の applet から叩いていました。IFTTT の無料アカウントが applet 2つまでに絞られたときにこの applet が切断され、**2024-02-22 を最後に日次ビルドが起動しなくなっていました**。設定が IFTTT の管理画面にしか無く、リポジトリからも GitHub からも見えなかったため、止まったことに誰も気づけませんでした。
 
 ## アクセス解析
 
@@ -68,12 +74,15 @@ GA4 の管理画面にも内部トラフィックの除外がありますが、�
 
 ## 自動化
 
-GitHub Actions が2つ動いています。追加のトークンは必要ありません（`GITHUB_TOKEN` のみ）。
+GitHub Actions が3つ動いています。必要なシークレットは日次ビルドの `NETLIFY_BUILD_HOOK` だけで、残りは `GITHUB_TOKEN` のみで動きます。
 
 | ワークフロー | いつ動くか | すること |
 |---|---|---|
 | 番組データを記録する | `data/rss.json` の変更時 | git 履歴から各番組の登録日を求めて `data/added-at.json` を作り直し、iTunes の検索APIとフィードURLを突き合わせて `data/apple-podcasts.json` を更新し、**まとめて1コミットする** |
-| サイトの状態を見張る | 毎日 00:30 JST | 公開中の `build_info.json` を見て、問題があれば issue を作る／更新する |
+| 毎日ビルドする | 毎日 00:05 JST | Netlify の Build hook を叩いて、フィードを取り直したサイトをデプロイする |
+| サイトの状態を見張る | 毎日 01:00 JST | 公開中の `build_info.json` を見て、問題があれば issue を作る／更新する |
+
+`schedule` の2つは**60日間リポジトリに活動が無いと自動で止まります**。止まればビルドが36時間以上古くなるので、見張り側が issue を立てて気づけます（見張り自体も止まっていれば、`/errors` の日付か Netlify のデプロイ履歴で分かります）。
 
 登録日と Apple Podcasts のリンクは、もとは別々のワークフローでした。同じ push で同時に起動して同じブランチへ commit → push するため、**必ずどちらかが `! [rejected] (fetch first)` で落ちていました**。1本にまとめて1コミットにすれば、この競合は起きえません。実行中に人が push する競合だけは残るので、push は rebase して3回まで試します。
 
